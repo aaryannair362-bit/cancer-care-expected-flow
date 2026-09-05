@@ -1,0 +1,29 @@
+{
+  "release": "CCA_Cancer_Care_Functional_Product_v12_2_PC1_5_Structural_Conformance_Phase3",
+  "version": "12.2-PC1.5",
+  "validated_at": "2026-09-04",
+  "database_reset_between_suites": true,
+  "database_final_state": "clean synthetic demo reset",
+  "results": {
+    "defect_remediation": {"passed": 38, "failed": 0},
+    "v12_process_ipd": {"passed": 48, "failed": 0},
+    "legacy_regression": {"passed": 95, "failed": 0},
+    "scenario_pack": {"cases_passed": 41, "cases_failed": 0, "preflight_failures": 0, "audit_errors": 0},
+    "pc1_preclinician": {"passed": 15, "failed": 0},
+    "pc1_1_ux": {"passed": 9, "failed": 0},
+    "pc1_2_mature_ux": {"passed": 19, "failed": 0},
+    "pc1_3_track_b_phase1": {"passed": 27, "failed": 0},
+    "pc1_4_track_b_phase2": {"passed": 38, "failed": 0},
+    "pc1_5_track_b_phase3": {"passed": 58, "failed": 0},
+    "python_compile": "PASS",
+    "javascript_syntax": {
+      "static/app.js": "PASS",
+      "static/pc1.js": "PASS",
+      "static/pc1_2.js": "PASS",
+      "static/pc1_3.js": "PASS",
+      "static/pc1_4.js": "PASS",
+      "static/pc1_5.js": "PASS"
+    }
+  },
+  "interpretation": "Zero observed failures across the listed executable suites on this build. This is not a claim of clinical correctness, production readiness, regulatory compliance, institutional content approval, or complete 467-row Track-B conformance."
+}

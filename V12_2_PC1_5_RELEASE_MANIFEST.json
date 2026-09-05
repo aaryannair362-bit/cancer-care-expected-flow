@@ -1,0 +1,399 @@
+{
+  "release": "CCA_Cancer_Care_Functional_Product_v12_2_PC1_5_Structural_Conformance_Phase3",
+  "version": "12.2-PC1.5",
+  "date": "2026-09-04",
+  "purpose": "Register-driven structural conformance Phase 3 on the golden systemic-treatment pathway; no invented CCA institutional clinical content.",
+  "inherits": "V12.2-PC1.4 Structural Conformance Phase 2 / PC1.2 Mature Oncology UX",
+  "synthetic_content": true,
+  "database": "cca_v12.sqlite3 reset to clean synthetic demo state; database excluded from static file hash inventory",
+  "file_count_hashed": 63,
+  "total_hashed_bytes": 1953198,
+  "validation": {
+    "defect_remediation": {
+      "passed": 38,
+      "failed": 0
+    },
+    "v12_process_ipd": {
+      "passed": 48,
+      "failed": 0
+    },
+    "legacy_regression": {
+      "passed": 95,
+      "failed": 0
+    },
+    "scenario_pack": {
+      "cases_passed": 41,
+      "cases_failed": 0,
+      "preflight_failures": 0,
+      "audit_errors": 0
+    },
+    "pc1_preclinician": {
+      "passed": 15,
+      "failed": 0
+    },
+    "pc1_1_ux": {
+      "passed": 9,
+      "failed": 0
+    },
+    "pc1_2_mature_ux": {
+      "passed": 19,
+      "failed": 0
+    },
+    "pc1_3_track_b_phase1": {
+      "passed": 27,
+      "failed": 0
+    },
+    "pc1_4_track_b_phase2": {
+      "passed": 38,
+      "failed": 0
+    },
+    "pc1_5_track_b_phase3": {
+      "passed": 58,
+      "failed": 0
+    },
+    "python_compile": "PASS",
+    "javascript_syntax": [
+      "static/app.js",
+      "static/pc1.js",
+      "static/pc1_2.js",
+      "static/pc1_3.js",
+      "static/pc1_4.js",
+      "static/pc1_5.js"
+    ]
+  },
+  "track_b_phase3": {
+    "register_rows_total": 467,
+    "rows_with_recorded_evidence": 101,
+    "rows_marked_conforms": 20,
+    "rows_marked_missing": 1,
+    "rows_marked_not_tested_with_partial_evidence": 22,
+    "architecture_decision": "ORD-028 ordered/target concentration vs PHM-016 actual prepared concentration"
+  },
+  "remaining_gates": [
+    "Intake Nurse vs Nurse Navigator role mapping — NEEDS CCA DECISION",
+    "CCA fall-risk scale/cut-offs and institutional formulary",
+    "CCA regimen/readiness/monitoring/dose-modification clinical content",
+    "CCA Pharmacy compatibility/stability/BUD handling content",
+    "ORD-028 ordered/target vs prepared concentration decision",
+    "remaining row-level Track-B conformance",
+    "full interactive browser UAT",
+    "institutional clinical-content sign-off and live integration/production hardening"
+  ],
+  "files": [
+    {
+      "path": "CONTENT_GOVERNANCE.md",
+      "bytes": 4263,
+      "sha256": "a5cdba400e7df36c7244e75ccb26271d91715b9a31fc484d28c6818c46b6ac7b"
+    },
+    {
+      "path": "FINAL_RELEASE_CHECKLIST.md",
+      "bytes": 1260,
+      "sha256": "f905ea0b89b180db3e4fcbd6cf0718d3ca48ce1558593aaa3eebf15b430a8d04"
+    },
+    {
+      "path": "OPEN_SOURCE_CONTENT_PROVENANCE.md",
+      "bytes": 2833,
+      "sha256": "c8c44ed050e32d058323c5258627c48165ca56b049722068e8e1b1964f78cf6e"
+    },
+    {
+      "path": "PC1_PRE_CLINICIAN_REMAINING_GATES.md",
+      "bytes": 4930,
+      "sha256": "e0e8451eb97ea158d1af069dd5298f6841cbaf71e9ee738f83c195f96ecf7831"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7510,
+      "sha256": "5300fc8e88129503f692e294ff22d5527e722a732c2c985f072602487c34f171"
+    },
+    {
+      "path": "ROLE_SURFACE_MATRIX.md",
+      "bytes": 40059,
+      "sha256": "f2356ac60939162286ea08db3c81bf3e3163b853be317d6eaaba45d464ae0727"
+    },
+    {
+      "path": "SOURCE_AND_SCOPE.md",
+      "bytes": 5181,
+      "sha256": "a1611d23c060743e7f859ff030b809998a63c63937aca4b70cfd4975259934e0"
+    },
+    {
+      "path": "Start_CCA_Prototype.command",
+      "bytes": 72,
+      "sha256": "3fd8f7701c45361371560fff2d3f3f50f433c5a642bbf7294c7306e79fb778d6"
+    },
+    {
+      "path": "TRACK_B_PHASE2_REMEDIATION.md",
+      "bytes": 1627,
+      "sha256": "bc52dd8e369be976280562eb9bc8d232be415ec76c2976d7601de311bc2ecab0"
+    },
+    {
+      "path": "TRACK_B_PHASE3_REMEDIATION.md",
+      "bytes": 3491,
+      "sha256": "95fbc2a49c67a482944b62e0cffcdfee438147f67dc46d38ce8f64d0cf202d26"
+    },
+    {
+      "path": "V11_1_AUDIT_REMEDIATION.md",
+      "bytes": 2963,
+      "sha256": "c6d2682b0f15bec9a342648363cb2615306f6c7c16b3a8918454692ba71df29d"
+    },
+    {
+      "path": "V12_2_41_CASE_SCENARIO_RUN.json",
+      "bytes": 375579,
+      "sha256": "d6c9946c6fd22a722cc2e5397964c10519c56fcfb619e96597c5a6f1c1e9498d"
+    },
+    {
+      "path": "V12_2_DEFECT_REMEDIATION_RUN.json",
+      "bytes": 13342,
+      "sha256": "8d7d8c7eff54e6958ca5856d64809f954ff1ded6a54d0b63b1bc58be76d4ace5"
+    },
+    {
+      "path": "V12_2_FINAL_REMEDIATION_SUMMARY.md",
+      "bytes": 1863,
+      "sha256": "bd0b286de08830e6d51c1f88183e3752f8e7be9d1fed7a1f1b9b4fafa8870002"
+    },
+    {
+      "path": "V12_2_PC1_1_REMAINING_GATES.md",
+      "bytes": 1188,
+      "sha256": "1c86f758dec8a178eee8e02de45df94c4b335f207b740d0625535c37e8174f43"
+    },
+    {
+      "path": "V12_2_PC1_1_SUMMARY.md",
+      "bytes": 1841,
+      "sha256": "8d76e52eb8a0bbb8f3f5c6594ea5d5c837e1681a7d0028cd5a61724fe7b8184c"
+    },
+    {
+      "path": "V12_2_PC1_1_UX_REMEDIATION.md",
+      "bytes": 840,
+      "sha256": "19f9e61e75b423abe15dcb6b7e62a61dfa3b0962bd1c3578b0ef63ad6168788b"
+    },
+    {
+      "path": "V12_2_PC1_2_MATURE_ONCOLOGY_UX_SUMMARY.md",
+      "bytes": 4493,
+      "sha256": "55f08abf6b50816c6a40e4da8816e070ba8f46bcc91effbfda8fe45cfba0483e"
+    },
+    {
+      "path": "V12_2_PC1_2_RELEASE_MANIFEST.json",
+      "bytes": 19772,
+      "sha256": "679d38b690bd7f4c9892c0f015d2cbac8e1c17802ceb663ceb20f3018904e7bb"
+    },
+    {
+      "path": "V12_2_PC1_2_REMAINING_GATES.md",
+      "bytes": 2067,
+      "sha256": "11294e283c3e68312c3d89729a6fcb6c5aa8164d42ff6cce87a88979057a5c95"
+    },
+    {
+      "path": "V12_2_PC1_3_TRACK_B_PHASE1_RUN.json",
+      "bytes": 11681,
+      "sha256": "d4e41b9e71350c934870291bbf03072f3eccb1b0f775cc161c9310e7c765e210"
+    },
+    {
+      "path": "V12_2_PC1_4_RELEASE_MANIFEST.json",
+      "bytes": 21833,
+      "sha256": "807b804f49d245ba7c1bb19b890870484d80c16ee80c2d0d5d84968fbfd2aa41"
+    },
+    {
+      "path": "V12_2_PC1_4_REMAINING_GATES.md",
+      "bytes": 3019,
+      "sha256": "392d334a3a2b98578485a33e7273a379c3769020ed8afab39a289f206a1fdca7"
+    },
+    {
+      "path": "V12_2_PC1_4_STRUCTURAL_CONFORMANCE_SUMMARY.md",
+      "bytes": 4883,
+      "sha256": "8b6d8579ea8b265dd599c82ee30836b4220dff9964bcc2d71fdc024b805b8cba"
+    },
+    {
+      "path": "V12_2_PC1_4_TRACK_B_PHASE2_RUN.json",
+      "bytes": 14076,
+      "sha256": "169b6e58c6349fa8a624f60f7db93fb3b37a1418a23473943e3af29a442eb4ee"
+    },
+    {
+      "path": "V12_2_PC1_4_VALIDATION_RESULTS.json",
+      "bytes": 1534,
+      "sha256": "a8ac0beffd95731227248cb136cfeaa5dfe0538ad30a6286a2cf67ae8dfc1e54"
+    },
+    {
+      "path": "V12_2_PC1_5_REMAINING_GATES.md",
+      "bytes": 1954,
+      "sha256": "62d8e9d5802e760f679754959e4de84d40ed49ece919a2a477a78b081213f222"
+    },
+    {
+      "path": "V12_2_PC1_5_STRUCTURAL_CONFORMANCE_SUMMARY.md",
+      "bytes": 2571,
+      "sha256": "fd2f0d0e9fec80a0419b9add43594b0f47f0cd93487aa63bb4b112cc7aff69dd"
+    },
+    {
+      "path": "V12_2_PC1_5_TRACK_B_PHASE3_RUN.json",
+      "bytes": 37383,
+      "sha256": "728d9bee24e33785615ffb4227f38fdb548e584c59f56da82c7d139cae575eed"
+    },
+    {
+      "path": "V12_2_PC1_5_VALIDATION_RESULTS.json",
+      "bytes": 1375,
+      "sha256": "a9b2fbe4eecbd02ad53801c97219e314488c562e4111c6ba21c00481ef944c0e"
+    },
+    {
+      "path": "V12_2_PC1_PRE_CLINICIAN_SUMMARY.md",
+      "bytes": 3172,
+      "sha256": "8f20c395ffac4d65a8196277c24871e54636d8793c62d4f0cf30c169d692b94c"
+    },
+    {
+      "path": "V12_2_PC1_RELEASE_CHECKLIST.md",
+      "bytes": 1182,
+      "sha256": "ee98f9e43c08c1d5f635d6d35ba34bfdc91ad30405db6fb23dabea54e457344a"
+    },
+    {
+      "path": "V12_2_RELEASE_INVENTORY.json",
+      "bytes": 979,
+      "sha256": "d75aac2fa5626fc96fb59e396dab195c7d8f5dc6b62c34ea9fdcf5fb55d33ee4"
+    },
+    {
+      "path": "V12_PROCESS_REMEDIATION.md",
+      "bytes": 4244,
+      "sha256": "8035f4a15b38b65644a5169e0b999372c00fa8f8d2dabfb5a9b92444a27cec2f"
+    },
+    {
+      "path": "VALIDATION.md",
+      "bytes": 7937,
+      "sha256": "6d5fad836a2e6f7ba68a39bd51186069353d36a9098d2b2aea1d51c419c993f8"
+    },
+    {
+      "path": "clinical_content/OPENMRS_NOTICE.txt",
+      "bytes": 1194,
+      "sha256": "f62d91aba3830d196619f405d03afff4de7a878101f1ba41aea64074ce30d5b9"
+    },
+    {
+      "path": "clinical_content/REG-CCA-TCHP-DEMO.json",
+      "bytes": 7815,
+      "sha256": "1ffed0f6fa82d5ab9b2ea5297b90e639459bc6161b74fdaaaa2ba44891f4d263"
+    },
+    {
+      "path": "clinical_content/formulary_master.json",
+      "bytes": 7793,
+      "sha256": "69f0dac7da28beb856ad3814908fd824fbf0a34edda7940f40712732655712a2"
+    },
+    {
+      "path": "clinical_content/openmrs_historical_regimens.json",
+      "bytes": 18032,
+      "sha256": "9c29e507a71afe0b63814416f5f150c5f51f462d429b100c90fbb04c4b448507"
+    },
+    {
+      "path": "clinical_content/source_registry.json",
+      "bytes": 2745,
+      "sha256": "fe1e8e53bcade2f1cb2de456bebdd3a4e05160b5ab73bfce8939948ce115f3bd"
+    },
+    {
+      "path": "clinical_content/synthetic_institutional_test_content.json",
+      "bytes": 285283,
+      "sha256": "ada8ec078e2b73fedd40d6cf9d0c8307f6f54f371a0d8f46159c6acf002e7199"
+    },
+    {
+      "path": "clinical_content/template_catalog.json",
+      "bytes": 79289,
+      "sha256": "5be0c04165f3d8d9c77f08f293b7580cafc04bc5ec82e93eb2d3b2aa1add4417"
+    },
+    {
+      "path": "reset_demo.py",
+      "bytes": 448,
+      "sha256": "a2c95b4bed46138fb2877e64c7100ea60bd43c545ca2e89cc93c282406ad82d0"
+    },
+    {
+      "path": "server.py",
+      "bytes": 320796,
+      "sha256": "7bae6409a0559754f629d87a42b6420d585d61d90eb682d11b4ee20b0def078e"
+    },
+    {
+      "path": "static/app.js",
+      "bytes": 185844,
+      "sha256": "b89f5d0a3ba67d72a619028076d74d7bf4378e7fbd6cbf298eb31cf8eda15f31"
+    },
+    {
+      "path": "static/index.html",
+      "bytes": 2181,
+      "sha256": "e343ad02b3ccbb48b71b57212c33d8847e93dead966683962ad0da830e5aaeea"
+    },
+    {
+      "path": "static/pc1.js",
+      "bytes": 93236,
+      "sha256": "a4c51c4b0830098848dc326f8a03f15ade68f3d23c3165a5dbe16c34840c351c"
+    },
+    {
+      "path": "static/pc1_2.js",
+      "bytes": 42433,
+      "sha256": "f7e688f44a35a3a8e3a61fc735c026f653aa7f61025586c01a1e994c2515598d"
+    },
+    {
+      "path": "static/pc1_3.js",
+      "bytes": 25250,
+      "sha256": "63ba790ca1f60e49b9574401ae98a4829832819bfaf2af2a1e33016b4a45707b"
+    },
+    {
+      "path": "static/pc1_4.js",
+      "bytes": 20352,
+      "sha256": "066abd9df0437ad9d47f8bd9bf1d5403de3b6db31671b29cfb27c68b3cc1437b"
+    },
+    {
+      "path": "static/pc1_5.js",
+      "bytes": 22056,
+      "sha256": "5e99d50cd19539558daaf9a773351705ea1725b991bbfbd6e811d4efaec583fe"
+    },
+    {
+      "path": "static/styles.css",
+      "bytes": 19833,
+      "sha256": "2e1816efdba74bf7125b461bfc21a348c0e88a1f3383fc1225fb42301ed9d119"
+    },
+    {
+      "path": "v12_2_41_case_runner.py",
+      "bytes": 436,
+      "sha256": "b539abc90896d587e3bd2a3d168432b6323d77f0a1c381237adbdcefc5a21ff1"
+    },
+    {
+      "path": "v12_2_defect_remediation_acceptance.py",
+      "bytes": 27009,
+      "sha256": "bf72a2d8ccee07d6e3a0e37340c65f595a1693d739f55486eb2ec6acafab857b"
+    },
+    {
+      "path": "v12_2_pc1_1_ux_acceptance.py",
+      "bytes": 1839,
+      "sha256": "16eb7785c35cafffb0192af638209d7a0b97be2447a2541ef0dc7e6a94f89aff"
+    },
+    {
+      "path": "v12_2_pc1_2_mature_ux_acceptance.py",
+      "bytes": 3242,
+      "sha256": "7ddd3f12652eb3e6d86b23f20930b100033f3db729013a61121f70e2808ce7e3"
+    },
+    {
+      "path": "v12_2_pc1_3_structural_conformance_acceptance.py",
+      "bytes": 12250,
+      "sha256": "08659d9ed755c65ae79706092d3b90a2282c4f0944c0daaf7d5cbe73f4662400"
+    },
+    {
+      "path": "v12_2_pc1_4_structural_conformance_phase2_acceptance.py",
+      "bytes": 14144,
+      "sha256": "1eef517d5cfa87a1d5389d56d78c8e5e30eb0092a27198324e18f60db4c19abf"
+    },
+    {
+      "path": "v12_2_pc1_5_structural_conformance_phase3_acceptance.py",
+      "bytes": 20977,
+      "sha256": "8591842be21300d7f6c7fa2c0f4dd2573bb32e98300182c6658b91e0521906b5"
+    },
+    {
+      "path": "v12_2_pc1_preclinician_acceptance.py",
+      "bytes": 9124,
+      "sha256": "5e0fc08060b5bb74d8469aba9ed130e223c1ade3cd5899e961bffcbe291ee2bb"
+    },
+    {
+      "path": "v12_2_synthetic_41_case_runner.py",
+      "bytes": 54235,
+      "sha256": "c9cf56ca81ac6548b0be3ad42e1d67fe922ed9f9c76b74d19d058043a7604880"
+    },
+    {
+      "path": "v12_legacy_regression.py",
+      "bytes": 35286,
+      "sha256": "3feebd1e2ad012114b2d1104d7e19ba29f43a98f76cfa74985f9c93d2c97a813"
+    },
+    {
+      "path": "v12_process_acceptance.py",
+      "bytes": 27079,
+      "sha256": "1cdb8214375a388a8c2b664d81f53fe2f054ce5379108bbcc59fa9c0b75b4435"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "build": "CCA_Cancer_Care_Functional_Product_v12_2_Final_Defect_Remediation",
+  "version": "12.2",
+  "synthetic_test_content": true,
+  "synthetic_qa_source_id": "SRC-CCA-QA",
+  "synthetic_templates_total": 53,
+  "synthetic_templates_by_category": {
+    "Regimen": 21,
+    "Radiation Template": 16,
+    "Surgical Template": 14,
+    "Continuous Therapy Template": 2
+  },
+  "synthetic_orderable_regimens": 21,
+  "synthetic_formulary_items": 5,
+  "original_demo_orderable_regimen": "REG-CCA-TCHP-DEMO",
+  "expected_reset_runtime_orderable_regimens": 22,
+  "validation": {
+    "targeted_remediation": {
+      "pass": 38,
+      "fail": 0
+    },
+    "process_ipd": {
+      "pass": 48,
+      "fail": 0
+    },
+    "regression": {
+      "pass": 94,
+      "fail": 0
+    },
+    "scenario_cases": {
+      "pass": 41,
+      "fail": 0,
+      "preflight_fail": 0,
+      "audit_errors": 0
+    }
+  },
+  "disclaimer": "Synthetic product testing/demo content only; not patient-care guidance."
+}

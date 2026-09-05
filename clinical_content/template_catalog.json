@@ -1,0 +1,2721 @@
+[
+  {
+    "id": "RT-TPL-BREAST-ADJ",
+    "category": "Radiation Template",
+    "name": "Breast Adjuvant RT Prescription Skeleton",
+    "subtype": "RT prescription template",
+    "disease": "Breast Cancer",
+    "setting": "Adjuvant",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Draft",
+    "governance_status": "Radiation Oncology Review Required",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA RT field specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "site": "Breast / chest wall",
+      "laterality": "Select",
+      "intent": "Adjuvant",
+      "modality": "External Beam",
+      "technique": "Select",
+      "energy": "Select",
+      "target_volumes": [],
+      "organs_at_risk": [
+        "Heart",
+        "Ipsilateral lung"
+      ],
+      "oar_constraints": [],
+      "simulation_requirement": "Yes",
+      "immobilisation": "Breast board / institution-defined",
+      "image_guidance": "Institution-defined",
+      "bolus": "As clinically indicated",
+      "note": "Dose/fractionation deliberately not prefilled until Radiation Oncology governance approves local templates."
+    }
+  },
+  {
+    "id": "RT-TPL-CERVIX-DEFINITIVE",
+    "category": "Radiation Template",
+    "name": "Cervix Definitive RT Prescription Skeleton",
+    "subtype": "RT prescription template",
+    "disease": "Cervical Cancer",
+    "setting": "Definitive",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Draft",
+    "governance_status": "Radiation Oncology + Physics Review Required",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA RT field specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "site": "Pelvis / Cervix",
+      "laterality": "Not applicable",
+      "intent": "Definitive",
+      "modality": "External Beam / Brachytherapy link",
+      "technique": "Select",
+      "target_volumes": [],
+      "organs_at_risk": [
+        "Bladder",
+        "Rectum",
+        "Bowel",
+        "Femoral heads",
+        "Kidneys if extended field"
+      ],
+      "oar_constraints": [],
+      "simulation_requirement": "Yes",
+      "immobilisation": "Institution-defined",
+      "image_guidance": "Institution-defined",
+      "note": "No dose/fractionation preset; brachytherapy remains a separately governed prescription/delivery workflow."
+    }
+  },
+  {
+    "id": "RT-TPL-HN-DEFINITIVE",
+    "category": "Radiation Template",
+    "name": "Head & Neck Definitive RT Prescription Skeleton",
+    "subtype": "RT prescription template",
+    "disease": "Head & Neck Cancer",
+    "setting": "Definitive",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Draft",
+    "governance_status": "Radiation Oncology + Physics Review Required",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA RT field specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "site": "Head / Neck",
+      "laterality": "Select",
+      "intent": "Definitive",
+      "modality": "External Beam",
+      "technique": "Select",
+      "energy": "Select",
+      "target_volumes": [],
+      "organs_at_risk": [
+        "Spinal cord",
+        "Brainstem",
+        "Parotids",
+        "Oral cavity",
+        "Larynx",
+        "Esophagus"
+      ],
+      "oar_constraints": [],
+      "simulation_requirement": "Yes",
+      "immobilisation": "Thermoplastic mask / institution-defined",
+      "image_guidance": "Institution-defined",
+      "note": "Dose, fractionation and constraints deliberately blank pending local approval."
+    }
+  },
+  {
+    "id": "RT-TPL-PALL-BONE",
+    "category": "Radiation Template",
+    "name": "Palliative Bone RT Prescription Skeleton",
+    "subtype": "RT prescription template",
+    "disease": "Metastatic Solid Tumor",
+    "setting": "Palliative",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Draft",
+    "governance_status": "Radiation Oncology + Physics Review Required",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA RT field specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "site": "Bone / Spine — select",
+      "laterality": "Select",
+      "intent": "Palliative",
+      "modality": "External Beam",
+      "technique": "Select",
+      "target_volumes": [],
+      "organs_at_risk": [],
+      "oar_constraints": [],
+      "simulation_requirement": "Select",
+      "image_guidance": "Institution-defined",
+      "note": "No dose/fractionation preset; local palliative pathways must be reviewed before use."
+    }
+  },
+  {
+    "id": "REG-OMRS-AC",
+    "category": "Regimen",
+    "name": "AC — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Breast Cancer",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/AC.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-AC",
+      "version": "OpenMRS-historical-import-1",
+      "name": "AC — historical OpenMRS reference",
+      "cycle_length_days": 21,
+      "planned_cycles": 4,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Sodium chloride 0.9%",
+          "code": "OMRS-NS1000",
+          "dose_basis": "Fixed",
+          "protocol_dose": 1000,
+          "protocol_unit": "mL",
+          "route": "IV"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "OMRS-DEX16",
+          "dose_basis": "Fixed",
+          "protocol_dose": 16,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Doxorubicin",
+          "code": "OMRS-DOX60",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 60,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        },
+        {
+          "sequence": 5,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Cyclophosphamide",
+          "code": "OMRS-CYC600",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 600,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/AC.yaml"
+      ],
+      "source_blob_sha": "92c1ecc97b282481dfb3b00fc71b2d802be34341",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "REG-OMRS-CMF",
+    "category": "Regimen",
+    "name": "CMF — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Breast Cancer",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/CMF.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-CMF",
+      "version": "OpenMRS-historical-import-1",
+      "name": "CMF — historical OpenMRS reference",
+      "cycle_length_days": 21,
+      "planned_cycles": 8,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Sodium chloride 0.9%",
+          "code": "OMRS-NS1000",
+          "dose_basis": "Fixed",
+          "protocol_dose": 1000,
+          "protocol_unit": "mL",
+          "route": "IV"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "OMRS-DEX16",
+          "dose_basis": "Fixed",
+          "protocol_dose": 16,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Fluorouracil",
+          "code": "OMRS-5FU600",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 600,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        },
+        {
+          "sequence": 5,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Methotrexate",
+          "code": "OMRS-MTX40",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 40,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        },
+        {
+          "sequence": 6,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Cyclophosphamide",
+          "code": "OMRS-CYC600",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 600,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/CMF.yaml"
+      ],
+      "source_blob_sha": "a1dce4fcfadada8194a74e5cc49b559fa0c22092",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "REG-OMRS-PAC175",
+    "category": "Regimen",
+    "name": "Paclitaxel 175 mg/m² q3w — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Breast Cancer",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/Paclitaxel175.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-PAC175",
+      "version": "OpenMRS-historical-import-1",
+      "name": "Paclitaxel 175 mg/m² q3w — historical OpenMRS reference",
+      "cycle_length_days": 21,
+      "planned_cycles": 4,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Sodium chloride 0.9%",
+          "code": "OMRS-NS500",
+          "dose_basis": "Fixed",
+          "protocol_dose": 500,
+          "protocol_unit": "mL",
+          "route": "IV"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "OMRS-DEX16",
+          "dose_basis": "Fixed",
+          "protocol_dose": 16,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Cimetidine",
+          "code": "OMRS-CIM600",
+          "dose_basis": "Fixed",
+          "protocol_dose": 600,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Diphenhydramine",
+          "code": "OMRS-DPH50",
+          "dose_basis": "Fixed",
+          "protocol_dose": 50,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 5,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 6,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Paclitaxel",
+          "code": "OMRS-PAC175",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 175,
+          "protocol_unit": "mg/m²",
+          "route": "IV",
+          "volume_ml": 500,
+          "duration_min": 240
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/Paclitaxel175.yaml"
+      ],
+      "source_blob_sha": "d3cbd944f135fc2e847c1e739f0e3b9f7f44c2fe",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "REG-OMRS-PAC175-RECHALLENGE",
+    "category": "Regimen",
+    "name": "Paclitaxel 175 mg/m² rechallenge — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Breast Cancer",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/Paclitaxel175ReChallenge.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-PAC175-RECHALLENGE",
+      "version": "OpenMRS-historical-import-1",
+      "name": "Paclitaxel 175 mg/m² rechallenge — historical OpenMRS reference",
+      "cycle_length_days": 21,
+      "planned_cycles": 4,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Sodium chloride 0.9%",
+          "code": "OMRS-NS500",
+          "dose_basis": "Fixed",
+          "protocol_dose": 500,
+          "protocol_unit": "mL",
+          "route": "IV"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "OMRS-DEX20A",
+          "dose_basis": "Fixed",
+          "protocol_dose": 20,
+          "protocol_unit": "mg",
+          "route": "PO",
+          "timing": "Historical source: 12 h before clinic"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "OMRS-DEX20B",
+          "dose_basis": "Fixed",
+          "protocol_dose": 20,
+          "protocol_unit": "mg",
+          "route": "PO",
+          "timing": "Historical source: 6 h before clinic"
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "OMRS-DEX20C",
+          "dose_basis": "Fixed",
+          "protocol_dose": 20,
+          "protocol_unit": "mg",
+          "route": "PO",
+          "timing": "Historical source: 1 h before clinic"
+        },
+        {
+          "sequence": 5,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Cimetidine",
+          "code": "OMRS-CIM600",
+          "dose_basis": "Fixed",
+          "protocol_dose": 600,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 6,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Diphenhydramine",
+          "code": "OMRS-DPH50",
+          "dose_basis": "Fixed",
+          "protocol_dose": 50,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 7,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 8,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Paclitaxel",
+          "code": "OMRS-PAC175-R",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 175,
+          "protocol_unit": "mg/m²",
+          "route": "IV",
+          "volume_ml": 500,
+          "duration_min": 240
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/Paclitaxel175ReChallenge.yaml"
+      ],
+      "source_blob_sha": "bf8244b71dde519b413c7a3ba7fbbafa79dd7c0a",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "REG-OMRS-PAC80",
+    "category": "Regimen",
+    "name": "Paclitaxel 80 mg/m² weekly — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Breast Cancer",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/Paclitaxel80.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-PAC80",
+      "version": "OpenMRS-historical-import-1",
+      "name": "Paclitaxel 80 mg/m² weekly — historical OpenMRS reference",
+      "cycle_length_days": 7,
+      "planned_cycles": 12,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Sodium chloride 0.9%",
+          "code": "OMRS-NS500",
+          "dose_basis": "Fixed",
+          "protocol_dose": 500,
+          "protocol_unit": "mL",
+          "route": "IV"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "OMRS-DEX16",
+          "dose_basis": "Fixed",
+          "protocol_dose": 16,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Cimetidine",
+          "code": "OMRS-CIM600",
+          "dose_basis": "Fixed",
+          "protocol_dose": 600,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Diphenhydramine",
+          "code": "OMRS-DPH50",
+          "dose_basis": "Fixed",
+          "protocol_dose": 50,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 5,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 6,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Paclitaxel",
+          "code": "OMRS-PAC80",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 80,
+          "protocol_unit": "mg/m²",
+          "route": "IV",
+          "volume_ml": 250,
+          "duration_min": 60
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/Paclitaxel80.yaml"
+      ],
+      "source_blob_sha": "26753f4c1cff0d8155fe7e8fc07f39dcd4d51717",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "REG-OMRS-CYC-SINGLE",
+    "category": "Regimen",
+    "name": "Single-agent Cyclophosphamide — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Breast Cancer",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/CyclophosphamideSingleAgent.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-CYC-SINGLE",
+      "version": "OpenMRS-historical-import-1",
+      "name": "Single-agent Cyclophosphamide — historical OpenMRS reference",
+      "cycle_length_days": 21,
+      "planned_cycles": 6,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Sodium chloride 0.9%",
+          "code": "OMRS-NS1000",
+          "dose_basis": "Fixed",
+          "protocol_dose": 1000,
+          "protocol_unit": "mL",
+          "route": "IV"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "OMRS-DEX16",
+          "dose_basis": "Fixed",
+          "protocol_dose": 16,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Cyclophosphamide",
+          "code": "OMRS-CYC600",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 600,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/CyclophosphamideSingleAgent.yaml"
+      ],
+      "source_blob_sha": "cb22d70e68ee22fe69b891e691bce19da5e18c20",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "REG-OMRS-DOX20",
+    "category": "Regimen",
+    "name": "Single-agent Doxorubicin 20 mg/m² — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Breast Cancer",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/Doxorubicin20.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-DOX20",
+      "version": "OpenMRS-historical-import-1",
+      "name": "Single-agent Doxorubicin 20 mg/m² — historical OpenMRS reference",
+      "cycle_length_days": 7,
+      "planned_cycles": 12,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Sodium chloride 0.9%",
+          "code": "OMRS-NS500",
+          "dose_basis": "Fixed",
+          "protocol_dose": 500,
+          "protocol_unit": "mL",
+          "route": "IV"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "OMRS-DEX16",
+          "dose_basis": "Fixed",
+          "protocol_dose": 16,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Doxorubicin",
+          "code": "OMRS-DOX20",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 20,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/Doxorubicin20.yaml"
+      ],
+      "source_blob_sha": "2ddda7e55ba88768e13b11613c4651f8a0cb54fe",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "REG-OMRS-DOX60",
+    "category": "Regimen",
+    "name": "Single-agent Doxorubicin 60 mg/m² — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Breast Cancer",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/Doxorubicin60.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-DOX60",
+      "version": "OpenMRS-historical-import-1",
+      "name": "Single-agent Doxorubicin 60 mg/m² — historical OpenMRS reference",
+      "cycle_length_days": 21,
+      "planned_cycles": 4,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Sodium chloride 0.9%",
+          "code": "OMRS-NS500",
+          "dose_basis": "Fixed",
+          "protocol_dose": 500,
+          "protocol_unit": "mL",
+          "route": "IV"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "OMRS-DEX16",
+          "dose_basis": "Fixed",
+          "protocol_dose": 16,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Doxorubicin",
+          "code": "OMRS-DOX60",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 60,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/Doxorubicin60.yaml"
+      ],
+      "source_blob_sha": "d1c000934f2d0687dcc01589b1d410b9892bfad9",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "REG-CCA-TCHP-DEMO",
+    "category": "Regimen",
+    "name": "Synthetic HER2+ Breast Neoadjuvant Demo Regimen",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Breast Cancer",
+    "setting": "HER2-positive, demo",
+    "intent": "Neoadjuvant",
+    "line_of_therapy": "Neoadjuvant",
+    "version": "1.0-demo",
+    "status": "Active",
+    "governance_status": "Demo Approved",
+    "orderable": true,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "local synthetic master",
+    "effective_date": "2026-09-01",
+    "review_due": "2026-12-01",
+    "clinical_owner": "Medical Oncology",
+    "pharmacy_owner": "Oncology Pharmacy",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "CCA-DEMO-TCHP",
+      "version": "1.0-demo",
+      "name": "Synthetic HER2+ Breast Neoadjuvant Demo Regimen",
+      "indication": "HER2-positive breast cancer — synthetic demo only",
+      "intent": "Neoadjuvant",
+      "cycle_length_days": 21,
+      "planned_cycles": 6,
+      "approved_by": "Synthetic demo governance — NOT clinical content",
+      "effective_date": "2026-09-01",
+      "orderable": true,
+      "hold_parameters": {
+        "ANC_min": 1.5,
+        "platelets_min": 100,
+        "eGFR_min": 50,
+        "bilirubin_max": 1.5,
+        "LVEF_min": 50,
+        "lab_max_age_days": 7
+      },
+      "items": [
+        {
+          "sequence": 1,
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "DEMO-DEX",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO",
+          "timing": "30–60 min before systemic therapy"
+        },
+        {
+          "sequence": 2,
+          "group": "Targeted Therapy",
+          "drug": "Pertuzumab",
+          "code": "DEMO-PER",
+          "dose_basis": "Fixed",
+          "protocol_dose": 840,
+          "protocol_unit": "mg",
+          "route": "IV",
+          "diluent": "NS",
+          "volume_ml": 250,
+          "duration_min": 60
+        },
+        {
+          "sequence": 3,
+          "group": "Targeted Therapy",
+          "drug": "Trastuzumab",
+          "code": "DEMO-TRA",
+          "dose_basis": "mg/kg",
+          "protocol_dose": 8,
+          "protocol_unit": "mg/kg",
+          "route": "IV",
+          "diluent": "NS",
+          "volume_ml": 250,
+          "duration_min": 90
+        },
+        {
+          "sequence": 4,
+          "group": "Antineoplastic",
+          "drug": "Docetaxel",
+          "code": "DEMO-DOC",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 75,
+          "protocol_unit": "mg/m²",
+          "route": "IV",
+          "diluent": "NS",
+          "volume_ml": 250,
+          "duration_min": 60
+        },
+        {
+          "sequence": 5,
+          "group": "Antineoplastic",
+          "drug": "Carboplatin",
+          "code": "DEMO-CARBO",
+          "dose_basis": "AUC",
+          "protocol_dose": 6,
+          "protocol_unit": "AUC",
+          "route": "IV",
+          "diluent": "D5W",
+          "volume_ml": 250,
+          "duration_min": 60
+        },
+        {
+          "sequence": 6,
+          "group": "Supportive",
+          "drug": "Pegfilgrastim",
+          "code": "DEMO-PEG",
+          "dose_basis": "Fixed",
+          "protocol_dose": 6,
+          "protocol_unit": "mg",
+          "route": "SQ",
+          "timing": "Per institutional policy"
+        }
+      ]
+    }
+  },
+  {
+    "id": "REG-OMRS-5FU-LV",
+    "category": "Regimen",
+    "name": "5-FU + Leucovorin (Roswell Park) — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Colorectal / Breast Cancer (historical source wording)",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/5FULeucovorin.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-5FU-LV",
+      "version": "OpenMRS-historical-import-1",
+      "name": "5-FU + Leucovorin (Roswell Park) — historical OpenMRS reference",
+      "cycle_length_days": 28,
+      "planned_cycles": 6,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1,
+            8,
+            15
+          ],
+          "group": "Premedication",
+          "drug": "Dextrose 5% in water",
+          "code": "OMRS-D5W250",
+          "dose_basis": "Fixed",
+          "protocol_dose": 250,
+          "protocol_unit": "mL",
+          "route": "IV",
+          "timing": "Before chemotherapy"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1,
+            8,
+            15
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO",
+          "timing": "Before chemotherapy"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1,
+            8,
+            15
+          ],
+          "group": "Antineoplastic",
+          "drug": "Leucovorin",
+          "code": "OMRS-LV500",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 500,
+          "protocol_unit": "mg/m²",
+          "route": "IV",
+          "volume_ml": 500,
+          "duration_min": 120
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1,
+            8,
+            15
+          ],
+          "group": "Antineoplastic",
+          "drug": "Fluorouracil",
+          "code": "OMRS-5FU500",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 500,
+          "protocol_unit": "mg/m²",
+          "route": "IV",
+          "special_instructions": "Historical source administers during leucovorin infusion; local sequencing and preparation must be re-authored."
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/5FULeucovorin.yaml"
+      ],
+      "source_blob_sha": "778e17f4d0e5491c328d54b78acae2c59bfda7b5",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "REG-OMRS-CHOP",
+    "category": "Regimen",
+    "name": "CHOP — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Non-Hodgkin Lymphoma",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/CHOP.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-CHOP",
+      "version": "OpenMRS-historical-import-1",
+      "name": "CHOP — historical OpenMRS reference",
+      "cycle_length_days": 21,
+      "planned_cycles": 6,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Sodium chloride 0.9%",
+          "code": "OMRS-NS1000",
+          "dose_basis": "Fixed",
+          "protocol_dose": 1000,
+          "protocol_unit": "mL",
+          "route": "IV"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "group": "Antineoplastic",
+          "drug": "Prednisone",
+          "code": "OMRS-PRED100",
+          "dose_basis": "Fixed",
+          "protocol_dose": 100,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Doxorubicin",
+          "code": "OMRS-DOX50",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 50,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        },
+        {
+          "sequence": 5,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Vincristine",
+          "code": "OMRS-VCR14",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 1.4,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        },
+        {
+          "sequence": 6,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Cyclophosphamide",
+          "code": "OMRS-CYC750",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 750,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/CHOP.yaml"
+      ],
+      "source_blob_sha": "474ed6c2c44b7a5b09bc741a1a3f634594c78091",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "REG-OMRS-COP",
+    "category": "Regimen",
+    "name": "COP — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Non-Hodgkin Lymphoma",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/COP.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-COP",
+      "version": "OpenMRS-historical-import-1",
+      "name": "COP — historical OpenMRS reference",
+      "cycle_length_days": 21,
+      "planned_cycles": 6,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Sodium chloride 0.9%",
+          "code": "OMRS-NS1000",
+          "dose_basis": "Fixed",
+          "protocol_dose": 1000,
+          "protocol_unit": "mL",
+          "route": "IV"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "group": "Antineoplastic",
+          "drug": "Prednisone",
+          "code": "OMRS-PRED100",
+          "dose_basis": "Fixed",
+          "protocol_dose": 100,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Vincristine",
+          "code": "OMRS-VCR14",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 1.4,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        },
+        {
+          "sequence": 5,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Cyclophosphamide",
+          "code": "OMRS-CYC750",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 750,
+          "protocol_unit": "mg/m²",
+          "route": "IV"
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/COP.yaml"
+      ],
+      "source_blob_sha": "d173b4db2e022dbb086ad4f1f3f0cb4085827aad",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "REG-OMRS-CARBOTAXOL",
+    "category": "Regimen",
+    "name": "Carboplatin + Paclitaxel — historical OpenMRS reference",
+    "subtype": "Systemic therapy regimen",
+    "disease": "Solid Tumor — indication mapping pending",
+    "setting": "Historical OpenMRS regimen",
+    "intent": "Pending CCA review",
+    "line_of_therapy": "Pending CCA review",
+    "version": "OpenMRS-historical-import-1",
+    "status": "Imported Draft",
+    "governance_status": "Clinical + Pharmacy Review Required",
+    "orderable": false,
+    "source_id": "SRC-OPENMRS-ONC",
+    "source_ref": "regimens/CarboTaxol.yaml",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "Pending",
+    "pharmacy_owner": "Pending",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "id": "REG-OMRS-CARBOTAXOL",
+      "version": "OpenMRS-historical-import-1",
+      "name": "Carboplatin + Paclitaxel — historical OpenMRS reference",
+      "cycle_length_days": 21,
+      "planned_cycles": 6,
+      "items": [
+        {
+          "sequence": 1,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Sodium chloride 0.9%",
+          "code": "OMRS-NS500",
+          "dose_basis": "Fixed",
+          "protocol_dose": 500,
+          "protocol_unit": "mL",
+          "route": "IV"
+        },
+        {
+          "sequence": 2,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Dexamethasone",
+          "code": "OMRS-DEX16",
+          "dose_basis": "Fixed",
+          "protocol_dose": 16,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 3,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Cimetidine",
+          "code": "OMRS-CIM600",
+          "dose_basis": "Fixed",
+          "protocol_dose": 600,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 4,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Diphenhydramine",
+          "code": "OMRS-DPH50",
+          "dose_basis": "Fixed",
+          "protocol_dose": 50,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 5,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Premedication",
+          "drug": "Ondansetron",
+          "code": "OMRS-OND8",
+          "dose_basis": "Fixed",
+          "protocol_dose": 8,
+          "protocol_unit": "mg",
+          "route": "PO"
+        },
+        {
+          "sequence": 6,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Paclitaxel",
+          "code": "OMRS-PAC175",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 175,
+          "protocol_unit": "mg/m²",
+          "route": "IV",
+          "volume_ml": 500,
+          "duration_min": 180
+        },
+        {
+          "sequence": 7,
+          "relative_start_days": [
+            1
+          ],
+          "group": "Antineoplastic",
+          "drug": "Carboplatin",
+          "code": "OMRS-CARBO",
+          "dose_basis": "AUC",
+          "protocol_dose": null,
+          "protocol_unit": "AUC",
+          "route": "IV",
+          "volume_ml": 250,
+          "duration_min": 60,
+          "special_instructions": "Historical source leaves patient-specific carboplatin AUC value unspecified."
+        }
+      ],
+      "hold_parameters": {},
+      "references": [
+        "regimens/CarboTaxol.yaml"
+      ],
+      "source_blob_sha": "50e7b053c7180e8e5035b3b8d49523d8581fc332",
+      "source_repository": "openmrs/openmrs-module-oncology",
+      "source_branch": "master",
+      "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+      "limitations": [
+        "Historical source reference only; current indication, intent, line, maximum-dose rules, supportive care, preparation, readiness and dose-modification rules require local review before activation."
+      ]
+    }
+  },
+  {
+    "id": "RPT-PHARM-PREP",
+    "category": "Report",
+    "name": "Antineoplastic Preparation / Dispensing Record",
+    "subtype": "Clinical report",
+    "disease": "All",
+    "setting": "Oncology Pharmacy",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA preparation/dispensing specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "sections": [
+        "Source order",
+        "Formulation/strength",
+        "Batch/lot/expiry",
+        "Diluent/actual volume",
+        "Wastage",
+        "Preparation start/finish",
+        "Prepared by",
+        "Independent checker",
+        "Barcode/label",
+        "Release/destination/manifest"
+      ]
+    }
+  },
+  {
+    "id": "RPT-MDT",
+    "category": "Report",
+    "name": "MDT Recommendation Summary",
+    "subtype": "Clinical report",
+    "disease": "All",
+    "setting": "MDT",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA MDT specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "sections": [
+        "Patient/cancer context",
+        "Stage/performance status",
+        "Pathology/biomarkers",
+        "Clinical question",
+        "Discussion",
+        "Alternatives",
+        "Formal recommendation",
+        "Consensus",
+        "Participants",
+        "Outstanding investigations",
+        "Signatures"
+      ],
+      "signatures": [
+        "MDT Coordinator",
+        "Contributing specialties"
+      ]
+    }
+  },
+  {
+    "id": "RPT-MAR",
+    "category": "Report",
+    "name": "Medication Administration Record",
+    "subtype": "Clinical report",
+    "disease": "All",
+    "setting": "Day Care",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA MAR specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "sections": [
+        "Patient/order identity",
+        "Pharmacy release",
+        "Pre-administration checklist",
+        "Per-drug actual administration",
+        "Reaction/intervention",
+        "Post-treatment vitals",
+        "Tolerance",
+        "Discharge/next cycle"
+      ]
+    }
+  },
+  {
+    "id": "RPT-ONC-CONSULT",
+    "category": "Report",
+    "name": "Oncology Consultation Note",
+    "subtype": "Clinical report",
+    "disease": "All",
+    "setting": "OPD",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA OPD specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "sections": [
+        "Patient/cancer context",
+        "Chief complaint/HPI",
+        "Review of systems",
+        "Structured examination",
+        "Assessment",
+        "Decision branch",
+        "Plan",
+        "Orders",
+        "Signature"
+      ]
+    }
+  },
+  {
+    "id": "RPT-PHARM-VERIFY",
+    "category": "Report",
+    "name": "Oncology Pharmacy Verification Record",
+    "subtype": "Clinical report",
+    "disease": "All",
+    "setting": "Oncology Pharmacy",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA pharmacy specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "sections": [
+        "Patient/order identity",
+        "Allergy/interaction review",
+        "Protocol vs calculated vs ordered dose",
+        "Organ function",
+        "Formulation/stock/expiry",
+        "Verification decision",
+        "Query/reject thread",
+        "Pharmacist identity/time"
+      ]
+    }
+  },
+  {
+    "id": "RPT-RT-COMPLETE",
+    "category": "Report",
+    "name": "Radiation Course Summary",
+    "subtype": "Clinical report",
+    "disease": "All",
+    "setting": "Radiation Oncology",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA RT specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "sections": [
+        "Prescription",
+        "Planning approvals",
+        "Fraction-by-fraction delivery",
+        "Cumulative dose",
+        "Interruptions",
+        "On-treatment reviews",
+        "Completion status",
+        "DICOM-RT references"
+      ]
+    }
+  },
+  {
+    "id": "RPT-TX-ORDER",
+    "category": "Report",
+    "name": "Signed Systemic Treatment Order",
+    "subtype": "Clinical report",
+    "disease": "All",
+    "setting": "Medical Oncology",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA order specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "sections": [
+        "Patient identifiers",
+        "Diagnosis/intent/line",
+        "Regimen/version/cycle/day",
+        "Patient variables",
+        "Eligibility criteria",
+        "Ordered sequence",
+        "Protocol vs calculated vs ordered dose",
+        "Supportive therapy",
+        "Authorization",
+        "Version history"
+      ]
+    }
+  },
+  {
+    "id": "RPT-SURGERY",
+    "category": "Report",
+    "name": "Surgical Oncology Operative Outcome",
+    "subtype": "Clinical report",
+    "disease": "All",
+    "setting": "Surgical Oncology",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA surgical specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "sections": [
+        "Planned procedure",
+        "Actual procedure",
+        "Pre/post-op diagnosis",
+        "Site/laterality",
+        "Findings",
+        "Specimens",
+        "Complications",
+        "EBL",
+        "Operative time",
+        "Team",
+        "Post-op plan",
+        "Histopathology link"
+      ]
+    }
+  },
+  {
+    "id": "RPT-SYSTEMIC-COMPLETE",
+    "category": "Report",
+    "name": "Systemic Therapy Course / Cycle Summary",
+    "subtype": "Clinical report",
+    "disease": "All",
+    "setting": "Medical Oncology / Day Care",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA order-to-delivery specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "sections": [
+        "Regimen/version",
+        "Cycle/day",
+        "Signed order",
+        "Pharmacy verification/preparation/release",
+        "MAR actual doses/times",
+        "Variances",
+        "Toxicity",
+        "Readiness for next cycle"
+      ]
+    }
+  },
+  {
+    "id": "RPT-READINESS",
+    "category": "Report",
+    "name": "Treatment Readiness / Clearance Record",
+    "subtype": "Clinical report",
+    "disease": "All",
+    "setting": "Medical Oncology",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA readiness specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "sections": [
+        "Cycle/day",
+        "Current weight/BSA/performance status",
+        "Vitals",
+        "Protocol-required labs",
+        "Toxicities",
+        "Allergy/medication review",
+        "Server-evaluated criteria",
+        "Proceed/modify/hold/delay/stop decision",
+        "Clinical rationale",
+        "Signature"
+      ]
+    }
+  },
+  {
+    "id": "RPT-RESPONSE",
+    "category": "Report",
+    "name": "Treatment Response Assessment",
+    "subtype": "Clinical report",
+    "disease": "All",
+    "setting": "Response assessment",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA response specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "sections": [
+        "Baseline reference",
+        "Imaging date",
+        "Target lesions",
+        "Non-target lesions",
+        "New lesions",
+        "Response category",
+        "Disease status",
+        "Markers/biomarkers",
+        "Clinical correlation"
+      ]
+    }
+  },
+  {
+    "id": "SURG-TPL-BREAST",
+    "category": "Surgical Template",
+    "name": "Breast Surgery Planning Skeleton",
+    "subtype": "Surgical plan template",
+    "disease": "Breast Cancer",
+    "setting": "Definitive surgery",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Draft",
+    "governance_status": "Surgical Oncology Review Required",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA surgical field specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "procedures": [
+        "Breast-conserving surgery / lumpectomy",
+        "Mastectomy",
+        "Other"
+      ],
+      "laterality": [
+        "Left",
+        "Right",
+        "Bilateral"
+      ],
+      "approaches": [
+        "Open"
+      ],
+      "nodal_procedures": [
+        "Sentinel lymph node biopsy",
+        "Axillary lymph node dissection",
+        "None",
+        "Other"
+      ],
+      "reconstruction": [
+        "None",
+        "Immediate reconstruction — type to be selected",
+        "Delayed reconstruction",
+        "Other"
+      ],
+      "preop_requirements": [
+        "Anesthesia assessment",
+        "Required labs",
+        "Relevant imaging/pathology reviewed",
+        "Consent"
+      ],
+      "note": "Procedure vocabulary requires local surgeon review before activation."
+    }
+  },
+  {
+    "id": "SURG-TPL-COLORECTAL",
+    "category": "Surgical Template",
+    "name": "Colorectal Cancer Surgery Planning Skeleton",
+    "subtype": "Surgical plan template",
+    "disease": "Colorectal Cancer",
+    "setting": "Definitive surgery",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Draft",
+    "governance_status": "Surgical Oncology Review Required",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA surgical field specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "procedures": [
+        "Segmental colectomy",
+        "Anterior resection",
+        "Abdominoperineal resection",
+        "Other"
+      ],
+      "laterality": [
+        "Not applicable"
+      ],
+      "approaches": [
+        "Open",
+        "Laparoscopic",
+        "Robotic",
+        "Hybrid"
+      ],
+      "nodal_procedures": [
+        "Regional lymphadenectomy / specimen-based nodal assessment",
+        "Other"
+      ],
+      "reconstruction": [
+        "Primary anastomosis",
+        "Stoma — type to be selected",
+        "Other"
+      ],
+      "preop_requirements": [
+        "Anesthesia assessment",
+        "Required labs",
+        "Imaging reviewed",
+        "Pathology reviewed",
+        "Consent"
+      ],
+      "note": "Procedure and extent vocabulary requires local surgeon review."
+    }
+  },
+  {
+    "id": "SURG-TPL-GASTRIC",
+    "category": "Surgical Template",
+    "name": "Gastric Cancer Surgery Planning Skeleton",
+    "subtype": "Surgical plan template",
+    "disease": "Gastric Cancer",
+    "setting": "Definitive surgery",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Draft",
+    "governance_status": "Surgical Oncology Review Required",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA surgical field specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "procedures": [
+        "Distal gastrectomy",
+        "Total gastrectomy",
+        "Other"
+      ],
+      "laterality": [
+        "Not applicable"
+      ],
+      "approaches": [
+        "Open",
+        "Laparoscopic",
+        "Robotic",
+        "Hybrid"
+      ],
+      "nodal_procedures": [
+        "Regional lymphadenectomy — extent to be selected",
+        "Other"
+      ],
+      "reconstruction": [
+        "Procedure-specific reconstruction — select",
+        "Other"
+      ],
+      "preop_requirements": [
+        "Anesthesia assessment",
+        "Required labs",
+        "Nutrition assessment",
+        "Imaging reviewed",
+        "Pathology reviewed",
+        "Consent"
+      ],
+      "note": "Extent and nodal procedure require local surgical governance."
+    }
+  },
+  {
+    "id": "SURG-TPL-KIDNEY",
+    "category": "Surgical Template",
+    "name": "Kidney Cancer Surgery Planning Skeleton",
+    "subtype": "Surgical plan template",
+    "disease": "Kidney Cancer",
+    "setting": "Definitive surgery",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Draft",
+    "governance_status": "Surgical Oncology Review Required",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA surgical field specification",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "procedures": [
+        "Partial nephrectomy",
+        "Radical nephrectomy",
+        "Other"
+      ],
+      "laterality": [
+        "Left",
+        "Right",
+        "Bilateral"
+      ],
+      "approaches": [
+        "Open",
+        "Laparoscopic",
+        "Robotic",
+        "Hybrid"
+      ],
+      "nodal_procedures": [
+        "None",
+        "Regional node dissection if indicated",
+        "Other"
+      ],
+      "reconstruction": [
+        "Not applicable",
+        "Other"
+      ],
+      "preop_requirements": [
+        "Anesthesia assessment",
+        "Required labs",
+        "Renal function",
+        "Imaging reviewed",
+        "Consent"
+      ],
+      "note": "Procedure/approach selection remains surgeon-controlled."
+    }
+  },
+  {
+    "id": "WF-SURVIVORSHIP",
+    "category": "Workflow",
+    "name": "End-of-Treatment / Survivorship Follow-up",
+    "subtype": "Process template",
+    "disease": "All",
+    "setting": "Follow-up",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "Oncology longitudinal follow-up requirement",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "stages": [
+        "Treatment completion summary",
+        "Residual toxicity review",
+        "Surveillance plan",
+        "Late-effect / supportive care needs",
+        "Follow-up scheduling"
+      ],
+      "required_roles": [
+        "Oncology specialist",
+        "Nurse Navigator",
+        "Patient Liaison"
+      ]
+    }
+  },
+  {
+    "id": "WF-NEW-ONC",
+    "category": "Workflow",
+    "name": "New Oncology Patient",
+    "subtype": "Process template",
+    "disease": "All",
+    "setting": "New patient",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA shared workflow diagrams",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "trigger": "Patient arrival",
+      "stages": [
+        "Registration",
+        "Consent",
+        "Nurse Intake",
+        "Medical Oncology",
+        "Diagnostics if required",
+        "Diagnosis/Staging",
+        "MDT if required",
+        "Treatment Plan",
+        "Follow-up"
+      ],
+      "required_roles": [
+        "Front Desk",
+        "Nurse Navigator",
+        "Medical Oncology"
+      ],
+      "completion_criteria": [
+        "Current location recorded",
+        "Required clinical record created",
+        "Next handoff assigned"
+      ]
+    }
+  },
+  {
+    "id": "WF-SECOND-OPINION",
+    "category": "Workflow",
+    "name": "Oncology Second Opinion",
+    "subtype": "Process template",
+    "disease": "All",
+    "setting": "Second opinion",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA workflow architecture",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "stages": [
+        "Registration",
+        "Outside document intake",
+        "Nurse reconciliation",
+        "Specialist review",
+        "Pathology/Radiology re-review if required",
+        "Diagnosis/staging confirmation",
+        "Recommendation",
+        "Visit summary"
+      ],
+      "required_roles": [
+        "Front Desk",
+        "Nurse Navigator",
+        "Oncology specialist"
+      ],
+      "completion_criteria": [
+        "Source records linked",
+        "Differences from outside diagnosis/plan documented",
+        "Recommendation signed"
+      ]
+    }
+  },
+  {
+    "id": "WF-RT-COURSE",
+    "category": "Workflow",
+    "name": "Radiation Treatment Course",
+    "subtype": "Process template",
+    "disease": "All",
+    "setting": "Radiation Oncology",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA RT flow",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "stages": [
+        "RT Prescription",
+        "Simulation",
+        "Contouring",
+        "Planning",
+        "Physics QA",
+        "Physician Approval",
+        "Treatment Ready",
+        "Fraction Delivery",
+        "Treatment Complete"
+      ]
+    }
+  },
+  {
+    "id": "WF-RECURRENCE",
+    "category": "Workflow",
+    "name": "Recurrence / Progression Episode",
+    "subtype": "Process template",
+    "disease": "All",
+    "setting": "Recurrence / progression",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA longitudinal oncology requirement",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "stages": [
+        "New disease-status event",
+        "Restaging",
+        "Biomarker/pathology update if required",
+        "Response/progression evidence",
+        "MDT / specialist decision",
+        "New treatment phase"
+      ],
+      "completion_criteria": [
+        "Prior episode preserved",
+        "New stage/disease status stored as new record",
+        "New line linked to prior history"
+      ]
+    }
+  },
+  {
+    "id": "WF-SURGICAL",
+    "category": "Workflow",
+    "name": "Surgical Oncology Episode",
+    "subtype": "Process template",
+    "disease": "All",
+    "setting": "Surgical Oncology",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA surgery flow",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "stages": [
+        "Recommended",
+        "Surgeon Reviewed",
+        "Planned",
+        "Pre-op Ready",
+        "Scheduled",
+        "Performed",
+        "Post-op",
+        "Histopathology Available",
+        "Adjuvant Review"
+      ]
+    }
+  },
+  {
+    "id": "WF-SYSTEMIC-CYCLE",
+    "category": "Workflow",
+    "name": "Systemic Therapy Cycle",
+    "subtype": "Process template",
+    "disease": "All",
+    "setting": "Treatment day",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA golden flow + OpenMRS order/admin workflow pattern",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "stages": [
+        "Cycle Readiness",
+        "Treatment Order",
+        "Pharmacy Verification",
+        "Preparation",
+        "Independent Release",
+        "Day Care Pre-check",
+        "MAR",
+        "Post-treatment",
+        "Toxicity",
+        "Next-cycle Readiness"
+      ],
+      "required_roles": [
+        "Medical Oncology",
+        "Oncology Pharmacy",
+        "Day Care / Infusion Nurse"
+      ],
+      "hard_gates": [
+        "Signed readiness",
+        "Signed order",
+        "Pharmacy verified/released",
+        "8 pre-administration checks"
+      ]
+    }
+  },
+  {
+    "id": "WF-TREATMENT-CLEARANCE",
+    "category": "Workflow",
+    "name": "Treatment Patient / Cycle Clearance",
+    "subtype": "Process template",
+    "disease": "All",
+    "setting": "Pre-cycle",
+    "intent": "",
+    "line_of_therapy": "",
+    "version": "1.0",
+    "status": "Active",
+    "governance_status": "CCA Operational Draft",
+    "orderable": false,
+    "source_id": "SRC-CCA-DEMO",
+    "source_ref": "CCA Medical Oncology flow",
+    "effective_date": "",
+    "review_due": "",
+    "clinical_owner": "",
+    "pharmacy_owner": "",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00",
+    "approved_by": "",
+    "approved_at": "",
+    "retired_at": "",
+    "data": {
+      "stages": [
+        "Toxicity review",
+        "Vitals/performance status",
+        "Lab review",
+        "Protocol readiness evaluation",
+        "Proceed/Modify/Hold/Delay/Stop",
+        "Treatment Order or Hold record"
+      ],
+      "required_roles": [
+        "Medical Oncology"
+      ],
+      "hard_gates": [
+        "Signed readiness decision before systemic order"
+      ]
+    }
+  }
+]

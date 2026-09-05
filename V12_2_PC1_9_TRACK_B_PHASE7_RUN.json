@@ -1,0 +1,1099 @@
+{
+  "suite": "V12.2-PC1.9 Structural Conformance Phase 7",
+  "total": 57,
+  "passed": 57,
+  "failed": 0,
+  "results": [
+    {
+      "id": "PC19-ROLE-001",
+      "pass": true,
+      "detail": "CCA V12.2-PC1.9 Structural Conformance Phase 7"
+    },
+    {
+      "id": "PC19-ROLE-002",
+      "pass": true,
+      "detail": [
+        "Front Desk",
+        "Patient Attender",
+        "PRE / Patient Relations Executive",
+        "Nurse Navigator",
+        "Intake Nurse",
+        "Medical Oncology",
+        "Surgical Oncology",
+        "Radiation Oncology",
+        "Radiology Coordinator",
+        "Radiology Technician",
+        "Radiologist",
+        "Laboratory / Phlebotomy",
+        "Pathology",
+        "MDT Coordinator",
+        "MDT Chair",
+        "External Consultant",
+        "Oncology Pharmacy",
+        "Day Care / Infusion Nurse",
+        "Inpatient Oncology Nurse",
+        "Radiation Technologist",
+        "Radiation Physicist",
+        "Surgical Nurse",
+        "Biller",
+        "Finance / Billing",
+        "Patient Liaison",
+        "Hospital Management / Admin"
+      ]
+    },
+    {
+      "id": "PC19-ROLE-003",
+      "pass": true,
+      "detail": {
+        "role": "Intake Nurse",
+        "surface": {
+          "input": [
+            {
+              "field": "Vitals",
+              "data_type": "structured",
+              "mandatory": true,
+              "value_set": "Pending specialist value-set review",
+              "code_system": "Pending terminology mapping",
+              "source": "Role workflow / local master",
+              "notes": ""
+            },
+            {
+              "field": "Height/weight",
+              "data_type": "number",
+              "mandatory": true,
+              "value_set": "Not applicable / field-format constrained",
+              "code_system": "UCUM",
+              "source": "Role workflow / local master",
+              "notes": ""
+            },
+            {
+              "field": "ECOG/Karnofsky",
+              "data_type": "select",
+              "mandatory": true,
+              "value_set": "ecog/kps",
+              "code_system": "Pending terminology mapping",
+              "source": "Role workflow / local master",
+              "notes": ""
+            },
+            {
+              "field": "Pain assessment",
+              "data_type": "structured",
+              "mandatory": true,
+              "value_set": "Pending specialist value-set review",
+              "code_system": "Pending terminology mapping",
+              "source": "Role workflow / local master",
+              "notes": ""
+            },
+            {
+              "field": "Fall risk",
+              "data_type": "structured",
+              "mandatory": true,
+              "value_set": "Pending specialist value-set review",
+              "code_system": "Pending terminology mapping",
+              "source": "Role workflow / local master",
+              "notes": ""
+            },
+            {
+              "field": "Medication reconciliation",
+              "data_type": "structured",
+              "mandatory": true,
+              "value_set": "Pending specialist value-set review",
+              "code_system": "Pending terminology mapping",
+              "source": "Role workflow / local master",
+              "notes": ""
+            },
+            {
+              "field": "Allergies/adverse reactions",
+              "data_type": "structured",
+              "mandatory": true,
+              "value_set": "Pending specialist value-set review",
+              "code_system": "Pending terminology mapping",
+              "source": "Role workflow / local master",
+              "notes": ""
+            },
+            {
+              "field": "Oncology history",
+              "data_type": "dynamic structured form",
+              "mandatory": true,
+              "value_set": "Pending specialist value-set review",
+              "code_system": "Pending terminology mapping",
+              "source": "Role workflow / local master",
+              "notes": ""
+            },
+            {
+              "field": "Old document upload",
+              "data_type": "file + metadata",
+              "mandatory": false,
+              "value_set": "Not applicable / field-format constrained",
+              "code_system": "Not applicable",
+              "source": "Role workflow / local master",
+              "notes": ""
+            }
+          ],
+          "view": [
+            {
+              "field": "Registration/queue",
+              "source": "Front Desk",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            },
+            {
+              "field": "Prior documents",
+              "source": "Document store",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            },
+            {
+              "field": "Current care plan",
+              "source": "Care Plan",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            },
+            {
+              "field": "Active admission / ward / bed",
+              "source": "Inpatient record",
+              "notes": "Supports OPD↔IPD continuity",
+              "read_only": true,
+              "timestamp_visible": true
+            }
+          ],
+          "output": [
+            {
+              "record": "Completed Intake",
+              "handoff": "Medical Oncology",
+              "notes": ""
+            },
+            {
+              "record": "Reconciled Medication/Allergy List",
+              "handoff": "All clinical roles",
+              "notes": ""
+            },
+            {
+              "record": "Updated Care Plan tasks",
+              "handoff": "Care team",
+              "notes": ""
+            }
+          ]
+        },
+        "status": "Specialist review required",
+        "reviews": []
+      }
+    },
+    {
+      "id": "PC19-ROLE-004",
+      "pass": true,
+      "detail": {
+        "role": "MDT Chair",
+        "surface": {
+          "input": [
+            {
+              "field": "MDT final decision",
+              "data_type": "select",
+              "mandatory": true,
+              "value_set": "Approve|Return for revision",
+              "code_system": "Pending terminology mapping",
+              "source": "Role workflow / local master",
+              "notes": ""
+            },
+            {
+              "field": "Chair decision reason",
+              "data_type": "text",
+              "mandatory": true,
+              "value_set": "Not applicable / field-format constrained",
+              "code_system": "Not applicable",
+              "source": "Role workflow / local master",
+              "notes": ""
+            },
+            {
+              "field": "Chair attestation",
+              "data_type": "signature",
+              "mandatory": true,
+              "value_set": "Not applicable / field-format constrained",
+              "code_system": "Not applicable",
+              "source": "Role workflow / local master",
+              "notes": ""
+            }
+          ],
+          "view": [
+            {
+              "field": "Diagnosis/stage/performance status",
+              "source": "Cancer record",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            },
+            {
+              "field": "Pathology/biomarkers",
+              "source": "Pathology",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            },
+            {
+              "field": "Imaging/labs",
+              "source": "Diagnostics",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            },
+            {
+              "field": "Prior systemic / radiation / surgical treatment history",
+              "source": "Treatment History",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            },
+            {
+              "field": "Active toxicity",
+              "source": "Toxicity",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            },
+            {
+              "field": "Latest formal response assessment",
+              "source": "Response Assessment",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            },
+            {
+              "field": "Submitted MDT recommendation and derived quorum",
+              "source": "MDT Coordinator",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            },
+            {
+              "field": "Latest formal response assessment",
+              "source": "Response Assessment",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            },
+            {
+              "field": "Post-operative adjuvant-review readiness",
+              "source": "Surgical Oncology",
+              "notes": "",
+              "read_only": true,
+              "timestamp_visible": true
+            }
+          ],
+          "output": [
+            {
+              "record": "Chair-approved MDT recommendation",
+              "handoff": "Participating oncologists / Treatment Plan",
+              "notes": ""
+            },
+            {
+              "record": "Returned MDT recommendation",
+              "handoff": "MDT Coordinator",
+              "notes": ""
+            }
+          ]
+        },
+        "status": "Specialist review required",
+        "reviews": []
+      }
+    },
+    {
+      "id": "PC19-INT-001",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "bmi": 24.24,
+          "bsa_m2": 1.82,
+          "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
+          "canonical_units": {
+            "bp": "mmHg",
+            "hr": "/min",
+            "rr": "/min",
+            "temp_c": "°C",
+            "spo2": "%",
+            "weight_kg": "kg",
+            "height_cm": "cm"
+          },
+          "source_measurements": {
+            "sbp": {
+              "value": 118.0,
+              "unit": "mmHg"
+            },
+            "dbp": {
+              "value": 74.0,
+              "unit": "mmHg"
+            },
+            "hr": {
+              "value": 78.0,
+              "unit": "/min"
+            },
+            "rr": {
+              "value": 16.0,
+              "unit": "/min"
+            },
+            "temp": {
+              "value": 98.6,
+              "unit": "°F"
+            },
+            "spo2": {
+              "value": 99.0,
+              "unit": "%"
+            },
+            "weight": {
+              "value": 154.3,
+              "unit": "lb"
+            },
+            "height": {
+              "value": 66.9,
+              "unit": "in"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "PC19-INT-002",
+      "pass": true,
+      "detail": {
+        "front_desk_intake_visible": false
+      }
+    },
+    {
+      "id": "PC19-INT-003",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "body": {
+          "error": "Role is not authorized for this action"
+        }
+      }
+    },
+    {
+      "id": "PC19-INV-001",
+      "pass": true,
+      "detail": {
+        "status": 409,
+        "body": {
+          "error": "Investigation must be selected from the governed diagnostic catalogue",
+          "catalog": [
+            {
+              "type": "Laboratory",
+              "name": "CBC",
+              "code": "57021-8",
+              "code_system": "LOINC",
+              "active": true
+            },
+            {
+              "type": "Laboratory",
+              "name": "Comprehensive metabolic panel",
+              "code": "24323-8",
+              "code_system": "LOINC",
+              "active": true
+            },
+            {
+              "type": "Radiology",
+              "name": "Breast MRI",
+              "code": "CCA-RAD-BREAST-MRI",
+              "code_system": "Synthetic QA diagnostic catalogue",
+              "active": true
+            },
+            {
+              "type": "Radiology",
+              "name": "CT chest/abdomen/pelvis",
+              "code": "CCA-RAD-CT-CAP",
+              "code_system": "Synthetic QA diagnostic catalogue",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "PC19-INV-002",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "id": "LAB_ORDER-E0E8673A85",
+          "catalog_id": "LAB-CBC"
+        }
+      }
+    },
+    {
+      "id": "PC19-INV-003",
+      "pass": true,
+      "detail": {
+        "status": 409,
+        "body": {
+          "error": "Investigation decision reason required"
+        }
+      }
+    },
+    {
+      "id": "PC19-INV-004",
+      "pass": true,
+      "detail": {
+        "status": 403
+      }
+    },
+    {
+      "id": "PC19-INV-005",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "idempotent": false
+        }
+      }
+    },
+    {
+      "id": "PC19-INV-006",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "lab_entity_id": "LAB-6099F4A7E1",
+          "sample_id": "SMP-PC19"
+        }
+      }
+    },
+    {
+      "id": "PC19-INV-007",
+      "pass": true,
+      "detail": {
+        "status": 409,
+        "body": {
+          "error": "Laboratory abnormal flag must use the governed value set",
+          "invalid": {
+            "anc": "GREEN"
+          },
+          "allowed": [
+            "Normal",
+            "Low",
+            "High",
+            "Critical low",
+            "Critical high",
+            "Abnormal non-numeric",
+            "Unknown"
+          ]
+        }
+      }
+    },
+    {
+      "id": "PC19-INV-008",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "id": "LAB-6099F4A7E1",
+          "status": "Final",
+          "units": {
+            "hb": "g/dL",
+            "wbc": "10^9/L",
+            "anc": "10^9/L",
+            "platelets": "10^9/L",
+            "creatinine": "mg/dL",
+            "egfr": "mL/min/1.73m2",
+            "bilirubin": "mg/dL",
+            "ast": "U/L",
+            "alt": "U/L"
+          },
+          "critical_tasks": []
+        }
+      }
+    },
+    {
+      "id": "PC19-INV-009",
+      "pass": true,
+      "detail": {
+        "status": 409,
+        "body": {
+          "error": "A finalized laboratory result cannot be overwritten. Start an amendment with a documented reason.",
+          "requires_amendment_reason": true,
+          "supersedes": "LAB-6099F4A7E1"
+        }
+      }
+    },
+    {
+      "id": "PC19-INV-010",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "id": "LAB-72535E1EC9",
+          "status": "Final",
+          "units": {
+            "hb": "g/dL",
+            "wbc": "10^9/L",
+            "anc": "10^9/L",
+            "platelets": "10^9/L",
+            "creatinine": "mg/dL",
+            "egfr": "mL/min/1.73m2",
+            "bilirubin": "mg/dL",
+            "ast": "U/L",
+            "alt": "U/L"
+          },
+          "supersedes": "LAB-6099F4A7E1",
+          "amendment_reason": "Synthetic correction",
+          "critical_tasks": []
+        }
+      }
+    },
+    {
+      "id": "PC19-INV-011",
+      "pass": true,
+      "detail": {
+        "role": "Medical Oncology",
+        "visible": true
+      }
+    },
+    {
+      "id": "PC19-INV-012",
+      "pass": true,
+      "detail": {
+        "role": "Oncology Pharmacy",
+        "visible": true
+      }
+    },
+    {
+      "id": "PC19-INV-013",
+      "pass": true,
+      "detail": {
+        "role": "Day Care / Infusion Nurse",
+        "visible": true
+      }
+    },
+    {
+      "id": "PC19-INV-014",
+      "pass": true,
+      "detail": {
+        "role": "MDT Coordinator",
+        "visible": true
+      }
+    },
+    {
+      "id": "PC19-MDT-001",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "quorum_status": "Met"
+        }
+      }
+    },
+    {
+      "id": "PC19-MDT-002",
+      "pass": true,
+      "detail": {
+        "status": 409,
+        "body": {
+          "error": "Duplicate MDT attendee/discipline entry"
+        }
+      }
+    },
+    {
+      "id": "PC19-MDT-003",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "Pending Chair Approval"
+        }
+      }
+    },
+    {
+      "id": "PC19-MDT-004",
+      "pass": true,
+      "detail": {
+        "status": 409,
+        "body": {
+          "error": "A Chair-approved finalized MDT recommendation is required before creating a specialty plan"
+        }
+      }
+    },
+    {
+      "id": "PC19-MDT-005",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "body": {
+          "error": "MDT Chair required"
+        }
+      }
+    },
+    {
+      "id": "PC19-MDT-006",
+      "pass": true,
+      "detail": {
+        "status": 409,
+        "body": {
+          "error": "Chair decision and reason required",
+          "allowed": [
+            "Approve",
+            "Return for revision"
+          ]
+        }
+      }
+    },
+    {
+      "id": "PC19-MDT-007",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "MDT Recommended",
+          "signed_by": {
+            "id": "USR-MDTCHAIR-001",
+            "name": "MDT Chair",
+            "role": "MDT Chair"
+          }
+        }
+      }
+    },
+    {
+      "id": "PC19-MDT-008",
+      "pass": true,
+      "detail": {
+        "role": "Medical Oncology",
+        "signed_by": {
+          "id": "USR-MDTCHAIR-001",
+          "name": "MDT Chair",
+          "role": "MDT Chair"
+        }
+      }
+    },
+    {
+      "id": "PC19-MDT-009",
+      "pass": true,
+      "detail": {
+        "role": "Surgical Oncology",
+        "signed_by": {
+          "id": "USR-MDTCHAIR-001",
+          "name": "MDT Chair",
+          "role": "MDT Chair"
+        }
+      }
+    },
+    {
+      "id": "PC19-MDT-010",
+      "pass": true,
+      "detail": {
+        "role": "Radiation Oncology",
+        "signed_by": {
+          "id": "USR-MDTCHAIR-001",
+          "name": "MDT Chair",
+          "role": "MDT Chair"
+        }
+      }
+    },
+    {
+      "id": "PC19-MDT-011",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "id": "TREATMENT_PLAN-B1CA336966",
+          "status": "Draft",
+          "note": "MDT created a draft plan only; no treatment order was generated."
+        }
+      }
+    },
+    {
+      "id": "PC19-RSP-001",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "proposed_category": "Partial response",
+          "assessment": {
+            "id": "RESP-7EC27F",
+            "episode_id": "EPISODE-0001",
+            "criteria_set": "RECIST 1.1",
+            "criteria_version": "1.1",
+            "date": "2026-09-04",
+            "source_imaging_id": "RAD-0001",
+            "target_lesions": [
+              {
+                "id": "L1",
+                "site": "Left breast",
+                "size": 3.0,
+                "unit": "cm",
+                "source_value": 3.0,
+                "source_unit": "cm",
+                "size_mm": 30.0
+              }
+            ],
+            "sum_mm": 30.0,
+            "baseline_sum_mm": 45.0,
+            "nadir_sum_mm": 45.0,
+            "percent_change_from_baseline": -33.333,
+            "non_target": "Present stable/persistent",
+            "new_lesions": false,
+            "proposed_response_category": "Partial response",
+            "response_category": "",
+            "confirmation_status": "Pending clinician confirmation",
+            "biomarkers": [],
+            "notes": "",
+            "measured_by": {
+              "id": "USR-RADIOLOG-001",
+              "name": "Radiologist",
+              "role": "Radiologist"
+            },
+            "measured_at": "2026-09-04T18:57:59+00:00"
+          }
+        }
+      }
+    },
+    {
+      "id": "PC19-RSP-002",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "body": {
+          "error": "Medical Oncology required to confirm response"
+        }
+      }
+    },
+    {
+      "id": "PC19-RSP-003",
+      "pass": true,
+      "detail": {
+        "status": 409,
+        "body": {
+          "error": "Governed response category and clinician reason required",
+          "allowed": [
+            "Complete response",
+            "Partial response",
+            "Stable disease",
+            "Progressive disease",
+            "Not evaluable",
+            "Criteria-specific immune response category"
+          ]
+        }
+      }
+    },
+    {
+      "id": "PC19-RSP-004",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "assessment": {
+            "id": "RESP-7EC27F",
+            "episode_id": "EPISODE-0001",
+            "criteria_set": "RECIST 1.1",
+            "criteria_version": "1.1",
+            "date": "2026-09-04",
+            "source_imaging_id": "RAD-0001",
+            "target_lesions": [
+              {
+                "id": "L1",
+                "site": "Left breast",
+                "size": 3.0,
+                "unit": "cm",
+                "source_value": 3.0,
+                "source_unit": "cm",
+                "size_mm": 30.0
+              }
+            ],
+            "sum_mm": 30.0,
+            "baseline_sum_mm": 45.0,
+            "nadir_sum_mm": 45.0,
+            "percent_change_from_baseline": -33.333,
+            "non_target": "Present stable/persistent",
+            "new_lesions": false,
+            "proposed_response_category": "Partial response",
+            "response_category": "Partial response",
+            "confirmation_status": "Confirmed",
+            "biomarkers": [],
+            "notes": "",
+            "measured_by": {
+              "id": "USR-RADIOLOG-001",
+              "name": "Radiologist",
+              "role": "Radiologist"
+            },
+            "measured_at": "2026-09-04T18:57:59+00:00",
+            "confirmation_reason": "Clinician confirms formal response after source imaging review",
+            "confirmed_by": {
+              "id": "USR-MEDICALO-001",
+              "name": "Medical Oncology User",
+              "role": "Medical Oncology"
+            },
+            "confirmed_at": "2026-09-04T18:57:59+00:00"
+          }
+        }
+      }
+    },
+    {
+      "id": "PC19-RSP-005",
+      "pass": true,
+      "detail": {
+        "status": 409,
+        "body": {
+          "error": "Confirmed response is immutable; create a new assessment for changed evidence"
+        }
+      }
+    },
+    {
+      "id": "PC19-RSP-006",
+      "pass": true,
+      "detail": {
+        "role": "Medical Oncology",
+        "visible": true
+      }
+    },
+    {
+      "id": "PC19-RSP-007",
+      "pass": true,
+      "detail": {
+        "role": "Surgical Oncology",
+        "visible": true
+      }
+    },
+    {
+      "id": "PC19-RSP-008",
+      "pass": true,
+      "detail": {
+        "role": "Radiation Oncology",
+        "visible": true
+      }
+    },
+    {
+      "id": "PC19-RSP-009",
+      "pass": true,
+      "detail": {
+        "role": "MDT Coordinator",
+        "visible": true
+      }
+    },
+    {
+      "id": "PC19-RSP-010",
+      "pass": true,
+      "detail": {
+        "role": "MDT Chair",
+        "visible": true
+      }
+    },
+    {
+      "id": "PC19-SUR-001",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "episode_id": "EPISODE-0001"
+        }
+      }
+    },
+    {
+      "id": "PC19-SUR-002",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "PC19-SUR-003",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "id": "PC19-SUR-004",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "pathological_stage_record_id": "DIAGNOSIS-E0FB827050",
+          "adjuvant_review": {
+            "status": "Ready for adjuvant review",
+            "derived": true,
+            "source_operating_record_id": "SURG-0001",
+            "source_pathology_id": "PATH-0001",
+            "source_pathological_stage_id": "DIAGNOSIS-E0FB827050",
+            "derived_at": "2026-09-04T18:57:59+00:00",
+            "formula": "Signed operative record + final pathology + pathological stage available"
+          },
+          "task_ids": [
+            "TASK-087B0A2F16",
+            "TASK-F25EB01912"
+          ],
+          "note": "New pathological staging record created; prior clinical stage preserved."
+        }
+      }
+    },
+    {
+      "id": "PC19-SUR-005",
+      "pass": true,
+      "detail": {
+        "role": "Medical Oncology",
+        "state": {
+          "status": "Ready for adjuvant review",
+          "derived": true,
+          "source_operating_record_id": "SURG-0001",
+          "source_pathology_id": "PATH-0001",
+          "source_pathological_stage_id": "DIAGNOSIS-E0FB827050",
+          "derived_at": "2026-09-04T18:57:59+00:00",
+          "formula": "Signed operative record + final pathology + pathological stage available"
+        }
+      }
+    },
+    {
+      "id": "PC19-SUR-006",
+      "pass": true,
+      "detail": {
+        "role": "Radiation Oncology",
+        "state": {
+          "status": "Ready for adjuvant review",
+          "derived": true,
+          "source_operating_record_id": "SURG-0001",
+          "source_pathology_id": "PATH-0001",
+          "source_pathological_stage_id": "DIAGNOSIS-E0FB827050",
+          "derived_at": "2026-09-04T18:57:59+00:00",
+          "formula": "Signed operative record + final pathology + pathological stage available"
+        }
+      }
+    },
+    {
+      "id": "PC19-SUR-007",
+      "pass": true,
+      "detail": {
+        "role": "MDT Coordinator",
+        "state": {
+          "status": "Ready for adjuvant review",
+          "derived": true,
+          "source_operating_record_id": "SURG-0001",
+          "source_pathology_id": "PATH-0001",
+          "source_pathological_stage_id": "DIAGNOSIS-E0FB827050",
+          "derived_at": "2026-09-04T18:57:59+00:00",
+          "formula": "Signed operative record + final pathology + pathological stage available"
+        }
+      }
+    },
+    {
+      "id": "PC19-SUR-008",
+      "pass": true,
+      "detail": {
+        "role": "MDT Chair",
+        "state": {
+          "status": "Ready for adjuvant review",
+          "derived": true,
+          "source_operating_record_id": "SURG-0001",
+          "source_pathology_id": "PATH-0001",
+          "source_pathological_stage_id": "DIAGNOSIS-E0FB827050",
+          "derived_at": "2026-09-04T18:57:59+00:00",
+          "formula": "Signed operative record + final pathology + pathological stage available"
+        }
+      }
+    },
+    {
+      "id": "PC19-SUR-009",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "adjuvant_review": {
+            "status": "Adjuvant review complete",
+            "derived": true,
+            "source_operating_record_id": "SURG-0001",
+            "source_pathology_id": "PATH-0001",
+            "source_pathological_stage_id": "DIAGNOSIS-E0FB827050",
+            "derived_at": "2026-09-04T18:57:59+00:00",
+            "formula": "Signed operative record + final pathology + pathological stage available",
+            "completed_by": {
+              "id": "USR-MEDICALO-001",
+              "name": "Medical Oncology User",
+              "role": "Medical Oncology"
+            },
+            "completed_at": "2026-09-04T18:57:59+00:00",
+            "completion_reason": "Reviewed after final pathology",
+            "completion_source_record_id": "DIAGNOSIS-E0FB827050"
+          }
+        }
+      }
+    },
+    {
+      "id": "PC19-PRIV-001",
+      "pass": true,
+      "detail": {
+        "items": [
+          {
+            "id": "CONS-GEN-1",
+            "type": "General Consent",
+            "status": "Signed",
+            "valid_until": "2027-09-04",
+            "version": "CCA-GEN-v1"
+          },
+          {
+            "id": "CONS-TX-1",
+            "type": "Treatment Consent",
+            "status": "Signed",
+            "valid_until": "2027-03-03",
+            "version": "CCA-TX-v1"
+          }
+        ],
+        "completion_status": "Complete"
+      }
+    },
+    {
+      "id": "PC19-UI-001",
+      "pass": true,
+      "detail": {
+        "marker": "V12.2-PC1.9"
+      }
+    },
+    {
+      "id": "PC19-UI-002",
+      "pass": true,
+      "detail": {
+        "marker": "Intake Nurse"
+      }
+    },
+    {
+      "id": "PC19-UI-003",
+      "pass": true,
+      "detail": {
+        "marker": "MDT Chair"
+      }
+    },
+    {
+      "id": "PC19-UI-004",
+      "pass": true,
+      "detail": {
+        "marker": "Postoperative adjuvant-review readiness"
+      }
+    },
+    {
+      "id": "PC19-UI-005",
+      "pass": true,
+      "detail": {
+        "marker": "Reference-range provenance"
+      }
+    }
+  ]
+}

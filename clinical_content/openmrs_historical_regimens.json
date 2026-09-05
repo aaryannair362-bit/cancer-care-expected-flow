@@ -1,0 +1,206 @@
+{
+  "source_id": "SRC-OPENMRS-ONC",
+  "source_repository": "openmrs/openmrs-module-oncology",
+  "source_branch": "master",
+  "license": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+  "usage_boundary": "Historical reference content. Imported Draft only; never orderable until local Medical Oncology + Oncology Pharmacy review, local formulary mapping, readiness rules, and Admin activation are complete.",
+  "regimens": [
+    {
+      "id": "REG-OMRS-5FU-LV",
+      "name": "5-FU + Leucovorin (Roswell Park) — historical OpenMRS reference",
+      "disease": "Colorectal / Breast Cancer (historical source wording)",
+      "cycle_length_days": 28,
+      "planned_cycles": 6,
+      "source_ref": "regimens/5FULeucovorin.yaml",
+      "source_blob_sha": "778e17f4d0e5491c328d54b78acae2c59bfda7b5",
+      "items": [
+        {"sequence":1,"relative_start_days":[1,8,15],"group":"Premedication","drug":"Dextrose 5% in water","code":"OMRS-D5W250","dose_basis":"Fixed","protocol_dose":250,"protocol_unit":"mL","route":"IV","timing":"Before chemotherapy"},
+        {"sequence":2,"relative_start_days":[1,8,15],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO","timing":"Before chemotherapy"},
+        {"sequence":3,"relative_start_days":[1,8,15],"group":"Antineoplastic","drug":"Leucovorin","code":"OMRS-LV500","dose_basis":"mg/m²","protocol_dose":500,"protocol_unit":"mg/m²","route":"IV","volume_ml":500,"duration_min":120},
+        {"sequence":4,"relative_start_days":[1,8,15],"group":"Antineoplastic","drug":"Fluorouracil","code":"OMRS-5FU500","dose_basis":"mg/m²","protocol_dose":500,"protocol_unit":"mg/m²","route":"IV","special_instructions":"Historical source administers during leucovorin infusion; local sequencing and preparation must be re-authored."}
+      ]
+    },
+    {
+      "id": "REG-OMRS-AC",
+      "name": "AC — historical OpenMRS reference",
+      "disease": "Breast Cancer",
+      "cycle_length_days": 21,
+      "planned_cycles": 4,
+      "source_ref": "regimens/AC.yaml",
+      "source_blob_sha": "92c1ecc97b282481dfb3b00fc71b2d802be34341",
+      "items": [
+        {"sequence":1,"relative_start_days":[1],"group":"Premedication","drug":"Sodium chloride 0.9%","code":"OMRS-NS1000","dose_basis":"Fixed","protocol_dose":1000,"protocol_unit":"mL","route":"IV"},
+        {"sequence":2,"relative_start_days":[1],"group":"Premedication","drug":"Dexamethasone","code":"OMRS-DEX16","dose_basis":"Fixed","protocol_dose":16,"protocol_unit":"mg","route":"PO"},
+        {"sequence":3,"relative_start_days":[1],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO"},
+        {"sequence":4,"relative_start_days":[1],"group":"Antineoplastic","drug":"Doxorubicin","code":"OMRS-DOX60","dose_basis":"mg/m²","protocol_dose":60,"protocol_unit":"mg/m²","route":"IV"},
+        {"sequence":5,"relative_start_days":[1],"group":"Antineoplastic","drug":"Cyclophosphamide","code":"OMRS-CYC600","dose_basis":"mg/m²","protocol_dose":600,"protocol_unit":"mg/m²","route":"IV"}
+      ]
+    },
+    {
+      "id": "REG-OMRS-CHOP",
+      "name": "CHOP — historical OpenMRS reference",
+      "disease": "Non-Hodgkin Lymphoma",
+      "cycle_length_days": 21,
+      "planned_cycles": 6,
+      "source_ref": "regimens/CHOP.yaml",
+      "source_blob_sha": "474ed6c2c44b7a5b09bc741a1a3f634594c78091",
+      "items": [
+        {"sequence":1,"relative_start_days":[1],"group":"Premedication","drug":"Sodium chloride 0.9%","code":"OMRS-NS1000","dose_basis":"Fixed","protocol_dose":1000,"protocol_unit":"mL","route":"IV"},
+        {"sequence":2,"relative_start_days":[1],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO"},
+        {"sequence":3,"relative_start_days":[1,2,3,4,5],"group":"Antineoplastic","drug":"Prednisone","code":"OMRS-PRED100","dose_basis":"Fixed","protocol_dose":100,"protocol_unit":"mg","route":"PO"},
+        {"sequence":4,"relative_start_days":[1],"group":"Antineoplastic","drug":"Doxorubicin","code":"OMRS-DOX50","dose_basis":"mg/m²","protocol_dose":50,"protocol_unit":"mg/m²","route":"IV"},
+        {"sequence":5,"relative_start_days":[1],"group":"Antineoplastic","drug":"Vincristine","code":"OMRS-VCR14","dose_basis":"mg/m²","protocol_dose":1.4,"protocol_unit":"mg/m²","route":"IV"},
+        {"sequence":6,"relative_start_days":[1],"group":"Antineoplastic","drug":"Cyclophosphamide","code":"OMRS-CYC750","dose_basis":"mg/m²","protocol_dose":750,"protocol_unit":"mg/m²","route":"IV"}
+      ]
+    },
+    {
+      "id": "REG-OMRS-CMF",
+      "name": "CMF — historical OpenMRS reference",
+      "disease": "Breast Cancer",
+      "cycle_length_days": 21,
+      "planned_cycles": 8,
+      "source_ref": "regimens/CMF.yaml",
+      "source_blob_sha": "a1dce4fcfadada8194a74e5cc49b559fa0c22092",
+      "items": [
+        {"sequence":1,"relative_start_days":[1],"group":"Premedication","drug":"Sodium chloride 0.9%","code":"OMRS-NS1000","dose_basis":"Fixed","protocol_dose":1000,"protocol_unit":"mL","route":"IV"},
+        {"sequence":2,"relative_start_days":[1],"group":"Premedication","drug":"Dexamethasone","code":"OMRS-DEX16","dose_basis":"Fixed","protocol_dose":16,"protocol_unit":"mg","route":"PO"},
+        {"sequence":3,"relative_start_days":[1],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO"},
+        {"sequence":4,"relative_start_days":[1],"group":"Antineoplastic","drug":"Fluorouracil","code":"OMRS-5FU600","dose_basis":"mg/m²","protocol_dose":600,"protocol_unit":"mg/m²","route":"IV"},
+        {"sequence":5,"relative_start_days":[1],"group":"Antineoplastic","drug":"Methotrexate","code":"OMRS-MTX40","dose_basis":"mg/m²","protocol_dose":40,"protocol_unit":"mg/m²","route":"IV"},
+        {"sequence":6,"relative_start_days":[1],"group":"Antineoplastic","drug":"Cyclophosphamide","code":"OMRS-CYC600","dose_basis":"mg/m²","protocol_dose":600,"protocol_unit":"mg/m²","route":"IV"}
+      ]
+    },
+    {
+      "id": "REG-OMRS-COP",
+      "name": "COP — historical OpenMRS reference",
+      "disease": "Non-Hodgkin Lymphoma",
+      "cycle_length_days": 21,
+      "planned_cycles": 6,
+      "source_ref": "regimens/COP.yaml",
+      "source_blob_sha": "d173b4db2e022dbb086ad4f1f3f0cb4085827aad",
+      "items": [
+        {"sequence":1,"relative_start_days":[1],"group":"Premedication","drug":"Sodium chloride 0.9%","code":"OMRS-NS1000","dose_basis":"Fixed","protocol_dose":1000,"protocol_unit":"mL","route":"IV"},
+        {"sequence":2,"relative_start_days":[1],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO"},
+        {"sequence":3,"relative_start_days":[1,2,3,4,5],"group":"Antineoplastic","drug":"Prednisone","code":"OMRS-PRED100","dose_basis":"Fixed","protocol_dose":100,"protocol_unit":"mg","route":"PO"},
+        {"sequence":4,"relative_start_days":[1],"group":"Antineoplastic","drug":"Vincristine","code":"OMRS-VCR14","dose_basis":"mg/m²","protocol_dose":1.4,"protocol_unit":"mg/m²","route":"IV"},
+        {"sequence":5,"relative_start_days":[1],"group":"Antineoplastic","drug":"Cyclophosphamide","code":"OMRS-CYC750","dose_basis":"mg/m²","protocol_dose":750,"protocol_unit":"mg/m²","route":"IV"}
+      ]
+    },
+    {
+      "id": "REG-OMRS-CARBOTAXOL",
+      "name": "Carboplatin + Paclitaxel — historical OpenMRS reference",
+      "disease": "Solid Tumor — indication mapping pending",
+      "cycle_length_days": 21,
+      "planned_cycles": 6,
+      "source_ref": "regimens/CarboTaxol.yaml",
+      "source_blob_sha": "50e7b053c7180e8e5035b3b8d49523d8581fc332",
+      "items": [
+        {"sequence":1,"relative_start_days":[1],"group":"Premedication","drug":"Sodium chloride 0.9%","code":"OMRS-NS500","dose_basis":"Fixed","protocol_dose":500,"protocol_unit":"mL","route":"IV"},
+        {"sequence":2,"relative_start_days":[1],"group":"Premedication","drug":"Dexamethasone","code":"OMRS-DEX16","dose_basis":"Fixed","protocol_dose":16,"protocol_unit":"mg","route":"PO"},
+        {"sequence":3,"relative_start_days":[1],"group":"Premedication","drug":"Cimetidine","code":"OMRS-CIM600","dose_basis":"Fixed","protocol_dose":600,"protocol_unit":"mg","route":"PO"},
+        {"sequence":4,"relative_start_days":[1],"group":"Premedication","drug":"Diphenhydramine","code":"OMRS-DPH50","dose_basis":"Fixed","protocol_dose":50,"protocol_unit":"mg","route":"PO"},
+        {"sequence":5,"relative_start_days":[1],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO"},
+        {"sequence":6,"relative_start_days":[1],"group":"Antineoplastic","drug":"Paclitaxel","code":"OMRS-PAC175","dose_basis":"mg/m²","protocol_dose":175,"protocol_unit":"mg/m²","route":"IV","volume_ml":500,"duration_min":180},
+        {"sequence":7,"relative_start_days":[1],"group":"Antineoplastic","drug":"Carboplatin","code":"OMRS-CARBO","dose_basis":"AUC","protocol_dose":null,"protocol_unit":"AUC","route":"IV","volume_ml":250,"duration_min":60,"special_instructions":"Historical source leaves patient-specific carboplatin AUC value unspecified."}
+      ]
+    },
+    {
+      "id": "REG-OMRS-CYC-SINGLE",
+      "name": "Single-agent Cyclophosphamide — historical OpenMRS reference",
+      "disease": "Breast Cancer",
+      "cycle_length_days": 21,
+      "planned_cycles": 6,
+      "source_ref": "regimens/CyclophosphamideSingleAgent.yaml",
+      "source_blob_sha": "cb22d70e68ee22fe69b891e691bce19da5e18c20",
+      "items": [
+        {"sequence":1,"relative_start_days":[1],"group":"Premedication","drug":"Sodium chloride 0.9%","code":"OMRS-NS1000","dose_basis":"Fixed","protocol_dose":1000,"protocol_unit":"mL","route":"IV"},
+        {"sequence":2,"relative_start_days":[1],"group":"Premedication","drug":"Dexamethasone","code":"OMRS-DEX16","dose_basis":"Fixed","protocol_dose":16,"protocol_unit":"mg","route":"PO"},
+        {"sequence":3,"relative_start_days":[1],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO"},
+        {"sequence":4,"relative_start_days":[1],"group":"Antineoplastic","drug":"Cyclophosphamide","code":"OMRS-CYC600","dose_basis":"mg/m²","protocol_dose":600,"protocol_unit":"mg/m²","route":"IV"}
+      ]
+    },
+    {
+      "id": "REG-OMRS-DOX20",
+      "name": "Single-agent Doxorubicin 20 mg/m² — historical OpenMRS reference",
+      "disease": "Breast Cancer",
+      "cycle_length_days": 7,
+      "planned_cycles": 12,
+      "source_ref": "regimens/Doxorubicin20.yaml",
+      "source_blob_sha": "2ddda7e55ba88768e13b11613c4651f8a0cb54fe",
+      "items": [
+        {"sequence":1,"relative_start_days":[1],"group":"Premedication","drug":"Sodium chloride 0.9%","code":"OMRS-NS500","dose_basis":"Fixed","protocol_dose":500,"protocol_unit":"mL","route":"IV"},
+        {"sequence":2,"relative_start_days":[1],"group":"Premedication","drug":"Dexamethasone","code":"OMRS-DEX16","dose_basis":"Fixed","protocol_dose":16,"protocol_unit":"mg","route":"PO"},
+        {"sequence":3,"relative_start_days":[1],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO"},
+        {"sequence":4,"relative_start_days":[1],"group":"Antineoplastic","drug":"Doxorubicin","code":"OMRS-DOX20","dose_basis":"mg/m²","protocol_dose":20,"protocol_unit":"mg/m²","route":"IV"}
+      ]
+    },
+    {
+      "id": "REG-OMRS-DOX60",
+      "name": "Single-agent Doxorubicin 60 mg/m² — historical OpenMRS reference",
+      "disease": "Breast Cancer",
+      "cycle_length_days": 21,
+      "planned_cycles": 4,
+      "source_ref": "regimens/Doxorubicin60.yaml",
+      "source_blob_sha": "d1c000934f2d0687dcc01589b1d410b9892bfad9",
+      "items": [
+        {"sequence":1,"relative_start_days":[1],"group":"Premedication","drug":"Sodium chloride 0.9%","code":"OMRS-NS500","dose_basis":"Fixed","protocol_dose":500,"protocol_unit":"mL","route":"IV"},
+        {"sequence":2,"relative_start_days":[1],"group":"Premedication","drug":"Dexamethasone","code":"OMRS-DEX16","dose_basis":"Fixed","protocol_dose":16,"protocol_unit":"mg","route":"PO"},
+        {"sequence":3,"relative_start_days":[1],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO"},
+        {"sequence":4,"relative_start_days":[1],"group":"Antineoplastic","drug":"Doxorubicin","code":"OMRS-DOX60","dose_basis":"mg/m²","protocol_dose":60,"protocol_unit":"mg/m²","route":"IV"}
+      ]
+    },
+    {
+      "id": "REG-OMRS-PAC80",
+      "name": "Paclitaxel 80 mg/m² weekly — historical OpenMRS reference",
+      "disease": "Breast Cancer",
+      "cycle_length_days": 7,
+      "planned_cycles": 12,
+      "source_ref": "regimens/Paclitaxel80.yaml",
+      "source_blob_sha": "26753f4c1cff0d8155fe7e8fc07f39dcd4d51717",
+      "items": [
+        {"sequence":1,"relative_start_days":[1],"group":"Premedication","drug":"Sodium chloride 0.9%","code":"OMRS-NS500","dose_basis":"Fixed","protocol_dose":500,"protocol_unit":"mL","route":"IV"},
+        {"sequence":2,"relative_start_days":[1],"group":"Premedication","drug":"Dexamethasone","code":"OMRS-DEX16","dose_basis":"Fixed","protocol_dose":16,"protocol_unit":"mg","route":"PO"},
+        {"sequence":3,"relative_start_days":[1],"group":"Premedication","drug":"Cimetidine","code":"OMRS-CIM600","dose_basis":"Fixed","protocol_dose":600,"protocol_unit":"mg","route":"PO"},
+        {"sequence":4,"relative_start_days":[1],"group":"Premedication","drug":"Diphenhydramine","code":"OMRS-DPH50","dose_basis":"Fixed","protocol_dose":50,"protocol_unit":"mg","route":"PO"},
+        {"sequence":5,"relative_start_days":[1],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO"},
+        {"sequence":6,"relative_start_days":[1],"group":"Antineoplastic","drug":"Paclitaxel","code":"OMRS-PAC80","dose_basis":"mg/m²","protocol_dose":80,"protocol_unit":"mg/m²","route":"IV","volume_ml":250,"duration_min":60}
+      ]
+    },
+    {
+      "id": "REG-OMRS-PAC175",
+      "name": "Paclitaxel 175 mg/m² q3w — historical OpenMRS reference",
+      "disease": "Breast Cancer",
+      "cycle_length_days": 21,
+      "planned_cycles": 4,
+      "source_ref": "regimens/Paclitaxel175.yaml",
+      "source_blob_sha": "d3cbd944f135fc2e847c1e739f0e3b9f7f44c2fe",
+      "items": [
+        {"sequence":1,"relative_start_days":[1],"group":"Premedication","drug":"Sodium chloride 0.9%","code":"OMRS-NS500","dose_basis":"Fixed","protocol_dose":500,"protocol_unit":"mL","route":"IV"},
+        {"sequence":2,"relative_start_days":[1],"group":"Premedication","drug":"Dexamethasone","code":"OMRS-DEX16","dose_basis":"Fixed","protocol_dose":16,"protocol_unit":"mg","route":"PO"},
+        {"sequence":3,"relative_start_days":[1],"group":"Premedication","drug":"Cimetidine","code":"OMRS-CIM600","dose_basis":"Fixed","protocol_dose":600,"protocol_unit":"mg","route":"PO"},
+        {"sequence":4,"relative_start_days":[1],"group":"Premedication","drug":"Diphenhydramine","code":"OMRS-DPH50","dose_basis":"Fixed","protocol_dose":50,"protocol_unit":"mg","route":"PO"},
+        {"sequence":5,"relative_start_days":[1],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO"},
+        {"sequence":6,"relative_start_days":[1],"group":"Antineoplastic","drug":"Paclitaxel","code":"OMRS-PAC175","dose_basis":"mg/m²","protocol_dose":175,"protocol_unit":"mg/m²","route":"IV","volume_ml":500,"duration_min":240}
+      ]
+    },
+    {
+      "id": "REG-OMRS-PAC175-RECHALLENGE",
+      "name": "Paclitaxel 175 mg/m² rechallenge — historical OpenMRS reference",
+      "disease": "Breast Cancer",
+      "cycle_length_days": 21,
+      "planned_cycles": 4,
+      "source_ref": "regimens/Paclitaxel175ReChallenge.yaml",
+      "source_blob_sha": "bf8244b71dde519b413c7a3ba7fbbafa79dd7c0a",
+      "items": [
+        {"sequence":1,"relative_start_days":[1],"group":"Premedication","drug":"Sodium chloride 0.9%","code":"OMRS-NS500","dose_basis":"Fixed","protocol_dose":500,"protocol_unit":"mL","route":"IV"},
+        {"sequence":2,"relative_start_days":[1],"group":"Premedication","drug":"Dexamethasone","code":"OMRS-DEX20A","dose_basis":"Fixed","protocol_dose":20,"protocol_unit":"mg","route":"PO","timing":"Historical source: 12 h before clinic"},
+        {"sequence":3,"relative_start_days":[1],"group":"Premedication","drug":"Dexamethasone","code":"OMRS-DEX20B","dose_basis":"Fixed","protocol_dose":20,"protocol_unit":"mg","route":"PO","timing":"Historical source: 6 h before clinic"},
+        {"sequence":4,"relative_start_days":[1],"group":"Premedication","drug":"Dexamethasone","code":"OMRS-DEX20C","dose_basis":"Fixed","protocol_dose":20,"protocol_unit":"mg","route":"PO","timing":"Historical source: 1 h before clinic"},
+        {"sequence":5,"relative_start_days":[1],"group":"Premedication","drug":"Cimetidine","code":"OMRS-CIM600","dose_basis":"Fixed","protocol_dose":600,"protocol_unit":"mg","route":"PO"},
+        {"sequence":6,"relative_start_days":[1],"group":"Premedication","drug":"Diphenhydramine","code":"OMRS-DPH50","dose_basis":"Fixed","protocol_dose":50,"protocol_unit":"mg","route":"PO"},
+        {"sequence":7,"relative_start_days":[1],"group":"Premedication","drug":"Ondansetron","code":"OMRS-OND8","dose_basis":"Fixed","protocol_dose":8,"protocol_unit":"mg","route":"PO"},
+        {"sequence":8,"relative_start_days":[1],"group":"Antineoplastic","drug":"Paclitaxel","code":"OMRS-PAC175-R","dose_basis":"mg/m²","protocol_dose":175,"protocol_unit":"mg/m²","route":"IV","volume_ml":500,"duration_min":240}
+      ]
+    }
+  ]
+}

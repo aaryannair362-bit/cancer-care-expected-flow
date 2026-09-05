@@ -1,0 +1,542 @@
+{
+  "suite": "V12.2-PC1.3 Structural Conformance Phase 1",
+  "total": 27,
+  "passed": 27,
+  "failed": 0,
+  "results": [
+    {
+      "id": "VG-001-004",
+      "pass": true,
+      "evidence": {
+        "role": "Oncology Pharmacy",
+        "required": [
+          "infusion",
+          "lab",
+          "readiness",
+          "toxicity",
+          "treatment_history"
+        ],
+        "visible": [
+          "admission",
+          "cancer_episode",
+          "diagnosis",
+          "formulary",
+          "infusion",
+          "intake",
+          "lab",
+          "med_recon",
+          "pharmacy",
+          "protocol_library",
+          "readiness",
+          "registration",
+          "toxicity",
+          "treatment_history",
+          "treatment_order",
+          "treatment_plan"
+        ]
+      }
+    },
+    {
+      "id": "VG-005-006",
+      "pass": true,
+      "evidence": {
+        "role": "Day Care / Infusion Nurse",
+        "required": [
+          "intake",
+          "toxicity",
+          "treatment_history"
+        ],
+        "visible": [
+          "admission",
+          "cancer_episode",
+          "consent",
+          "diagnosis",
+          "infusion",
+          "intake",
+          "lab",
+          "med_recon",
+          "pharmacy",
+          "readiness",
+          "registration",
+          "toxicity",
+          "treatment_history",
+          "treatment_order"
+        ]
+      }
+    },
+    {
+      "id": "VG-007-009",
+      "pass": true,
+      "evidence": {
+        "role": "MDT Coordinator",
+        "required": [
+          "response",
+          "toxicity",
+          "treatment_history"
+        ],
+        "visible": [
+          "cancer_episode",
+          "care_plan",
+          "diagnosis",
+          "journey",
+          "lab",
+          "mdt",
+          "mdt_collab",
+          "mdt_followup",
+          "pathology",
+          "queue",
+          "radiology",
+          "registration",
+          "response",
+          "surgery",
+          "toxicity",
+          "treatment_history",
+          "treatment_plan"
+        ]
+      }
+    },
+    {
+      "id": "VG-010-011",
+      "pass": true,
+      "evidence": {
+        "role": "Pathology",
+        "required": [
+          "cancer_episode",
+          "diagnosis",
+          "pathology",
+          "treatment_history"
+        ],
+        "visible": [
+          "cancer_episode",
+          "diagnosis",
+          "pathology",
+          "registration",
+          "treatment_history"
+        ]
+      }
+    },
+    {
+      "id": "VG-015",
+      "pass": true,
+      "evidence": {
+        "role": "Radiation Oncology",
+        "required": [
+          "intake",
+          "toxicity"
+        ],
+        "visible": [
+          "admission",
+          "cancer_episode",
+          "care_plan",
+          "continuous_therapy",
+          "diagnosis",
+          "discharge",
+          "inpatient_care",
+          "intake",
+          "journey",
+          "lab",
+          "mdt",
+          "med_recon",
+          "pathology",
+          "queue",
+          "radiation",
+          "radiology",
+          "registration",
+          "response",
+          "surgery",
+          "toxicity",
+          "treatment_history",
+          "treatment_order",
+          "treatment_plan"
+        ]
+      }
+    },
+    {
+      "id": "VG-016",
+      "pass": true,
+      "evidence": {
+        "role": "Surgical Oncology",
+        "required": [
+          "intake",
+          "toxicity",
+          "treatment_history"
+        ],
+        "visible": [
+          "admission",
+          "cancer_episode",
+          "care_plan",
+          "diagnosis",
+          "discharge",
+          "inpatient_care",
+          "intake",
+          "journey",
+          "lab",
+          "mdt",
+          "med_recon",
+          "pathology",
+          "queue",
+          "radiology",
+          "registration",
+          "response",
+          "surgery",
+          "toxicity",
+          "treatment_history",
+          "treatment_order",
+          "treatment_plan"
+        ]
+      }
+    },
+    {
+      "id": "INT-UNIT-001",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Mandatory intake fields/explicit units missing",
+          "missing": [],
+          "missing_units": [
+            "bp",
+            "hr",
+            "rr",
+            "temp",
+            "spo2",
+            "weight",
+            "height"
+          ]
+        }
+      }
+    },
+    {
+      "id": "INT-UNIT-002",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "bmi": 24.22,
+          "bsa_m2": 1.82,
+          "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
+          "canonical_units": {
+            "bp": "mmHg",
+            "hr": "/min",
+            "rr": "/min",
+            "temp_c": "°C",
+            "spo2": "%",
+            "weight_kg": "kg",
+            "height_cm": "cm"
+          },
+          "source_measurements": {
+            "sbp": {
+              "value": 120.0,
+              "unit": "mmHg"
+            },
+            "dbp": {
+              "value": 80.0,
+              "unit": "mmHg"
+            },
+            "hr": {
+              "value": 80.0,
+              "unit": "/min"
+            },
+            "rr": {
+              "value": 16.0,
+              "unit": "/min"
+            },
+            "temp": {
+              "value": 98.6,
+              "unit": "°F"
+            },
+            "spo2": {
+              "value": 99.0,
+              "unit": "%"
+            },
+            "weight": {
+              "value": 154.324,
+              "unit": "lb"
+            },
+            "height": {
+              "value": 66.929,
+              "unit": "in"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "INT-DERIVED-003",
+      "pass": true,
+      "evidence": {
+        "stored_bsa": 1.82,
+        "sources": {
+          "sbp": {
+            "value": 120.0,
+            "unit": "mmHg"
+          },
+          "dbp": {
+            "value": 80.0,
+            "unit": "mmHg"
+          },
+          "hr": {
+            "value": 80.0,
+            "unit": "/min"
+          },
+          "rr": {
+            "value": 16.0,
+            "unit": "/min"
+          },
+          "temp": {
+            "value": 98.6,
+            "unit": "°F"
+          },
+          "spo2": {
+            "value": 99.0,
+            "unit": "%"
+          },
+          "weight": {
+            "value": 154.324,
+            "unit": "lb"
+          },
+          "height": {
+            "value": 66.929,
+            "unit": "in"
+          }
+        }
+      }
+    },
+    {
+      "id": "ORD-SNAPSHOT-001",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "order_id": "TREATMENT_ORDER-745CCC6252",
+          "pharmacy_id": "PHARMACY-44A7F8015B",
+          "infusion_id": "INFUSION-D6169C937C",
+          "supersedes_order_id": ""
+        }
+      }
+    },
+    {
+      "id": "ORD-SNAPSHOT-002",
+      "pass": true,
+      "evidence": {
+        "snapshot": {
+          "name": "Maya Iyer",
+          "dob": "1980-02-11",
+          "mrn": "CCA-DEMO-0001",
+          "weight_kg": 70.0002,
+          "height_cm": 170.0,
+          "bsa_m2": 1.82,
+          "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
+          "measurement_units": {
+            "bp": "mmHg",
+            "hr": "/min",
+            "rr": "/min",
+            "temp_c": "°C",
+            "spo2": "%",
+            "weight_kg": "kg",
+            "height_cm": "cm"
+          },
+          "source_measurements": {
+            "sbp": {
+              "value": 120.0,
+              "unit": "mmHg"
+            },
+            "dbp": {
+              "value": 80.0,
+              "unit": "mmHg"
+            },
+            "hr": {
+              "value": 80.0,
+              "unit": "/min"
+            },
+            "rr": {
+              "value": 16.0,
+              "unit": "/min"
+            },
+            "temp": {
+              "value": 98.6,
+              "unit": "°F"
+            },
+            "spo2": {
+              "value": 99.0,
+              "unit": "%"
+            },
+            "weight": {
+              "value": 154.324,
+              "unit": "lb"
+            },
+            "height": {
+              "value": 66.929,
+              "unit": "in"
+            }
+          },
+          "measured_at": "2026-09-04T18:57:53+00:00",
+          "assessor": {
+            "id": "USR-NURSENAV-001",
+            "name": "Nurse Navigator",
+            "role": "Nurse Navigator"
+          },
+          "allergies": [
+            "Penicillin — Rash"
+          ],
+          "readiness_id": "READY-0001"
+        }
+      }
+    },
+    {
+      "id": "PHM-VERIFY-001",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "Preparation Pending"
+        }
+      }
+    },
+    {
+      "id": "PHM-PREP-002",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Actual measured preparation volume with explicit mL unit required for Pertuzumab"
+        }
+      }
+    },
+    {
+      "id": "PHM-PREP-003",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "Dispensing Pending",
+          "prepared_at": "2026-09-04T18:57:53+00:00"
+        }
+      }
+    },
+    {
+      "id": "PHM-RELEASE-004",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "Dispensed"
+        }
+      }
+    },
+    {
+      "id": "MAR-START-001",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "id": "MAR-UNIT-002",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Actual administered dose requires an explicit unit selection"
+        }
+      }
+    },
+    {
+      "id": "MAR-UNIT-003",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "count": 1
+        }
+      }
+    },
+    {
+      "id": "MAR-RATE-004",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "IV administration requires actual rate with explicit mL/h unit"
+        },
+        "item": "Pertuzumab"
+      }
+    },
+    {
+      "id": "MAR-RATE-005",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "count": 2
+        },
+        "item": "Pertuzumab"
+      }
+    },
+    {
+      "id": "VG-012-013",
+      "pass": true,
+      "evidence": {
+        "marker": "Today's delivery context:",
+        "file": "static/pc1_3.js"
+      }
+    },
+    {
+      "id": "VG-014",
+      "pass": true,
+      "evidence": {
+        "marker": "Plan-version approval context:",
+        "file": "static/pc1_3.js"
+      }
+    },
+    {
+      "id": "VG-017",
+      "pass": true,
+      "evidence": {
+        "marker": "Vitals & Intake (Intake Nurse workflow)",
+        "file": "static/pc1_3.js"
+      }
+    },
+    {
+      "id": "VG-018",
+      "pass": true,
+      "evidence": {
+        "marker": "source_measurements",
+        "file": "static/pc1_3.js"
+      }
+    },
+    {
+      "id": "VG-019",
+      "pass": true,
+      "evidence": {
+        "marker": "Prior treatment / response / toxicity",
+        "file": "static/pc1_3.js"
+      }
+    },
+    {
+      "id": "VG-020",
+      "pass": true,
+      "evidence": {
+        "marker": "Signed order dosing snapshot",
+        "file": "static/pc1_3.js"
+      }
+    },
+    {
+      "id": "PC13-STATIC-001",
+      "pass": true,
+      "evidence": {
+        "pc1_3_exists": true
+      }
+    }
+  ]
+}

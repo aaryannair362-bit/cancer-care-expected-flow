@@ -1,0 +1,25 @@
+# V12.2-PC1 Pre-Clinician Release Checklist
+
+- [x] V12.2 validated core retained
+- [x] Regimen readiness architecture added
+- [x] Sequenced pre/treatment/post order presentation added
+- [x] Dose-modification structure added
+- [x] Regimen monitoring structure added
+- [x] Pharmacy compatibility/stability structure added
+- [x] Rich infusion-reaction capture added
+- [x] Oral/continuous therapy lifecycle added
+- [x] RT planned-versus-delivered view added
+- [x] RT approval/Physics/version presentation added
+- [x] Disease-specific surgical subtemplate structure added
+- [x] Surgical Plan separated from Operative Record
+- [x] Clinician Review Mode masks synthetic clinical execution values
+- [x] NEXUS/Guideline/Staging frontend shell added without claiming an engine result
+- [x] Clinician-facing summary upgraded
+- [x] Frontend JavaScript syntax checks pass
+- [ ] Browser interaction UAT on unrestricted workstation
+- [ ] CCA Medical Oncology content sign-off
+- [ ] CCA Oncology Pharmacy sign-off
+- [ ] CCA Radiation Oncology / Physics sign-off
+- [ ] CCA Surgical Oncology sign-off
+- [ ] CCA institutional master-data configuration
+- [ ] Live integration validation when connected

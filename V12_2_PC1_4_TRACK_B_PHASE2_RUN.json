@@ -1,0 +1,591 @@
+{
+  "product": "V12.2-PC1.4 Structural Conformance Phase 2",
+  "total": 38,
+  "passed": 38,
+  "failed": 0,
+  "results": [
+    {
+      "id": "INT-FALL-001",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Fall-risk score requires an explicit governed scale",
+          "allowed": [
+            "CCA Demo Fall-Risk Scale \u2014 Synthetic QA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "INT-FALL-002",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "bmi": 24.22,
+          "bsa_m2": 1.82,
+          "bsa_formula": "Mosteller: sqrt(height_cm \u00d7 weight_kg / 3600)",
+          "canonical_units": {
+            "bp": "mmHg",
+            "hr": "/min",
+            "rr": "/min",
+            "temp_c": "\u00b0C",
+            "spo2": "%",
+            "weight_kg": "kg",
+            "height_cm": "cm"
+          },
+          "source_measurements": {
+            "sbp": {
+              "value": 120.0,
+              "unit": "mmHg"
+            },
+            "dbp": {
+              "value": 80.0,
+              "unit": "mmHg"
+            },
+            "hr": {
+              "value": 80.0,
+              "unit": "/min"
+            },
+            "rr": {
+              "value": 16.0,
+              "unit": "/min"
+            },
+            "temp": {
+              "value": 36.8,
+              "unit": "\u00b0C"
+            },
+            "spo2": {
+              "value": 99.0,
+              "unit": "%"
+            },
+            "weight": {
+              "value": 70.0,
+              "unit": "kg"
+            },
+            "height": {
+              "value": 170.0,
+              "unit": "cm"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "INT-FALL-003",
+      "pass": true,
+      "evidence": {
+        "stored_scale": "CCA Demo Fall-Risk Scale \u2014 Synthetic QA",
+        "stored_score": 4.0,
+        "derived_level": "Moderate"
+      }
+    },
+    {
+      "id": "MED-ALG-001",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Allergen must be selected from the governed allergen master",
+          "allowed": [
+            {
+              "code": "ALG-PEN",
+              "label": "Penicillin",
+              "code_system": "Synthetic QA allergen master"
+            },
+            {
+              "code": "ALG-LATEX",
+              "label": "Latex",
+              "code_system": "Synthetic QA allergen master"
+            },
+            {
+              "code": "ALG-CONTRAST",
+              "label": "Iodinated contrast media",
+              "code_system": "Synthetic QA allergen master"
+            },
+            {
+              "code": "ALG-CARBO",
+              "label": "Carboplatin",
+              "code_system": "Synthetic QA allergen master"
+            },
+            {
+              "code": "ALG-DOC",
+              "label": "Docetaxel",
+              "code_system": "Synthetic QA allergen master"
+            },
+            {
+              "code": "ALG-TRA",
+              "label": "Trastuzumab",
+              "code_system": "Synthetic QA allergen master"
+            },
+            {
+              "code": "ALG-PER",
+              "label": "Pertuzumab",
+              "code_system": "Synthetic QA allergen master"
+            },
+            {
+              "code": "ALG-OTHER",
+              "label": "Other governed allergen \u2014 CCA master required",
+              "code_system": "Synthetic QA allergen master"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "MED-ALG-002",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Allergy reaction must use the governed value set",
+          "allowed": [
+            "Rash",
+            "Urticaria",
+            "Pruritus",
+            "Angioedema",
+            "Anaphylaxis",
+            "Bronchospasm",
+            "Nausea / vomiting",
+            "Other",
+            "Unknown"
+          ]
+        }
+      }
+    },
+    {
+      "id": "MED-ALG-003",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "allergy_status": "Allergy present",
+          "reconciliation_status": "Complete"
+        }
+      }
+    },
+    {
+      "id": "MED-REC-004",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Medication reconciliation status must be explicitly attested",
+          "allowed": [
+            "Complete",
+            "Incomplete",
+            "Unable to verify"
+          ]
+        }
+      }
+    },
+    {
+      "id": "MED-REC-005",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Incomplete/unverified medication reconciliation requires reason"
+        }
+      }
+    },
+    {
+      "id": "MED-REC-006",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "allergy_status": "Allergy present",
+          "reconciliation_status": "Complete"
+        }
+      }
+    },
+    {
+      "id": "MED-REC-007",
+      "pass": true,
+      "evidence": {
+        "event": {
+          "at": "2026-09-04T18:57:55+00:00",
+          "reconciled_by": {
+            "id": "USR-NURSENAV-001",
+            "name": "Nurse Navigator",
+            "role": "Nurse Navigator"
+          },
+          "medication_count": 1,
+          "allergy_count": 2,
+          "allergy_status": "Allergy present",
+          "reconciliation_status": "Complete",
+          "source": "Patient",
+          "reason": "Synthetic full review",
+          "attestation": "Medication and allergy reconciliation reviewed to the stated status."
+        }
+      }
+    },
+    {
+      "id": "ORD-DEC-001",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Final ordered dose for Dexamethasone is a clinician decision and requires an explicit decision reason before signature",
+          "field": "DEMO-DEX",
+          "requires": "dose_decision_reasons"
+        }
+      }
+    },
+    {
+      "id": "ORD-DEC-002",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "order_id": "TREATMENT_ORDER-6CAAA5A325",
+          "pharmacy_id": "PHARMACY-D6E077FF7A",
+          "infusion_id": "INFUSION-D131AACAE1",
+          "supersedes_order_id": ""
+        }
+      }
+    },
+    {
+      "id": "ORD-DEC-003",
+      "pass": true,
+      "evidence": {
+        "order": "TREATMENT_ORDER-6CAAA5A325",
+        "signed_at": "2026-09-04T18:57:55+00:00",
+        "reasons": [
+          [
+            "Dexamethasone",
+            "Accept calculated/protocol dose after review",
+            "Medical Oncology"
+          ],
+          [
+            "Pertuzumab",
+            "Accept calculated/protocol dose after review",
+            "Medical Oncology"
+          ],
+          [
+            "Trastuzumab",
+            "Accept calculated/protocol dose after review",
+            "Medical Oncology"
+          ],
+          [
+            "Docetaxel",
+            "Accept calculated/protocol dose after review",
+            "Medical Oncology"
+          ],
+          [
+            "Carboplatin",
+            "Patient-specific dose per protocol method",
+            "Medical Oncology"
+          ],
+          [
+            "Pegfilgrastim",
+            "Accept calculated/protocol dose after review",
+            "Medical Oncology"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ORD-STALE-001",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "An active Treatment Order already exists for this plan/cycle/day. Explicit supersession is required to replace it.",
+          "active_order_ids": [
+            "TREATMENT_ORDER-6CAAA5A325"
+          ],
+          "requires": [
+            "supersedes_order_id",
+            "supersession_reason"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ORD-STALE-002",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "order_id": "TREATMENT_ORDER-1B1A87293E",
+          "pharmacy_id": "PHARMACY-9AD3F69AE2",
+          "infusion_id": "INFUSION-E38548C749",
+          "supersedes_order_id": "TREATMENT_ORDER-6CAAA5A325"
+        }
+      }
+    },
+    {
+      "id": "ORD-STALE-003",
+      "pass": true,
+      "evidence": {
+        "order_status": "Superseded",
+        "pharmacy_status": "Superseded",
+        "infusion_status": "Superseded",
+        "superseded_by": "TREATMENT_ORDER-1B1A87293E"
+      }
+    },
+    {
+      "id": "ORD-STALE-004",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Superseded/stale Treatment Order cannot be acted on",
+          "order_id": "TREATMENT_ORDER-6CAAA5A325",
+          "order_status": "Superseded"
+        }
+      }
+    },
+    {
+      "id": "ORD-STALE-005",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "Preparation Pending"
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-001",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "RT Oncologist Approved"
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-002",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Simulation, contouring and plan preparation must be complete before Physics QA",
+          "planning": {
+            "simulation_status": "Pending",
+            "contouring_status": "Pending",
+            "planning_status": "Pending"
+          }
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-003",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "Planning",
+          "plan_version": 1,
+          "prescription_version": 1
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-004",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Current RT plan_version is required for version-safe approval/update",
+          "current_plan_version": 1
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-005",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "Planning",
+          "plan_version": 1,
+          "prescription_version": 1
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-006",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "RT plan version changed since it was loaded",
+          "expected_plan_version": 100,
+          "current_plan_version": 1
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-007",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "Ready for Treatment",
+          "plan_version": 1,
+          "prescription_version": 1
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-008",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "In Progress",
+          "delivered_count": 1,
+          "plan_version": 1,
+          "prescription_version": 1
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-009",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "Planning",
+          "plan_version": 2,
+          "approvals_reset": true
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-010",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "Current approved prescription plus Physics QA and RO final approval for the current RT plan/prescription version are required",
+          "plan_version": 2,
+          "prescription_version": 1
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-011",
+      "pass": true,
+      "evidence": {
+        "status": 409,
+        "body": {
+          "error": "RT plan version changed since it was loaded",
+          "expected_plan_version": 1,
+          "current_plan_version": 2
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-012",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "Planning",
+          "plan_version": 2,
+          "prescription_version": 1
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-013",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "Ready for Treatment",
+          "plan_version": 2,
+          "prescription_version": 1
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-014",
+      "pass": true,
+      "evidence": {
+        "status": 200,
+        "body": {
+          "ok": true,
+          "status": "In Progress",
+          "delivered_count": 2,
+          "plan_version": 2,
+          "prescription_version": 1
+        }
+      }
+    },
+    {
+      "id": "RT-VERSION-015",
+      "pass": true,
+      "evidence": {
+        "fractions": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            2,
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "PC14-STATIC-001",
+      "pass": true,
+      "evidence": {
+        "marker": "Final-dose decision reason"
+      }
+    },
+    {
+      "id": "PC14-STATIC-002",
+      "pass": true,
+      "evidence": {
+        "marker": "Set Allergy Status"
+      }
+    },
+    {
+      "id": "PC14-STATIC-003",
+      "pass": true,
+      "evidence": {
+        "marker": "Fall-risk scale"
+      }
+    },
+    {
+      "id": "PC14-STATIC-004",
+      "pass": true,
+      "evidence": {
+        "marker": "Replace Current Order"
+      }
+    },
+    {
+      "id": "PC14-STATIC-005",
+      "pass": true,
+      "evidence": {
+        "marker": "Version-bound RT release"
+      }
+    }
+  ]
+}

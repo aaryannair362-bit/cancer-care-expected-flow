@@ -1,0 +1,50 @@
+[
+  {
+    "id": "SRC-CCA-DEMO",
+    "name": "CCA V12 Synthetic Demo Clinical Content",
+    "source_url": "local://cca-v12",
+    "license_status": "Internal synthetic demo",
+    "license_name": "CCA demo content",
+    "commercial_use": "Internal demonstration only until clinically approved",
+    "status": "Active",
+    "notes": "Synthetic content exists to exercise the workflow engine; not prescribing advice.",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00"
+  },
+  {
+    "id": "SRC-OPENEMR",
+    "name": "OpenEMR Document Template Infrastructure",
+    "source_url": "https://github.com/openemr/openemr",
+    "license_status": "GPL-3.0 repository",
+    "license_name": "GNU GPL v3",
+    "commercial_use": "Reference architecture only unless license obligations are intentionally adopted",
+    "status": "Reference",
+    "notes": "Used as a reference for centrally managed document/report template infrastructure, not copied UI.",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00"
+  },
+  {
+    "id": "SRC-OPENMRS-ONC",
+    "name": "OpenMRS Oncology Historical Regimen Templates",
+    "source_url": "https://github.com/openmrs/openmrs-module-oncology/tree/master/regimens",
+    "license_status": "Repository LICENSE is Mozilla Public License 2.0 with an OpenMRS Healthcare Disclaimer; preserve notices and review distribution obligations before commercial release",
+    "license_name": "Mozilla Public License 2.0 + OpenMRS Healthcare Disclaimer",
+    "commercial_use": "Source-derived content is imported as historical reference under the source license; it remains non-orderable until local clinical/pharmacy governance. Legal review still recommended before commercial distribution.",
+    "status": "Reference",
+    "notes": "The historical YAML library provides regimen/cycle/day/sequence structure. V12 imports all 12 historical regimen files as non-orderable drafts; no imported regimen is treated as current prescribing guidance.",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00"
+  },
+  {
+    "id": "SRC-OPENMRS-ORDEREXT",
+    "name": "OpenMRS Order Extension",
+    "source_url": "https://github.com/openmrs/openmrs-module-orderextension",
+    "license_status": "MPL-2.0 + healthcare disclaimer in repository",
+    "license_name": "Mozilla Public License 2.0",
+    "commercial_use": "Use subject to license obligations and clinical validation",
+    "status": "Reference",
+    "notes": "Used as a workflow/reference source for cyclical order sets, chemotherapy calendars and administration-plan concepts.",
+    "created_at": "2026-09-04T01:29:51+00:00",
+    "updated_at": "2026-09-04T01:29:51+00:00"
+  }
+]

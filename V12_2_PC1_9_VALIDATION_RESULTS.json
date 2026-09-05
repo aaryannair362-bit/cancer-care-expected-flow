@@ -1,0 +1,66 @@
+{
+  "build": "V12.2-PC1.9 Structural Conformance Phase 7",
+  "generated_at": "2026-09-05",
+  "release_type": "structural conformance remediation / reconstructed descendant",
+  "fresh_executable_results": {
+    "defect_remediation": {
+      "passed": 38,
+      "failed": 0
+    },
+    "process_ipd": {
+      "passed": 48,
+      "failed": 0
+    },
+    "legacy_regression": {
+      "passed": 95,
+      "failed": 0
+    },
+    "scenario_pack": {
+      "cases_passed": 41,
+      "cases_failed": 0,
+      "preflight_failures": 0,
+      "audit_errors": 0
+    },
+    "pc1_preclinician": {
+      "passed": 15,
+      "failed": 0
+    },
+    "pc1_1_ux": {
+      "passed": 9,
+      "failed": 0
+    },
+    "pc1_2_mature_ux": {
+      "passed": 19,
+      "failed": 0
+    },
+    "pc1_3_track_b_phase1": {
+      "passed": 27,
+      "failed": 0
+    },
+    "pc1_4_track_b_phase2": {
+      "passed": 38,
+      "failed": 0
+    },
+    "pc1_5_track_b_phase3": {
+      "passed": 58,
+      "failed": 0
+    },
+    "pc1_9_track_b_phase7": {
+      "passed": 57,
+      "failed": 0
+    },
+    "python_compile": "PASS",
+    "javascript_syntax": "PASS",
+    "final_demo_reset": "PASS"
+  },
+  "not_freshly_rerun": [
+    "PC1.6 standalone acceptance suite",
+    "PC1.7 standalone acceptance suite",
+    "PC1.8 standalone acceptance suite"
+  ],
+  "lineage_note": "The active runtime did not contain the standalone PC1.6\u2013PC1.8 acceptance scripts. PC1.9 was reconstructed from the full local PC1.5 package plus documented later deltas; the PC1.9 Phase-7 suite re-tests the high-value reconstructed behaviors. No separate fresh PC1.6\u2013PC1.8 pass is claimed.",
+  "browser_uat": "PENDING external/local interactive Chrome/Safari review",
+  "synthetic_content": true,
+  "nexus_backend_connected": false,
+  "claim_limit": "Zero observed failures across the fresh executable suites listed above; not a claim of production, clinical or regulatory readiness."
+}

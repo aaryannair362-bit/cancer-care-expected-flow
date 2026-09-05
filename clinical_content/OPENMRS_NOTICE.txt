@@ -1,0 +1,20 @@
+OpenMRS Oncology historical regimen reference content
+====================================================
+
+Source repository: https://github.com/openmrs/openmrs-module-oncology
+Selected source files: regimens/AC.yaml, regimens/CHOP.yaml, regimens/CarboTaxol.yaml
+
+V12 imports selected regimen structure/data as historical reference content only.
+Imported rows are NON-ORDERABLE until an institution-reviewed working version supplies current
+clinical and pharmacy safety rules, maps every medication to the local formulary, records
+independent Medical Oncology and Oncology Pharmacy review, and is explicitly activated.
+
+No imported historical regimen should be interpreted as current prescribing guidance.
+
+Licensing note: the separate OpenMRS Order Extension repository exposes MPL-2.0 terms and the
+OpenMRS healthcare disclaimer. A root LICENSE file for the Oncology repository was not available
+through the repository contents endpoint during this implementation review, so the Oncology
+source remains marked LEGAL REVIEW REQUIRED before commercial redistribution. Do not assume the
+license of another OpenMRS repository automatically applies.
+
+This NOTICE is not legal or clinical advice.

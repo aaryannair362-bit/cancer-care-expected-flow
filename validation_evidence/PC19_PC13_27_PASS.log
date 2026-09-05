@@ -1,0 +1,32 @@
+PASS VG-001-004 {"role": "Oncology Pharmacy", "required": ["infusion", "lab", "readiness", "toxicity", "treatment_history"], "visible": ["admission", "cancer_episode", "diagnosis", "formulary", "infusion", "intake", "lab", "med_recon", "pharmacy", "protocol_library", "readiness", "registration", "toxicity", "treatment_history", "treatment_order", "treatment_plan"]}
+PASS VG-005-006 {"role": "Day Care / Infusion Nurse", "required": ["intake", "toxicity", "treatment_history"], "visible": ["admission", "cancer_episode", "consent", "diagnosis", "infusion", "intake", "lab", "med_recon", "pharmacy", "readiness", "registration", "toxicity", "treatment_history", "treatment_order"]}
+PASS VG-007-009 {"role": "MDT Coordinator", "required": ["response", "toxicity", "treatment_history"], "visible": ["cancer_episode", "care_plan", "diagnosis", "journey", "lab", "mdt", "mdt_collab", "mdt_followup", "pathology", "queue", "radiology", "registration", "response", "surgery", "toxicity", "treatment_history", "treatment_plan"]}
+PASS VG-010-011 {"role": "Pathology", "required": ["cancer_episode", "diagnosis", "pathology", "treatment_history"], "visible": ["cancer_episode", "diagnosis", "pathology", "registration", "treatment_history"]}
+PASS VG-015 {"role": "Radiation Oncology", "required": ["intake", "toxicity"], "visible": ["admission", "cancer_episode", "care_plan", "continuous_therapy", "diagnosis", "discharge", "inpatient_care", "intake", "journey", "lab", "mdt", "med_recon", "pathology", "queue", "radiation", "radiology", "registration", "response", "surgery", "toxicity", "treatment_history", "treatment_order", "treatment_plan"]}
+PASS VG-016 {"role": "Surgical Oncology", "required": ["intake", "toxicity", "treatment_history"], "visible": ["admission", "cancer_episode", "care_plan", "diagnosis", "discharge", "inpatient_care", "intake", "journey", "lab", "mdt", "med_recon", "pathology", "queue", "radiology", "registration", "response", "surgery", "toxicity", "treatment_history", "treatment_order", "treatment_plan"]}
+PASS INT-UNIT-001 {"status": 409, "body": {"error": "Mandatory intake fields/explicit units missing", "missing": [], "missing_units": ["bp", "hr", "rr", "temp", "spo2", "weight", "height"]}}
+PASS INT-UNIT-002 {"status": 200, "body": {"ok": true, "bmi": 24.22, "bsa_m2": 1.82, "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)", "canonical_units": {"bp": "mmHg", "hr": "/min", "rr": "/min", "temp_c": "°C", "spo2": "%", "weight_kg": "kg", "height_cm": "cm"}, "source_measurements": {"sbp": {"value": 120.0, "unit": "mmHg"}, "dbp": {"value": 80.0, "unit": "mmHg"}, "hr": {"value": 80.0, "unit": "/min"}, "rr": {"value": 16.0, "unit": "/min"}, "temp": {"value": 98.6, "unit": "°F"}, "spo2": {"value": 99.0, "unit": "%"}, "weight": {"value": 154.324, 
+PASS INT-DERIVED-003 {"stored_bsa": 1.82, "sources": {"sbp": {"value": 120.0, "unit": "mmHg"}, "dbp": {"value": 80.0, "unit": "mmHg"}, "hr": {"value": 80.0, "unit": "/min"}, "rr": {"value": 16.0, "unit": "/min"}, "temp": {"value": 98.6, "unit": "°F"}, "spo2": {"value": 99.0, "unit": "%"}, "weight": {"value": 154.324, "unit": "lb"}, "height": {"value": 66.929, "unit": "in"}}}
+PASS ORD-SNAPSHOT-001 {"status": 200, "body": {"ok": true, "order_id": "TREATMENT_ORDER-745CCC6252", "pharmacy_id": "PHARMACY-44A7F8015B", "infusion_id": "INFUSION-D6169C937C", "supersedes_order_id": ""}}
+PASS ORD-SNAPSHOT-002 {"snapshot": {"name": "Maya Iyer", "dob": "1980-02-11", "mrn": "CCA-DEMO-0001", "weight_kg": 70.0002, "height_cm": 170.0, "bsa_m2": 1.82, "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)", "measurement_units": {"bp": "mmHg", "hr": "/min", "rr": "/min", "temp_c": "°C", "spo2": "%", "weight_kg": "kg", "height_cm": "cm"}, "source_measurements": {"sbp": {"value": 120.0, "unit": "mmHg"}, "dbp": {"value": 80.0, "unit": "mmHg"}, "hr": {"value": 80.0, "unit": "/min"}, "rr": {"value": 16.0, "unit": "/min"}, "temp": {"value": 98.6, "unit": "
+PASS PHM-VERIFY-001 {"status": 200, "body": {"ok": true, "status": "Preparation Pending"}}
+PASS PHM-PREP-002 {"status": 409, "body": {"error": "Actual measured preparation volume with explicit mL unit required for Pertuzumab"}}
+PASS PHM-PREP-003 {"status": 200, "body": {"ok": true, "status": "Dispensing Pending", "prepared_at": "2026-09-04T18:57:53+00:00"}}
+PASS PHM-RELEASE-004 {"status": 200, "body": {"ok": true, "status": "Dispensed"}}
+PASS MAR-START-001 {"status": 200, "body": {"ok": true}}
+PASS MAR-UNIT-002 {"status": 409, "body": {"error": "Actual administered dose requires an explicit unit selection"}}
+PASS MAR-UNIT-003 {"status": 200, "body": {"ok": true, "count": 1}}
+PASS MAR-RATE-004 {"status": 409, "body": {"error": "IV administration requires actual rate with explicit mL/h unit"}, "item": "Pertuzumab"}
+PASS MAR-RATE-005 {"status": 200, "body": {"ok": true, "count": 2}, "item": "Pertuzumab"}
+PASS VG-012-013 {"marker": "Today's delivery context:", "file": "static/pc1_3.js"}
+PASS VG-014 {"marker": "Plan-version approval context:", "file": "static/pc1_3.js"}
+PASS VG-017 {"marker": "Vitals & Intake (Intake Nurse workflow)", "file": "static/pc1_3.js"}
+PASS VG-018 {"marker": "source_measurements", "file": "static/pc1_3.js"}
+PASS VG-019 {"marker": "Prior treatment / response / toxicity", "file": "static/pc1_3.js"}
+PASS VG-020 {"marker": "Signed order dosing snapshot", "file": "static/pc1_3.js"}
+PASS PC13-STATIC-001 {"pc1_3_exists": true}
+{
+  "total": 27,
+  "passed": 27,
+  "failed": 0
+}

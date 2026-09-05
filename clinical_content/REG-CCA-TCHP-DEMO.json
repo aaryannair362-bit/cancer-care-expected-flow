@@ -1,0 +1,270 @@
+{
+  "id": "REG-CCA-TCHP-DEMO",
+  "category": "Regimen",
+  "name": "Synthetic HER2+ Breast Neoadjuvant Demo Regimen",
+  "subtype": "Systemic therapy regimen",
+  "disease": "Breast Cancer",
+  "setting": "HER2-positive, demo",
+  "intent": "Neoadjuvant",
+  "line_of_therapy": "Neoadjuvant",
+  "version": "1.0-demo",
+  "status": "Active",
+  "governance_status": "Demo Approved",
+  "orderable": true,
+  "source_id": "SRC-CCA-DEMO",
+  "source_ref": "local synthetic master",
+  "effective_date": "2026-09-01",
+  "review_due": "2026-12-01",
+  "clinical_owner": "Medical Oncology",
+  "pharmacy_owner": "Oncology Pharmacy",
+  "data": {
+    "id": "CCA-DEMO-TCHP",
+    "version": "1.0-demo",
+    "name": "Synthetic HER2+ Breast Neoadjuvant Demo Regimen",
+    "indication": "HER2-positive breast cancer — synthetic demo only",
+    "intent": "Neoadjuvant",
+    "cycle_length_days": 21,
+    "planned_cycles": 6,
+    "approved_by": "Synthetic demo governance — NOT clinical content",
+    "effective_date": "2026-09-01",
+    "orderable": true,
+    "hold_parameters": {
+      "ANC_min": 1.5,
+      "platelets_min": 100,
+      "eGFR_min": 50,
+      "bilirubin_max": 1.5,
+      "LVEF_min": 50,
+      "lab_max_age_days": 7
+    },
+    "items": [
+      {
+        "sequence": 1,
+        "group": "Premedication",
+        "drug": "Dexamethasone",
+        "code": "DEMO-DEX",
+        "dose_basis": "Fixed",
+        "protocol_dose": 8,
+        "protocol_unit": "mg",
+        "route": "PO",
+        "timing": "30–60 min before systemic therapy"
+      },
+      {
+        "sequence": 2,
+        "group": "Targeted Therapy",
+        "drug": "Pertuzumab",
+        "code": "DEMO-PER",
+        "dose_basis": "Fixed",
+        "protocol_dose": 840,
+        "protocol_unit": "mg",
+        "route": "IV",
+        "diluent": "NS",
+        "volume_ml": 250,
+        "duration_min": 60
+      },
+      {
+        "sequence": 3,
+        "group": "Targeted Therapy",
+        "drug": "Trastuzumab",
+        "code": "DEMO-TRA",
+        "dose_basis": "mg/kg",
+        "protocol_dose": 8,
+        "protocol_unit": "mg/kg",
+        "route": "IV",
+        "diluent": "NS",
+        "volume_ml": 250,
+        "duration_min": 90
+      },
+      {
+        "sequence": 4,
+        "group": "Antineoplastic",
+        "drug": "Docetaxel",
+        "code": "DEMO-DOC",
+        "dose_basis": "mg/m²",
+        "protocol_dose": 75,
+        "protocol_unit": "mg/m²",
+        "route": "IV",
+        "diluent": "NS",
+        "volume_ml": 250,
+        "duration_min": 60
+      },
+      {
+        "sequence": 5,
+        "group": "Antineoplastic",
+        "drug": "Carboplatin",
+        "code": "DEMO-CARBO",
+        "dose_basis": "AUC",
+        "protocol_dose": 6,
+        "protocol_unit": "AUC",
+        "route": "IV",
+        "diluent": "D5W",
+        "volume_ml": 250,
+        "duration_min": 60
+      },
+      {
+        "sequence": 6,
+        "group": "Supportive",
+        "drug": "Pegfilgrastim",
+        "code": "DEMO-PEG",
+        "dose_basis": "Fixed",
+        "protocol_dose": 6,
+        "protocol_unit": "mg",
+        "route": "SQ",
+        "timing": "Per institutional policy"
+      }
+    ],
+    "clinical_content_status": "Synthetic demo — product testing only; CCA specialist approval required",
+    "clinician_review_mode": "Hide synthetic clinical dose values; preserve workflow structure",
+    "readiness_rule_schema": [
+      {
+        "id": "RR-ANC",
+        "category": "Hematology",
+        "source_field": "anc",
+        "operator": ">=",
+        "threshold_key": "ANC_min",
+        "threshold": 1.5,
+        "unit": "×10^9/L",
+        "failure_action": "HOLD / clinician review"
+      },
+      {
+        "id": "RR-PLT",
+        "category": "Hematology",
+        "source_field": "platelets",
+        "operator": ">=",
+        "threshold_key": "platelets_min",
+        "threshold": 100,
+        "unit": "×10^9/L",
+        "failure_action": "HOLD / clinician review"
+      },
+      {
+        "id": "RR-EGFR",
+        "category": "Renal",
+        "source_field": "egfr",
+        "operator": ">=",
+        "threshold_key": "eGFR_min",
+        "threshold": 50,
+        "unit": "mL/min/1.73m²",
+        "failure_action": "REVIEW / dose modification as configured"
+      },
+      {
+        "id": "RR-BILI",
+        "category": "Hepatic",
+        "source_field": "bilirubin",
+        "operator": "<=",
+        "threshold_key": "bilirubin_max",
+        "threshold": 1.5,
+        "unit": "mg/dL",
+        "failure_action": "REVIEW / HOLD as configured"
+      },
+      {
+        "id": "RR-LVEF",
+        "category": "Cardiac",
+        "source_field": "lvef",
+        "operator": ">=",
+        "threshold_key": "LVEF_min",
+        "threshold": 50,
+        "unit": "%",
+        "failure_action": "REVIEW as configured"
+      },
+      {
+        "id": "RR-AGE",
+        "category": "Freshness",
+        "source_field": "lab_date",
+        "operator": "age_days<=",
+        "threshold_key": "lab_max_age_days",
+        "threshold": 7,
+        "unit": "days",
+        "failure_action": "REPEAT investigation"
+      }
+    ],
+    "monitoring_requirements": [
+      {
+        "phase": "Before treatment / cycle",
+        "category": "Hematology",
+        "requirement": "CBC with ANC and platelets",
+        "clinical_value_status": "CCA-approved protocol required"
+      },
+      {
+        "phase": "Before treatment / cycle",
+        "category": "Renal",
+        "requirement": "Renal function assessment",
+        "clinical_value_status": "CCA-approved protocol required"
+      },
+      {
+        "phase": "Before treatment / cycle",
+        "category": "Hepatic",
+        "requirement": "Hepatic function assessment",
+        "clinical_value_status": "CCA-approved protocol required"
+      },
+      {
+        "phase": "Before treatment / cycle",
+        "category": "Toxicity",
+        "requirement": "Current toxicity/CTCAE assessment",
+        "clinical_value_status": "CCA-approved protocol required"
+      },
+      {
+        "phase": "Periodic / drug-specific",
+        "category": "Other",
+        "requirement": "Drug-specific monitoring where applicable",
+        "clinical_value_status": "CCA-approved protocol required"
+      }
+    ],
+    "dose_modification_rules": [
+      {
+        "domain": "Hematologic",
+        "trigger": "CCA-approved regimen threshold / toxicity condition",
+        "action_options": [
+          "Proceed",
+          "Hold",
+          "Delay",
+          "Dose reduce",
+          "Omit"
+        ],
+        "new_dose_rule": "Protocol-specific",
+        "clinical_value_status": "CCA configuration required"
+      },
+      {
+        "domain": "Renal",
+        "trigger": "CCA-approved renal function rule",
+        "action_options": [
+          "Proceed",
+          "Dose reduce",
+          "Substitute",
+          "Hold"
+        ],
+        "new_dose_rule": "Protocol-specific",
+        "clinical_value_status": "CCA configuration required"
+      },
+      {
+        "domain": "Hepatic",
+        "trigger": "CCA-approved hepatic function rule",
+        "action_options": [
+          "Proceed",
+          "Dose reduce",
+          "Hold",
+          "Omit"
+        ],
+        "new_dose_rule": "Protocol-specific",
+        "clinical_value_status": "CCA configuration required"
+      },
+      {
+        "domain": "Toxicity",
+        "trigger": "CTCAE grade / drug-specific adverse effect",
+        "action_options": [
+          "Proceed",
+          "Hold",
+          "Delay",
+          "Dose reduce",
+          "Omit",
+          "Discontinue"
+        ],
+        "new_dose_rule": "Protocol-specific",
+        "clinical_value_status": "CCA configuration required"
+      }
+    ],
+    "sequence_sections": [
+      "Pre-treatment / Premedication / Hydration",
+      "Anticancer Treatment",
+      "Post-treatment / Supportive / Rescue"
+    ]
+  }
+}

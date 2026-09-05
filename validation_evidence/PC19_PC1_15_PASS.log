@@ -1,0 +1,16 @@
+PASS PC1-01-READINESS-ARCH {"regimens": 21, "rule_categories": ["Cardiac", "Freshness", "Hematology", "Hepatic", "Renal"]}
+PASS PC1-02-TREATMENT-SEQUENCE {"sequence_sections": ["Pre-treatment / Premedication / Hydration", "Anticancer Treatment", "Post-treatment / Supportive / Rescue"], "source_groups": ["antineoplastic", "premedication"]}
+PASS PC1-03-DOSE-MODIFICATION {"count": 4, "domains": ["Hematologic", "Renal", "Hepatic", "Toxicity"]}
+PASS PC1-04-MONITORING {"count": 5, "categories": ["Hematology", "Renal", "Hepatic", "Toxicity", "Other"]}
+PASS PC1-05-RT-PLANNED-DELIVERED {"rt_templates": 16, "planned_fields": ["course_id", "site", "laterality", "intent", "modality", "technique", "phase", "total_dose_gy", "dose_per_fraction_gy", "planned_fractions", "planned_start"], "delivered_fields": ["fraction_number", "status", "date_time", "delivered_dose_gy", "cumulative_dose_gy", "interruption_reason", "rescheduled_to"]}
+PASS PC1-06-RT-APPROVAL-CHAIN {"approval_chain": ["Prescription Draft", "Radiation Oncologist Approved", "Simulation Completed", "Plan Versioned", "Physics QA", "Radiation Oncologist Final Plan Approval", "Ready for Treatment", "Treatment Delivery", "Course Completed"]}
+PASS PC1-07-SURGICAL-SUBTEMPLATES {"templates": 14, "unique_diseases": 14, "sample": ["Basal Cell Carcinoma", "Breast Cancer", "Colorectal / Rectal Cancer", "Endometrial Cancer", "Gastric Cancer", "Kidney Cancer"]}
+PASS PC1-08-PLAN-VS-OPERATIVE {"separation": "Surgical Plan is immutable clinical intent context; Operative Record captures what actually occurred.", "operative_fields": ["actual_procedure", "operation_date_time", "preop_diagnosis", "postop_diagnosis", "laterality", "approach_used", "operative_findings", "specimens", "estimated_blood_loss_ml", "operative_time_min", "surgeons", "assistants", "intraoperative_complications", "drains", "postop_disposition", "postop_plan"]}
+PASS PC1-09-INFUSION-REACTION {"required_markers": ["Reaction onset time", "Severity", "CTCAE grade", "Infusion stopped?", "Clinician contacted?", "Rechallenge", "Restart rate", "Outcome"]}
+PASS PC1-10-ORAL-CONTINUOUS {"template_fields": 21, "states": ["Planned", "Approved", "Active", "Held", "Restarted", "Dose Modified", "Completed", "Discontinued"], "create_http": 200, "update_http": 200, "status": "Held", "history": 2}
+PASS PC1-11-PHARMACY-HANDLING {"items": 5, "fields": ["beyond_use_time", "compatibility", "container_requirement", "filter_requirement", "light_protection", "stability", "storage"]}
+PASS PC1-12-CLINICIAN-MASK {"markers": ["Clinician Review Mode", "CCA-approved value required", "clinical-mask", "Product Test Mode"]}
+PASS PC1-13-NEXUS-FRONTEND-ONLY {"markers": ["RUN NEXUS", "Current Guideline Position", "Applicable Options", "Missing Information", "Why NEXUS Reached This Position", "no NCCN engine"]}
+PASS PC1-14-CLINICIAN-SUMMARY {"markers": ["Oncology Patient Summary", "Readiness", "Pending investigations", "MDT / plan", "Recommendation"]}
+PASS PC1-15-PC1-ASSET-SERVED {"http": 200, "bytes": 92565}
+RESULT 15 PASS 0 FAIL
