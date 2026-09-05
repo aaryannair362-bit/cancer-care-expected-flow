@@ -17,7 +17,7 @@ def _load_dotenv():
 _load_dotenv()
 
 STATIC=ROOT/'static'; DB=ROOT/'cca_v12.sqlite3'
-PORT=int(os.environ.get('PORT','8765')); DEMO_PIN=os.environ.get('CCA_DEMO_PIN','2026')
+PORT=int(os.environ.get('PORT') or 8765); DEMO_PIN=os.environ.get('CCA_DEMO_PIN','2026')
 SESSION_HOURS=12
 
 ROLES=['Front Desk','Patient Attender','PRE / Patient Relations Executive','Nurse Navigator','Intake Nurse','Medical Oncology','Surgical Oncology','Radiation Oncology','Radiology Coordinator','Radiology Technician','Radiologist','Laboratory / Phlebotomy','Pathology','MDT Coordinator','MDT Chair','External Consultant','Oncology Pharmacy','Day Care / Infusion Nurse','Inpatient Oncology Nurse','Radiation Technologist','Radiation Physicist','Surgical Nurse','Biller','Finance / Billing','Patient Liaison','Hospital Management / Admin']
