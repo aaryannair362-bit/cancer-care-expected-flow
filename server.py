@@ -6,6 +6,16 @@ from urllib.parse import urlparse, parse_qs
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parent
+
+def _load_dotenv():
+ p=ROOT/'.env'
+ if not p.exists():return
+ for line in p.read_text().splitlines():
+  line=line.strip()
+  if not line or line.startswith('#') or '=' not in line:continue
+  k,v=line.split('=',1);os.environ.setdefault(k.strip(),v.strip().strip('"').strip("'"))
+_load_dotenv()
+
 STATIC=ROOT/'static'; DB=ROOT/'cca_v12.sqlite3'
 PORT=int(os.environ.get('PORT','8765')); DEMO_PIN=os.environ.get('CCA_DEMO_PIN','2026')
 SESSION_HOURS=12
