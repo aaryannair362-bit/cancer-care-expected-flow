@@ -3,4 +3,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from server import H as handler
+from server import H
+
+
+class handler(H):
+    pass
