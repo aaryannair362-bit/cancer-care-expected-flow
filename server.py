@@ -17,7 +17,7 @@ def _load_dotenv():
 _load_dotenv()
 
 STATIC=ROOT/'static'; DB=ROOT/'cca_v12.sqlite3'
-PORT=int(os.environ.get('PORT') or 8765); DEMO_PIN=os.environ.get('CCA_DEMO_PIN','2026')
+PORT=int(os.environ.get('PORT') or 8765)
 SESSION_HOURS=12
 
 ROLES=['Front Desk','Patient Attender','PRE / Patient Relations Executive','Nurse Navigator','Intake Nurse','Medical Oncology','Surgical Oncology','Radiation Oncology','Radiology Coordinator','Radiology Technician','Radiologist','Laboratory / Phlebotomy','Pathology','MDT Coordinator','MDT Chair','External Consultant','Oncology Pharmacy','Day Care / Infusion Nurse','Inpatient Oncology Nurse','Radiation Technologist','Radiation Physicist','Surgical Nurse','Biller','Finance / Billing','Patient Liaison','Hospital Management / Admin']
@@ -1130,8 +1130,8 @@ class H(BaseHTTPRequestHandler):
  def do_POST(self):
   p=urlparse(self.path);data=self.body();c=db()
   if p.path=='/api/login':
-   role=data.get('role');pin=str(data.get('pin',''))
-   if role not in ROLES or pin!=DEMO_PIN:c.close();return self.sendj({'error':'Invalid demo role or PIN'},401)
+   role=data.get('role')
+   if role not in ROLES:c.close();return self.sendj({'error':'Invalid demo role'},401)
    tok=secrets.token_urlsafe(32);exp=(datetime.now().astimezone()+timedelta(hours=SESSION_HOURS)).isoformat();c.execute('INSERT OR REPLACE INTO sessions VALUES(?,?,?,?)',(tok,actor(role)['id'],role,exp));c.commit();c.close();return self.sendj({'token':tok,'actor':actor(role),'expires_at':exp})
   if p.path=='/api/logout':
    tok=self.headers.get('Authorization','').removeprefix('Bearer ').strip()
