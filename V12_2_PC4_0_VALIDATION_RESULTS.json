@@ -1,0 +1,81 @@
+{
+  "build": "V12.2-PC4.0 — Full PRD Conformance / CCA Clinician Validation Distribution",
+  "date": "2026-09-06",
+  "claim": "Zero observed failures across the fresh executable suites listed below. Suite counts overlap and are not additive. This is a clinician/stakeholder validation distribution, not authorization for patient care or a regulatory/production-readiness claim.",
+  "fresh_validation": [
+    {
+      "suite": "CCA clinician validation mode",
+      "result": "11 / 11 PASS",
+      "evidence": "validation_evidence/CCA_FINAL2_VALIDATION_MODE.log"
+    },
+    {
+      "suite": "PC4 PRD conformance",
+      "result": "19 / 19 PASS",
+      "evidence": "validation_evidence/CCA_FINAL2_PC4_CONFORMANCE.log",
+      "detail": "246 screens; 201 authorable forms exercised; 3,400 editable atomic requirements round-tripped"
+    },
+    {
+      "suite": "Defect remediation",
+      "result": "38 / 38 PASS",
+      "evidence": "validation_evidence/CCA_FINAL2_DEFECT_38.log"
+    },
+    {
+      "suite": "Process + IPD",
+      "result": "48 / 48 PASS",
+      "evidence": "validation_evidence/CCA_FINAL2_PROCESS_48.log"
+    },
+    {
+      "suite": "Regression",
+      "result": "94 / 94 PASS",
+      "evidence": "validation_evidence/CCA_FINAL2_REGRESSION.log"
+    },
+    {
+      "suite": "Synthetic scenario pack",
+      "result": "41 / 41 PASS; preflight 0; audit errors 0",
+      "evidence": "validation_evidence/CCA_FINAL2_SCENARIOS_41.log"
+    },
+    {
+      "suite": "Python compilation",
+      "result": "PASS",
+      "evidence": "validation_evidence/CCA_FINAL2_PYTHON_COMPILE.log"
+    },
+    {
+      "suite": "JavaScript syntax",
+      "result": "PASS",
+      "evidence": "validation_evidence/CCA_FINAL2_JS_SYNTAX.log"
+    },
+    {
+      "suite": "CCA validation workbook integrity",
+      "result": "PASS",
+      "evidence": "validation_evidence/CCA_FINAL2_WORKBOOK_INTEGRITY.log"
+    },
+    {
+      "suite": "Final clean demo reset",
+      "result": "PASS; 0 validation feedback/signoff rows",
+      "evidence": "validation_evidence/CCA_FINAL2_CLEAN_RESET.log"
+    }
+  ],
+  "product_scope": {
+    "prd_screens": 246,
+    "forms": 202,
+    "worklists": 44,
+    "modules": 26,
+    "atomic_field_table_column_definitions": 4669,
+    "structured_note_document_families": 35,
+    "roles_in_validation_matrix": 24,
+    "in_product_validation": true,
+    "screen_level_review": true,
+    "field_level_review": true,
+    "table_column_review": true,
+    "specialty_signoff": true,
+    "offline_validation_workbook": "CCA_VALIDATION_PACK/CCA_Clinician_Stakeholder_Validation_Workbook.xlsx"
+  },
+  "source_boundary": {
+    "C.1-C.18": "Parsed from supplied detailed Part-C PRD files in the project/conversation.",
+    "C.19-C.26": "Packaged as target-state completion from the established role/workflow requirements because exact later Claude prose was not present as a recoverable active-runtime file.",
+    "source_index": "CCA_VALIDATION_PACK/06_PRD_CONFORMANCE_SOURCE_INDEX.md"
+  },
+  "clinical_content_boundary": "CCA-specific regimen values, formulary content, readiness thresholds, dose-modification/rounding rules, pharmacy stability/BUD, RT templates/OAR constraints, surgery/pathology templates, consents and similar institutional content remain CCA CONFIG / clinical sign-off items. Synthetic values are not CCA policy.",
+  "integration_boundary": "LIS, RIS/PACS, Pathology LIS, TPS/OIS/R&V, pharmacy ERP/inventory, billing, IAM/SSO and ABDM are integration gates and are not faked as production interfaces.",
+  "nexus_boundary": "NEXUS remains frontend-only in this distribution; no autonomous NCCN/diagnostic reasoning backend executes."
+}

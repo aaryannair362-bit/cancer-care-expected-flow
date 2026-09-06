@@ -1,0 +1,15 @@
+PASS CCA-VAL-001-summary-endpoint {'count': 0, 'verdicts': {}, 'severity': {}, 'feedback': []}
+PASS CCA-VAL-002-field-feedback {'ok': True, 'id': 'CVF-9F4F2A6253', 'verdict': 'Correct — Freeze', 'severity': 'None'}
+PASS CCA-VAL-003-feedback-read {'feedback': [{'id': 'CVF-9F4F2A6253', 'build': 'V12.2-PC4.0', 'patient_id': 'PAT-0001', 'reviewer_role': 'Medical Oncology', 'reviewer_actor_id': 'USR-MEDICALO-001', 'screen_id': 'SCR-MO-002', 'module': 'C.4 Medical Oncology', 'target_type': 'Field', 'target_id': 'assessment', 'target_label': 'Assessment', 'dimension': 'Field completeness', 'verdict': 'Correct — Freeze', 'severity': 'None', 'expe
+PASS CCA-VAL-004-gap-feedback {'ok': True, 'id': 'CVF-66E0844A20', 'verdict': 'Change Required', 'severity': 'S2 — Major'}
+PASS CCA-VAL-005-gap-requires-detail {'error': 'A change/gap verdict requires expected behavior or suggested correction'}
+PASS CCA-VAL-006-role-screen-guard {'error': 'Reviewer role is not assigned to this PRD screen'}
+PASS CCA-VAL-007-specialty-signoff {'ok': True, 'id': 'CVS-2976497587', 'decision': 'Accepted with required changes'}
+PASS CCA-VAL-008-signoff-read {'signoffs': [{'id': 'CVS-2976497587', 'build': 'V12.2-PC4.0', 'specialty_role': 'Medical Oncology', 'reviewer_role': 'Medical Oncology', 'reviewer_actor_id': 'USR-MEDICALO-001', 'decision': 'Accepted with required changes', 'what_to_freeze': 'Correct items', 'required_changes': 'Issue register items', 'content_needed': 'CCA regimen master', 'integration_needed': 'LIS/RIS', 'created_at': '2026-09-
+PASS CCA-VAL-009-summary-counts {'count': 2, 'verdicts': {'Correct — Freeze': 1, 'Change Required': 1}, 'severity': {'None': 1, 'S2 — Major': 1}, 'feedback': [{'id': 'CVF-9F4F2A6253', 'build': 'V12.2-PC4.0', 'patient_id': 'PAT-0001', 'reviewer_role': 'Medical Oncology', 'reviewer_actor_id': 'USR-MEDICALO-001', 'screen_id': 'SCR-MO-002', 'module': 'C.4 Medical Oncology', 'target_type': 'Field', 'target_id': 'assessment', 'target_
+PASS CCA-VAL-010-ui-instrumentation 
+PASS CCA-VAL-011-validation-pack 
+{
+  "pass": 11,
+  "fail": 0
+}

@@ -1,0 +1,21 @@
+PASS PC4-001-health-build
+PASS PC4-002-246-screen-catalog
+PASS PC4-003-26-modules
+PASS PC4-004-202-forms-44-worklists
+PASS PC4-005-all-screens-have-role-visibility
+PASS PC4-006-all-forms-have-author-role-or-are-explicit-view
+PASS PC4-007-atomic-field-coverage
+PASS PC4-008-owning-role-visibility-246
+PASS PC4-009-all-authorable-forms-create-update-sign
+PASS PC4-010-executable-field-table-roundtrip
+PASS PC4-011-signed-record-update-blocked
+PASS PC4-012-amendment-creates-new-draft
+PASS PC4-013-admin-clinical-authoring-rejected
+PASS PC4-014-view-without-authoring-enforced
+PASS PC4-015-bmi-bsa-derived
+PASS PC4-016-nexus-backend-deferred
+PASS PC4-017-audit-chain-integrity
+PASS PC4-018-source-boundary-explicit
+PASS PC4-019-configurable-clinical-master-structure
+
+RESULT: 19 PASS / 0 FAIL; forms exercised 201; editable atomic requirements 3400

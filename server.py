@@ -20,7 +20,7 @@ STATIC=ROOT/'static'; DB=ROOT/'cca_v12.sqlite3'
 PORT=int(os.environ.get('PORT') or 8765)
 SESSION_HOURS=12
 
-ROLES=['Front Desk','Patient Attender','PRE / Patient Relations Executive','Nurse Navigator','Intake Nurse','Medical Oncology','Surgical Oncology','Radiation Oncology','Radiology Coordinator','Radiology Technician','Radiologist','Laboratory / Phlebotomy','Pathology','MDT Coordinator','MDT Chair','External Consultant','Oncology Pharmacy','Day Care / Infusion Nurse','Inpatient Oncology Nurse','Radiation Technologist','Radiation Physicist','Surgical Nurse','Biller','Finance / Billing','Patient Liaison','Hospital Management / Admin']
+ROLES=['Front Desk','Patient Attender','PRE / Patient Relations Executive','Nurse Navigator','Intake Nurse','Medical Oncology','Surgical Oncology','Radiation Oncology','Radiology Coordinator','Radiology Technician','Radiologist','Laboratory / Phlebotomy','Pathology','MDT Coordinator','MDT Chair','External Consultant','Oncology Pharmacy','Day Care / Infusion Nurse','Inpatient Oncology Nurse','Radiation Technologist','Radiation Physicist','Surgical Nurse','Biller','Finance / Billing','Patient Liaison','Hospital Management / Admin','Anaesthetist','Stoma / Wound Nurse','Blood Bank / Transfusion','Dietitian / Nutrition','Psycho-Oncology','Palliative Care','Clinical Trials / Research','Health Information Management','Radiation Dosimetrist / Planner','Pathology Technologist','Inpatient Oncology Clinician']
 USERS={r:{'id':'USR-'+re.sub(r'[^A-Z]','',r.upper())[:8]+'-001','name':r if 'Oncology' not in r else r+' User','role':r} for r in ROLES}
 
 READ={
@@ -47,6 +47,14 @@ PAT_FIELDS={
 'PRE / Patient Relations Executive':['id','mrn','name','dob','sex','phone','current_department','status'], 'Biller':['id','mrn','name','dob','phone','current_department','status'], 'Finance / Billing':['id','mrn','name','dob','phone','current_department','status'],
 'Laboratory / Phlebotomy':['id','mrn','name','dob','sex','current_department','status'], 'Radiology Coordinator':['id','mrn','name','dob','sex','phone','current_department','status'], 'Radiology Technician':['id','mrn','name','dob','sex','current_department','status'],
 'Radiologist':['id','mrn','name','dob','sex','current_department','status'], 'Intake Nurse':['id','mrn','name','dob','sex','phone','current_department','status'], 'MDT Chair':['id','mrn','name','dob','sex','current_department','status'], 'Inpatient Oncology Nurse':['id','mrn','name','dob','sex','allergies','current_department','status'], 'Radiation Physicist':['id','mrn','name','dob','sex','current_department','status'], 'Oncology Pharmacy':['id','mrn','name','dob','sex','allergies','current_department','status'], 'Day Care / Infusion Nurse':['id','mrn','name','dob','sex','allergies','current_department','status'], 'Hospital Management / Admin':['id','mrn','current_department','status']}
+
+# PC4.0 minimum-necessary patient projections for newly introduced PRD roles.
+_PC4_CLIN_PAT=['id','mrn','name','dob','sex','allergies','current_department','status']
+_PC4_OPS_PAT=['id','mrn','name','dob','sex','current_department','status']
+for _r in ['Anaesthetist','Stoma / Wound Nurse','Dietitian / Nutrition','Psycho-Oncology','Palliative Care','Clinical Trials / Research','Radiation Dosimetrist / Planner','Pathology Technologist','Inpatient Oncology Clinician']:
+ PAT_FIELDS.setdefault(_r,list(_PC4_CLIN_PAT))
+for _r in ['Blood Bank / Transfusion','Health Information Management']:
+ PAT_FIELDS.setdefault(_r,list(_PC4_OPS_PAT))
 
 WRITE={
 'registration':{'Front Desk','Patient Attender'},'consent':{'Front Desk','Patient Attender','Patient Liaison'},'appointments':{'Front Desk','Patient Attender','PRE / Patient Relations Executive','Radiology Coordinator','Finance / Billing'},'queue':{'Front Desk','PRE / Patient Relations Executive','Nurse Navigator','Radiology Coordinator','Laboratory / Phlebotomy','Finance / Billing','Oncology Pharmacy','Day Care / Infusion Nurse','MDT Coordinator'},
@@ -379,6 +387,14 @@ ROLE_SURFACES['MDT Chair']={
  'output':[_o('Chair-approved MDT recommendation','Participating oncologists / Treatment Plan'),_o('Returned MDT recommendation','MDT Coordinator')]
 }
 
+# PC4.0 role-surface contracts for roles introduced by the target-state PRD.
+for _r in ['Anaesthetist', 'Stoma / Wound Nurse', 'Blood Bank / Transfusion', 'Dietitian / Nutrition', 'Psycho-Oncology', 'Palliative Care', 'Clinical Trials / Research', 'Health Information Management', 'Radiation Dosimetrist / Planner', 'Pathology Technologist', 'Inpatient Oncology Clinician']:
+ ROLE_SURFACES.setdefault(_r,{
+   'input':[_f('PRD structured clinical / operational input','structured',False,'pc4_workflow')],
+   'view':[_v('Role-authorized PRD patient / workflow context','PC4 PRD Complete Workflows')],
+   'output':[_o('Signed / attributed PRD workflow record','Downstream role-specific workflow')]
+ })
+
 
 def now(): return datetime.now().astimezone().isoformat(timespec='seconds')
 def jdump(x): return json.dumps(x,separators=(',',':'),ensure_ascii=False)
@@ -438,6 +454,10 @@ def init_db():
  CREATE TABLE IF NOT EXISTS role_surface_reviews(id TEXT PRIMARY KEY,role_surface TEXT,reviewer_role TEXT,reviewer_actor_id TEXT,verdict TEXT,note TEXT,at TEXT);
  CREATE TABLE IF NOT EXISTS patient_access(patient_id TEXT,role TEXT,scope_type TEXT,source_id TEXT,active INTEGER,granted_at TEXT,granted_by TEXT,PRIMARY KEY(patient_id,role,scope_type,source_id));
  CREATE INDEX IF NOT EXISTS idx_patient_access_role ON patient_access(role,patient_id,active);
+ CREATE TABLE IF NOT EXISTS cca_validation_feedback(id TEXT PRIMARY KEY,build TEXT,patient_id TEXT,reviewer_role TEXT,reviewer_actor_id TEXT,screen_id TEXT,module TEXT,target_type TEXT,target_id TEXT,target_label TEXT,dimension TEXT,verdict TEXT,severity TEXT,expected TEXT,actual TEXT,suggestion TEXT,freeze_correct INTEGER,status TEXT,created_at TEXT,updated_at TEXT);
+ CREATE INDEX IF NOT EXISTS idx_cca_validation_screen ON cca_validation_feedback(screen_id,reviewer_role,created_at);
+ CREATE TABLE IF NOT EXISTS cca_validation_signoff(id TEXT PRIMARY KEY,build TEXT,specialty_role TEXT,reviewer_role TEXT,reviewer_actor_id TEXT,decision TEXT,what_to_freeze TEXT,required_changes TEXT,content_needed TEXT,integration_needed TEXT,created_at TEXT,updated_at TEXT);
+ CREATE INDEX IF NOT EXISTS idx_cca_validation_signoff_role ON cca_validation_signoff(specialty_role,created_at);
  CREATE TABLE IF NOT EXISTS tasks(id TEXT PRIMARY KEY,patient_id TEXT,episode_id TEXT,task_type TEXT,title TEXT,status TEXT,priority TEXT,owner_role TEXT,owner_user_id TEXT,source_type TEXT,source_id TEXT,due_at TEXT,acknowledged_at TEXT,acknowledged_by TEXT,completed_at TEXT,completed_by TEXT,escalation_level INTEGER,reason TEXT,data_json TEXT,created_at TEXT,created_by TEXT,updated_at TEXT,updated_by TEXT);
  CREATE INDEX IF NOT EXISTS idx_tasks_patient_owner ON tasks(patient_id,owner_role,status,due_at);
  '''); c.commit(); seed_content_master(c); c.commit(); c.close(); seed()
@@ -1010,6 +1030,158 @@ def verify_audit(c):
   prev=r['hash']
  return {'ok':not errors,'events':n,'errors':errors,'note':'Prototype hash chain. Production requires protected/WORM audit storage.'}
 
+# =============================================================================
+# PC4.0 — executable PRD catalogue / lifecycle engine
+# =============================================================================
+PC4_CATALOG_PATH=ROOT/'clinical_content'/'pc4_screen_catalog.json'
+_PC4_CATALOG_CACHE={'mtime':None,'data':None}
+def pc4_catalog():
+ try:
+  mtime=PC4_CATALOG_PATH.stat().st_mtime
+  if _PC4_CATALOG_CACHE['data'] is None or _PC4_CATALOG_CACHE['mtime']!=mtime:
+   _PC4_CATALOG_CACHE['data']=json.loads(PC4_CATALOG_PATH.read_text(encoding='utf-8'));_PC4_CATALOG_CACHE['mtime']=mtime
+  return _PC4_CATALOG_CACHE['data']
+ except Exception:return {'screens':[],'screen_count':0,'modules':{}}
+def pc4_screen(sid):
+ for x in pc4_catalog().get('screens',[]):
+  if x.get('id')==sid:return x
+ return None
+def pc4_role_allowed(screen,role):
+ return bool(screen and role in (screen.get('roles') or []))
+def pc4_role_can_author(screen,role):
+ return bool(screen and role in (screen.get('author_roles') or []))
+def pc4_flat_fields(screen):
+ out=list(screen.get('fields') or [])
+ for t in screen.get('tables') or []:
+  for c in t.get('columns') or []:
+   out.append(c)
+ return out
+def pc4_num(v):
+ try:return float(v)
+ except:return None
+def pc4_missing(v):return v is None or v=='' or v==[]
+def pc4_value_by_label(screen,values,needle):
+ n=needle.lower()
+ for f in screen.get('fields') or []:
+  if n in str(f.get('label','')).lower():return values.get(f.get('id'))
+ return None
+def pc4_derive(screen,values):
+ d={}
+ # Anthropometrics: detect discrete PRD labels, never infer from arbitrary prose fields.
+ w=pc4_value_by_label(screen,values,'weight');h=pc4_value_by_label(screen,values,'height')
+ wn=pc4_num(w);hn=pc4_num(h)
+ if wn and hn and 15<=hn<=260 and 1<=wn<=500:
+  d['bmi_kg_m2']=round(wn/((hn/100.0)**2),2)
+  d['bsa_m2']=round(math.sqrt((hn*wn)/3600.0),3)
+  d['bsa_formula']='Mosteller: sqrt(height_cm × weight_kg / 3600)'
+ # RT dose/fraction arithmetic.
+ total=pc4_value_by_label(screen,values,'total dose');fr=pc4_value_by_label(screen,values,'number of fractions')
+ tn=pc4_num(total);fn=pc4_num(fr)
+ if tn is not None and fn and fn>0:d['dose_per_fraction']=round(tn/fn,4)
+ # Common arithmetic pairs.
+ ordv=pc4_value_by_label(screen,values,'final ordered dose');act=pc4_value_by_label(screen,values,'actual administered dose')
+ on=pc4_num(ordv);an=pc4_num(act)
+ if on not in [None,0] and an is not None:d['administered_vs_ordered_variance_percent']=round((an-on)*100.0/on,2)
+ prep=pc4_value_by_label(screen,values,'pharmacy prepared dose');pn=pc4_num(prep)
+ if on not in [None,0] and pn is not None:d['prepared_vs_ordered_variance_percent']=round((pn-on)*100.0/on,2)
+ vol=pc4_value_by_label(screen,values,'volume');dose=pc4_value_by_label(screen,values,'dose')
+ vn=pc4_num(vol);dn=pc4_num(dose)
+ if vn not in [None,0] and dn is not None:d['concentration_derived']=round(dn/vn,5)
+ return d
+def pc4_context(c,pid,role):
+ if not pid:return {'patient':{},'episode':{},'source_summary':{}}
+ pat=patient(c,pid) or {}; ep=current_episode(c,pid)
+ # Clinical source context is intentionally a concise, provenance-bearing snapshot.
+ src={}
+ for typ in ['intake','diagnosis','treatment_plan','treatment_order','readiness','pharmacy','infusion','toxicity','radiation','surgery','pathology','radiology','response','admission','discharge']:
+  r=latest(c,pid,typ)
+  if r:src[typ]={'record_id':r['id'],'status':r['status'],'version':r['version'],'updated_at':r['updated_at']}
+ return {'patient':project_patient(pat,role),'episode':{'record_id':ep['id'],'status':ep['status'],'version':ep['version'],'data':ep['data']} if ep else {},'source_summary':src,'captured_at':now()}
+def pc4_validate(screen,values,for_sign=False):
+ errors=[]; warnings=[]
+ values=values or {}
+ for f in screen.get('fields') or []:
+  fid=f.get('id');v=values.get(fid);lab=f.get('label') or fid;typ=f.get('type')
+  if f.get('readonly'):continue
+  if for_sign and f.get('required') and pc4_missing(v):errors.append(lab+' is required')
+  if pc4_missing(v):continue
+  if typ=='number' and pc4_num(v) is None:errors.append(lab+' must be numeric')
+  if typ=='select' and f.get('options') and str(v) not in [str(x) for x in f.get('options')]:errors.append(lab+' must use an allowed value')
+  if typ=='multiselect' and f.get('options'):
+   if not isinstance(v,list):errors.append(lab+' must contain a list of allowed values')
+   elif any(str(x) not in [str(o) for o in f.get('options')] for x in v):errors.append(lab+' contains a value outside the configured set')
+ for t in screen.get('tables') or []:
+  key='table__'+t.get('id','table'); rows=values.get(key,[])
+  if rows in [None,'']:rows=[]
+  if not isinstance(rows,list):errors.append((t.get('label') or 'Table')+' must contain structured rows');continue
+  for ri,row in enumerate(rows,1):
+   if not isinstance(row,dict):errors.append(f"{t.get('label','Table')} row {ri} is invalid");continue
+   for col in t.get('columns') or []:
+    cv=row.get(col.get('id')); lab=col.get('label') or col.get('id')
+    if for_sign and col.get('required') and pc4_missing(cv):errors.append(f"{t.get('label','Table')} row {ri}: {lab} is required")
+    if pc4_missing(cv) or col.get('readonly'):continue
+    if col.get('type')=='number' and pc4_num(cv) is None:errors.append(f"{t.get('label','Table')} row {ri}: {lab} must be numeric")
+    if col.get('type')=='select' and col.get('options') and str(cv) not in [str(x) for x in col.get('options')]:errors.append(f"{t.get('label','Table')} row {ri}: {lab} must use an allowed value")
+ # Safety guards for high-consequence authorising records.
+ sid=screen.get('id','')
+ if for_sign and sid=='SCR-RO-003':
+  # Multiple phases can live in repeaters; if directly-entered total/fraction values exist they must be positive.
+  for f in screen.get('fields') or []:
+   lab=str(f.get('label','')).lower();v=values.get(f.get('id'))
+   if ('total dose' in lab or 'number of fractions' in lab) and not pc4_missing(v):
+    n=pc4_num(v)
+    if n is None or n<=0:errors.append(f.get('label')+' must be positive')
+ if for_sign and sid=='SCR-PAT-005':
+  fd=pc4_value_by_label(screen,values,'final diagnosis')
+  if pc4_missing(fd):errors.append('Final diagnosis is required for final pathology sign-out')
+ if for_sign and sid=='SCR-RSP-007':
+  cr=pc4_value_by_label(screen,values,'clinician-confirmed response')
+  if pc4_missing(cr):errors.append('Clinician-confirmed response is required')
+ # Generic signed-record governance warning when CCA-config masters are involved.
+ if screen.get('module_code')=='C.26' and for_sign:
+  warnings.append('Activation of clinical thresholds/content requires CCA institutional approval; signing this software record does not substitute for clinical governance.')
+ return errors,warnings
+
+def pc4_records(c,pid,role,screen_id=''):
+ q="SELECT * FROM records WHERE entity_type='pc4_prd'";args=[]
+ if pid:q+=' AND patient_id=?';args.append(pid)
+ q+=' ORDER BY created_at DESC'
+ out=[]
+ for r in c.execute(q,args):
+  z=dict(r);z['data']=jload(z.pop('data_json'),{})
+  if screen_id and z['data'].get('screen_id')!=screen_id:continue
+  sc=pc4_screen(z['data'].get('screen_id'))
+  if sc and pc4_role_allowed(sc,role):out.append(z)
+ return out
+
+PC4_ACTION_TARGETS=[
+ (r'order .*investigation|order investigations?|order pre-op workup','SCR-INV-001'),
+ (r'submit to mdt|flag for mdt|re-list for mdt|refer back to mdt','SCR-MDT-001'),
+ (r'create treatment plan|convert to plan','SCR-PLN-001'),
+ (r'create treatment order|new cycle|continue to dosing','SCR-ORD-001'),
+ (r'clearance|readiness','SCR-RDY-001'),
+ (r'query pharmacy|request remake','SCR-PHA-003'),
+ (r'record reaction','SCR-MAR-008'),
+ (r'extravasation','SCR-MAR-009'),
+ (r'create prescription|amend prescription','SCR-RO-003'),
+ (r'planning|re-plan','SCR-RO-006'),
+ (r'create surgical plan','SCR-SO-003'),
+ (r'review pathology|pathology review','SCR-SO-014'),
+ (r'adjuvant handoff','SCR-SO-018'),
+ (r'response assessment','SCR-RSP-001'),
+ (r'treatment summary|complete course','SCR-CMP-003'),
+ (r'survivorship|surveillance plan','SCR-SURV-003'),
+]
+def pc4_action_target(action):
+ a=str(action or '').lower()
+ for pat,sid in PC4_ACTION_TARGETS:
+  if re.search(pat,a,re.I):return sid
+ return ''
+def pc4_handoff_owner(screen):
+ # First listed role is the accountable author/owner unless it is a view-only administrative actor.
+ roles=screen.get('roles') or []
+ return roles[0] if roles else ''
+
 class H(BaseHTTPRequestHandler):
  server_version='CCA-V12.2-PC1.9/1.0'
  def log_message(self,fmt,*args): pass
@@ -1038,6 +1210,47 @@ class H(BaseHTTPRequestHandler):
   c=db(); s=self.auth(c)
   if not s:c.close();return self.sendj({'error':'Authentication required'},401)
   role=s['role']
+  if p.path=='/api/pc4/screens':
+   cat=pc4_catalog();visible=[x for x in cat.get('screens',[]) if pc4_role_allowed(x,role)];c.close();return self.sendj({'build':cat.get('build'),'screen_count':cat.get('screen_count'),'visible_count':len(visible),'form_count':cat.get('form_count'),'worklist_count':cat.get('worklist_count'),'field_requirement_count':cat.get('field_requirement_count'),'modules':cat.get('modules'),'screens':visible,'source_boundary':cat.get('source_boundary')})
+  if p.path=='/api/pc4/records':
+   q=parse_qs(p.query);pid=q.get('patient',[''])[0];sid=q.get('screen',[''])[0]
+   sc=pc4_screen(sid) if sid else None
+   if sc and not pc4_role_allowed(sc,role):c.close();return self.sendj({'error':'Role is not authorized for this PRD screen'},403)
+   if pid and not can_access_patient(c,role,pid):c.close();return self.sendj({'error':'Patient access not assigned to this role'},403)
+   rows=pc4_records(c,pid,role,sid);c.close();return self.sendj({'records':rows})
+  if p.path=='/api/pc4/context':
+   q=parse_qs(p.query);pid=q.get('patient',[''])[0];sid=q.get('screen',[''])[0];sc=pc4_screen(sid)
+   if not sc:c.close();return self.sendj({'error':'PRD screen not found'},404)
+   if not pc4_role_allowed(sc,role):c.close();return self.sendj({'error':'Role is not authorized for this PRD screen'},403)
+   if sc.get('module_code')!='C.26':
+    if not pid or not patient(c,pid):c.close();return self.sendj({'error':'Patient required'},409)
+    if not can_access_patient(c,role,pid):c.close();return self.sendj({'error':'Patient access not assigned to this role'},403)
+   out=pc4_context(c,pid,role);c.close();return self.sendj(out)
+  if p.path=='/api/cca-validation/feedback':
+   q=parse_qs(p.query);sid=(q.get('screen') or [''])[0];target=(q.get('target_id') or [''])[0];scope=(q.get('scope') or ['role'])[0]
+   sql='SELECT * FROM cca_validation_feedback WHERE 1=1';args=[]
+   if sid:sql+=' AND screen_id=?';args.append(sid)
+   if target:sql+=' AND target_id=?';args.append(target)
+   if role!='Hospital Management / Admin' or scope!='all':sql+=' AND reviewer_role=?';args.append(role)
+   sql+=' ORDER BY created_at DESC'
+   rows=[dict(r) for r in c.execute(sql,args)]
+   c.close();return self.sendj({'feedback':rows,'count':len(rows)})
+  if p.path=='/api/cca-validation/signoff':
+   q=parse_qs(p.query);specialty=(q.get('specialty') or [role])[0]
+   if specialty!=role and role!='Hospital Management / Admin':c.close();return self.sendj({'error':'A reviewer may view only their own specialty sign-off'},403)
+   rows=[dict(r) for r in c.execute('SELECT * FROM cca_validation_signoff WHERE specialty_role=? ORDER BY created_at DESC',(specialty,))]
+   c.close();return self.sendj({'signoffs':rows,'latest':rows[0] if rows else None})
+  if p.path=='/api/cca-validation/summary':
+   role_where='';args=[]
+   if role!='Hospital Management / Admin':role_where=' WHERE reviewer_role=?';args=[role]
+   rows=[dict(r) for r in c.execute('SELECT * FROM cca_validation_feedback'+role_where+' ORDER BY created_at DESC',args)]
+   counts={}
+   for r in rows:
+    k=r.get('verdict') or 'Unspecified';counts[k]=counts.get(k,0)+1
+   sev={}
+   for r in rows:
+    k=r.get('severity') or 'None';sev[k]=sev.get(k,0)+1
+   c.close();return self.sendj({'count':len(rows),'verdicts':counts,'severity':sev,'feedback':rows[:200]})
   if p.path=='/api/meta':
    med_master=[{'id':x['id'],'label':x.get('display_name') or x.get('drug'),'drug':x.get('drug'),'code':x.get('code'),'code_system':x.get('code_system'),'allowed_routes':x.get('allowed_routes',[]),'formulations':x.get('formulations',[]),'clinical_content_status':'Synthetic QA / CCA formulary master'} for x in formulary_rows(c,True)]
    c.close();return self.sendj({'roles':ROLES,'value_sets':VALUE_SETS,'locations':LOCATION_MASTER,'lab_unit_options':LAB_UNIT_OPTIONS,'allergen_master':ALLERGEN_MASTER,'medication_master':med_master,'fall_risk_scales':FALL_RISK_SCALES,'diagnostic_catalog':list(DIAGNOSTIC_CATALOG.values()),'lab_abnormal_flags':LAB_ABNORMAL_FLAGS,'lab_reference_range_source':'INTEGRATED / server-owned Synthetic QA assay master','actor':actor(role),'product':'CCA V12.2-PC1.9 Structural Conformance Phase 7','synthetic_test_content_note':'Synthetic institutional content is for product testing/demonstration only; not patient care.'})
@@ -1140,6 +1353,91 @@ class H(BaseHTTPRequestHandler):
   s=self.auth(c)
   if not s:c.close();return self.sendj({'error':'Authentication required'},401)
   role=s['role']
+  if p.path=='/api/pc4/action':
+   sid=str(data.get('screen_id') or '');sc=pc4_screen(sid);act=str(data.get('action') or '').strip();rid=str(data.get('record_id') or '')
+   if not sc:c.close();return self.sendj({'error':'PRD screen not found'},404)
+   if not pc4_role_allowed(sc,role):c.close();return self.sendj({'error':'Role is not authorized for this PRD screen'},403)
+   if act not in (sc.get('actions') or []):c.close();return self.sendj({'error':'Action is not defined on this PRD screen'},409)
+   pid='' if sc.get('module_code')=='C.26' else str(data.get('patient_id') or '')
+   if pid and (not patient(c,pid) or not can_access_patient(c,role,pid)):c.close();return self.sendj({'error':'Patient not found or access not assigned'},403)
+   target=pc4_action_target(act);tasks=[]
+   if target and pid:
+    ts=pc4_screen(target)
+    if ts:
+     owner=pc4_handoff_owner(ts)
+     if owner in ROLES and owner!=role:
+      try:tasks.append(create_task(c,pid,owner,act,'PRD Handoff','High',sid,rid,'',((current_episode(c,pid) or {}).get('id') or ''),str(data.get('note') or ''),{'target_screen':target,'source_screen':sid,'action':act},role))
+      except Exception:pass
+   audit(c,pid,role,'PC4_PRD_ACTION',sid,rid,jdump({'action':act,'target_screen':target,'note':str(data.get('note') or '')[:500]}));c.commit();c.close();return self.sendj({'ok':True,'target_screen':target,'handoff_tasks':tasks})
+  if p.path=='/api/pc4/record':
+   sid=str(data.get('screen_id') or '');sc=pc4_screen(sid);op=str(data.get('op') or 'create').lower()
+   if not sc:c.close();return self.sendj({'error':'PRD screen not found'},404)
+   if sc.get('kind')!='form':c.close();return self.sendj({'error':'This PRD screen is a worklist/view, not a signable form'},409)
+   if not pc4_role_can_author(sc,role):c.close();return self.sendj({'error':'Role may view this PRD screen but is not authorized to create/edit/sign its record'},403)
+   pid='' if sc.get('module_code')=='C.26' else str(data.get('patient_id') or '')
+   if sc.get('module_code')!='C.26':
+    if not patient(c,pid):c.close();return self.sendj({'error':'Patient not found'},404)
+    if not can_access_patient(c,role,pid):c.close();return self.sendj({'error':'Patient access not assigned to this role'},403)
+   vals=data.get('values') or {};rid=str(data.get('record_id') or '')
+   if not isinstance(vals,dict):c.close();return self.sendj({'error':'values must be an object'},409)
+   if op=='create':
+    errs,warns=pc4_validate(sc,vals,False)
+    if errs:c.close();return self.sendj({'error':'Validation failed','errors':errs,'warnings':warns},409)
+    payload={'screen_id':sid,'screen_name':sc.get('name'),'module':sc.get('module'),'values':vals,'derived_values':pc4_derive(sc,vals),'source_context':pc4_context(c,pid,role),'lifecycle':'Draft','created_for_episode':((current_episode(c,pid) or {}).get('id') if pid else ''),'source_status':sc.get('source_status')}
+    rid=new_record(c,pid,'pc4_prd',payload,'Draft',role);c.commit();out=get_rec(c,rid);c.close();return self.sendj({'ok':True,'record':out,'warnings':warns},201)
+   rec=get_rec(c,rid)
+   if not rec or rec.get('entity_type')!='pc4_prd' or rec.get('data',{}).get('screen_id')!=sid:c.close();return self.sendj({'error':'PC4 record not found'},404)
+   if rec.get('patient_id')!=pid:c.close();return self.sendj({'error':'Patient/record mismatch'},409)
+   expected=data.get('expected_version')
+   if expected not in [None,''] and int(expected)!=int(rec.get('version',0)):c.close();return self.sendj({'error':'Version conflict — record changed since it was opened','current_version':rec.get('version')},409)
+   if op=='update':
+    if rec.get('status')!='Draft':c.close();return self.sendj({'error':'Only Draft records may be edited; create an amendment for a signed record'},409)
+    errs,warns=pc4_validate(sc,vals,False)
+    if errs:c.close();return self.sendj({'error':'Validation failed','errors':errs,'warnings':warns},409)
+    out=update_rec(c,rid,{'values':vals,'derived_values':pc4_derive(sc,vals),'last_source_context':pc4_context(c,pid,role)},'Draft',role,'PC4_DRAFT_UPDATE','Draft structured fields updated');c.commit();c.close();return self.sendj({'ok':True,'record':out,'warnings':warns})
+   if op=='sign':
+    if rec.get('status')!='Draft':c.close();return self.sendj({'error':'Only a Draft may be signed'},409)
+    current=vals if vals else rec.get('data',{}).get('values',{})
+    errs,warns=pc4_validate(sc,current,True)
+    if errs:c.close();return self.sendj({'error':'Cannot sign: validation failed','errors':errs,'warnings':warns},409)
+    attest=str(data.get('attestation') or 'I affirm this record is complete and accurate for its intended clinical/operational use.').strip()
+    frozen=pc4_context(c,pid,role)
+    out=update_rec(c,rid,{'values':current,'derived_values':pc4_derive(sc,current),'signed_snapshot':{'values':current,'derived_values':pc4_derive(sc,current),'source_context':frozen},'lifecycle':'Signed','signed_by':actor(role),'signed_at':now(),'attestation':attest},'Signed',role,'PC4_SIGN','Explicit sign/finalize with frozen-value snapshot');
+    # Downstream task on explicit signing when the action map has a natural target.
+    c.commit();c.close();return self.sendj({'ok':True,'record':out,'warnings':warns})
+   if op=='amend':
+    if rec.get('status') not in ['Signed','Amended']:c.close();return self.sendj({'error':'Only a signed/current record can be amended'},409)
+    reason=str(data.get('reason') or '').strip()
+    if not reason:c.close();return self.sendj({'error':'Amendment reason is required'},409)
+    newvals=vals or rec.get('data',{}).get('values',{})
+    newdata={**rec.get('data',{}),'values':newvals,'derived_values':pc4_derive(sc,newvals),'lifecycle':'Draft Amendment','supersedes_record_id':rid,'amendment_reason':reason,'signed_by':None,'signed_at':None,'attestation':''}
+    nrid=new_record(c,pid,'pc4_prd',newdata,'Draft',role)
+    update_rec(c,rid,{'superseded_by_record_id':nrid,'superseded_reason':reason},'Superseded',role,'PC4_SUPERSEDE','Superseded by amendment '+nrid)
+    c.commit();out=get_rec(c,nrid);c.close();return self.sendj({'ok':True,'record':out,'superseded_record_id':rid},201)
+   c.close();return self.sendj({'error':'Unsupported PC4 record operation'},409)
+  if p.path=='/api/cca-validation/feedback':
+   sid=str(data.get('screen_id') or '').strip();sc=pc4_screen(sid)
+   if not sc:c.close();return self.sendj({'error':'PRD screen not found'},404)
+   if not pc4_role_allowed(sc,role) and role!='Hospital Management / Admin':c.close();return self.sendj({'error':'Reviewer role is not assigned to this PRD screen'},403)
+   verdict=str(data.get('verdict') or '').strip();allowed=['Correct — Freeze','Change Required','Missing','Should Be Conditional','Should Be Integration','Not Applicable','Needs Discussion']
+   if verdict not in allowed:c.close();return self.sendj({'error':'Validation verdict required','allowed':allowed},409)
+   sev=str(data.get('severity') or 'None');sevs=['None','S1 — Safety / workflow blocker','S2 — Major','S3 — Moderate','S4 — Minor']
+   if sev not in sevs:c.close();return self.sendj({'error':'Invalid severity','allowed':sevs},409)
+   suggestion=str(data.get('suggestion') or '').strip();expected=str(data.get('expected') or '').strip();actual=str(data.get('actual') or '').strip()
+   if verdict not in ['Correct — Freeze','Not Applicable'] and not (suggestion or expected):c.close();return self.sendj({'error':'A change/gap verdict requires expected behavior or suggested correction'},409)
+   rid='CVF-'+uuid.uuid4().hex[:10].upper();stamp=now();pid=str(data.get('patient_id') or '')
+   target_type=str(data.get('target_type') or 'Screen');target_id=str(data.get('target_id') or sid);target_label=str(data.get('target_label') or sc.get('name') or sid);dimension=str(data.get('dimension') or 'Overall screen / workflow')
+   freeze=1 if verdict=='Correct — Freeze' or bool(data.get('freeze_correct')) else 0
+   c.execute('INSERT INTO cca_validation_feedback VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',(rid,'V12.2-PC4.0',pid,role,actor(role)['id'],sid,sc.get('module',''),target_type,target_id,target_label,dimension,verdict,sev,expected,actual,suggestion,freeze,'Open',stamp,stamp))
+   audit(c,pid,role,'CCA_VALIDATION_FEEDBACK','cca_validation',rid,f'{sid} • {target_type} • {target_label} • {verdict} • {sev}')
+   c.commit();c.close();return self.sendj({'ok':True,'id':rid,'verdict':verdict,'severity':sev},201)
+  if p.path=='/api/cca-validation/signoff':
+   specialty=str(data.get('specialty_role') or role)
+   if specialty!=role and role!='Hospital Management / Admin':c.close();return self.sendj({'error':'A reviewer may sign off only their own specialty; Admin may record an externally supplied sign-off'},403)
+   decision=str(data.get('decision') or '').strip();allowed=['Accepted for CCA configuration / integration phase','Accepted with required changes','Not accepted — workflow or information model requires redesign']
+   if decision not in allowed:c.close();return self.sendj({'error':'Specialty validation decision required','allowed':allowed},409)
+   rid='CVS-'+uuid.uuid4().hex[:10].upper();stamp=now();vals=(rid,'V12.2-PC4.0',specialty,role,actor(role)['id'],decision,str(data.get('what_to_freeze') or ''),str(data.get('required_changes') or ''),str(data.get('content_needed') or ''),str(data.get('integration_needed') or ''),stamp,stamp)
+   c.execute('INSERT INTO cca_validation_signoff VALUES(?,?,?,?,?,?,?,?,?,?,?,?)',vals);audit(c,'',role,'CCA_VALIDATION_SIGNOFF','cca_validation_signoff',rid,specialty+' • '+decision);c.commit();c.close();return self.sendj({'ok':True,'id':rid,'decision':decision},201)
   if p.path=='/api/patient':
    if role not in ['Front Desk','Patient Attender']:c.close();return self.sendj({'error':'Front Desk/Patient Attender required'},403)
    name=str(data.get('name','')).strip();dob=str(data.get('dob','')).strip();phone=str(data.get('phone','')).strip();abha=str(data.get('abha','')).strip();idn=str(data.get('id_number','')).strip()

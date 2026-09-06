@@ -1,0 +1,22 @@
+# PC4.0 Unit Catalogue
+
+- **%** — used by 4 executable field/column definitions
+- **Gy** — used by 9 executable field/column definitions
+- **INR** — used by 15 executable field/column definitions
+- **L/min** — used by 1 executable field/column definitions
+- **beats/min** — used by 1 executable field/column definitions
+- **breaths/min** — used by 1 executable field/column definitions
+- **cm** — used by 4 executable field/column definitions
+- **days** — used by 2 executable field/column definitions
+- **g** — used by 1 executable field/column definitions
+- **kg** — used by 21 executable field/column definitions
+- **kg/m²** — used by 6 executable field/column definitions
+- **mL** — used by 38 executable field/column definitions
+- **mL/h** — used by 16 executable field/column definitions
+- **mL/s** — used by 1 executable field/column definitions
+- **mg/mL** — used by 5 executable field/column definitions
+- **min** — used by 29 executable field/column definitions
+- **mm** — used by 21 executable field/column definitions
+- **mmHg** — used by 3 executable field/column definitions
+- **m²** — used by 6 executable field/column definitions
+- **°C** — used by 2 executable field/column definitions

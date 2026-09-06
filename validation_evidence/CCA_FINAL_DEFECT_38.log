@@ -1,0 +1,39 @@
+PASS CAP-002 {"status": 200, "keys": ["tasks", "owner_role"]}
+PASS CON-001 {"first": 200, "second": 409, "second_body": {"error": "Record changed since it was loaded", "expected_version": 1, "current_version": 2, "record_id": "CONSULTATION-604FE93169"}}
+PASS DATA-001 {"status": 409, "body": {"error": "Date of birth cannot be in the future"}}
+PASS DATA-NTNM-001 {"status": 200, "body": {"ok": true, "status": "Verified"}}
+PASS DATA-NUR007 {"status": 409, "body": {"error": "spo2 is outside the configured plausibility range", "field": "spo2", "range": [50, 100], "value": 150.0}}
+PASS REL-NUR-001 {"status": 409, "body": {"error": "weight_kg is outside the configured plausibility range", "field": "weight_kg", "range": [1, 350], "value": -5.0}}
+PASS REL-NUR-002 {"status": 409, "body": {"error": "height_cm is outside the configured plausibility range", "field": "height_cm", "range": [30, 250], "value": 0.0}}
+PASS DATA-NUR008 {"status": 409, "body": {"error": "ECOG must be 0–4", "allowed": ["0", "1", "2", "3", "4"]}}
+PASS SEC-001 {"logout": 200, "after_logout": 401, "body": {"error": "Authentication required"}}
+PASS SEC-HTML-001 {"status": 415, "body": {"error": "Active document content is not accepted even when the declared MIME type is different"}}
+PASS VER-001 {"status": 409, "body": {"error": "A finalized radiology report is immutable. Create a linked amendment with a documented reason.", "requires_amendment_reason": true, "supersedes": "RAD-0001"}}
+PASS VER-002 {"status": 409, "body": {"error": "A finalized pathology report is immutable. Create a linked amendment with a documented reason.", "requires_amendment_reason": true, "supersedes": "PATH-0001"}}
+PASS VER-003 {"status": 409, "body": {"error": "Active/orderable/retired clinical content is immutable. Clone a new Draft version before editing.", "template_id": "REG-CCA-TCHP-DEMO", "status": "Active", "orderable": true}}
+PASS WF-001 {"status": 409, "body": {"error": "Destination must be selected from the governed location master", "allowed": ["Front Desk", "Nurse Intake", "Medical Oncology", "Surgical Oncology", "Radiation Oncology", "Laboratory / Phlebotomy", "Radiology", "Pathology", "MDT / Tumour Board", "Oncology Pharmacy", "Day Care / Infusion", "Inpatient Care", "Finance / Billing", "Patient Liaison", "Follow-up", "Episode Closure"]}}
+PASS DATA-002 {"status": 409, "body": {"error": "New appointments cannot be scheduled in the past"}}
+PASS WF-002 {"create": 200, "no_show": 200, "task_found": true}
+PASS DATA-003 {"status": 409, "body": {"error": "Medication route must use the governed value set", "allowed": ["IV", "PO", "IM", "SQ", "Intrathecal", "CIV", "Other"]}}
+PASS DATA-004 {"status": 409, "body": {"error": "Allergy severity must use the governed value set", "allowed": ["Mild", "Moderate", "Severe", "Life-threatening", "Unknown"]}}
+PASS DATA-005 {"status": 409, "body": {"error": "Staging/classification date cannot be in the future"}}
+PASS DATA-006 {"status": 409, "body": {"error": "Care Plan status must use the governed state machine", "allowed": ["Draft", "Proposed", "Active", "Blocked", "On Hold", "Completed", "Superseded", "Cancelled"]}}
+PASS REL-001 {"first": 200, "second": 200, "idempotent": true, "conflict": 409, "receipt": "IDEMP-QA-000031038050"}
+PASS WF-003 {"collect": 200, "reject": 200, "task_id": "TASK-79698A55B5", "recollect": 200}
+PASS LAB-PLAUS-999999 {"status": 409, "body": {"error": "One or more laboratory values are outside the configured product-test plausibility range", "plausibility_errors": [{"field": "anc", "value": 999999.0, "unit": "×10^9/L", "normalized_value": 999999.0, "canonical_unit": "10^9/L", "plausible_range": [0.0, 100.0]}]}}
+PASS LAB-PLAUS-350 {"status": 409, "body": {"error": "One or more laboratory values are outside the configured product-test plausibility range", "plausibility_errors": [{"field": "anc", "value": 350.0, "unit": "×10^9/L", "normalized_value": 350.0, "canonical_unit": "10^9/L", "plausible_range": [0.0, 100.0]}]}}
+PASS LAB-PLAUS-3.5 {"status": 200, "body": {"ok": true, "id": "LAB-1551CD8BF2", "status": "Final", "units": {"hb": "g/dL", "wbc": "×10^9/L", "anc": "×10^9/L", "platelets": "×10^9/L", "creatinine": "mg/dL", "egfr": "mL/min/1.73m²", "bilirubin": "mg/dL", "ast": "U/L", "alt": "U/L", "albumin": "g/dL", "sodium": "mmol/L", "potassium": "mmol/L", "magnesium": "mg/dL", "calcium": "mg/dL", "lvef": "%"}, "critical_tasks": []}}
+PASS LAB-PLAUS-800-CELLS {"status": 200, "body": {"ok": true, "id": "LAB-FFCE3497F8", "status": "Final", "units": {"hb": "g/dL", "wbc": "×10^9/L", "anc": "cells/µL", "platelets": "×10^9/L", "creatinine": "mg/dL", "egfr": "mL/min/1.73m²", "bilirubin": "mg/dL", "ast": "U/L", "alt": "U/L", "albumin": "g/dL", "sodium": "mmol/L", "potassium": "mmol/L", "magnesium": "mg/dL", "calcium": "mg/dL", "lvef": "%"}, "supersedes": "LAB-1551CD8BF2", "amendment_reason": "QA alternate ANC unit normalization", "critical_tasks": []}}
+PASS WF-004 {"lab": 200, "task_ids": ["TASK-8A4DE91BE7"], "task_status": "Acknowledged"}
+PASS WF-005 {"without_addendum": 409, "with_addendum": 200}
+PASS CAP-001 {"status": 200, "grounded": true, "sources": 5}
+PASS UX-001 {"status": 200, "returned_count": 0}
+PASS SEC-002 {"status": 403, "body": {"error": "Patient access not assigned to this role"}}
+PASS RPT-004 {"current": "REPORT VERSION TWO", "historical": "REPORT VERSION ONE", "requested_version": 2}
+PASS WF-007 {"close": 200, "reopen": 200, "body": {"ok": true, "episode_id": "CANCER_EPISODE-0D637FEEED", "reopens": "CANCER_EPISODE-BCBF05AE6C"}}
+PASS WF-008 {"death": 200, "course_statuses": ["Discontinued"], "appointment_statuses": ["Cancelled"]}
+PASS WF-ORDER-PLAN-001 {"draft_plan_create": 200, "draft_plan_id": "TREATMENT_PLAN-AFBD25AC30", "order_attempt": 409, "body": {"error": "Treatment Order cannot be created from an unsigned or inactive Treatment Plan", "plan_id": "TREATMENT_PLAN-AFBD25AC30", "plan_status": "Draft"}, "approved_plan_id": "TP-0001"}
+PASS WF-006 {"admit": 200, "admission_id": "ADM-377F94A4", "order": 200, "discharge": 409, "body": {"error": "Discharge blocked while inpatient systemic treatment orders remain unresolved", "unresolved_orders": [{"id": "TREATMENT_ORDER-7DB85F6845", "status": "Verification Pending", "order_no": "ORD-B92197"}]}}
+PASS WF-ROUTE-001 {"queue": 200, "destination_bootstrap": 200, "body": {"patient": "PAT-17B18BC4"}}
+PASS LAB-PLAUS-001 {"LAB-PLAUS-999999": true, "LAB-PLAUS-350": true, "LAB-PLAUS-3.5": true, "LAB-PLAUS-800-CELLS": true}
+RESULT 38 PASS 0 FAIL

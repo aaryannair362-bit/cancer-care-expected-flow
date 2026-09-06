@@ -1,0 +1,3266 @@
+[
+  {
+    "screen_id": "SCR-REG-001",
+    "field": "Age (Part E CALC-001)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-001",
+    "field": "Waiting time = now \u2212 check-in time (CALC-002)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-001",
+    "field": "counts strip aggregates",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-001",
+    "field": "no-show derivation = appointment time + configured grace elapsed with no check-in (CALC-003) \u2014 system proposes No-show",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-001",
+    "field": "Front Desk confirms.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-002",
+    "field": "Age from DOB (CALC-001)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-002",
+    "field": "Duplicate match score (CALC-004) \u2014 algorithm product-defined, threshold .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-005",
+    "field": "Preparation set",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-005",
+    "field": "Interpreter required",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-005",
+    "field": "Isolation precautions",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-005",
+    "field": "Expected duration \u2014 for Day Care, from the regimen's summed administration time + premedication + observation (CALC-020)",
+    "unit": "min",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-005",
+    "field": "Next-cycle due date from last administration + cycle length (CALC-021)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-005",
+    "field": "Slot utilisation %",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-REG-005",
+    "field": "Days waiting.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INT-002",
+    "field": "BMI",
+    "unit": "kg/m\u00b2",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INT-002",
+    "field": "BSA",
+    "unit": "m\u00b2",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INT-002",
+    "field": "BSA formula name",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INT-002",
+    "field": "BSA uncapped",
+    "unit": "m\u00b2",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INT-002",
+    "field": "BSA capped",
+    "unit": "m\u00b2",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INT-002",
+    "field": "Mean arterial pressure",
+    "unit": "mmHg",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INT-002",
+    "field": "Fall-risk total",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MO-002",
+    "field": "Cancer chronology",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MO-002",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MO-002",
+    "field": "Pregnancy / lactation status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MO-003",
+    "field": "Interval history since last visit",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INV-001",
+    "field": "Relevant clinical details",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INV-001",
+    "field": "Isolation/precautions",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INV-001",
+    "field": "Interpreter/mobility",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INV-001",
+    "field": "Fasting required",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INV-001",
+    "field": "Prerequisite status (e.g. creatinine present and within validity for a contrast study \u2014 CALC-070)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INV-001",
+    "field": "expected result date from catalogue TAT",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-INV-001",
+    "field": "conflict with scheduled treatment date .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-001",
+    "field": "Comorbidities affecting treatment",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-001",
+    "field": "Performance status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-001",
+    "field": "Prognosis considerations (optional narrative). Evidence: auto-assembled checklist (see Tables) with per-item include/exclude and comment",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-001",
+    "field": "Completeness score and per-item status (CALC-080) against the meeting's required dataset",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-001",
+    "field": "submission deadline = meeting date \u2212 configured lead time",
+    "unit": "kg/m\u00b2",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-001",
+    "field": "days until meeting",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-001",
+    "field": "evidence age per item.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-004",
+    "field": "Per participant: Name",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-004",
+    "field": "Presenter",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-004",
+    "field": "Discussion started/ended",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-004",
+    "field": "Quorum met (CALC-081) \u2014 rule, required disciplines, present disciplines, result, recomputed per case using presence at the time of that case",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-004",
+    "field": "case elapsed time",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-004",
+    "field": "meeting running time vs allocation",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MDT-004",
+    "field": "cases remaining.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PLN-001",
+    "field": "Basis: Derived from MDT",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PLN-001",
+    "field": "Basis if not MDT. Diagnosis snapshot: auto, read-only, frozen at signature (site, laterality, histology, grade, cTNM, pTNM, biomarkers, disease sta\u2026",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PLN-001",
+    "field": "Required baseline investigations",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PLN-001",
+    "field": "Required ongoing monitoring. RT component: Site(s)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PLN-001",
+    "field": "Planned response assessment points (after cycle n / at week n / post-RT + n weeks). Consent: Required consentswith status per consent. Patient disc\u2026",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PLN-001",
+    "field": "Expected duration",
+    "unit": "min",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PLN-001",
+    "field": "milestone dates",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PLN-001",
+    "field": "baseline investigation completeness",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PLN-001",
+    "field": "high-cost flag",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PLN-001",
+    "field": "cycles \u00d7 cycle length projection",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PLN-001",
+    "field": "planned end date.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "Treatment intent",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "Line of therapy.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "Regimen version",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "Cycle number default",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "next-cycle due date",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "delay in days",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "BSA",
+    "unit": "m\u00b2",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "CrCl",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "eGFR",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "ANC",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "cumulative exposure and % of ceiling",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "dose intensity of prior cycles",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-001",
+    "field": "staleness of every imported value against the regimen's configured freshness windows .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-002",
+    "field": "Calculated dose",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-002",
+    "field": "rounding",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-002",
+    "field": "variance %",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-002",
+    "field": "concentration",
+    "unit": "mg/mL",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-002",
+    "field": "the third of rate/volume/duration",
+    "unit": "mL",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-002",
+    "field": "cumulative dose",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-002",
+    "field": "total chair time",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-002",
+    "field": "total fluid volume",
+    "unit": "mL",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-002",
+    "field": "dose intensity vs protocol (CALC-117). Every calculation is expandable to show inputs, formula, source timestamps and rounding rule applied (per th\u2026",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-004",
+    "field": "All doses",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-004",
+    "field": "total chair time",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-004",
+    "field": "total volume",
+    "unit": "mL",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-004",
+    "field": "expected end time",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-004",
+    "field": "next cycle due date",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORD-004",
+    "field": "order expiry.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RDY-001",
+    "field": "Per-criterion outcome",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RDY-001",
+    "field": "freshness",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RDY-001",
+    "field": "overall status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RDY-001",
+    "field": "ANC where derived (CALC-121)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RDY-001",
+    "field": "CrCl (CALC-100)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RDY-001",
+    "field": "corrected calcium (CALC-122)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RDY-001",
+    "field": "days since last cycle",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RDY-001",
+    "field": "time to planned administration.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PHA-002",
+    "field": "For each dose-based row, the system displays the pharmacist's independently recomputed calculated dose alongside the order's calculated dose (CALC-\u2026",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PHA-002",
+    "field": "Checklist derived from the regimen master: mandatory antiemetics present, premedication present and correctly timed, hydration present, growth fact\u2026",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PHA-002",
+    "field": "Recalculated doses",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PHA-002",
+    "field": "discrepancies",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PHA-002",
+    "field": "concentrations",
+    "unit": "mg/mL",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PHA-002",
+    "field": "cumulative doses and % of ceiling",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PHA-002",
+    "field": "total volume",
+    "unit": "mL",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PHA-002",
+    "field": "preparation time estimate",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PHA-002",
+    "field": "latest safe preparation start time from administration time and stability (CALC-130).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-001",
+    "field": "Expected duration (CALC-020)",
+    "unit": "min",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-001",
+    "field": "expected finish",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-001",
+    "field": "chair occupancy and turnover",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-001",
+    "field": "waiting time",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-001",
+    "field": "weight delta vs order weight (CALC-013)",
+    "unit": "kg",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-001",
+    "field": "gate status derivation (CALC-140).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-002",
+    "field": "Interpreter present. Identity verification: Verification method: Full name stated by patient",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-002",
+    "field": "Carer confirmation (only where the patient cannot self-identify, with reason). Each selected method records: value confirmed (Y/N), and for scannin\u2026",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-002",
+    "field": "Verified at. Wristband applied/present (Y/N; if applied now, printed by, at). Immediate concerns: Any new symptoms since last contact",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-002",
+    "field": "Barcode match result",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-002",
+    "field": "time since last cycle",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-002",
+    "field": "waiting time start.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-003",
+    "field": "Planned administration date matches today",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-003",
+    "field": "Order expiry not passed",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-003",
+    "field": "Any order changes since last cycle.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-003",
+    "field": "Consent type required",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-003",
+    "field": "Consent status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-003",
+    "field": "Clearance status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-003",
+    "field": "Weight delta",
+    "unit": "kg",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-003",
+    "field": "readiness expiry",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-003",
+    "field": "BSA recomputed with today's weight (displayed alongside the order BSA, not replacing it \u2014 MAR-013 )",
+    "unit": "kg",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-003",
+    "field": "time since clearance.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-004",
+    "field": "Received by",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-004",
+    "field": "Barcode match",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-004",
+    "field": "prepared-vs-ordered deviation",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-004",
+    "field": "BUD remaining",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-004",
+    "field": "projected BUD at planned start and at projected end of infusion (a product whose BUD expires mid-infusion must be flagged before starting \u2014 MAR-015 ).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-005",
+    "field": "Vesicant drugs in this order",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-005",
+    "field": "Days in situ",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-005",
+    "field": "suitability requirement derivation",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-005",
+    "field": "contraindicated-limb check.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-006",
+    "field": "Actual duration",
+    "unit": "min",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-006",
+    "field": "duration variance",
+    "unit": "min",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-006",
+    "field": "volume infused",
+    "unit": "mL",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-006",
+    "field": "fraction of dose administered on partial",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-006",
+    "field": "administered-vs-ordered variance",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-006",
+    "field": "cumulative administered dose update (CALC-102, using value #5)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-006",
+    "field": "session totals",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-006",
+    "field": "next observation due",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-006",
+    "field": "projected end time.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-008",
+    "field": "Prior exposure to this agent",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-008",
+    "field": "prior reactions to this agent",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-008",
+    "field": "premedication given this cycle",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-008",
+    "field": "Time to onset",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-008",
+    "field": "dose/volume at onset",
+    "unit": "mL",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-008",
+    "field": "duration of reaction",
+    "unit": "min",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-MAR-008",
+    "field": "cumulative reaction count for this agent for this patient.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-TOX-001",
+    "field": "Days since onset",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-TOX-001",
+    "field": "peak grade",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-TOX-001",
+    "field": "trend",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-TOX-001",
+    "field": "days since last grading",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-TOX-001",
+    "field": "duration of each grade level",
+    "unit": "min",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-TOX-001",
+    "field": "cumulative days at grade \u2265 threshold",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-TOX-001",
+    "field": "count of toxicity-driven dose modifications.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORL-001",
+    "field": "Required baseline investigations",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORL-001",
+    "field": "Calculated dose",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORL-001",
+    "field": "achievable-dose combination",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORL-001",
+    "field": "days supply",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORL-001",
+    "field": "planned end date",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORL-001",
+    "field": "next monitoring due",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORL-001",
+    "field": "cumulative exposure where tracked",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ORL-001",
+    "field": "adherence-expected pill count for reconciliation at review (CALC-162).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-001",
+    "field": "Pathway state (CALC-170)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-001",
+    "field": "days in state",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-001",
+    "field": "fractions delivered",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-001",
+    "field": "cumulative delivered dose (CALC-171)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-001",
+    "field": "fractions remaining",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-001",
+    "field": "gap days (CALC-172)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-001",
+    "field": "projected completion (CALC-173)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-001",
+    "field": "elapsed treatment days (CALC-174).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-002",
+    "field": "Repeating group per prior course: Treating centre",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-002",
+    "field": "Dose per fraction of prior courses",
+    "unit": "Gy",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-002",
+    "field": "interval since prior RT",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-002",
+    "field": "interval since surgery",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-002",
+    "field": "interval since last systemic cycle .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-003",
+    "field": "Course ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-003",
+    "field": "Phase number",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-003",
+    "field": "Dose per fraction (CALC-175 = total dose \u00f7 fractions, displayed to configured precision; or the RO may enter dose/fraction and fractions, with tota\u2026",
+    "unit": "Gy",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-003",
+    "field": "Derived-from",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-003",
+    "field": "Dose per fraction or total dose (whichever is derived)",
+    "unit": "Gy",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-003",
+    "field": "planned end date",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-003",
+    "field": "total course dose",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-003",
+    "field": "total fractions",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-003",
+    "field": "overall treatment time",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-003",
+    "field": "EQD2/BED where configured",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-003",
+    "field": "consistency checks (see alerts).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-004",
+    "field": "Time in position",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-004",
+    "field": "scan extent length",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-004",
+    "field": "interval from prescription to simulation .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-005",
+    "field": "Completeness against required set",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-005",
+    "field": "structure count",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-005",
+    "field": "total target volume",
+    "unit": "mL",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-005",
+    "field": "days from simulation to contour approval .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-006",
+    "field": "Objective/constraint met flags",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-006",
+    "field": "deviations",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-006",
+    "field": "total MU",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-006",
+    "field": "estimated delivery time",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-006",
+    "field": "plan sum values",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-006",
+    "field": "days from contour approval to plan submission .",
+    "unit": "kg/m\u00b2",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-009",
+    "field": "Auto-generated: fractions delivered since last OTV, setup deviations, out-of-tolerance images, interruptions, concurrent chemo administered, unsche\u2026",
+    "unit": "mL/h",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-009",
+    "field": "Cumulative dose",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-009",
+    "field": "% complete",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-009",
+    "field": "elapsed and gap days",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-009",
+    "field": "projected completion",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-009",
+    "field": "weight change",
+    "unit": "kg",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-009",
+    "field": "toxicity grade trajectory",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RO-009",
+    "field": "number of out-of-tolerance matches.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-001",
+    "field": "Pathway state (CALC-200)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-001",
+    "field": "days in state",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-001",
+    "field": "interval since neoadjuvant completion (CALC-191)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-001",
+    "field": "post-operative day (CALC-190)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-001",
+    "field": "days pathology outstanding (CALC-196)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-001",
+    "field": "days since pathology report to handoff (CALC-197)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-001",
+    "field": "adjuvant-handoff target countdown (CALC-202).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-002",
+    "field": "Referring clinician/service",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-002",
+    "field": "Auto-assembled timelineshared with SCR-MO-002 chronology object \u2014 not re-typed (MO-CON-060 pattern).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-002",
+    "field": "Auto from SCR-DX-004 (read-only) with clinician confirmation",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-002",
+    "field": "General",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-002",
+    "field": "Coded problem list (shared GEN-LNG-003), auto-supplemented, with a surgical-relevance flag per problem (cardiac, pulmonary, renal, hepatic, diabete\u2026",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-002",
+    "field": "Age",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-002",
+    "field": "BMI",
+    "unit": "kg/m\u00b2",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-002",
+    "field": "interval since neoadjuvant completion (CALC-191)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-002",
+    "field": "interval since prior surgery/RT (CALC-062/analogue)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-002",
+    "field": "PS trend.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-003",
+    "field": "Procedure short name",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-003",
+    "field": "Auto-assembled required set from Procedure Master + anaesthesia-driven standard set , each launchable to SCR-INV-001, with status .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-003",
+    "field": "Anaesthesia referral raised",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-003",
+    "field": "bed request raised.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-003",
+    "field": "If yes \u2014 stoma-site marking required pre-operatively.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-003",
+    "field": "Required consent type(s)with status per consent (from SCR-SO-005).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-003",
+    "field": "Interval since neoadjuvant completion (CALC-191)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-003",
+    "field": "target-interval countdowns",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-003",
+    "field": "pre-op investigation completeness .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-004",
+    "field": "Since the surgical consultation/plan: new symptoms, weight change, functional status change, new results, any change to disease status.",
+    "unit": "kg",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-004",
+    "field": "Auto-linked with dates",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-004",
+    "field": "Interval since neoadjuvant completion",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-004",
+    "field": "washout-interval compliance (SO-040)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-004",
+    "field": "staleness of every imported value against configured windows",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-004",
+    "field": "overall readiness completeness gauge .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-005",
+    "field": "Template + version",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-005",
+    "field": "Procedure/Surgical Plan version consented to",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-005",
+    "field": "Site & laterality",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-005",
+    "field": "Planned extent as stated to patient.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-005",
+    "field": "Expected benefit",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-005",
+    "field": "Distinct, timestamped, explicit affirmative action separate from the auto-populated display (SO-002) \u2014 this is the second of the five reconfirmatio\u2026",
+    "unit": "mL/h",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-006",
+    "field": "Surgical Plan version",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-006",
+    "field": "Planned procedure, site, laterality",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-006",
+    "field": "Special equipment/implants",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-006",
+    "field": "Blood product hold status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-006",
+    "field": "Consent status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-006",
+    "field": "Fasting instruction issued",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-006",
+    "field": "Ready-for-theatre aggregate chip (CALC-201)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-006",
+    "field": "list total time vs theatre session length",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-006",
+    "field": "days waiting",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-006",
+    "field": "interval-since-neoadjuvant compliance flag (CALC-191 vs minimum).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-007",
+    "field": "Interval history since pre-op workup",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-007",
+    "field": "Time since last fasting intake",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-007",
+    "field": "interval since workup.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-008",
+    "field": "Antibiotic-timing compliance",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-008",
+    "field": "phase completion percentage",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-008",
+    "field": "time between phases.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-009",
+    "field": "Primary surgeon",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-009",
+    "field": "Anaesthetist",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-009",
+    "field": "Prophylactic antibiotics",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-009",
+    "field": "Specimen number",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-009",
+    "field": "Operative duration (CALC-194 = end time \u2212 start time)",
+    "unit": "min",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-009",
+    "field": "Estimated blood loss aggregation where multiple sub-estimates are entered (CALC-193)",
+    "unit": "mL",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-009",
+    "field": "specimen-accession discrepancy flag (SO-056)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-009",
+    "field": "planned-vs-actual concordance flags for procedure, approach, and level of care (GEN-CMP-001, ).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-010",
+    "field": "Time from operation end to PACU arrival",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-010",
+    "field": "time in PACU .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-011",
+    "field": "Interval events",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-011",
+    "field": "Post-operative day",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-011",
+    "field": "days on antibiotics",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-011",
+    "field": "days to anticipated discharge",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-011",
+    "field": "mobility-vs-target variance.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-012",
+    "field": "Days since surgery",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-012",
+    "field": "days since last dressing change",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-012",
+    "field": "trend (improving/static/worsening) from the last two assessments .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-013",
+    "field": "Removal criteria met (compared against the plan's structured criteria, thresholds) with a clinician/nurse confirmation",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-013",
+    "field": "hour output",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-013",
+    "field": "cumulative output (CALC-192)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-013",
+    "field": "trend (declining/static/rising)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-013",
+    "field": "days in situ .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-014",
+    "field": "Days since formation",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-014",
+    "field": "output trend",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-014",
+    "field": "independence progression .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-015",
+    "field": "Post-operative day at onset",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-015",
+    "field": "days of discharge delay attributable",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-015",
+    "field": "cumulative complication count and highest grade for the episode .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-016",
+    "field": "MDT re-discussion required?",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-016",
+    "field": "Closest margin distance across all specimens (CALC-195)",
+    "unit": "mm",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-016",
+    "field": "days from surgery to pathology report (CALC-196)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-016",
+    "field": "concordance flag.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-018",
+    "field": "biomarkers \u2014 auto-assembled, not re-typed.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-018",
+    "field": "MDT required?.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-018",
+    "field": "Days elapsed since surgery/pathology",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-018",
+    "field": "target-date countdown (CALC-202)",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-018",
+    "field": "overdue flag against target.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-019",
+    "field": "Post-op interval",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-019",
+    "field": "time since adjuvant completion where applicable.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-020",
+    "field": "Diagnosis",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-020",
+    "field": "Operation performed",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-020",
+    "field": "Auto-assembled narrative from daily progress notes (MO-CON-060/SO-059 pattern \u2014 assembled, not re-typed), editable summary layer on top.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-020",
+    "field": "Auto-listed from SCR-SO-015 with grade and resolution status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-020",
+    "field": "Length of stay",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-020",
+    "field": "days to first follow-up .",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-021",
+    "field": "Clinical context auto-assembled (diagnosis, procedure in progress).",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SO-021",
+    "field": "Turnaround time (request to result) \u2014 tracked for departmental performance reporting.",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-001",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-001",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-002",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-002",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-002",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-003",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-003",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-003",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-004",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-004",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-005",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-005",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-005",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-006",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-006",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-006",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-007",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-007",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-007",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-008",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-008",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-008",
+    "field": "Neoadjuvant therapy received",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-008",
+    "field": "Therapy completion date",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-008",
+    "field": "Interval to specimen",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-008",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-009",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-009",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-009",
+    "field": "Clinical stage comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-009",
+    "field": "Concordance",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-009",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-010",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-010",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-011",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-011",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-011",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-012",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-012",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-012",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-013",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-013",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-013",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-014",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-014",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-014",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-015",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-015",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-015",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-016",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-016",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-016",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-017",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-017",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-018",
+    "field": "Neoadjuvant treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-PAT-018",
+    "field": "Prior pathology comparison",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-001",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-002",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-002",
+    "field": "Creatinine / eGFR status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-002",
+    "field": "Contrast allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-002",
+    "field": "Pregnancy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-002",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-003",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-003",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-004",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-004",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-005",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-005",
+    "field": "Target lesion sum \u2014 baseline",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-005",
+    "field": "Target lesion sum \u2014 current",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-005",
+    "field": "Change from baseline",
+    "unit": "%",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-005",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-006",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-006",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-007",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-007",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-008",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-009",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-009",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-010",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-010",
+    "field": "Consent status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-010",
+    "field": "Coagulation / platelet readiness",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-010",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-011",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-011",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-012",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-012",
+    "field": "Designated by",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-012",
+    "field": "Designated at",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-012",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-013",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-013",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-014",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-015",
+    "field": "Treatment phase",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RAD-015",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-001",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-002",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-002",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-003",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-003",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-004",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-004",
+    "field": "Cancer history / current status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-004",
+    "field": "Current treatment / last administration",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-004",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-005",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-005",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-006",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-006",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-007",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-007",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-008",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-008",
+    "field": "Interval events",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-008",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-009",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-009",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-010",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-010",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-011",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-011",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-012",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-012",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-013",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-013",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-014",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-015",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-016",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-016",
+    "field": "Oncology treatment delivered",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-016",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-017",
+    "field": "Allergy status",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-017",
+    "field": "Cancer episode closure reason",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-IPD-017",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-002",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-003",
+    "field": "Baseline target sum",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-003",
+    "field": "Current target sum",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-003",
+    "field": "Change from baseline",
+    "unit": "%",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-003",
+    "field": "Change from nadir",
+    "unit": "%",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-003",
+    "field": "Radiologist-proposed response",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-003",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-004",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-006",
+    "field": "Biochemical trend",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-006",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-007",
+    "field": "Radiologist-proposed response",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-007",
+    "field": "Clinical response component",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-007",
+    "field": "Biochemical response component",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-007",
+    "field": "Pathological response component",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-007",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-008",
+    "field": "Resolved by",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-008",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-009",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-010",
+    "field": "Confirmed response",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-RSP-010",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-002",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Diagnosis & staging snapshot",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Treatment intent and plan history",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Systemic therapy \u2014 planned vs actually administered",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Radiotherapy \u2014 prescribed vs actually delivered",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Surgery \u2014 planned vs actual procedure",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Final pathology / pathological stage",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Response history",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Significant toxicities / complications",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Cumulative exposure",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Ongoing medications",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Follow-up and surveillance plan",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Late-effect considerations",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Care-team contacts",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-003",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-004",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-005",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-006",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-CMP-007",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-002",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-003",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-004",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Diagnosis and treatment summary",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Care team contacts",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Treatments received",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Ongoing medications",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Late effects to watch",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Follow-up schedule",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Planned tests and rationale",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Red-flag symptoms",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Rehabilitation / nutrition / psychosocial resources",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Fertility / sexual-health support",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Health maintenance",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Next appointments",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-006",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-007",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-SURV-009",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-002",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-003",
+    "field": "Estimate number",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-003",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-004",
+    "field": "Total estimated treatment cost",
+    "unit": "INR",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-004",
+    "field": "Clinical decision fields are read-only",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-004",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-005",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-007",
+    "field": "Receipt number",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-007",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-008",
+    "field": "Gross charge",
+    "unit": "INR",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-008",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-009",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-010",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-011",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-FIN-013",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-001",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-001",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-002",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-002",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-003",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-003",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-004",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-004",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-005",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-005",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-006",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-006",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-007",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-007",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-008",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-008",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-009",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-009",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-010",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-010",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-011",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-011",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-012",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-012",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-013",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-013",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-014",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-015",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-015",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-016",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-016",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-017",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-017",
+    "field": "Author / accountable owner",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  },
+  {
+    "screen_id": "SCR-ADM-018",
+    "field": "Master record ID",
+    "unit": "",
+    "rule": "Source-derived/read-only. Specific arithmetic is implemented by the PC4 calculation engine when recognized; otherwise the owning source record is displayed with provenance."
+  }
+]

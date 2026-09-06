@@ -1,0 +1,25 @@
+CCA CANCER CARE AI OS — V12.2-PC4.0
+CLINICIAN & STAKEHOLDER VALIDATION DISTRIBUTION
+
+1. This package uses SYNTHETIC demo data only. Do not use it for patient care.
+2. Start the product using the operating-system launcher:
+   macOS: Start_CCA_Validation.command
+   Linux: Start_CCA_Validation_Linux.sh
+   Windows: Start_CCA_Validation_Windows.bat
+3. Open http://127.0.0.1:8765
+4. Demo PIN: 2026
+5. Select your real clinical/operational role.
+6. Open "CCA Validation Center" first.
+7. Then use "PRD Complete Workflows" and test your real workflow.
+8. Use "Validate this screen" and "Validate field" controls while reviewing.
+9. For a consolidated/offline tracker use:
+   CCA_VALIDATION_PACK/CCA_Clinician_Stakeholder_Validation_Workbook.xlsx
+10. Do not approve synthetic regimen doses, readiness thresholds, RT constraints,
+    pharmacy stability/BUD values or consent wording as CCA policy. Those are CCA
+    institutional configuration/sign-off items.
+
+Review principle:
+INPUT → VIEW → DECISION/ACTION → OUTPUT/HANDOFF
+
+The receiving role should be able to continue the patient journey without reconstructing
+missing clinical information outside the system.

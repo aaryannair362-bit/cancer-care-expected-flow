@@ -1,0 +1,198 @@
+{
+  "suite": "CCA Clinician Validation Mode",
+  "pass": 11,
+  "fail": 0,
+  "details": [
+    {
+      "id": "CCA-VAL-001-summary-endpoint",
+      "pass": true,
+      "detail": {
+        "count": 0,
+        "verdicts": {},
+        "severity": {},
+        "feedback": []
+      }
+    },
+    {
+      "id": "CCA-VAL-002-field-feedback",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "CVF-69FCDA9FF3",
+        "verdict": "Correct \u2014 Freeze",
+        "severity": "None"
+      }
+    },
+    {
+      "id": "CCA-VAL-003-feedback-read",
+      "pass": true,
+      "detail": {
+        "feedback": [
+          {
+            "id": "CVF-69FCDA9FF3",
+            "build": "V12.2-PC4.0",
+            "patient_id": "PAT-0001",
+            "reviewer_role": "Medical Oncology",
+            "reviewer_actor_id": "USR-MEDICALO-001",
+            "screen_id": "SCR-MO-002",
+            "module": "C.4 Medical Oncology",
+            "target_type": "Field",
+            "target_id": "assessment",
+            "target_label": "Assessment",
+            "dimension": "Field completeness",
+            "verdict": "Correct \u2014 Freeze",
+            "severity": "None",
+            "expected": "Assessment present",
+            "actual": "Assessment present",
+            "suggestion": "",
+            "freeze_correct": 1,
+            "status": "Open",
+            "created_at": "2026-09-06T14:29:10+05:30",
+            "updated_at": "2026-09-06T14:29:10+05:30"
+          }
+        ],
+        "count": 1
+      }
+    },
+    {
+      "id": "CCA-VAL-004-gap-feedback",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "CVF-887C6A4362",
+        "verdict": "Change Required",
+        "severity": "S2 \u2014 Major"
+      }
+    },
+    {
+      "id": "CCA-VAL-005-gap-requires-detail",
+      "pass": true,
+      "detail": {
+        "error": "A change/gap verdict requires expected behavior or suggested correction"
+      }
+    },
+    {
+      "id": "CCA-VAL-006-role-screen-guard",
+      "pass": true,
+      "detail": {
+        "error": "Reviewer role is not assigned to this PRD screen"
+      }
+    },
+    {
+      "id": "CCA-VAL-007-specialty-signoff",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "CVS-3198DB93BC",
+        "decision": "Accepted with required changes"
+      }
+    },
+    {
+      "id": "CCA-VAL-008-signoff-read",
+      "pass": true,
+      "detail": {
+        "signoffs": [
+          {
+            "id": "CVS-3198DB93BC",
+            "build": "V12.2-PC4.0",
+            "specialty_role": "Medical Oncology",
+            "reviewer_role": "Medical Oncology",
+            "reviewer_actor_id": "USR-MEDICALO-001",
+            "decision": "Accepted with required changes",
+            "what_to_freeze": "Correct items",
+            "required_changes": "Issue register items",
+            "content_needed": "CCA regimen master",
+            "integration_needed": "LIS/RIS",
+            "created_at": "2026-09-06T14:29:10+05:30",
+            "updated_at": "2026-09-06T14:29:10+05:30"
+          }
+        ],
+        "latest": {
+          "id": "CVS-3198DB93BC",
+          "build": "V12.2-PC4.0",
+          "specialty_role": "Medical Oncology",
+          "reviewer_role": "Medical Oncology",
+          "reviewer_actor_id": "USR-MEDICALO-001",
+          "decision": "Accepted with required changes",
+          "what_to_freeze": "Correct items",
+          "required_changes": "Issue register items",
+          "content_needed": "CCA regimen master",
+          "integration_needed": "LIS/RIS",
+          "created_at": "2026-09-06T14:29:10+05:30",
+          "updated_at": "2026-09-06T14:29:10+05:30"
+        }
+      }
+    },
+    {
+      "id": "CCA-VAL-009-summary-counts",
+      "pass": true,
+      "detail": {
+        "count": 2,
+        "verdicts": {
+          "Correct \u2014 Freeze": 1,
+          "Change Required": 1
+        },
+        "severity": {
+          "None": 1,
+          "S2 \u2014 Major": 1
+        },
+        "feedback": [
+          {
+            "id": "CVF-69FCDA9FF3",
+            "build": "V12.2-PC4.0",
+            "patient_id": "PAT-0001",
+            "reviewer_role": "Medical Oncology",
+            "reviewer_actor_id": "USR-MEDICALO-001",
+            "screen_id": "SCR-MO-002",
+            "module": "C.4 Medical Oncology",
+            "target_type": "Field",
+            "target_id": "assessment",
+            "target_label": "Assessment",
+            "dimension": "Field completeness",
+            "verdict": "Correct \u2014 Freeze",
+            "severity": "None",
+            "expected": "Assessment present",
+            "actual": "Assessment present",
+            "suggestion": "",
+            "freeze_correct": 1,
+            "status": "Open",
+            "created_at": "2026-09-06T14:29:10+05:30",
+            "updated_at": "2026-09-06T14:29:10+05:30"
+          },
+          {
+            "id": "CVF-887C6A4362",
+            "build": "V12.2-PC4.0",
+            "patient_id": "PAT-0001",
+            "reviewer_role": "Medical Oncology",
+            "reviewer_actor_id": "USR-MEDICALO-001",
+            "screen_id": "SCR-MO-002",
+            "module": "C.4 Medical Oncology",
+            "target_type": "Screen",
+            "target_id": "SCR-MO-002",
+            "target_label": "Initial Oncology Consultation",
+            "dimension": "Overall screen / workflow",
+            "verdict": "Change Required",
+            "severity": "S2 \u2014 Major",
+            "expected": "Expected behavior",
+            "actual": "Actual observation",
+            "suggestion": "Required correction",
+            "freeze_correct": 0,
+            "status": "Open",
+            "created_at": "2026-09-06T14:29:10+05:30",
+            "updated_at": "2026-09-06T14:29:10+05:30"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CCA-VAL-010-ui-instrumentation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "CCA-VAL-011-validation-pack",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

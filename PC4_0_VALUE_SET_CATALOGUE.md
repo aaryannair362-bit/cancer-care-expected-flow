@@ -1,0 +1,439 @@
+# PC4.0 Value Set Catalogue
+
+- **SCR-REG-001 — Sex:** Male | Female | Other | Unknown
+- **SCR-REG-002 — Sex:** product-defined: Male | Female | Other | Unknown, extensions)
+- **SCR-REG-005 — Priority:** Routine | Urgent | Emergency
+- **SCR-INT-002 — Height method:** Measured — standing | Measured — supine | Measured — segmental | Patient-reported | Carried forward
+- **SCR-INT-002 — Height source unit:** cm | m | inches | feet + inches
+- **SCR-INT-002 — Height source:** Measured here | Device-integrated | Reported by patient | Transcribed from external record
+- **SCR-INT-002 — Weight method:** Measured — standing scale | Measured — chair scale | Measured — bed scale | Measured — hoist | Patient-reported | Estimated | Carried forward
+- **SCR-INT-002 — Weight condition qualifier:** Light clothing | Full clothing | With prosthesis | With cast | Post-dialysis | Pre-dialysis | Post-paracentesis | Other
+- **SCR-INT-002 — Weight source unit:** kg | g | lb
+- **SCR-INT-002 — Weight source:** Measured here | Device-integrated | Reported by patient | Transcribed from external record
+- **SCR-INT-002 — Dosing weight basis:** Actual measured weight | Adjusted weight | Ideal weight | Clinician-specified weight
+- **SCR-INT-002 — BP site:** Left arm | Right arm | Left leg | Right leg | Other
+- **SCR-INT-002 — BP position:** Sitting | Standing | Supine
+- **SCR-INT-002 — Pulse rhythm:** Regular | Irregular | Irregularly irregular
+- **SCR-INT-002 — Temperature site:** Oral | Axillary | Tympanic | Temporal | Rectal | Core
+- **SCR-INT-002 — Oxygen support:** Room air | On oxygen
+- **SCR-INT-002 — Allergy status:** No known allergies | Known allergy / adverse reaction | Unknown / not reconciled
+- **SCR-INT-002 — Medication reconciliation status:** Captured — awaiting clinician confirmation | Clinician confirmed | Unable to reconcile
+- **SCR-INT-002 — Pregnancy applicability:** Applicable | Not applicable — post-menopausal | Not applicable — surgically sterile | Not applicable — age/sex policy | Unknown
+- **SCR-INT-002 — Pregnancy test required:** Yes | No
+- **SCR-INT-002 — Pregnancy test result:** Negative | Positive | Indeterminate | Pending
+- **SCR-INT-002 — Lactation status:** Not lactating | Lactating | Unknown
+- **SCR-INT-002 — Escalation severity:** Routine | Urgent | Emergency
+- **SCR-NAV-004 — Direction:** Inbound | Outbound
+- **SCR-NAV-004 — Method:** Phone | SMS | Email | Portal | In person | Home visit
+- **SCR-NAV-004 — Contacted party:** Patient | Caregiver | External provider
+- **SCR-NAV-004 — Follow-up required:** Yes | No
+- **SCR-MO-002 — Fertility preservation discussion:** Yes | No | Not applicable
+- **SCR-MO-002 — Performance status instrument:** ECOG | Karnofsky | Other
+- **SCR-MO-002 — Disease status:** Suspected | New diagnosis | Localized | Locally advanced | Metastatic | Recurrent | Progressive | Remission / NED | Other
+- **SCR-MO-002 — Treatment intent:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative | Maintenance | Consolidation | Other
+- **SCR-MO-002 — MDT required:** Yes | No
+- **SCR-MO-003 — Plan decision:** Continue | Modify | Hold | Delay | Discontinue | Change line
+- **SCR-INV-001 — Priority:** product-defined: Routine | Urgent | STAT | Pre-treatment — required by | MDT deadline )
+- **SCR-INV-001 — Purpose:** Diagnostic | Staging | Restaging | Response assessment | Surveillance | Monitoring — treatment safety | Complication | Procedure planning | RT planning)
+- **SCR-INV-001 — Body region / specimen site / laterality (conditional, R for imaging and pathology):** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-MDT-001 — Urgency:** product-defined: Routine | Urgent — next available | Emergency — out-of-cycle discussion)
+- **SCR-MDT-001 — Case category. Question: Specific question(s), question type) — MDT-020 : a submission without a specific question is rejected:** product-defined: New diagnosis | Post-operative | Progression or recurrence | Complex management | Re-discussion | Second opinion | Trial screening | Toxicity management | End-of-treatment)
+- **SCR-MDT-004 — Treatment intent:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-MDT-004 — Recommended modality sequence:** Surgery | Systemic | Radiotherapy | Combined chemoradiation | Best supportive care | Observation | Further investigation | Trial)
+- **SCR-MDT-004 — Recommended RT (site, intent, optional):** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-MDT-004 — Recommended surgery (procedure, intent, optional):** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-MDT-004 — Consensus:** product-defined: Unanimous | Majority | No consensus — deferred | No consensus — chair decision)
+- **SCR-MDT-004 — Action type:** product-defined: Order investigation | Refer | Commence systemic therapy | Refer for RT | Schedule surgery | Obtain consent | Obtain further pathology | Re-list for MDT | Communicate to patient | Arrange appointment | Trial screening | Other)
+- **SCR-MDT-004 — Priority:** Routine | Urgent | Emergency
+- **SCR-PLN-001 — Dependency:** none | after completion of step n | concurrent with step n | conditional on response)
+- **SCR-PLN-001 — Intent:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-PLN-001 — Route/access requirement (peripheral acceptable / central required):** IV | PO | IM | SC | Intrathecal | Continuous infusion | Other
+- **SCR-PLN-001 — Intent:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-PLN-001 — Concurrent systemic therapy (Y/N + regimen):** Yes | No
+- **SCR-PLN-001 — Site/laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PLN-001 — Intent:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-PLN-001 — Growth factor support (Y/N + criteria):** Yes | No
+- **SCR-PLN-001 — Patient decision:** Agreed | Agreed with modifications | Declined | Deferred | Seeking second opinion)
+- **SCR-PLN-001 — Patient-stated preferences. Financial: Estimate required (checkbox → routes to Finance):** IV | PO | IM | SC | Intrathecal | Continuous infusion | Other
+- **SCR-ORD-001 — Treatment intent:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-ORD-001 — Filter by disease site / intent / line / modality:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-ORD-001 — intent(s):** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-ORD-001 — drug list with dose basis, standard dose, unit, route, diluent, volume, rate/duration, sequence, treatment block:** IV | PO | IM | SC | Intrathecal | Continuous infusion | Other
+- **SCR-ORD-001 — Treatment location:** Day Care unit | Ward | Home )
+- **SCR-ORD-001 — First cycle (Y/N ):** Yes | No
+- **SCR-ORD-001 — Dosing weight (selector per INT-NUR-115 — Actual / Adjusted / Ideal / Clinician-specified, with the formula named and the resulting value shown, R):** NUR-115 — Actual | Adjusted | Ideal | Clinician-specified, with the formula named and the resulting value shown, R)
+- **SCR-ORD-002 — Treatment block:** Premedication | Hydration — pre | Anticancer | Hydration — post | Supportive | Rescue | Growth factor | Other — product-defined)
+- **SCR-ORD-002 — Dose basis:** mg | m² | mg | kg | fixed dose | AUC | units | m² | units | kg | mg | m² | day | other — product-defined)
+- **SCR-ORD-002 — Modification reason:** product-defined categories: Haematological toxicity | Non-haematological toxicity | Renal impairment | Hepatic impairment | Performance status | Age | Weight change | Prior reaction | Comorbidity | Patient preference | Protocol-specified reduction | Physician judgement | Other — plus free text, R when % ≠ 0)
+- **SCR-ORD-002 — Route:** IV | PO | IM | SC | Intrathecal | Continuous infusion | Other
+- **SCR-ORD-002 — Infusion rate:** mL | h | mg | min | mg | kg | h | units | h)
+- **SCR-RDY-001 — only a clinician override does that, and the resulting status is a distinct third state that remains visible on every downstream screen — RDY-020 .…:** Proceed | Proceed with dose modification (links to SCR-ORD-005) | Delay (links to SCR-ORD-006) | Hold | Discontinue | Order additional tests)
+- **SCR-RDY-001 — Category (Clinical review / Performance status / Symptoms / Toxicity / Haematology — CBC / ANC / Platelets / Haemoglobin / Renal function / Hepatic…:** 0 | 1 | 2 | 3 | 4
+- **SCR-RDY-001 — Required for this regimen? (Y/N/Conditional — from Regimen Master ):** Yes | No
+- **SCR-PHA-002 — Interaction alerts (drug–drug, drug–disease, drug–lab, duplicate therapy), each with: interacting agents, severity , mechanism, recommendation, dis…:** No action — clinically acceptable | Monitor | Dose adjusted | Prescriber contacted | Order changed), disposition reason, recorded by | at
+- **SCR-PHA-002 — Route:** IV | PO | IM | SC | Intrathecal | Continuous infusion | Other
+- **SCR-PHA-002 — Verification decision:** Verified | Verified with note | Query | Reject)
+- **SCR-MAR-001 — Sex:** Male | Female | Other | Unknown
+- **SCR-MAR-002 — Arrived from:** Home | Ward | Clinic | Another facility | Emergency)
+- **SCR-MAR-002 — Carer confirmation (only where the patient cannot self-identify, with reason). Each selected method records: value confirmed (Y/N), and for scannin…:** value confirmed (Y | N), and for scanning, the scanned value and the match result
+- **SCR-MAR-002 — Feels well enough to proceed:** Yes | No
+- **SCR-MAR-003 — Patient re-affirms willingness to proceed today (Y/N — a separate, per-visit act distinct from the formal consent document, MAR-011 ):** Yes | No
+- **SCR-MAR-003 — Request clearance action (where absent — routes to MO clearance queue with urgency).:** IV | PO | IM | SC | Intrathecal | Continuous infusion | Other
+- **SCR-MAR-003 — Dose review required flag when delta exceeds tolerance (INT-NUR-111) — routes to MO, blocks administration until resolved or overridden:** IV | PO | IM | SC | Intrathecal | Continuous infusion | Other
+- **SCR-MAR-003 — Fit to proceed (Y/N):** Yes | No
+- **SCR-MAR-004 — Transport condition:** Ambient | Cold chain maintained | Cold chain breached | Light-protected | Unknown)
+- **SCR-MAR-004 — Condition on receipt.:** Intact | Leaking | Damaged packaging | Precipitate visible | Discoloured | Label damaged | Other + text)
+- **SCR-MAR-004 — Route on label matches order (checkbox):** IV | PO | IM | SC | Intrathecal | Continuous infusion | Other
+- **SCR-MAR-004 — Visual inspection:** Clear | Particulate | Precipitate | Discoloured | Not applicable)
+- **SCR-MAR-005 — Laterality — with automatic contraindication check against recorded lymphoedema, axillary dissection, AV fistula, ipsilateral surgery (MAR-016 ):** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-MAR-005 — Ultrasound guided (Y/N):** Yes | No
+- **SCR-MAR-005 — Insertion successful (Y/N):** Yes | No
+- **SCR-MAR-005 — Flushes freely (Y/N):** Yes | No
+- **SCR-MAR-005 — Blood return present (Y/N):** Yes | No
+- **SCR-MAR-005 — Resistance felt (Y/N):** Yes | No
+- **SCR-MAR-005 — Suitable for this order's requirements:** product-defined: Suitable for all ordered drugs | Suitable — non-vesicant only | Not suitable — requires central access | Not suitable — requires re-siting | Not assessed)
+- **SCR-MAR-006 — Route (read-only from order; change requires prescriber authorisation):** IV | PO | IM | SC | Intrathecal | Continuous infusion | Other
+- **SCR-MAR-006 — Administration status:** product-defined: Not started | In progress | Paused | Completed in full | Completed — partial | Stopped — not resumed | Omitted | Cancelled)
+- **SCR-MAR-008 — Symptoms:** flushing, rash, urticaria, pruritus, angioedema, dyspnoea, wheeze, stridor, cough, chest tightness, back pain, abdominal pain, nausea | vomiting, rigors, fever, hypotension, hypertension, tachycardia, bradycardia, desaturation, dizziness, syncope, altered consciousness, injection-site pain, other)
+- **SCR-MAR-008 — reaction type:** product-defined: Infusion-related reaction | Hypersensitivity — immediate | Hypersensitivity — delayed | Anaphylaxis | Cytokine release | Extravasation-related | Other | Undetermined)
+- **SCR-MAR-008 — Repeating: intervention, drug interventions with drug/dose/route/time/administered by, response to intervention, time.:** infusion stopped, infusion rate reduced, IV fluids, oxygen — with flow and device, antihistamine, corticosteroid, adrenaline — with dose | route | site, bronchodilator, antipyretic, vasopressor, positioning, cardiac monitoring, ECG, resuscitation called, transfer to higher care), drug interventions with drug | dose | route | time | administered by, response to intervention, time
+- **SCR-MAR-008 — Observation period extended (Y/N + duration):** Yes | No
+- **SCR-MAR-008 — Future rechallenge:** Permitted with premedication | Permitted with slower rate | Permitted after desensitisation | Not permitted | Clinician to decide)
+- **SCR-MAR-008 — Adverse drug reaction report required (Y/N):** Yes | No
+- **SCR-ORL-001 — Formulation and strength:** the available tablet | capsule strengths must be shown, because the prescribed dose must be achievable from real strengths, ORL-010 )
+- **SCR-ORL-001 — Achievable from available strengths (Y/N — with the tablet combination shown, CALC-160):** Yes | No
+- **SCR-ORL-001 — Frequency:** product-defined: once daily | twice daily | three times daily | four times daily | alternate days | weekly | specified days)
+- **SCR-ORL-001 — Schedule pattern:** Continuous | Cyclical — n days on, m days off | Intermittent — specified days | Loading then maintenance)
+- **SCR-ORL-001 — Food instruction:** product-defined: With food | Without food — 1h before or 2h after | With or without food | Specific instruction)
+- **SCR-ORL-005 — Decision:** Hold | Restart | Discontinue
+- **SCR-ORL-005 — Reason:** Haematological toxicity | Non-haematological toxicity | Infection | Organ dysfunction | Progression | Patient choice | Comorbidity | Interaction | Monitoring overdue | Other
+- **SCR-ORL-005 — Remaining supply disposition:** Retain | Return to pharmacy | Destroy per instruction | Await clinician decision
+- **SCR-ORL-005 — Patient instruction issued:** Yes | No
+- **SCR-ORL-005 — Patient contacted:** Yes | No
+- **SCR-ORL-005 — Contact method:** Phone | SMS | Portal | In person | Caregiver
+- **SCR-ORL-005 — Understanding confirmed:** Yes | Partial — reinforce | No — escalate
+- **SCR-RO-001 — Pathway state, treatment site, intent, modality, technique, unit, treating RO, concurrent chemo Y/N, interrupted, target-interval breach, QA status…:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-RO-001 — Treatment intent:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-RO-001 — Treatment site(s) and laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-RO-002 — Prior RT received:** No — affirmative statement required | Yes | Unknown — with a mandatory action to establish, RO-010)
+- **SCR-RO-002 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-RO-002 — Anatomical overlap with the currently proposed target:** No overlap | Partial overlap | Complete overlap | Cannot determine — with narrative)
+- **SCR-RO-002 — Device management plan:** standard monitoring | interrogation before and after | relocation | cardiology involvement required)
+- **SCR-RO-002 — Indication:** Definitive | Neoadjuvant | Adjuvant | Concurrent chemoradiation | Palliative — symptom control | Palliative — local control | Prophylactic | Re-irradiation | Stereotactic — oligometastatic | Total body or total skin)
+- **SCR-RO-002 — Target site(s) (repeating: site, laterality, coded):** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-RO-002 — Consent required (Y/N → creates consent task linked to the prescription per PLN-040).:** Yes | No
+- **SCR-RO-003 — Course intent:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-RO-003 — Diagnosis, primary site, laterality, histology, grade:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-RO-003 — Laterality (R):** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-RO-003 — Phase intent:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-RO-003 — Modality:** product-defined backbone: Photon | Electron | Proton | Brachytherapy — HDR | Brachytherapy — LDR | Mixed | Other , R)
+- **SCR-RO-003 — Planned schedule pattern:** Daily Mon–Fri | Daily including weekends | Alternate days | Weekly | Specified days | Single fraction)
+- **SCR-RO-003 — Volume type:** product-defined: GTV | CTV | ITV | PTV | CTV-boost | PTV-boost | Other)
+- **SCR-RO-003 — Priority. RO-040 — target volume names are structured and must match the structure set names used in planning:** Routine | Urgent | Emergency
+- **SCR-RO-003 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-RO-003 — Constraint (repeating per OAR): constraint type/ Volume receiving a dose (Vx Gy) / Dose to a volume in cc (Dxcc) / Other), metric parameter, operat…:** product-defined: Maximum dose | Mean dose | Dose to a volume (Dx%) | Volume receiving a dose (Vx Gy) | Dose to a volume in cc (Dxcc) | Other), metric parameter (numeric, e
+- **SCR-RO-003 — Patient position:** Supine | Prone | Lateral | Sitting | Other)
+- **SCR-RO-003 — Immobilisation deviceswith device ID and index positions:** thermoplastic mask — points of fixation, headrest type and index, vac-bag, breast board with angle, belly board, knee | ankle fix, wing board, bite block, other) with device ID and index positions
+- **SCR-RO-003 — Bolus required (Y/N; material, thickness in mm, location, frequency — every fraction / alternate / specified):** Yes | No
+- **SCR-RO-003 — Motion managementwith parameters:** None | Free breathing | Breath-hold — inspiration | Breath-hold — expiration | Gating | Abdominal compression | Tracking) with parameters
+- **SCR-RO-003 — IGRT modality:** None | kV planar | MV planar | kV CBCT | MV CT | Surface guidance | Ultrasound | Implanted markers | MR)
+- **SCR-RO-003 — Frequency:** Daily | First n fractions then weekly | Weekly | Alternate | Per protocol — with the pattern)
+- **SCR-RO-003 — Action levels/tolerances:** correct and proceed | re-image | call RO | call physics — )
+- **SCR-RO-003 — Concurrent systemic therapy (Y/N; regimen link; timing relative to fractions; coordinating MO):** Yes | No
+- **SCR-RO-004 — scan protocol required:** slice thickness, extent superior | inferior limits, contrast requirement, 4D | breath-hold, respiratory correlation)
+- **SCR-RO-004 — Preparation instructions followed (Y/N + detail):** Yes | No
+- **SCR-RO-004 — Patient able to maintain position for the required duration (Y/N + notes).:** Yes | No
+- **SCR-RO-004 — D acquisition (Y/N, phases, respiratory trace quality):** Yes | No
+- **SCR-RO-004 — RO present (Y/N).:** Yes | No
+- **SCR-RO-004 — Marks appliedwith count and locations:** Tattoos — permanent | Semi-permanent marks | Surface guidance — no marks | Other) with count and locations
+- **SCR-RO-004 — Agent, volume, route, rate, timing, administered by, lot/expiry, adverse reaction (Y/N, link to reaction record).:** Yes | No
+- **SCR-RO-004 — Deviation from prescribed position or immobilisation (Y/N + description + reason + RO notified):** Yes | No
+- **SCR-RO-004 — Repeat scan required (Y/N + reason):** Yes | No
+- **SCR-RO-004 — Simulation acceptable for planning (Y/N — RO or delegated):** Yes | No
+- **SCR-RO-005 — Peer review performed (Y/N per rules by technique/site), reviewer, findings, changes made:** Yes | No
+- **SCR-RO-005 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-RO-005 — Auto-segmented:** Yes | No
+- **SCR-RO-006 — Heterogeneity correction (Y/N):** Yes | No
+- **SCR-RO-006 — For multi-phase courses: composite plan constructed (Y/N), method, phases included, summed dose to each OAR , summed target coverage. RO-140 — wher…:** Yes | No
+- **SCR-RO-006 — Met (Y/N):** Yes | No
+- **SCR-RO-006 — Met (Y/N):** Yes | No
+- **SCR-RO-009 — performance status:** 0 | 1 | 2 | 3 | 4
+- **SCR-RO-009 — re-simulation or re-planning indicated (Y/N + reason).:** Yes | No
+- **SCR-RO-009 — Decision/ Re-simulate and re-plan / Discontinue — with reason / Complete early as planned):** product-defined: Continue unchanged | Continue with supportive measures | Interrupt — with duration and restart criteria | Modify prescription (creates a new prescription version) | Re-simulate and re-plan | Discontinue — with reason | Complete early as planned)
+- **SCR-SO-001 — Pathway state, planned procedure category, site, intent, surgeon, neoadjuvant status, target-interval breach, complication present, pathology statu…:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-SO-001 — Treatment intent:** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-SO-001 — Site & laterality (high visual prominence):** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-002 — Urgency.:** product-defined: Routine | Urgent | Emergency)
+- **SCR-SO-002 — Site, dose, fractionation, dates, technique, facility, overlap with the planned surgical field— SO-021 : a surgical plan proposing an incision thro…:** No overlap | Overlap — tissue-healing risk | Cannot determine) — SO-021 : a surgical plan proposing an incision through a previously irradiated field must display this overlap assessment before signature
+- **SCR-SO-002 — site-specific tumour examination — measurable lesion size(s) with method and units, mobility/fixation to adjacent structures, nodal stations examin…:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-002 — Full medication list (shared GEN-LNG-002) with the anticoagulant/antiplatelet sub-flag surfaced as its own reviewed panel here (not buried) — drug,…:** Yes | No
+- **SCR-SO-002 — Screening tool result , weight trend, albumin where available, dysphagia/intake concerns, referral to Dietitian (Y/N).:** Yes | No
+- **SCR-SO-002 — Resectability assessment:** product-defined: Resectable | Borderline resectable | Unresectable — technical | Unresectable — oncological | Potentially resectable after neoadjuvant therapy, R)
+- **SCR-SO-002 — Operability assessment:** Operable | Operable with optimisation | Inoperable — patient factors, R)
+- **SCR-SO-002 — Dropdown (product-defined): Curative — primary / Cytoreductive / Diagnostic (biopsy/staging only) / Palliative — symptom control / Prophylactic / R…:** defined): Curative — primary | Cytoreductive | Diagnostic (biopsy | staging only) | Palliative — symptom control | Prophylactic | Reconstructive | Second-look | Salvage
+- **SCR-SO-002 — Laterality (R):** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-002 — Approach:** Open | Laparoscopic | Robotic | Thoracoscopic | Endoscopic | Other)
+- **SCR-SO-002 — Non-operative alternative discussed (Y/N + detail, R — including "no treatment").:** Yes | No
+- **SCR-SO-002 — Reconstruction anticipated (Y/N):** Yes | No
+- **SCR-SO-002 — reconstructive surgeon involvement required (Y/N + referral).:** Yes | No
+- **SCR-SO-002 — Planned nodal approachspecified / Both, staged):** None | Sentinel node | Regional dissection — level(s) specified | Both, staged)
+- **SCR-SO-002 — anticipated functional loss (e.g. continence, speech, limb function) discussed (Y/N + detail):** Yes | No
+- **SCR-SO-002 — stoma possibility discussed (Y/N — feeds SO-025).:** Yes | No
+- **SCR-SO-002 — MDT discussion required before proceeding (Y/N + reason):** Yes | No
+- **SCR-SO-002 — Dropdown (product-defined): Agreed to proceed / Agreed with modification / Wants second opinion / Declines surgery / Deferred.:** defined): Agreed to proceed | Agreed with modification | Wants second opinion | Declines surgery | Deferred
+- **SCR-SO-003 — Surgical intent (from consultation, confirmable):** Curative | Neoadjuvant | Adjuvant | Definitive | Palliative — life-prolonging | Palliative — symptom control | Maintenance | Consolidation | Diagnostic | Other
+- **SCR-SO-003 — Priority:** product-defined: Elective — routine | Elective — expedited | Urgent | Emergency)
+- **SCR-SO-003 — Priority reason (R when not Elective — routine).:** Routine | Urgent | Emergency
+- **SCR-SO-003 — Laterality (R, product-defined value set: Left / Right / Bilateral / Midline / Not applicable):** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-003 — Second/staged procedure (Y/N, with the relationship to this plan specified — e.g. "Stage 1 of 2").:** Yes | No
+- **SCR-SO-003 — Approach:** Open | Laparoscopic | Robotic | Thoracoscopic | Endoscopic | Hybrid | Other)
+- **SCR-SO-003 — Reconstruction planned (Y/N):** Yes | No
+- **SCR-SO-003 — Joint procedure (Y/N):** Yes | No
+- **SCR-SO-003 — Other surgical specialties involvedwith named surgeon per specialty and their role in the case.:** Plastic | Reconstructive, Vascular, Urology, Gynaecology, ENT, Neurosurgery, Orthopaedic, Cardiothoracic, Other) with named surgeon per specialty and their role in the case
+- **SCR-SO-003 — Anticipated anaesthesia type:** General | Regional | Local + sedation | Combined)
+- **SCR-SO-003 — Anaesthesia referral raised:** Yes | No
+- **SCR-SO-003 — Blood product requirement:** None anticipated | Group & save | Crossmatch — n units, R)
+- **SCR-SO-003 — Anticipated post-op level of care:** Ward | HDU | ICU — planned | ICU — contingency)
+- **SCR-SO-003 — bed request raised.:** Yes | No
+- **SCR-SO-003 — Repeating: item category (Mesh / Prosthesis / Expander / Fiducial marker / Energy device / Robotic platform / Other), specific item where known, av…:** Yes | No
+- **SCR-SO-003 — Frozen section anticipated (Y/N):** Yes | No
+- **SCR-SO-003 — Stoma possible (Y/N):** Yes | No
+- **SCR-SO-003 — If yes — stoma-site marking required pre-operatively.:** Yes | No
+- **SCR-SO-004 — bridging plan:** No bridging required | Bridging with | Continue through surgery — low-risk procedure | Specialist-directed plan, with specialist named)
+- **SCR-SO-004 — Instruction issued (Y/N), fasting window , patient confirmed understanding.:** Yes | No
+- **SCR-SO-004 — Mechanical (Y/N + device), pharmacological (agent, dose, timing) for the actual protocol content:** Yes | No
+- **SCR-SO-005 — Site & laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-005 — each item: discussed (Y/N), specific detail given.:** Yes | No
+- **SCR-SO-005 — Possibility of stoma — explicit consent item where the plan flags stoma possibility (Y/N, discussed, patient understanding) — SO-043 : consent for …:** Yes | No
+- **SCR-SO-005 — Consent to blood product administration if required (Y/N):** Yes | No
+- **SCR-SO-005 — Capacity assessed (Y/N, assessor, basis):** Yes | No
+- **SCR-SO-005 — Emergency consent exception invoked (Y/N + two-clinician justification where used ).:** Yes | No
+- **SCR-SO-005 — Interpreter used (Y/N, name/service, language):** Yes | No
+- **SCR-SO-005 — Questions answered (Y/N + summary).:** Yes | No
+- **SCR-SO-006 — Planned procedure, site, laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-006 — Priority (from plan):** Routine | Urgent | Emergency
+- **SCR-SO-007 — Site/laterality reconfirmation (explicit affirmative action, R — checkpoint 3 of 5):** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-007 — Final fitness confirmation.:** Proceed | Postpone — reason | Cancel — reason)
+- **SCR-SO-008 — Site and laterality confirmed by the patient/representative where possible and marked on the patient (R — hard stop if unmarked where marking is re…:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-008 — Antibiotic prophylaxis given within the required window confirmed (Y/N + time, window check against ):** Yes | No
+- **SCR-SO-008 — Essential imaging displayed (Y/N, where relevant):** Yes | No
+- **SCR-SO-009 — Patient position:** Supine | Prone | Lateral — left | right | Lithotomy | Sitting | Other)
+- **SCR-SO-009 — Active warming device used (Y/N + type):** Yes | No
+- **SCR-SO-009 — Urinary catheter inserted (Y/N, type, time).:** Yes | No
+- **SCR-SO-009 — Conversion (Y/N — R):** Yes | No
+- **SCR-SO-009 — Metastatic disease found intra-operatively (Y/N — repeating: site, appearance, biopsied Y/N):** Yes | No
+- **SCR-SO-009 — Completeness of resection as assessed intra-operatively— distinct from, and not to be confused with, the pathological margin status determined late…:** Complete — macroscopically clear | Incomplete — gross residual disease | Uncertain, pending pathology) — distinct from, and not to be confused with, the pathological margin status determined later (GEN-CMP-001-style pairing, SO-053 )
+- **SCR-SO-009 — Tumour rupture/spillage (Y/N — R for applicable tumour types , with management if occurred — SO-054 : tumour spillage is a discrete, mandatory, str…:** Yes | No
+- **SCR-SO-009 — Intra-operative frozen section requested (Y/N — link to SCR-SO-021):** Yes | No
+- **SCR-SO-009 — Reconstruction performed (Y/N, against the plan's reconstruction-planned flag per GEN-CMP-001):** Yes | No
+- **SCR-SO-009 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-009 — laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-009 — Ventilated on transfer (Y/N):** Yes | No
+- **SCR-SO-012 — Appearance:** clean | dry, erythema, swelling, dehiscence, discharge — serous | serosanguinous | purulent | other, necrosis)
+- **SCR-SO-013 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-014 — Patient/carer independence level:** Nurse-dependent | Learning — supervised | Independent)
+- **SCR-SO-015 — Patient informed (Y/N):** Yes | No
+- **SCR-SO-016 — Extranodal extension (Y/N):** Yes | No
+- **SCR-SO-016 — Further surgery needed? (Y/N + detail):** Yes | No
+- **SCR-SO-016 — MDT re-discussion required?:** Yes | No
+- **SCR-SO-016 — MO referral required? (Y/N):** Yes | No
+- **SCR-SO-016 — RO referral required? (Y/N):** Yes | No
+- **SCR-SO-016 — Surveillance-only pathway appropriate? (Y/N):** Yes | No
+- **SCR-SO-018 — drains removed (Y/N, or "not applicable"):** Yes | No
+- **SCR-SO-018 — infection present (Y/N):** Yes | No
+- **SCR-SO-018 — post-op performance status.:** 0 | 1 | 2 | 3 | 4
+- **SCR-SO-018 — Responsible specialty for the adjuvant decision:** Medical Oncology | Radiation Oncology | Both | MDT to decide, R)
+- **SCR-SO-018 — MDT required?.:** Yes | No
+- **SCR-SO-020 — drains remaining in situ (Y/N, with take-home management plan) or "all removed":** Yes | No
+- **SCR-SO-020 — Result available and reviewed with patient (Y/N):** Yes | No
+- **SCR-SO-020 — result pending (Y/N — with the plan for communicating it once available, R if pending — SO-065 : a discharge occurring before final pathology is av…:** Yes | No
+- **SCR-SO-020 — Dropdown (product-defined): Recovered as expected / Recovering with ongoing minor issues / Discharged with unresolved complication (link to SCR-SO-…:** defined): Recovered as expected | Recovering with ongoing minor issues | Discharged with unresolved complication (link to SCR-SO-015) | Discharged against medical advice (with capacity | counselling documentation)
+- **SCR-SO-021 — Anatomical site/laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-SO-021 — Urgency (always time-critical — no priority selector needed):** Routine | Urgent | Emergency
+- **SCR-SO-021 — Deferred to permanent section (Y/N, where frozen assessment is inconclusive).:** Yes | No
+- **SCR-PAT-001 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-002 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-002 — Fixative:** Formalin | Fresh | Saline | Other
+- **SCR-PAT-002 — Labelling concordant:** Yes | No
+- **SCR-PAT-002 — Requisition concordant:** Yes | No
+- **SCR-PAT-002 — Specimen adequacy:** Adequate | Limited | Inadequate | Pending
+- **SCR-PAT-002 — Discrepancy type:** Mislabel | Unlabelled | Leak | Wrong container | Missing requisition | Insufficient fixative | Other
+- **SCR-PAT-003 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-003 — Tumour visible:** Yes | No | Not applicable
+- **SCR-PAT-004 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-005 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-005 — Procedure:** Biopsy | Resection | FNA / Cytology | Lymph node dissection | Re-excision | Metastasectomy | Other
+- **SCR-PAT-005 — Lymphovascular invasion:** Present | Absent | Cannot be assessed
+- **SCR-PAT-005 — Perineural invasion:** Present | Absent | Cannot be assessed
+- **SCR-PAT-005 — Margin status:** Negative | Positive | Cannot be assessed | Not applicable
+- **SCR-PAT-005 — Treatment effect present:** Yes | No | Not applicable | Cannot assess
+- **SCR-PAT-006 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-006 — Overall margin status:** Negative | Positive | Cannot be assessed | Not applicable
+- **SCR-PAT-007 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-007 — Extranodal extension:** Present | Absent | Cannot be assessed
+- **SCR-PAT-008 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-008 — Pathologic complete response:** Yes | No | Cannot assess
+- **SCR-PAT-009 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-010 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-011 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-012 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-012 — Communication method:** Phone | In person | Secure electronic
+- **SCR-PAT-012 — Permanent result concordance:** Concordant | Discordant | Pending
+- **SCR-PAT-013 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-013 — Material received:** Slides | Blocks | Digital images | Report only
+- **SCR-PAT-013 — Concordance:** Concordant | Minor discrepancy | Major discrepancy
+- **SCR-PAT-014 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-014 — Change type:** Addendum | Amendment / correction | Retracted in error
+- **SCR-PAT-014 — Reason:** Additional test result | Clarification | Correction of error | Change in diagnosis | Change in stage | Other
+- **SCR-PAT-015 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-015 — Severity / urgency:** Critical | Urgent | Unexpected significant
+- **SCR-PAT-015 — Method:** Phone | In person | Secure message
+- **SCR-PAT-016 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-017 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-PAT-018 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-RAD-002 — Contrast decision:** None | IV | Oral | IV + Oral | Other
+- **SCR-RAD-002 — Sedation / anaesthesia required:** Yes | No
+- **SCR-RAD-003 — Image quality:** Diagnostic | Limited | Non-diagnostic
+- **SCR-RAD-005 — New lesion present:** Yes | No | Equivocal
+- **SCR-RAD-005 — Confirmation scan required:** Yes | No
+- **SCR-RAD-006 — Clinical urgency:** Immediate | Urgent | Same day
+- **SCR-RAD-006 — Method:** Phone | Secure message | In person
+- **SCR-RAD-007 — Change type:** Addendum | Amendment / correction
+- **SCR-RAD-007 — Ordering clinician re-notified:** Yes | No
+- **SCR-RAD-010 — Laterality:** Left | Right | Bilateral | Midline | Not applicable
+- **SCR-RAD-011 — Route:** IV | Oral | Other
+- **SCR-RAD-011 — Reaction occurred:** Yes | No
+- **SCR-RAD-011 — Reaction severity:** Mild | Moderate | Severe | Life-threatening
+- **SCR-RAD-013 — Review outcome:** Agree | Minor discrepancy | Major discrepancy
+- **SCR-IPD-002 — Urgency:** Routine | Urgent | Emergency
+- **SCR-IPD-002 — Bed type:** Ward | Isolation | HDU | ICU
+- **SCR-IPD-002 — Acceptance decision:** Accepted | Waitlisted | Declined / redirect
+- **SCR-IPD-003 — Identity verified:** Yes | No
+- **SCR-IPD-003 — Allergies reconciled:** Yes | No
+- **SCR-IPD-009 — Escalation required:** No | Yes
+- **SCR-IPD-010 — Trigger:** Early warning score | Critical result | Clinical concern | Sepsis concern | Respiratory deterioration | Bleeding | Other
+- **SCR-IPD-010 — Disposition:** Remain on ward | HDU / ICU transfer | Procedure / theatre | Discharge / transfer | Other
+- **SCR-IPD-011 — Urgency:** Routine | Urgent | Emergency
+- **SCR-IPD-017 — Family / next-of-kin notified:** Yes | No
+- **SCR-RSP-002 — Assessment reason:** Scheduled milestone | End of treatment | Clinical deterioration | Suspected progression | Post-operative | Other
+- **SCR-RSP-002 — Assessment components required:** Imaging | Clinical | Biochemical | Pathological
+- **SCR-RSP-003 — New lesion status:** None | Definite new lesion | Equivocal
+- **SCR-RSP-006 — Pathologic complete response:** Yes | No | Not applicable
+- **SCR-RSP-007 — Clinician-confirmed response:** Complete response | Partial response | Stable disease | Progressive disease | Mixed response | Not evaluable | Other
+- **SCR-RSP-007 — Disease status event:** Responding | Stable | Progressed / recurrent | No evidence of disease | Unknown
+- **SCR-RSP-007 — Next treatment decision:** Continue | Modify | Hold | Stop | Change line | MDT review | Surveillance | Other
+- **SCR-RSP-008 — Discordance type:** Imaging vs clinical | Imaging vs pathology | Marker vs imaging | Mixed lesion behaviour | Criteria cannot be applied | Other
+- **SCR-RSP-009 — Event type:** Progression | Local recurrence | Regional recurrence | Distant recurrence | New primary suspected
+- **SCR-RSP-009 — Episode disposition:** Progression / recurrence within current episode | New primary — create new Cancer Episode
+- **SCR-RSP-009 — New line of therapy required:** Yes | No | To be decided
+- **SCR-RSP-010 — Recommended next step:** Continue current plan | Modify treatment | Change line | Surgery review | Radiation review | MDT | Treatment completion | Surveillance | Palliative care
+- **SCR-RSP-010 — MDT discussion required:** Yes | No
+- **SCR-CMP-001 — Treatment intent:** Curative | Adjuvant | Neoadjuvant | Definitive | Palliative | Maintenance | Other
+- **SCR-CMP-002 — Treatment intent:** Curative | Adjuvant | Neoadjuvant | Definitive | Palliative | Maintenance | Other
+- **SCR-CMP-002 — Completion type:** Planned course completed | Stopped for toxicity | Stopped for progression | Stopped by patient choice | Stopped for comorbidity | Transferred care | Other
+- **SCR-CMP-002 — Next care phase:** Response assessment | Additional modality | Surveillance | Palliative / supportive care | External transfer
+- **SCR-CMP-003 — Treatment intent:** Curative | Adjuvant | Neoadjuvant | Definitive | Palliative | Maintenance | Other
+- **SCR-CMP-004 — Treatment intent:** Curative | Adjuvant | Neoadjuvant | Definitive | Palliative | Maintenance | Other
+- **SCR-CMP-005 — Treatment intent:** Curative | Adjuvant | Neoadjuvant | Definitive | Palliative | Maintenance | Other
+- **SCR-CMP-006 — Treatment intent:** Curative | Adjuvant | Neoadjuvant | Definitive | Palliative | Maintenance | Other
+- **SCR-CMP-006 — Handoff destination:** Surveillance clinic | Primary care | Another oncology specialty | Palliative care | External provider | Other
+- **SCR-CMP-007 — Treatment intent:** Curative | Adjuvant | Neoadjuvant | Definitive | Palliative | Maintenance | Other
+- **SCR-SURV-001 — Current disease status:** No evidence of disease | Stable disease | Response ongoing | Progression / recurrence suspected | Progression / recurrence confirmed | Unknown
+- **SCR-SURV-002 — Current disease status:** No evidence of disease | Stable disease | Response ongoing | Progression / recurrence suspected | Progression / recurrence confirmed | Unknown
+- **SCR-SURV-002 — Disease status:** No evidence of disease | Stable / monitored | Recurrence suspected | Recurrence confirmed | Unknown
+- **SCR-SURV-003 — Current disease status:** No evidence of disease | Stable disease | Response ongoing | Progression / recurrence suspected | Progression / recurrence confirmed | Unknown
+- **SCR-SURV-003 — Primary-care handoff requirement:** Yes | No
+- **SCR-SURV-004 — Current disease status:** No evidence of disease | Stable disease | Response ongoing | Progression / recurrence suspected | Progression / recurrence confirmed | Unknown
+- **SCR-SURV-005 — Current disease status:** No evidence of disease | Stable disease | Response ongoing | Progression / recurrence suspected | Progression / recurrence confirmed | Unknown
+- **SCR-SURV-006 — Current disease status:** No evidence of disease | Stable disease | Response ongoing | Progression / recurrence suspected | Progression / recurrence confirmed | Unknown
+- **SCR-SURV-006 — Patient / carer education delivered:** Yes | No
+- **SCR-SURV-006 — Comprehension / teach-back:** Confirmed | Partial — reinforce | Not confirmed
+- **SCR-SURV-007 — Current disease status:** No evidence of disease | Stable disease | Response ongoing | Progression / recurrence suspected | Progression / recurrence confirmed | Unknown
+- **SCR-SURV-007 — Recurrence suspicion trigger:** Symptom | Examination finding | Imaging | Laboratory / marker | Pathology | External report | Other
+- **SCR-SURV-007 — Urgency:** Routine | Urgent | Emergency
+- **SCR-SURV-007 — Re-entry destination:** Medical Oncology | Surgical Oncology | Radiation Oncology | MDT | Emergency / inpatient
+- **SCR-SURV-007 — Same episode vs possible new primary:** Suspected recurrence / progression within current episode | Possible new primary — clinician decision required
+- **SCR-SURV-008 — Current disease status:** No evidence of disease | Stable disease | Response ongoing | Progression / recurrence suspected | Progression / recurrence confirmed | Unknown
+- **SCR-SURV-009 — Current disease status:** No evidence of disease | Stable disease | Response ongoing | Progression / recurrence suspected | Progression / recurrence confirmed | Unknown
+- **SCR-SURV-010 — Current disease status:** No evidence of disease | Stable disease | Response ongoing | Progression / recurrence suspected | Progression / recurrence confirmed | Unknown
+- **SCR-FIN-001 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-001 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-001 — Currency:** INR
+- **SCR-FIN-002 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-002 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-002 — Currency:** INR
+- **SCR-FIN-002 — Verification status:** Unverified | Verified | Rejected / invalid
+- **SCR-FIN-002 — Primary / secondary payer:** Primary | Secondary
+- **SCR-FIN-003 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-003 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-003 — Currency:** INR
+- **SCR-FIN-004 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-004 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-004 — Currency:** INR
+- **SCR-FIN-005 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-005 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-005 — Currency:** INR
+- **SCR-FIN-005 — Payer decision:** Pending | Approved | Partially approved | Denied | Query raised
+- **SCR-FIN-006 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-006 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-006 — Currency:** INR
+- **SCR-FIN-007 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-007 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-007 — Currency:** INR
+- **SCR-FIN-007 — Payment method:** Cash | Card | UPI | Bank transfer | Cheque | Other
+- **SCR-FIN-008 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-008 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-008 — Currency:** INR
+- **SCR-FIN-008 — Posting status:** Draft | Posted | Reversed
+- **SCR-FIN-009 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-009 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-009 — Currency:** INR
+- **SCR-FIN-009 — Eligibility status:** Eligible | Not eligible | Needs review
+- **SCR-FIN-010 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-010 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-010 — Currency:** INR
+- **SCR-FIN-010 — Approval type:** Payer | Hospital management | Charity / support | Other
+- **SCR-FIN-010 — Decision:** Pending | Approved | Partially approved | Denied
+- **SCR-FIN-011 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-011 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-011 — Currency:** INR
+- **SCR-FIN-011 — Estimate explained:** Yes | No
+- **SCR-FIN-011 — Coverage / exclusions explained:** Yes | No
+- **SCR-FIN-012 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-012 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-012 — Currency:** INR
+- **SCR-FIN-013 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-013 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-013 — Currency:** INR
+- **SCR-FIN-013 — Refund / credit reason:** Cancellation | Overpayment | Service not delivered | Payer adjustment | Correction | Other
+- **SCR-FIN-013 — Approval required:** Yes | No
+- **SCR-FIN-013 — Approval status:** Pending | Approved | Rejected
+- **SCR-FIN-014 — Payer category:** Self-pay | Insurance | Corporate | Government scheme | Charity / support | Other
+- **SCR-FIN-014 — Authorisation status:** Not required | Pending | Approved | Partially approved | Denied | Expired
+- **SCR-FIN-014 — Currency:** INR
+- **SCR-ADM-001 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-001 — Account status:** Active | Suspended | Locked | Retired
+- **SCR-ADM-002 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-003 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-004 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-005 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-006 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-006 — Hazardous / antineoplastic:** Yes | No
+- **SCR-ADM-006 — Vesicant / irritant classification:** Vesicant | Irritant | Neither | Unknown
+- **SCR-ADM-006 — Cumulative dose tracking required:** Yes | No
+- **SCR-ADM-007 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-008 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-009 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-010 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-011 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-011 — Peer review required:** Yes | No
+- **SCR-ADM-012 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-013 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-014 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-014 — Template type:** Clinical note | Consent | Patient instruction | Letter | Report
+- **SCR-ADM-014 — Witness requirement:** Yes | No
+- **SCR-ADM-015 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-016 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-017 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-018 — Status:** Draft | Under Clinical Review | CCA Approved | Active | Retired
+- **SCR-ADM-018 — Clinical sign-off complete:** Yes | No
