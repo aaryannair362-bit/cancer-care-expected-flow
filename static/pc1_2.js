@@ -52,9 +52,13 @@ const PC12_PRIMARY={
 function pc12MenuLabel(k){return ({summary:'Patient Overview',consultation:'Assessment',diagnostic_orders:'Investigations',mdt:'MDT / Tumour Board',treatment_plan:'Treatment Plan',order:'Medical Oncology Order',readiness:'Treatment Readiness',trace:'Treatment Delivery',continuous:'Oral / Continuous Therapy',toxicity:'Toxicity & Modifications',response:'Response Assessment',radiation:'Radiation Course',surgery:'Surgery',pharmacy:'Pharmacy',daycare:'Treatment Day / MAR',intake:'Vitals & Intake',medications:'Medication & Allergies',documents:'Documents',care_plan:'Care Plan'})[k]||k.replaceAll('_',' ')}
 function pc12BuildNav(){
   const keys=PC12_PRIMARY[S.role]; if(!keys)return;
-  if(!S.page||S.page==='role_surface'||!keys.includes(S.page)){S.page=keys[0];localStorage.setItem('cca_v12_page',S.page)}
+  const pc12ExtraPages=['demo_showcase','core_oncology_flow'];
+  if(!S.page||S.page==='role_surface'||(!keys.includes(S.page)&&!pc12ExtraPages.includes(S.page))){S.page=keys[0];localStorage.setItem('cca_v12_page',S.page)}
   let html='<div class="nav-group">Patient care</div>';
   html+=keys.map(k=>`<button class="navbtn ${S.page===k?'active':''}" data-page="${k}">${esc(pc12MenuLabel(k))}</button>`).join('');
+  if(S.role!=='External Consultant'){
+    html+=`<div class="nav-group">Connected flow</div><button class="navbtn ${S.page==='demo_showcase'?'active':''}" data-page="demo_showcase">Synthetic Data Showcase</button><button class="navbtn ${S.page==='core_oncology_flow'?'active':''}" data-page="core_oncology_flow">Connected Oncology Flow</button>`;
+  }
   if(['Medical Oncology','Radiation Oncology','Surgical Oncology'].includes(S.role)){
     html+=`<div class="nav-group">Clinical decision support</div><button class="navbtn ${S.page==='nexus'?'active':''}" data-page="nexus">NEXUS <span class="nav-pill">Frontend</span></button>`;
   }

@@ -1,8 +1,8 @@
 {
   "build": "CCA Cancer Care HIS + Oncology EMR V12.2 Final Defect Remediation",
   "version": "12.2",
-  "run_at": "2026-09-04T15:44:47.723524+00:00",
-  "clinical_content": "Synthetic QA institutional content only â€” product testing/demo; not patient care",
+  "run_at": "2026-09-07T08:27:20.688024+05:30",
+  "clinical_content": "Synthetic QA institutional content only — product testing/demo; not patient care",
   "supplied_case_count": 41,
   "executed_case_count": 41,
   "preflight": [
@@ -11,9 +11,10 @@
       "ok": true,
       "detail": {
         "ok": true,
-        "product": "CCA Cancer Care HIS + Oncology EMR V12.2 Final Defect Remediation",
+        "product": "CCA Cancer Care HIS + Oncology EMR V12.2 Structural Conformance",
         "version": "12.2",
-        "date": "2026-09-04",
+        "build": "12.2-PC1.9",
+        "date": "2026-09-05",
         "synthetic_test_content": true
       }
     },
@@ -428,7 +429,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -781,10 +791,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-9535E2B9",
-      "plan_id": "TREATMENT_PLAN-CC4C47B3A1",
+      "pid": "PAT-900AFCE7",
+      "plan_id": "TREATMENT_PLAN-1092E46D40",
       "orders": [
-        "TREATMENT_ORDER-CACAE70ECD"
+        "TREATMENT_ORDER-B84DAC9C4B"
       ]
     },
     {
@@ -1007,7 +1017,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -1098,237 +1117,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "RT prescription approved",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "RT Oncologist Approved"
-          }
-        },
-        {
-          "name": "RT plan preparation before physics",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physics QA",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physician final approval",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Ready for Treatment"
-          }
-        },
-        {
-          "name": "RT fraction 1 delivered",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "In Progress"
-          }
-        },
-        {
-          "name": "RT cumulative dose derives delivered fractions",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "continuous therapy created",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-B2861657",
-      "plan_id": "TREATMENT_PLAN-AC23D3BCCC",
-      "orders": [
-        "TREATMENT_ORDER-C62B88A16C"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-7FF7200B",
+      "plan_id": "TREATMENT_PLAN-221FA0C334"
     },
     {
       "id": "T3",
@@ -1550,7 +1362,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -1641,228 +1462,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "RT prescription approved",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "RT Oncologist Approved"
-          }
-        },
-        {
-          "name": "RT plan preparation before physics",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physics QA",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physician final approval",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Ready for Treatment"
-          }
-        },
-        {
-          "name": "RT fraction 1 delivered",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "In Progress"
-          }
-        },
-        {
-          "name": "RT cumulative dose derives delivered fractions",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-6BBA064F",
-      "plan_id": "TREATMENT_PLAN-9616DB1D2E",
-      "orders": [
-        "TREATMENT_ORDER-DE145735EB"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-3FC5D274",
+      "plan_id": "TREATMENT_PLAN-8BA51EC53D"
     },
     {
       "id": "T4",
@@ -2084,7 +1707,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -2121,291 +1753,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical plan signed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical preop ready",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgery performed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "postoperative pathology final",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Final"
-          }
-        },
-        {
-          "name": "surgery pathology linked",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "planned-vs-actual laterality reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "RT prescription approved",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "RT Oncologist Approved"
-          }
-        },
-        {
-          "name": "RT plan preparation before physics",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physics QA",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physician final approval",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Ready for Treatment"
-          }
-        },
-        {
-          "name": "RT fraction 1 delivered",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "In Progress"
-          }
-        },
-        {
-          "name": "RT cumulative dose derives delivered fractions",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "response assessment",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-ACD22032",
-      "plan_id": "TREATMENT_PLAN-880FB70A83",
-      "orders": [
-        "TREATMENT_ORDER-4EADBB1861"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-5B7F9119",
+      "plan_id": "TREATMENT_PLAN-7044522B2B"
     },
     {
       "id": "T5",
@@ -2590,6 +1961,15 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT attendance radiation",
           "ok": true,
           "http": 200,
@@ -2608,7 +1988,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -2645,228 +2034,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "RT prescription approved",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "RT Oncologist Approved"
-          }
-        },
-        {
-          "name": "RT plan preparation before physics",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physics QA",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physician final approval",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Ready for Treatment"
-          }
-        },
-        {
-          "name": "RT fraction 1 delivered",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "In Progress"
-          }
-        },
-        {
-          "name": "RT cumulative dose derives delivered fractions",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-D338315D",
-      "plan_id": "TREATMENT_PLAN-B705E0AE3A",
-      "orders": [
-        "TREATMENT_ORDER-E663B511A9"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-E44EE23A",
+      "plan_id": "TREATMENT_PLAN-3FC43E3EE5"
     },
     {
       "id": "T6",
@@ -3088,7 +2279,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -3125,282 +2325,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical plan signed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical preop ready",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgery performed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "postoperative pathology final",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Final"
-          }
-        },
-        {
-          "name": "surgery pathology linked",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "planned-vs-actual laterality reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "RT prescription approved",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "RT Oncologist Approved"
-          }
-        },
-        {
-          "name": "RT plan preparation before physics",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physics QA",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physician final approval",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Ready for Treatment"
-          }
-        },
-        {
-          "name": "RT fraction 1 delivered",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "In Progress"
-          }
-        },
-        {
-          "name": "RT cumulative dose derives delivered fractions",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-D3A3B84E",
-      "plan_id": "TREATMENT_PLAN-2AA9D2266D",
-      "orders": [
-        "TREATMENT_ORDER-D2C654E3D5"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-908CE286",
+      "plan_id": "TREATMENT_PLAN-08EE95A5C3"
     },
     {
       "id": "T7",
@@ -3622,7 +2570,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -3659,282 +2616,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical plan signed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical preop ready",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgery performed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "postoperative pathology final",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Final"
-          }
-        },
-        {
-          "name": "surgery pathology linked",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "planned-vs-actual laterality reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "RT prescription approved",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "RT Oncologist Approved"
-          }
-        },
-        {
-          "name": "RT plan preparation before physics",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physics QA",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physician final approval",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Ready for Treatment"
-          }
-        },
-        {
-          "name": "RT fraction 1 delivered",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "In Progress"
-          }
-        },
-        {
-          "name": "RT cumulative dose derives delivered fractions",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-D61DE2B7",
-      "plan_id": "TREATMENT_PLAN-01FBFA79FA",
-      "orders": [
-        "TREATMENT_ORDER-4844EDAFAC"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-30EA0CA5",
+      "plan_id": "TREATMENT_PLAN-D46D8C29FC"
     },
     {
       "id": "T8",
@@ -4156,7 +2861,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -4193,291 +2907,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical plan signed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical preop ready",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgery performed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "postoperative pathology final",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Final"
-          }
-        },
-        {
-          "name": "surgery pathology linked",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "planned-vs-actual laterality reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "RT prescription approved",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "RT Oncologist Approved"
-          }
-        },
-        {
-          "name": "RT plan preparation before physics",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physics QA",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physician final approval",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Ready for Treatment"
-          }
-        },
-        {
-          "name": "RT fraction 1 delivered",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "In Progress"
-          }
-        },
-        {
-          "name": "RT cumulative dose derives delivered fractions",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "conditional RT phase evaluation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Draft"
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-0B6DBA9E",
-      "plan_id": "TREATMENT_PLAN-0D4D6E93EE",
-      "orders": [
-        "TREATMENT_ORDER-20740E804D"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-D7867124",
+      "plan_id": "TREATMENT_PLAN-1B25E51CBA"
     },
     {
       "id": "B1",
@@ -4671,6 +3124,15 @@
           }
         },
         {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -4680,7 +3142,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -4771,174 +3242,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-F6BA53D0",
-      "plan_id": "TREATMENT_PLAN-C2D9FA9204",
-      "orders": [
-        "TREATMENT_ORDER-1AB44988DC"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-288D651B",
+      "plan_id": "TREATMENT_PLAN-1FF4366689"
     },
     {
       "id": "B2",
@@ -5132,6 +3459,15 @@
           }
         },
         {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -5141,7 +3477,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -5178,228 +3523,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical plan signed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical preop ready",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgery performed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "postoperative pathology final",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Final"
-          }
-        },
-        {
-          "name": "surgery pathology linked",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "planned-vs-actual laterality reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-E0078E64",
-      "plan_id": "TREATMENT_PLAN-B7735B10FC",
-      "orders": [
-        "TREATMENT_ORDER-0E5B244AD7"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-F0773600",
+      "plan_id": "TREATMENT_PLAN-1DC3CE2E17"
     },
     {
       "id": "B3",
@@ -5593,6 +3740,15 @@
           }
         },
         {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -5602,7 +3758,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -5639,237 +3804,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical plan signed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgical preop ready",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "surgery performed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "postoperative pathology final",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Final"
-          }
-        },
-        {
-          "name": "surgery pathology linked",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "planned-vs-actual laterality reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "response assessment",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-5806AD80",
-      "plan_id": "TREATMENT_PLAN-A8B5F06F5F",
-      "orders": [
-        "TREATMENT_ORDER-FE89346DAC"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-DB5FA3F9",
+      "plan_id": "TREATMENT_PLAN-9B849EA6FB"
     },
     {
       "id": "B4",
@@ -6063,6 +4021,15 @@
           }
         },
         {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -6072,7 +4039,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -6163,174 +4139,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-70980A74",
-      "plan_id": "TREATMENT_PLAN-0E0C604165",
-      "orders": [
-        "TREATMENT_ORDER-EDFA998F07"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-C1F10215",
+      "plan_id": "TREATMENT_PLAN-AE8F12CEA3"
     },
     {
       "id": "B5",
@@ -6524,6 +4356,15 @@
           }
         },
         {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -6533,7 +4374,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -6624,183 +4474,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "tumor marker response",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-1F25AA59",
-      "plan_id": "TREATMENT_PLAN-F2D1497661",
-      "orders": [
-        "TREATMENT_ORDER-C6350BC310"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-BA405F27",
+      "plan_id": "TREATMENT_PLAN-5241C970DB"
     },
     {
       "id": "B6",
@@ -6994,6 +4691,15 @@
           }
         },
         {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -7003,7 +4709,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -7094,174 +4809,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-D625CCB6",
-      "plan_id": "TREATMENT_PLAN-8757B50D4A",
-      "orders": [
-        "TREATMENT_ORDER-D8A5617781"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-2E656DB5",
+      "plan_id": "TREATMENT_PLAN-EDD43A35B7"
     },
     {
       "id": "M1",
@@ -7446,6 +5017,15 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT attendance radiation",
           "ok": true,
           "http": 200,
@@ -7464,7 +5044,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -7501,228 +5090,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "RT prescription approved",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "RT Oncologist Approved"
-          }
-        },
-        {
-          "name": "RT plan preparation before physics",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physics QA",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physician final approval",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Ready for Treatment"
-          }
-        },
-        {
-          "name": "RT fraction 1 delivered",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "In Progress"
-          }
-        },
-        {
-          "name": "RT cumulative dose derives delivered fractions",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-A5EFA426",
-      "plan_id": "TREATMENT_PLAN-8C6570E821",
-      "orders": [
-        "TREATMENT_ORDER-3085546885"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-F0615444",
+      "plan_id": "TREATMENT_PLAN-FDF67E4AF1"
     },
     {
       "id": "M2",
@@ -7907,6 +5298,15 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT attendance radiation",
           "ok": true,
           "http": 200,
@@ -7925,7 +5325,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -7962,237 +5371,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "RT prescription approved",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "RT Oncologist Approved"
-          }
-        },
-        {
-          "name": "RT plan preparation before physics",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physics QA",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physician final approval",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Ready for Treatment"
-          }
-        },
-        {
-          "name": "RT fraction 1 delivered",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "In Progress"
-          }
-        },
-        {
-          "name": "RT cumulative dose derives delivered fractions",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "continuous therapy created",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-2871825C",
-      "plan_id": "TREATMENT_PLAN-0791B82B4F",
-      "orders": [
-        "TREATMENT_ORDER-DDE3F95E0F"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-79AC0020",
+      "plan_id": "TREATMENT_PLAN-989E680CEE"
     },
     {
       "id": "M3",
@@ -8377,6 +5579,15 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT attendance radiation",
           "ok": true,
           "http": 200,
@@ -8395,7 +5606,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -8432,228 +5652,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "RT prescription approved",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "RT Oncologist Approved"
-          }
-        },
-        {
-          "name": "RT plan preparation before physics",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physics QA",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physician final approval",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Ready for Treatment"
-          }
-        },
-        {
-          "name": "RT fraction 1 delivered",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "In Progress"
-          }
-        },
-        {
-          "name": "RT cumulative dose derives delivered fractions",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-4B7D753C",
-      "plan_id": "TREATMENT_PLAN-6DCEFA51B2",
-      "orders": [
-        "TREATMENT_ORDER-5BB3801B1F"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-DD273C94",
+      "plan_id": "TREATMENT_PLAN-596C32B893"
     },
     {
       "id": "M4",
@@ -8838,6 +5860,15 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT attendance radiation",
           "ok": true,
           "http": 200,
@@ -8856,7 +5887,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -8893,228 +5933,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "RT prescription approved",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "RT Oncologist Approved"
-          }
-        },
-        {
-          "name": "RT plan preparation before physics",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physics QA",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Planning"
-          }
-        },
-        {
-          "name": "RT physician final approval",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Ready for Treatment"
-          }
-        },
-        {
-          "name": "RT fraction 1 delivered",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "In Progress"
-          }
-        },
-        {
-          "name": "RT cumulative dose derives delivered fractions",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD admission",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD observation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD specialty review",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "IPD discharge",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-D315613A",
-      "plan_id": "TREATMENT_PLAN-20877B0567",
-      "orders": [
-        "TREATMENT_ORDER-7FEF9DEB1E"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-AFFC03B1",
+      "plan_id": "TREATMENT_PLAN-CC2736474D"
     },
     {
       "id": "M5",
@@ -9299,6 +6141,15 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT attendance radiation",
           "ok": true,
           "http": 200,
@@ -9317,7 +6168,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -9463,8 +6323,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-A1AC5CA3",
-      "plan_id": "TREATMENT_PLAN-C027766E7F"
+      "pid": "PAT-A2A05C72",
+      "plan_id": "TREATMENT_PLAN-E4F2DC09CE"
     },
     {
       "id": "M6",
@@ -9649,6 +6509,15 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT attendance radiation",
           "ok": true,
           "http": 200,
@@ -9667,7 +6536,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -9777,8 +6655,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-18D7BE80",
-      "plan_id": "TREATMENT_PLAN-C2D1256CBA"
+      "pid": "PAT-99C842C7",
+      "plan_id": "TREATMENT_PLAN-5E76C06F34"
     },
     {
       "id": "S1",
@@ -9999,7 +6877,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -10190,8 +7077,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-CA6C7927",
-      "plan_id": "TREATMENT_PLAN-A832E214C4"
+      "pid": "PAT-7342989C",
+      "plan_id": "TREATMENT_PLAN-FF6EE80CB0"
     },
     {
       "id": "S2",
@@ -10412,7 +7299,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -10603,8 +7499,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-F9C8881A",
-      "plan_id": "TREATMENT_PLAN-6B7561454C"
+      "pid": "PAT-471B6AB0",
+      "plan_id": "TREATMENT_PLAN-4BE7E542EA"
     },
     {
       "id": "S3",
@@ -10825,7 +7721,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -11016,8 +7921,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-1BBE98C4",
-      "plan_id": "TREATMENT_PLAN-353B3CC9DF"
+      "pid": "PAT-00323E10",
+      "plan_id": "TREATMENT_PLAN-E07319C481"
     },
     {
       "id": "S4",
@@ -11238,7 +8143,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -11429,8 +8343,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-B0AC32DB",
-      "plan_id": "TREATMENT_PLAN-269FEEDA27"
+      "pid": "PAT-5A17B20C",
+      "plan_id": "TREATMENT_PLAN-BBBB3C03CF"
     },
     {
       "id": "U1",
@@ -11625,8 +8539,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-60F0F3F8",
-      "plan_id": "TREATMENT_PLAN-03C69CEB85"
+      "pid": "PAT-49795AD3",
+      "plan_id": "TREATMENT_PLAN-B74EE17FE1"
     },
     {
       "id": "U2",
@@ -11821,8 +8735,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-4C37CE53",
-      "plan_id": "TREATMENT_PLAN-5723A2979F"
+      "pid": "PAT-0D2FB570",
+      "plan_id": "TREATMENT_PLAN-023DFD2E1D"
     },
     {
       "id": "U3",
@@ -12107,8 +9021,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-B53E3399",
-      "plan_id": "TREATMENT_PLAN-895F43C894"
+      "pid": "PAT-28AF5276",
+      "plan_id": "TREATMENT_PLAN-54AD1573D6"
     },
     {
       "id": "U4",
@@ -12357,8 +9271,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-33B5A8CE",
-      "plan_id": "TREATMENT_PLAN-8F38F90E96"
+      "pid": "PAT-A1161637",
+      "plan_id": "TREATMENT_PLAN-84FB16DEA3"
     },
     {
       "id": "U5",
@@ -12533,6 +9447,24 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -12542,7 +9474,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -12588,138 +9529,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-F631682B",
-      "plan_id": "TREATMENT_PLAN-8699E7A4CB",
-      "orders": [
-        "TREATMENT_ORDER-A8FC2160E7"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-F4EC5485",
+      "plan_id": "TREATMENT_PLAN-07EFADE3BE"
     },
     {
       "id": "E1",
@@ -12913,6 +9746,15 @@
           }
         },
         {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -12922,7 +9764,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -13115,7 +9966,7 @@
           "ok": true,
           "http": 200,
           "response": {
-            "ok": "TREATMENT_PLAN-FEC774E786",
+            "ok": "TREATMENT_PLAN-4CDFF8DDC9",
             "status": ""
           }
         },
@@ -13149,10 +10000,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-1B7E8150",
-      "plan_id": "TREATMENT_PLAN-FEC774E786",
+      "pid": "PAT-47A256DF",
+      "plan_id": "TREATMENT_PLAN-4CDFF8DDC9",
       "orders": [
-        "TREATMENT_ORDER-A2E270D73F"
+        "TREATMENT_ORDER-40E8820593"
       ]
     },
     {
@@ -13337,6 +10188,15 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT attendance radiation",
           "ok": true,
           "http": 200,
@@ -13355,7 +10215,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -13411,8 +10280,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-8D2771CE",
-      "plan_id": "TREATMENT_PLAN-9C68772494"
+      "pid": "PAT-7A8C202F",
+      "plan_id": "TREATMENT_PLAN-5733F7F5E1"
     },
     {
       "id": "E3",
@@ -13587,6 +10456,24 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -13596,7 +10483,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -13814,10 +10710,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-78C08A41",
-      "plan_id": "TREATMENT_PLAN-A4F8156E4A",
+      "pid": "PAT-5B7A1232",
+      "plan_id": "TREATMENT_PLAN-3BCC357B99",
       "orders": [
-        "TREATMENT_ORDER-CA8A84D8AC"
+        "TREATMENT_ORDER-E7258E433B"
       ]
     },
     {
@@ -13993,6 +10889,24 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -14002,7 +10916,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -14247,10 +11170,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-8F96C893",
-      "plan_id": "TREATMENT_PLAN-19F7C2E06F",
+      "pid": "PAT-948D04DD",
+      "plan_id": "TREATMENT_PLAN-2E00EB56EA",
       "orders": [
-        "TREATMENT_ORDER-318302E16E"
+        "TREATMENT_ORDER-4516057ED8"
       ]
     },
     {
@@ -14426,6 +11349,24 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -14435,7 +11376,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -14518,8 +11468,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-7E023456",
-      "plan_id": "TREATMENT_PLAN-E898857329"
+      "pid": "PAT-63D79404",
+      "plan_id": "TREATMENT_PLAN-B8BCFE6B3F"
     },
     {
       "id": "E6",
@@ -14694,6 +11644,24 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -14703,7 +11671,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -14903,10 +11880,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-A8A59CD1",
-      "plan_id": "TREATMENT_PLAN-D3CAF6A96F",
+      "pid": "PAT-352BB40E",
+      "plan_id": "TREATMENT_PLAN-45EC732AB3",
       "orders": [
-        "TREATMENT_ORDER-54E2F051D3"
+        "TREATMENT_ORDER-4E86864577"
       ]
     },
     {
@@ -15091,6 +12068,15 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT attendance radiation",
           "ok": true,
           "http": 200,
@@ -15109,7 +12095,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -15300,8 +12295,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-44062A58",
-      "plan_id": "TREATMENT_PLAN-2C60CD0F5D"
+      "pid": "PAT-9BA2240C",
+      "plan_id": "TREATMENT_PLAN-A2F1623B68"
     },
     {
       "id": "E8",
@@ -15477,138 +12472,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-D4DA9B1B",
-      "plan_id": "TREATMENT_PLAN-87E16F0B6C",
-      "orders": [
-        "TREATMENT_ORDER-863E4D1B13"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-D514E1AC",
+      "plan_id": "TREATMENT_PLAN-2AFBBEA3B5"
     },
     {
       "id": "E9",
@@ -15802,6 +12689,15 @@
           }
         },
         {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -15811,7 +12707,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -15848,174 +12753,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "first episode closed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Closed"
-          }
-        },
-        {
-          "name": "second cancer episode created",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "episode-2 continuous test treatment",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "two episode isolation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-388CD09E",
-      "plan_id": "TREATMENT_PLAN-7D38C5B2F5",
-      "orders": [
-        "TREATMENT_ORDER-9689CDA149"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-956FE262",
+      "plan_id": "TREATMENT_PLAN-B8D108E72C"
     },
     {
       "id": "E10",
@@ -16190,6 +12951,24 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -16199,7 +12978,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -16236,165 +13024,30 @@
         },
         {
           "name": "treatment order created",
-          "ok": true,
-          "http": 200,
+          "ok": false,
+          "http": 409,
           "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order links exact approved plan",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy verified",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Preparation Pending"
-          }
-        },
-        {
-          "name": "institution formulary available to pharmacy",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "pharmacy prepared",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensing Pending"
-          }
-        },
-        {
-          "name": "pharmacy released",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Dispensed"
-          }
-        },
-        {
-          "name": "treatment consent",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "administration started",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 1",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "MAR item 2",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "cycle completed",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "order-pharmacy-MAR reconciliation",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "prior episode close before recurrence",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": "Closed"
-          }
-        },
-        {
-          "name": "recurrence episode",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "prior treatment history retained",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient journey populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
-          }
-        },
-        {
-          "name": "patient audit populated",
-          "ok": true,
-          "http": 200,
-          "response": {
-            "ok": true,
-            "status": ""
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
           }
         }
       ],
-      "failures": [],
-      "verdict": "PASS",
-      "pid": "PAT-96771837",
-      "plan_id": "TREATMENT_PLAN-8A7EFC8936",
-      "orders": [
-        "TREATMENT_ORDER-B84A169055"
-      ]
+      "failures": [
+        {
+          "step": "treatment order created",
+          "http": 409,
+          "response": {
+            "error": "Invalid ordered dose for Synthetic QA BSA Agent"
+          },
+          "expected": 200
+        },
+        {
+          "step": "runner exception",
+          "error": "RuntimeError(\"treatment order created: HTTP 409 {'error': 'Invalid ordered dose for Synthetic QA BSA Agent'}\")"
+        }
+      ],
+      "verdict": "FAIL",
+      "pid": "PAT-2F2F0E17",
+      "plan_id": "TREATMENT_PLAN-86093EACAB"
     },
     {
       "id": "E11",
@@ -16569,6 +13222,24 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -16578,7 +13249,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -16796,10 +13476,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-3D797200",
-      "plan_id": "TREATMENT_PLAN-3FE80DFB5F",
+      "pid": "PAT-54659782",
+      "plan_id": "TREATMENT_PLAN-3CB5E30B57",
       "orders": [
-        "TREATMENT_ORDER-C4D8E540FD"
+        "TREATMENT_ORDER-B5FD4F84E0"
       ]
     },
     {
@@ -16975,6 +13655,24 @@
           }
         },
         {
+          "name": "MDT attendance surgery",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
+          "name": "MDT attendance radiation",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": ""
+          }
+        },
+        {
           "name": "MDT comment",
           "ok": true,
           "http": 200,
@@ -16984,7 +13682,16 @@
           }
         },
         {
-          "name": "MDT recommendation",
+          "name": "MDT recommendation submission",
+          "ok": true,
+          "http": 200,
+          "response": {
+            "ok": true,
+            "status": "Pending Chair Approval"
+          }
+        },
+        {
+          "name": "MDT Chair approval",
           "ok": true,
           "http": 200,
           "response": {
@@ -17202,10 +13909,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-D1AB24C9",
-      "plan_id": "TREATMENT_PLAN-02699CA4D4",
+      "pid": "PAT-AA0B338A",
+      "plan_id": "TREATMENT_PLAN-1E8EE76596",
       "orders": [
-        "TREATMENT_ORDER-34341B218E"
+        "TREATMENT_ORDER-9139F7CA38"
       ]
     }
   ],
@@ -17213,12 +13920,12 @@
     "http": 200,
     "result": {
       "ok": true,
-      "events": 3890,
+      "events": 3595,
       "errors": [],
       "note": "Prototype hash chain. Production requires protected/WORM audit storage."
     }
   },
-  "pass": 41,
-  "fail": 0,
+  "pass": 20,
+  "fail": 21,
   "preflight_fail": 0
 }

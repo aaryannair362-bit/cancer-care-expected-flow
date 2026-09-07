@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-import os, json, sqlite3, uuid, hashlib, hmac, secrets, base64, mimetypes, re, math
+import os, json, sqlite3, uuid, hashlib, hmac, secrets, base64, mimetypes, re, math, traceback, sys
+from difflib import SequenceMatcher
 from datetime import datetime, timedelta, date
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 from pathlib import Path
+from pc7_safety import *
 
 ROOT=Path(__file__).resolve().parent
 
@@ -62,7 +64,16 @@ WRITE={
 'lab_order':{'Medical Oncology'},'radiology_order':{'Medical Oncology'},'lab':{'Laboratory / Phlebotomy'},'radiology':{'Radiologist','Radiology Technician'},'pathology':{'Pathology'},'mdt':{'MDT Coordinator','MDT Chair','Medical Oncology','Surgical Oncology','Radiation Oncology'},'mdt_collab':{'MDT Coordinator','MDT Chair','Medical Oncology','Surgical Oncology','Radiation Oncology'},'mdt_followup':{'MDT Coordinator','MDT Chair'},
 'journey':{'Front Desk','Patient Attender','PRE / Patient Relations Executive','Nurse Navigator','Intake Nurse','Medical Oncology','Surgical Oncology','Radiation Oncology','MDT Coordinator','Oncology Pharmacy','Day Care / Infusion Nurse'},'cancer_episode':{'Medical Oncology','Surgical Oncology','Radiation Oncology'},'admission':{'Medical Oncology','Surgical Oncology','Radiation Oncology','Day Care / Infusion Nurse'},'inpatient_care':{'Nurse Navigator','Medical Oncology','Surgical Oncology','Radiation Oncology','Day Care / Infusion Nurse','Inpatient Oncology Nurse','Surgical Nurse'},'discharge':{'Medical Oncology','Surgical Oncology','Radiation Oncology','Nurse Navigator'},'continuous_therapy':{'Medical Oncology'},'tumor_marker':{'Medical Oncology','Laboratory / Phlebotomy'},'care_plan':{'Medical Oncology','Surgical Oncology','Radiation Oncology','Nurse Navigator','Patient Liaison'},'treatment_plan':{'Medical Oncology','Surgical Oncology','Radiation Oncology'},'readiness':{'Medical Oncology'},'treatment_order':{'Medical Oncology'},'pharmacy':{'Oncology Pharmacy'},'infusion':{'Day Care / Infusion Nurse'},'toxicity':{'Medical Oncology','Day Care / Infusion Nurse','Inpatient Oncology Nurse','Nurse Navigator'},'modification':{'Medical Oncology'},'response':{'Medical Oncology','Radiologist'},'radiation':{'Radiation Oncology','Radiation Technologist','Radiation Physicist'},'surgery':{'Surgical Oncology','Surgical Nurse'},'finance':{'Finance / Billing','Biller'},'conversion':{'Finance / Billing'},'visit_summary':{'Medical Oncology'},'protocol_library':{'Hospital Management / Admin'},'formulary':{'Hospital Management / Admin'},'standards':{'Hospital Management / Admin'},'cca_requirements':{'Hospital Management / Admin'}}
 
+# PC6.1/PC7.1 connected core oncology flow -- referral lifecycle entity (additive; does not change any existing entity type).
+WRITE['referral']={'Front Desk','Patient Attender','PRE / Patient Relations Executive','Nurse Navigator','Medical Oncology','Surgical Oncology','Radiation Oncology'}
+REFERRAL_TRANSITIONS={'Created':{'Assigned','Cancelled'},'Assigned':{'Accepted','Scheduled','Cancelled'},'Accepted':{'Scheduled','Seen','Closed','Cancelled'},'Scheduled':{'Seen','Cancelled'},'Seen':{'Closed'},'Closed':set(),'Cancelled':set()}
+READ['Front Desk'].add('referral');READ['Patient Attender'].add('referral');READ['PRE / Patient Relations Executive'].add('referral');READ['Nurse Navigator'].add('referral');READ['Medical Oncology'].add('referral')
+READ['Medical Oncology'].add('survivorship');READ['Nurse Navigator'].add('survivorship');READ['Patient Liaison'].add('survivorship')
+READ['Medical Oncology'].add('psychosocial')
+
 VALUE_SETS={'ecog':['0','1','2','3','4'],'kps':[str(x) for x in range(0,101,10)],'intent':['Curative','Palliative','Neoadjuvant','Adjuvant','Definitive','Maintenance','Diagnostic','Other'],'route':['IV','PO','IM','SQ','Intrathecal','CIV','Other'],'allergy_severity':['Mild','Moderate','Severe','Life-threatening','Unknown'],'allergy_status':['No known allergy','Allergy present','Unable to verify'],'allergy_source':['Patient','Caregiver','Prior record','External clinician','Observed at CCA','Integrated record'],'allergy_reaction':['Rash','Urticaria','Pruritus','Angioedema','Anaphylaxis','Bronchospasm','Nausea / vomiting','Other','Unknown'],'med_reconciliation_status':['Complete','Incomplete','Unable to verify'],'care_plan_status':['Draft','Proposed','Active','Blocked','On Hold','Completed','Superseded','Cancelled'],'appointment_status':['Scheduled','Rescheduled','No-show','Cancelled','Completed'],'dose_basis':['Fixed','mg/kg','mg/m²','AUC','Other'],'decision':['Proceed as Planned','Proceed with Modification','Hold','Delay','Omit','Substitute','Stop'],'toxicity':['Nausea','Vomiting','Diarrhea','Mucositis','Neutropenia','Thrombocytopenia','Anemia','Fatigue','Neuropathy','Alopecia','Cardiotoxicity','Nephrotoxicity','Hepatotoxicity','Other'],'ctcae_grade':['1','2','3','4','5'],'laterality':['Left','Right','Bilateral','Midline','Not applicable'],'treatment_line':['Neoadjuvant','Adjuvant','1st line','2nd line','3rd line','Subsequent line','Maintenance','Consolidation','Salvage','Other'],'pharmacy_decision':['Verified','Query','Reject'],'completion_status':['Administered','Partially Administered','Held','Stopped'],'rt_frequency':['Daily','5x/week','3x/week','Weekly','Other'],'surgery_priority':['Routine','Urgent','Emergency'],'admission_type':['Planned','Emergency','Unplanned'],'admission_reason':['Treatment / procedure','Treatment toxicity','Infection / febrile neutropenia','Adverse drug reaction','Post-operative care','Brachytherapy procedure','Seizure / neurologic event','Nutrition / dehydration','Other'],'admission_status':['Active','Transferred','Discharged','Deceased'],'care_setting':['OPD','Day Care','IPD'],'continuous_mode':['Oral systemic therapy','Hormonal therapy','Other continuous systemic therapy'],'task_status':['Open','Acknowledged','Completed','Cancelled'],'task_priority':['Routine','High','Critical'],'medication_status':['Continue','Hold','Stopped'],'medication_frequency':['Once daily','Twice daily','Three times daily','Every other day','Weekly','As needed','Other prescribed schedule'],'medication_dose_unit':['mg','mcg','g','mL','tablet','capsule','unit'],'access_type':['Peripheral IV','PICC','Central venous catheter','Port','Oral / no vascular access','Other'],'access_site':['Left upper limb','Right upper limb','Left lower limb','Right lower limb','Chest central access','Not applicable','Other'],'mar_variance_type':['None','Dose variance','Rate variance','Route variance','Timing variance','Sequence variance','Other'],'mar_variance_reason':['Clinician instruction','Infusion reaction','Access issue','Patient condition','Operational delay','Product issue','Other'],'pharmacy_wastage_reason':['Partial vial','Dose rounding','Preparation error','Spill / breakage','Cancelled treatment','Expired / BUD exceeded','Return not reusable','Other']}
+VALUE_SETS['referral_priority']=['Routine','Urgent','Emergency']
+VALUE_SETS['referral_status']=['Created','Assigned','Accepted','Scheduled','Seen','Closed','Cancelled']
 
 # Product-test governed masters exercise the SELECTED-control contract only. They are not CCA clinical content.
 ALLERGEN_MASTER=[
@@ -170,13 +181,15 @@ CARE_PLAN_TRANSITIONS={
 PROTOCOL={
 'id':'CCA-DEMO-TCHP','version':'1.0-demo','name':'Synthetic HER2+ Breast Neoadjuvant Demo Regimen','indication':'HER2-positive breast cancer — synthetic demo only','intent':'Neoadjuvant','cycle_length_days':21,'planned_cycles':6,'approved_by':'Synthetic demo governance — NOT clinical content','effective_date':'2026-09-01','orderable':True,
 'hold_parameters':{'ANC_min':1.5,'platelets_min':100,'eGFR_min':50,'bilirubin_max':1.5,'LVEF_min':50,'lab_max_age_days':7},
+'clinical_safety':{'dose_variance_limit_pct':20,'bsa_rounding_policy':'Mosteller raw 4dp; display/order 2dp','renal_dosing_requires_method_source_time':True,'max_dose_policy':'Per-drug master only; no platform-invented universal cap'},
 'items':[
- {'sequence':1,'group':'Premedication','drug':'Dexamethasone','code':'DEMO-DEX','dose_basis':'Fixed','protocol_dose':8,'protocol_unit':'mg','route':'PO','timing':'30–60 min before systemic therapy'},
- {'sequence':2,'group':'Targeted Therapy','drug':'Pertuzumab','code':'DEMO-PER','dose_basis':'Fixed','protocol_dose':840,'protocol_unit':'mg','route':'IV','diluent':'NS','volume_ml':250,'duration_min':60},
- {'sequence':3,'group':'Targeted Therapy','drug':'Trastuzumab','code':'DEMO-TRA','dose_basis':'mg/kg','protocol_dose':8,'protocol_unit':'mg/kg','route':'IV','diluent':'NS','volume_ml':250,'duration_min':90},
- {'sequence':4,'group':'Antineoplastic','drug':'Docetaxel','code':'DEMO-DOC','dose_basis':'mg/m²','protocol_dose':75,'protocol_unit':'mg/m²','route':'IV','diluent':'NS','volume_ml':250,'duration_min':60},
- {'sequence':5,'group':'Antineoplastic','drug':'Carboplatin','code':'DEMO-CARBO','dose_basis':'AUC','protocol_dose':6,'protocol_unit':'AUC','route':'IV','diluent':'D5W','volume_ml':250,'duration_min':60},
- {'sequence':6,'group':'Supportive','drug':'Pegfilgrastim','code':'DEMO-PEG','dose_basis':'Fixed','protocol_dose':6,'protocol_unit':'mg','route':'SQ','timing':'Per institutional policy'}]}
+ {'sequence':1,'group':'Premedication','drug':'Dexamethasone','code':'DEMO-DEX','dose_basis':'Fixed','protocol_dose':8,'protocol_unit':'mg','route':'PO','frequency':'BID','relative_start_days':[-1,0,1],'timing':'Synthetic showcase: 8 mg twice daily for 3 days starting 1 day before docetaxel','special_instructions':'Synthetic demonstration schedule; local CCA supportive-care master governs production.'},
+ {'sequence':2,'group':'Targeted Therapy','drug':'Pertuzumab','code':'DEMO-PER','dose_basis':'Fixed','protocol_dose':840,'protocol_unit':'mg','route':'IV','diluent':'NS','volume_ml':250,'duration_min':60,'max_variance_pct':20},
+ {'sequence':3,'group':'Targeted Therapy','drug':'Trastuzumab','code':'DEMO-TRA','dose_basis':'mg/kg','protocol_dose':8,'protocol_unit':'mg/kg','route':'IV','diluent':'NS','volume_ml':250,'duration_min':90,'max_variance_pct':20},
+ {'sequence':4,'group':'Antineoplastic','drug':'Docetaxel','code':'DEMO-DOC','dose_basis':'mg/m²','protocol_dose':75,'protocol_unit':'mg/m²','route':'IV','diluent':'NS','volume_ml':250,'duration_min':60,'max_variance_pct':20},
+ {'sequence':5,'group':'Antineoplastic','drug':'Carboplatin','code':'DEMO-CARBO','dose_basis':'AUC','protocol_dose':6,'protocol_unit':'AUC','route':'IV','diluent':'D5W','volume_ml':250,'duration_min':60,'renal_dosing':{'allowed_methods':['Measured GFR','Validated nuclear medicine GFR','Cockcroft-Gault creatinine clearance','CCA-approved renal dosing value'],'gfr_cap_ml_min':None,'cap_policy':'No synthetic cap configured; CCA governance required for production'},'max_variance_pct':20,'max_dose_mg':1000,'max_dose_source':'Synthetic QA hard ceiling to exercise blocker — NOT CCA production policy'},
+ {'sequence':6,'group':'Supportive','drug':'Pegfilgrastim','code':'DEMO-PEG','dose_basis':'Fixed','protocol_dose':6,'protocol_unit':'mg','route':'SQ','relative_start_days':[2],'timing':'Synthetic showcase: ≥24 hours after cytotoxic chemotherapy; not within 14 days before next cytotoxic cycle','min_hours_after_cytotoxic':24,'not_within_days_before_next_cytotoxic':14}
+]}
 # V12.2-PC1: clinician-review metadata extends the synthetic demo protocol without changing
 # the validated dose/readiness behavior used by the executable acceptance suites.
 PROTOCOL.update({
@@ -210,6 +223,17 @@ FORMULARY={'items':[
  {'drug':'Docetaxel','drug_code':'DEMO-DOC','formulations':[{'label':'Docetaxel 80 mg vial','strength_mg':80},{'label':'Docetaxel 20 mg vial','strength_mg':20}],'allowed_routes':['IV'],'allowed_diluents':['NS']},
  {'drug':'Carboplatin','drug_code':'DEMO-CARBO','formulations':[{'label':'Carboplatin 450 mg vial','strength_mg':450},{'label':'Carboplatin 150 mg vial','strength_mg':150}],'allowed_routes':['IV'],'allowed_diluents':['D5W','NS']},
  {'drug':'Pegfilgrastim','drug_code':'DEMO-PEG','formulations':[{'label':'Pegfilgrastim 6 mg syringe','strength_mg':6}],'allowed_routes':['SQ'],'allowed_diluents':[]}]}
+
+# PC7 oncology terminology / standards catalogs are intentionally small local demo catalogs.
+# Production terminology should be connected to CCA's approved terminology service/master.
+ONCOLOGY_TERMINOLOGY=TERMINOLOGY
+MDT_QUORUM={'version':'CCA-SYNTHETIC-QA-1','required_roles':['Medical Oncology','Radiologist','Pathology'],'chair_required':True,'minimum_present':4,'note':'Synthetic tumor-board quorum for product testing only; CCA configures production quorum.'}
+INTEGRATION_ADAPTER_DEFAULTS=[
+ {'id':'HMIS-ADT','name':'HMIS / ADT','standard':'HL7/FHIR','status':'Not connected'}, {'id':'LIS','name':'Laboratory Information System','standard':'HL7/FHIR','status':'Not connected'},
+ {'id':'RIS-PACS','name':'RIS / PACS','standard':'DICOM/HL7/FHIR','status':'Not connected'}, {'id':'PATH-LIS','name':'Pathology LIS','standard':'HL7/FHIR','status':'Not connected'},
+ {'id':'TPS-OIS','name':'TPS / OIS / Record & Verify','standard':'DICOM-RT / vendor API','status':'Not connected'}, {'id':'PHARM-ERP','name':'Pharmacy ERP / Inventory','standard':'API/HL7','status':'Not connected'},
+ {'id':'FHIR','name':'FHIR Interoperability','standard':'FHIR R4+ mapping boundary','status':'Not connected'}, {'id':'ABDM','name':'ABDM / ABHA','standard':'ABDM APIs','status':'Not connected'},
+ {'id':'VOICE','name':'OPD Voice Documentation Adapter','standard':'External adapter','status':'Not connected — excluded from this clinical-safety build'}, {'id':'OCR','name':'OCR / Document Extraction Adapter','standard':'External adapter','status':'Not connected — manual/source-fact review available'}]
 
 
 
@@ -447,6 +471,11 @@ def init_db():
  CREATE TABLE IF NOT EXISTS record_versions(id INTEGER PRIMARY KEY AUTOINCREMENT,record_id TEXT,patient_id TEXT,entity_type TEXT,version INTEGER,status TEXT,data_json TEXT,actor_id TEXT,actor_role TEXT,reason TEXT,at TEXT);
  CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,user_id TEXT,role TEXT,expires_at TEXT);
  CREATE TABLE IF NOT EXISTS documents(id TEXT PRIMARY KEY,patient_id TEXT,title TEXT,filename TEXT,mime TEXT,category TEXT,document_type TEXT,source_institution TEXT,document_date TEXT,content BLOB,uploaded_by TEXT,uploaded_at TEXT);
+ CREATE TABLE IF NOT EXISTS document_facts(id TEXT PRIMARY KEY,patient_id TEXT,document_id TEXT,fact_name TEXT,fact_value TEXT,code_system TEXT,code TEXT,page_ref TEXT,section_ref TEXT,source_snippet TEXT,extraction_method TEXT,confidence REAL,status TEXT,validated_by TEXT,validated_at TEXT,created_at TEXT);
+ CREATE INDEX IF NOT EXISTS idx_document_facts_patient ON document_facts(patient_id,document_id,status);
+ CREATE TABLE IF NOT EXISTS integration_adapters(id TEXT PRIMARY KEY,name TEXT,standard TEXT,status TEXT,last_checked_at TEXT,notes TEXT);
+ CREATE TABLE IF NOT EXISTS finance_schemes(id TEXT PRIMARY KEY,name TEXT,version TEXT,status TEXT,verification_mode TEXT,required_fields_json TEXT,package_model_json TEXT,source_ref TEXT,updated_at TEXT);
+ CREATE TABLE IF NOT EXISTS finance_tariffs(id TEXT PRIMARY KEY,drug_code TEXT,drug TEXT,formulation_strength_mg REAL,pack_size INTEGER,unit_price_inr REAL,version TEXT,status TEXT,source_ref TEXT,updated_at TEXT);
  CREATE TABLE IF NOT EXISTS external_tokens(token TEXT PRIMARY KEY,patient_id TEXT,consultant_name TEXT,discipline TEXT,expires_at TEXT,created_by TEXT,created_at TEXT);
  CREATE TABLE IF NOT EXISTS content_sources(id TEXT PRIMARY KEY,name TEXT,source_url TEXT,license_status TEXT,license_name TEXT,commercial_use TEXT,status TEXT,notes TEXT,created_at TEXT,updated_at TEXT);
  CREATE TABLE IF NOT EXISTS content_templates(id TEXT PRIMARY KEY,category TEXT,name TEXT,subtype TEXT,disease TEXT,setting TEXT,intent TEXT,line_of_therapy TEXT,version TEXT,status TEXT,governance_status TEXT,orderable INTEGER,source_id TEXT,source_ref TEXT,effective_date TEXT,review_due TEXT,clinical_owner TEXT,pharmacy_owner TEXT,data_json TEXT,created_at TEXT,updated_at TEXT,approved_by TEXT,approved_at TEXT,retired_at TEXT);
@@ -460,7 +489,7 @@ def init_db():
  CREATE INDEX IF NOT EXISTS idx_cca_validation_signoff_role ON cca_validation_signoff(specialty_role,created_at);
  CREATE TABLE IF NOT EXISTS tasks(id TEXT PRIMARY KEY,patient_id TEXT,episode_id TEXT,task_type TEXT,title TEXT,status TEXT,priority TEXT,owner_role TEXT,owner_user_id TEXT,source_type TEXT,source_id TEXT,due_at TEXT,acknowledged_at TEXT,acknowledged_by TEXT,completed_at TEXT,completed_by TEXT,escalation_level INTEGER,reason TEXT,data_json TEXT,created_at TEXT,created_by TEXT,updated_at TEXT,updated_by TEXT);
  CREATE INDEX IF NOT EXISTS idx_tasks_patient_owner ON tasks(patient_id,owner_role,status,due_at);
- '''); c.commit(); seed_content_master(c); c.commit(); c.close(); seed()
+ '''); c.commit(); seed_content_master(c); seed_pc7_masters(c); c.commit(); c.close(); seed()
 
 def actor(role): return USERS.get(role,{'id':'USR-UNKNOWN','name':role,'role':role})
 def audit(c,pid,role,action,etype='',eid='',detail=''):
@@ -468,6 +497,120 @@ def audit(c,pid,role,action,etype='',eid='',detail=''):
 
 def new_record(c,pid,typ,data,status='Draft',role='System',rid=None):
  rid=rid or f'{typ.upper()}-{uuid.uuid4().hex[:10].upper()}'; t=now(); c.execute('INSERT INTO records VALUES(?,?,?,?,?,?,?,?,?,?)',(rid,pid,typ,status,1,jdump(data),t,t,actor(role)['id'],actor(role)['id'])); c.execute('INSERT INTO record_versions(record_id,patient_id,entity_type,version,status,data_json,actor_id,actor_role,reason,at) VALUES(?,?,?,?,?,?,?,?,?,?)',(rid,pid,typ,1,status,jdump(data),actor(role)['id'],role,'Created',t)); audit(c,pid,role,'CREATE',typ,rid,status); return rid
+
+def parse_dt(v):
+ try:return datetime.fromisoformat(str(v).replace('Z','+00:00'))
+ except:return None
+
+def normalize_abha(v):
+ digits=re.sub(r'\D','',str(v or ''))
+ if not digits:return ''
+ return f'{digits[:2]}-{digits[2:6]}-{digits[6:10]}-{digits[10:14]}' if len(digits)==14 else str(v).strip()
+def valid_abha(v):
+ if not str(v or '').strip():return True
+ return len(re.sub(r'\D','',str(v)))==14
+
+def active_disclosure_consent(c,pid):
+ con=latest(c,pid,'consent');today=date.today()
+ for x in ((con or {}).get('data',{}).get('items',[])):
+  if x.get('type')!='External Financial Assistance Disclosure Consent' or x.get('status')!='Signed':continue
+  vf=parse_iso_date(x.get('valid_from'));vu=parse_iso_date(x.get('valid_until')) if x.get('valid_until') else None
+  if vf and vf>today:continue
+  if vu and vu<today:continue
+  return x
+ return None
+
+def seed_finance_schemes(c):
+ t=now();rows=[
+  ('SCH-PMJAY','PM-JAY / Ayushman Bharat','demo-1.0','Active','External beneficiary/package verification required',['beneficiary_or_card_id','supporting_evidence'],{'package_source':'CCA/payer configuration required','definitive_eligibility':False},'Synthetic workflow structure only — verify against current official payer systems'),
+  ('SCH-CGHS','CGHS','demo-1.0','Active','External entitlement/package verification required',['beneficiary_or_card_id','supporting_evidence'],{'package_source':'CCA/payer configuration required','definitive_eligibility':False},'Synthetic workflow structure only'),
+  ('SCH-ESI','ESI / ESIC','demo-1.0','Active','External entitlement verification required',['beneficiary_or_card_id','supporting_evidence'],{'package_source':'CCA/payer configuration required','definitive_eligibility':False},'Synthetic workflow structure only'),
+  ('SCH-STATE','State Government Scheme','demo-1.0','Active','State portal / payer verification required',['scheme_name','beneficiary_or_card_id','supporting_evidence'],{'package_source':'CCA/state configuration required','definitive_eligibility':False},'Institution-configurable state scheme workflow'),
+  ('SCH-PRIVATE','Private Insurance / TPA','demo-1.0','Active','Policy / pre-authorisation verification required',['payer_name','policy_number','supporting_evidence'],{'package_source':'Payer contract configuration required','definitive_eligibility':False},'Institution-configurable insurance workflow')]
+ for r in rows:c.execute('INSERT OR IGNORE INTO finance_schemes VALUES(?,?,?,?,?,?,?,?,?)',(r[0],r[1],r[2],r[3],r[4],jdump(r[5]),jdump(r[6]),r[7],t))
+
+def seed_pc7_masters(c):
+ t=now();seed_finance_schemes(c)
+ for x in INTEGRATION_ADAPTER_DEFAULTS:
+  c.execute('INSERT OR IGNORE INTO integration_adapters VALUES(?,?,?,?,?,?)',(x['id'],x['name'],x['standard'],x['status'],t,x.get('notes','')))
+ # Synthetic financial tariff for display testing only; separate from clinical dose master.
+ tariffs=[('TAR-DEMO-PER','DEMO-PER','Pertuzumab',420,1,85000),('TAR-DEMO-TRA','DEMO-TRA','Trastuzumab',150,1,35000),('TAR-DEMO-DOC80','DEMO-DOC','Docetaxel',80,1,6000),('TAR-DEMO-DOC20','DEMO-DOC','Docetaxel',20,1,1800),('TAR-DEMO-CAR450','DEMO-CARBO','Carboplatin',450,1,4500),('TAR-DEMO-CAR150','DEMO-CARBO','Carboplatin',150,1,1900),('TAR-DEMO-PEG','DEMO-PEG','Pegfilgrastim',6,1,9000),('TAR-DEMO-DEX','DEMO-DEX','Dexamethasone',4,10,50)]
+ for r in tariffs:c.execute('INSERT OR IGNORE INTO finance_tariffs VALUES(?,?,?,?,?,?,?,?,?,?)',(*r,'1.0-synthetic','Active','Synthetic demo tariff — not CCA commercial tariff',t))
+
+def age_years(dob):
+ try:
+  d=date.fromisoformat(str(dob)[:10]);today=date.today();return today.year-d.year-((today.month,today.day)<(d.month,d.day))
+ except:return None
+
+def renal_context_from_readiness(ready):
+ d=(ready or {}).get('data',{}) if isinstance(ready,dict) else (ready or {})
+ return {'method':d.get('renal_dosing_method'),'value_ml_min':d.get('renal_dosing_value_ml_min'),'source_id':d.get('renal_dosing_source_id'),'measured_at':d.get('renal_dosing_measured_at')}
+
+def actual_cumulative_exposure(c,pid,drug):
+ total=0.0;events=[]
+ for inf in many(c,pid,'infusion'):
+  for m in inf.get('data',{}).get('mar',[]):
+   if str(m.get('drug','')).lower()==str(drug).lower() and m.get('completion_status') in ['Administered','Partially Administered']:
+    try:v=float(m.get('actual_dose') or 0)
+    except:v=0
+    total+=v;events.append({'infusion_id':inf['id'],'dose':v,'unit':m.get('unit') or m.get('ordered_unit'),'at':m.get('recorded_at') or m.get('start_time')})
+ return {'drug':drug,'actual_administered_total':round(total,4),'events':events}
+
+def order_safety_recalculation(c,pid,order,protocol):
+ snap=order.get('data',{}).get('patient_snapshot',{});default_renal=snap.get('renal_dosing') or {};allergies=snap.get('coded_allergies') or []
+ bycode={x.get('code'):x for x in protocol.get('items',[])};results=[];errors=[]
+ for oi in order.get('data',{}).get('items',[]):
+  master=bycode.get(oi.get('code')) or oi;renal=oi.get('renal_dosing') or default_renal
+  res=calculate_dose(master,snap.get('weight_kg'),snap.get('bsa_raw_m2') or snap.get('bsa_m2'),order.get('data',{}).get('cycle',1),renal)
+  if res.get('ok'):
+   chk=safety_check(master,oi.get('ordered_dose'),res,oi.get('variance_reason',''))
+  else:
+   # No independent cross-check is possible without governed renal-dosing provenance
+   # (e.g. AUC items ordered via clinician manual entry). This is a warning, not a
+   # blocker: the pharmacist's own manual verification checklist still applies.
+   chk={'ok':True,'errors':[],'warnings':[f"Independent recalculation unavailable: {res.get('error')}"],'variance_pct':None,'max_dose_mg':safe_float(master.get('max_dose_mg'))}
+  allergy=allergy_conflicts(allergies,master);cum=actual_cumulative_exposure(c,pid,oi.get('drug'))
+  if allergy:chk['errors'].append('Direct coded allergy conflict: '+', '.join(x.get('substance','') for x in allergy));chk['ok']=False
+  lim=master.get('cumulative_limit_mg')
+  if lim not in [None,''] and cum['actual_administered_total']+float(oi.get('ordered_dose') or 0)>float(lim):chk['errors'].append('Projected cumulative exposure exceeds configured limit');chk['ok']=False
+  row={'item_id':oi.get('item_id'),'code':oi.get('code'),'drug':oi.get('drug'),'independent_calculation':res,'safety':chk,'allergy_conflicts':allergy,'prior_actual_cumulative_exposure':cum};results.append(row);errors += [f"{oi.get('drug')}: {x}" for x in chk['errors']]
+ return {'ok':not errors,'items':results,'errors':errors,'verified_at':now()}
+
+def lab_observations(data):
+ meta={'hb':('718-7','LOINC','Hemoglobin','g/dL'),'wbc':('6690-2','LOINC','Leukocytes','10^9/L'),'anc':('751-8','LOINC','Neutrophils absolute','10^9/L'),'platelets':('777-3','LOINC','Platelets','10^9/L'),'creatinine':('2160-0','LOINC','Creatinine','mg/dL'),'egfr':('98979-8','LOINC','Estimated GFR','mL/min/1.73m²'),'bilirubin':('1975-2','LOINC','Total bilirubin','mg/dL'),'ast':('1920-8','LOINC','AST','U/L'),'alt':('1742-6','LOINC','ALT','U/L')}
+ units=data.get('units') or {};ranges=data.get('reference_ranges') or {};obs=[]
+ for k,(code,sys,display,default_unit) in meta.items():
+  if data.get(k) in [None,'']:continue
+  v=data.get(k);lohi=ranges.get(k) or {};flag='Normal';
+  try:
+   fv=float(v);lo=safe_float(lohi.get('low'));hi=safe_float(lohi.get('high'))
+   if lo is not None and fv<lo:flag='Low'
+   if hi is not None and fv>hi:flag='High'
+  except:pass
+  crit=next((x for x in critical_lab_flags(data,units) if x.get('field')==k),None)
+  if crit:flag='Critical'
+  obs.append({'analyte_key':k,'code_system':sys,'code':code,'display':display,'value':v,'unit':units.get(k) or default_unit,'reference_low':lohi.get('low'),'reference_high':lohi.get('high'),'interpretation':flag,'critical':bool(crit),'specimen':data.get('specimen') or 'Blood','collected_at':data.get('collected_at') or data.get('date'),'finalized_at':data.get('finalized_at'),'source_order_id':data.get('source_order_id')})
+ return obs
+
+def mdt_quorum(c,pid):
+ co=latest(c,pid,'mdt_collab');att=(co or {}).get('data',{}).get('attendance',[]);present=[x for x in att if x.get('status','Present')=='Present'];roles={x.get('discipline') or x.get('role') for x in present};chair=any(x.get('is_chair') or x.get('discipline')=='MDT Chair' for x in present);missing=[r for r in MDT_QUORUM['required_roles'] if r not in roles];ok=len(present)>=MDT_QUORUM['minimum_present'] and not missing and chair
+ return {'ok':ok,'present_count':len(present),'roles':sorted(x for x in roles if x),'missing_required_roles':missing,'chair_present':chair,'rule':MDT_QUORUM}
+
+def tariff_estimate(c,order):
+ lines=[];total=0
+ for i in order.get('data',{}).get('items',[]):
+  dose=float(i.get('ordered_dose') or 0);rows=c.execute("SELECT * FROM finance_tariffs WHERE drug_code=? AND status='Active' ORDER BY formulation_strength_mg DESC",(i.get('code'),)).fetchall()
+  candidates=[dict(r) for r in rows if float(r['formulation_strength_mg'] or 0)>0]
+  if not candidates:lines.append({'drug':i.get('drug'),'ordered_dose_mg':dose,'status':'No active tariff mapping'});continue
+  # Greedy vial count demo; tariff is financial only and never changes clinical dose.
+  remain=dose;used=[];cost=0
+  for r in candidates:
+   strength=float(r['formulation_strength_mg']);n=int(remain//strength)
+   if n:used.append({'strength_mg':strength,'count':n,'unit_price_inr':r['unit_price_inr']});cost+=n*float(r['unit_price_inr']);remain-=n*strength
+  if remain>1e-9:
+   r=candidates[-1];used.append({'strength_mg':float(r['formulation_strength_mg']),'count':1,'unit_price_inr':r['unit_price_inr']});cost+=float(r['unit_price_inr'])
+  lines.append({'drug':i.get('drug'),'drug_code':i.get('code'),'ordered_dose_mg':dose,'vial_plan':used,'estimated_amount_inr':round(cost,2)});total+=cost
+ return {'currency':'INR','lines':lines,'total':round(total,2),'basis':'Synthetic dose/vial-driven tariff master — not CCA commercial tariff'}
 
 def get_rec(c,rid):
  r=c.execute('SELECT * FROM records WHERE id=?',(rid,)).fetchone();
@@ -700,6 +843,433 @@ def render_report(c,pid,tid,role,record_version=''):
   if isinstance(data,dict) and data.get('version') is not None:source_versions.append({'section':z.get('title'),'version':data.get('version')})
  return {'header':header,'sections':sections,'source_versions':source_versions,'template_sections':tpl.get('data',{}).get('sections',[]),'status':'Generated from the requested authorized record version where supplied; source records remain authoritative.'},200,None
 
+def norm_text(v):
+ return re.sub(r'\s+',' ',str(v or '').strip().lower())
+
+def duplicate_candidates(c,name='',dob='',phone='',abha='',id_number='',mrn=''):
+ name=norm_text(name);phone=re.sub(r'\D','',str(phone or ''));abha=norm_text(abha);id_number=norm_text(id_number);mrn=norm_text(mrn);out=[]
+ for r in c.execute('SELECT * FROM patients'):
+  score=0;reasons=[]
+  rn=norm_text(r['name']); rp=re.sub(r'\D','',str(r['phone'] or ''))
+  if mrn and norm_text(r['mrn'])==mrn:score+=120;reasons.append('MRN exact match')
+  if abha and norm_text(r['abha'])==abha:score+=120;reasons.append('ABHA exact match')
+  if id_number and norm_text(r['id_number'])==id_number:score+=110;reasons.append('Government/ID exact match')
+  if dob and r['dob']==dob:score+=35;reasons.append('DOB match')
+  if phone and rp==phone:score+=45;reasons.append('Phone match')
+  sim=SequenceMatcher(None,name,rn).ratio() if name and rn else 0
+  if name and rn and name==rn:score+=55;reasons.append('Name exact match')
+  elif sim>=0.88:score+=30;reasons.append(f'Name similarity {sim:.0%}')
+  risk='High' if score>=100 else ('Possible' if score>=65 else 'Low')
+  if score>=65:out.append({'patient_id':r['id'],'mrn':r['mrn'],'name':r['name'],'dob':r['dob'],'phone':r['phone'],'score':score,'risk':risk,'reasons':reasons})
+ return sorted(out,key=lambda x:(-x['score'],x['name']))
+
+def referral_owner_role(department):
+ return {'Medical Oncology':'Medical Oncology','Surgical Oncology':'Surgical Oncology','Radiation Oncology':'Radiation Oncology'}.get(str(department or '').strip(),'Medical Oncology')
+
+def cycle_readiness_rows(c,pid):
+ return many(c,pid,'readiness')
+
+def chemo_drug_chart(c,pid):
+ plan=latest(c,pid,'treatment_plan'); orders=many(c,pid,'treatment_order'); pharmacies=many(c,pid,'pharmacy'); infusions=many(c,pid,'infusion'); readies=cycle_readiness_rows(c,pid)
+ pd=plan['data'] if plan else {}; systemic=next((x for x in pd.get('phases',[]) if x.get('modality')=='Systemic Therapy' and x.get('status')!='Cancelled'),{})
+ tid=systemic.get('regimen_template_id') or ((orders[-1]['data'].get('content_template_id')) if orders else '') or 'REG-CCA-TCHP-DEMO'
+ tpl=content_one(c,tid) or content_one(c,'REG-CCA-TCHP-DEMO'); prot=(tpl or {}).get('data',{})
+ planned=int(prot.get('planned_cycles') or 6); cycle_count=max(1,min(planned,12)); cycle_len=int(prot.get('cycle_length_days') or 21)
+ start=str(systemic.get('start_target') or (orders[0]['data'].get('start_date') if orders else date.today()))[:10]
+ try:start_date=date.fromisoformat(start)
+ except:start_date=date.today()
+ items=prot.get('items',[]) or []
+ rows=[];cycles=[]
+ for cy in range(1,cycle_count+1):
+  ords=[o for o in orders if int(o['data'].get('cycle') or 0)==cy]; order=ords[-1] if ords else None
+  ready=next((r for r in reversed(readies) if int(r['data'].get('cycle') or 0)==cy),None)
+  ph=next((p for p in reversed(pharmacies) if order and p['data'].get('order_id')==order['id']),None)
+  inf=next((i for i in reversed(infusions) if order and i['data'].get('order_id')==order['id']),None)
+  cycle_state='Planned'
+  if ready and ready['status']=='Signed':cycle_state='Readiness: '+str(ready['data'].get('decision') or 'Signed')
+  if order:cycle_state='Ordered — '+order['status']
+  if ph:
+   cycle_state={'Verification Pending':'Pharmacy Verification Pending','Queried':'Pharmacy Query','Preparation Pending':'Pharmacy Verified / Preparation Pending','Dispensing Pending':'Prepared / Release Pending','Dispensed':'Released to '+str(ph['data'].get('dispensed_to') or 'Day Care')}.get(ph['status'],ph['status'])
+  if inf:
+   cycle_state={'Awaiting Pharmacy':'Awaiting Pharmacy','Ready for Verification':'Ready for Day Care','In Progress':'Administration In Progress','Completed':'Administered'}.get(inf['status'],inf['status'])
+  if inf and inf['data'].get('mar'):
+   adverse=[x for x in inf['data']['mar'] if x.get('completion_status') in ['Partially Administered','Held','Stopped']]
+   if adverse:cycle_state=adverse[-1].get('completion_status')
+  planned_date=(start_date+timedelta(days=(cy-1)*cycle_len)).isoformat()
+  cycles.append({'cycle':cy,'planned_date':planned_date,'readiness':(ready or {}).get('status','Not started'),'readiness_decision':(ready or {}).get('data',{}).get('decision',''),'order_id':(order or {}).get('id',''),'order_status':(order or {}).get('status','Not ordered'),'pharmacy_status':(ph or {}).get('status','Not started'),'administration_status':(inf or {}).get('status','Not started'),'status':cycle_state})
+  src_items=(order['data'].get('items',[]) if order else items)
+  for q in src_items:
+   mar=next((x for x in ((inf or {}).get('data',{}).get('mar',[]) if inf else []) if x.get('item_id')==q.get('item_id')),None)
+   rows.append({'cycle':cy,'day':int(q.get('day') or 1),'planned_date':planned_date,'sequence':q.get('sequence'),'group':q.get('group','Treatment'),'drug':q.get('drug'),'standard_dose':q.get('protocol_dose'),'dose_basis':q.get('dose_basis'),'calculated_dose':q.get('calculated_dose'),'final_ordered_dose':q.get('ordered_dose') or q.get('final_approved_dose'),'unit':q.get('ordered_unit') or q.get('protocol_unit',''),'route':q.get('route'),'supportive_medication':q.get('group') not in ['Antineoplastic','Targeted Therapy'],'actual_administered_dose':(mar or {}).get('actual_dose'),'administration_status':(mar or {}).get('completion_status') or cycle_state})
+ return {'regimen_template_id':tid,'regimen':(tpl or {}).get('name') or prot.get('name',''),'planned_cycles':cycle_count,'cycle_length_days':cycle_len,'cycles':cycles,'rows':rows}
+
+def core_flow_snapshot(c,pid):
+ reg=latest(c,pid,'registration');ref=latest(c,pid,'referral');con=latest(c,pid,'consultation');dx=latest(c,pid,'diagnosis');mdt=latest(c,pid,'mdt');plan=latest(c,pid,'treatment_plan');readies=many(c,pid,'readiness');orders=many(c,pid,'treatment_order');phs=many(c,pid,'pharmacy');infs=many(c,pid,'infusion');tox=latest(c,pid,'toxicity');rt=latest(c,pid,'radiation');su=latest(c,pid,'surgery');pa=latest(c,pid,'pathology');jour=latest(c,pid,'journey');tasks=[task_row(r) for r in c.execute("SELECT * FROM tasks WHERE patient_id=? AND status IN ('Open','Acknowledged') ORDER BY created_at",(pid,))]
+ chart=chemo_drug_chart(c,pid);latest_order=orders[-1] if orders else None;latest_ph=next((p for p in reversed(phs) if latest_order and p['data'].get('order_id')==latest_order['id']),None);latest_inf=next((i for i in reversed(infs) if latest_order and i['data'].get('order_id')==latest_order['id']),None);latest_ready=readies[-1] if readies else None
+ rtd=(rt or {}).get('data',{});rx=rtd.get('prescription',{});pl=rtd.get('planning',{});fx=rtd.get('fractions',[]);delivered=sum(1 for x in fx if x.get('status')=='Delivered')
+ sud=(su or {}).get('data',{});ad=sud.get('adjuvant_decision') or {}
+ tox_events=(tox or {}).get('data',{}).get('events',[]);last_completed_cycle=max([int(o['data'].get('cycle') or 0) for o in orders if o.get('status')=='Completed'] or [0]);next_cycle_ready=next((r for r in reversed(readies) if r.get('status')=='Signed' and int(r.get('data',{}).get('cycle') or 0)>last_completed_cycle),None)
+ steps=[
+  {'n':1,'name':'Registration + Referral','owner':'Front Desk','status':(ref or {}).get('status') or (reg or {}).get('status','Missing'),'source_id':(ref or {}).get('id') or (reg or {}).get('id',''),'complete':bool(reg and ref and ref['status'] in ['Assigned','Accepted','Scheduled','Seen','Closed'])},
+  {'n':2,'name':'Medical Oncology Consultation + Diagnosis/Staging','owner':'Medical Oncology','status':f"{(con or {}).get('status','Missing')} / {(dx or {}).get('status','Missing')}",'source_id':(dx or {}).get('id',''),'complete':bool(con and con['status']=='Signed' and dx and dx['status']=='Verified')},
+  {'n':3,'name':'MDT Decision','owner':'MDT Coordinator','status':(mdt or {}).get('status','Missing'),'source_id':(mdt or {}).get('id',''),'complete':bool(mdt and mdt['status']=='MDT Recommended')},
+  {'n':4,'name':'Complete Treatment Plan','owner':(plan or {}).get('data',{}).get('responsible_specialty','Medical Oncology'),'status':(plan or {}).get('status','Missing'),'source_id':(plan or {}).get('id',''),'complete':bool(plan and plan['status'] in ['Clinician Approved','Active'])},
+  {'n':5,'name':'Chemotherapy Drug Chart','owner':'Medical Oncology','status':f"{chart['planned_cycles']} cycles / {len(chart['rows'])} drug rows",'source_id':chart.get('regimen_template_id',''),'complete':bool(chart.get('rows'))},
+  {'n':6,'name':'Treatment Readiness','owner':'Medical Oncology','status':(latest_ready or {}).get('data',{}).get('decision') or (latest_ready or {}).get('status','Not started'),'source_id':(latest_ready or {}).get('id',''),'complete':bool(latest_ready and latest_ready['status']=='Signed')},
+  {'n':7,'name':'Pharmacy Verification → Preparation → Day Care','owner':'Oncology Pharmacy','status':(latest_ph or {}).get('status','Not started'),'source_id':(latest_ph or {}).get('id',''),'complete':bool(latest_ph and latest_ph['status']=='Dispensed')},
+  {'n':8,'name':'Actual Chemotherapy Administration','owner':'Day Care / Infusion Nurse','status':(latest_inf or {}).get('status','Not started'),'source_id':(latest_inf or {}).get('id',''),'complete':bool(latest_inf and latest_inf['status']=='Completed')},
+  {'n':9,'name':'Toxicity → Next-Cycle Decision','owner':'Medical Oncology','status':(('Toxicity reviewed / Cycle '+str((next_cycle_ready or {}).get('data',{}).get('cycle',''))+' readiness '+str((next_cycle_ready or {}).get('data',{}).get('decision',''))) if tox_events and next_cycle_ready else ('Toxicity recorded / next-cycle readiness pending' if tox_events else 'Awaiting toxicity review')),'source_id':(next_cycle_ready or tox or {}).get('id',''),'complete':bool(tox_events and next_cycle_ready)},
+  {'n':10,'name':'Radiation Approval + Delivery','owner':'Radiation Oncology / Physics / RTT','status':f"{(rt or {}).get('status','Not started')} • {delivered}/{rx.get('fractions',0)} fractions",'source_id':(rt or {}).get('id',''),'complete':bool(rt and rt['status']=='Completed')},
+  {'n':11,'name':'Surgery → Pathology → Adjuvant Decision','owner':'Surgical Oncology','status':('Adjuvant decision: '+str(ad.get('decision')) if ad else (su or {}).get('status','Not started')),'source_id':(su or {}).get('id',''),'complete':bool(su and sud.get('histopathology_link') and ad.get('decision'))},
+  {'n':12,'name':'Patient Journey + Active Treatment Summary','owner':'Care Team','status':'Available','source_id':(jour or {}).get('id',''),'complete':bool(jour)},
+ ]
+ next_step=next((x for x in steps if not x['complete']),{'n':0,'name':'Core oncology demo flow complete','owner':'Care Team','status':'Complete','complete':True});pat=patient(c,pid);ep=current_episode(c,pid);current_cycle=max([int(o['data'].get('cycle') or 0) for o in orders] or [0])
+ return {'patient':pat,'episode':(ep or {}).get('data',{}),'steps':steps,'next_step':next_step,'current_treatment':{'phase':(jour or {}).get('data',{}).get('current_care_stage',''),'location':(jour or {}).get('data',{}).get('current_location',''),'regimen':chart.get('regimen',''),'current_cycle':current_cycle,'latest_order':(latest_order or {}).get('data',{}).get('order_no',''),'latest_readiness':(latest_ready or {}).get('data',{}).get('decision',''),'pharmacy_status':(latest_ph or {}).get('status',''),'administration_status':(latest_inf or {}).get('status',''),'rt_status':(rt or {}).get('status',''),'surgery_status':(su or {}).get('status','')},'drug_chart':chart,'journey':(jour or {}).get('data',{}),'open_tasks':tasks,'latest_toxicities':tox_events[-10:]}
+
+
+DEMO_SHOWCASE_CASES=[
+ {'patient_id':'PAT-DEMO-CHEMO','title':'Systemic Therapy — Six-Cycle Chemotherapy','focus':'Six-cycle drug chart, readiness decisions, pharmacy preparation/release, actual MAR administration, toxicity and next-cycle decision','recommended_roles':['Medical Oncology','Oncology Pharmacy','Day Care / Infusion Nurse','Nurse Navigator']},
+ {'patient_id':'PAT-DEMO-RT','title':'Radiation Oncology — Active Fraction Course','focus':'Prescription, simulation/planning, independent Physics QA, RO approval, fraction-by-fraction delivery and cumulative dose','recommended_roles':['Radiation Oncology','Radiation Physicist','Radiation Technologist','Radiology Coordinator']},
+ {'patient_id':'PAT-DEMO-SURG','title':'Surgical Oncology — Surgery to Pathology to Adjuvant','focus':'Surgical plan, pre-op readiness, actual operative record, final histopathology, pStage and adjuvant handoff','recommended_roles':['Surgical Oncology','Surgical Nurse','Pathology','Medical Oncology','Stoma / Wound Nurse']},
+ {'patient_id':'PAT-DEMO-IPD','title':'Inpatient Oncology — Deterioration / Multidisciplinary Support','focus':'Admission, nursing observations, critical labs, toxicity, inpatient notes, transfusion/blood-bank and discharge planning workflows','recommended_roles':['Medical Oncology','Inpatient Oncology Nurse','Laboratory / Phlebotomy','Blood Bank / Transfusion','Palliative Care','Dietitian / Nutrition']},
+ {'patient_id':'PAT-DEMO-SURV','title':'Treatment Completion / Oral Therapy / Survivorship','focus':'Completed treatment summary, active oral/continuous therapy, surveillance, late effects, financial counselling and survivorship handoff','recommended_roles':['Medical Oncology','Nurse Navigator','Patient Liaison','Finance / Billing','Psycho-Oncology']},
+]
+
+def _demo_insert_patient(c,p):
+ t=now();c.execute('INSERT INTO patients VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)',(p['id'],p['mrn'],p['name'],p['dob'],p['sex'],p.get('phone',''),p.get('abha',''),p.get('id_number',''),p.get('current_department','Medical Oncology'),'Active','',t,t))
+
+def _demo_common(c,p,dx,stage,site,histology,focus_dept='Medical Oncology'):
+ pid=p['id'];today=date.today()
+ new_record(c,pid,'registration',{'arrival_type':'Synthetic showcase','assigned_specialty':focus_dept,'clinician_assignment':focus_dept+' Demo Service','route_rule':'Synthetic showcase routing','referral_doctor_name':'Dr Demo Referrer','referral_facility':'Synthetic Outside Centre','referral_network_level3':'Synthetic referral','referral_reason':'CCA product demonstration','address':'Demo City','general_consent':'Signed','photo_status':'Not required'},'Completed','System')
+ new_record(c,pid,'referral',{'referral_no':'REF-'+pid[-5:],'source_type':'External clinician','referring_doctor':'Dr Demo Referrer','referring_facility':'Synthetic Outside Centre','reason':'CCA product demonstration','priority':'Routine','assigned_department':focus_dept,'assigned_clinician':focus_dept+' Demo Service','status':'Seen','history':[{'at':now(),'from':'Created','to':'Seen','by':actor('System'),'reason':'Synthetic showcase lifecycle'}]},'Seen','System')
+ new_record(c,pid,'consent',{'items':[{'id':'CONS-'+pid[-5:],'type':'General Consent','version':'SYN-DEMO-v1','scope':'Synthetic demonstration only','status':'Signed','signed_by':p['name'],'signed_at':now(),'valid_from':str(today),'valid_until':str(today+timedelta(days=180))}]},'Active','System')
+ new_record(c,pid,'appointments',{'items':[{'id':'APT-'+pid[-5:],'date':(datetime.now()+timedelta(days=2)).isoformat(timespec='minutes'),'department':focus_dept,'clinician':focus_dept+' Demo Service','location':'CCA Demo','purpose':'Synthetic follow-up','status':'Scheduled'}]},'Active','System')
+ new_record(c,pid,'queue',{'current_location':focus_dept,'current_status':'In Service','priority':'Routine','token':'DEMO-'+pid[-3:],'history':[{'at':now(),'from':'Registration','to':focus_dept,'status':'Completed','actor':'System'}]},'Active','System')
+ new_record(c,pid,'journey',{'current_location':focus_dept,'current_care_stage':'Active Oncology Care','events':[{'id':'J-'+pid[-5:],'at':now(),'department':focus_dept,'care_stage':'Active Oncology Care','clinician':'System','actor_role':'System','status':'Current','source_type':'registration','source_id':'','note':'Synthetic showcase journey'}]},'Active','System')
+ new_record(c,pid,'cancer_episode',{'episode_no':'EP-'+pid[-5:],'kind':'Primary cancer','label':dx+' synthetic episode','started_at':str(today-timedelta(days=90)),'ended_at':'','closure_reason':'','primary_diagnosis_id':'','status':'Active'},'Active','System')
+ new_record(c,pid,'intake',{'bp':'120/78','hr':76,'rr':16,'temp_c':36.7,'spo2':99,'weight_kg':68,'height_cm':165,'bmi':25.0,'bsa_m2':1.76,'bsa_formula':'Mosteller: sqrt(height_cm × weight_kg / 3600)','measured_at':now(),'ecog':'1','kps':'90','pain_score':1,'pain_site':site,'fall_risk_setting':'OPD','fall_risk_score':1,'fall_risk_level':'Low','past_medical':'Synthetic hypertension history','past_surgical':'Synthetic prior procedure history','family_history':'Reviewed','hormonal_history':'Reviewed','reproductive_history':'Reviewed','social_history':'No current tobacco'},'Completed','System')
+ new_record(c,pid,'med_recon',{'items':[{'id':'MED-'+pid[-3:],'name':'Synthetic supportive medication','dose':'1 tablet','route':'PO','frequency':'Once daily','status':'Continue','source':'Synthetic demo'}],'allergies':[{'id':'ALG-'+pid[-3:],'substance':'Synthetic allergy example','reaction':'Rash','severity':'Mild','status':'Active','source':'Synthetic demo'}],'reconciliation_events':[{'at':now(),'reconciled_by':'Nurse Navigator','medication_count':1,'allergy_count':1,'note':'Synthetic showcase reconciliation'}]},'Active','System')
+ new_record(c,pid,'consultation',{'encounter_type':'Synthetic oncology review','date':now(),'chief_complaint':'Cancer treatment review','hpi':'Synthetic longitudinal oncology history for product demonstration','ros':'No acute red flags in showcase record','physical_exam_structured':{'general':'Stable','tumor_site':site+' findings documented'},'decision_flow':{'diagnosed':'Yes','treatable':'Yes','tumor_board_required':'Yes','treatment_clearance':'Reviewed'},'assessment':dx+' — '+stage,'plan':'Continue stage-appropriate synthetic showcase workflow','signed_by':'Medical Oncology','signed_at':now()},'Signed','System')
+ new_record(c,pid,'diagnosis',{'icd10':'SYN-DEMO','icd10_version':'Synthetic demo','icdo_topography':'SYN','icdo_morphology':'SYN','icdo_version':'Synthetic demo','snomed':'SYN-DEMO','cancer_type':dx,'primary_site':site,'histology':histology,'grade':'Synthetic Grade 2','stage_t':'cT2','stage_n':'cN1','stage_m':'cM0','stage_group':stage,'staging_system':'AJCC / disease-specific demo','staging_version':'Synthetic showcase','staging_basis':'Clinical','staging_date':str(today-timedelta(days=80)),'ecog':'1','disease_status':'Active treatment','treatment_intent':'Curative / disease-control showcase','biomarkers':[{'name':'Synthetic biomarker','value':'Positive','method':'Demo','date':str(today-timedelta(days=82))}]},'Verified','System')
+ new_record(c,pid,'lab',{'date':str(today),'hb':11.8,'wbc':5.4,'anc':2.7,'platelets':245,'creatinine':0.8,'egfr':95,'bilirubin':0.6,'ast':24,'alt':26,'albumin':4.0,'sodium':138,'potassium':4.0,'magnesium':1.9,'calcium':9.1,'pregnancy':'Not applicable / Negative as appropriate','lvef':60,'units':{'hb':'g/dL','wbc':'10^9/L','anc':'10^9/L','platelets':'10^9/L','creatinine':'mg/dL','egfr':'mL/min/1.73m2','bilirubin':'mg/dL','ast':'U/L','alt':'U/L','albumin':'g/dL','sodium':'mmol/L','potassium':'mmol/L','magnesium':'mg/dL','calcium':'mg/dL','lvef':'%'},'finalized_at':now(),'synthetic_showcase':True},'Final','System')
+ new_record(c,pid,'pathology',{'date':str(today-timedelta(days=82)),'site':site,'specimen':'Synthetic diagnostic specimen','histology':histology,'grade':'2','margin_status':'Not applicable to diagnostic specimen','signed_by':'Pathology','signed_at':now(),'synthetic_showcase':True},'Final','System')
+ new_record(c,pid,'radiology',{'study':'Synthetic staging imaging','date':str(today-timedelta(days=78)),'findings':'Measurable index lesion documented for showcase','impression':dx+' — '+stage+' synthetic imaging impression','esigned':True,'radiologist':'Radiologist','signed_at':now(),'synthetic_showcase':True},'Final','System')
+ new_record(c,pid,'mdt',{'case_no':'MDT-'+pid[-5:],'meeting_at':(datetime.now()-timedelta(days=70)).isoformat(timespec='minutes'),'clinical_question':'Confirm multimodality sequence','clinical_summary':dx+' '+stage,'intent':'Curative / disease-control showcase','recommendation':'Proceed with documented multimodality showcase plan','alternatives':['Alternative sequence discussed'],'rationale':'Synthetic MDT consensus for product demonstration','final_consensus':'Consensus reached','specialty_responsible':focus_dept,'attendees':[{'name':'Medical Oncology','discipline':'Medical Oncology','status':'Present'},{'name':'Surgical Oncology','discipline':'Surgical Oncology','status':'Present'},{'name':'Radiation Oncology','discipline':'Radiation Oncology','status':'Present'}],'signed_by':'MDT Coordinator','signed_at':now()},'MDT Recommended','System')
+ new_record(c,pid,'mdt_collab',{'comments':[{'at':now(),'role':'Radiologist','comment':'Synthetic imaging reviewed'}],'attendance':[{'role':'Pathology','status':'Present'}],'external_consultants':[]},'Active','System')
+ new_record(c,pid,'mdt_followup',{'action_items':[{'id':'ACT-'+pid[-3:],'action':'Continue showcase treatment pathway','owner':focus_dept,'due':str(today+timedelta(days=3)),'status':'Open'}]},'Active','System')
+ new_record(c,pid,'care_plan',{'status':'Active','goals':['Complete planned treatment','Monitor toxicity','Assess response'],'milestones':[{'id':'M1','name':'Active treatment','owner':focus_dept,'status':'In Progress'},{'id':'M2','name':'Response assessment','owner':'Medical Oncology','status':'Planned'}],'dependencies':['Signed source records','Current labs','Role handoffs']},'Active','System')
+ new_record(c,pid,'toxicity',{'events':[]},'Active','System')
+ new_record(c,pid,'modification',{'items':[]},'Active','System')
+ new_record(c,pid,'response',{'baseline':{'date':str(today-timedelta(days=78)),'target_lesions':[{'id':'L1','site':site,'size_mm':40}],'non_target':'None significant','status':'Measurable disease'},'assessments':[]},'Active','System')
+ new_record(c,pid,'finance',{'payer':'Synthetic insurance / self-pay example','payment_events':[],'estimated_total':125000,'actual_total':84000,'funding_source_status':'Counselled'},'Active','System')
+ new_record(c,pid,'conversion',{'counselling_status':'Completed','payer_category':'Synthetic payer','mo_drug_estimate':{'currency':'INR','lines':[],'total':125000,'basis':'Synthetic demo estimate only'},'estimate_status':'Calculated','estimate_no':'EST-'+pid[-4:],'valid_until':str(today+timedelta(days=15)),'financial_status':'Counselled','counselled_by':{'name':'Demo Financial Counsellor'},'tracking':[]},'Active','System')
+ new_record(c,pid,'treatment_history',{'episodes':[]},'Active','System')
+ new_record(c,pid,'visit_summary',{'visit_date':str(today),'diagnosis_summary':dx+' '+stage,'decisions':['Continue synthetic showcase pathway'],'patient_instructions':'Synthetic instructions for UI demonstration only','next_appointment':str(today+timedelta(days=14)),'next_department':focus_dept,'signed_by':focus_dept,'signed_at':now()},'Signed','System')
+ new_record(c,pid,'standards',{'items':['FHIR/mCODE mapping reference','DICOM/DICOM-RT integration boundary','CTCAE/response structures'],'note':'Synthetic product demonstration only.'},'Active','System')
+ new_record(c,pid,'cca_requirements',{'note':'Showcase patient for CCA validation; values are synthetic, not clinical policy.','rows':[{'area':'Showcase','requirement':'Demonstrate connected workflow and presentation','status':'Synthetic data loaded'}]},'Active','System')
+ new_record(c,pid,'admission',{'admissions':[]},'Active','System')
+ new_record(c,pid,'inpatient_care',{'daily_notes':[],'nursing_observations':[],'intake_output':[],'pain_assessments':[],'toxicity_events':[],'specialty_reviews':[],'inpatient_medication_orders':[]},'Active','System')
+ new_record(c,pid,'discharge',{'summaries':[]},'Active','System')
+ new_record(c,pid,'continuous_therapy',{'courses':[]},'Active','System')
+ new_record(c,pid,'tumor_marker',{'measurements':[]},'Active','System')
+ for rr in ROLES:
+  if rr!='External Consultant':grant_patient_access(c,pid,rr,'synthetic_showcase',pid,'System')
+
+
+def _demo_protocol_items(weight,bsa,cycle,reduction_pct=0):
+ items=[]
+ for q in PROTOCOL['items']:
+  calc=q['protocol_dose']
+  if q['dose_basis']=='mg/kg':calc=round(q['protocol_dose']*weight,2)
+  elif q['dose_basis']=='mg/m²':calc=round(q['protocol_dose']*bsa,2)
+  elif q['dose_basis']=='AUC':calc=600.0
+  final=calc
+  reason=''
+  if reduction_pct and q.get('drug')=='Docetaxel':
+   final=round(calc*(1-reduction_pct/100),2);reason=f'Synthetic {reduction_pct}% dose reduction for demonstration'
+  items.append({**q,'item_id':f'C{cycle}-OI-{q["sequence"]}','calculated_dose':calc,'calculated_unit':'mg','ordered_dose':final,'ordered_unit':'mg','final_approved_dose':final,'variance_pct':round((final-calc)/calc*100,1) if calc else 0,'variance_reason':reason,'rounding':'No rounding','rate_ml_hr':round(q.get('volume_ml',0)/(q.get('duration_min',60)/60),2) if q.get('volume_ml') else 0})
+ return items
+
+
+def _seed_chemo_case(c):
+ p={'id':'PAT-DEMO-CHEMO','mrn':'CCA-SYN-CHEMO-01','name':'Ananya Shah','dob':'1979-05-18','sex':'Female','phone':'+91 90000 02001','abha':'99-0000-0000-0001','id_number':'SYN-CHEMO-ID','current_department':'Medical Oncology'};_demo_insert_patient(c,p);_demo_common(c,p,'Breast Cancer','Stage IIB','Left breast','Invasive carcinoma','Medical Oncology');pid=p['id'];today=date.today()
+ biomarkers=[{'name':'ER','value':'Negative','method':'IHC','date':str(today-timedelta(days=85))},{'name':'PR','value':'Negative','method':'IHC','date':str(today-timedelta(days=85))},{'name':'HER2','value':'3+','method':'IHC','date':str(today-timedelta(days=85))}]
+ dx=latest(c,pid,'diagnosis');update_rec(c,dx['id'],{'biomarkers':biomarkers,'treatment_intent':'Neoadjuvant'},'Verified','System','SHOWCASE_DX')
+ new_record(c,pid,'treatment_plan',{'plan_no':'TP-SYN-CHEMO','version':1,'source_mdt_id':latest(c,pid,'mdt')['id'],'diagnosis':'Breast Cancer','stage':'Stage IIB','histology':'Invasive carcinoma','biomarkers':biomarkers,'intent':'Neoadjuvant','line_of_therapy':'1st line / neoadjuvant','disease_status':'Active treatment','sequence':['Systemic therapy x6 cycles','Response assessment','Surgery','Adjuvant review'],'phases':[{'modality':'Systemic Therapy','regimen':PROTOCOL['name'],'regimen_template_id':'REG-CCA-TCHP-DEMO','start_target':str(today-timedelta(days=63)),'duration':'6 cycles q21d','status':'Clinician Approved','responsible':'Medical Oncology'},{'modality':'Surgery','regimen':'Post-systemic reassessment','status':'Planned','responsible':'Surgical Oncology'},{'modality':'Radiation','regimen':'Post-operative review if indicated','status':'Planned','responsible':'Radiation Oncology'}]},'Clinician Approved','System')
+ new_record(c,pid,'protocol_library',{'protocols':[PROTOCOL]},'Active','System');new_record(c,pid,'formulary',FORMULARY,'Active','System')
+ # Cycles 1-4 readiness: proceed, proceed, modify, delay. 5/6 stay planned in chart.
+ decisions={1:('Proceed as Planned',3.2,''),2:('Proceed as Planned',2.8,''),3:('Proceed with Modification',2.1,'Synthetic Grade 2 peripheral neuropathy reviewed; 10% docetaxel reduction'),4:('Delay',0.9,'Synthetic neutropenia example — repeat CBC before treatment')}
+ for cy,(decision,anc,reason) in decisions.items():
+  labid=f'LAB-CHEMO-C{cy}';new_record(c,pid,'lab',{'date':str(today-timedelta(days=max(0,(4-cy)*21))),'hb':11.6,'wbc':4.8 if cy<4 else 2.2,'anc':anc,'platelets':230,'creatinine':0.8,'egfr':94,'bilirubin':0.6,'ast':23,'alt':25,'albumin':4.0,'sodium':139,'potassium':4.1,'magnesium':1.9,'calcium':9.2,'pregnancy':'Negative','lvef':60,'units':{'hb':'g/dL','wbc':'10^9/L','anc':'10^9/L','platelets':'10^9/L','creatinine':'mg/dL','egfr':'mL/min/1.73m2','bilirubin':'mg/dL','ast':'U/L','alt':'U/L','albumin':'g/dL','sodium':'mmol/L','potassium':'mmol/L','magnesium':'mg/dL','calcium':'mg/dL','lvef':'%'},'finalized_at':now(),'synthetic_showcase':True},'Final','System',labid)
+  rd={'cycle':cy,'day':1,'ecog':'1','height_cm':165,'weight_kg':68,'bsa_m2':1.76,'vitals':{'bp':'120/78','hr':76,'rr':16,'temp':36.7,'spo2':99},'lab_date':str(today-timedelta(days=max(0,(4-cy)*21))),'lab_source_id':labid,'anc':anc,'platelets':230,'hb':11.6,'egfr':94,'bilirubin':0.6,'lvef':60,'lab_units':{'anc':'10^9/L','platelets':'10^9/L','bilirubin':'mg/dL','egfr':'mL/min/1.73m2'},'pregnancy':'Negative','infection':'No','consent':'Current','allergy_review':'Reviewed','medication_review':'Reviewed','toxicity_summary':reason or 'No treatment-limiting toxicity','decision':decision,'decision_reason':reason or 'Synthetic criteria met','signed_by':'Medical Oncology','signed_at':now(),'protocol_id':PROTOCOL['id'],'protocol_version':PROTOCOL['version'],'content_template_id':'REG-CCA-TCHP-DEMO','content_template_version':PROTOCOL['version']}
+  rd['protocol_evaluation']=readiness_eval(rd,PROTOCOL);new_record(c,pid,'readiness',rd,'Signed','System',f'READY-CHEMO-C{cy}')
+  if cy<=3:
+   red=10 if cy==3 else 0;items=_demo_protocol_items(68,1.76,cy,red);oid=f'ORDER-CHEMO-C{cy}';order={'order_no':f'ORD-SYN-C{cy}D1','plan_id':'TP-SYN-CHEMO','protocol_id':PROTOCOL['id'],'protocol_version':PROTOCOL['version'],'regimen':PROTOCOL['name'],'content_template_id':'REG-CCA-TCHP-DEMO','content_template_version':PROTOCOL['version'],'content_source_id':'SRC-CCA-DEMO','diagnosis':'Breast Cancer','intent':'Neoadjuvant','line_of_therapy':'1st line / neoadjuvant','cycle':cy,'day':1,'planned_cycles':6,'start_date':str(today-timedelta(days=(3-cy)*21)),'patient_snapshot':{'name':p['name'],'dob':p['dob'],'mrn':p['mrn'],'weight_kg':68,'height_cm':165,'bsa_m2':1.76,'allergies':['Synthetic allergy example — rash'],'lab_date':rd['lab_date']},'items':items,'readiness_id':f'READY-CHEMO-C{cy}','signed_by':'Medical Oncology','signed_at':now(),'locked':True}
+   new_record(c,pid,'treatment_order',order,'Completed','System',oid)
+   phitems=[]
+   for it in items:
+    phitems.append({**it,'prepared_dose':it['ordered_dose'],'prepared_unit':it['ordered_unit'],'lot_no':f'SYN-LOT-{cy}-{it["sequence"]}','expiry':'2027-01-31','prepared_volume_ml':it.get('volume_ml',0),'prepared_concentration':round(it['ordered_dose']/it.get('volume_ml',1),3) if it.get('volume_ml') else '', 'beyond_use_time':'Synthetic same-day BUD for display only'})
+   ph={'order_id':oid,'decision':'Verified','verification_checks':{'identity':'Pass','regimen':'Pass','dose':'Pass','route':'Pass','allergy':'Pass','labs':'Pass','interactions':'Pass','readiness':'Pass'},'verified_actor':{'name':'Demo Oncology Pharmacist','role':'Oncology Pharmacy'},'verified_at':now(),'items':phitems,'query_history':([{'decision':'Clarification resolved','reason':'Dose modification','at':now(),'by':{'name':'Demo Pharmacist'},'message':'Cycle 3 reduction verified against signed modification','resolved':True,'response_action':'Proceed per revised order','response_note':'Signed by Medical Oncology','resolved_at':now()}] if cy==3 else []),'prepared_at':now(),'independent_check':{'status':'Passed','checked_by':'Second Demo Pharmacist','at':now()},'dispensed_to':'Day Care','manifest_no':f'MAN-SYN-C{cy}' }
+   new_record(c,pid,'pharmacy',ph,'Dispensed','System',f'PHARM-CHEMO-C{cy}')
+   mar=[];base=datetime.now()-timedelta(days=(3-cy)*21)
+   for it in items:
+    st=(base.replace(hour=9,minute=0,second=0,microsecond=0)+timedelta(minutes=(it['sequence']-1)*45));en=st+timedelta(minutes=max(10,int(it.get('duration_min') or 10)))
+    mar.append({'item_id':it['item_id'],'sequence':it['sequence'],'drug':it['drug'],'ordered_dose':it['ordered_dose'],'ordered_unit':it['ordered_unit'],'actual_dose':it['ordered_dose'],'unit':it['ordered_unit'],'route':it.get('route'),'start_time':st.isoformat(timespec='minutes'),'end_time':en.isoformat(timespec='minutes'),'completion_status':'Administered','administered_by':{'name':'Demo Infusion Nurse','role':'Day Care / Infusion Nurse'},'reaction':'None' if cy!=2 else ('Mild transient flushing — resolved' if it['sequence']==2 else 'None')})
+   inf={'order_id':oid,'care_setting':'Day Care','checklist':{'patient_identity':'Pass','consent':'Pass','order_match':'Pass','pharmacy_release':'Pass','access':'Pass','labs':'Pass','allergy':'Pass','readiness':'Pass'},'pre_vitals':{'bp':'118/74','hr':78,'temp_c':36.8,'spo2':99},'access':'Implanted port — patent','mar':mar,'post_vitals':{'bp':'116/72','hr':80,'temp_c':36.9,'spo2':99},'tolerance':'Completed with no serious reaction' if cy!=2 else 'Mild flushing during targeted therapy; resolved with observation','discharge_instructions':'Synthetic treatment-day instructions','next_cycle':str(today+timedelta(days=(cy)*21))}
+   new_record(c,pid,'infusion',inf,'Completed','System',f'INF-CHEMO-C{cy}')
+ tox=latest(c,pid,'toxicity');events=[
+  {'id':'TOX-C1','toxicity_type':'Nausea','grade':1,'relationship':'Probably treatment related','onset_date':str(today-timedelta(days=55)),'intervention':'Supportive medication','outcome':'Resolved'},
+  {'id':'TOX-C2','toxicity_type':'Peripheral neuropathy','grade':2,'relationship':'Probably treatment related','onset_date':str(today-timedelta(days=30)),'intervention':'Clinical review before Cycle 3','outcome':'Ongoing / stable'},
+  {'id':'TOX-C4','toxicity_type':'Neutropenia','grade':2,'relationship':'Treatment related — synthetic example','onset_date':str(today),'intervention':'Cycle 4 delayed; repeat CBC planned','outcome':'Under review'}]
+ update_rec(c,tox['id'],{'events':events},'Active','System','SHOWCASE_TOXICITY')
+ mod=latest(c,pid,'modification');update_rec(c,mod['id'],{'items':[{'id':'MOD-C3','linked_order':'ORDER-CHEMO-C3','modification_type':'Dose Reduction','reason':'Grade 2 peripheral neuropathy — synthetic showcase','clinical_justification':'Demonstrate planned vs calculated vs final ordered dose','approved_at':now(),'approved_by':{'name':'Demo Medical Oncologist'}},{'id':'MOD-C4','linked_cycle':4,'modification_type':'Delay','reason':'ANC 0.9 ×10^9/L — synthetic showcase','clinical_justification':'Demonstrate fail-closed readiness and next-cycle decision','approved_at':now(),'approved_by':{'name':'Demo Medical Oncologist'}}]},'Active','System','SHOWCASE_MODIFICATION')
+ resp=latest(c,pid,'response');update_rec(c,resp['id'],{'assessments':[{'date':str(today-timedelta(days=7)),'framework':'Synthetic RECIST-like presentation only','sum_mm':28,'baseline_sum_mm':40,'nadir_sum_mm':28,'response_category':'Partial Response — clinician confirmed','radiologist_proposal':'Partial Response','confirmed_by':'Medical Oncology','decision':'Continue planned systemic therapy after recovery'}]},'Active','System','SHOWCASE_RESPONSE')
+ new_record(c,pid,'radiation',{'prescription':{'status':'Planned','site':'Left breast / regional nodes','laterality':'Left','intent':'Adjuvant','modality':'External Beam','technique':'Pending post-operative decision','total_dose_gy':'','dose_per_fraction_gy':'','fractions':'','planned_start':'','signed_by':'','signed_at':''},'planning':{'simulation_status':'Not started','contouring_status':'Not started','planning_status':'Not started','physics_qa':'Not started','physician_final_approval':'Not started','dicom_refs':{}},'fractions':[],'interruptions':[]},'Planned','System')
+ new_record(c,pid,'surgery',{'plan':{'status':'Planned after systemic therapy','procedure':'Breast surgery after response assessment','intent':'Curative','site':'Breast','laterality':'Left','planned_date':str(today+timedelta(days=50))},'preop':{'anesthesia_clearance':'Pending','labs':'Pending','consent':'Pending','ready':False},'outcome':{},'histopathology_link':''},'Planned','System')
+ j=latest(c,pid,'journey')
+ if j: update_rec(c,j['id'],{'current_location':'Medical Oncology','current_care_stage':'Cycle 4 Delayed — Repeat CBC','events':[{'id':'J1','at':(datetime.now()-timedelta(days=85)).isoformat(),'department':'Registration','care_stage':'Registered / Referred','clinician':'System','actor_role':'System','status':'Completed','source_type':'registration','source_id':'','note':'Synthetic showcase'},{'id':'J2','at':(datetime.now()-timedelta(days=72)).isoformat(),'department':'MDT','care_stage':'MDT Recommended','clinician':'MDT Coordinator','actor_role':'MDT Coordinator','status':'Completed','source_type':'mdt','source_id':'','note':'Multimodality plan agreed'},{'id':'J3','at':(datetime.now()-timedelta(days=63)).isoformat(),'department':'Day Care','care_stage':'Cycle 1 Administered','clinician':'Demo Infusion Nurse','actor_role':'Day Care / Infusion Nurse','status':'Completed','source_type':'infusion','source_id':'INF-CHEMO-C1','note':''},{'id':'J4','at':(datetime.now()-timedelta(days=42)).isoformat(),'department':'Day Care','care_stage':'Cycle 2 Administered','clinician':'Demo Infusion Nurse','actor_role':'Day Care / Infusion Nurse','status':'Completed','source_type':'infusion','source_id':'INF-CHEMO-C2','note':'Mild transient flushing resolved'},{'id':'J5','at':(datetime.now()-timedelta(days=21)).isoformat(),'department':'Day Care','care_stage':'Cycle 3 Administered with Modification','clinician':'Demo Infusion Nurse','actor_role':'Day Care / Infusion Nurse','status':'Completed','source_type':'infusion','source_id':'INF-CHEMO-C3','note':'Docetaxel final ordered dose reduced 10% for synthetic demonstration'},{'id':'J6','at':now(),'department':'Medical Oncology','care_stage':'Cycle 4 Readiness','clinician':'Demo Medical Oncologist','actor_role':'Medical Oncology','status':'Delayed','source_type':'readiness','source_id':'READY-CHEMO-C4','note':'ANC 0.9 ×10^9/L synthetic delay example'}]},'Active','System','SHOWCASE_JOURNEY')
+ create_task(c,pid,'Medical Oncology','Repeat CBC and reassess Cycle 4 readiness','Cycle Readiness','High','readiness','READY-CHEMO-C4',str(datetime.now()+timedelta(days=3)),'','Synthetic delayed cycle','', 'System')
+
+
+def _seed_rt_case(c):
+ p={'id':'PAT-DEMO-RT','mrn':'CCA-SYN-RT-01','name':'Neha Kulkarni','dob':'1986-03-10','sex':'Female','phone':'+91 90000 02002','abha':'99-0000-0000-0002','id_number':'SYN-RT-ID','current_department':'Radiation Oncology'};_demo_insert_patient(c,p);_demo_common(c,p,'Cervical Cancer','Stage IIB','Cervix','Squamous cell carcinoma','Radiation Oncology');pid=p['id'];today=date.today()
+ new_record(c,pid,'treatment_plan',{'plan_no':'TP-SYN-RT','version':1,'source_mdt_id':latest(c,pid,'mdt')['id'],'diagnosis':'Cervical Cancer','stage':'Stage IIB','histology':'Squamous cell carcinoma','biomarkers':[],'intent':'Definitive','line_of_therapy':'Primary treatment','disease_status':'Active treatment','sequence':['External beam radiation','Brachytherapy review / local pathway'],'phases':[{'modality':'Radiation','regimen':'Synthetic definitive pelvic RT course','status':'Active','responsible':'Radiation Oncology'}]},'Active','System')
+ start=today-timedelta(days=12);fractions=[]
+ for n in range(1,9):
+  dt=datetime.combine(start+timedelta(days=n-1),datetime.min.time()).replace(hour=11,minute=0)
+  fractions.append({'fraction_number':n,'status':'Delivered','date_time':dt.isoformat(timespec='minutes'),'delivered_dose_gy':2.0,'verified_by':{'name':'Demo RTT','role':'Radiation Technologist'},'image_guidance_performed':True,'setup_variation':'Within local synthetic tolerance','toxicity':'Grade 1 fatigue' if n>=6 else 'None','reason':''})
+ rt={'prescription':{'status':'RT Oncologist Approved','site':'Pelvis / cervix','laterality':'Midline','intent':'Definitive','modality':'External Beam','technique':'VMAT','energy':'6 MV','treatment_phase':1,'total_dose_gy':50.0,'dose_per_fraction_gy':2.0,'fractions':25,'frequency':'5x/week','planned_start':str(start),'concurrent_systemic_order':'None in this showcase patient','target_volumes':[{'name':'GTVp','volume_type':'GTV','margin_mm':0,'prescription_dose_gy':50.0},{'name':'CTV pelvis','volume_type':'CTV','margin_mm':0,'prescription_dose_gy':50.0},{'name':'PTV pelvis','volume_type':'PTV','margin_mm':5,'prescription_dose_gy':50.0}],'organs_at_risk':['Bladder','Rectum','Bowel','Femoral heads'],'oar_constraints':[{'organ':'Bladder','metric':'V45Gy','operator':'<','value':35,'unit':'%'},{'organ':'Rectum','metric':'V45Gy','operator':'<','value':60,'unit':'%'}],'simulation_requirement':'Completed','immobilisation':'Vacuum immobilisation — synthetic','image_guidance':'Daily CBCT — synthetic','bolus':'Not applicable','special_instructions':'Synthetic RT course for workflow/presentation validation','signed_by':{'name':'Demo Radiation Oncologist','role':'Radiation Oncology'},'signed_at':(datetime.now()-timedelta(days=20)).isoformat()},'planning':{'simulation_status':'Completed','simulation_date':str(today-timedelta(days=22)),'contouring_status':'Completed','planning_status':'Completed','physics_qa':'Approved','physics_qa_by':{'name':'Demo Radiation Physicist','role':'Radiation Physicist'},'physics_qa_at':(datetime.now()-timedelta(days=14)).isoformat(),'physician_final_approval':'Approved','physician_approved_by':{'name':'Demo Radiation Oncologist','role':'Radiation Oncology'},'physician_approved_at':(datetime.now()-timedelta(days=13)).isoformat(),'dicom_refs':{'RTSTRUCT':'SYN-RTSTRUCT-001','RTPLAN':'SYN-RTPLAN-001','RTDOSE':'SYN-RTDOSE-001','RTIMAGE':'SYN-RTIMG-001','RTRECORD':'SYN-RTRCD-001'}},'fractions':fractions,'interruptions':[],'on_treatment_reviews':[{'date':str(today-timedelta(days=5)),'toxicity':'Grade 1 fatigue','assessment':'Continue treatment','reviewed_by':'Radiation Oncology'}]}
+ new_record(c,pid,'radiation',rt,'In Treatment','System','RT-SHOWCASE-001')
+ j=latest(c,pid,'journey');update_rec(c,j['id'],{'current_location':'Radiation Oncology','current_care_stage':'Fraction 9 Due','events':[{'id':'RTJ1','at':(datetime.now()-timedelta(days=22)).isoformat(),'department':'Radiation Oncology','care_stage':'CT Simulation','clinician':'Demo RTT','actor_role':'Radiation Technologist','status':'Completed','source_type':'radiation','source_id':'RT-SHOWCASE-001','note':''},{'id':'RTJ2','at':(datetime.now()-timedelta(days=14)).isoformat(),'department':'Radiation Physics','care_stage':'Physics QA','clinician':'Demo Radiation Physicist','actor_role':'Radiation Physicist','status':'Completed','source_type':'radiation','source_id':'RT-SHOWCASE-001','note':'Independent QA passed'},{'id':'RTJ3','at':now(),'department':'Radiation Oncology','care_stage':'Fraction 9 Due','clinician':'Demo RTT','actor_role':'Radiation Technologist','status':'Current','source_type':'radiation','source_id':'RT-SHOWCASE-001','note':'8/25 fractions delivered'}]},'Active','System','SHOWCASE_RT_JOURNEY')
+ create_task(c,pid,'Radiation Technologist','Deliver Fraction 9 after daily verification','RT Fraction','Routine','radiation','RT-SHOWCASE-001',str(datetime.now()+timedelta(days=1)),'','Active RT course','', 'System')
+
+
+def _seed_surgery_case(c):
+ p={'id':'PAT-DEMO-SURG','mrn':'CCA-SYN-SURG-01','name':'Arjun Mehta','dob':'1968-11-04','sex':'Male','phone':'+91 90000 02003','abha':'99-0000-0000-0003','id_number':'SYN-SURG-ID','current_department':'Surgical Oncology'};_demo_insert_patient(c,p);_demo_common(c,p,'Colon Cancer','Stage III','Sigmoid colon','Adenocarcinoma','Surgical Oncology');pid=p['id'];today=date.today()
+ new_record(c,pid,'treatment_plan',{'plan_no':'TP-SYN-SURG','version':1,'source_mdt_id':latest(c,pid,'mdt')['id'],'diagnosis':'Colon Cancer','stage':'Stage III','histology':'Adenocarcinoma','intent':'Curative','line_of_therapy':'Definitive surgery','disease_status':'Post-operative','sequence':['Surgery','Final pathology','Adjuvant Medical Oncology review'],'phases':[{'modality':'Surgery','regimen':'Sigmoid colectomy — synthetic showcase','status':'Completed','responsible':'Surgical Oncology'},{'modality':'Systemic Therapy','regimen':'Adjuvant decision pending CCA-approved regimen','status':'Planned','responsible':'Medical Oncology'}]},'Active','System')
+ surg={'plan':{'status':'Signed','procedure':'Laparoscopic sigmoid colectomy','indication':'Resectable sigmoid colon cancer','intent':'Curative','site':'Sigmoid colon','laterality':'Not applicable','extent':'Segmental colectomy','approach':'Laparoscopic','nodal_procedure':'Regional lymphadenectomy','reconstruction':'Primary colorectal anastomosis','planned_date':str(today-timedelta(days=12)),'priority':'Routine','preop_requirements':['Anaesthesia clearance','CBC/CMP','Imaging review','Consent','Blood availability review'],'required_imaging_pathology':['Staging CT reviewed','Diagnostic biopsy reviewed'],'anesthesia':'General','anesthesia_clearance':'Cleared','blood_requirement':'Group & save','special_instructions':'Enhanced recovery pathway — synthetic','signed_by':{'name':'Demo Surgical Oncologist'},'signed_at':(datetime.now()-timedelta(days=20)).isoformat()},'preop':{'anesthesia_clearance':'Cleared','labs':'Acceptable','consent':'Signed','site_verification':'Completed','blood_availability':'Available if required','ready':True},'outcome':{'actual_procedure':'Laparoscopic sigmoid colectomy with primary anastomosis','laterality':'Not applicable','findings':'Localized sigmoid lesion; no gross peritoneal disease in synthetic operative record','estimated_blood_loss_ml':120,'operative_time_min':165,'surgeons':['Demo Surgical Oncologist','Demo Assistant Surgeon'],'specimens':['Sigmoid colon resection — oriented','Regional lymph nodes'],'counts':'Correct','complications':'None','drains':['Pelvic drain — removed POD3'],'postop_plan':'ERAS, analgesia, DVT prophylaxis, diet advancement, pathology review','performed_at':(datetime.now()-timedelta(days=12)).isoformat(),'signed_by':{'name':'Demo Surgical Oncologist'}},'histopathology_link':'PATH-SURG-001','margin_status':'Negative / clear — synthetic','node_status':'2 / 18 positive — synthetic','postop_stage':'pT3 pN1b cM0 — Stage IIIB synthetic','adjuvant_decision':{'decision':'Adjuvant Systemic Therapy Review','rationale':'Final pathology and pathological stage reviewed; refer to Medical Oncology for CCA-approved adjuvant plan','decided_by':{'name':'Demo Surgical Oncologist'},'decided_at':now(),'receiving_role':'Medical Oncology','acknowledgement':'Pending'}}
+ new_record(c,pid,'surgery',surg,'Adjuvant Review','System','SURG-SHOWCASE-001')
+ new_record(c,pid,'pathology',{'date':str(today-timedelta(days=6)),'accession':'SYN-PATH-SURG-001','site':'Sigmoid colon','specimen':'Colectomy specimen + regional nodes','histology':'Adenocarcinoma','grade':'2','tumour_size_mm':42,'tumour_extent':'Invades through muscularis propria into pericolonic tissue — synthetic','margin_status':'All assessed margins negative — synthetic','closest_margin_mm':35,'nodes_examined':18,'nodes_positive':2,'lymphovascular_invasion':'Present — synthetic','perineural_invasion':'Absent — synthetic','path_t':'pT3','path_n':'pN1b','path_m':'Not pathologically assessed','stage_group':'Stage IIIB — synthetic','final_diagnosis':'Resected sigmoid colon adenocarcinoma with 2/18 regional nodes positive — synthetic product demo','signed_by':'Pathology','signed_at':now(),'synthetic_showcase':True},'Final','System','PATH-SURG-001')
+ new_record(c,pid,'discharge',{'summaries':[{'admission_date':str(today-timedelta(days=12)),'discharge_date':str(today-timedelta(days=7)),'reason':'Planned cancer surgery','hospital_course':'Uncomplicated synthetic postoperative recovery','medications':'Analgesia and thromboprophylaxis per local policy — synthetic','wound_status':'Clean/dry','followup':'Surgical review + Medical Oncology adjuvant review','red_flags':'Fever, wound concerns, bowel obstruction symptoms — demo only','signed_by':'Surgical Oncology'}]},'Active','System')
+ j=latest(c,pid,'journey');update_rec(c,j['id'],{'current_location':'Medical Oncology','current_care_stage':'Adjuvant Treatment Decision','events':[{'id':'SJ1','at':(datetime.now()-timedelta(days=20)).isoformat(),'department':'Surgical Oncology','care_stage':'Surgical Plan Signed','clinician':'Demo Surgical Oncologist','actor_role':'Surgical Oncology','status':'Completed','source_type':'surgery','source_id':'SURG-SHOWCASE-001','note':''},{'id':'SJ2','at':(datetime.now()-timedelta(days=12)).isoformat(),'department':'Operating Theatre','care_stage':'Surgery Performed','clinician':'Demo Surgical Oncologist','actor_role':'Surgical Oncology','status':'Completed','source_type':'surgery','source_id':'SURG-SHOWCASE-001','note':'Actual vs planned operation recorded'},{'id':'SJ3','at':(datetime.now()-timedelta(days=6)).isoformat(),'department':'Pathology','care_stage':'Final Histopathology','clinician':'Pathology','actor_role':'Pathology','status':'Completed','source_type':'pathology','source_id':'PATH-SURG-001','note':'pStage available'},{'id':'SJ4','at':now(),'department':'Medical Oncology','care_stage':'Adjuvant Review','clinician':'System','actor_role':'System','status':'Current','source_type':'surgery','source_id':'SURG-SHOWCASE-001','note':'Awaiting Medical Oncology acknowledgement'}]},'Active','System','SHOWCASE_SURG_JOURNEY')
+ create_task(c,pid,'Medical Oncology','Review final surgical pathology and create adjuvant plan','Adjuvant Handoff','High','surgery','SURG-SHOWCASE-001',str(datetime.now()+timedelta(days=3)),'','Post-op adjuvant decision','', 'System')
+
+
+def _seed_ipd_case(c):
+ p={'id':'PAT-DEMO-IPD','mrn':'CCA-SYN-IPD-01','name':'Ravi Kapoor','dob':'1959-07-22','sex':'Male','phone':'+91 90000 02004','abha':'99-0000-0000-0004','id_number':'SYN-IPD-ID','current_department':'Inpatient Oncology'};_demo_insert_patient(c,p);_demo_common(c,p,'Diffuse Large B-cell Lymphoma','Stage III','Lymph nodes','Diffuse large B-cell lymphoma','Medical Oncology');pid=p['id'];today=date.today()
+ # Replace/latest lab with a deliberately critical synthetic ANC to demonstrate closed-loop inpatient handling.
+ new_record(c,pid,'lab',{'date':str(today),'hb':8.9,'wbc':1.2,'anc':0.4,'platelets':72,'creatinine':1.0,'egfr':78,'bilirubin':0.8,'ast':27,'alt':29,'albumin':3.4,'sodium':136,'potassium':3.5,'magnesium':1.7,'calcium':8.6,'pregnancy':'Not applicable','lvef':58,'units':{'hb':'g/dL','wbc':'10^9/L','anc':'10^9/L','platelets':'10^9/L','creatinine':'mg/dL','egfr':'mL/min/1.73m2','bilirubin':'mg/dL','ast':'U/L','alt':'U/L','albumin':'g/dL','sodium':'mmol/L','potassium':'mmol/L','magnesium':'mg/dL','calcium':'mg/dL','lvef':'%'},'finalized_at':now(),'critical_result':{'status':'Acknowledged','finding':'ANC 0.4 ×10^9/L — synthetic critical-result showcase','communicated_to':'Inpatient Oncology','communicated_at':now(),'acknowledged_by':'Medical Oncology','acknowledged_at':now()}},'Final','System','LAB-IPD-CRIT')
+ adm=latest(c,pid,'admission');update_rec(c,adm['id'],{'admissions':[{'id':'ADM-SYN-1','status':'Active','admission_date':str(today-timedelta(days=2)),'source':'Emergency / clinic','reason':'Synthetic febrile neutropenia demonstration','ward':'Oncology Ward A','bed':'A-12','responsible_consultant':'Medical Oncology','isolation':'Neutropenic precautions — synthetic','oxygen':'Room air','expected_discharge':str(today+timedelta(days=2))}]},'Active','System','SHOWCASE_ADMISSION')
+ ipd=latest(c,pid,'inpatient_care');update_rec(c,ipd['id'],{'daily_notes':[{'date':str(today-timedelta(days=1)),'interval_events':'Afebrile overnight after initial supportive care — synthetic','active_problems':['Febrile neutropenia','Anaemia','Thrombocytopenia'],'exam':'Hemodynamically stable','results_reviewed':'Critical ANC acknowledged','assessment':'Improving clinically; counts remain low','plan':'Continue monitoring, repeat CBC, supportive care, discharge when clinically appropriate','signed_by':'Medical Oncology'}],'nursing_observations':[{'at':(datetime.now()-timedelta(hours=8)).isoformat(),'bp':'110/68','hr':92,'rr':18,'temp_c':37.8,'spo2':98,'oxygen':'Room air','pain':2,'ews':'Synthetic score 2','escalation':'Medical team aware'},{'at':(datetime.now()-timedelta(hours=4)).isoformat(),'bp':'116/70','hr':84,'rr':16,'temp_c':37.1,'spo2':99,'oxygen':'Room air','pain':1,'ews':'Synthetic score 1','escalation':'Continue observations'}],'intake_output':[{'shift':'Day','oral_ml':900,'iv_ml':1000,'urine_ml':1500,'other_output_ml':0,'net_ml':400}],'pain_assessments':[{'at':now(),'score':1,'site':'Generalised','intervention':'No additional analgesia required'}],'toxicity_events':[{'event':'Febrile neutropenia — synthetic','grade':'3 showcase only','status':'Improving','treatment_relationship':'Recent systemic therapy'}],'specialty_reviews':[{'service':'Dietitian / Nutrition','assessment':'Reduced appetite; high-protein oral intake plan — synthetic','date':str(today)},{'service':'Palliative Care','assessment':'Symptom support only; goals remain active treatment — synthetic','date':str(today)}],'inpatient_medication_orders':[{'medication':'Synthetic broad-spectrum antimicrobial example','dose':'Per CCA-approved protocol — not embedded','route':'IV','status':'Active'},{'medication':'IV fluids','dose':'As clinically ordered','route':'IV','status':'Active'}]},'Active','System','SHOWCASE_IPD')
+ dis=latest(c,pid,'discharge');update_rec(c,dis['id'],{'summaries':[{'status':'Draft / discharge planning','target_date':str(today+timedelta(days=2)),'clinical_stability':'Improving','med_recon':'Pending final review','pending_results':['Repeat CBC'],'follow_up':'Medical Oncology within 48–72 h after discharge','red_flags':'Fever or deterioration — synthetic patient instruction'}]},'Active','System','SHOWCASE_DISCHARGE')
+ tox=latest(c,pid,'toxicity');update_rec(c,tox['id'],{'events':[{'id':'IPD-TOX-1','toxicity_type':'Febrile neutropenia','grade':3,'relationship':'Treatment related — synthetic example','onset_date':str(today-timedelta(days=2)),'intervention':'Admission and supportive management','outcome':'Improving'}]},'Active','System','SHOWCASE_IPD_TOX')
+ j=latest(c,pid,'journey');update_rec(c,j['id'],{'current_location':'Inpatient Oncology','current_care_stage':'Admitted — Count Recovery / Discharge Planning','events':[{'id':'IJ1','at':(datetime.now()-timedelta(days=2)).isoformat(),'department':'Inpatient Oncology','care_stage':'Admission','clinician':'Medical Oncology','actor_role':'Medical Oncology','status':'Completed','source_type':'admission','source_id':adm['id'],'note':'Synthetic febrile neutropenia admission'},{'id':'IJ2','at':now(),'department':'Inpatient Oncology','care_stage':'Count Recovery / Discharge Planning','clinician':'Medical Oncology','actor_role':'Medical Oncology','status':'Current','source_type':'inpatient_care','source_id':ipd['id'],'note':'Critical ANC acknowledged; repeat CBC pending'}]},'Active','System','SHOWCASE_IPD_JOURNEY')
+ create_task(c,pid,'Laboratory / Phlebotomy','Repeat CBC for count recovery','Lab Follow-up','High','lab','LAB-IPD-CRIT',str(datetime.now()+timedelta(hours=12)),'','Inpatient monitoring','', 'System')
+
+
+def _seed_survivorship_case(c):
+ p={'id':'PAT-DEMO-SURV','mrn':'CCA-SYN-SURV-01','name':'Leela Nair','dob':'1972-01-14','sex':'Female','phone':'+91 90000 02005','abha':'99-0000-0000-0005','id_number':'SYN-SURV-ID','current_department':'Medical Oncology'};_demo_insert_patient(c,p);_demo_common(c,p,'Breast Cancer','Stage I','Right breast','Invasive carcinoma','Medical Oncology');pid=p['id'];today=date.today()
+ # Mark active episode in surveillance phase rather than active chemotherapy.
+ ep=current_episode(c,pid);update_rec(c,ep['id'],{'label':'Right breast cancer — post-treatment surveillance'},'Active','System','SHOWCASE_EPISODE')
+ ct=latest(c,pid,'continuous_therapy');update_rec(c,ct['id'],{'courses':[{'id':'ORAL-SYN-1','therapy':'Synthetic oral endocrine therapy example','mode':'Oral / continuous','route':'PO','schedule':'Once daily — illustrative only','start_date':str(today-timedelta(days=180)),'end_date':'','status':'Active','episode_id':ep['id'],'prescriber':'Medical Oncology','monitoring':'Routine follow-up per CCA-approved pathway','adherence':'Good by patient report — synthetic'}]},'Active','System','SHOWCASE_ORAL')
+ hist=latest(c,pid,'treatment_history');update_rec(c,hist['id'],{'episodes':[{'modality':'Surgery','treatment':'Breast-conserving surgery — synthetic','start_date':str(today-timedelta(days=300)),'end_date':str(today-timedelta(days=300)),'status':'Completed'},{'modality':'Radiation','treatment':'Adjuvant RT — synthetic','start_date':str(today-timedelta(days=250)),'end_date':str(today-timedelta(days=220)),'status':'Completed'},{'modality':'Systemic / oral','treatment':'Ongoing oral therapy — synthetic','start_date':str(today-timedelta(days=180)),'end_date':'','status':'Active'}]},'Active','System','SHOWCASE_HISTORY')
+ resp=latest(c,pid,'response');update_rec(c,resp['id'],{'baseline':{'date':str(today-timedelta(days=330)),'target_lesions':[{'id':'L1','site':'Right breast','size_mm':18}],'non_target':'None','status':'Localised disease'},'assessments':[{'date':str(today-timedelta(days=30)),'framework':'Post-treatment surveillance — synthetic','sum_mm':0,'baseline_sum_mm':18,'nadir_sum_mm':0,'response_category':'No evidence of active disease in showcase record','confirmed_by':'Medical Oncology','decision':'Continue surveillance / oral therapy'}]},'Active','System','SHOWCASE_SURV_RESPONSE')
+ new_record(c,pid,'treatment_plan',{'plan_no':'TP-SYN-SURV','version':3,'diagnosis':'Breast Cancer','stage':'Stage I','histology':'Invasive carcinoma','intent':'Surveillance / recurrence risk reduction','line_of_therapy':'Post-treatment follow-up','disease_status':'No evidence of active disease — synthetic','sequence':['Oral therapy monitoring','Surveillance imaging','Late-effect review'],'phases':[{'modality':'Continuous / Oral Therapy','regimen':'Synthetic oral endocrine therapy example','status':'Active','responsible':'Medical Oncology'},{'modality':'Surveillance','regimen':'Clinical follow-up and approved imaging schedule','status':'Active','responsible':'Nurse Navigator / Medical Oncology'}]},'Active','System')
+ new_record(c,pid,'survivorship',{'treatment_summary':{'diagnosis':'Breast Cancer Stage I — synthetic','completed_treatments':['Surgery','Radiation'],'ongoing_treatment':'Synthetic oral therapy'},'surveillance_plan':[{'item':'Medical Oncology follow-up','interval':'Every 3–6 months — synthetic placeholder pending CCA approval','next_due':str(today+timedelta(days=90))},{'item':'Surveillance imaging','interval':'Per CCA-approved pathway','next_due':str(today+timedelta(days=120))}],'late_effects':[{'effect':'Mild fatigue','severity':'1','status':'Improving','owner':'Nurse Navigator'}],'health_maintenance':'Primary care coordination documented','patient_education':'Red flags and late-effect information issued — synthetic','signed_by':'Medical Oncology','signed_at':now()},'Signed','System')
+ new_record(c,pid,'psychosocial',{'distress_score':3,'concerns':['Fear of recurrence — mild'],'intervention':'Psycho-oncology information offered','privacy_class':'Restricted clinical note — synthetic','status':'Stable'},'Active','System')
+ conv=latest(c,pid,'conversion');update_rec(c,conv['id'],{'counselling_status':'Completed','payer_category':'Synthetic insurance','estimate_status':'Not applicable — surveillance','financial_status':'No current barrier','counselled_by':{'name':'Demo Financial Counsellor'}},'Active','System','SHOWCASE_FINANCE')
+ j=latest(c,pid,'journey');update_rec(c,j['id'],{'current_location':'Survivorship / Follow-up','current_care_stage':'Surveillance','events':[{'id':'SVJ1','at':(datetime.now()-timedelta(days=220)).isoformat(),'department':'Radiation Oncology','care_stage':'Radiation Completed','clinician':'Radiation Oncology','actor_role':'Radiation Oncology','status':'Completed','source_type':'treatment_history','source_id':hist['id'],'note':''},{'id':'SVJ2','at':(datetime.now()-timedelta(days=180)).isoformat(),'department':'Medical Oncology','care_stage':'Oral Therapy Started','clinician':'Medical Oncology','actor_role':'Medical Oncology','status':'Completed','source_type':'continuous_therapy','source_id':ct['id'],'note':''},{'id':'SVJ3','at':now(),'department':'Survivorship / Follow-up','care_stage':'Surveillance','clinician':'Nurse Navigator','actor_role':'Nurse Navigator','status':'Current','source_type':'survivorship','source_id':'','note':'Next surveillance milestones visible'}]},'Active','System','SHOWCASE_SURV_JOURNEY')
+ create_task(c,pid,'Nurse Navigator','Confirm next surveillance appointment and patient education','Survivorship Follow-up','Routine','survivorship','',str(datetime.now()+timedelta(days=14)),'','Surveillance plan','', 'System')
+
+
+
+def _delete_seed_entity(c,pid,entity_type):
+ rows=c.execute('SELECT id FROM records WHERE patient_id=? AND entity_type=?',(pid,entity_type)).fetchall()
+ for r in rows:
+  c.execute('DELETE FROM record_versions WHERE record_id=?',(r['id'],))
+ c.execute('DELETE FROM records WHERE patient_id=? AND entity_type=?',(pid,entity_type))
+
+
+def _update_showcase_diagnosis(c,pid,patch):
+ r=latest(c,pid,'diagnosis')
+ if r:update_rec(c,r['id'],patch,'Verified','System','PC7_SHOWCASE_DIAGNOSIS','Clinically coherent synthetic coding for showcase')
+
+
+def _update_showcase_intake(c,pid):
+ r=latest(c,pid,'intake')
+ if not r:return
+ b=bsa_values(165,68);bmi=round(68/((1.65)**2),2)
+ update_rec(c,r['id'],{'weight_kg':68,'height_cm':165,'bmi':bmi,'bsa_raw_m2':b['raw'],'bsa_m2':b['ordering'],'bsa_display_m2':b['display'],'bsa_formula':b['formula_text'],'bsa_rounding_policy':{'raw_precision':b['raw_precision'],'display_precision':b['display_precision'],'ordering_precision':b['ordering_precision']},'measured_at':r['data'].get('measured_at') or now()},'Completed','System','PC7_SHOWCASE_BSA','Mosteller source measurements + explicit rounding policy')
+
+
+def _rebuild_chemo_showcase(c):
+ pid='PAT-DEMO-CHEMO';today=date.today();start=today-timedelta(days=63);p=patient(c,pid)
+ if not p:return
+ _update_showcase_intake(c,pid)
+ biomarkers=[
+  {'name':'ER','code_system':'LOINC / local pathology mapping','code':'ER-IHC','value':'Negative','method':'IHC','interpretation':'Negative','date':str(start-timedelta(days=22)),'source_record_id':(latest(c,pid,'pathology') or {}).get('id'),'specimen':'Core biopsy'},
+  {'name':'PR','code_system':'LOINC / local pathology mapping','code':'PR-IHC','value':'Negative','method':'IHC','interpretation':'Negative','date':str(start-timedelta(days=22)),'source_record_id':(latest(c,pid,'pathology') or {}).get('id'),'specimen':'Core biopsy'},
+  {'name':'HER2','code_system':'ASCO/CAP interpretation / local pathology mapping','code':'HER2-IHC','value':'3+','method':'IHC','interpretation':'Positive (IHC 3+)','date':str(start-timedelta(days=22)),'source_record_id':(latest(c,pid,'pathology') or {}).get('id'),'specimen':'Core biopsy','confirmatory_test_required':False,'confirmatory_test_reason':'IHC 3+ is represented as positive in this synthetic pathology example; production interpretation follows CCA-approved pathology policy.'}
+ ]
+ _update_showcase_diagnosis(c,pid,{'icd10':'C50.4','icd10_version':'ICD-10','icdo_topography':'C50.4','icdo_morphology':'8500/3','icdo_version':'ICD-O-3','snomed':'254837009','cancer_type':'Breast Cancer','primary_site':'Left breast, upper-outer quadrant','histology':'Invasive carcinoma of no special type / ductal carcinoma','grade':'3','stage_t':'cT2','stage_n':'cN1','stage_m':'cM0','stage_group':'Stage IIB','staging_system':'AJCC','staging_version':'Breast v8','staging_basis':'Clinical','staging_date':str(start-timedelta(days=20)),'disease_status':'Active treatment','treatment_intent':'Neoadjuvant','terminology_validation_status':'Validated by bundled oncology demo terminology set','terminology_service_reference':'PC7 bundled terminology v1','stage_derivation_status':'Derived and clinician confirmed','biomarkers':biomarkers})
+ med=latest(c,pid,'med_recon')
+ if med:update_rec(c,med['id'],{'items':[{'id':'MED-CHEMO-1','name':'Amlodipine','generic_name':'Amlodipine','code_system':'Local demo medication terminology','code':'DEMO-AMLODIPINE','dose':'5 mg','route':'PO','frequency':'Once daily','status':'Continue','source':'Patient + chart review'}],'allergies':[{'id':'ALG-CHEMO-1','substance':'Penicillin','generic_ingredient':'Penicillin','code_system':'Local demo allergy terminology','code':'DEMO-PENICILLIN','reaction':'Rash','severity':'Moderate','status':'Active','source':'Patient + chart review'}],'reconciliation_events':[{'at':now(),'reconciled_by':'Nurse Navigator','medication_count':1,'allergy_count':1,'note':'Synthetic showcase reconciliation using coded demo objects'}]},'Active','System','PC7_SHOWCASE_MEDREC')
+ # Named MDT attendance / quorum: disciplines rather than anonymous role labels.
+ mdt=latest(c,pid,'mdt');collab=latest(c,pid,'mdt_collab')
+ attendance=[
+  {'name':'Dr Meera Rao','discipline':'Medical Oncology','registration_number':'SYN-MO-001','status':'Present'},
+  {'name':'Dr Arjun Sen','discipline':'Surgical Oncology','registration_number':'SYN-SO-001','status':'Present'},
+  {'name':'Dr Nisha Patel','discipline':'Radiation Oncology','registration_number':'SYN-RO-001','status':'Present'},
+  {'name':'Dr Kabir Shah','discipline':'Radiologist','registration_number':'SYN-RAD-001','status':'Present'},
+  {'name':'Dr Tara Iyer','discipline':'Pathology','registration_number':'SYN-PATH-001','status':'Present'},
+  {'name':'Dr Vikram Menon','discipline':'MDT Chair','registration_number':'SYN-MDT-CHAIR-001','status':'Present','is_chair':True}
+ ]
+ if collab:update_rec(c,collab['id'],{'attendance':attendance,'comments':[{'at':now(),'role':'Radiologist','comment':'Index imaging reviewed with lesion-level comparison.'},{'at':now(),'role':'Pathology','comment':'Core biopsy and biomarker interpretation reviewed.'}],'external_consultants':[]},'Active','System','PC7_SHOWCASE_MDT_ATTENDANCE')
+ if mdt:update_rec(c,mdt['id'],{'clinical_summary':'HER2-positive left breast carcinoma, cT2 cN1 cM0, AJCC Breast v8 Stage IIB; ER-/PR-/HER2 IHC 3+; ECOG 1. Imaging and pathology reviewed.','attendees':attendance,'quorum_snapshot':mdt_quorum(c,pid),'signed_by':'Dr Vikram Menon — MDT Chair','signed_at':now()},'MDT Recommended','System','PC7_SHOWCASE_MDT')
+ # Remove old cycle-specific order/readiness/pharmacy/MAR records and recreate coherent point-in-time history.
+ for typ in ['readiness','treatment_order','pharmacy','infusion']:
+  for r in many(c,pid,typ):
+   if str(r['id']).startswith(('READY-CHEMO-C','ORDER-CHEMO-C','PHARM-CHEMO-C','INF-CHEMO-C')):
+    c.execute('DELETE FROM record_versions WHERE record_id=?',(r['id'],));c.execute('DELETE FROM records WHERE id=?',(r['id'],))
+ decisions={1:('Proceed as Planned',3.2,''),2:('Proceed as Planned',2.8,''),3:('Proceed with Modification',2.1,'CTCAE v5.0 Grade 2 peripheral sensory neuropathy reviewed; 10% docetaxel dose reduction'),4:('Delay',0.9,'ANC below synthetic governed readiness threshold; repeat CBC before treatment')}
+ b=bsa_values(165,68);renal_value=94.0
+ for cy,(decision,anc,reason) in decisions.items():
+  cycle_date=start+timedelta(days=(cy-1)*21);lab_date=cycle_date-timedelta(days=1);labid=f'LAB-CHEMO-C{cy}'
+  old=get_rec(c,labid)
+  ld={'date':str(lab_date),'collected_at':(datetime.combine(lab_date,datetime.min.time()).replace(hour=8,minute=0)).isoformat(timespec='minutes'),'specimen':'Peripheral blood','source_order_id':f'LABORD-CHEMO-C{cy}','hb':11.6,'wbc':4.8 if cy<4 else 2.2,'anc':anc,'platelets':230,'creatinine':0.8,'egfr':94,'bilirubin':0.6,'ast':23,'alt':25,'albumin':4.0,'sodium':139,'potassium':4.1,'magnesium':1.9,'calcium':9.2,'pregnancy':'Negative','lvef':60,'units':{'hb':'g/dL','wbc':'10^9/L','anc':'10^9/L','platelets':'10^9/L','creatinine':'mg/dL','egfr':'mL/min/1.73m2','bilirubin':'mg/dL','ast':'U/L','alt':'U/L','albumin':'g/dL','sodium':'mmol/L','potassium':'mmol/L','magnesium':'mg/dL','calcium':'mg/dL','lvef':'%'},'reference_ranges':{'hb':{'low':12,'high':16},'wbc':{'low':4,'high':11},'anc':{'low':1.5,'high':7.5},'platelets':{'low':150,'high':450},'creatinine':{'low':0.5,'high':1.1}},'finalized_at':(datetime.combine(lab_date,datetime.min.time()).replace(hour=10)).isoformat(timespec='minutes'),'synthetic_showcase':True}
+  ld['observations']=lab_observations(ld)
+  if old:update_rec(c,labid,ld,'Final','System','PC7_SHOWCASE_LAB')
+  else:new_record(c,pid,'lab',ld,'Final','System',labid)
+  eval_at=datetime.combine(cycle_date,datetime.min.time()).replace(hour=8,minute=30).isoformat(timespec='minutes')
+  rd={'cycle':cy,'day':1,'ecog':'1','height_cm':165,'weight_kg':68,'bsa_raw_m2':b['raw'],'bsa_m2':b['ordering'],'bsa_formula':b['formula_text'],'bsa_rounding_policy':{'raw_precision':b['raw_precision'],'display_precision':b['display_precision'],'ordering_precision':b['ordering_precision']},'vitals':{'bp':'120/78','hr':76,'rr':16,'temp':36.7,'spo2':99},'lab_date':str(lab_date),'lab_source_id':labid,'anc':anc,'platelets':230,'hb':11.6,'egfr':94,'bilirubin':0.6,'lvef':60,'lab_units':{'anc':'10^9/L','platelets':'10^9/L','bilirubin':'mg/dL','egfr':'mL/min/1.73m2'},'pregnancy':'Negative','infection':'No','consent':'Current','allergy_review':'Reviewed','medication_review':'Reviewed','toxicity_summary':reason or 'No treatment-limiting toxicity','decision':decision,'decision_reason':reason or 'All synthetic governed readiness criteria met','evaluation_as_of_date':str(cycle_date),'evaluated_at':eval_at,'renal_dosing_method':'CCA-approved renal dosing value','renal_dosing_value_ml_min':renal_value,'renal_dosing_source_id':labid,'renal_dosing_measured_at':ld['finalized_at'],'signed_by':'Dr Meera Rao — Medical Oncology','signed_at':eval_at,'protocol_id':PROTOCOL['id'],'protocol_version':PROTOCOL['version'],'content_template_id':'REG-CCA-TCHP-DEMO','content_template_version':PROTOCOL['version']}
+  rd['protocol_evaluation']=readiness_eval(rd,PROTOCOL,cycle_date)
+  new_record(c,pid,'readiness',rd,'Signed','System',f'READY-CHEMO-C{cy}')
+  if cy<=3:
+   items=[];red=10 if cy==3 else 0;renal={'method':rd['renal_dosing_method'],'value_ml_min':renal_value,'source_id':labid,'measured_at':ld['finalized_at']}
+   for q in PROTOCOL['items']:
+    cr=calculate_dose(q,68,b['raw'],cy,renal);calc=cr['calculated_dose'];final=calc;vr=''
+    if red and q.get('drug')=='Docetaxel':final=round(calc*0.90,2);vr='CTCAE v5.0 Grade 2 peripheral sensory neuropathy; synthetic 10% docetaxel reduction'
+    chk=safety_check(q,final,cr,vr)
+    items.append({**q,'item_id':f'C{cy}-OI-{q["sequence"]}','protocol_effective_dose':cr['trace'].get('protocol_dose'),'cycle_phase':cr['trace'].get('cycle_phase'),'calculation_trace':cr['trace'],'calculated_dose':calc,'calculated_unit':'mg','ordered_dose':final,'ordered_unit':'mg','final_approved_dose':final,'variance_pct':chk.get('variance_pct') or 0,'variance_reason':vr,'rounding':'No rounding','rate_ml_hr':round(q.get('volume_ml',0)/(q.get('duration_min',60)/60),2) if q.get('volume_ml') else 0})
+   oid=f'ORDER-CHEMO-C{cy}';order={'order_no':f'ORD-SYN-C{cy}D1','plan_id':'TP-SYN-CHEMO','protocol_id':PROTOCOL['id'],'protocol_version':PROTOCOL['version'],'regimen':PROTOCOL['name'],'content_template_id':'REG-CCA-TCHP-DEMO','content_template_version':PROTOCOL['version'],'content_source_id':'SRC-CCA-DEMO','diagnosis':'Breast Cancer','intent':'Neoadjuvant','line_of_therapy':'1st line / neoadjuvant','cycle':cy,'day':1,'planned_cycles':6,'start_date':str(cycle_date),'patient_snapshot':{'name':p['name'],'dob':p['dob'],'mrn':p['mrn'],'weight_kg':68,'height_cm':165,'bsa_raw_m2':b['raw'],'bsa_m2':b['ordering'],'bsa_rounding_policy':BSA_POLICY,'coded_allergies':(latest(c,pid,'med_recon') or {}).get('data',{}).get('allergies',[]),'lab_date':str(lab_date),'renal_dosing':renal,'readiness_snapshot':rd['protocol_evaluation']},'items':items,'readiness_id':f'READY-CHEMO-C{cy}','signed_by':'Dr Meera Rao — Medical Oncology','signed_at':eval_at,'locked':True}
+   new_record(c,pid,'treatment_order',order,'Completed','System',oid)
+   orderrec=get_rec(c,oid);independent=order_safety_recalculation(c,pid,orderrec,PROTOCOL)
+   phitems=[]
+   for it in items:
+    phitems.append({**it,'prepared_dose':it['ordered_dose'],'prepared_unit':it['ordered_unit'],'lot_no':f'SYN-LOT-{cy}-{it["sequence"]}','expiry':'2027-01-31','prepared_volume_ml':it.get('volume_ml',0),'prepared_concentration':round(it['ordered_dose']/it.get('volume_ml',1),3) if it.get('volume_ml') else '', 'beyond_use_time':'Synthetic same-day display value — production BUD from CCA pharmacy master'})
+   ph={'order_id':oid,'decision':'Verified','verification_checks':{'identity':'Pass','regimen':'Pass','dose':'Pass','route':'Pass','allergy':'Pass','labs':'Pass','interactions':'Pass','readiness':'Pass'},'independent_recalculation':independent,'verified_actor':{'name':'Demo Oncology Pharmacist','role':'Oncology Pharmacy'},'verified_at':eval_at,'items':phitems,'query_history':([{'decision':'Clarification resolved','reason':'Dose modification','at':eval_at,'by':{'name':'Demo Oncology Pharmacist'},'message':'Cycle 3 dose reduction verified against signed clinician modification','resolved':True,'response_action':'Proceed per revised order','response_note':'Signed by Medical Oncology','resolved_at':eval_at}] if cy==3 else []),'prepared_at':eval_at,'independent_check':{'status':'Passed','checked_by':'Second Demo Pharmacist','at':eval_at},'dispensed_to':'Day Care','manifest_no':f'MAN-SYN-C{cy}'}
+   new_record(c,pid,'pharmacy',ph,'Dispensed','System',f'PHARM-CHEMO-C{cy}')
+   mar=[];base=datetime.combine(cycle_date,datetime.min.time()).replace(hour=9,minute=0)
+   for it in items:
+    st=(base+timedelta(days=1,hours=1)) if it.get('drug')=='Pegfilgrastim' else (base+timedelta(minutes=(it['sequence']-1)*45));en=st+timedelta(minutes=max(10,int(it.get('duration_min') or 10)))
+    mar.append({'item_id':it['item_id'],'sequence':it['sequence'],'drug':it['drug'],'drug_code':it.get('code'),'ordered_dose':it['ordered_dose'],'ordered_unit':it['ordered_unit'],'actual_dose':it['ordered_dose'],'unit':it['ordered_unit'],'route':it.get('route'),'start_time':st.isoformat(timespec='minutes'),'end_time':en.isoformat(timespec='minutes'),'completion_status':'Administered','administered_by':{'name':'Demo Infusion Nurse','role':'Day Care / Infusion Nurse'},'reaction':'None' if cy!=2 else ('Mild transient flushing — resolved' if it['sequence']==2 else 'None')})
+   inf={'order_id':oid,'care_setting':'Day Care','checklist':{'patient_identity':'Pass','consent':'Pass','order_match':'Pass','pharmacy_release':'Pass','access':'Pass','labs':'Pass','allergy':'Pass','readiness':'Pass'},'pre_vitals':{'bp':'118/74','hr':78,'temp_c':36.8,'spo2':99},'access':'Implanted port — patent','mar':mar,'post_vitals':{'bp':'116/72','hr':80,'temp_c':36.9,'spo2':99},'tolerance':'Completed with no serious reaction' if cy!=2 else 'Mild transient flushing during targeted therapy; resolved with observation','discharge_instructions':'Synthetic treatment-day instructions','next_cycle':str(cycle_date+timedelta(days=21))}
+   new_record(c,pid,'infusion',inf,'Completed','System',f'INF-CHEMO-C{cy}')
+ # CTCAE v5.0 structured toxicity and RECIST 1.1 response.
+ tox=latest(c,pid,'toxicity')
+ if tox:update_rec(c,tox['id'],{'events':[
+  {'id':'TOX-C1','ctcae_version':'5.0','term':'Nausea','grade':1,'attribution':'Probable','suspected_agents':['Docetaxel','Carboplatin'],'seriousness':'Non-serious','sae':False,'onset_date':str(start+timedelta(days=3)),'intervention':'Supportive medication','outcome':'Resolved'},
+  {'id':'TOX-C2','ctcae_version':'5.0','term':'Peripheral sensory neuropathy','grade':2,'attribution':'Probable','suspected_agents':['Docetaxel'],'seriousness':'Non-serious','sae':False,'onset_date':str(start+timedelta(days=30)),'intervention':'Clinical review before Cycle 3','outcome':'Ongoing / stable'},
+  {'id':'TOX-C4','ctcae_version':'5.0','term':'Neutrophil count decreased','grade':2,'attribution':'Probable','suspected_agents':['Docetaxel','Carboplatin'],'seriousness':'Non-serious','sae':False,'onset_date':str(today),'intervention':'Cycle 4 delayed; repeat CBC planned','outcome':'Under review'}]},'Active','System','PC7_SHOWCASE_CTCAE')
+ resp=latest(c,pid,'response')
+ if resp:
+  baseline=[{'id':'L1','organ':'Breast','site':'Left breast index lesion','lesion_type':'Non-nodal','size_mm':40,'baseline_selected':True},{'id':'L2','organ':'Lymph nodes','site':'Left axillary node short axis','lesion_type':'Lymph node','size_mm':18,'baseline_selected':True}]
+  curr=[{'id':'L1','organ':'Breast','site':'Left breast index lesion','lesion_type':'Non-nodal','size_mm':26},{'id':'L2','organ':'Lymph nodes','site':'Left axillary node short axis','lesion_type':'Lymph node','size_mm':12}]
+  ev=recist_evaluate(curr,baseline,[],False,'Non-target disease: non-CR/non-PD')
+  update_rec(c,resp['id'],{'baseline':{'date':str(start-timedelta(days=15)),'framework':'RECIST 1.1','target_lesions':baseline,'non_target':'Non-target disease present','status':'Measurable disease'},'assessments':[{'date':str(today-timedelta(days=7)),'framework':'RECIST 1.1','target_lesions':curr,'sum_mm':ev.get('sum_mm'),'baseline_sum_mm':ev.get('baseline_sum_mm'),'nadir_sum_mm':ev.get('nadir_sum_mm'),'radiologist_proposal':ev.get('category'),'clinician_confirmed_response':ev.get('category'),'response_category':ev.get('category'),'confirmed_by':'Medical Oncology','decision':'Continue planned systemic therapy after count recovery','calculation':ev}]},'Active','System','PC7_SHOWCASE_RECIST')
+ # Demonstrate source-linked document facts without pretending OCR/voice is connected.
+ docid='DOC-CHEMO-PATH-001';doccontent='SYNTHETIC SOURCE DOCUMENT — product demonstration only.\nPatient: Ananya Shah\nSpecimen: Left breast core biopsy\nHistology: Invasive carcinoma of no special type.\nER: Negative by IHC.\nPR: Negative by IHC.\nHER2: IHC 3+, interpreted positive for this synthetic example.\n'.encode('utf-8')
+ if not c.execute('SELECT 1 FROM documents WHERE id=?',(docid,)).fetchone():c.execute('INSERT INTO documents VALUES(?,?,?,?,?,?,?,?,?,?,?,?)',(docid,pid,'Synthetic external pathology summary','synthetic_chemo_pathology_summary.txt','text/plain','Pathology','External pathology summary','Synthetic Outside Centre',str(start-timedelta(days=22)),doccontent,actor('Pathology')['id'],now()))
+ for fid,name,val,code,section,snip in [('DF-CHEMO-HIST','Histology','Invasive carcinoma of no special type','8500/3','Histology','Histology: Invasive carcinoma of no special type.'),('DF-CHEMO-HER2','HER2','IHC 3+ / Positive','HER2-IHC','Biomarkers','HER2: IHC 3+, interpreted positive for this synthetic example.')]:
+  if not c.execute('SELECT 1 FROM document_facts WHERE id=?',(fid,)).fetchone():c.execute('INSERT INTO document_facts VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',(fid,pid,docid,name,val,'ICD-O-3' if name=='Histology' else 'Local pathology mapping',code,'1',section,snip,'Manual clinician abstraction',1.0,'Validated',actor('Pathology')['id'],now(),now()))
+ # Remove the old one-of-everything empty records that make the patient clinically incoherent.
+ for typ in ['admission','inpatient_care','discharge','continuous_therapy','tumor_marker','pc4_prd']:_delete_seed_entity(c,pid,typ)
+
+
+
+def pc7_reconcile_base_patient(c):
+ pid='PAT-0001';intake=get_rec(c,'INTAKE-0001');lab=get_rec(c,'LAB-0001');ready=get_rec(c,'READY-0001');order=get_rec(c,'ORDER-0001')
+ if not intake or not lab or not ready or not order:return
+ b=bsa_values(170,70);bmi=round(70/((1.70)**2),2)
+ update_rec(c,intake['id'],{'bmi':bmi,'bsa_raw_m2':b['raw'],'bsa_m2':b['ordering'],'bsa_display_m2':b['display'],'bsa_formula':b['formula_text'],'bsa_rounding_policy':{'raw_precision':b['raw_precision'],'display_precision':b['display_precision'],'ordering_precision':b['ordering_precision']}},'Completed','System','PC7_BASE_BSA')
+ ld=dict(lab['data']);ld.update({'collected_at':ld.get('collected_at') or ld.get('date'),'specimen':'Peripheral blood','source_order_id':'LABORDER-DEMO-0001','reference_ranges':{'hb':{'low':12,'high':16},'wbc':{'low':4,'high':11},'anc':{'low':1.5,'high':7.5},'platelets':{'low':150,'high':450},'creatinine':{'low':0.5,'high':1.1}},'renal_dosing_method':'CCA-approved renal dosing value','renal_dosing_value_ml_min':92.0,'renal_dosing_source_note':'Synthetic validated renal-dosing value stored separately from indexed eGFR; production source/method is CCA governed.'});ld['observations']=lab_observations(ld);update_rec(c,lab['id'],ld,'Final','System','PC7_BASE_LAB')
+ rd={**ready['data'],'bsa_raw_m2':b['raw'],'bsa_m2':b['ordering'],'bsa_rounding_policy':BSA_POLICY,'evaluation_as_of_date':str(date.today()),'evaluated_at':now(),'lab_date':ld['date'],'lab_source_id':lab['id'],'renal_dosing_method':'CCA-approved renal dosing value','renal_dosing_value_ml_min':92.0,'renal_dosing_source_id':lab['id'],'renal_dosing_measured_at':ld.get('finalized_at') or ld['date']}
+ rd['protocol_evaluation']=readiness_eval(rd,PROTOCOL,rd['evaluation_as_of_date']);update_rec(c,ready['id'],rd,'Signed','System','PC7_BASE_READINESS')
+ renal={'method':rd['renal_dosing_method'],'value_ml_min':rd['renal_dosing_value_ml_min'],'source_id':rd['renal_dosing_source_id'],'measured_at':rd['renal_dosing_measured_at']};items=[];safety=[]
+ for q in PROTOCOL['items']:
+  cr=calculate_dose(q,70,b['raw'],1,renal);calc=cr['calculated_dose'];chk=safety_check(q,calc,cr,'')
+  items.append({**q,'item_id':'OI-'+str(q['sequence']),'effective_protocol_dose':cr['trace'].get('protocol_dose'),'cycle_dose_phase':cr['trace'].get('cycle_phase'),'calculated_dose':calc,'calculation_trace':cr['trace'],'calculated_unit':'mg','ordered_dose':calc,'ordered_unit':'mg','final_approved_dose':calc,'variance_pct':0,'variance_reason':'','rounding':'No rounding','prior_actual_cumulative_exposure':actual_cumulative_exposure(c,pid,q['drug']),'rate_ml_hr':round(q.get('volume_ml',0)/(q.get('duration_min',60)/60),2) if q.get('volume_ml') else 0,'administration_at':datetime.now().replace(hour=10,minute=0,second=0,microsecond=0).isoformat()})
+  safety.append({'drug':q['drug'],'calculation':cr,'safety':chk,'prior_actual_cumulative_exposure':actual_cumulative_exposure(c,pid,q['drug'])})
+ od={**order['data'],'items':items,'dose_safety_snapshot':safety,'patient_snapshot':{**order['data'].get('patient_snapshot',{}),'weight_kg':70,'height_cm':170,'bsa_raw_m2':b['raw'],'bsa_m2':b['ordering'],'bsa_rounding_policy':BSA_POLICY,'coded_allergies':(get_rec(c,'MEDREC-0001') or {}).get('data',{}).get('allergies',[]),'readiness_id':ready['id'],'readiness_evaluation_snapshot':rd['protocol_evaluation'],'renal_dosing':renal}}
+ update_rec(c,order['id'],od,'Verification Pending','System','PC7_BASE_ORDER_RECALC')
+ ph=get_rec(c,'PHARM-0001')
+ if ph:update_rec(c,ph['id'],{'items':[dict(x) for x in items],'independent_recalculation':None},'Verification Pending','System','PC7_BASE_PHARMACY_SYNC')
+
+
+def pc7_reconcile_showcase(c):
+ _rebuild_chemo_showcase(c)
+ # Other showcase patients: replace obviously invalid synthetic coding with clinically recognisable structure while keeping values explicitly demonstrative.
+ _update_showcase_intake(c,'PAT-DEMO-RT');_update_showcase_diagnosis(c,'PAT-DEMO-RT',{'icd10':'C53.9','icd10_version':'ICD-10','icdo_topography':'C53.9','icdo_morphology':'8070/3','icdo_version':'ICD-O-3','snomed':'','cancer_type':'Cervical Cancer','primary_site':'Cervix','histology':'Squamous cell carcinoma','grade':'2','stage_t':'cT2b','stage_n':'cN0','stage_m':'cM0','stage_group':'Stage IIB','staging_system':'FIGO','staging_version':'2018','staging_basis':'Clinical','terminology_validation_status':'Validated by synthetic showcase master','terminology_service_reference':'PC7 curated demo code set','biomarkers':[]})
+ _update_showcase_intake(c,'PAT-DEMO-SURG');_update_showcase_diagnosis(c,'PAT-DEMO-SURG',{'icd10':'C18.7','icd10_version':'ICD-10','icdo_topography':'C18.7','icdo_morphology':'8140/3','icdo_version':'ICD-O-3','snomed':'','cancer_type':'Colon Cancer','primary_site':'Sigmoid colon','histology':'Adenocarcinoma','grade':'2','stage_t':'pT3','stage_n':'pN1b','stage_m':'cM0','stage_group':'Stage IIIB','staging_system':'AJCC','staging_version':'Colon/Rectum v8','staging_basis':'Pathological','terminology_validation_status':'Validated by synthetic showcase master','terminology_service_reference':'PC7 curated demo code set','biomarkers':[]})
+ _update_showcase_intake(c,'PAT-DEMO-IPD');_update_showcase_diagnosis(c,'PAT-DEMO-IPD',{'icd10':'C83.3','icd10_version':'ICD-10','icdo_topography':'','icdo_morphology':'9680/3','icdo_version':'ICD-O-3','snomed':'','cancer_type':'Diffuse Large B-cell Lymphoma','primary_site':'Lymph nodes','histology':'Diffuse large B-cell lymphoma','grade':'Not applicable / high-grade lymphoma','stage_t':'','stage_n':'','stage_m':'','stage_group':'Stage III','staging_system':'Lugano / Ann Arbor','staging_version':'2014','staging_basis':'Clinical','terminology_validation_status':'Validated by synthetic showcase master','terminology_service_reference':'PC7 curated demo code set','biomarkers':[]})
+ _update_showcase_intake(c,'PAT-DEMO-SURV');_update_showcase_diagnosis(c,'PAT-DEMO-SURV',{'icd10':'C50.9','icd10_version':'ICD-10','icdo_topography':'C50.9','icdo_morphology':'8500/3','icdo_version':'ICD-O-3','snomed':'254837009','cancer_type':'Breast Cancer','primary_site':'Right breast','histology':'Invasive carcinoma of no special type / ductal carcinoma','grade':'2','stage_t':'cT1','stage_n':'cN0','stage_m':'cM0','stage_group':'Stage I','staging_system':'AJCC','staging_version':'Breast v8','staging_basis':'Clinical','terminology_validation_status':'Validated by synthetic showcase master','terminology_service_reference':'PC7 curated demo code set'})
+ # Keep each showcase coherent by removing unrelated empty generic modules.
+ for pid,types in {
+  'PAT-DEMO-RT':['admission','inpatient_care','discharge','continuous_therapy','tumor_marker'],
+  'PAT-DEMO-SURG':['continuous_therapy','tumor_marker'],
+  'PAT-DEMO-IPD':['continuous_therapy','tumor_marker'],
+  'PAT-DEMO-SURV':['admission','inpatient_care','discharge','tumor_marker'],
+ }.items():
+  for typ in types:
+   for r in list(many(c,pid,typ)):
+    d=r.get('data',{});is_empty=not any(v for v in d.values() if v not in [[],{},'',None,False])
+    if is_empty or typ in ['continuous_therapy','tumor_marker'] and pid!='PAT-DEMO-SURV':
+     c.execute('DELETE FROM record_versions WHERE record_id=?',(r['id'],));c.execute('DELETE FROM records WHERE id=?',(r['id'],))
+ # Update IPD toxicity into CTCAE v5 format.
+ tox=latest(c,'PAT-DEMO-IPD','toxicity')
+ if tox:update_rec(c,tox['id'],{'events':[{'id':'IPD-TOX-1','ctcae_version':'5.0','term':'Febrile neutropenia','grade':3,'attribution':'Probable','suspected_agents':['Recent systemic therapy — source order outside showcase'], 'seriousness':'Serious — inpatient admission','sae':True,'onset_date':str(date.today()-timedelta(days=2)),'intervention':'Admission and supportive management','outcome':'Improving'}]},'Active','System','PC7_SHOWCASE_IPD_CTCAE')
+
+
+def _pc4_synth_value(f):
+ typ=f.get('type');opts=f.get('options') or [];lab=f.get('label','')
+ if f.get('readonly'):return None
+ if typ=='select':return opts[0] if opts else 'Synthetic demo value'
+ if typ=='multiselect':return opts[:1] if opts else ['Synthetic demo value']
+ if typ=='number':return 1
+ if typ=='date':return str(date.today())
+ if typ=='datetime-local':return now()[:16]
+ if typ=='time':return '10:00'
+ if typ=='checkbox':return True
+ return 'Synthetic showcase — '+lab[:80]
+
+def _seed_pc4_module_examples(c,pid='PAT-DEMO-CHEMO'):
+ cat=pc4_catalog();chosen={}
+ for sc in cat.get('screens',[]):
+  mc=sc.get('module_code');
+  if mc in chosen or sc.get('kind')=='worklist':continue
+  if not sc.get('author_roles'):continue
+  chosen[mc]=sc
+ for mc,sc in chosen.items():
+  target_pid='' if mc=='C.26' else pid
+  vals={}
+  for f in sc.get('fields') or []:
+   z=_pc4_synth_value(f)
+   if z is not None:vals[f['id']]=z
+  for t in sc.get('tables') or []:
+   row={}
+   for col in t.get('columns') or []:
+    z=_pc4_synth_value(col)
+    if z is not None:row[col['id']]=z
+   vals['table__'+t.get('id','table')]=[row] if row else []
+  data={'screen_id':sc['id'],'screen_name':sc['name'],'module':sc.get('module'),'module_code':mc,'values':vals,'derived_values':{},'source_context':{'synthetic_showcase':True,'patient_id':target_pid},'source_document':sc.get('source_document'),'requirement_ids':sc.get('requirement_ids',[]),'authored_by':actor(sc.get('author_roles',["System"])[0] if sc.get('author_roles') else 'System'),'authored_at':now(),'signed_by':actor(sc.get('author_roles',["System"])[0] if sc.get('author_roles') else 'System'),'signed_at':now(),'signature_attestation':'Synthetic showcase record for CCA product validation only','frozen_values':{'values':vals},'synthetic_showcase':True}
+  new_record(c,target_pid,'pc4_prd',data,'Signed','System',f'SHOW-{mc.replace(".","")}-001')
+
+
+def seed_showcase_cases(c):
+ if c.execute("SELECT 1 FROM patients WHERE id='PAT-DEMO-CHEMO'").fetchone():return
+ _seed_chemo_case(c);_seed_rt_case(c);_seed_surgery_case(c);_seed_ipd_case(c);_seed_survivorship_case(c);pc7_reconcile_showcase(c)
+
+
 def seed():
  c=db()
  if c.execute('SELECT COUNT(*) n FROM patients').fetchone()['n']:
@@ -708,6 +1278,7 @@ def seed():
  t=now(); c.execute('INSERT INTO patients VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)',(p['id'],p['mrn'],p['name'],p['dob'],p['sex'],p['phone'],p['abha'],p['id_number'],p['current_department'],p['status'],p['photo_document_id'],t,t))
  pid=p['id']
  new_record(c,pid,'registration',{'arrival_type':'Clinician specified','assigned_specialty':'Medical Oncology','clinician_assignment':'Medical Oncology Clinic','route_rule':'Clinician assignment','referral_doctor_name':'Dr External Referrer','referral_facility':'Outside Hospital','referral_network_level3':'External referral source','referral_reason':'Breast cancer opinion','address':'Hyderabad','general_consent':'Signed','photo_status':'Pending'},'Completed','System','REG-0001')
+ new_record(c,pid,'referral',{'referral_no':'REF-DEMO-0001','source_type':'External clinician','referring_doctor':'Dr External Referrer','referring_facility':'Outside Hospital','reason':'Breast cancer opinion','priority':'Routine','assigned_department':'Medical Oncology','assigned_clinician':'Medical Oncology Clinic','status':'Assigned','history':[{'at':now(),'from':'Created','to':'Assigned','by':actor('System'),'reason':'Initial referral routing'}]},'Assigned','System','REF-0001')
  new_record(c,pid,'consent',{'items':[{'id':'CONS-GEN-1','type':'General Consent','version':'CCA-GEN-v1','scope':'General care and record use','status':'Signed','signed_by':'Maya Iyer','signed_at':now(),'valid_from':str(date.today()),'valid_until':str(date.today()+timedelta(days=365))},{'id':'CONS-TX-1','type':'Treatment Consent','version':'CCA-TX-v1','scope':'Systemic antineoplastic treatment for current signed plan','status':'Signed','signed_by':'Maya Iyer','signed_at':now(),'valid_from':str(date.today()),'valid_until':str(date.today()+timedelta(days=180))}]},'Active','System','CONS-0001')
  new_record(c,pid,'appointments',{'items':[{'id':'APT-1','date':(datetime.now()+timedelta(days=1)).isoformat(timespec='minutes'),'department':'Medical Oncology','clinician':'Medical Oncology Clinic','location':'OPD','purpose':'Treatment planning','status':'Scheduled'}]},'Active','System','APT-0001')
  new_record(c,pid,'queue',{'current_location':'Medical Oncology','current_status':'In Service','priority':'Routine','token':'MO-041','history':[{'at':now(),'from':'Registration','to':'Nurse Intake','status':'Completed','actor':'System'},{'at':now(),'from':'Nurse Intake','to':'Medical Oncology','status':'Queued','actor':'System'}]},'Active','System','QUEUE-0001')
@@ -761,6 +1332,8 @@ def seed():
  new_record(c,pid,'conversion',{'counselling_status':'Pending','payer_category':'Self-pay','mo_drug_estimate':{'source_order_id':'ORDER-0001','currency':'INR','lines':[],'total':0},'estimate_status':'Draft','fundraising_letter':{'status':'Not required','recipient':'','purpose':'Treatment support','text':''},'tracking':[]},'Active','System','CONV-0001')
  new_record(c,pid,'standards',{'items':['HL7 FHIR R4 mapping-ready','mCODE modeling reference','DICOM/DICOM RT link boundary','CTCAE structured toxicity','RECIST response structure','ABDM architecture/interface boundary','MOSAIQ standards-based integration boundary'],'note':'Prototype architecture; no external conformance claim.'},'Active','System','STD-0001')
  new_record(c,pid,'cca_requirements',{'note':'Runtime status only; live external integrations remain external.','rows':[{'area':'Registration','requirement':'Registration / routing / consent / scheduling / queue','status':'Runtime functional'},{'area':'Nurse EMR','requirement':'Vitals / BSA / medication reconciliation / forms','status':'Runtime functional'},{'area':'Doctor EMR','requirement':'Structured OPD / diagnosis / staging / diagnostic orders','status':'Runtime functional'},{'area':'MDT','requirement':'Case / comments / attendance / recommendation / specialty-plan separation','status':'Runtime functional'},{'area':'Systemic therapy','requirement':'Plan → order → pharmacy → Day Care MAR','status':'Runtime functional'},{'area':'Radiation','requirement':'Prescription → planning status → fraction tracking','status':'Runtime functional prototype'},{'area':'Surgery','requirement':'Plan → pre-op → procedure → histopathology/adjuvant handoff','status':'Runtime functional prototype'},{'area':'ABDM / MOSAIQ / PACS / LIS / TPS','requirement':'Live external integration','status':'Interface boundary only'}]},'Active','System','REQ-0001')
+ pc7_reconcile_base_patient(c)
+ seed_showcase_cases(c)
  # Seeded demo patient is intentionally assigned to every internal role so every demo surface can be exercised.
  for rr in ROLES:
   if rr!='External Consultant':grant_patient_access(c,pid,rr,'seed_demo','PAT-0001','System')
@@ -954,8 +1527,10 @@ def latest_final_lab(c,pid):
  finals=[x for x in rows if x.get('status')=='Final']
  return finals[-1] if finals else None
 
-def readiness_eval(data,protocol=None):
+def readiness_eval(data,protocol=None,as_of_date=None):
  protocol=protocol or PROTOCOL
+ try:eval_date=date.fromisoformat(str(as_of_date or data.get('evaluation_as_of_date') or date.today())[:10])
+ except:eval_date=date.today()
  hp=protocol['hold_parameters']; blockers=[]; alerts=[]; normalized={}
  units=data.get('lab_units') or {}
  unit_missing=[k for k in READINESS_REQUIRED_UNIT_FIELDS if data.get(k) not in ['',None] and not units.get(k)]
@@ -970,8 +1545,11 @@ def readiness_eval(data,protocol=None):
  if not ld:blockers.append('Required laboratory date is missing')
  else:
   try:
-   age=(date.today()-date.fromisoformat(str(ld)[:10])).days;freshness='Current' if age<=hp['lab_max_age_days'] else 'Stale'
-   if freshness=='Stale':blockers.append(f'Required labs are stale ({age} days old; max {hp["lab_max_age_days"]})')
+   age=(eval_date-date.fromisoformat(str(ld)[:10])).days
+   if age<0:blockers.append('Laboratory result date is after the readiness evaluation date');freshness='Invalid'
+   else:
+    freshness='Current' if age<=hp['lab_max_age_days'] else 'Stale'
+    if freshness=='Stale':blockers.append(f'Required labs are stale ({age} days old at evaluation; max {hp["lab_max_age_days"]})')
   except: blockers.append('Laboratory date is invalid');freshness='Invalid'
  def rr(rid,cat,field,current,unit,op,threshold,ok,source='lab'):
   return {'id':rid,'category':cat,'field':field,'current':current,'unit':unit,'operator':op,'threshold':threshold,'status':'PASS' if ok else 'HOLD','outcome':'PASS' if ok else 'HOLD','source_record_id':data.get('lab_source_id','') if source=='lab' else data.get('toxicity_source_id',''),'source_finalized_at':data.get('lab_source_finalized_at','') if source=='lab' else '', 'result_date':ld if source=='lab' else '', 'freshness_days':age if source=='lab' else None,'freshness_status':freshness if source=='lab' else 'Not applicable'}
@@ -981,7 +1559,9 @@ def readiness_eval(data,protocol=None):
  if not ok_egfr:blockers.append(f"eGFR does not meet protocol criteria ({egfr} vs min {hp['eGFR_min']})")
  if not ok_bili:blockers.append(f"Bilirubin exceeds protocol demo threshold ({bili if bili is not None else 'missing/invalid unit'} vs max {hp['bilirubin_max']} mg/dL)")
  if not ok_lvef:blockers.append(f"LVEF does not meet protocol criteria ({lvef} vs min {hp['LVEF_min']}%)")
- if data.get('pregnancy') not in ['Negative','N/A','Not applicable']: alerts.append('Pregnancy status requires clinical review')
+ if str(data.get('pregnancy','')).lower() in ['positive','pregnant']:blockers.append('Pregnancy status requires clinician review before proceeding')
+ elif data.get('pregnancy') not in ['Negative','N/A','Not applicable']: alerts.append('Pregnancy status requires clinical review')
+ if str(data.get('infection','')).lower() in ['yes','active']:blockers.append('Active infection requires clinician review')
  rule_results=[
   rr('RR-ANC','Hematology','ANC',anc,'×10^9/L','>=',hp.get('ANC_min'),ok_anc),
   rr('RR-PLT','Hematology','Platelets',plt,'×10^9/L','>=',hp.get('platelets_min'),ok_plt),
@@ -999,14 +1579,11 @@ def readiness_eval(data,protocol=None):
    status='Completed' if freshness=='Current' else ('Overdue' if freshness=='Stale' else 'Missing')
   elif cat=='Toxicity':status='Abnormal' if active_tox else 'Completed'
   monitoring.append({**req,'status':status,'source_record_id':data.get('lab_source_id','') if cat!='Toxicity' else data.get('toxicity_source_id',''),'evaluated_at':now()})
- return {'protocol_id':protocol['id'],'protocol_version':protocol['version'],'thresholds_source':'Institution Content Master / server-governed regimen version','lab_source_id':data.get('lab_source_id',''),'lab_source_finalized_at':data.get('lab_source_finalized_at',''),'normalized':normalized,'blockers':blockers,'alerts':alerts,'can_proceed':not blockers,'rule_results':rule_results,'monitoring_requirements':monitoring,'dose_modification_rules':protocol.get('dose_modification_rules',[]),'evaluated_at':now()}
+ return {'protocol_id':protocol['id'],'protocol_version':protocol['version'],'thresholds_source':'Institution Content Master / server-governed regimen version','lab_source_id':data.get('lab_source_id',''),'lab_source_finalized_at':data.get('lab_source_finalized_at',''),'normalized':normalized,'blockers':blockers,'alerts':alerts,'can_proceed':not blockers,'rule_results':rule_results,'monitoring_requirements':monitoring,'dose_modification_rules':protocol.get('dose_modification_rules',[]),'evaluation_as_of_date':eval_date.isoformat(),'lab_age_days_at_evaluation':age,'evaluated_at':now()}
 
-def calc_dose(item,weight,bsa):
- if item['dose_basis']=='Fixed':return float(item['protocol_dose'])
- if item['dose_basis']=='mg/kg':return round(float(item['protocol_dose'])*float(weight),2)
- if item['dose_basis']=='mg/m²':return round(float(item['protocol_dose'])*float(bsa),2)
- if item['dose_basis']=='AUC':return None
- return None
+def calc_dose(item,weight,bsa,cycle=1,renal=None):
+ res=calculate_dose(item,weight,bsa,cycle,renal or {})
+ return res.get('calculated_dose') if res.get('ok') else None
 
 def cumulative_administered_by_code(c,pid):
  totals={}
@@ -1272,6 +1849,35 @@ class H(BaseHTTPRequestHandler):
    q=parse_qs(p.query);tid=q.get('template',[''])[0];pid=q.get('patient',[''])[0];rv=q.get('record_version',[''])[0]
    if not can_access_patient(c,role,pid):c.close();return self.sendj({'error':'Patient access not assigned to this role'},403)
    out,code,err=render_report(c,pid,tid,role,rv);c.commit();c.close();return self.sendj(out if out is not None else err,code)
+  if p.path=='/api/demo-showcase':
+   cases=[]
+   for spec in DEMO_SHOWCASE_CASES:
+    pid=spec['patient_id']
+    if not patient(c,pid) or not can_access_patient(c,role,pid):continue
+    cf=core_flow_snapshot(c,pid);cases.append({**spec,'patient':project_patient(patient(c,pid),role),'current_treatment':cf.get('current_treatment',{}),'next_step':cf.get('next_step',{}),'drug_chart':cf.get('drug_chart',{}) if pid=='PAT-DEMO-CHEMO' else {},'journey':cf.get('journey',{})})
+   c.close();return self.sendj({'synthetic_showcase':True,'disclaimer':'All showcase patients, treatments, thresholds, results, dates, doses and outcomes are synthetic and exist only to demonstrate information presentation and workflow. They are not CCA clinical policy or patient-care guidance.','cases':cases})
+  if p.path=='/api/core-flow':
+   if role=='External Consultant':c.close();return self.sendj({'error':'External consultant uses case-scoped access only'},403)
+   pid=parse_qs(p.query).get('patient',['PAT-0001'])[0]
+   if not patient(c,pid):c.close();return self.sendj({'error':'Patient not found'},404)
+   if not can_access_patient(c,role,pid):c.close();return self.sendj({'error':'Patient access not assigned to this role'},403)
+   out=core_flow_snapshot(c,pid);c.close();return self.sendj(out)
+  if p.path=='/api/pc7/terminology':
+   c.close();return self.sendj({'terminology':ONCOLOGY_TERMINOLOGY,'ctcae_version':CTCAE_VERSION,'ctcae_terms':CTCAE_TERMS,'ctcae_attribution':CTCAE_ATTRIBUTION,'recist_version':RECIST_VERSION,'bsa_policy':BSA_POLICY})
+  if p.path=='/api/finance/schemes':
+   if role!='Finance / Billing':c.close();return self.sendj({'error':'Finance role required'},403)
+   rows=[]
+   for r in c.execute("SELECT * FROM finance_schemes WHERE status='Active' ORDER BY name"):
+    z=dict(r);z['required_fields']=jload(z.pop('required_fields_json'),[]);z['package_model']=jload(z.pop('package_model_json'),{});rows.append(z)
+   c.close();return self.sendj({'schemes':rows,'disclaimer':'Indicative workflow only. Definitive eligibility and package approval require current payer/official verification.'})
+  if p.path=='/api/integrations':
+   if role!='Hospital Management / Admin':c.close();return self.sendj({'error':'Admin required'},403)
+   rows=[dict(r) for r in c.execute('SELECT * FROM integration_adapters ORDER BY id')];c.close();return self.sendj({'adapters':rows})
+  if p.path=='/api/document-facts':
+   q=parse_qs(p.query);pid=(q.get('patient') or [''])[0]
+   if not pid:c.close();return self.sendj({'error':'patient query parameter is required'},400)
+   if not can_access_patient(c,role,pid):c.close();return self.sendj({'error':'Patient access not assigned to this role'},403)
+   rows=[dict(r) for r in c.execute('SELECT * FROM document_facts WHERE patient_id=? ORDER BY created_at',(pid,))];c.close();return self.sendj({'facts':rows})
   if p.path=='/api/patients':
    if role=='External Consultant':c.close();return self.sendj({'error':'External consultant uses case-scoped access only'},403)
    rows=[project_patient(dict(x),role) for x in c.execute('SELECT * FROM patients ORDER BY name') if can_access_patient(c,role,x['id'])];c.close();return self.sendj({'patients':rows})
@@ -1438,12 +2044,16 @@ class H(BaseHTTPRequestHandler):
    if decision not in allowed:c.close();return self.sendj({'error':'Specialty validation decision required','allowed':allowed},409)
    rid='CVS-'+uuid.uuid4().hex[:10].upper();stamp=now();vals=(rid,'V12.2-PC4.0',specialty,role,actor(role)['id'],decision,str(data.get('what_to_freeze') or ''),str(data.get('required_changes') or ''),str(data.get('content_needed') or ''),str(data.get('integration_needed') or ''),stamp,stamp)
    c.execute('INSERT INTO cca_validation_signoff VALUES(?,?,?,?,?,?,?,?,?,?,?,?)',vals);audit(c,'',role,'CCA_VALIDATION_SIGNOFF','cca_validation_signoff',rid,specialty+' • '+decision);c.commit();c.close();return self.sendj({'ok':True,'id':rid,'decision':decision},201)
+  if p.path=='/api/duplicate-check':
+   if role not in ['Front Desk','Patient Attender','PRE / Patient Relations Executive','Health Information Management']:c.close();return self.sendj({'error':'Front Desk/Patient Attender/PRE/HIM required'},403)
+   matches=duplicate_candidates(c,data.get('name'),data.get('dob'),data.get('phone'),data.get('abha'),data.get('id_number'),data.get('mrn'));c.close();return self.sendj({'matches':matches,'high_risk_count':sum(1 for x in matches if x['risk']=='High'),'message':'Resolve High-risk duplicate candidates before creating a new patient.'})
   if p.path=='/api/patient':
    if role not in ['Front Desk','Patient Attender']:c.close();return self.sendj({'error':'Front Desk/Patient Attender required'},403)
-   name=str(data.get('name','')).strip();dob=str(data.get('dob','')).strip();phone=str(data.get('phone','')).strip();abha=str(data.get('abha','')).strip();idn=str(data.get('id_number','')).strip()
+   name=str(data.get('name','')).strip();dob=str(data.get('dob','')).strip();phone=str(data.get('phone','')).strip();abha=normalize_abha(data.get('abha'));idn=str(data.get('id_number','')).strip()
    if not all([name,dob,phone,idn]):c.close();return self.sendj({'error':'Name, DOB, phone and ID number are mandatory'},409)
    ok_dob,msg=valid_dob(dob)
    if not ok_dob:c.close();return self.sendj({'error':msg},409)
+   if abha and not valid_abha(abha):c.close();return self.sendj({'error':'ABHA must contain exactly 14 digits when supplied'},409)
    matches=[]
    for r in c.execute('SELECT * FROM patients'):
     score=0;reasons=[]
@@ -1454,6 +2064,7 @@ class H(BaseHTTPRequestHandler):
    if matches and not str(data.get('duplicate_override_reason','')).strip():c.close();return self.sendj({'error':'Potential duplicate patient','matches':matches},409)
    pid='PAT-'+uuid.uuid4().hex[:8].upper();mrn='CCA-'+datetime.now().strftime('%Y')+'-'+uuid.uuid4().hex[:5].upper();t=now();c.execute('INSERT INTO patients VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)',(pid,mrn,name,dob,data.get('sex',''),phone,abha,idn,data.get('initial_specialty','Front Desk'),'Active','',t,t))
    new_record(c,pid,'registration',{'arrival_type':data.get('arrival_type','Walk-in'),'assigned_specialty':data.get('initial_specialty','Medical Oncology'),'clinician_assignment':data.get('clinician_assignment',''),'route_rule':data.get('route_rule','Manual routing'),'referral_doctor_name':'','referral_facility':'','referral_network_level3':'','referral_reason':'','address':'','general_consent':'Pending','photo_status':'Pending'},'Draft',role)
+   new_record(c,pid,'referral',{'referral_no':'REF-'+uuid.uuid4().hex[:7].upper(),'source_type':data.get('arrival_type','Walk-in'),'referring_doctor':data.get('referring_doctor',''),'referring_facility':data.get('referring_facility',''),'reason':data.get('referral_reason',''),'priority':data.get('referral_priority','Routine'),'assigned_department':data.get('initial_specialty','Medical Oncology'),'assigned_clinician':data.get('clinician_assignment',''),'status':'Created','history':[{'at':t,'from':'','to':'Created','by':actor(role),'reason':'Patient registration'}]},'Created',role)
    new_record(c,pid,'consent',{'items':[]},'Active',role);new_record(c,pid,'appointments',{'items':[]},'Active',role);new_record(c,pid,'queue',{'current_location':'Front Desk','current_status':'In Service','priority':'Routine','token':'FD-'+uuid.uuid4().hex[:4].upper(),'history':[{'at':t,'from':'Arrival','to':'Front Desk','status':'Arrived','actor':actor(role)['name']}]},'Active',role)
    new_record(c,pid,'journey',{'current_location':'Front Desk','current_care_stage':'Registration','events':[{'id':'JNY-'+uuid.uuid4().hex[:8].upper(),'at':t,'department':'Registration','care_stage':'Registration','clinician':actor(role)['name'],'actor_role':role,'status':'Current','source_type':'registration','source_id':'','note':'Patient arrived'}]},'Active',role);epid=new_record(c,pid,'cancer_episode',{'episode_no':'EP-'+uuid.uuid4().hex[:6].upper(),'kind':'Primary cancer','label':'Oncology episode under evaluation','started_at':t,'ended_at':'','closure_reason':'','primary_diagnosis_id':'','status':'Active'},'Active',role);new_record(c,pid,'admission',{'admissions':[]},'Active',role);new_record(c,pid,'inpatient_care',{'daily_notes':[],'nursing_observations':[],'intake_output':[],'pain_assessments':[],'toxicity_events':[],'specialty_reviews':[],'inpatient_medication_orders':[]},'Active',role);new_record(c,pid,'discharge',{'summaries':[]},'Active',role);new_record(c,pid,'continuous_therapy',{'courses':[]},'Active',role);new_record(c,pid,'tumor_marker',{'measurements':[]},'Active',role)
    new_record(c,pid,'intake',{},'Draft',role);new_record(c,pid,'med_recon',{'items':[],'allergies':[],'allergy_status':'Unable to verify','reconciliation_events':[]},'Draft',role);new_record(c,pid,'dynamic_forms',{'definitions':latest(c,'PAT-0001','dynamic_forms')['data']['definitions'],'responses':{}},'Active',role);new_record(c,pid,'consultation',{},'Draft',role);new_record(c,pid,'diagnosis',{'biomarkers':[]},'Draft',role);new_record(c,pid,'care_plan',{'goals':[],'milestones':[],'dependencies':[],'status':'Draft'},'Draft',role);new_record(c,pid,'finance',{'payment_events':[]},'Active',role);new_record(c,pid,'conversion',{'tracking':[]},'Active',role)
@@ -1462,6 +2073,14 @@ class H(BaseHTTPRequestHandler):
    initial=str(data.get('initial_specialty') or 'Medical Oncology');initial_roles={'Medical Oncology':['Medical Oncology'],'Surgical Oncology':['Surgical Oncology'],'Radiation Oncology':['Radiation Oncology']}.get(initial,['Medical Oncology'])
    for rr in ['Nurse Navigator','Intake Nurse','PRE / Patient Relations Executive','Biller','Finance / Billing','Patient Liaison',role]+initial_roles:grant_patient_access(c,pid,rr,'registration',pid,role)
    audit(c,pid,role,'PATIENT_CREATED','patient',pid,'New registration');c.commit();c.close();return self.sendj({'ok':True,'id':pid,'mrn':mrn,'matches':matches})
+  if p.path=='/api/document-fact':
+   if role not in ['Medical Oncology','Surgical Oncology','Radiation Oncology','Pathology','Radiologist','Nurse Navigator']:c.close();return self.sendj({'error':'Clinical reviewer role required'},403)
+   pid=str(data.get('patient_id') or '');docid=str(data.get('document_id') or '');doc=c.execute('SELECT * FROM documents WHERE id=? AND patient_id=?',(docid,pid)).fetchone()
+   if not doc:c.close();return self.sendj({'error':'Patient-linked source document required'},404)
+   if not can_access_patient(c,role,pid):c.close();return self.sendj({'error':'Patient access not assigned to this role'},403)
+   if not str(data.get('fact_name') or '').strip() or not str(data.get('fact_value') or '').strip():c.close();return self.sendj({'error':'fact_name and fact_value required'},409)
+   rid='DF-'+uuid.uuid4().hex[:10].upper();stamp=now();method=str(data.get('extraction_method') or 'Manual clinician abstraction')
+   c.execute('INSERT INTO document_facts VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',(rid,pid,docid,str(data.get('fact_name')),str(data.get('fact_value')),str(data.get('code_system') or ''),str(data.get('code') or ''),str(data.get('page_ref') or ''),str(data.get('section_ref') or ''),str(data.get('source_snippet') or ''),method,float(data.get('confidence') or 1.0),'Validated',actor(role)['id'],stamp,stamp));audit(c,pid,role,'DOCUMENT_FACT_VALIDATE','document_fact',rid,f'{docid} • {data.get("fact_name")}');c.commit();c.close();return self.sendj({'ok':True,'id':rid,'status':'Validated'},201)
   if p.path=='/api/document':
    if role not in ['Front Desk','Patient Attender','PRE / Patient Relations Executive','Patient Liaison','Nurse Navigator','Medical Oncology','Radiology Coordinator','Radiology Technician','Radiologist','Laboratory / Phlebotomy','Pathology','Surgical Oncology','Radiation Oncology']:c.close();return self.sendj({'error':'Not authorized to upload documents'},403)
    pid=data.get('patient_id');pat=patient(c,pid)
@@ -1746,12 +2365,12 @@ class H(BaseHTTPRequestHandler):
    fcfg=FALL_RISK_SCALES[fall_scale]
    if fall_score is None or fall_score<fcfg['min'] or fall_score>fcfg['max']:return {'error':'Fall-risk score is outside the configured scale range','scale':fall_scale,'range':[fcfg['min'],fcfg['max']]},409
    fall_level=next((b['level'] for b in fcfg['bands'] if fall_score<=b['max']),fcfg['bands'][-1]['level'])
-   bmi=round(weight_kg/((height_cm/100)**2),2);bsa=round(math.sqrt(height_cm*weight_kg/3600),2);measured_at=now()
+   bmi=round(weight_kg/((height_cm/100)**2),2);bv=bsa_values(height_cm,weight_kg);bsa=bv['ordering'];measured_at=now()
    patch={**d};
    for k in ['sbp','dbp','temp','weight','height']:patch.pop(k,None)
    patch.pop('fall_risk_level',None)
-   patch.update({'bp':f'{int(round(sbp))}/{int(round(dbp))}','hr':hr,'rr':rr,'temp_c':round(temp_c,3),'spo2':spo2,'weight_kg':round(weight_kg,4),'height_cm':round(height_cm,3),'bmi':bmi,'bsa_m2':bsa,'bsa_formula':'Mosteller: sqrt(height_cm × weight_kg / 3600)','measurement_units':{'bp':'mmHg','hr':'/min','rr':'/min','temp_c':'°C','spo2':'%','weight_kg':'kg','height_cm':'cm'},'source_measurements':{'sbp':{'value':sbp,'unit':units['bp']},'dbp':{'value':dbp,'unit':units['bp']},'hr':{'value':hr,'unit':units['hr']},'rr':{'value':rr,'unit':units['rr']},'temp':{'value':temp,'unit':units['temp']},'spo2':{'value':spo2,'unit':units['spo2']},'weight':{'value':weight,'unit':units['weight']},'height':{'value':height,'unit':units['height']}},'measured_at':measured_at,'assessor':actor(role),'fall_risk_scale':fall_scale,'fall_risk_score':fall_score,'fall_risk_level':fall_level,'fall_risk_scale_status':fcfg['clinical_content_status']})
-   update_rec(c,e['id'],patch,'Completed' if d.get('complete') else 'Draft',role,'INTAKE_SAVE');journey_add(c,pid,'Nurse Intake','Intake Completed','Completed',role,'intake',e['id']) if d.get('complete') else None;return {'ok':True,'bmi':bmi,'bsa_m2':bsa,'bsa_formula':patch['bsa_formula'],'canonical_units':patch['measurement_units'],'source_measurements':patch['source_measurements']},200
+   patch.update({'bp':f'{int(round(sbp))}/{int(round(dbp))}','hr':hr,'rr':rr,'temp_c':round(temp_c,3),'spo2':spo2,'weight_kg':round(weight_kg,4),'height_cm':round(height_cm,3),'bmi':bmi,'bsa_raw_m2':bv['raw'],'bsa_m2':bsa,'bsa_display_m2':bv['display'],'bsa_formula':'Mosteller: '+bv['formula_text'],'bsa_rounding_policy':BSA_POLICY,'measurement_units':{'bp':'mmHg','hr':'/min','rr':'/min','temp_c':'°C','spo2':'%','weight_kg':'kg','height_cm':'cm'},'source_measurements':{'sbp':{'value':sbp,'unit':units['bp']},'dbp':{'value':dbp,'unit':units['bp']},'hr':{'value':hr,'unit':units['hr']},'rr':{'value':rr,'unit':units['rr']},'temp':{'value':temp,'unit':units['temp']},'spo2':{'value':spo2,'unit':units['spo2']},'weight':{'value':weight,'unit':units['weight']},'height':{'value':height,'unit':units['height']}},'measured_at':measured_at,'assessor':actor(role),'fall_risk_scale':fall_scale,'fall_risk_score':fall_score,'fall_risk_level':fall_level,'fall_risk_scale_status':fcfg['clinical_content_status']})
+   update_rec(c,e['id'],patch,'Completed' if d.get('complete') else 'Draft',role,'INTAKE_SAVE');journey_add(c,pid,'Nurse Intake','Intake Completed','Completed',role,'intake',e['id']) if d.get('complete') else None;return {'ok':True,'bmi':bmi,'bsa_raw_m2':bv['raw'],'bsa_m2':bsa,'bsa_rounding_policy':BSA_POLICY,'bsa_formula':patch['bsa_formula'],'canonical_units':patch['measurement_units'],'source_measurements':patch['source_measurements']},200
   if a=='med_recon':
    if not need(['Nurse Navigator','Intake Nurse','Medical Oncology']):return {'error':'Not authorized'},403
    e=must('med_recon');op=d.get('operation');data=e['data'];items=list(data.get('items',[]));als=list(data.get('allergies',[]));events=list(data.get('reconciliation_events',[]));allergy_status=data.get('allergy_status') or ('Allergy present' if als else 'Unable to verify')
@@ -1913,6 +2532,7 @@ class H(BaseHTTPRequestHandler):
     if missing_units:return {'error':'Unit selection is mandatory for every entered laboratory value','missing_units':missing_units},409
     if invalid_units:return {'error':'One or more laboratory units are outside the governed value set','invalid_units':invalid_units},409
     patch.update({'units':units,'finalized_at':now(),'finalized_by':actor(role)})
+    obsdata={**merged,**patch};obsdata['source_order_id']=obsdata.get('source_order_id') or e['data'].get('source_order_id');patch['observations']=lab_observations(obsdata)
    elif invalid_units:return {'error':'One or more laboratory units are outside the governed value set','invalid_units':invalid_units},409
    if amending:
     newdata={**e['data'],**patch,'supersedes':e['id'],'amendment_reason':amendment_reason,'amended_at':now(),'amended_by':actor(role)}
@@ -2344,22 +2964,30 @@ class H(BaseHTTPRequestHandler):
    intake=latest(c,pid,'intake')
    if not intake or not intake['data'].get('source_measurements') or not intake['data'].get('measurement_units'):
     return {'error':'Treatment Order requires a current Intake measurement set with explicit source units. Re-measure/re-save Intake before dose calculation.'},409
-   w=float(intake['data'].get('weight_kg') or 0);bsa=float(intake['data'].get('bsa_m2') or 0);pat=patient(c,pid);med=latest(c,pid,'med_recon');allergy=[f"{x.get('substance')} — {x.get('reaction')}" for x in med['data'].get('allergies',[])] if med else []
+   w=float(intake['data'].get('weight_kg') or 0);bsa=float(intake['data'].get('bsa_m2') or 0);bsa_calc=float(intake['data'].get('bsa_raw_m2') or bsa);pat=patient(c,pid);med=latest(c,pid,'med_recon');coded_allergies=med['data'].get('allergies',[]) if med else [];allergy=[f"{x.get('substance')} — {x.get('reaction')}" for x in coded_allergies]
    recon_events=list((med or {}).get('data',{}).get('reconciliation_events',[]));latest_recon=recon_events[-1] if recon_events else {}
    if latest_recon.get('reconciliation_status')!='Complete':return {'error':'A current Complete medication/allergy reconciliation attestation is required before authorising systemic treatment','reconciliation_status':latest_recon.get('reconciliation_status') or 'Missing'},409
    decision_reasons=d.get('dose_decision_reasons') or {};admin_reason=str(d.get('administration_decision_reason') or '').strip();schedule_reason=str(d.get('schedule_decision_reason') or '').strip();decision_at=now();decision_actor=actor(role)
    if not admin_reason:return {'error':'Signed Treatment Order requires an explicit clinician reason for accepting/setting route, diluent, volume, rate and duration parameters'},409
    if not schedule_reason:return {'error':'Signed Treatment Order requires an explicit clinician reason for the administration date/time decision'},409
-   fmap=active_formulary_map(c);cum_before=cumulative_administered_by_code(c,pid);admin_params=d.get('administration_parameters') or {}
+   fmap=active_formulary_map(c);cum_before=cumulative_administered_by_code(c,pid);admin_params=d.get('administration_parameters') or {};order_cycle=int(d.get('cycle',1))
    items=[]
    for q in protocol['items']:
     fi=fmap.get(q.get('drug')) or fmap.get(q.get('code'))
     if not fi:return {'error':f"No Active institution formulary mapping for {q['drug']}"},409
-    calc=calc_dose(q,w,bsa);ordered=d.get('doses',{}).get(q['code'],calc)
+    item_renal=(d.get('renal_dosing') or {}).get(q['code']) if q['dose_basis']=='AUC' else None
+    calc=calc_dose(q,w,bsa_calc,order_cycle,item_renal);ordered=d.get('doses',{}).get(q['code'],calc)
     if q['dose_basis']=='AUC' and ordered in [None,'']: return {'error':f"Clinician must enter patient-specific ordered dose for {q['drug']} AUC item; demo does not calculate AUC automatically"},409
     try:ordered=float(ordered)
     except:return {'error':f"Invalid ordered dose for {q['drug']}"},409
     if ordered<0:return {'error':f"Ordered dose cannot be negative for {q['drug']}"},409
+    hardmax=safe_float(q.get('max_dose_mg'))
+    if hardmax is not None and ordered>hardmax:return {'error':f"Ordered dose {ordered} mg exceeds configured hard maximum {hardmax} mg for {q['drug']}"},409
+    if item_renal:
+     rmethod=str(item_renal.get('method') or '').strip();rvalue=safe_float(item_renal.get('value_ml_min'));rsource=str(item_renal.get('source_id') or '').strip();rat=str(item_renal.get('measured_at') or '').strip()
+     if not rmethod or rmethod not in ALLOWED_RENAL_METHODS:return {'error':f"AUC dosing for {q['drug']} requires an explicitly governed renal dosing method when renal dosing provenance is supplied",'allowed_renal_methods':ALLOWED_RENAL_METHODS},409
+     if rvalue is None or rvalue<=0:return {'error':f"AUC dosing for {q['drug']} requires a positive renal dosing value in mL/min"},409
+     if not rsource or not rat:return {'error':f"AUC dosing for {q['drug']} requires a documented renal value source and timestamp"},409
     variance=0 if calc in [None,0] else round((ordered-calc)/calc*100,1);variance_reason=(d.get('variance_reasons') or {}).get(q['code'],'')
     if abs(variance)>20 and not variance_reason:return {'error':f"Dose variance >20% requires variance reason for {q['drug']}"},409
     decision_reason=str(decision_reasons.get(q['code']) or decision_reasons.get('*') or '').strip()
@@ -2379,7 +3007,7 @@ class H(BaseHTTPRequestHandler):
     out_unit='mg' if q['dose_basis'] in ['mg/kg','mg/m²','AUC'] else q.get('protocol_unit','mg')
     block='Pre-treatment' if q.get('group')=='Premedication' else ('Anti-cancer treatment' if q.get('group') in ['Antineoplastic','Targeted Therapy'] else 'Post-treatment / supportive')
     before=float(cum_before.get(q['code'],0) or 0);limit=q.get('cumulative_dose_limit')
-    items.append({**q,'treatment_block':block,'item_id':'OI-'+uuid.uuid4().hex[:7].upper(),'calculated_dose':calc,'calculated_unit':out_unit,'ordered_dose':ordered,'ordered_unit':out_unit,'final_approved_dose':ordered,'dose_decision_reason':decision_reason,'dose_decided_by':decision_actor,'dose_decided_at':decision_at,'variance_pct':variance,'variance_reason':variance_reason,'rounding':rounding,'route':route,'diluent':diluent,'volume_ml':volume,'duration_min':duration,'rate_ml_hr':rate or 0,'administration_parameter_decision_reason':admin_reason,'administration_parameters_decided_by':decision_actor,'administration_parameters_decided_at':decision_at,'administration_at':d.get('administration_at',now()),'schedule_decision_reason':schedule_reason,'schedule_decided_by':decision_actor,'schedule_decided_at':decision_at,'cumulative_dose_before':before,'cumulative_dose_limit':limit,'cumulative_dose_after_if_fully_administered':round(before+ordered,4)})
+    items.append({**q,'treatment_block':block,'item_id':'OI-'+uuid.uuid4().hex[:7].upper(),'calculated_dose':calc,'calculated_unit':out_unit,'ordered_dose':ordered,'ordered_unit':out_unit,'final_approved_dose':ordered,'renal_dosing':item_renal,'dose_decision_reason':decision_reason,'dose_decided_by':decision_actor,'dose_decided_at':decision_at,'variance_pct':variance,'variance_reason':variance_reason,'rounding':rounding,'route':route,'diluent':diluent,'volume_ml':volume,'duration_min':duration,'rate_ml_hr':rate or 0,'administration_parameter_decision_reason':admin_reason,'administration_parameters_decided_by':decision_actor,'administration_parameters_decided_at':decision_at,'administration_at':d.get('administration_at',now()),'schedule_decision_reason':schedule_reason,'schedule_decided_by':decision_actor,'schedule_decided_at':decision_at,'cumulative_dose_before':before,'cumulative_dose_limit':limit,'cumulative_dose_after_if_fully_administered':round(before+ordered,4)})
    ep=get_rec(c,d.get('episode_id')) if d.get('episode_id') else (current_episode(c,pid) or ensure_episode(c,pid,role));
    if not ep or ep.get('entity_type')!='cancer_episode' or ep.get('patient_id')!=pid:return {'error':'Valid patient cancer episode required for Treatment Order'},409
    # Executable systemic orders must always be instantiated from a clinician-authorized
@@ -2416,7 +3044,7 @@ class H(BaseHTTPRequestHandler):
     adm=latest(c,pid,'admission');active=next((x for x in reversed(adm['data'].get('admissions',[])) if x.get('status')=='Active'),None) if adm else None
     if not active:return {'error':'Active inpatient admission is required before creating an inpatient systemic treatment order'},409
    admission_id=active['id'] if setting=='Inpatient' else ''
-   order={'order_no':'ORD-'+uuid.uuid4().hex[:6].upper(),'episode_id':ep['id'],'admission_id':admission_id,'modification_id':d.get('modification_id') or mod_id,'administration_setting':setting,'plan_id':plan['id'],'protocol_id':protocol['id'],'protocol_version':protocol['version'],'regimen':protocol['name'],'content_template_id':template['id'],'content_template_version':template['version'],'content_source_id':template['source_id'],'diagnosis':d.get('diagnosis') or ((latest(c,pid,'diagnosis') or {}).get('data',{}).get('cancer_type','')),'intent':d.get('intent') or template.get('intent') or ((latest(c,pid,'treatment_plan') or {}).get('data',{}).get('intent','')),'line_of_therapy':d.get('line_of_therapy') or template.get('line_of_therapy') or ((latest(c,pid,'treatment_plan') or {}).get('data',{}).get('line_of_therapy','')),'cycle':cycle,'day':day,'planned_cycles':protocol['planned_cycles'],'supersedes_order_id':supersedes_id,'supersession_reason':supersession_reason,'start_date':d.get('start_date',str(date.today())),'patient_snapshot':{'name':pat['name'],'dob':pat['dob'],'mrn':pat['mrn'],'weight_kg':w,'height_cm':intake['data'].get('height_cm'),'bsa_m2':bsa,'bsa_formula':intake['data'].get('bsa_formula'),'measurement_units':intake['data'].get('measurement_units',{}),'source_measurements':intake['data'].get('source_measurements',{}),'measured_at':intake['data'].get('measured_at'),'assessor':intake['data'].get('assessor'),'allergies':allergy,'readiness_id':ready['id']},'cumulative_dose_ledger_before_order':cum_before,'items':items,'signed_by':actor(role),'signed_at':now(),'authorization_statement':'I reviewed patient history, labs, allergies, regimen, calculations and treatment criteria and authorize this patient-specific order instantiated from the selected governed regimen version.','locked':True}
+   order={'order_no':'ORD-'+uuid.uuid4().hex[:6].upper(),'episode_id':ep['id'],'admission_id':admission_id,'modification_id':d.get('modification_id') or mod_id,'administration_setting':setting,'plan_id':plan['id'],'protocol_id':protocol['id'],'protocol_version':protocol['version'],'regimen':protocol['name'],'content_template_id':template['id'],'content_template_version':template['version'],'content_source_id':template['source_id'],'diagnosis':d.get('diagnosis') or ((latest(c,pid,'diagnosis') or {}).get('data',{}).get('cancer_type','')),'intent':d.get('intent') or template.get('intent') or ((latest(c,pid,'treatment_plan') or {}).get('data',{}).get('intent','')),'line_of_therapy':d.get('line_of_therapy') or template.get('line_of_therapy') or ((latest(c,pid,'treatment_plan') or {}).get('data',{}).get('line_of_therapy','')),'cycle':cycle,'day':day,'planned_cycles':protocol['planned_cycles'],'supersedes_order_id':supersedes_id,'supersession_reason':supersession_reason,'start_date':d.get('start_date',str(date.today())),'patient_snapshot':{'name':pat['name'],'dob':pat['dob'],'mrn':pat['mrn'],'weight_kg':w,'height_cm':intake['data'].get('height_cm'),'bsa_raw_m2':intake['data'].get('bsa_raw_m2'),'bsa_m2':bsa,'bsa_formula':intake['data'].get('bsa_formula'),'bsa_rounding_policy':intake['data'].get('bsa_rounding_policy') or BSA_POLICY,'measurement_units':intake['data'].get('measurement_units',{}),'source_measurements':intake['data'].get('source_measurements',{}),'measured_at':intake['data'].get('measured_at'),'assessor':intake['data'].get('assessor'),'allergies':allergy,'coded_allergies':coded_allergies,'readiness_id':ready['id']},'cumulative_dose_ledger_before_order':cum_before,'items':items,'signed_by':actor(role),'signed_at':now(),'authorization_statement':'I reviewed patient history, labs, allergies, regimen, calculations and treatment criteria and authorize this patient-specific order instantiated from the selected governed regimen version.','locked':True}
    oid=new_record(c,pid,'treatment_order',order,'Verification Pending',role);phid=new_record(c,pid,'pharmacy',{'order_id':oid,'verification_checks':{},'items':[dict(x) for x in items],'query_history':[]},'Verification Pending',role);infid=new_record(c,pid,'infusion',{'order_id':oid,'care_setting':order['administration_setting'],'checklist':{},'mar':[]},'Awaiting Pharmacy',role)
    if old_order:
     update_rec(c,old_order['id'],{'superseded_by_order_id':oid,'superseded_at':now(),'superseded_by':actor(role),'supersession_reason':supersession_reason},'Superseded',role,'ORDER_SUPERSEDED',supersession_reason)
@@ -2432,9 +3060,15 @@ class H(BaseHTTPRequestHandler):
    decision=d.get('decision');checks=d.get('verification_checks') or {};reqchecks=['patient_identity','allergy','regimen_version','cycle_day','dose_basis','calculated_dose','ordered_dose','dose_variance','renal_adjustment','hepatic_adjustment','cumulative_dose','interaction','duplication','route','diluent','final_concentration','stock','expiry'];miss=[x for x in reqchecks if checks.get(x) is not True]
    if decision=='Verified' and miss:return {'error':'Independent verification checklist incomplete','missing':miss},409
    if decision in ['Query','Reject'] and (not d.get('query_reason') or not d.get('message')):return {'error':'Structured reason and message required'},409
+   independent=None
+   if decision=='Verified':
+    tpl=regimen_from_template(c,(ordr or {}).get('data',{}).get('content_template_id') or 'REG-CCA-TCHP-DEMO')
+    if not ordr or not tpl:return {'error':'Source treatment order/regimen is unavailable for independent pharmacy recalculation'},409
+    independent=order_safety_recalculation(c,pid,ordr,tpl['data'])
+    if not independent['ok']:return {'error':'Independent pharmacy dose recalculation failed','safety_errors':independent['errors'],'independent_verification':independent},409
    ready=get_rec(c,ordr.get('data',{}).get('readiness_id') or ordr.get('data',{}).get('patient_snapshot',{}).get('readiness_id','')) if ordr else None
    verification_snapshot={'order_id':ordr['id'] if ordr else '', 'order_version':ordr.get('version') if ordr else None,'protocol_id':ordr.get('data',{}).get('protocol_id') if ordr else '', 'protocol_version':ordr.get('data',{}).get('protocol_version') if ordr else '', 'cycle':ordr.get('data',{}).get('cycle') if ordr else None,'day':ordr.get('data',{}).get('day') if ordr else None,'readiness_id':ready.get('id') if ready else '', 'readiness_signed_at':ready.get('data',{}).get('signed_at') if ready else '', 'readiness_decision':ready.get('data',{}).get('decision') if ready else '', 'cumulative_dose_ledger':ordr.get('data',{}).get('cumulative_dose_ledger_before_order',{}) if ordr else {}, 'patient_snapshot':ordr.get('data',{}).get('patient_snapshot',{}) if ordr else {}}
-   patch={'verification_checks':checks,'verification_snapshot':verification_snapshot,'decision':decision,'verified_actor':actor(role),'verified_at':now(),'verification_attestation':'I independently verified the current signed order, readiness evidence, dosing, organ-function context, cumulative exposure, route/diluent and preparation prerequisites.'}
+   patch={'verification_checks':checks,'verification_snapshot':verification_snapshot,'independent_recalculation':independent,'decision':decision,'verified_actor':actor(role),'verified_at':now(),'verification_attestation':'I independently verified the current signed order, readiness evidence, dosing, organ-function context, cumulative exposure, route/diluent and preparation prerequisites.'}
    if decision in ['Query','Reject']:
     hist=list(e['data'].get('query_history',[]));hist.append({'at':now(),'by':actor(role),'decision':decision,'reason':d['query_reason'],'message':d['message'],'resolved':False});patch['query_history']=hist;st='Queried' if decision=='Query' else 'Rejected'
    elif decision=='Verified':st='Preparation Pending'
@@ -2602,7 +3236,9 @@ class H(BaseHTTPRequestHandler):
    req=['term','grade','onset_date','attribution','outcome'];miss=[x for x in req if not d.get(x)]
    if miss:return {'error':'Toxicity fields missing','missing':miss},409
    if str(d['grade']) not in VALUE_SETS['ctcae_grade']:return {'error':'CTCAE grade must be 1–5'},409
-   xs=list(e['data'].get('events',[]));x={'id':'TOX-'+uuid.uuid4().hex[:7].upper(),**d,'toxicity_type':d.get('term'),'relationship':d.get('attribution'),'recorded_by':actor(role),'recorded_at':now()};xs.append(x);update_rec(c,e['id'],{'events':xs},'Active',role,'TOXICITY_RECORD');return {'ok':True,'id':x['id']},200
+   serious=d.get('seriousness') or {};sae=bool(d.get('sae')) or any(bool(serious.get(k)) for k in ['death','life_threatening','hospitalization','disability','congenital_anomaly','other_medically_important'])
+   last_completed=next((o for o in reversed(many(c,pid,'treatment_order')) if o['status']=='Completed'),None);cycle=d.get('cycle') or ((last_completed or {}).get('data',{}).get('cycle'))
+   xs=list(e['data'].get('events',[]));x={'id':'TOX-'+uuid.uuid4().hex[:7].upper(),**d,'toxicity_type':d.get('term'),'relationship':d.get('attribution'),'ctcae_version':CTCAE_VERSION,'seriousness':serious,'sae':sae,'suspected_agents':d.get('suspected_agents',[]),'cycle':cycle,'recorded_by':actor(role),'recorded_at':now()};xs.append(x);update_rec(c,e['id'],{'ctcae_version':CTCAE_VERSION,'events':xs},'Active',role,'TOXICITY_RECORD');journey_add(c,pid,'Medical Oncology','Toxicity Review','Active',role,'toxicity',e['id'],f"{x.get('term')} Grade {x.get('grade')}",True);return {'ok':True,'id':x['id'],'cycle':cycle,'sae':sae},200
   if a=='create_modification':
    if role!='Medical Oncology':return {'error':'Medical Oncology required'},403
    e=must('modification');req=['original_order_id','reason','modification_type','clinical_justification'];miss=[x for x in req if not d.get(x)]
@@ -2612,6 +3248,15 @@ class H(BaseHTTPRequestHandler):
    if role not in ['Medical Oncology','Radiologist']:return {'error':'Medical Oncology/Radiologist required'},403
    e=must('response');ass=list(e['data'].get('assessments',[]));les=d.get('target_lesions') or [];new_les=bool(d.get('new_lesions'))
    if not d.get('date') or not les:return {'error':'Scan date and target lesion measurements required'},409
+   if len(les)>5:return {'error':'RECIST 1.1 permits at most 5 target lesions in total'},409
+   organ_counts={}
+   for x in les:
+    org=str(x.get('organ') or '').strip() or 'Unspecified';organ_counts[org]=organ_counts.get(org,0)+1
+    if organ_counts[org]>2:return {'error':f'RECIST 1.1 permits at most 2 target lesions per organ ({org})'},409
+    if str(x.get('lesion_type') or 'Non-nodal')=='Lymph node' and x.get('baseline_selected') is True:
+     sz=safe_float(x.get('size') if x.get('size') not in [None,''] else x.get('size_mm'))
+     szmm=sz*10 if str(x.get('unit'))=='cm' and sz is not None else sz
+     if szmm is None or szmm<15:return {'error':'A target lymph node must have short axis ≥15 mm at baseline'},409
    norm=[]
    for x in les:
     y=dict(x);unit=y.get('unit');raw=y.get('size') if y.get('size') not in [None,''] else y.get('size_mm')
@@ -2708,7 +3353,10 @@ class H(BaseHTTPRequestHandler):
    fr=list(e['data'].get('fractions',[]));num=int(d.get('fraction_number') or len(fr)+1)
    if any(int(x.get('fraction_number',0))==num and x.get('status')=='Delivered' for x in fr):return {'error':'Duplicate fraction delivery'},409
    if num<1 or num>int(rx.get('fractions',0)):return {'error':'Fraction number outside prescription'},409
-   x={'fraction_number':num,'status':d.get('status','Delivered'),'date_time':d.get('date_time') or now(),'planned_date_time':d.get('planned_date_time',''),'rescheduled_to':d.get('rescheduled_to',''),'delivered_dose_gy':float(d.get('delivered_dose_gy') or rx.get('dose_per_fraction_gy',0)) if d.get('status','Delivered')=='Delivered' else 0,'prescription_version':rxv,'plan_version':planv,'delivered_by':actor(role),'verified_by':d.get('verified_by') or actor(role)['name'],'image_guidance_performed':bool(d.get('image_guidance_performed')),'setup_variation':d.get('setup_variation',''),'toxicity':d.get('toxicity',''),'reason':d.get('reason','')};fr.append(x);delivered=sum(1 for z in fr if z['status']=='Delivered');st='In Progress' if delivered<int(rx['fractions']) else 'Completed';update_rec(c,e['id'],{'fractions':fr},st,role,'RT_FRACTION',f"{num} • Rx v{rxv} • Plan v{planv}");journey_add(c,pid,'Radiation Treatment',f"Fraction {num} {x['status']}",st,role,'radiation',e['id'],x.get('reason',''),True);return {'ok':True,'status':st,'delivered_count':delivered,'plan_version':planv,'prescription_version':rxv},200
+   status=d.get('status','Delivered');dose=float(d.get('delivered_dose_gy') or rx.get('dose_per_fraction_gy',0)) if status=='Delivered' else 0
+   saf=rt_fraction_safety(rx,fr,dose,status)
+   if not saf['ok']:return {'error':'RT fraction dose safety check failed','details':saf['errors'],'prescribed_fraction_dose_gy':saf.get('prescribed_fraction_dose_gy'),'projected_cumulative_dose_gy':saf.get('projected_cumulative_dose_gy'),'prescribed_total_dose_gy':saf.get('prescribed_total_dose_gy')},409
+   x={'fraction_number':num,'status':status,'date_time':d.get('date_time') or now(),'planned_date_time':d.get('planned_date_time',''),'rescheduled_to':d.get('rescheduled_to',''),'delivered_dose_gy':dose,'dose_safety_snapshot':saf,'prescription_version':rxv,'plan_version':planv,'delivered_by':actor(role),'verified_by':d.get('verified_by') or actor(role)['name'],'image_guidance_performed':bool(d.get('image_guidance_performed')),'setup_variation':d.get('setup_variation',''),'toxicity':d.get('toxicity',''),'reason':d.get('reason','')};fr.append(x);delivered=sum(1 for z in fr if z['status']=='Delivered');st='In Progress' if delivered<int(rx['fractions']) else 'Completed';update_rec(c,e['id'],{'fractions':fr},st,role,'RT_FRACTION',f"{num} • Rx v{rxv} • Plan v{planv}");journey_add(c,pid,'Radiation Treatment',f"Fraction {num} {x['status']}",st,role,'radiation',e['id'],x.get('reason',''),True);return {'ok':True,'status':st,'delivered_count':delivered,'plan_version':planv,'prescription_version':rxv,'cumulative_delivered_dose_gy':saf.get('projected_cumulative_dose_gy')},200
   if a=='surgery_sign_plan':
    if role!='Surgical Oncology':return {'error':'Surgical Oncology required'},403
    e=must('surgery');plan={**e['data'].get('plan',{}),**d};req=['procedure','indication','intent','site','laterality','extent','approach','nodal_procedure','reconstruction','planned_date','priority','preop_requirements','required_imaging_pathology','anesthesia','anesthesia_clearance','blood_requirement'];miss=[x for x in req if plan.get(x) in ['',None,[]]]
@@ -2755,16 +3403,83 @@ class H(BaseHTTPRequestHandler):
    if role!='Finance / Billing':return {'error':'Finance role required'},403
    e=must('conversion');order=latest(c,pid,'treatment_order');
    if not order:return {'error':'No treatment order'},409
-   costs={'Dexamethasone':50,'Pertuzumab':85000,'Trastuzumab':35000,'Docetaxel':6000,'Carboplatin':4500,'Pegfilgrastim':9000};lines=[];total=0
-   for i in order['data']['items']:
-    amt=costs.get(i['drug'],0);lines.append({'drug':i['drug'],'charge_basis':'Synthetic fixed demo cost line; clinical dose intentionally not exposed to Finance','demo_unit_estimate_inr':amt,'amount_inr':amt});total+=amt
-   est={'source_order_id':order['id'],'currency':'INR','lines':lines,'total':total,'basis':'Synthetic demo cost master — not hospital tariff'};update_rec(c,e['id'],{'mo_drug_estimate':est,'estimate_status':'Calculated','estimate_no':'EST-'+uuid.uuid4().hex[:6].upper(),'valid_until':str(date.today()+timedelta(days=15))},'Active',role,'FIN_ESTIMATE');return {'ok':True,'total':total,'lines':lines},200
+   est=tariff_estimate(c,order);est.update({'source_order_id':order['id'],'generated_at':now(),'clinical_dose_read_only':True});update_rec(c,e['id'],{'mo_drug_estimate':est,'estimate_status':'Calculated','estimate_no':'EST-'+uuid.uuid4().hex[:6].upper(),'valid_until':str(date.today()+timedelta(days=15))},'Active',role,'FIN_ESTIMATE');return {'ok':True,'total':est['total'],'lines':est['lines'],'basis':est['basis']},200
+  if a=='finance_scheme_assessment':
+   if role!='Finance / Billing':return {'error':'Finance role required'},403
+   e=must('conversion');sid=str(d.get('scheme_id') or '');row=c.execute("SELECT * FROM finance_schemes WHERE id=? AND status='Active'",(sid,)).fetchone()
+   if not row:return {'error':'Active payer scheme required'},409
+   row=dict(row);required=jload(row['required_fields_json'],[]);evidence=d.get('evidence') or {};missing=[x for x in required if not str(evidence.get(x) or '').strip()];result='Information incomplete' if missing else 'Potentially eligible — external verification required'
+   arow={'id':'SCHEME-'+uuid.uuid4().hex[:8].upper(),'scheme_id':sid,'scheme_name':row['name'],'assessed_at':now(),'assessed_by':actor(role),'evidence':evidence,'result':result,'missing':missing,'verification_mode':row['verification_mode'],'package_model':jload(row['package_model_json'],{}),'definitive_eligibility':False,'source_ref':row['source_ref']};xs=list(e['data'].get('scheme_assessments',[]));xs.append(arow);update_rec(c,e['id'],{'scheme_assessments':xs,'payer_category':row['name']},'Active',role,'FIN_SCHEME_ASSESS');return {'ok':True,'assessment':arow},200
   if a=='finance_counselling':
    if role!='Finance / Billing':return {'error':'Finance role required'},403
    e=must('conversion');track=list(e['data'].get('tracking',[]));track.append({'at':now(),'status':d.get('financial_status'),'note':d.get('note',''),'by':actor(role)});update_rec(c,e['id'],{'counselling_status':d.get('counselling_status','Completed'),'payer_category':d.get('payer_category',''),'financial_status':d.get('financial_status',''),'counselled_by':actor(role),'counselled_at':now(),'tracking':track},'Active',role,'FIN_COUNSELLING');return {'ok':True},200
   if a=='fundraising_letter':
    if role!='Finance / Billing':return {'error':'Finance role required'},403
-   e=must('conversion');pat=patient(c,pid);dx=latest(c,pid,'diagnosis');est=e['data'].get('mo_drug_estimate',{});text=d.get('text') or f"To whom it may concern,\n\n{pat['name']} ({pat['mrn']}) is receiving oncology care for {dx['data'].get('cancer_type','cancer')}. The current synthetic demo estimate is INR {est.get('total',0)}. This letter is for demonstration only and is not a clinical or financial commitment.\n\nCCA Demo Finance Team";letter={'status':'Draft','recipient':d.get('recipient',''),'purpose':d.get('purpose','Treatment support'),'text':text,'generated_by':actor(role),'generated_at':now()};update_rec(c,e['id'],{'fundraising_letter':letter},'Active',role,'FUNDRAISING_LETTER');return {'ok':True,'letter':letter},200
+   e=must('conversion');pat=patient(c,pid);dx=latest(c,pid,'diagnosis');est=e['data'].get('mo_drug_estimate',{});cons=active_disclosure_consent(c,pid);redacted=bool(d.get('redacted',True))
+   if not redacted and not cons:return {'error':'Active External Financial Assistance Disclosure Consent is required before an identifiable external letter can be created'},409
+   case_code='CCA-SUPPORT-'+hashlib.sha256(pid.encode()).hexdigest()[:8].upper();ident=f"{pat['name']} ({pat['mrn']})" if not redacted else case_code;diag=dx['data'].get('cancer_type','oncology care') if not redacted else 'oncology care'
+   if redacted and str(d.get('text') or '').strip():return {'error':'Custom external-letter text is not permitted in redacted mode because it could reintroduce patient identifiers; use the server-generated redacted template or obtain disclosure consent'},409
+   text=d.get('text') or f"To whom it may concern,\n\n{ident} is receiving {diag}. The current synthetic demo estimate is INR {est.get('total',0)}. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team";letter={'status':'Draft — Approval Required','recipient':d.get('recipient',''),'purpose':d.get('purpose','Treatment support'),'text':text,'redacted':redacted,'consent_id':cons.get('id') if cons else '','generated_by':actor(role),'generated_at':now(),'approved_by':None,'approved_at':'','released_at':''};update_rec(c,e['id'],{'fundraising_letter':letter},'Active',role,'FUNDRAISING_LETTER');return {'ok':True,'letter':letter},200
+  if a=='fundraising_approve':
+   if role!='Finance / Billing':return {'error':'Finance role required'},403
+   e=must('conversion');letter=e['data'].get('fundraising_letter') or {};cons=active_disclosure_consent(c,pid)
+   if not cons:return {'error':'Active disclosure consent required before external release approval'},409
+   if not str(letter.get('status','')).startswith('Draft'):return {'error':'A draft fundraising letter is required'},409
+   if (letter.get('generated_by') or {}).get('id')==actor(role)['id']:return {'error':'Independent second-person approval required; generator cannot approve their own external disclosure'},409
+   letter={**letter,'status':'Approved for Release','approved_by':actor(role),'approved_at':now(),'consent_id':cons['id']};update_rec(c,e['id'],{'fundraising_letter':letter},'Active',role,'FUNDRAISING_APPROVE');return {'ok':True,'letter':letter},200
+  if a=='fundraising_release':
+   if role!='Finance / Billing':return {'error':'Finance role required'},403
+   e=must('conversion');letter=e['data'].get('fundraising_letter') or {}
+   if letter.get('status')!='Approved for Release':return {'error':'Independent approval is required before release'},409
+   if not active_disclosure_consent(c,pid):return {'error':'Disclosure consent is no longer active'},409
+   letter={**letter,'status':'Released','released_by':actor(role),'released_at':now()};update_rec(c,e['id'],{'fundraising_letter':letter},'Active',role,'FUNDRAISING_RELEASE');return {'ok':True,'letter':letter},200
+  if a=='integration_status_update':
+   if role!='Hospital Management / Admin':return {'error':'Admin required'},403
+   iid=str(d.get('adapter_id') or '');status=str(d.get('status') or '');allowed=['Not configured','Configured — not connected','Connected','Degraded','Error','Disabled']
+   if status not in allowed:return {'error':'Governed integration status required','allowed':allowed},409
+   row=c.execute('SELECT * FROM integration_adapters WHERE id=?',(iid,)).fetchone()
+   if not row:return {'error':'Integration adapter not found'},404
+   c.execute('UPDATE integration_adapters SET status=?,last_checked_at=?,notes=? WHERE id=?',(status,now(),str(d.get('notes') or row['notes']),iid));audit(c,'',role,'INTEGRATION_STATUS','integration_adapter',iid,status);return {'ok':True,'status':status},200
+  if a=='abha_set_verification':
+   if role not in ['Front Desk','Patient Attender','Health Information Management']:return {'error':'Front Desk / HIM role required'},403
+   pat=patient(c,pid);abha=normalize_abha(d.get('abha') or pat.get('abha'))
+   if not valid_abha(abha) or not abha:return {'error':'A valid 14-digit ABHA is required before verification can be recorded'},409
+   status=d.get('verification_status');allowed=['Unverified','Verified — Document','Verified — External ABDM adapter']
+   if status not in allowed:return {'error':'Governed ABHA verification status required','allowed':allowed},409
+   source=str(d.get('source_reference') or '').strip()
+   if status!='Unverified' and not source:return {'error':'Verification source/reference is required'},409
+   if status=='Verified — External ABDM adapter':
+    ad=c.execute("SELECT * FROM integration_adapters WHERE id='ABDM'").fetchone()
+    if not ad or ad['status']!='Connected':return {'error':'ABDM adapter is not connected; external verification cannot be asserted'},409
+   reg=latest(c,pid,'registration');info={'abha':abha,'verification_status':status,'source_reference':source,'verified_by':actor(role),'verified_at':now() if status!='Unverified' else ''};update_rec(c,reg['id'],{'abha_verification':info},role=role,action='ABHA_VERIFICATION');c.execute('UPDATE patients SET abha=?,updated_at=? WHERE id=?',(abha,now(),pid));return {'ok':True,'verification':info},200
+  if a=='abdm_consent_record':
+   if role not in ['Patient Liaison','Health Information Management','Front Desk','Patient Attender']:return {'error':'Consent-authorized role required'},403
+   e=must('consent');items=list(e['data'].get('items',[]));purpose=str(d.get('purpose') or '').strip();status=str(d.get('status') or 'Granted')
+   if not purpose:return {'error':'ABDM consent purpose is required'},409
+   if status not in ['Granted','Denied','Revoked','Expired']:return {'error':'Invalid ABDM consent status'},409
+   x={'id':'ABDMCONS-'+uuid.uuid4().hex[:8].upper(),'type':'ABDM Health Information Exchange Consent','purpose':purpose,'status':status,'hip':d.get('hip',''),'hiu':d.get('hiu',''),'date_from':d.get('date_from',''),'date_to':d.get('date_to',''),'granted_at':now() if status=='Granted' else '','recorded_by':actor(role),'source_reference':d.get('source_reference',''),'adapter_status':'Interface boundary — live ABDM exchange requires connected adapter'};items.append(x);update_rec(c,e['id'],{'items':items},'Active',role,'ABDM_CONSENT');return {'ok':True,'consent':x},200
+  if a=='save_referral':
+   if role not in WRITE['referral']:return {'error':'Role not authorized for referral lifecycle'},403
+   e=must('referral')
+   if not e:
+    rid=new_record(c,pid,'referral',{'referral_no':'REF-'+uuid.uuid4().hex[:7].upper(),'history':[]},'Created',role);e=get_rec(c,rid)
+   cur=str(e.get('status') or e['data'].get('status') or 'Created');new=str(d.get('status') or cur)
+   if new!=cur and new not in REFERRAL_TRANSITIONS.get(cur,set()):return {'error':'Illegal referral state transition','from':cur,'to':new,'allowed':sorted(REFERRAL_TRANSITIONS.get(cur,set()))},409
+   priority=d.get('priority',e['data'].get('priority','Routine'))
+   if priority not in VALUE_SETS['referral_priority']:return {'error':'Governed referral priority required','allowed':VALUE_SETS['referral_priority']},409
+   dept=d.get('assigned_department',e['data'].get('assigned_department',''))
+   clinician=d.get('assigned_clinician',e['data'].get('assigned_clinician',''))
+   if new in ['Assigned','Accepted','Scheduled','Seen','Closed'] and not dept:return {'error':'Assigned department is required for referral progression'},409
+   if new in ['Assigned','Accepted','Scheduled','Seen','Closed'] and not clinician:return {'error':'Assigned clinician/service is required for referral progression'},409
+   hist=list(e['data'].get('history',[]))
+   if new!=cur:hist.append({'at':now(),'from':cur,'to':new,'by':actor(role),'reason':d.get('transition_reason','')})
+   patch={**{k:v for k,v in d.items() if k not in ['transition_reason']},'priority':priority,'assigned_department':dept,'assigned_clinician':clinician,'status':new,'history':hist,'updated_by':actor(role),'updated_at':now()}
+   update_rec(c,e['id'],patch,new,role,'REFERRAL_UPDATE',f'{cur} -> {new}')
+   if new in ['Assigned','Accepted']:
+    owner=referral_owner_role(dept);grant_patient_access(c,pid,owner,'referral',e['id'],role)
+    create_task(c,pid,owner,'Referral: '+str(d.get('reason') or e['data'].get('reason') or 'Oncology referral'),'Referral lifecycle','Critical' if priority=='Emergency' else ('High' if priority=='Urgent' else 'Routine'),'referral',e['id'],'',((current_episode(c,pid) or {}).get('id','')),new,{'referral_id':e['id'],'status':new},role)
+   journey_add(c,pid,dept or 'Front Desk','Referral '+new,new,role,'referral',e['id'],d.get('reason',e['data'].get('reason','')),True)
+   return {'ok':True,'id':e['id'],'status':new},200
   return {'error':'Unknown action'},404
 
 if __name__=='__main__':

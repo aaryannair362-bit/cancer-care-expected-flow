@@ -214,13 +214,21 @@
         "body": {
           "ok": true,
           "bmi": 24.22,
+          "bsa_raw_m2": 1.8181,
           "bsa_m2": 1.82,
-          "bsa_formula": "Mosteller: sqrt(height_cm Ã— weight_kg / 3600)",
+          "bsa_rounding_policy": {
+            "formula": "Mosteller",
+            "raw_precision": 4,
+            "display_precision": 2,
+            "ordering_precision": 2,
+            "formula_text": "sqrt(height_cm × weight_kg / 3600)"
+          },
+          "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
           "canonical_units": {
             "bp": "mmHg",
             "hr": "/min",
             "rr": "/min",
-            "temp_c": "Â°C",
+            "temp_c": "°C",
             "spo2": "%",
             "weight_kg": "kg",
             "height_cm": "cm"
@@ -244,7 +252,7 @@
             },
             "temp": {
               "value": 98.6,
-              "unit": "Â°F"
+              "unit": "°F"
             },
             "spo2": {
               "value": 99.0,
@@ -286,7 +294,7 @@
           },
           "temp": {
             "value": 98.6,
-            "unit": "Â°F"
+            "unit": "°F"
           },
           "spo2": {
             "value": 99.0,
@@ -310,9 +318,9 @@
         "status": 200,
         "body": {
           "ok": true,
-          "order_id": "TREATMENT_ORDER-745CCC6252",
-          "pharmacy_id": "PHARMACY-44A7F8015B",
-          "infusion_id": "INFUSION-D6169C937C",
+          "order_id": "TREATMENT_ORDER-5F9DE62281",
+          "pharmacy_id": "PHARMACY-F6D4F3CD54",
+          "infusion_id": "INFUSION-8C29EB2F2F",
           "supersedes_order_id": ""
         }
       }
@@ -327,13 +335,21 @@
           "mrn": "CCA-DEMO-0001",
           "weight_kg": 70.0002,
           "height_cm": 170.0,
+          "bsa_raw_m2": 1.8181,
           "bsa_m2": 1.82,
-          "bsa_formula": "Mosteller: sqrt(height_cm Ã— weight_kg / 3600)",
+          "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
+          "bsa_rounding_policy": {
+            "formula": "Mosteller",
+            "raw_precision": 4,
+            "display_precision": 2,
+            "ordering_precision": 2,
+            "formula_text": "sqrt(height_cm × weight_kg / 3600)"
+          },
           "measurement_units": {
             "bp": "mmHg",
             "hr": "/min",
             "rr": "/min",
-            "temp_c": "Â°C",
+            "temp_c": "°C",
             "spo2": "%",
             "weight_kg": "kg",
             "height_cm": "cm"
@@ -357,7 +373,7 @@
             },
             "temp": {
               "value": 98.6,
-              "unit": "Â°F"
+              "unit": "°F"
             },
             "spo2": {
               "value": 99.0,
@@ -372,14 +388,28 @@
               "unit": "in"
             }
           },
-          "measured_at": "2026-09-04T18:57:53+00:00",
+          "measured_at": "2026-09-07T08:25:10+05:30",
           "assessor": {
             "id": "USR-NURSENAV-001",
             "name": "Nurse Navigator",
             "role": "Nurse Navigator"
           },
           "allergies": [
-            "Penicillin â€” Rash"
+            "Penicillin — Rash"
+          ],
+          "coded_allergies": [
+            {
+              "id": "ALG-1",
+              "substance": "Penicillin",
+              "code": "ALG-PEN",
+              "code_system": "Synthetic QA allergen master",
+              "reaction": "Rash",
+              "reaction_detail": "",
+              "severity": "Moderate",
+              "status": "Active",
+              "source": "Patient",
+              "clinical_content_status": "Synthetic QA allergen/reaction masters — CCA configuration required"
+            }
           ],
           "readiness_id": "READY-0001"
         }
@@ -414,7 +444,7 @@
         "body": {
           "ok": true,
           "status": "Dispensing Pending",
-          "prepared_at": "2026-09-04T18:57:53+00:00"
+          "prepared_at": "2026-09-07T08:25:10+05:30"
         }
       }
     },

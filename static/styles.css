@@ -15,3 +15,6 @@ body{background:var(--ux-bg)}.sidebar{background:#0f2f2c}.brand{font-size:15px}.
 @media(max-width:700px){.stat-grid,.order-header-grid{grid-template-columns:1fr}.content{padding:12px}.care-path{border-radius:0;margin-left:-12px;margin-right:-12px}.patient-banner,.plan-hero,.rt-hero,.callout-action{align-items:flex-start;flex-direction:column}.therapy-details{grid-template-columns:1fr}}
 
 .cca-validation-bar{border:2px solid #84adff;background:#f5f8ff}.cca-val-inline{margin-top:5px}.btn.xs{font-size:10px;padding:3px 6px}.cca-validation-bar .btn{white-space:nowrap}
+
+/* PC6 core connected oncology flow */
+.corestep{border-left:4px solid #d97706}.corestep.done{border-left-color:#059669}.core-num{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;background:#e0e7ff;font-weight:800}.corestep.done .core-num{background:#d1fae5}.timeline .event{border-left:3px solid #cbd5e1;padding:4px 0 12px 12px;margin-left:6px}.timeline .event:last-child{padding-bottom:0}details>summary{cursor:pointer;padding:8px 0}

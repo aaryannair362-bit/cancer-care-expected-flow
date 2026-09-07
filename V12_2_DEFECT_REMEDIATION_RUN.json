@@ -1,7 +1,7 @@
 {
   "build": "CCA Cancer Care HIS + Oncology EMR V12.2 Final Defect Remediation",
-  "run_at": "2026-09-04T18:57:43.245868+00:00",
-  "base": "http://127.0.0.1:9199",
+  "run_at": "2026-09-07T08:25:37.060498+05:30",
+  "base": "http://127.0.0.1:8765",
   "pass": 38,
   "fail": 0,
   "results": [
@@ -27,7 +27,7 @@
           "error": "Record changed since it was loaded",
           "expected_version": 1,
           "current_version": 2,
-          "record_id": "CONSULTATION-54F5F3E354"
+          "record_id": "CONSULTATION-BA404E5970"
         }
       },
       "notes": ""
@@ -112,7 +112,7 @@
       "evidence": {
         "status": 409,
         "body": {
-          "error": "ECOG must be 0â€“4",
+          "error": "ECOG must be 0–4",
           "allowed": [
             "0",
             "1",
@@ -309,7 +309,7 @@
         "second": 200,
         "idempotent": true,
         "conflict": 409,
-        "receipt": "IDEMP-QA-185743136793"
+        "receipt": "IDEMP-QA-082535918083"
       },
       "notes": ""
     },
@@ -319,7 +319,7 @@
       "evidence": {
         "collect": 200,
         "reject": 200,
-        "task_id": "TASK-A5BBE59D9E",
+        "task_id": "TASK-B7A07C301B",
         "recollect": 200
       },
       "notes": ""
@@ -335,7 +335,7 @@
             {
               "field": "anc",
               "value": 999999.0,
-              "unit": "Ã—10^9/L",
+              "unit": "×10^9/L",
               "normalized_value": 999999.0,
               "canonical_unit": "10^9/L",
               "plausible_range": [
@@ -359,7 +359,7 @@
             {
               "field": "anc",
               "value": 350.0,
-              "unit": "Ã—10^9/L",
+              "unit": "×10^9/L",
               "normalized_value": 350.0,
               "canonical_unit": "10^9/L",
               "plausible_range": [
@@ -379,15 +379,15 @@
         "status": 200,
         "body": {
           "ok": true,
-          "id": "LAB-83149504D3",
+          "id": "LAB-9FE2DF8CA1",
           "status": "Final",
           "units": {
             "hb": "g/dL",
-            "wbc": "Ã—10^9/L",
-            "anc": "Ã—10^9/L",
-            "platelets": "Ã—10^9/L",
+            "wbc": "×10^9/L",
+            "anc": "×10^9/L",
+            "platelets": "×10^9/L",
             "creatinine": "mg/dL",
-            "egfr": "mL/min/1.73mÂ²",
+            "egfr": "mL/min/1.73m²",
             "bilirubin": "mg/dL",
             "ast": "U/L",
             "alt": "U/L",
@@ -410,15 +410,15 @@
         "status": 200,
         "body": {
           "ok": true,
-          "id": "LAB-FC8F680547",
+          "id": "LAB-C3DC197839",
           "status": "Final",
           "units": {
             "hb": "g/dL",
-            "wbc": "Ã—10^9/L",
-            "anc": "cells/ÂµL",
-            "platelets": "Ã—10^9/L",
+            "wbc": "×10^9/L",
+            "anc": "cells/µL",
+            "platelets": "×10^9/L",
             "creatinine": "mg/dL",
-            "egfr": "mL/min/1.73mÂ²",
+            "egfr": "mL/min/1.73m²",
             "bilirubin": "mg/dL",
             "ast": "U/L",
             "alt": "U/L",
@@ -429,7 +429,7 @@
             "calcium": "mg/dL",
             "lvef": "%"
           },
-          "supersedes": "LAB-83149504D3",
+          "supersedes": "LAB-9FE2DF8CA1",
           "amendment_reason": "QA alternate ANC unit normalization",
           "critical_tasks": []
         }
@@ -442,7 +442,7 @@
       "evidence": {
         "lab": 200,
         "task_ids": [
-          "TASK-DBC495AF07"
+          "TASK-94D4DB0931"
         ],
         "task_status": "Acknowledged"
       },
@@ -505,8 +505,8 @@
         "reopen": 200,
         "body": {
           "ok": true,
-          "episode_id": "CANCER_EPISODE-AF7F3EECBB",
-          "reopens": "CANCER_EPISODE-E1305BDFF7"
+          "episode_id": "CANCER_EPISODE-D40577733F",
+          "reopens": "CANCER_EPISODE-9FB210ED3A"
         }
       },
       "notes": ""
@@ -530,11 +530,11 @@
       "pass": true,
       "evidence": {
         "draft_plan_create": 200,
-        "draft_plan_id": "TREATMENT_PLAN-09B05E9018",
+        "draft_plan_id": "TREATMENT_PLAN-8A1B074B8E",
         "order_attempt": 409,
         "body": {
           "error": "Treatment Order cannot be created from an unsigned or inactive Treatment Plan",
-          "plan_id": "TREATMENT_PLAN-09B05E9018",
+          "plan_id": "TREATMENT_PLAN-8A1B074B8E",
           "plan_status": "Draft"
         },
         "approved_plan_id": "TP-0001"
@@ -546,16 +546,16 @@
       "pass": true,
       "evidence": {
         "admit": 200,
-        "admission_id": "ADM-86FBD117",
+        "admission_id": "ADM-5352C9C2",
         "order": 200,
         "discharge": 409,
         "body": {
           "error": "Discharge blocked while inpatient systemic treatment orders remain unresolved",
           "unresolved_orders": [
             {
-              "id": "TREATMENT_ORDER-EAC1B8FB09",
+              "id": "TREATMENT_ORDER-FE28CA0E0C",
               "status": "Verification Pending",
-              "order_no": "ORD-23FF14"
+              "order_no": "ORD-45FC49"
             }
           ]
         }
@@ -569,7 +569,7 @@
         "queue": 200,
         "destination_bootstrap": 200,
         "body": {
-          "patient": "PAT-854A93D9"
+          "patient": "PAT-20092606"
         }
       },
       "notes": ""
@@ -583,7 +583,7 @@
         "LAB-PLAUS-3.5": true,
         "LAB-PLAUS-800-CELLS": true
       },
-      "notes": "Plausibility regression aggregate for ANC 999999/350/3.5/800 cells per ÂµL"
+      "notes": "Plausibility regression aggregate for ANC 999999/350/3.5/800 cells per µL"
     }
   ]
 }
