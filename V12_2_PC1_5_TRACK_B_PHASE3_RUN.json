@@ -90,7 +90,7 @@
       "id": "PC15-MED-006",
       "pass": true,
       "detail": {
-        "id": "MED-3A0BE9",
+        "id": "MED-FB6CB0",
         "formulary_id": "FORM-CCA-005",
         "name": "Carboplatin",
         "drug": "Carboplatin",
@@ -110,7 +110,7 @@
           "name": "Nurse Navigator",
           "role": "Nurse Navigator"
         },
-        "entered_at": "2026-09-09T10:18:17+05:30"
+        "entered_at": "2026-09-09T22:25:15+05:30"
       }
     },
     {
@@ -142,7 +142,7 @@
             "status": "PASS",
             "outcome": "PASS",
             "source_record_id": "LAB-0001",
-            "source_finalized_at": "2026-09-09T10:18:17+05:30",
+            "source_finalized_at": "2026-09-09T22:25:14+05:30",
             "result_date": "2026-09-09",
             "freshness_days": 0,
             "freshness_status": "Current"
@@ -158,7 +158,7 @@
             "status": "PASS",
             "outcome": "PASS",
             "source_record_id": "LAB-0001",
-            "source_finalized_at": "2026-09-09T10:18:17+05:30",
+            "source_finalized_at": "2026-09-09T22:25:14+05:30",
             "result_date": "2026-09-09",
             "freshness_days": 0,
             "freshness_status": "Current"
@@ -174,7 +174,7 @@
             "status": "PASS",
             "outcome": "PASS",
             "source_record_id": "LAB-0001",
-            "source_finalized_at": "2026-09-09T10:18:17+05:30",
+            "source_finalized_at": "2026-09-09T22:25:14+05:30",
             "result_date": "2026-09-09",
             "freshness_days": 0,
             "freshness_status": "Current"
@@ -190,7 +190,7 @@
             "status": "PASS",
             "outcome": "PASS",
             "source_record_id": "LAB-0001",
-            "source_finalized_at": "2026-09-09T10:18:17+05:30",
+            "source_finalized_at": "2026-09-09T22:25:14+05:30",
             "result_date": "2026-09-09",
             "freshness_days": 0,
             "freshness_status": "Current"
@@ -206,7 +206,7 @@
             "status": "PASS",
             "outcome": "PASS",
             "source_record_id": "LAB-0001",
-            "source_finalized_at": "2026-09-09T10:18:17+05:30",
+            "source_finalized_at": "2026-09-09T22:25:14+05:30",
             "result_date": "2026-09-09",
             "freshness_days": 0,
             "freshness_status": "Current"
@@ -222,7 +222,7 @@
             "status": "PASS",
             "outcome": "PASS",
             "source_record_id": "LAB-0001",
-            "source_finalized_at": "2026-09-09T10:18:17+05:30",
+            "source_finalized_at": "2026-09-09T22:25:14+05:30",
             "result_date": "2026-09-09",
             "freshness_days": 0,
             "freshness_status": "Current"
@@ -315,7 +315,7 @@
           "clinical_value_status": "CCA-approved protocol required",
           "status": "Completed",
           "source_record_id": "LAB-0001",
-          "evaluated_at": "2026-09-09T10:18:17+05:30"
+          "evaluated_at": "2026-09-09T22:25:15+05:30"
         },
         {
           "phase": "Before treatment / cycle",
@@ -324,7 +324,7 @@
           "clinical_value_status": "CCA-approved protocol required",
           "status": "Completed",
           "source_record_id": "LAB-0001",
-          "evaluated_at": "2026-09-09T10:18:17+05:30"
+          "evaluated_at": "2026-09-09T22:25:15+05:30"
         },
         {
           "phase": "Before treatment / cycle",
@@ -333,7 +333,7 @@
           "clinical_value_status": "CCA-approved protocol required",
           "status": "Completed",
           "source_record_id": "LAB-0001",
-          "evaluated_at": "2026-09-09T10:18:17+05:30"
+          "evaluated_at": "2026-09-09T22:25:15+05:30"
         },
         {
           "phase": "Before treatment / cycle",
@@ -342,7 +342,7 @@
           "clinical_value_status": "CCA-approved protocol required",
           "status": "Completed",
           "source_record_id": "TOX-0001",
-          "evaluated_at": "2026-09-09T10:18:17+05:30"
+          "evaluated_at": "2026-09-09T22:25:15+05:30"
         },
         {
           "phase": "Periodic / drug-specific",
@@ -351,7 +351,7 @@
           "clinical_value_status": "CCA-approved protocol required",
           "status": "Required",
           "source_record_id": "LAB-0001",
-          "evaluated_at": "2026-09-09T10:18:17+05:30"
+          "evaluated_at": "2026-09-09T22:25:15+05:30"
         }
       ]
     },
@@ -378,7 +378,7 @@
             "protocol_version": "1.0-demo",
             "thresholds_source": "Institution Content Master / server-governed regimen version",
             "lab_source_id": "LAB-0001",
-            "lab_source_finalized_at": "2026-09-09T10:18:17+05:30",
+            "lab_source_finalized_at": "2026-09-09T22:25:14+05:30",
             "normalized": {
               "anc_10e9_L": 3.2,
               "platelets_10e9_L": 276.0,
@@ -404,7 +404,7 @@
                 "status": "PASS",
                 "outcome": "PASS",
                 "source_record_id": "LAB-0001",
-                "source_finalized_at": "2026-09-09T10:18:17+05:30",
+                "source_finalized_at": "2026-09-09T22:25:14+05:30",
                 "result_date": "2026-09-09",
                 "freshness_days": 0,
                 "freshness_status": "Current"
@@ -420,7 +420,7 @@
                 "status": "PASS",
                 "outcome": "PASS",
                 "source_record_id": "LAB-0001",
-                "source_finalized_at": "2026-09-09T10:18:17+05:30",
+                "source_finalized_at": "2026-09-09T22:25:14+05:30",
                 "result_date": "2026-09-09",
                 "freshness_days": 0,
                 "freshness_status": "Current"
@@ -436,7 +436,7 @@
                 "status": "PASS",
                 "outcome": "PASS",
                 "source_record_id": "LAB-0001",
-                "source_finalized_at": "2026-09-09T10:18:17+05:30",
+                "source_finalized_at": "2026-09-09T22:25:14+05:30",
                 "result_date": "2026-09-09",
                 "freshness_days": 0,
                 "freshness_status": "Current"
@@ -452,7 +452,7 @@
                 "status": "PASS",
                 "outcome": "PASS",
                 "source_record_id": "LAB-0001",
-                "source_finalized_at": "2026-09-09T10:18:17+05:30",
+                "source_finalized_at": "2026-09-09T22:25:14+05:30",
                 "result_date": "2026-09-09",
                 "freshness_days": 0,
                 "freshness_status": "Current"
@@ -468,7 +468,7 @@
                 "status": "PASS",
                 "outcome": "PASS",
                 "source_record_id": "LAB-0001",
-                "source_finalized_at": "2026-09-09T10:18:17+05:30",
+                "source_finalized_at": "2026-09-09T22:25:14+05:30",
                 "result_date": "2026-09-09",
                 "freshness_days": 0,
                 "freshness_status": "Current"
@@ -484,7 +484,7 @@
                 "status": "PASS",
                 "outcome": "PASS",
                 "source_record_id": "LAB-0001",
-                "source_finalized_at": "2026-09-09T10:18:17+05:30",
+                "source_finalized_at": "2026-09-09T22:25:14+05:30",
                 "result_date": "2026-09-09",
                 "freshness_days": 0,
                 "freshness_status": "Current"
@@ -514,7 +514,7 @@
                 "clinical_value_status": "CCA-approved protocol required",
                 "status": "Completed",
                 "source_record_id": "LAB-0001",
-                "evaluated_at": "2026-09-09T10:18:17+05:30"
+                "evaluated_at": "2026-09-09T22:25:15+05:30"
               },
               {
                 "phase": "Before treatment / cycle",
@@ -523,7 +523,7 @@
                 "clinical_value_status": "CCA-approved protocol required",
                 "status": "Completed",
                 "source_record_id": "LAB-0001",
-                "evaluated_at": "2026-09-09T10:18:17+05:30"
+                "evaluated_at": "2026-09-09T22:25:15+05:30"
               },
               {
                 "phase": "Before treatment / cycle",
@@ -532,7 +532,7 @@
                 "clinical_value_status": "CCA-approved protocol required",
                 "status": "Completed",
                 "source_record_id": "LAB-0001",
-                "evaluated_at": "2026-09-09T10:18:17+05:30"
+                "evaluated_at": "2026-09-09T22:25:15+05:30"
               },
               {
                 "phase": "Before treatment / cycle",
@@ -541,7 +541,7 @@
                 "clinical_value_status": "CCA-approved protocol required",
                 "status": "Completed",
                 "source_record_id": "TOX-0001",
-                "evaluated_at": "2026-09-09T10:18:17+05:30"
+                "evaluated_at": "2026-09-09T22:25:15+05:30"
               },
               {
                 "phase": "Periodic / drug-specific",
@@ -550,7 +550,7 @@
                 "clinical_value_status": "CCA-approved protocol required",
                 "status": "Required",
                 "source_record_id": "LAB-0001",
-                "evaluated_at": "2026-09-09T10:18:17+05:30"
+                "evaluated_at": "2026-09-09T22:25:15+05:30"
               }
             ],
             "dose_modification_rules": [
@@ -608,7 +608,7 @@
             ],
             "evaluation_as_of_date": "2026-09-09",
             "lab_age_days_at_evaluation": 0,
-            "evaluated_at": "2026-09-09T10:18:17+05:30"
+            "evaluated_at": "2026-09-09T22:25:15+05:30"
           }
         }
       }
@@ -695,9 +695,9 @@
         "status": 200,
         "body": {
           "ok": true,
-          "order_id": "TREATMENT_ORDER-4FB0772E9D",
-          "pharmacy_id": "PHARMACY-48454B3766",
-          "infusion_id": "INFUSION-39A6672546",
+          "order_id": "TREATMENT_ORDER-266C9C5E4B",
+          "pharmacy_id": "PHARMACY-B2AD0DCD4D",
+          "infusion_id": "INFUSION-8D71A43DB0",
           "supersedes_order_id": ""
         }
       }
@@ -860,14 +860,14 @@
       "id": "PC15-PHM-002",
       "pass": true,
       "detail": {
-        "order_id": "TREATMENT_ORDER-4FB0772E9D",
+        "order_id": "TREATMENT_ORDER-266C9C5E4B",
         "order_version": 1,
         "protocol_id": "CCA-DEMO-TCHP",
         "protocol_version": "1.0-demo",
         "cycle": 2,
         "day": 1,
         "readiness_id": "READY-0001",
-        "readiness_signed_at": "2026-09-09T10:18:17+05:30",
+        "readiness_signed_at": "2026-09-09T22:25:15+05:30",
         "readiness_decision": "Proceed as Planned",
         "cumulative_dose_ledger": {},
         "patient_snapshot": {
@@ -927,7 +927,7 @@
               "unit": "cm"
             }
           },
-          "measured_at": "2026-09-09T10:18:17+05:30",
+          "measured_at": "2026-09-09T22:25:14+05:30",
           "assessor": {
             "id": "USR-NURSE-001",
             "name": "Nurse Navigator",
@@ -982,7 +982,7 @@
         "body": {
           "ok": true,
           "status": "Dispensing Pending",
-          "prepared_at": "2026-09-09T10:18:18+05:30"
+          "prepared_at": "2026-09-09T22:25:16+05:30"
         }
       }
     },
@@ -994,37 +994,37 @@
           "Dexamethasone",
           "Not applicable",
           "Synthetic QA oral product handling — CCA Pharmacy configuration required",
-          "2026-09-10T10:18:18+05:30"
+          "2026-09-10T22:25:16+05:30"
         ],
         [
           "Pertuzumab",
           "Compatible",
           "Synthetic QA infusion stability — CCA Pharmacy configuration required",
-          "2026-09-09T14:18:18+05:30"
+          "2026-09-10T02:25:16+05:30"
         ],
         [
           "Trastuzumab",
           "Compatible",
           "Synthetic QA infusion stability — CCA Pharmacy configuration required",
-          "2026-09-09T14:18:18+05:30"
+          "2026-09-10T02:25:16+05:30"
         ],
         [
           "Docetaxel",
           "Compatible",
           "Synthetic QA infusion stability — CCA Pharmacy configuration required",
-          "2026-09-09T14:18:18+05:30"
+          "2026-09-10T02:25:16+05:30"
         ],
         [
           "Carboplatin",
           "Compatible",
           "Synthetic QA infusion stability — CCA Pharmacy configuration required",
-          "2026-09-09T14:18:18+05:30"
+          "2026-09-10T02:25:16+05:30"
         ],
         [
           "Pegfilgrastim",
           "Not applicable",
           "Synthetic QA syringe handling — CCA Pharmacy configuration required",
-          "2026-09-10T10:18:18+05:30"
+          "2026-09-10T22:25:16+05:30"
         ]
       ]
     },
@@ -1151,37 +1151,37 @@
       "detail": [
         [
           "Dexamethasone",
-          "2026-09-10T10:18:18+05:30",
+          "2026-09-10T22:25:16+05:30",
           null,
           "Independent Oncology Pharmacist B"
         ],
         [
           "Pertuzumab",
-          "2026-09-09T14:18:18+05:30",
+          "2026-09-10T02:25:16+05:30",
           3.36,
           "Independent Oncology Pharmacist B"
         ],
         [
           "Trastuzumab",
-          "2026-09-09T14:18:18+05:30",
+          "2026-09-10T02:25:16+05:30",
           2.24,
           "Independent Oncology Pharmacist B"
         ],
         [
           "Docetaxel",
-          "2026-09-09T14:18:18+05:30",
+          "2026-09-10T02:25:16+05:30",
           0.54544,
           "Independent Oncology Pharmacist B"
         ],
         [
           "Carboplatin",
-          "2026-09-09T14:18:18+05:30",
+          "2026-09-10T02:25:16+05:30",
           2.4,
           "Independent Oncology Pharmacist B"
         ],
         [
           "Pegfilgrastim",
-          "2026-09-10T10:18:18+05:30",
+          "2026-09-10T22:25:16+05:30",
           null,
           "Independent Oncology Pharmacist B"
         ]

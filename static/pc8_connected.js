@@ -50,22 +50,25 @@ if(typeof window.pc1TreatmentSequence==='undefined'){
  };
 }
 
-/* ---------- 2. Named-user + PIN login (primary), quick role-demo login kept as fallback ---------- */
+/* ---------- 2. Selection-only login (no credential/PIN): picking a user or role signs you
+   straight in. Both remain named/role-attributed server-side (see /api/login) -- this only
+   drops the credential step from the demo UI so selecting is the entire action. ---------- */
 async function pc8PopulateNamedLogin(){
  try{
   const r=await api('/api/login/users');
-  const u=$('#loginUser');if(u)u.innerHTML=r.users.map(x=>`<option value="${esc(x.username)}">${esc(x.display_name)} — ${esc(x.role)} (${esc(x.username)})</option>`).join('');
-  if(!r.shared_role_login_enabled){const q=$('#loginModeToggle');if(q)q.classList.add('hidden')}
- }catch(e){/* login/users not reachable yet; quick-role fallback still works */}
+  const u=$('#loginUser');if(u)u.innerHTML='<option value="" selected disabled>Select individual validation user…</option>'+r.users.map(x=>`<option value="${esc(x.username)}">${esc(x.display_name)} — ${esc(x.role)} (${esc(x.username)})</option>`).join('');
+ }catch(e){/* login/users not reachable yet */}
 }
 async function pc8NamedLogin(){
- try{const j=await api('/api/login',{method:'POST',body:JSON.stringify({username:val('loginUser'),pin:val('loginPin')})});S.token=j.token;S.role=j.actor.role;localStorage.setItem('cca_v12_token',S.token);localStorage.setItem('cca_v12_role',S.role);$('#loginErr').classList.add('hidden');await load()}catch(e){$('#loginErr').textContent=e.message;$('#loginErr').classList.remove('hidden')}
+ const username=val('loginUser');if(!username)return;
+ try{const j=await api('/api/login',{method:'POST',body:JSON.stringify({username})});S.token=j.token;S.role=j.actor.role;localStorage.setItem('cca_v12_token',S.token);localStorage.setItem('cca_v12_role',S.role);$('#loginErr').classList.add('hidden');await load()}catch(e){$('#loginErr').textContent=e.message;$('#loginErr').classList.remove('hidden')}
 }
 async function pc8QuickRoleLogin(){
- try{const j=await api('/api/login',{method:'POST',body:JSON.stringify({role:val('loginRole'),pin:val('loginRolePin')})});S.token=j.token;S.role=j.actor.role;localStorage.setItem('cca_v12_token',S.token);localStorage.setItem('cca_v12_role',S.role);$('#loginErr').classList.add('hidden');await load()}catch(e){$('#loginErr').textContent=e.message;$('#loginErr').classList.remove('hidden')}
+ const role=val('loginRole');if(!role)return;
+ try{const j=await api('/api/login',{method:'POST',body:JSON.stringify({role})});S.token=j.token;S.role=j.actor.role;localStorage.setItem('cca_v12_token',S.token);localStorage.setItem('cca_v12_role',S.role);$('#loginErr').classList.add('hidden');await load()}catch(e){$('#loginErr').textContent=e.message;$('#loginErr').classList.remove('hidden')}
 }
-{const b=$('#loginBtn');if(b)b.onclick=pc8NamedLogin;}
-{const b=$('#loginRoleBtn');if(b)b.onclick=pc8QuickRoleLogin;}
+{const u=$('#loginUser');if(u)u.onchange=pc8NamedLogin;}
+{const r=$('#loginRole');if(r)r.onchange=pc8QuickRoleLogin;}
 {const t=$('#loginModeToggle');if(t)t.onclick=()=>{const named=$('#loginNamed'),quick=$('#loginQuick');const showingQuick=!quick.classList.contains('hidden');if(showingQuick){quick.classList.add('hidden');named.classList.remove('hidden');t.textContent='Use quick role demo login instead'}else{named.classList.add('hidden');quick.classList.remove('hidden');t.textContent='Use individual named-user login instead'}};}
 pc8PopulateNamedLogin();
 

@@ -470,9 +470,6 @@ def _pin_digest(pin,salt_hex):
  salt=bytes.fromhex(salt_hex);return hashlib.pbkdf2_hmac('sha256',str(pin).encode(),salt,210000).hex()
 def _new_pin_hash(pin):
  salt=secrets.token_bytes(16).hex();return salt,_pin_digest(pin,salt)
-def verify_pin(pin,salt_hex,digest):
- try:return hmac.compare_digest(_pin_digest(pin,salt_hex),digest)
- except:return False
 
 def current_request_actor(role=''):
  a=getattr(REQUEST_CTX,'actor',None)
@@ -2140,21 +2137,17 @@ class H(BaseHTTPRequestHandler):
  def do_POST(self):
   p=urlparse(self.path);data=self.body();c=db()
   if p.path=='/api/login':
-   username=str(data.get('username') or '').strip();pin=str(data.get('pin',''))
+   # Selection-only sign-in: choosing a named validation user or a demo role is the entire
+   # login action, no credential/PIN check. DEMO_USER_CREDENTIALS.txt remains a reference
+   # roster of who each username maps to, it is no longer required to sign in.
+   username=str(data.get('username') or '').strip()
    if username:
     u=c.execute('SELECT * FROM user_accounts WHERE username=? AND active=1',(username,)).fetchone()
-    if not u:c.close();return self.sendj({'error':'Invalid user or credential'},401)
-    u=dict(u);locked=u.get('locked_until') or ''
-    if locked:
-     try:
-      if datetime.fromisoformat(locked)>datetime.now().astimezone():c.close();return self.sendj({'error':'Account temporarily locked'},423)
-     except:pass
-    if not verify_pin(pin,u['pin_salt'],u['pin_hash']):
-     n=int(u.get('failed_attempts') or 0)+1;lu=(datetime.now().astimezone()+timedelta(minutes=15)).isoformat() if n>=5 else '';c.execute('UPDATE user_accounts SET failed_attempts=?,locked_until=?,updated_at=? WHERE id=?',(n,lu,now(),u['id']));c.commit();c.close();return self.sendj({'error':'Invalid user or credential'},401)
-    c.execute('UPDATE user_accounts SET failed_attempts=0,locked_until=?,updated_at=? WHERE id=?',('',now(),u['id']));act={'id':u['id'],'username':u['username'],'name':u['display_name'],'role':u['role'],'professional_id':u['professional_id']};REQUEST_CTX.actor=act;tok=secrets.token_urlsafe(32);exp=(datetime.now().astimezone()+timedelta(hours=SESSION_HOURS)).isoformat();c.execute('INSERT OR REPLACE INTO sessions VALUES(?,?,?,?)',(tok,u['id'],u['role'],exp));c.commit();c.close();return self.sendj({'token':tok,'actor':act,'expires_at':exp})
+    if not u:c.close();return self.sendj({'error':'Unknown validation user'},401)
+    u=dict(u);act={'id':u['id'],'username':u['username'],'name':u['display_name'],'role':u['role'],'professional_id':u['professional_id']};REQUEST_CTX.actor=act;tok=secrets.token_urlsafe(32);exp=(datetime.now().astimezone()+timedelta(hours=SESSION_HOURS)).isoformat();c.execute('INSERT OR REPLACE INTO sessions VALUES(?,?,?,?)',(tok,u['id'],u['role'],exp));c.commit();c.close();return self.sendj({'token':tok,'actor':act,'expires_at':exp})
    role=data.get('role')
    if role not in ROLES:c.close();return self.sendj({'error':'Invalid demo role'},401)
-   if not ALLOW_SHARED_ROLE_LOGIN or pin!=DEMO_PIN:c.close();return self.sendj({'error':'Individual username and credential required'},401)
+   if not ALLOW_SHARED_ROLE_LOGIN:c.close();return self.sendj({'error':'Quick role demo login is disabled'},401)
    tok=secrets.token_urlsafe(32);exp=(datetime.now().astimezone()+timedelta(hours=SESSION_HOURS)).isoformat();c.execute('INSERT OR REPLACE INTO sessions VALUES(?,?,?,?)',(tok,actor(role)['id'],role,exp));c.commit();c.close();return self.sendj({'token':tok,'actor':actor(role),'expires_at':exp,'legacy_shared_role_login':True})
   if p.path=='/api/logout':
    tok=self.headers.get('Authorization','').removeprefix('Bearer ').strip()
