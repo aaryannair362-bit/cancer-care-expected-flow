@@ -438,7 +438,7 @@
         "status": 200,
         "body": {
           "ok": true,
-          "id": "LAB_ORDER-51EDA1D498",
+          "id": "LAB_ORDER-D4518542F1",
           "catalog_id": "LAB-CBC"
         }
       }
@@ -478,7 +478,7 @@
         "status": 200,
         "body": {
           "ok": true,
-          "lab_entity_id": "LAB-0A3FBF1F33",
+          "lab_entity_id": "LAB-A1B0F10957",
           "sample_id": "SMP-PC19"
         }
       }
@@ -512,7 +512,7 @@
         "status": 200,
         "body": {
           "ok": true,
-          "id": "LAB-0A3FBF1F33",
+          "id": "LAB-A1B0F10957",
           "status": "Final",
           "units": {
             "hb": "g/dL",
@@ -537,7 +537,7 @@
         "body": {
           "error": "A finalized laboratory result cannot be overwritten. Start an amendment with a documented reason.",
           "requires_amendment_reason": true,
-          "supersedes": "LAB-0A3FBF1F33"
+          "supersedes": "LAB-A1B0F10957"
         }
       }
     },
@@ -548,7 +548,7 @@
         "status": 200,
         "body": {
           "ok": true,
-          "id": "LAB-1FA30019CB",
+          "id": "LAB-A8E05DF6F9",
           "status": "Final",
           "units": {
             "hb": "g/dL",
@@ -561,7 +561,7 @@
             "ast": "U/L",
             "alt": "U/L"
           },
-          "supersedes": "LAB-0A3FBF1F33",
+          "supersedes": "LAB-A1B0F10957",
           "amendment_reason": "Synthetic correction",
           "critical_tasks": []
         }
@@ -724,7 +724,7 @@
         "status": 200,
         "body": {
           "ok": true,
-          "id": "TREATMENT_PLAN-A8082B72CA",
+          "id": "TREATMENT_PLAN-86A66AB6AB",
           "status": "Draft",
           "note": "MDT created a draft plan only; no treatment order was generated."
         }
@@ -739,7 +739,7 @@
           "ok": true,
           "proposed_category": "Partial response",
           "assessment": {
-            "id": "RESP-1687B5",
+            "id": "RESP-62AA5B",
             "episode_id": "EPISODE-0001",
             "criteria_set": "RECIST 1.1",
             "criteria_version": "1.1",
@@ -772,7 +772,7 @@
               "name": "Radiologist",
               "role": "Radiologist"
             },
-            "measured_at": "2026-09-09T22:25:26+05:30"
+            "measured_at": "2026-09-09T23:25:04+05:30"
           }
         }
       }
@@ -813,7 +813,7 @@
         "body": {
           "ok": true,
           "assessment": {
-            "id": "RESP-1687B5",
+            "id": "RESP-62AA5B",
             "episode_id": "EPISODE-0001",
             "criteria_set": "RECIST 1.1",
             "criteria_version": "1.1",
@@ -846,14 +846,14 @@
               "name": "Radiologist",
               "role": "Radiologist"
             },
-            "measured_at": "2026-09-09T22:25:26+05:30",
+            "measured_at": "2026-09-09T23:25:04+05:30",
             "confirmation_reason": "Clinician confirms formal response after source imaging review",
             "confirmed_by": {
               "id": "USR-MEDICALO-001",
               "name": "Medical Oncology User",
               "role": "Medical Oncology"
             },
-            "confirmed_at": "2026-09-09T22:25:26+05:30"
+            "confirmed_at": "2026-09-09T23:25:04+05:30"
           }
         }
       }
@@ -947,19 +947,19 @@
         "status": 200,
         "body": {
           "ok": true,
-          "pathological_stage_record_id": "DIAGNOSIS-E5F9A8AF71",
+          "pathological_stage_record_id": "DIAGNOSIS-E672DA0488",
           "adjuvant_review": {
             "status": "Ready for adjuvant review",
             "derived": true,
             "source_operating_record_id": "SURG-0001",
             "source_pathology_id": "PATH-0001",
-            "source_pathological_stage_id": "DIAGNOSIS-E5F9A8AF71",
-            "derived_at": "2026-09-09T22:25:26+05:30",
+            "source_pathological_stage_id": "DIAGNOSIS-E672DA0488",
+            "derived_at": "2026-09-09T23:25:05+05:30",
             "formula": "Signed operative record + final pathology + pathological stage available"
           },
           "task_ids": [
-            "TASK-AD0038CA57",
-            "TASK-4E0F1606E0"
+            "TASK-4540B56EF0",
+            "TASK-A494FE9BC4"
           ],
           "note": "New pathological staging record created; prior clinical stage preserved."
         }
@@ -975,8 +975,8 @@
           "derived": true,
           "source_operating_record_id": "SURG-0001",
           "source_pathology_id": "PATH-0001",
-          "source_pathological_stage_id": "DIAGNOSIS-E5F9A8AF71",
-          "derived_at": "2026-09-09T22:25:26+05:30",
+          "source_pathological_stage_id": "DIAGNOSIS-E672DA0488",
+          "derived_at": "2026-09-09T23:25:05+05:30",
           "formula": "Signed operative record + final pathology + pathological stage available"
         }
       }
@@ -991,8 +991,8 @@
           "derived": true,
           "source_operating_record_id": "SURG-0001",
           "source_pathology_id": "PATH-0001",
-          "source_pathological_stage_id": "DIAGNOSIS-E5F9A8AF71",
-          "derived_at": "2026-09-09T22:25:26+05:30",
+          "source_pathological_stage_id": "DIAGNOSIS-E672DA0488",
+          "derived_at": "2026-09-09T23:25:05+05:30",
           "formula": "Signed operative record + final pathology + pathological stage available"
         }
       }
@@ -1007,8 +1007,8 @@
           "derived": true,
           "source_operating_record_id": "SURG-0001",
           "source_pathology_id": "PATH-0001",
-          "source_pathological_stage_id": "DIAGNOSIS-E5F9A8AF71",
-          "derived_at": "2026-09-09T22:25:26+05:30",
+          "source_pathological_stage_id": "DIAGNOSIS-E672DA0488",
+          "derived_at": "2026-09-09T23:25:05+05:30",
           "formula": "Signed operative record + final pathology + pathological stage available"
         }
       }
@@ -1023,8 +1023,8 @@
           "derived": true,
           "source_operating_record_id": "SURG-0001",
           "source_pathology_id": "PATH-0001",
-          "source_pathological_stage_id": "DIAGNOSIS-E5F9A8AF71",
-          "derived_at": "2026-09-09T22:25:26+05:30",
+          "source_pathological_stage_id": "DIAGNOSIS-E672DA0488",
+          "derived_at": "2026-09-09T23:25:05+05:30",
           "formula": "Signed operative record + final pathology + pathological stage available"
         }
       }
@@ -1041,17 +1041,17 @@
             "derived": true,
             "source_operating_record_id": "SURG-0001",
             "source_pathology_id": "PATH-0001",
-            "source_pathological_stage_id": "DIAGNOSIS-E5F9A8AF71",
-            "derived_at": "2026-09-09T22:25:26+05:30",
+            "source_pathological_stage_id": "DIAGNOSIS-E672DA0488",
+            "derived_at": "2026-09-09T23:25:05+05:30",
             "formula": "Signed operative record + final pathology + pathological stage available",
             "completed_by": {
               "id": "USR-MEDICALO-001",
               "name": "Medical Oncology User",
               "role": "Medical Oncology"
             },
-            "completed_at": "2026-09-09T22:25:26+05:30",
+            "completed_at": "2026-09-09T23:25:05+05:30",
             "completion_reason": "Reviewed after final pathology",
-            "completion_source_record_id": "DIAGNOSIS-E5F9A8AF71"
+            "completion_source_record_id": "DIAGNOSIS-E672DA0488"
           }
         }
       }

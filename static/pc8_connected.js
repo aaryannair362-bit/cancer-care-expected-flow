@@ -50,9 +50,9 @@ if(typeof window.pc1TreatmentSequence==='undefined'){
  };
 }
 
-/* ---------- 2. Selection-only login (no credential/PIN): picking a user or role signs you
-   straight in. Both remain named/role-attributed server-side (see /api/login) -- this only
-   drops the credential step from the demo UI so selecting is the entire action. ---------- */
+/* ---------- 2. Selection-only login (no credential/PIN): pick a user or role from the
+   dropdown, then hit Sign in. Both remain named/role-attributed server-side (see
+   /api/login) -- this only drops the credential step from the demo UI. ---------- */
 async function pc8PopulateNamedLogin(){
  try{
   const r=await api('/api/login/users');
@@ -60,17 +60,31 @@ async function pc8PopulateNamedLogin(){
  }catch(e){/* login/users not reachable yet */}
 }
 async function pc8NamedLogin(){
- const username=val('loginUser');if(!username)return;
+ const username=val('loginUser');
+ if(!username){$('#loginErr').textContent='Select an individual validation user first';$('#loginErr').classList.remove('hidden');return}
  try{const j=await api('/api/login',{method:'POST',body:JSON.stringify({username})});S.token=j.token;S.role=j.actor.role;localStorage.setItem('cca_v12_token',S.token);localStorage.setItem('cca_v12_role',S.role);$('#loginErr').classList.add('hidden');await load()}catch(e){$('#loginErr').textContent=e.message;$('#loginErr').classList.remove('hidden')}
 }
 async function pc8QuickRoleLogin(){
- const role=val('loginRole');if(!role)return;
+ const role=val('loginRole');
+ if(!role){$('#loginErr').textContent='Select a role first';$('#loginErr').classList.remove('hidden');return}
  try{const j=await api('/api/login',{method:'POST',body:JSON.stringify({role})});S.token=j.token;S.role=j.actor.role;localStorage.setItem('cca_v12_token',S.token);localStorage.setItem('cca_v12_role',S.role);$('#loginErr').classList.add('hidden');await load()}catch(e){$('#loginErr').textContent=e.message;$('#loginErr').classList.remove('hidden')}
 }
-{const u=$('#loginUser');if(u)u.onchange=pc8NamedLogin;}
-{const r=$('#loginRole');if(r)r.onchange=pc8QuickRoleLogin;}
+{const b=$('#loginBtn');if(b)b.onclick=pc8NamedLogin;}
+{const b=$('#loginRoleBtn');if(b)b.onclick=pc8QuickRoleLogin;}
 {const t=$('#loginModeToggle');if(t)t.onclick=()=>{const named=$('#loginNamed'),quick=$('#loginQuick');const showingQuick=!quick.classList.contains('hidden');if(showingQuick){quick.classList.add('hidden');named.classList.remove('hidden');t.textContent='Use quick role demo login instead'}else{named.classList.add('hidden');quick.classList.remove('hidden');t.textContent='Use individual named-user login instead'}};}
 pc8PopulateNamedLogin();
+
+/* ---------- 2b. Reliable log out: reset in-page state and show the login screen directly
+   instead of relying on location.reload(), which was leaving the app screen up until the
+   user manually refreshed. ---------- */
+{const b=$('#logoutBtn');if(b)b.onclick=async()=>{
+ try{await api('/api/logout',{method:'POST',body:'{}'})}catch(e){}
+ try{localStorage.clear()}catch(e){}
+ S.token='';S.role='';S.pid='PAT-0001';S.page='';S.data=null;S.meta=null;S.patients=[];S.tasks=[];S.content=null;S.formulary=null;S.roleSurface=null;
+ const lu=$('#loginUser');if(lu)lu.value='';
+ const le=$('#loginErr');if(le)le.classList.add('hidden');
+ showLogin();
+};}
 
 const pc8BaseRenderApp=renderApp;
 renderApp=function(){

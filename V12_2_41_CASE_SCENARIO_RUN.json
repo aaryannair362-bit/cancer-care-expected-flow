@@ -1,7 +1,7 @@
 {
   "build": "CCA Cancer Care HIS + Oncology EMR V12.2 Final Defect Remediation",
   "version": "12.2",
-  "run_at": "2026-09-09T22:24:28.173108+05:30",
+  "run_at": "2026-09-09T23:24:08.920922+05:30",
   "clinical_content": "Synthetic QA institutional content only — product testing/demo; not patient care",
   "supplied_case_count": 41,
   "executed_case_count": 41,
@@ -791,10 +791,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-920BAA2D",
-      "plan_id": "TREATMENT_PLAN-85AA998447",
+      "pid": "PAT-4B79FF76",
+      "plan_id": "TREATMENT_PLAN-A3D973670F",
       "orders": [
-        "TREATMENT_ORDER-6553DE89EA"
+        "TREATMENT_ORDER-2FBD91E7BE"
       ]
     },
     {
@@ -1343,10 +1343,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-41B15D2B",
-      "plan_id": "TREATMENT_PLAN-488C130878",
+      "pid": "PAT-1B54CFF1",
+      "plan_id": "TREATMENT_PLAN-B76CCCAF16",
       "orders": [
-        "TREATMENT_ORDER-64740927A5"
+        "TREATMENT_ORDER-33D4A91BCA"
       ]
     },
     {
@@ -1886,10 +1886,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-E6B6C5E0",
-      "plan_id": "TREATMENT_PLAN-CD6F93468D",
+      "pid": "PAT-5642FD11",
+      "plan_id": "TREATMENT_PLAN-5215EC4944",
       "orders": [
-        "TREATMENT_ORDER-578A8BF1FE"
+        "TREATMENT_ORDER-B1227BFA64"
       ]
     },
     {
@@ -2438,10 +2438,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-B407B54D",
-      "plan_id": "TREATMENT_PLAN-85E54B9AE4",
+      "pid": "PAT-7425750F",
+      "plan_id": "TREATMENT_PLAN-93ADE9019F",
       "orders": [
-        "TREATMENT_ORDER-7A1F533670"
+        "TREATMENT_ORDER-BBF3C0DF53"
       ]
     },
     {
@@ -2917,10 +2917,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-A9E01857",
-      "plan_id": "TREATMENT_PLAN-5EEAB484FE",
+      "pid": "PAT-6AA3C238",
+      "plan_id": "TREATMENT_PLAN-39CAE78CA8",
       "orders": [
-        "TREATMENT_ORDER-5AF6372042"
+        "TREATMENT_ORDER-B1B8CBF036"
       ]
     },
     {
@@ -3460,10 +3460,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-B7152A48",
-      "plan_id": "TREATMENT_PLAN-B5310E3D7C",
+      "pid": "PAT-027EE91B",
+      "plan_id": "TREATMENT_PLAN-D60D6325CC",
       "orders": [
-        "TREATMENT_ORDER-E15EFED4F0"
+        "TREATMENT_ORDER-F9D4EF3783"
       ]
     },
     {
@@ -4003,10 +4003,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-FEE3BE4B",
-      "plan_id": "TREATMENT_PLAN-4027F81F6E",
+      "pid": "PAT-746E3C2A",
+      "plan_id": "TREATMENT_PLAN-05B9AA8807",
       "orders": [
-        "TREATMENT_ORDER-74B7750B0C"
+        "TREATMENT_ORDER-A9418DEA1B"
       ]
     },
     {
@@ -4555,10 +4555,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-0D57EF45",
-      "plan_id": "TREATMENT_PLAN-6F162F0DBF",
+      "pid": "PAT-C5A39342",
+      "plan_id": "TREATMENT_PLAN-42C0258AC3",
       "orders": [
-        "TREATMENT_ORDER-F6B6511799"
+        "TREATMENT_ORDER-3CB2839C9B"
       ]
     },
     {
@@ -5034,10 +5034,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-763E32FF",
-      "plan_id": "TREATMENT_PLAN-16EC50F32F",
+      "pid": "PAT-C741061D",
+      "plan_id": "TREATMENT_PLAN-729E87E90F",
       "orders": [
-        "TREATMENT_ORDER-ECBD8A2820"
+        "TREATMENT_ORDER-1AED1B25A1"
       ]
     },
     {
@@ -5513,10 +5513,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-51CADAD8",
-      "plan_id": "TREATMENT_PLAN-5E658C4EDE",
+      "pid": "PAT-050098AA",
+      "plan_id": "TREATMENT_PLAN-727B9B3E92",
       "orders": [
-        "TREATMENT_ORDER-517D691384"
+        "TREATMENT_ORDER-6E5E31B2B4"
       ]
     },
     {
@@ -6001,10 +6001,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-DB824BFA",
-      "plan_id": "TREATMENT_PLAN-3B3A8E29FB",
+      "pid": "PAT-12C4FDC4",
+      "plan_id": "TREATMENT_PLAN-1D16AA59E3",
       "orders": [
-        "TREATMENT_ORDER-4C535A8645"
+        "TREATMENT_ORDER-5C8C546308"
       ]
     },
     {
@@ -6480,10 +6480,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-CAD4EDDF",
-      "plan_id": "TREATMENT_PLAN-46A2D5DE3A",
+      "pid": "PAT-D1510239",
+      "plan_id": "TREATMENT_PLAN-76207D88C2",
       "orders": [
-        "TREATMENT_ORDER-881951F38A"
+        "TREATMENT_ORDER-8D55630BDD"
       ]
     },
     {
@@ -6968,10 +6968,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-CFB24126",
-      "plan_id": "TREATMENT_PLAN-BE30CF87BE",
+      "pid": "PAT-04222B8F",
+      "plan_id": "TREATMENT_PLAN-B0DF67238F",
       "orders": [
-        "TREATMENT_ORDER-2CFB44A0E3"
+        "TREATMENT_ORDER-3FDD009689"
       ]
     },
     {
@@ -7447,10 +7447,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-663B566B",
-      "plan_id": "TREATMENT_PLAN-31D9659B6C",
+      "pid": "PAT-5D25130A",
+      "plan_id": "TREATMENT_PLAN-69E7163EAC",
       "orders": [
-        "TREATMENT_ORDER-6DE1CC961C"
+        "TREATMENT_ORDER-BC5C7E1382"
       ]
     },
     {
@@ -7926,10 +7926,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-8AEEF269",
-      "plan_id": "TREATMENT_PLAN-476138D2B8",
+      "pid": "PAT-B772DE26",
+      "plan_id": "TREATMENT_PLAN-FA79C5B1E6",
       "orders": [
-        "TREATMENT_ORDER-FCB21F7179"
+        "TREATMENT_ORDER-7A25881B04"
       ]
     },
     {
@@ -8414,10 +8414,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-D0BC858D",
-      "plan_id": "TREATMENT_PLAN-0B6FD448DB",
+      "pid": "PAT-FFBFCF64",
+      "plan_id": "TREATMENT_PLAN-B252400879",
       "orders": [
-        "TREATMENT_ORDER-D6073C7BD6"
+        "TREATMENT_ORDER-476F8F1F18"
       ]
     },
     {
@@ -8893,10 +8893,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-FD93C1C4",
-      "plan_id": "TREATMENT_PLAN-62B7483615",
+      "pid": "PAT-7EBA838E",
+      "plan_id": "TREATMENT_PLAN-EB35604C1E",
       "orders": [
-        "TREATMENT_ORDER-ABDC498A38"
+        "TREATMENT_ORDER-98580C2606"
       ]
     },
     {
@@ -9372,10 +9372,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-E7665C74",
-      "plan_id": "TREATMENT_PLAN-2835F4C93A",
+      "pid": "PAT-DC230633",
+      "plan_id": "TREATMENT_PLAN-98ABDD1262",
       "orders": [
-        "TREATMENT_ORDER-1C5B07C8D7"
+        "TREATMENT_ORDER-150858512F"
       ]
     },
     {
@@ -9743,8 +9743,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-44320EB7",
-      "plan_id": "TREATMENT_PLAN-C556680A71"
+      "pid": "PAT-A4DEBDF4",
+      "plan_id": "TREATMENT_PLAN-AD6D8FE5AC"
     },
     {
       "id": "M6",
@@ -10075,8 +10075,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-1857ECD3",
-      "plan_id": "TREATMENT_PLAN-D3BB0D1BFB"
+      "pid": "PAT-41EA958B",
+      "plan_id": "TREATMENT_PLAN-999138A5A8"
     },
     {
       "id": "S1",
@@ -10497,8 +10497,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-5C1609C6",
-      "plan_id": "TREATMENT_PLAN-9A7BB85B95"
+      "pid": "PAT-22449339",
+      "plan_id": "TREATMENT_PLAN-46DB5FB52A"
     },
     {
       "id": "S2",
@@ -10919,8 +10919,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-8D545261",
-      "plan_id": "TREATMENT_PLAN-B3C330470D"
+      "pid": "PAT-D3189334",
+      "plan_id": "TREATMENT_PLAN-7DAF72833A"
     },
     {
       "id": "S3",
@@ -11341,8 +11341,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-53D21638",
-      "plan_id": "TREATMENT_PLAN-A399E36D6A"
+      "pid": "PAT-256EE7DA",
+      "plan_id": "TREATMENT_PLAN-44076632E9"
     },
     {
       "id": "S4",
@@ -11763,8 +11763,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-1B1753E6",
-      "plan_id": "TREATMENT_PLAN-0403402608"
+      "pid": "PAT-62D5CE83",
+      "plan_id": "TREATMENT_PLAN-72FDB959B4"
     },
     {
       "id": "U1",
@@ -11959,8 +11959,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-5C706C33",
-      "plan_id": "TREATMENT_PLAN-076C43BBDB"
+      "pid": "PAT-3215FCF0",
+      "plan_id": "TREATMENT_PLAN-084BAB1F9B"
     },
     {
       "id": "U2",
@@ -12155,8 +12155,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-646B6474",
-      "plan_id": "TREATMENT_PLAN-277A76F02B"
+      "pid": "PAT-BFCFFE3B",
+      "plan_id": "TREATMENT_PLAN-03B287BF7E"
     },
     {
       "id": "U3",
@@ -12441,8 +12441,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-39264DC1",
-      "plan_id": "TREATMENT_PLAN-94EF4ACD6F"
+      "pid": "PAT-63D86BFB",
+      "plan_id": "TREATMENT_PLAN-CB5C962C0E"
     },
     {
       "id": "U4",
@@ -12691,8 +12691,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-1D2222D4",
-      "plan_id": "TREATMENT_PLAN-4873100D83"
+      "pid": "PAT-3FE52ADD",
+      "plan_id": "TREATMENT_PLAN-0871C126DD"
     },
     {
       "id": "U5",
@@ -13076,10 +13076,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-2259EF81",
-      "plan_id": "TREATMENT_PLAN-ED987C6B28",
+      "pid": "PAT-26B5FBAB",
+      "plan_id": "TREATMENT_PLAN-183F768AF0",
       "orders": [
-        "TREATMENT_ORDER-7611523010"
+        "TREATMENT_ORDER-E9EEC6B059"
       ]
     },
     {
@@ -13494,7 +13494,7 @@
           "ok": true,
           "http": 200,
           "response": {
-            "ok": "TREATMENT_PLAN-506302484F",
+            "ok": "TREATMENT_PLAN-8306EAE698",
             "status": ""
           }
         },
@@ -13528,10 +13528,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-8651CE36",
-      "plan_id": "TREATMENT_PLAN-506302484F",
+      "pid": "PAT-1453D27F",
+      "plan_id": "TREATMENT_PLAN-8306EAE698",
       "orders": [
-        "TREATMENT_ORDER-7B73F57068"
+        "TREATMENT_ORDER-8750F4B0E1"
       ]
     },
     {
@@ -13808,8 +13808,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-48447DD6",
-      "plan_id": "TREATMENT_PLAN-F04132238B"
+      "pid": "PAT-B113FCC5",
+      "plan_id": "TREATMENT_PLAN-A0CFDD4FDB"
     },
     {
       "id": "E3",
@@ -14238,10 +14238,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-D5CF94F0",
-      "plan_id": "TREATMENT_PLAN-E2B3A907BC",
+      "pid": "PAT-005CA056",
+      "plan_id": "TREATMENT_PLAN-68B973E7AF",
       "orders": [
-        "TREATMENT_ORDER-BEDCA4C2CE"
+        "TREATMENT_ORDER-2F0ED5F9B3"
       ]
     },
     {
@@ -14698,10 +14698,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-11FC4A7E",
-      "plan_id": "TREATMENT_PLAN-A62680F379",
+      "pid": "PAT-2EE8BE04",
+      "plan_id": "TREATMENT_PLAN-F012434728",
       "orders": [
-        "TREATMENT_ORDER-F3EA393851"
+        "TREATMENT_ORDER-E1F25F5243"
       ]
     },
     {
@@ -14996,8 +14996,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-621DE5AF",
-      "plan_id": "TREATMENT_PLAN-E180FD7B36"
+      "pid": "PAT-1C9E1E75",
+      "plan_id": "TREATMENT_PLAN-D102E9D55B"
     },
     {
       "id": "E6",
@@ -15408,10 +15408,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-2A49BD2D",
-      "plan_id": "TREATMENT_PLAN-1DBBB54E0E",
+      "pid": "PAT-C1C43D2D",
+      "plan_id": "TREATMENT_PLAN-7448538002",
       "orders": [
-        "TREATMENT_ORDER-637C843D7E"
+        "TREATMENT_ORDER-F895C1FDE2"
       ]
     },
     {
@@ -15823,8 +15823,8 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-7777803A",
-      "plan_id": "TREATMENT_PLAN-018CEE9514"
+      "pid": "PAT-4FE1D7D4",
+      "plan_id": "TREATMENT_PLAN-0258FB72D9"
     },
     {
       "id": "E8",
@@ -16127,10 +16127,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-358B3438",
-      "plan_id": "TREATMENT_PLAN-9EABA622EA",
+      "pid": "PAT-7C0B8855",
+      "plan_id": "TREATMENT_PLAN-1D8A13D8D9",
       "orders": [
-        "TREATMENT_ORDER-56E927B9E0"
+        "TREATMENT_ORDER-6A2F27B267"
       ]
     },
     {
@@ -16552,10 +16552,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-541D315C",
-      "plan_id": "TREATMENT_PLAN-DB6BBB72E7",
+      "pid": "PAT-AE957189",
+      "plan_id": "TREATMENT_PLAN-9B4F8287AB",
       "orders": [
-        "TREATMENT_ORDER-ACF20A2F02"
+        "TREATMENT_ORDER-FB3C1AC9D8"
       ]
     },
     {
@@ -16958,10 +16958,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-81D72EDF",
-      "plan_id": "TREATMENT_PLAN-14D7AEDB04",
+      "pid": "PAT-690D184D",
+      "plan_id": "TREATMENT_PLAN-9DB1844EBA",
       "orders": [
-        "TREATMENT_ORDER-F3FBB06128"
+        "TREATMENT_ORDER-83DF96913D"
       ]
     },
     {
@@ -17391,10 +17391,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-3C291572",
-      "plan_id": "TREATMENT_PLAN-D13534E2C9",
+      "pid": "PAT-542554EB",
+      "plan_id": "TREATMENT_PLAN-248F9DB638",
       "orders": [
-        "TREATMENT_ORDER-D46BE538C6"
+        "TREATMENT_ORDER-A5D620232F"
       ]
     },
     {
@@ -17824,10 +17824,10 @@
       ],
       "failures": [],
       "verdict": "PASS",
-      "pid": "PAT-E55BFEE8",
-      "plan_id": "TREATMENT_PLAN-6B10BB50D9",
+      "pid": "PAT-0DAC16E4",
+      "plan_id": "TREATMENT_PLAN-2D058072B9",
       "orders": [
-        "TREATMENT_ORDER-4ED1FF8E95"
+        "TREATMENT_ORDER-6695018F96"
       ]
     }
   ],
