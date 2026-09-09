@@ -1,6 +1,6 @@
 {
   "build": "CCA Cancer Care HIS + Oncology EMR V12.2 Final Defect Remediation",
-  "run_at": "2026-09-09T23:22:54.070584+05:30",
+  "run_at": "2026-09-09T23:36:40.931380+05:30",
   "base": "http://127.0.0.1:9077",
   "pass": 38,
   "fail": 0,
@@ -27,7 +27,7 @@
           "error": "Record changed since it was loaded",
           "expected_version": 1,
           "current_version": 2,
-          "record_id": "CONSULTATION-D5839D6712"
+          "record_id": "CONSULTATION-C1627BCE0F"
         }
       },
       "notes": ""
@@ -309,7 +309,7 @@
         "second": 200,
         "idempotent": true,
         "conflict": 409,
-        "receipt": "IDEMP-QA-232250806465"
+        "receipt": "IDEMP-QA-233639964347"
       },
       "notes": ""
     },
@@ -319,7 +319,7 @@
       "evidence": {
         "collect": 200,
         "reject": 200,
-        "task_id": "TASK-34EEB5A174",
+        "task_id": "TASK-D237142F25",
         "recollect": 200
       },
       "notes": ""
@@ -379,7 +379,7 @@
         "status": 200,
         "body": {
           "ok": true,
-          "id": "LAB-E3EBCFE37D",
+          "id": "LAB-B8316059F2",
           "status": "Final",
           "units": {
             "hb": "g/dL",
@@ -410,7 +410,7 @@
         "status": 200,
         "body": {
           "ok": true,
-          "id": "LAB-7B0483F69C",
+          "id": "LAB-81DFA067D1",
           "status": "Final",
           "units": {
             "hb": "g/dL",
@@ -429,7 +429,7 @@
             "calcium": "mg/dL",
             "lvef": "%"
           },
-          "supersedes": "LAB-E3EBCFE37D",
+          "supersedes": "LAB-B8316059F2",
           "amendment_reason": "QA alternate ANC unit normalization",
           "critical_tasks": []
         }
@@ -442,7 +442,7 @@
       "evidence": {
         "lab": 200,
         "task_ids": [
-          "TASK-CFE48D9030"
+          "TASK-A312CA8FE4"
         ],
         "task_status": "Acknowledged"
       },
@@ -505,8 +505,8 @@
         "reopen": 200,
         "body": {
           "ok": true,
-          "episode_id": "CANCER_EPISODE-5597DD837B",
-          "reopens": "CANCER_EPISODE-91E4D7B56C"
+          "episode_id": "CANCER_EPISODE-32D8C14D87",
+          "reopens": "CANCER_EPISODE-F2FCDD40BA"
         }
       },
       "notes": ""
@@ -530,11 +530,11 @@
       "pass": true,
       "evidence": {
         "draft_plan_create": 200,
-        "draft_plan_id": "TREATMENT_PLAN-4D8CAC9940",
+        "draft_plan_id": "TREATMENT_PLAN-40A8D1D5D4",
         "order_attempt": 409,
         "body": {
           "error": "Treatment Order cannot be created from an unsigned or inactive Treatment Plan",
-          "plan_id": "TREATMENT_PLAN-4D8CAC9940",
+          "plan_id": "TREATMENT_PLAN-40A8D1D5D4",
           "plan_status": "Draft"
         },
         "approved_plan_id": "TP-0001"
@@ -546,16 +546,16 @@
       "pass": true,
       "evidence": {
         "admit": 200,
-        "admission_id": "ADM-2D948BE4",
+        "admission_id": "ADM-1EC2D830",
         "order": 200,
         "discharge": 409,
         "body": {
           "error": "Discharge blocked while inpatient systemic treatment orders remain unresolved",
           "unresolved_orders": [
             {
-              "id": "TREATMENT_ORDER-21BA421F79",
+              "id": "TREATMENT_ORDER-A881366B8F",
               "status": "Verification Pending",
-              "order_no": "ORD-A13BF2"
+              "order_no": "ORD-3D8301"
             }
           ]
         }
@@ -569,7 +569,7 @@
         "queue": 200,
         "destination_bootstrap": 200,
         "body": {
-          "patient": "PAT-746A2BC1"
+          "patient": "PAT-4E4B8DFC"
         }
       },
       "notes": ""

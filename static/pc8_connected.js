@@ -71,7 +71,7 @@ async function pc8QuickRoleLogin(){
 }
 {const b=$('#loginBtn');if(b)b.onclick=pc8NamedLogin;}
 {const b=$('#loginRoleBtn');if(b)b.onclick=pc8QuickRoleLogin;}
-{const t=$('#loginModeToggle');if(t)t.onclick=()=>{const named=$('#loginNamed'),quick=$('#loginQuick');const showingQuick=!quick.classList.contains('hidden');if(showingQuick){quick.classList.add('hidden');named.classList.remove('hidden');t.textContent='Use quick role demo login instead'}else{named.classList.add('hidden');quick.classList.remove('hidden');t.textContent='Use individual named-user login instead'}};}
+{const t=$('#loginModeToggle');if(t)t.onclick=()=>{const named=$('#loginNamed'),quick=$('#loginQuick'),lb=$('#loginBtn'),rb=$('#loginRoleBtn');const showingQuick=!quick.classList.contains('hidden');if(showingQuick){quick.classList.add('hidden');named.classList.remove('hidden');if(rb)rb.classList.add('hidden');if(lb)lb.classList.remove('hidden');t.textContent='Use quick role demo login instead'}else{named.classList.add('hidden');quick.classList.remove('hidden');if(lb)lb.classList.add('hidden');if(rb)rb.classList.remove('hidden');t.textContent='Use individual named-user login instead'}};}
 pc8PopulateNamedLogin();
 
 /* ---------- 2b. Reliable log out: reset in-page state and show the login screen directly

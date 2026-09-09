@@ -318,9 +318,9 @@
         "status": 200,
         "body": {
           "ok": true,
-          "order_id": "TREATMENT_ORDER-DC76F163E5",
-          "pharmacy_id": "PHARMACY-EAC0D1D22A",
-          "infusion_id": "INFUSION-853029D9D3",
+          "order_id": "TREATMENT_ORDER-912EC3D1F9",
+          "pharmacy_id": "PHARMACY-07A576ED92",
+          "infusion_id": "INFUSION-6F6B9F579C",
           "supersedes_order_id": ""
         }
       }
@@ -388,7 +388,7 @@
               "unit": "in"
             }
           },
-          "measured_at": "2026-09-09T23:24:35+05:30",
+          "measured_at": "2026-09-09T23:38:23+05:30",
           "assessor": {
             "id": "USR-NURSENAV-001",
             "name": "Nurse Navigator",
@@ -444,7 +444,7 @@
         "body": {
           "ok": true,
           "status": "Dispensing Pending",
-          "prepared_at": "2026-09-09T23:24:35+05:30"
+          "prepared_at": "2026-09-09T23:38:23+05:30"
         }
       }
     },

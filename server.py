@@ -541,7 +541,7 @@ def init_db():
  CREATE INDEX IF NOT EXISTS idx_cca_validation_signoff_role ON cca_validation_signoff(specialty_role,created_at);
  CREATE TABLE IF NOT EXISTS tasks(id TEXT PRIMARY KEY,patient_id TEXT,episode_id TEXT,task_type TEXT,title TEXT,status TEXT,priority TEXT,owner_role TEXT,owner_user_id TEXT,source_type TEXT,source_id TEXT,due_at TEXT,acknowledged_at TEXT,acknowledged_by TEXT,completed_at TEXT,completed_by TEXT,escalation_level INTEGER,reason TEXT,data_json TEXT,created_at TEXT,created_by TEXT,updated_at TEXT,updated_by TEXT);
  CREATE INDEX IF NOT EXISTS idx_tasks_patient_owner ON tasks(patient_id,owner_role,status,due_at);
- '''); c.commit(); seed_content_master(c); seed_pc7_masters(c); seed_user_accounts(c); c.commit(); c.close(); seed()
+ '''); c.commit(); seed_content_master(c); seed_pc7_masters(c); seed_user_accounts(c); c.commit(); c.close(); seed(); sync_base_role_access()
 
 def actor(role):
  a=current_request_actor(role)
@@ -1449,10 +1449,21 @@ def seed():
  pc7_reconcile_base_patient(c)
  seed_showcase_cases(c)
  seed_pc8_validation_cases(c)
- # Seeded demo patient is intentionally assigned to every internal role so every demo surface can be exercised.
- for rr in ROLES:
-  if rr!='External Consultant':grant_patient_access(c,pid,rr,'seed_demo','PAT-0001','System')
  c.commit();c.close()
+
+def sync_base_role_access():
+ # seed() above only runs once, the first time the patients table is empty. On a long-lived
+ # database, any role added to ROLES afterwards (new specialties/support roles across the
+ # PC1.x/PC7.1/PC8.0 phases) never got its "every role can see the seed demo patient" grant,
+ # so logging in as one of those roles hit 403 Patient access not assigned to this role on the
+ # very first patient. Re-running this idempotently on every startup self-heals that instead
+ # of depending on seed() having run after the role existed.
+ c=db()
+ if c.execute("SELECT 1 FROM patients WHERE id='PAT-0001'").fetchone():
+  for rr in ROLES:
+   if rr!='External Consultant':grant_patient_access(c,'PAT-0001',rr,'seed_demo','PAT-0001','System')
+  c.commit()
+ c.close()
 
 
 def patient(c,pid):

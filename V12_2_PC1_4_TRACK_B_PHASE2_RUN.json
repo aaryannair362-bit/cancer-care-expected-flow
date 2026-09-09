@@ -217,7 +217,7 @@
       "pass": true,
       "evidence": {
         "event": {
-          "at": "2026-09-09T23:24:45+05:30",
+          "at": "2026-09-09T23:38:32+05:30",
           "reconciled_by": {
             "id": "USR-NURSENAV-001",
             "name": "Nurse Navigator",
@@ -252,9 +252,9 @@
         "status": 200,
         "body": {
           "ok": true,
-          "order_id": "TREATMENT_ORDER-4B2360698E",
-          "pharmacy_id": "PHARMACY-5E2CAB57A7",
-          "infusion_id": "INFUSION-39DFB7A26E",
+          "order_id": "TREATMENT_ORDER-4800CE2F46",
+          "pharmacy_id": "PHARMACY-1D60ACED04",
+          "infusion_id": "INFUSION-A7D6BE00D4",
           "supersedes_order_id": ""
         }
       }
@@ -263,8 +263,8 @@
       "id": "ORD-DEC-003",
       "pass": true,
       "evidence": {
-        "order": "TREATMENT_ORDER-4B2360698E",
-        "signed_at": "2026-09-09T23:24:45+05:30",
+        "order": "TREATMENT_ORDER-4800CE2F46",
+        "signed_at": "2026-09-09T23:38:32+05:30",
         "reasons": [
           [
             "Dexamethasone",
@@ -307,7 +307,7 @@
         "body": {
           "error": "An active Treatment Order already exists for this plan/cycle/day. Explicit supersession is required to replace it.",
           "active_order_ids": [
-            "TREATMENT_ORDER-4B2360698E"
+            "TREATMENT_ORDER-4800CE2F46"
           ],
           "requires": [
             "supersedes_order_id",
@@ -323,10 +323,10 @@
         "status": 200,
         "body": {
           "ok": true,
-          "order_id": "TREATMENT_ORDER-5CDD1098A3",
-          "pharmacy_id": "PHARMACY-05D313F32D",
-          "infusion_id": "INFUSION-FC884E9044",
-          "supersedes_order_id": "TREATMENT_ORDER-4B2360698E"
+          "order_id": "TREATMENT_ORDER-CD4CACAA8F",
+          "pharmacy_id": "PHARMACY-D9D6078CD6",
+          "infusion_id": "INFUSION-8B0598F6DB",
+          "supersedes_order_id": "TREATMENT_ORDER-4800CE2F46"
         }
       }
     },
@@ -337,7 +337,7 @@
         "order_status": "Superseded",
         "pharmacy_status": "Superseded",
         "infusion_status": "Superseded",
-        "superseded_by": "TREATMENT_ORDER-5CDD1098A3"
+        "superseded_by": "TREATMENT_ORDER-CD4CACAA8F"
       }
     },
     {
@@ -347,7 +347,7 @@
         "status": 409,
         "body": {
           "error": "Superseded/stale Treatment Order cannot be acted on",
-          "order_id": "TREATMENT_ORDER-4B2360698E",
+          "order_id": "TREATMENT_ORDER-4800CE2F46",
           "order_status": "Superseded"
         }
       }
@@ -366,7 +366,7 @@
             "ok": false,
             "items": [
               {
-                "item_id": "OI-650DFA0",
+                "item_id": "OI-3478F88",
                 "code": "DEMO-DEX",
                 "drug": "Dexamethasone",
                 "independent_calculation": {
@@ -397,7 +397,7 @@
                 }
               },
               {
-                "item_id": "OI-2C93C4C",
+                "item_id": "OI-542075A",
                 "code": "DEMO-PER",
                 "drug": "Pertuzumab",
                 "independent_calculation": {
@@ -428,7 +428,7 @@
                 }
               },
               {
-                "item_id": "OI-0A3F2A5",
+                "item_id": "OI-3616CCA",
                 "code": "DEMO-TRA",
                 "drug": "Trastuzumab",
                 "independent_calculation": {
@@ -460,7 +460,7 @@
                 }
               },
               {
-                "item_id": "OI-1CA04D0",
+                "item_id": "OI-88E2BF4",
                 "code": "DEMO-DOC",
                 "drug": "Docetaxel",
                 "independent_calculation": {
@@ -492,7 +492,7 @@
                 }
               },
               {
-                "item_id": "OI-AD9A968",
+                "item_id": "OI-0325DA2",
                 "code": "DEMO-CARBO",
                 "drug": "Carboplatin",
                 "independent_calculation": {
@@ -526,7 +526,7 @@
                 },
                 "allergy_conflicts": [
                   {
-                    "allergy_id": "ALG-C34EB4",
+                    "allergy_id": "ALG-E82E52",
                     "substance": "Carboplatin",
                     "code": "ALG-CARBO",
                     "reaction": "Urticaria",
@@ -541,7 +541,7 @@
                 }
               },
               {
-                "item_id": "OI-09AA1E5",
+                "item_id": "OI-E9F412C",
                 "code": "DEMO-PEG",
                 "drug": "Pegfilgrastim",
                 "independent_calculation": {
@@ -575,7 +575,7 @@
             "errors": [
               "Carboplatin: Direct coded allergy conflict: Carboplatin"
             ],
-            "verified_at": "2026-09-09T23:24:45+05:30"
+            "verified_at": "2026-09-09T23:38:33+05:30"
           }
         }
       }
