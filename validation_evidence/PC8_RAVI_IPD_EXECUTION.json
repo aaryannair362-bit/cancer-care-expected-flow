@@ -1,0 +1,1267 @@
+{
+  "patient": "Ravi Kapoor",
+  "patient_id": "PAT-VAL-RAVI",
+  "build": "12.2-PC8.0",
+  "generated_at": "2026-09-09T03:41:37.918690+00:00",
+  "checks": 26,
+  "pass": 26,
+  "fail": 0,
+  "results": [
+    {
+      "check": "RAV-001 baseline registration draft",
+      "pass": true,
+      "detail": {
+        "id": "REG-SYN-VAL-04",
+        "status": "Draft"
+      }
+    },
+    {
+      "check": "RAV-002 registration complete",
+      "pass": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "check": "RAV-003 referral assigned",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "REF-SYN-VAL-04",
+        "status": "Assigned"
+      }
+    },
+    {
+      "check": "RAV-004 MO receives referral task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-82CC2A0E9A",
+        "patient_id": "PAT-VAL-RAVI",
+        "episode_id": "EP-SYN-VAL-04",
+        "task_type": "Referral lifecycle",
+        "title": "Referral: Synthetic inpatient case for admission -> nursing/clinician assessment -> orders/MAR -> deterioration escalation -> discharge -> outpatient follow-up.",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "referral",
+        "source_id": "REF-SYN-VAL-04",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Assigned",
+        "created_at": "2026-09-09T09:11:36+05:30",
+        "created_by": "UA-1953F3A56877",
+        "updated_at": "2026-09-09T09:11:36+05:30",
+        "updated_by": "UA-1953F3A56877",
+        "data": {
+          "referral_id": "REF-SYN-VAL-04",
+          "status": "Assigned"
+        },
+        "patient": {
+          "id": "PAT-VAL-RAVI",
+          "mrn": "CCA-SYN-VAL-IPD-01",
+          "name": "Ravi Kapoor",
+          "dob": "1959-05-28",
+          "sex": "Male",
+          "phone": "917000000104",
+          "abha": "",
+          "id_number": "SYN-RAVI-01",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:36+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-04",
+          "patient_id": "PAT-VAL-RAVI",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-04",
+            "kind": "Primary cancer",
+            "label": "Inpatient oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "REF-SYN-VAL-04",
+          "patient_id": "PAT-VAL-RAVI",
+          "entity_type": "referral",
+          "status": "Assigned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:36+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "data": {
+            "status": "Assigned",
+            "reason": "Synthetic inpatient case for admission -> nursing/clinician assessment -> orders/MAR -> deterioration escalation -> discharge -> outpatient follow-up.",
+            "assigned_department": "Medical Oncology",
+            "assigned_clinician": "Dr Asha Mehta",
+            "priority": "Urgent",
+            "history": [
+              {
+                "status": "Created",
+                "at": "2026-09-09T09:11:29+05:30",
+                "by": {
+                  "name": "System",
+                  "role": "System"
+                },
+                "reason": "Synthetic validation baseline"
+              },
+              {
+                "at": "2026-09-09T09:11:36+05:30",
+                "from": "Created",
+                "to": "Assigned",
+                "by": {
+                  "id": "UA-1953F3A56877",
+                  "username": "front.desk.demo",
+                  "name": "Kavya Rao — Front Desk",
+                  "role": "Front Desk",
+                  "professional_id": "DEMO-FD-001"
+                },
+                "reason": ""
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "updated_by": {
+              "id": "UA-1953F3A56877",
+              "username": "front.desk.demo",
+              "name": "Kavya Rao — Front Desk",
+              "role": "Front Desk",
+              "professional_id": "DEMO-FD-001"
+            },
+            "updated_at": "2026-09-09T09:11:36+05:30"
+          }
+        },
+        "source_record_type": "referral",
+        "source_record_id": "REF-SYN-VAL-04",
+        "source_record_version": 2,
+        "source_record_status": "Assigned",
+        "source_record_updated_at": "2026-09-09T09:11:36+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "source_type": "referral",
+          "source_id": "REF-SYN-VAL-04"
+        }
+      }
+    },
+    {
+      "check": "RAV-005 exact referral source/provenance",
+      "pass": true,
+      "detail": {
+        "id": "TASK-82CC2A0E9A",
+        "patient_id": "PAT-VAL-RAVI",
+        "episode_id": "EP-SYN-VAL-04",
+        "task_type": "Referral lifecycle",
+        "title": "Referral: Synthetic inpatient case for admission -> nursing/clinician assessment -> orders/MAR -> deterioration escalation -> discharge -> outpatient follow-up.",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "referral",
+        "source_id": "REF-SYN-VAL-04",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Assigned",
+        "created_at": "2026-09-09T09:11:36+05:30",
+        "created_by": "UA-1953F3A56877",
+        "updated_at": "2026-09-09T09:11:36+05:30",
+        "updated_by": "UA-1953F3A56877",
+        "data": {
+          "referral_id": "REF-SYN-VAL-04",
+          "status": "Assigned"
+        },
+        "patient": {
+          "id": "PAT-VAL-RAVI",
+          "mrn": "CCA-SYN-VAL-IPD-01",
+          "name": "Ravi Kapoor",
+          "dob": "1959-05-28",
+          "sex": "Male",
+          "phone": "917000000104",
+          "abha": "",
+          "id_number": "SYN-RAVI-01",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:36+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-04",
+          "patient_id": "PAT-VAL-RAVI",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-04",
+            "kind": "Primary cancer",
+            "label": "Inpatient oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "REF-SYN-VAL-04",
+          "patient_id": "PAT-VAL-RAVI",
+          "entity_type": "referral",
+          "status": "Assigned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:36+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "data": {
+            "status": "Assigned",
+            "reason": "Synthetic inpatient case for admission -> nursing/clinician assessment -> orders/MAR -> deterioration escalation -> discharge -> outpatient follow-up.",
+            "assigned_department": "Medical Oncology",
+            "assigned_clinician": "Dr Asha Mehta",
+            "priority": "Urgent",
+            "history": [
+              {
+                "status": "Created",
+                "at": "2026-09-09T09:11:29+05:30",
+                "by": {
+                  "name": "System",
+                  "role": "System"
+                },
+                "reason": "Synthetic validation baseline"
+              },
+              {
+                "at": "2026-09-09T09:11:36+05:30",
+                "from": "Created",
+                "to": "Assigned",
+                "by": {
+                  "id": "UA-1953F3A56877",
+                  "username": "front.desk.demo",
+                  "name": "Kavya Rao — Front Desk",
+                  "role": "Front Desk",
+                  "professional_id": "DEMO-FD-001"
+                },
+                "reason": ""
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "updated_by": {
+              "id": "UA-1953F3A56877",
+              "username": "front.desk.demo",
+              "name": "Kavya Rao — Front Desk",
+              "role": "Front Desk",
+              "professional_id": "DEMO-FD-001"
+            },
+            "updated_at": "2026-09-09T09:11:36+05:30"
+          }
+        },
+        "source_record_type": "referral",
+        "source_record_id": "REF-SYN-VAL-04",
+        "source_record_version": 2,
+        "source_record_status": "Assigned",
+        "source_record_updated_at": "2026-09-09T09:11:36+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "source_type": "referral",
+          "source_id": "REF-SYN-VAL-04"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "RAV-006 wrong role cannot accept referral",
+      "pass": true,
+      "detail": {
+        "error": "Role not authorized for referral lifecycle"
+      }
+    },
+    {
+      "check": "RAV-007 MO accepts referral",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "REF-SYN-VAL-04",
+        "status": "Accepted"
+      }
+    },
+    {
+      "check": "RAV-008 intake signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "bmi": 23.18,
+        "bsa_raw_m2": 1.7787,
+        "bsa_m2": 1.78,
+        "bsa_rounding_policy": {
+          "formula": "Mosteller",
+          "raw_precision": 4,
+          "display_precision": 2,
+          "ordering_precision": 2,
+          "formula_text": "sqrt(height_cm × weight_kg / 3600)"
+        },
+        "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
+        "canonical_units": {
+          "bp": "mmHg",
+          "hr": "/min",
+          "rr": "/min",
+          "temp_c": "°C",
+          "spo2": "%",
+          "weight_kg": "kg",
+          "height_cm": "cm"
+        },
+        "source_measurements": {
+          "sbp": {
+            "value": 104.0,
+            "unit": "mmHg"
+          },
+          "dbp": {
+            "value": 66.0,
+            "unit": "mmHg"
+          },
+          "hr": {
+            "value": 102.0,
+            "unit": "/min"
+          },
+          "rr": {
+            "value": 20.0,
+            "unit": "/min"
+          },
+          "temp": {
+            "value": 37.8,
+            "unit": "°C"
+          },
+          "spo2": {
+            "value": 95.0,
+            "unit": "%"
+          },
+          "weight": {
+            "value": 67.0,
+            "unit": "kg"
+          },
+          "height": {
+            "value": 170.0,
+            "unit": "cm"
+          }
+        }
+      }
+    },
+    {
+      "check": "RAV-010 consultation signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "RAV-011 diagnosis/staging verified",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Verified"
+      }
+    },
+    {
+      "check": "RAV-013 wrong role cannot initiate admission",
+      "pass": true,
+      "detail": {
+        "error": "Patient access not assigned to this role"
+      }
+    },
+    {
+      "check": "RAV-014 admission created",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "admission": {
+          "id": "ADM-B6BE6CF8",
+          "episode_id": "EP-SYN-VAL-04",
+          "admission_type": "Unplanned",
+          "reason_code": "Infection / febrile neutropenia",
+          "reason_note": "Fever during active oncology treatment — synthetic validation",
+          "admitting_specialty": "Medical Oncology",
+          "attending_clinician": "Dr Imran Khan — IPD Oncology",
+          "admitted_at": "2026-09-09T09:11:37+05:30",
+          "ward": "Unassigned",
+          "bed": "Unassigned",
+          "source_context": "OPD / Day Care",
+          "status": "Active",
+          "created_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          }
+        },
+        "next_roles": [
+          "Inpatient Oncology Nurse",
+          "Inpatient Oncology Clinician"
+        ]
+      }
+    },
+    {
+      "check": "RAV-015 dual clinician+nurse admission tasks",
+      "pass": true,
+      "detail": {
+        "clinician": {
+          "id": "TASK-6B30702B94",
+          "patient_id": "PAT-VAL-RAVI",
+          "episode_id": "EP-SYN-VAL-04",
+          "task_type": "IPD admission assessment",
+          "title": "Complete inpatient admission history & physical",
+          "status": "Open",
+          "priority": "High",
+          "owner_role": "Inpatient Oncology Clinician",
+          "owner_user_id": "USR-INPATIEN-001",
+          "source_type": "admission",
+          "source_id": "ADMISSION-SYN-VAL-04",
+          "due_at": "",
+          "acknowledged_at": "",
+          "acknowledged_by": "",
+          "completed_at": "",
+          "completed_by": "",
+          "escalation_level": 0,
+          "reason": "Infection / febrile neutropenia",
+          "created_at": "2026-09-09T09:11:37+05:30",
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_at": "2026-09-09T09:11:37+05:30",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "admission": {
+              "id": "ADM-B6BE6CF8",
+              "episode_id": "EP-SYN-VAL-04",
+              "admission_type": "Unplanned",
+              "reason_code": "Infection / febrile neutropenia",
+              "reason_note": "Fever during active oncology treatment — synthetic validation",
+              "admitting_specialty": "Medical Oncology",
+              "attending_clinician": "Dr Imran Khan — IPD Oncology",
+              "admitted_at": "2026-09-09T09:11:37+05:30",
+              "ward": "Unassigned",
+              "bed": "Unassigned",
+              "source_context": "OPD / Day Care",
+              "status": "Active",
+              "created_by": {
+                "id": "UA-CD18F7D9D16C",
+                "username": "mo.demo",
+                "name": "Dr Asha Mehta",
+                "role": "Medical Oncology",
+                "professional_id": "DEMO-MO-001"
+              }
+            }
+          },
+          "patient": {
+            "id": "PAT-VAL-RAVI",
+            "mrn": "CCA-SYN-VAL-IPD-01",
+            "name": "Ravi Kapoor",
+            "dob": "1959-05-28",
+            "sex": "Male",
+            "current_department": "Inpatient Care",
+            "status": "Active"
+          },
+          "episode": {
+            "id": "EP-SYN-VAL-04",
+            "patient_id": "PAT-VAL-RAVI",
+            "entity_type": "cancer_episode",
+            "status": "Active",
+            "version": 1,
+            "created_at": "2026-09-09T09:11:29+05:30",
+            "updated_at": "2026-09-09T09:11:29+05:30",
+            "created_by": "USR-UNKNOWN",
+            "updated_by": "USR-UNKNOWN",
+            "data": {
+              "episode_no": "SYN-EP-VAL-04",
+              "kind": "Primary cancer",
+              "label": "Inpatient oncology validation",
+              "started_at": "2026-09-09T09:11:29+05:30",
+              "ended_at": "",
+              "closure_reason": "",
+              "primary_diagnosis_id": "",
+              "status": "Active",
+              "synthetic_validation": true,
+              "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+            }
+          },
+          "source_record": {
+            "id": "ADMISSION-SYN-VAL-04",
+            "patient_id": "PAT-VAL-RAVI",
+            "entity_type": "admission",
+            "status": "Active",
+            "version": 2,
+            "created_at": "2026-09-09T09:11:29+05:30",
+            "updated_at": "2026-09-09T09:11:37+05:30",
+            "created_by": "USR-UNKNOWN",
+            "updated_by": "UA-CD18F7D9D16C",
+            "data": {
+              "admissions": [
+                {
+                  "id": "ADM-B6BE6CF8",
+                  "episode_id": "EP-SYN-VAL-04",
+                  "admission_type": "Unplanned",
+                  "reason_code": "Infection / febrile neutropenia",
+                  "reason_note": "Fever during active oncology treatment — synthetic validation",
+                  "admitting_specialty": "Medical Oncology",
+                  "attending_clinician": "Dr Imran Khan — IPD Oncology",
+                  "admitted_at": "2026-09-09T09:11:37+05:30",
+                  "ward": "Unassigned",
+                  "bed": "Unassigned",
+                  "source_context": "OPD / Day Care",
+                  "status": "Active",
+                  "created_by": {
+                    "id": "UA-CD18F7D9D16C",
+                    "username": "mo.demo",
+                    "name": "Dr Asha Mehta",
+                    "role": "Medical Oncology",
+                    "professional_id": "DEMO-MO-001"
+                  }
+                }
+              ],
+              "synthetic_validation": true,
+              "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+              "episode_id": "EP-SYN-VAL-04"
+            }
+          },
+          "source_record_type": "admission",
+          "source_record_id": "ADMISSION-SYN-VAL-04",
+          "source_record_version": 2,
+          "source_record_status": "Active",
+          "source_record_updated_at": "2026-09-09T09:11:37+05:30",
+          "source_visible_to_role": true,
+          "signed_by": "",
+          "signed_at": "",
+          "provenance": {
+            "created_by": "USR-UNKNOWN",
+            "updated_by": "UA-CD18F7D9D16C",
+            "source_type": "admission",
+            "source_id": "ADMISSION-SYN-VAL-04"
+          }
+        },
+        "nurse": {
+          "id": "TASK-209403C4E2",
+          "patient_id": "PAT-VAL-RAVI",
+          "episode_id": "EP-SYN-VAL-04",
+          "task_type": "IPD nursing admission",
+          "title": "Complete nursing admission and bed assignment",
+          "status": "Open",
+          "priority": "High",
+          "owner_role": "Inpatient Oncology Nurse",
+          "owner_user_id": "USR-INPATIEN-001",
+          "source_type": "admission",
+          "source_id": "ADMISSION-SYN-VAL-04",
+          "due_at": "",
+          "acknowledged_at": "",
+          "acknowledged_by": "",
+          "completed_at": "",
+          "completed_by": "",
+          "escalation_level": 0,
+          "reason": "Infection / febrile neutropenia",
+          "created_at": "2026-09-09T09:11:37+05:30",
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_at": "2026-09-09T09:11:37+05:30",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "admission": {
+              "id": "ADM-B6BE6CF8",
+              "episode_id": "EP-SYN-VAL-04",
+              "admission_type": "Unplanned",
+              "reason_code": "Infection / febrile neutropenia",
+              "reason_note": "Fever during active oncology treatment — synthetic validation",
+              "admitting_specialty": "Medical Oncology",
+              "attending_clinician": "Dr Imran Khan — IPD Oncology",
+              "admitted_at": "2026-09-09T09:11:37+05:30",
+              "ward": "Unassigned",
+              "bed": "Unassigned",
+              "source_context": "OPD / Day Care",
+              "status": "Active",
+              "created_by": {
+                "id": "UA-CD18F7D9D16C",
+                "username": "mo.demo",
+                "name": "Dr Asha Mehta",
+                "role": "Medical Oncology",
+                "professional_id": "DEMO-MO-001"
+              }
+            }
+          },
+          "patient": {
+            "id": "PAT-VAL-RAVI",
+            "mrn": "CCA-SYN-VAL-IPD-01",
+            "name": "Ravi Kapoor",
+            "dob": "1959-05-28",
+            "sex": "Male",
+            "current_department": "Inpatient Care",
+            "status": "Active"
+          },
+          "episode": {
+            "id": "EP-SYN-VAL-04",
+            "patient_id": "PAT-VAL-RAVI",
+            "entity_type": "cancer_episode",
+            "status": "Active",
+            "version": 1,
+            "created_at": "2026-09-09T09:11:29+05:30",
+            "updated_at": "2026-09-09T09:11:29+05:30",
+            "created_by": "USR-UNKNOWN",
+            "updated_by": "USR-UNKNOWN",
+            "data": {
+              "episode_no": "SYN-EP-VAL-04",
+              "kind": "Primary cancer",
+              "label": "Inpatient oncology validation",
+              "started_at": "2026-09-09T09:11:29+05:30",
+              "ended_at": "",
+              "closure_reason": "",
+              "primary_diagnosis_id": "",
+              "status": "Active",
+              "synthetic_validation": true,
+              "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+            }
+          },
+          "source_record": {
+            "id": "ADMISSION-SYN-VAL-04",
+            "patient_id": "PAT-VAL-RAVI",
+            "entity_type": "admission",
+            "status": "Active",
+            "version": 2,
+            "created_at": "2026-09-09T09:11:29+05:30",
+            "updated_at": "2026-09-09T09:11:37+05:30",
+            "created_by": "USR-UNKNOWN",
+            "updated_by": "UA-CD18F7D9D16C",
+            "data": {
+              "admissions": [
+                {
+                  "id": "ADM-B6BE6CF8",
+                  "episode_id": "EP-SYN-VAL-04",
+                  "admission_type": "Unplanned",
+                  "reason_code": "Infection / febrile neutropenia",
+                  "reason_note": "Fever during active oncology treatment — synthetic validation",
+                  "admitting_specialty": "Medical Oncology",
+                  "attending_clinician": "Dr Imran Khan — IPD Oncology",
+                  "admitted_at": "2026-09-09T09:11:37+05:30",
+                  "ward": "Unassigned",
+                  "bed": "Unassigned",
+                  "source_context": "OPD / Day Care",
+                  "status": "Active",
+                  "created_by": {
+                    "id": "UA-CD18F7D9D16C",
+                    "username": "mo.demo",
+                    "name": "Dr Asha Mehta",
+                    "role": "Medical Oncology",
+                    "professional_id": "DEMO-MO-001"
+                  }
+                }
+              ],
+              "synthetic_validation": true,
+              "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+              "episode_id": "EP-SYN-VAL-04"
+            }
+          },
+          "source_record_type": "admission",
+          "source_record_id": "ADMISSION-SYN-VAL-04",
+          "source_record_version": 2,
+          "source_record_status": "Active",
+          "source_record_updated_at": "2026-09-09T09:11:37+05:30",
+          "source_visible_to_role": true,
+          "signed_by": "",
+          "signed_at": "",
+          "provenance": {
+            "created_by": "USR-UNKNOWN",
+            "updated_by": "UA-CD18F7D9D16C",
+            "source_type": "admission",
+            "source_id": "ADMISSION-SYN-VAL-04"
+          }
+        }
+      }
+    },
+    {
+      "check": "RAV-016 clinician opens exact admission source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-6B30702B94",
+        "patient_id": "PAT-VAL-RAVI",
+        "episode_id": "EP-SYN-VAL-04",
+        "task_type": "IPD admission assessment",
+        "title": "Complete inpatient admission history & physical",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Inpatient Oncology Clinician",
+        "owner_user_id": "USR-INPATIEN-001",
+        "source_type": "admission",
+        "source_id": "ADMISSION-SYN-VAL-04",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Infection / febrile neutropenia",
+        "created_at": "2026-09-09T09:11:37+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:37+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "admission": {
+            "id": "ADM-B6BE6CF8",
+            "episode_id": "EP-SYN-VAL-04",
+            "admission_type": "Unplanned",
+            "reason_code": "Infection / febrile neutropenia",
+            "reason_note": "Fever during active oncology treatment — synthetic validation",
+            "admitting_specialty": "Medical Oncology",
+            "attending_clinician": "Dr Imran Khan — IPD Oncology",
+            "admitted_at": "2026-09-09T09:11:37+05:30",
+            "ward": "Unassigned",
+            "bed": "Unassigned",
+            "source_context": "OPD / Day Care",
+            "status": "Active",
+            "created_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            }
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-RAVI",
+          "mrn": "CCA-SYN-VAL-IPD-01",
+          "name": "Ravi Kapoor",
+          "dob": "1959-05-28",
+          "sex": "Male",
+          "current_department": "Inpatient Care",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-04",
+          "patient_id": "PAT-VAL-RAVI",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-04",
+            "kind": "Primary cancer",
+            "label": "Inpatient oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "ADMISSION-SYN-VAL-04",
+          "patient_id": "PAT-VAL-RAVI",
+          "entity_type": "admission",
+          "status": "Active",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:37+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "admissions": [
+              {
+                "id": "ADM-B6BE6CF8",
+                "episode_id": "EP-SYN-VAL-04",
+                "admission_type": "Unplanned",
+                "reason_code": "Infection / febrile neutropenia",
+                "reason_note": "Fever during active oncology treatment — synthetic validation",
+                "admitting_specialty": "Medical Oncology",
+                "attending_clinician": "Dr Imran Khan — IPD Oncology",
+                "admitted_at": "2026-09-09T09:11:37+05:30",
+                "ward": "Unassigned",
+                "bed": "Unassigned",
+                "source_context": "OPD / Day Care",
+                "status": "Active",
+                "created_by": {
+                  "id": "UA-CD18F7D9D16C",
+                  "username": "mo.demo",
+                  "name": "Dr Asha Mehta",
+                  "role": "Medical Oncology",
+                  "professional_id": "DEMO-MO-001"
+                }
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-04"
+          }
+        },
+        "source_record_type": "admission",
+        "source_record_id": "ADMISSION-SYN-VAL-04",
+        "source_record_version": 2,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:37+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "admission",
+          "source_id": "ADMISSION-SYN-VAL-04"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "RAV-018 nursing admission bed assigned",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "admission": {
+          "id": "ADM-B6BE6CF8",
+          "episode_id": "EP-SYN-VAL-04",
+          "admission_type": "Unplanned",
+          "reason_code": "Infection / febrile neutropenia",
+          "reason_note": "Fever during active oncology treatment — synthetic validation",
+          "admitting_specialty": "Medical Oncology",
+          "attending_clinician": "Dr Imran Khan — IPD Oncology",
+          "admitted_at": "2026-09-09T09:11:37+05:30",
+          "ward": "Oncology Ward",
+          "bed": "B-12",
+          "source_context": "OPD / Day Care",
+          "status": "Active",
+          "created_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "assigned_at": "2026-09-09T09:11:37+05:30",
+          "assigned_by": {
+            "id": "UA-7DFAEB1DA085",
+            "username": "ipd.nurse.demo",
+            "name": "Neha Paul — IPD Nurse",
+            "role": "Inpatient Oncology Nurse",
+            "professional_id": "DEMO-IPDN-001"
+          }
+        }
+      }
+    },
+    {
+      "check": "RAV-019 nurse cannot sign clinician H&P",
+      "pass": true,
+      "detail": {
+        "error": "Oncology specialist required"
+      }
+    },
+    {
+      "check": "RAV-020 clinician H&P signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "review": {
+          "id": "IPDREV-E8415D3",
+          "admission_id": "ADM-B6BE6CF8",
+          "specialty": "Inpatient Oncology Clinician",
+          "assessment": "Unplanned oncology admission for suspected infection during treatment.",
+          "plan": "IV fluids, clinician-directed antimicrobial therapy, cultures/laboratory monitoring, close nursing observations and escalation for deterioration.",
+          "at": "2026-09-09T09:11:37+05:30",
+          "reviewed_by": {
+            "id": "UA-2074DEE30152",
+            "username": "ipd.clinician.demo",
+            "name": "Dr Imran Khan — IPD Oncology",
+            "role": "Inpatient Oncology Clinician",
+            "professional_id": "DEMO-IPDC-001"
+          }
+        }
+      }
+    },
+    {
+      "check": "RAV-021 nurse cannot prescribe",
+      "pass": true,
+      "detail": {
+        "error": "Inpatient Oncology Clinician required for inpatient medication orders"
+      }
+    },
+    {
+      "check": "RAV-022 clinician medication order persists",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "order": {
+          "id": "IPDORD-8421568",
+          "order_no": "IPD-RX-4AF6A0",
+          "admission_id": "ADM-B6BE6CF8",
+          "episode_id": "EP-SYN-VAL-04",
+          "medication": "Ceftriaxone",
+          "dose": 1.0,
+          "unit": "g",
+          "route": "IV",
+          "frequency": "Every 24 hours",
+          "indication": "Suspected infection",
+          "start_at": "2026-09-08T10:00:00+05:30",
+          "stop_at": "",
+          "status": "Active",
+          "ordered_by": {
+            "id": "UA-2074DEE30152",
+            "username": "ipd.clinician.demo",
+            "name": "Dr Imran Khan — IPD Oncology",
+            "role": "Inpatient Oncology Clinician",
+            "professional_id": "DEMO-IPDC-001"
+          },
+          "ordered_at": "2026-09-09T09:11:37+05:30"
+        },
+        "next_role": "Inpatient Oncology Nurse"
+      }
+    },
+    {
+      "check": "RAV-023 nurse MAR task created",
+      "pass": true,
+      "detail": {
+        "id": "TASK-A56D648CC1",
+        "patient_id": "PAT-VAL-RAVI",
+        "episode_id": "EP-SYN-VAL-04",
+        "task_type": "IPD medication administration",
+        "title": "Administer/execute inpatient medication order",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Inpatient Oncology Nurse",
+        "owner_user_id": "USR-INPATIEN-001",
+        "source_type": "inpatient_care",
+        "source_id": "INPATIENT_CARE-SYN-VAL-04",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed inpatient medication order",
+        "created_at": "2026-09-09T09:11:37+05:30",
+        "created_by": "UA-2074DEE30152",
+        "updated_at": "2026-09-09T09:11:37+05:30",
+        "updated_by": "UA-2074DEE30152",
+        "data": {
+          "medication_order": {
+            "id": "IPDORD-8421568",
+            "order_no": "IPD-RX-4AF6A0",
+            "admission_id": "ADM-B6BE6CF8",
+            "episode_id": "EP-SYN-VAL-04",
+            "medication": "Ceftriaxone",
+            "dose": 1.0,
+            "unit": "g",
+            "route": "IV",
+            "frequency": "Every 24 hours",
+            "indication": "Suspected infection",
+            "start_at": "2026-09-08T10:00:00+05:30",
+            "stop_at": "",
+            "status": "Active",
+            "ordered_by": {
+              "id": "UA-2074DEE30152",
+              "username": "ipd.clinician.demo",
+              "name": "Dr Imran Khan — IPD Oncology",
+              "role": "Inpatient Oncology Clinician",
+              "professional_id": "DEMO-IPDC-001"
+            },
+            "ordered_at": "2026-09-09T09:11:37+05:30"
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-RAVI",
+          "mrn": "CCA-SYN-VAL-IPD-01",
+          "name": "Ravi Kapoor",
+          "dob": "1959-05-28",
+          "sex": "Male",
+          "current_department": "Inpatient Care",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-04",
+          "patient_id": "PAT-VAL-RAVI",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-04",
+            "kind": "Primary cancer",
+            "label": "Inpatient oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "INPATIENT_CARE-SYN-VAL-04",
+          "patient_id": "PAT-VAL-RAVI",
+          "entity_type": "inpatient_care",
+          "status": "Active",
+          "version": 3,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:37+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-2074DEE30152",
+          "data": {
+            "daily_notes": [],
+            "nursing_observations": [],
+            "intake_output": [],
+            "pain_assessments": [],
+            "toxicity_events": [],
+            "specialty_reviews": [
+              {
+                "id": "IPDREV-E8415D3",
+                "admission_id": "ADM-B6BE6CF8",
+                "specialty": "Inpatient Oncology Clinician",
+                "assessment": "Unplanned oncology admission for suspected infection during treatment.",
+                "plan": "IV fluids, clinician-directed antimicrobial therapy, cultures/laboratory monitoring, close nursing observations and escalation for deterioration.",
+                "at": "2026-09-09T09:11:37+05:30",
+                "reviewed_by": {
+                  "id": "UA-2074DEE30152",
+                  "username": "ipd.clinician.demo",
+                  "name": "Dr Imran Khan — IPD Oncology",
+                  "role": "Inpatient Oncology Clinician",
+                  "professional_id": "DEMO-IPDC-001"
+                }
+              }
+            ],
+            "medication_orders": [
+              {
+                "id": "IPDORD-8421568",
+                "order_no": "IPD-RX-4AF6A0",
+                "admission_id": "ADM-B6BE6CF8",
+                "episode_id": "EP-SYN-VAL-04",
+                "medication": "Ceftriaxone",
+                "dose": 1.0,
+                "unit": "g",
+                "route": "IV",
+                "frequency": "Every 24 hours",
+                "indication": "Suspected infection",
+                "start_at": "2026-09-08T10:00:00+05:30",
+                "stop_at": "",
+                "status": "Active",
+                "ordered_by": {
+                  "id": "UA-2074DEE30152",
+                  "username": "ipd.clinician.demo",
+                  "name": "Dr Imran Khan — IPD Oncology",
+                  "role": "Inpatient Oncology Clinician",
+                  "professional_id": "DEMO-IPDC-001"
+                },
+                "ordered_at": "2026-09-09T09:11:37+05:30"
+              }
+            ],
+            "mar": [],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-04"
+          }
+        },
+        "source_record_type": "inpatient_care",
+        "source_record_id": "INPATIENT_CARE-SYN-VAL-04",
+        "source_record_version": 3,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:37+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-2074DEE30152",
+          "source_type": "inpatient_care",
+          "source_id": "INPATIENT_CARE-SYN-VAL-04"
+        }
+      }
+    },
+    {
+      "check": "RAV-025 clinician cannot chart nursing MAR",
+      "pass": true,
+      "detail": {
+        "error": "Inpatient Oncology Nurse required for inpatient MAR"
+      }
+    },
+    {
+      "check": "RAV-026 nurse MAR actual dose persisted and order completed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "mar": {
+          "id": "IPDMAR-759A099",
+          "order_id": "IPDORD-8421568",
+          "admission_id": "ADM-B6BE6CF8",
+          "medication": "Ceftriaxone",
+          "ordered_dose": 1.0,
+          "unit": "g",
+          "route": "IV",
+          "actual_dose": 1.0,
+          "administration_datetime": "2026-09-08T10:15:00+05:30",
+          "system_entry_time": "2026-09-09T09:11:37+05:30",
+          "variance_reason": "",
+          "response": "Tolerated",
+          "administered_by": {
+            "id": "UA-7DFAEB1DA085",
+            "username": "ipd.nurse.demo",
+            "name": "Neha Paul — IPD Nurse",
+            "role": "Inpatient Oncology Nurse",
+            "professional_id": "DEMO-IPDN-001"
+          }
+        },
+        "order_status": "Completed"
+      }
+    },
+    {
+      "check": "RAV-027 observation recorded",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "record": {
+          "id": "IPDOBS-1779F66",
+          "admission_id": "ADM-B6BE6CF8",
+          "episode_id": "EP-SYN-VAL-04",
+          "type": "Nursing observation",
+          "at": "2026-09-08T13:00:00+05:30",
+          "vitals": {
+            "temp_c": 38.8,
+            "spo2": 91,
+            "sbp": 86,
+            "hr": 116
+          },
+          "pain_score": 2,
+          "intake_ml": null,
+          "output_ml": null,
+          "note": "New fever and hypotension.",
+          "recorded_by": {
+            "id": "UA-7DFAEB1DA085",
+            "username": "ipd.nurse.demo",
+            "name": "Neha Paul — IPD Nurse",
+            "role": "Inpatient Oncology Nurse",
+            "professional_id": "DEMO-IPDN-001"
+          }
+        }
+      }
+    },
+    {
+      "check": "RAV-032 signed discharge completes",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "summary": {
+          "id": "DS-C2681E09",
+          "admission_id": "ADM-B6BE6CF8",
+          "episode_id": "EP-SYN-VAL-04",
+          "discharge_diagnosis": "Suspected infection during active oncology treatment — clinically improved",
+          "hospital_course": "Synthetic validation admission: fever/hypotension monitored, IV treatment administered, clinical observations improved and no unresolved inpatient medication orders remain.",
+          "medications": "Oral supportive medications per discharge plan — synthetic validation",
+          "follow_up": "Medical Oncology review in 48–72 hours; Navigator call within 24 hours.",
+          "treatment_delay_reason": "",
+          "next_cycle": "",
+          "next_care_stage": "Medical Oncology",
+          "created_at": "2026-09-09T09:11:37+05:30",
+          "signed_by": {
+            "id": "UA-2074DEE30152",
+            "username": "ipd.clinician.demo",
+            "name": "Dr Imran Khan — IPD Oncology",
+            "role": "Inpatient Oncology Clinician",
+            "professional_id": "DEMO-IPDC-001"
+          }
+        }
+      }
+    },
+    {
+      "check": "RAV-035 same Cancer Episode maintained",
+      "pass": true,
+      "detail": {
+        "id": "EP-SYN-VAL-04",
+        "patient_id": "PAT-VAL-RAVI",
+        "entity_type": "cancer_episode",
+        "status": "Active",
+        "version": 1,
+        "created_at": "2026-09-09T09:11:29+05:30",
+        "updated_at": "2026-09-09T09:11:29+05:30",
+        "created_by": "USR-UNKNOWN",
+        "updated_by": "USR-UNKNOWN",
+        "data": {
+          "episode_no": "SYN-EP-VAL-04",
+          "kind": "Primary cancer",
+          "label": "Inpatient oncology validation",
+          "started_at": "2026-09-09T09:11:29+05:30",
+          "ended_at": "",
+          "closure_reason": "",
+          "primary_diagnosis_id": "",
+          "status": "Active",
+          "synthetic_validation": true,
+          "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+        }
+      }
+    },
+    {
+      "check": "RAV-036 named actor audit events",
+      "pass": true,
+      "detail": [
+        "CONSULTATION_SIGN",
+        "CREATE",
+        "DIAGNOSIS_VERIFY",
+        "DISCHARGE_SUMMARY",
+        "INTAKE_SAVE",
+        "IPD_ADMISSION",
+        "IPD_BED_ASSIGN",
+        "IPD_DISCHARGE",
+        "IPD_MAR",
+        "IPD_MED_ORDER",
+        "IPD_OBSERVATION",
+        "IPD_SPECIALTY_REVIEW",
+        "JOURNEY_STAGE",
+        "REFERRAL_UPDATE",
+        "REGISTRATION_SAVE",
+        "TASK_AUTO_COMPLETE",
+        "TASK_CREATE",
+        "TASK_SOURCE_OPEN"
+      ]
+    }
+  ],
+  "key_records": {
+    "admission_record": "ADMISSION-SYN-VAL-04",
+    "admission_instance": "ADM-B6BE6CF8",
+    "inpatient_care": "INPATIENT_CARE-SYN-VAL-04",
+    "discharge": "DISCHARGE-SYN-VAL-04",
+    "medication_order": "IPDORD-8421568"
+  }
+}

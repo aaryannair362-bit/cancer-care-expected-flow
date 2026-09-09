@@ -221,14 +221,14 @@
             "raw_precision": 4,
             "display_precision": 2,
             "ordering_precision": 2,
-            "formula_text": "sqrt(height_cm × weight_kg / 3600)"
+            "formula_text": "sqrt(height_cm Ã— weight_kg / 3600)"
           },
-          "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
+          "bsa_formula": "Mosteller: sqrt(height_cm Ã— weight_kg / 3600)",
           "canonical_units": {
             "bp": "mmHg",
             "hr": "/min",
             "rr": "/min",
-            "temp_c": "°C",
+            "temp_c": "Â°C",
             "spo2": "%",
             "weight_kg": "kg",
             "height_cm": "cm"
@@ -252,7 +252,7 @@
             },
             "temp": {
               "value": 98.6,
-              "unit": "°F"
+              "unit": "Â°F"
             },
             "spo2": {
               "value": 99.0,
@@ -294,7 +294,7 @@
           },
           "temp": {
             "value": 98.6,
-            "unit": "°F"
+            "unit": "Â°F"
           },
           "spo2": {
             "value": 99.0,
@@ -318,9 +318,9 @@
         "status": 200,
         "body": {
           "ok": true,
-          "order_id": "TREATMENT_ORDER-5F9DE62281",
-          "pharmacy_id": "PHARMACY-F6D4F3CD54",
-          "infusion_id": "INFUSION-8C29EB2F2F",
+          "order_id": "TREATMENT_ORDER-B0CABC3504",
+          "pharmacy_id": "PHARMACY-CCAB6F5E31",
+          "infusion_id": "INFUSION-E9E3C2863F",
           "supersedes_order_id": ""
         }
       }
@@ -337,19 +337,19 @@
           "height_cm": 170.0,
           "bsa_raw_m2": 1.8181,
           "bsa_m2": 1.82,
-          "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
+          "bsa_formula": "Mosteller: sqrt(height_cm Ã— weight_kg / 3600)",
           "bsa_rounding_policy": {
             "formula": "Mosteller",
             "raw_precision": 4,
             "display_precision": 2,
             "ordering_precision": 2,
-            "formula_text": "sqrt(height_cm × weight_kg / 3600)"
+            "formula_text": "sqrt(height_cm Ã— weight_kg / 3600)"
           },
           "measurement_units": {
             "bp": "mmHg",
             "hr": "/min",
             "rr": "/min",
-            "temp_c": "°C",
+            "temp_c": "Â°C",
             "spo2": "%",
             "weight_kg": "kg",
             "height_cm": "cm"
@@ -373,7 +373,7 @@
             },
             "temp": {
               "value": 98.6,
-              "unit": "°F"
+              "unit": "Â°F"
             },
             "spo2": {
               "value": 99.0,
@@ -388,14 +388,14 @@
               "unit": "in"
             }
           },
-          "measured_at": "2026-09-07T08:25:10+05:30",
+          "measured_at": "2026-09-09T10:17:57+05:30",
           "assessor": {
             "id": "USR-NURSENAV-001",
             "name": "Nurse Navigator",
             "role": "Nurse Navigator"
           },
           "allergies": [
-            "Penicillin — Rash"
+            "Penicillin â€” Rash"
           ],
           "coded_allergies": [
             {
@@ -408,7 +408,7 @@
               "severity": "Moderate",
               "status": "Active",
               "source": "Patient",
-              "clinical_content_status": "Synthetic QA allergen/reaction masters — CCA configuration required"
+              "clinical_content_status": "Synthetic QA allergen/reaction masters â€” CCA configuration required"
             }
           ],
           "readiness_id": "READY-0001"
@@ -444,7 +444,7 @@
         "body": {
           "ok": true,
           "status": "Dispensing Pending",
-          "prepared_at": "2026-09-07T08:25:10+05:30"
+          "prepared_at": "2026-09-09T10:17:57+05:30"
         }
       }
     },

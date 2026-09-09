@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, json, sqlite3, uuid, hashlib, hmac, secrets, base64, mimetypes, re, math, traceback, sys
+import os, json, sqlite3, uuid, hashlib, hmac, secrets, base64, mimetypes, re, math, threading, traceback, sys
 from difflib import SequenceMatcher
 from datetime import datetime, timedelta, date
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
@@ -12,14 +12,25 @@ ROOT=Path(__file__).resolve().parent
 def _load_dotenv():
  p=ROOT/'.env'
  if not p.exists():return
- for line in p.read_text().splitlines():
+ for line in p.read_text(encoding='utf-8').splitlines():
   line=line.strip()
   if not line or line.startswith('#') or '=' not in line:continue
   k,v=line.split('=',1);os.environ.setdefault(k.strip(),v.strip().strip('"').strip("'"))
 _load_dotenv()
 
-STATIC=ROOT/'static'; DB=ROOT/'cca_v12.sqlite3'
+# CCA_DB_PATH selects the local sqlite file; it is ignored once TURSO_DATABASE_URL is set,
+# since db() prefers the remote Turso store whenever that env var is present.
+STATIC=ROOT/'static'; DB=Path(os.environ.get('CCA_DB_PATH',str(ROOT/'cca_v12.sqlite3')))
 PORT=int(os.environ.get('PORT') or 8765)
+HOST=os.environ.get('HOST','127.0.0.1')
+# PC8.0 connected-multidisciplinary auth/deployment config. Individual named-user + PIN
+# login (see seed_user_accounts) is now primary; the legacy shared role+PIN login used by
+# the existing acceptance/regression suites keeps working by default (ALLOW_SHARED_ROLE_LOGIN
+# defaults on) and is refused automatically if CCA_DEPLOYMENT_MODE=production.
+DEMO_PIN=os.environ.get('CCA_DEMO_PIN','2026')
+DEPLOYMENT_MODE=os.environ.get('CCA_DEPLOYMENT_MODE','validation').lower()
+ALLOW_SHARED_ROLE_LOGIN=os.environ.get('CCA_ALLOW_SHARED_ROLE_LOGIN','1')=='1'
+REQUEST_CTX=threading.local()
 SESSION_HOURS=12
 
 ROLES=['Front Desk','Patient Attender','PRE / Patient Relations Executive','Nurse Navigator','Intake Nurse','Medical Oncology','Surgical Oncology','Radiation Oncology','Radiology Coordinator','Radiology Technician','Radiologist','Laboratory / Phlebotomy','Pathology','MDT Coordinator','MDT Chair','External Consultant','Oncology Pharmacy','Day Care / Infusion Nurse','Inpatient Oncology Nurse','Radiation Technologist','Radiation Physicist','Surgical Nurse','Biller','Finance / Billing','Patient Liaison','Hospital Management / Admin','Anaesthetist','Stoma / Wound Nurse','Blood Bank / Transfusion','Dietitian / Nutrition','Psycho-Oncology','Palliative Care','Clinical Trials / Research','Health Information Management','Radiation Dosimetrist / Planner','Pathology Technologist','Inpatient Oncology Clinician']
@@ -69,7 +80,35 @@ WRITE['referral']={'Front Desk','Patient Attender','PRE / Patient Relations Exec
 REFERRAL_TRANSITIONS={'Created':{'Assigned','Cancelled'},'Assigned':{'Accepted','Scheduled','Cancelled'},'Accepted':{'Scheduled','Seen','Closed','Cancelled'},'Scheduled':{'Seen','Cancelled'},'Seen':{'Closed'},'Closed':set(),'Cancelled':set()}
 READ['Front Desk'].add('referral');READ['Patient Attender'].add('referral');READ['PRE / Patient Relations Executive'].add('referral');READ['Nurse Navigator'].add('referral');READ['Medical Oncology'].add('referral')
 READ['Medical Oncology'].add('survivorship');READ['Nurse Navigator'].add('survivorship');READ['Patient Liaison'].add('survivorship')
+for _r in ['Medical Oncology','Nurse Navigator','Surgical Oncology','Radiation Oncology']:
+ READ[_r].add('treatment_completion');READ[_r].add('surveillance')
 READ['Medical Oncology'].add('psychosocial')
+
+# PC8.0 connected-multidisciplinary RBAC: real read/write surfaces for the 11 PC4.0-era
+# PRD roles (previously wired only through the PC4 JSON screen engine, which is untouched
+# and remains available alongside this). Additive only -- no existing role/entity changes.
+READ['Radiation Dosimetrist / Planner']={'registration','diagnosis','radiology','radiation','rt_planning','documents','cancer_episode'}
+READ['Anaesthetist']={'registration','diagnosis','lab','radiology','surgery','anaesthesia','consent','documents','cancer_episode'}
+READ['Blood Bank / Transfusion']={'registration','lab','surgery','blood_bank','documents','cancer_episode'}
+READ['Stoma / Wound Nurse']={'registration','surgery','stoma_wound','inpatient_care','documents','cancer_episode'}
+READ['Dietitian / Nutrition']={'registration','intake','diagnosis','nutrition','documents','cancer_episode'}
+READ['Psycho-Oncology']={'registration','intake','diagnosis','psychosocial','documents','cancer_episode'}
+READ['Palliative Care']={'registration','diagnosis','toxicity','palliative','documents','cancer_episode'}
+READ['Clinical Trials / Research']={'registration','diagnosis','treatment_plan','clinical_trial','documents','cancer_episode'}
+READ['Health Information Management']={'registration','documents','him','cancer_episode'}
+READ['Pathology Technologist']={'registration','pathology','pathology_processing','documents','cancer_episode'}
+READ['Inpatient Oncology Clinician']={'registration','intake','med_recon','diagnosis','lab','radiology','pathology','treatment_plan','readiness','treatment_order','pharmacy','infusion','toxicity','journey','cancer_episode','admission','inpatient_care','discharge','documents'}
+WRITE['navigation']={'Nurse Navigator'};WRITE['anaesthesia']={'Anaesthetist'};WRITE['blood_bank']={'Blood Bank / Transfusion'};WRITE['stoma_wound']={'Stoma / Wound Nurse'};WRITE['nutrition']={'Dietitian / Nutrition'};WRITE['psychosocial']={'Psycho-Oncology'};WRITE['palliative']={'Palliative Care'};WRITE['clinical_trial']={'Clinical Trials / Research'};WRITE['him']={'Health Information Management'};WRITE['pathology_processing']={'Pathology Technologist'};WRITE['rt_planning']={'Radiation Dosimetrist / Planner'}
+for _r in ['Medical Oncology','Surgical Oncology','Radiation Oncology','Nurse Navigator','Inpatient Oncology Clinician']:
+ READ.setdefault(_r,set()).update({'navigation','nutrition','palliative'});READ.setdefault(_r,set()).add('him')
+READ.setdefault('Medical Oncology',set()).update({'psychosocial','clinical_trial'})
+READ.setdefault('Nurse Navigator',set()).add('radiation')
+READ.setdefault('Surgical Oncology',set()).update({'anaesthesia','blood_bank','stoma_wound','pathology_processing'})
+READ.setdefault('Surgical Nurse',set()).update({'anaesthesia','blood_bank','stoma_wound'})
+READ.setdefault('Pathology',set()).add('pathology_processing')
+READ.setdefault('Radiation Oncology',set()).add('rt_planning');READ.setdefault('Radiation Physicist',set()).add('rt_planning');READ.setdefault('Radiation Technologist',set()).add('rt_planning')
+WRITE.setdefault('inpatient_care',set()).add('Inpatient Oncology Clinician');WRITE.setdefault('discharge',set()).add('Inpatient Oncology Clinician')
+SUPPORT_TYPE_BY_ROLE={'Anaesthetist':'anaesthesia','Blood Bank / Transfusion':'blood_bank','Stoma / Wound Nurse':'stoma_wound','Dietitian / Nutrition':'nutrition','Psycho-Oncology':'psychosocial','Palliative Care':'palliative','Clinical Trials / Research':'clinical_trial','Health Information Management':'him','Pathology Technologist':'pathology_processing','Radiation Dosimetrist / Planner':'rt_planning','Nurse Navigator':'navigation'}
 
 VALUE_SETS={'ecog':['0','1','2','3','4'],'kps':[str(x) for x in range(0,101,10)],'intent':['Curative','Palliative','Neoadjuvant','Adjuvant','Definitive','Maintenance','Diagnostic','Other'],'route':['IV','PO','IM','SQ','Intrathecal','CIV','Other'],'allergy_severity':['Mild','Moderate','Severe','Life-threatening','Unknown'],'allergy_status':['No known allergy','Allergy present','Unable to verify'],'allergy_source':['Patient','Caregiver','Prior record','External clinician','Observed at CCA','Integrated record'],'allergy_reaction':['Rash','Urticaria','Pruritus','Angioedema','Anaphylaxis','Bronchospasm','Nausea / vomiting','Other','Unknown'],'med_reconciliation_status':['Complete','Incomplete','Unable to verify'],'care_plan_status':['Draft','Proposed','Active','Blocked','On Hold','Completed','Superseded','Cancelled'],'appointment_status':['Scheduled','Rescheduled','No-show','Cancelled','Completed'],'dose_basis':['Fixed','mg/kg','mg/m²','AUC','Other'],'decision':['Proceed as Planned','Proceed with Modification','Hold','Delay','Omit','Substitute','Stop'],'toxicity':['Nausea','Vomiting','Diarrhea','Mucositis','Neutropenia','Thrombocytopenia','Anemia','Fatigue','Neuropathy','Alopecia','Cardiotoxicity','Nephrotoxicity','Hepatotoxicity','Other'],'ctcae_grade':['1','2','3','4','5'],'laterality':['Left','Right','Bilateral','Midline','Not applicable'],'treatment_line':['Neoadjuvant','Adjuvant','1st line','2nd line','3rd line','Subsequent line','Maintenance','Consolidation','Salvage','Other'],'pharmacy_decision':['Verified','Query','Reject'],'completion_status':['Administered','Partially Administered','Held','Stopped'],'rt_frequency':['Daily','5x/week','3x/week','Weekly','Other'],'surgery_priority':['Routine','Urgent','Emergency'],'admission_type':['Planned','Emergency','Unplanned'],'admission_reason':['Treatment / procedure','Treatment toxicity','Infection / febrile neutropenia','Adverse drug reaction','Post-operative care','Brachytherapy procedure','Seizure / neurologic event','Nutrition / dehydration','Other'],'admission_status':['Active','Transferred','Discharged','Deceased'],'care_setting':['OPD','Day Care','IPD'],'continuous_mode':['Oral systemic therapy','Hormonal therapy','Other continuous systemic therapy'],'task_status':['Open','Acknowledged','Completed','Cancelled'],'task_priority':['Routine','High','Critical'],'medication_status':['Continue','Hold','Stopped'],'medication_frequency':['Once daily','Twice daily','Three times daily','Every other day','Weekly','As needed','Other prescribed schedule'],'medication_dose_unit':['mg','mcg','g','mL','tablet','capsule','unit'],'access_type':['Peripheral IV','PICC','Central venous catheter','Port','Oral / no vascular access','Other'],'access_site':['Left upper limb','Right upper limb','Left lower limb','Right lower limb','Chest central access','Not applicable','Other'],'mar_variance_type':['None','Dose variance','Rate variance','Route variance','Timing variance','Sequence variance','Other'],'mar_variance_reason':['Clinician instruction','Infusion reaction','Access issue','Patient condition','Operational delay','Product issue','Other'],'pharmacy_wastage_reason':['Partial vial','Dose rounding','Preparation error','Spill / breakage','Cancelled treatment','Expired / BUD exceeded','Return not reusable','Other']}
 VALUE_SETS['referral_priority']=['Routine','Urgent','Emergency']
@@ -426,6 +465,20 @@ def jload(s,d=None):
     try:return json.loads(s)
     except:return {} if d is None else d
 
+# PC8.0 named-user PIN auth. Salted PBKDF2 digest; never store/compare raw PINs.
+def _pin_digest(pin,salt_hex):
+ salt=bytes.fromhex(salt_hex);return hashlib.pbkdf2_hmac('sha256',str(pin).encode(),salt,210000).hex()
+def _new_pin_hash(pin):
+ salt=secrets.token_bytes(16).hex();return salt,_pin_digest(pin,salt)
+def verify_pin(pin,salt_hex,digest):
+ try:return hmac.compare_digest(_pin_digest(pin,salt_hex),digest)
+ except:return False
+
+def current_request_actor(role=''):
+ a=getattr(REQUEST_CTX,'actor',None)
+ if a and (not role or a.get('role')==role):return a
+ return None
+
 class _Row:
  def __init__(self,cols,vals):
   self._cols=cols; self._vals=vals
@@ -470,6 +523,8 @@ def init_db():
  CREATE TABLE IF NOT EXISTS audit(id INTEGER PRIMARY KEY AUTOINCREMENT,patient_id TEXT,actor_id TEXT,actor_role TEXT,action TEXT,entity_type TEXT,entity_id TEXT,detail TEXT,at TEXT,prev_hash TEXT,hash TEXT);
  CREATE TABLE IF NOT EXISTS record_versions(id INTEGER PRIMARY KEY AUTOINCREMENT,record_id TEXT,patient_id TEXT,entity_type TEXT,version INTEGER,status TEXT,data_json TEXT,actor_id TEXT,actor_role TEXT,reason TEXT,at TEXT);
  CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,user_id TEXT,role TEXT,expires_at TEXT);
+ CREATE TABLE IF NOT EXISTS user_accounts(id TEXT PRIMARY KEY,username TEXT UNIQUE,display_name TEXT,role TEXT,professional_id TEXT,pin_salt TEXT,pin_hash TEXT,active INTEGER,demo_account INTEGER,failed_attempts INTEGER,locked_until TEXT,created_at TEXT,updated_at TEXT);
+ CREATE INDEX IF NOT EXISTS idx_user_accounts_role ON user_accounts(role,active);
  CREATE TABLE IF NOT EXISTS documents(id TEXT PRIMARY KEY,patient_id TEXT,title TEXT,filename TEXT,mime TEXT,category TEXT,document_type TEXT,source_institution TEXT,document_date TEXT,content BLOB,uploaded_by TEXT,uploaded_at TEXT);
  CREATE TABLE IF NOT EXISTS document_facts(id TEXT PRIMARY KEY,patient_id TEXT,document_id TEXT,fact_name TEXT,fact_value TEXT,code_system TEXT,code TEXT,page_ref TEXT,section_ref TEXT,source_snippet TEXT,extraction_method TEXT,confidence REAL,status TEXT,validated_by TEXT,validated_at TEXT,created_at TEXT);
  CREATE INDEX IF NOT EXISTS idx_document_facts_patient ON document_facts(patient_id,document_id,status);
@@ -489,9 +544,12 @@ def init_db():
  CREATE INDEX IF NOT EXISTS idx_cca_validation_signoff_role ON cca_validation_signoff(specialty_role,created_at);
  CREATE TABLE IF NOT EXISTS tasks(id TEXT PRIMARY KEY,patient_id TEXT,episode_id TEXT,task_type TEXT,title TEXT,status TEXT,priority TEXT,owner_role TEXT,owner_user_id TEXT,source_type TEXT,source_id TEXT,due_at TEXT,acknowledged_at TEXT,acknowledged_by TEXT,completed_at TEXT,completed_by TEXT,escalation_level INTEGER,reason TEXT,data_json TEXT,created_at TEXT,created_by TEXT,updated_at TEXT,updated_by TEXT);
  CREATE INDEX IF NOT EXISTS idx_tasks_patient_owner ON tasks(patient_id,owner_role,status,due_at);
- '''); c.commit(); seed_content_master(c); seed_pc7_masters(c); c.commit(); c.close(); seed()
+ '''); c.commit(); seed_content_master(c); seed_pc7_masters(c); seed_user_accounts(c); c.commit(); c.close(); seed()
 
-def actor(role): return USERS.get(role,{'id':'USR-UNKNOWN','name':role,'role':role})
+def actor(role):
+ a=current_request_actor(role)
+ if a:return a
+ return USERS.get(role,{'id':'USR-UNKNOWN','name':role,'role':role})
 def audit(c,pid,role,action,etype='',eid='',detail=''):
  last=c.execute('SELECT hash FROM audit ORDER BY id DESC LIMIT 1').fetchone(); prev=last['hash'] if last else 'GENESIS'; at=now(); raw='|'.join([prev,pid or '',actor(role)['id'],role,action,etype or '',eid or '',detail or '',at]); h=hashlib.sha256(raw.encode()).hexdigest(); c.execute('INSERT INTO audit(patient_id,actor_id,actor_role,action,entity_type,entity_id,detail,at,prev_hash,hash) VALUES(?,?,?,?,?,?,?,?,?,?)',(pid,actor(role)['id'],role,action,etype,eid,detail,at,prev,h))
 
@@ -519,6 +577,21 @@ def active_disclosure_consent(c,pid):
   if vu and vu<today:continue
   return x
  return None
+
+def seed_user_accounts(c):
+ # PC8.0 connected-multidisciplinary individual accountability: one named synthetic
+ # validation account per role, PIN-protected. Idempotent — only inserts missing usernames.
+ named={
+ 'Front Desk':('front.desk.demo','Kavya Rao — Front Desk','DEMO-FD-001'),'Intake Nurse':('intake.demo','Asha Menon — Intake Nurse','DEMO-IN-001'),'Nurse Navigator':('navigator.demo','Meera Joseph — Nurse Navigator','DEMO-NN-001'),'Medical Oncology':('mo.demo','Dr Asha Mehta','DEMO-MO-001'),'Surgical Oncology':('surgery.demo','Dr Karan Shah','DEMO-SO-001'),'Radiation Oncology':('ro.demo','Dr Neha Rao','DEMO-RO-001'),'MDT Coordinator':('mdt.coordinator.demo','Riya Kapoor — MDT Coordinator','DEMO-MDT-CO-001'),'MDT Chair':('mdt.chair.demo','Dr Vikram Menon — MDT Chair','DEMO-MDT-CHAIR-001'),'Radiologist':('radiologist.demo','Dr Rohan Kulkarni','DEMO-RAD-001'),'Radiology Coordinator':('radiology.coordinator.demo','Isha Verma — Radiology Coordinator','DEMO-RC-001'),'Radiology Technician':('radiology.tech.demo','Dev Patel — Radiology Technician','DEMO-RTCH-001'),'Laboratory / Phlebotomy':('laboratory.demo','Nisha Das — Laboratory','DEMO-LAB-001'),'Pathology Technologist':('path.tech.demo','Amit Das — Pathology Technologist','DEMO-PT-001'),'Pathology':('pathology.demo','Dr Mira Desai','DEMO-PATH-001'),'Oncology Pharmacy':('pharmacy.demo','Priya Nair — Oncology Pharmacist','DEMO-PH-001'),'Day Care / Infusion Nurse':('daycare.demo','Anita Paul — Infusion Nurse','DEMO-DC-001'),'Radiation Dosimetrist / Planner':('planner.demo','Arvind Shah — RT Planner','DEMO-PLAN-001'),'Radiation Physicist':('physics.demo','Arvind Iyer — Medical Physicist','DEMO-PHY-001'),'Radiation Technologist':('rtt.demo','Meera Joshi — RTT','DEMO-RTT-001'),'Anaesthetist':('anaesthesia.demo','Dr Nitin Rao — Anaesthetist','DEMO-AN-001'),'Surgical Nurse':('surgical.nurse.demo','Sonia Bhat — Surgical Nurse','DEMO-SN-001'),'Blood Bank / Transfusion':('bloodbank.demo','Rahul Nair — Blood Bank','DEMO-BB-001'),'Stoma / Wound Nurse':('wound.demo','Latha Mary — Wound Nurse','DEMO-WN-001'),'Inpatient Oncology Clinician':('ipd.clinician.demo','Dr Imran Khan — IPD Oncology','DEMO-IPDC-001'),'Inpatient Oncology Nurse':('ipd.nurse.demo','Neha Paul — IPD Nurse','DEMO-IPDN-001'),'Dietitian / Nutrition':('dietitian.demo','Sara Thomas — Dietitian','DEMO-DIET-001'),'Psycho-Oncology':('psycho.demo','Dr Ritu Shah — Psycho-Oncology','DEMO-PSY-001'),'Palliative Care':('palliative.demo','Dr Aman Bose — Palliative Care','DEMO-PAL-001'),'Clinical Trials / Research':('trials.demo','Ira Sen — Trials Coordinator','DEMO-CTR-001'),'Health Information Management':('him.demo','Arun Iyer — HIM','DEMO-HIM-001'),'Finance / Billing':('finance.demo','CCA Finance Reviewer','DEMO-FIN-001'),'Biller':('biller.demo','CCA Biller','DEMO-BIL-001'),'Patient Liaison':('liaison.demo','Pooja Shah — Patient Liaison','DEMO-PL-001'),'Hospital Management / Admin':('admin.demo','CCA System Administrator','DEMO-ADM-001'),'PRE / Patient Relations Executive':('pre.patient.relations.executive.demo','Demo PRE / Patient Relations Executive','DEMO-PRE-001'),'Patient Attender':('patient.attender.demo','Demo Patient Attender','DEMO-PA-001'),'External Consultant':('external.consultant.demo','Demo External Consultant','DEMO-EXT-001')}
+ creds=[]
+ for idx,role in enumerate(ROLES,1):
+  username,display,prof=named.get(role,(re.sub(r'[^a-z0-9]+','.',role.lower()).strip('.')+'.demo','Demo '+role,'DEMO-'+str(idx).zfill(3)))
+  pin=f'CCA{idx:02d}#71';uid='UA-'+hashlib.sha256((role+'|'+username).encode()).hexdigest()[:12].upper()
+  if not c.execute('SELECT 1 FROM user_accounts WHERE username=?',(username,)).fetchone():
+   salt,dig=_new_pin_hash(pin);t=now();c.execute('INSERT INTO user_accounts VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)',(uid,username,display,role,prof,salt,dig,1,1,0,'',t,t))
+  creds.append((username,pin,display,role))
+ try:(ROOT/'DEMO_USER_CREDENTIALS.txt').write_text('CCA V12.2-PC8.0 SYNTHETIC VALIDATION USERS — NOT FOR REAL-PATIENT PRODUCTION\n\n'+'\n'.join(f'{u} | {pin} | {d} | {r}' for u,pin,d,r in creds)+'\n',encoding='utf-8')
+ except Exception:pass
 
 def seed_finance_schemes(c):
  t=now();rows=[
@@ -628,6 +701,10 @@ def many(c,pid,typ):
   d=dict(r);d['data']=jload(d.pop('data_json'),{});out.append(d)
  return out
 
+def latest_usable(c,pid,typ,statuses):
+ good=[x for x in many(c,pid,typ) if x.get('status') in set(statuses) and not x.get('data',{}).get('superseded_by_record_id')]
+ return good[-1] if good else None
+
 def update_rec(c,rid,patch,status=None,role='System',action='UPDATE',detail=''):
  r=get_rec(c,rid)
  if not r:return None
@@ -685,7 +762,7 @@ def close_future_work(c,pid,role,reason):
 def external_historical_regimen_templates():
  path=ROOT/'clinical_content'/'openmrs_historical_regimens.json'
  if not path.exists():return []
- try: payload=json.loads(path.read_text())
+ try: payload=json.loads(path.read_text(encoding='utf-8'))
  except Exception:return []
  out=[]
  for r in payload.get('regimens',[]):
@@ -716,7 +793,7 @@ def seed_content_master(c):
  # It is deliberately segregated by source_id and is never represented as patient-care guidance.
  qa_path=ROOT/'clinical_content'/'synthetic_institutional_test_content.json'
  if qa_path.exists():
-  try:qa=json.loads(qa_path.read_text())
+  try:qa=json.loads(qa_path.read_text(encoding='utf-8'))
   except Exception:qa={}
   src=qa.get('source') or {}
   if src.get('id'):
@@ -1269,6 +1346,46 @@ def seed_showcase_cases(c):
  if c.execute("SELECT 1 FROM patients WHERE id='PAT-DEMO-CHEMO'").fetchone():return
  _seed_chemo_case(c);_seed_rt_case(c);_seed_surgery_case(c);_seed_ipd_case(c);_seed_survivorship_case(c);pc7_reconcile_showcase(c)
 
+# PC8.0 connected-multidisciplinary validation patients. Distinct PAT-VAL-* ids so these
+# never collide with the pre-advanced PAT-DEMO-* showcase patients above (left untouched).
+# Unlike the showcase patients, these are deliberately seeded bare-registration-only --
+# nothing downstream is pre-completed -- so the full role-owned handoff chain (task/handoff
+# engine) has to be exercised through the UI/API to advance them, exactly as PC8.0 intended.
+def seed_pc8_validation_cases(c):
+ if c.execute("SELECT 1 FROM patients WHERE id='PAT-VAL-ANANYA'").fetchone():return
+ disclaimer='SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE'
+ cases=[
+  {'id':'PAT-VAL-ANANYA','mrn':'CCA-SYN-VAL-CHEMO-01','name':'Ananya Shah','dob':'1984-02-03','sex':'Female','phone':'917000000101','id_number':'SYN-ANANYA-01','specialty':'Medical Oncology','case_type':'Systemic Therapy','label':'HER2-positive breast cancer systemic-therapy validation','case_summary':'Synthetic Stage IIB HER2-positive breast cancer case for Registration -> MDT -> systemic treatment -> response execution.','hints':{'chief_complaint':'Left breast lump','assessment':'HER2-positive breast cancer','cancer_type':'Breast Cancer','site':'Left breast','histology':'Invasive ductal carcinoma','stage':'Stage IIB','stage_t':'cT2','stage_n':'cN1','stage_m':'cM0','intent':'Neoadjuvant','regimen':'Synthetic HER2+ Breast Neoadjuvant Demo Regimen'}},
+  {'id':'PAT-VAL-NEHA','mrn':'CCA-SYN-VAL-RT-01','name':'Neha Kulkarni','dob':'1972-07-14','sex':'Female','phone':'917000000102','id_number':'SYN-NEHA-01','specialty':'Radiation Oncology','case_type':'Radiation Oncology','label':'Breast/chest-wall radiotherapy validation','case_summary':'Synthetic radiotherapy case for prescription -> simulation -> contouring -> planning -> physics QA -> release -> fraction delivery -> OTV/completion.','hints':{'cancer_type':'Breast Cancer','site':'Left chest wall / regional nodes','histology':'Invasive carcinoma','stage':'Stage IIIA','intent':'Adjuvant','rt_total_gy':50,'rt_fraction_gy':2,'rt_fractions':25}},
+  {'id':'PAT-VAL-ARJUN','mrn':'CCA-SYN-VAL-SURG-01','name':'Arjun Mehta','dob':'1965-11-20','sex':'Male','phone':'917000000103','id_number':'SYN-ARJUN-01','specialty':'Surgical Oncology','case_type':'Surgery / Pathology','label':'Colorectal surgical-oncology validation','case_summary':'Synthetic surgical case for plan -> anaesthesia -> pre-op/blood readiness -> theatre -> operation -> specimen -> pathology -> pTNM -> adjuvant handoff.','hints':{'cancer_type':'Colorectal Cancer','site':'Sigmoid colon','histology':'Adenocarcinoma','stage':'Stage IIIB','stage_t':'cT3','stage_n':'cN1','stage_m':'cM0','intent':'Curative','procedure':'Laparoscopic sigmoid colectomy'}},
+  {'id':'PAT-VAL-RAVI','mrn':'CCA-SYN-VAL-IPD-01','name':'Ravi Kapoor','dob':'1959-05-28','sex':'Male','phone':'917000000104','id_number':'SYN-RAVI-01','specialty':'Medical Oncology','case_type':'Inpatient Oncology','label':'Inpatient oncology validation','case_summary':'Synthetic inpatient case for admission -> nursing/clinician assessment -> orders/MAR -> deterioration escalation -> discharge -> outpatient follow-up.','hints':{'cancer_type':'Lung Cancer','site':'Right lung','histology':'Adenocarcinoma','stage':'Stage IV','intent':'Palliative','admission_reason':'Fever during active oncology treatment'}},
+  {'id':'PAT-VAL-LEELA','mrn':'CCA-SYN-VAL-SURV-01','name':'Leela Nair','dob':'1977-09-09','sex':'Female','phone':'917000000105','id_number':'SYN-LEELA-01','specialty':'Medical Oncology','case_type':'Survivorship / Recurrence','label':'Treatment completion and recurrence validation','case_summary':'Synthetic survivorship case for end-of-treatment summary -> surveillance -> suspected progression -> MO confirmation -> new line -> MDT within same Cancer Episode.','hints':{'cancer_type':'Breast Cancer','site':'Right breast','histology':'Invasive ductal carcinoma','stage':'Stage IIA','intent':'Curative','surveillance_interval':'3 months'}}
+ ]
+ common_workspace=[
+  ('consent',{'items':[]},'Active'),('appointments',{'items':[]},'Active'),('queue',{'current_location':'Front Desk','current_status':'Registered','priority':'Routine','token':'','history':[]},'Active'),('journey',{'current_location':'Front Desk','current_care_stage':'Registration','events':[]},'Active'),
+  ('admission',{'admissions':[]},'Active'),('inpatient_care',{'daily_notes':[],'nursing_observations':[],'intake_output':[],'pain_assessments':[],'toxicity_events':[],'specialty_reviews':[],'medication_orders':[],'mar':[]},'Active'),('discharge',{'summaries':[]},'Active'),('continuous_therapy',{'courses':[]},'Active'),('tumor_marker',{'measurements':[]},'Active'),
+  ('intake',{'nkda':True,'bp':'','hr':'','rr':'','temp_c':'','spo2':'','weight_kg':'','height_cm':'','ecog':'','kps':'','pain_score':''},'Draft'),('med_recon',{'items':[],'allergies':[],'reconciliation_events':[]},'Active'),('dynamic_forms',{'definitions':[],'responses':{}},'Active'),
+  ('consultation',{},'Draft'),('diagnosis',{},'Draft'),('lab',{},'Draft'),('pathology',{},'Draft'),('radiology',{},'Draft'),('mdt',{'attendees':[]},'Draft'),('mdt_collab',{'comments':[],'attendance':[],'external_consultants':[]},'Active'),('mdt_followup',{'action_items':[]},'Active'),('care_plan',{'status':'Draft','goals':[],'milestones':[],'dependencies':[]},'Draft'),('treatment_plan',{'phases':[]},'Draft'),
+  ('protocol_library',{},'Active'),('formulary',{},'Active'),('readiness',{},'Draft'),('treatment_order',{},'Draft'),('pharmacy',{},'Draft'),('infusion',{'mar':[]},'Draft'),('toxicity',{'ctcae_version':'5.0','events':[]},'Active'),('modification',{'items':[]},'Active'),('response',{'framework':'RECIST 1.1','assessments':[]},'Active'),
+  ('radiation',{'prescription':{'status':'Draft'},'planning':{'simulation_status':'Pending','contouring_status':'Pending','planning_status':'Pending','physics_qa':'Pending','physician_final_approval':'Pending','dicom_refs':{}},'fractions':[],'interruptions':[],'otv':[]},'Draft'),
+  ('surgery',{'plan':{'status':'Draft'},'preop':{'ready':False},'theatre_readiness':{},'outcome':{}},'Draft'),('anaesthesia',{},'Draft'),('blood_bank',{},'Draft'),('stoma_wound',{'assessments':[]},'Draft'),('pathology_processing',{},'Draft'),
+  ('navigation',{},'Draft'),('nutrition',{},'Draft'),('psychosocial',{},'Draft'),('palliative',{},'Draft'),('clinical_trial',{},'Draft'),('him',{},'Draft'),('rt_planning',{},'Draft'),
+  ('treatment_history',{'episodes':[]},'Active'),('visit_summary',{'items':[]},'Active'),('finance',{},'Active'),('conversion',{'counselling_status':'Not Started','scheme_assessments':[]},'Active'),('treatment_completion',{},'Draft'),('survivorship',{},'Draft'),('surveillance',{'encounters':[]},'Active')
+ ]
+ for i,q in enumerate(cases,1):
+  t=now();c.execute('INSERT INTO patients VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)',(q['id'],q['mrn'],q['name'],q['dob'],q['sex'],q['phone'],'',q['id_number'],'Front Desk','Active','',t,t));pid=q['id']
+  ep_id=new_record(c,pid,'cancer_episode',{'episode_no':f'SYN-EP-VAL-{i:02d}','kind':'Primary cancer','label':q['label'],'started_at':t,'ended_at':'','closure_reason':'','primary_diagnosis_id':'','status':'Active','synthetic_validation':True,'disclaimer':disclaimer},'Active','System',f'EP-SYN-VAL-{i:02d}')
+  reg_id=new_record(c,pid,'registration',{'arrival_type':'Synthetic validation','assigned_specialty':q['specialty'],'clinician_assignment':'','route_rule':'CCA connected-workflow validation','referral_reason':q['case_summary'],'address':'Synthetic validation address','general_consent':'Pending','photo_status':'Not required','synthetic_validation':True,'disclaimer':disclaimer},'Draft','System',f'REG-SYN-VAL-{i:02d}')
+  ref_id=new_record(c,pid,'referral',{'status':'Created','reason':q['case_summary'],'assigned_department':'','assigned_clinician':'','priority':'Routine','history':[{'status':'Created','at':t,'by':{'name':'System','role':'System'},'reason':'Synthetic validation baseline'}],'synthetic_validation':True,'disclaimer':disclaimer},'Created','System',f'REF-SYN-VAL-{i:02d}')
+  new_record(c,pid,'validation_case',{'case_type':q['case_type'],'intended_specialty':q['specialty'],'case_summary':q['case_summary'],'hints':q['hints'],'disclaimer':disclaimer,'proof_rule':'Seed establishes starting state only; completed workflow evidence must be created through normal UI/API actions.'},'Active','System',f'VALCASE-SYN-VAL-{i:02d}')
+  for typ,data0,st in common_workspace:
+   dd=dict(data0);dd.update({'synthetic_validation':True,'disclaimer':disclaimer,'episode_id':ep_id}) if typ not in ['queue','journey'] else dd.update({'synthetic_validation':True,'disclaimer':disclaimer})
+   new_record(c,pid,typ,dd,st,'System',f'{typ.upper()}-SYN-VAL-{i:02d}')
+  # Initial real responsibility begins with Registration. Nothing downstream is pre-completed.
+  handoff(c,pid,'Front Desk','Complete registration and assign oncology referral','Registration / referral','registration',reg_id,'System','High','Synthetic validation case awaiting role-owned registration',{'referral_id':ref_id,'validation_case_id':f'VALCASE-SYN-VAL-{i:02d}','disclaimer':disclaimer},episode_id=ep_id)
+  grant_patient_access(c,pid,'Intake Nurse','synthetic-baseline',ref_id,'System')
+  journey_add(c,pid,'Front Desk','Registration','Draft','System','registration',reg_id,disclaimer,True)
+
 
 def seed():
  c=db()
@@ -1334,6 +1451,7 @@ def seed():
  new_record(c,pid,'cca_requirements',{'note':'Runtime status only; live external integrations remain external.','rows':[{'area':'Registration','requirement':'Registration / routing / consent / scheduling / queue','status':'Runtime functional'},{'area':'Nurse EMR','requirement':'Vitals / BSA / medication reconciliation / forms','status':'Runtime functional'},{'area':'Doctor EMR','requirement':'Structured OPD / diagnosis / staging / diagnostic orders','status':'Runtime functional'},{'area':'MDT','requirement':'Case / comments / attendance / recommendation / specialty-plan separation','status':'Runtime functional'},{'area':'Systemic therapy','requirement':'Plan → order → pharmacy → Day Care MAR','status':'Runtime functional'},{'area':'Radiation','requirement':'Prescription → planning status → fraction tracking','status':'Runtime functional prototype'},{'area':'Surgery','requirement':'Plan → pre-op → procedure → histopathology/adjuvant handoff','status':'Runtime functional prototype'},{'area':'ABDM / MOSAIQ / PACS / LIS / TPS','requirement':'Live external integration','status':'Interface boundary only'}]},'Active','System','REQ-0001')
  pc7_reconcile_base_patient(c)
  seed_showcase_cases(c)
+ seed_pc8_validation_cases(c)
  # Seeded demo patient is intentionally assigned to every internal role so every demo surface can be exercised.
  for rr in ROLES:
   if rr!='External Consultant':grant_patient_access(c,pid,rr,'seed_demo','PAT-0001','System')
@@ -1391,6 +1509,52 @@ def tasks_for_role(c,role,pid=''):
  if role!='Hospital Management / Admin':q+=' AND owner_role=?';args.append(role)
  q+=' ORDER BY CASE priority WHEN \'Critical\' THEN 0 WHEN \'High\' THEN 1 ELSE 2 END, due_at, created_at'
  return [task_row(r) for r in c.execute(q,args)]
+
+# PC8.0 connected-multidisciplinary task/handoff engine. Built on the existing
+# create_task/tasks_for_role/patient_access primitives above -- additive only.
+def ensure_task(c,pid,owner_role,title,task_type='Follow-up',priority='Routine',source_type='',source_id='',due_at='',episode_id='',reason='',data=None,created_by='System'):
+ r=c.execute("SELECT * FROM tasks WHERE patient_id=? AND owner_role=? AND task_type=? AND source_type=? AND source_id=? AND status IN ('Open','Acknowledged') ORDER BY created_at DESC LIMIT 1",(pid,owner_role,task_type,source_type or '',source_id or '')).fetchone()
+ if r:return r['id']
+ return create_task(c,pid,owner_role,title,task_type,priority,source_type,source_id,due_at,episode_id,reason,data,created_by)
+
+def complete_open_tasks(c,pid,owner_role=None,task_type=None,source_type=None,source_id=None,completed_by='System'):
+ q="SELECT id FROM tasks WHERE patient_id=? AND status IN ('Open','Acknowledged')";args=[pid]
+ if owner_role:q+=' AND owner_role=?';args.append(owner_role)
+ if task_type:q+=' AND task_type=?';args.append(task_type)
+ if source_type:q+=' AND source_type=?';args.append(source_type)
+ if source_id:q+=' AND source_id=?';args.append(source_id)
+ ids=[r['id'] for r in c.execute(q,args)]
+ if ids:
+  t=now();aid=actor(completed_by)['id'] if completed_by in ROLES else str(completed_by)
+  for tid in ids:
+   c.execute("UPDATE tasks SET status='Completed',completed_at=?,completed_by=?,updated_at=?,updated_by=? WHERE id=?",(t,aid,t,aid,tid));audit(c,pid,completed_by if completed_by in ROLES else 'System','TASK_AUTO_COMPLETE','task',tid,'Completed by workflow transition')
+ return ids
+
+def cancel_open_tasks(c,pid,owner_role=None,task_type=None,source_type=None,source_id=None,cancelled_by='System',reason='Source record superseded'):
+ q="SELECT id FROM tasks WHERE patient_id=? AND status IN ('Open','Acknowledged')";args=[pid]
+ if owner_role:q+=' AND owner_role=?';args.append(owner_role)
+ if task_type:q+=' AND task_type=?';args.append(task_type)
+ if source_type:q+=' AND source_type=?';args.append(source_type)
+ if source_id:q+=' AND source_id=?';args.append(source_id)
+ ids=[r['id'] for r in c.execute(q,args)]
+ if ids:
+  t=now();aid=actor(cancelled_by)['id'] if cancelled_by in ROLES else str(cancelled_by)
+  for tid in ids:
+   c.execute("UPDATE tasks SET status='Cancelled',reason=?,updated_at=?,updated_by=? WHERE id=?",(reason,t,aid,tid));audit(c,pid,cancelled_by if cancelled_by in ROLES else 'System','TASK_AUTO_CANCEL','task',tid,reason)
+ return ids
+
+def handoff(c,pid,owner_role,title,task_type,source_type,source_id,created_by,priority='Routine',reason='',data=None,due_at='',episode_id=''):
+ tid=ensure_task(c,pid,owner_role,title,task_type,priority,source_type,source_id,due_at,episode_id,reason,data,created_by);grant_patient_access(c,pid,owner_role,'task',tid,created_by);return tid
+
+def task_context(c,t,viewer_role=''):
+ x=task_row(t) if not isinstance(t,dict) else t;pat=patient(c,x.get('patient_id')) if x.get('patient_id') else None;ep=get_rec(c,x.get('episode_id')) if x.get('episode_id') else current_episode(c,x.get('patient_id')) if x.get('patient_id') else None;raw=get_rec(c,x.get('source_id')) if x.get('source_id') else None
+ signed_by='';signed_at=''
+ if raw:
+  d=raw.get('data',{});nested=(d.get('plan') if raw.get('entity_type')=='surgery' else d.get('prescription') if raw.get('entity_type')=='radiation' else {}) or {};sb=d.get('signed_by') or d.get('approved_by') or d.get('completed_by') or d.get('released_by') or nested.get('signed_by');signed_by=sb.get('name') if isinstance(sb,dict) else sb or '';signed_at=d.get('signed_at') or d.get('approved_at') or d.get('completed_at') or d.get('dispensed_at') or nested.get('signed_at') or ''
+ # Task worklists must never become a side-channel around role projections. The same
+ # minimum-necessary projection used by patient bootstrap is used here as well.
+ src=project_record(raw,viewer_role) if raw and viewer_role and role_can_read(viewer_role,raw.get('entity_type')) else (raw if raw and not viewer_role else None)
+ return {**x,'patient':project_patient(pat,viewer_role) if pat and viewer_role else pat,'episode':ep,'source_record':src,'source_record_type':raw.get('entity_type') if raw else x.get('source_type'),'source_record_id':raw.get('id') if raw else x.get('source_id'),'source_record_version':raw.get('version') if raw else None,'source_record_status':raw.get('status') if raw else '','source_record_updated_at':raw.get('updated_at') if raw else '','source_visible_to_role':bool(src),'signed_by':signed_by,'signed_at':signed_at,'provenance':{'created_by':raw.get('created_by') if raw else '','updated_by':raw.get('updated_by') if raw else '','source_type':x.get('source_type'),'source_id':x.get('source_id')}}
 
 def record_snapshot(c,rid,version=None):
  r=get_rec(c,rid)
@@ -1493,6 +1657,12 @@ def project_record(e,role):
  if role in ['Biller','Finance / Billing'] and e['entity_type'] in ['lab_order','radiology_order']:
   d=e['data']; keep=['order_no','tests','study','date','billing','payment_receipt','sample_status','procedure_status','schedule','status']; e={**e,'data':{k:d.get(k) for k in keep if k in d}}
  if role=='Front Desk' and e['entity_type']=='documents': e={**e,'data':{'count':e['data'].get('count',0)}}
+ # Minimum-necessary projection: full Psycho-Oncology counselling narrative is restricted to
+ # the owning discipline; other care-team roles see only the coded risk/summary fields needed
+ # to coordinate care, matching the same minimum-necessary pattern used for consent above.
+ if e['entity_type']=='psychosocial' and role not in ['Psycho-Oncology','Hospital Management / Admin']:
+  keep=['assessment_date','distress_score','risk_level','care_team_summary','status','signed_by','signed_at','supersedes','amendment_reason','superseded_by_record_id']
+  e={**e,'data':{k:e['data'].get(k) for k in keep if k in e['data']}}
  return e
 
 def role_can_read(role,typ): return typ in READ.get(role,set()) or role=='Hospital Management / Admin' and typ in READ['Hospital Management / Admin']
@@ -1761,6 +1931,12 @@ def pc4_handoff_owner(screen):
 
 class H(BaseHTTPRequestHandler):
  server_version='CCA-V12.2-PC1.9/1.0'
+ def handle_one_request(self):
+  try:return super().handle_one_request()
+  except Exception as exc:
+   cid='ERR-'+uuid.uuid4().hex[:10].upper();print(f'[{cid}] Unhandled request error: {exc}',file=sys.stderr);traceback.print_exc()
+   try:return self.sendj({'error':'Unexpected server error','correlation_id':cid},500)
+   except Exception:return None
  def log_message(self,fmt,*args): pass
  def sendj(self,obj,status=200):
   b=json.dumps(obj,ensure_ascii=False).encode();self.send_response(status);self.send_header('Content-Type','application/json; charset=utf-8');self.send_header('Content-Length',len(b));self.end_headers();self.wfile.write(b)
@@ -1776,14 +1952,20 @@ class H(BaseHTTPRequestHandler):
   try:
    if datetime.fromisoformat(r['expires_at'])<datetime.now().astimezone():return None
   except:return None
+  u=c.execute('SELECT * FROM user_accounts WHERE id=? AND active=1',(r['user_id'],)).fetchone()
+  if u:
+   u=dict(u);REQUEST_CTX.actor={'id':u['id'],'username':u['username'],'name':u['display_name'],'role':u['role'],'professional_id':u['professional_id']}
+  else:REQUEST_CTX.actor=USERS.get(r['role'],{'id':r['user_id'],'name':r['role'],'role':r['role']})
   return dict(r)
  def do_GET(self):
   p=urlparse(self.path)
-  if p.path=='/api/health':return self.sendj({'ok':True,'product':'CCA Cancer Care HIS + Oncology EMR V12.2 Structural Conformance','version':'12.2','build':'12.2-PC1.9','date':'2026-09-05','synthetic_test_content':True})
+  if p.path=='/api/health':return self.sendj({'ok':True,'product':'CCA Cancer Care HIS + Oncology EMR V12.2 Structural Conformance — PC4.0 PRD Screens + PC8.0 Connected Multidisciplinary','version':'12.2','build':'12.2-PC1.9-PC8.0','date':'2026-09-08','synthetic_test_content':True})
   if p.path.startswith('/static/') or p.path=='/':
    rel='index.html' if p.path=='/' else p.path[len('/static/'):];f=STATIC/rel
    if not f.exists():self.send_error(404);return
    mime=mimetypes.guess_type(f.name)[0] or 'application/octet-stream';b=f.read_bytes();self.send_response(200);self.send_header('Content-Type',mime);self.send_header('Content-Length',len(b));self.end_headers();self.wfile.write(b);return
+  if p.path=='/api/login/users':
+   c=db();rows=[{'username':r['username'],'display_name':r['display_name'],'role':r['role'],'professional_id':r['professional_id']} for r in c.execute('SELECT * FROM user_accounts WHERE active=1 ORDER BY role,display_name')];c.close();return self.sendj({'users':rows,'shared_role_login_enabled':ALLOW_SHARED_ROLE_LOGIN})
   c=db(); s=self.auth(c)
   if not s:c.close();return self.sendj({'error':'Authentication required'},401)
   role=s['role']
@@ -1915,7 +2097,16 @@ class H(BaseHTTPRequestHandler):
   if p.path=='/api/tasks':
    q=parse_qs(p.query);pid=q.get('patient',[''])[0]
    if pid and not can_access_patient(c,role,pid):c.close();return self.sendj({'error':'Patient access not assigned to this role'},403)
-   rows=tasks_for_role(c,role,pid);c.close();return self.sendj({'tasks':rows,'owner_role':role})
+   rows=[task_context(c,r,role) for r in tasks_for_role(c,role,pid)];c.close();return self.sendj({'tasks':rows,'owner_role':role})
+  if p.path=='/api/task-source':
+   tid=parse_qs(p.query).get('task',[''])[0];r=c.execute('SELECT * FROM tasks WHERE id=?',(tid,)).fetchone()
+   if not r:c.close();return self.sendj({'error':'Task not found'},404)
+   if role!='Hospital Management / Admin' and r['owner_role']!=role:c.close();return self.sendj({'error':'Task is not assigned to this role'},403)
+   ctx=task_context(c,r,role);src=ctx.get('source_record')
+   if not ctx.get('source_visible_to_role') and ctx.get('source_record_id'):ctx['consumable']=False;ctx['blocking_reason']='Owning role does not have minimum-necessary read permission for the task source; workflow configuration must be corrected before action.'
+   elif src and src.get('status') in ['Superseded','Cancelled','Entered in Error']:ctx['consumable']=False;ctx['blocking_reason']='Source record is '+src.get('status')
+   else:ctx['consumable']=True;ctx['blocking_reason']=''
+   audit(c,r['patient_id'],role,'TASK_SOURCE_OPEN','task',tid,ctx.get('source_record_id',''));c.commit();c.close();return self.sendj(ctx)
   if p.path=='/api/ai-search':
    q=parse_qs(p.query);pid=q.get('patient',[''])[0];question=str(q.get('q',[''])[0]).strip()
    if not pid or not question:c.close();return self.sendj({'error':'patient and q are required'},409)
@@ -1949,9 +2140,22 @@ class H(BaseHTTPRequestHandler):
  def do_POST(self):
   p=urlparse(self.path);data=self.body();c=db()
   if p.path=='/api/login':
+   username=str(data.get('username') or '').strip();pin=str(data.get('pin',''))
+   if username:
+    u=c.execute('SELECT * FROM user_accounts WHERE username=? AND active=1',(username,)).fetchone()
+    if not u:c.close();return self.sendj({'error':'Invalid user or credential'},401)
+    u=dict(u);locked=u.get('locked_until') or ''
+    if locked:
+     try:
+      if datetime.fromisoformat(locked)>datetime.now().astimezone():c.close();return self.sendj({'error':'Account temporarily locked'},423)
+     except:pass
+    if not verify_pin(pin,u['pin_salt'],u['pin_hash']):
+     n=int(u.get('failed_attempts') or 0)+1;lu=(datetime.now().astimezone()+timedelta(minutes=15)).isoformat() if n>=5 else '';c.execute('UPDATE user_accounts SET failed_attempts=?,locked_until=?,updated_at=? WHERE id=?',(n,lu,now(),u['id']));c.commit();c.close();return self.sendj({'error':'Invalid user or credential'},401)
+    c.execute('UPDATE user_accounts SET failed_attempts=0,locked_until=?,updated_at=? WHERE id=?',('',now(),u['id']));act={'id':u['id'],'username':u['username'],'name':u['display_name'],'role':u['role'],'professional_id':u['professional_id']};REQUEST_CTX.actor=act;tok=secrets.token_urlsafe(32);exp=(datetime.now().astimezone()+timedelta(hours=SESSION_HOURS)).isoformat();c.execute('INSERT OR REPLACE INTO sessions VALUES(?,?,?,?)',(tok,u['id'],u['role'],exp));c.commit();c.close();return self.sendj({'token':tok,'actor':act,'expires_at':exp})
    role=data.get('role')
    if role not in ROLES:c.close();return self.sendj({'error':'Invalid demo role'},401)
-   tok=secrets.token_urlsafe(32);exp=(datetime.now().astimezone()+timedelta(hours=SESSION_HOURS)).isoformat();c.execute('INSERT OR REPLACE INTO sessions VALUES(?,?,?,?)',(tok,actor(role)['id'],role,exp));c.commit();c.close();return self.sendj({'token':tok,'actor':actor(role),'expires_at':exp})
+   if not ALLOW_SHARED_ROLE_LOGIN or pin!=DEMO_PIN:c.close();return self.sendj({'error':'Individual username and credential required'},401)
+   tok=secrets.token_urlsafe(32);exp=(datetime.now().astimezone()+timedelta(hours=SESSION_HOURS)).isoformat();c.execute('INSERT OR REPLACE INTO sessions VALUES(?,?,?,?)',(tok,actor(role)['id'],role,exp));c.commit();c.close();return self.sendj({'token':tok,'actor':actor(role),'expires_at':exp,'legacy_shared_role_login':True})
   if p.path=='/api/logout':
    tok=self.headers.get('Authorization','').removeprefix('Bearer ').strip()
    if tok:c.execute('DELETE FROM sessions WHERE token=?',(tok,));c.commit()
@@ -2170,7 +2374,7 @@ class H(BaseHTTPRequestHandler):
    ep=get_rec(c,d.get('episode_id')) if d.get('episode_id') else (current_episode(c,pid) or ensure_episode(c,pid,role))
    if not ep or ep.get('entity_type')!='cancer_episode':return {'error':'Valid cancer episode required for admission'},409
    x={'id':'ADM-'+uuid.uuid4().hex[:8].upper(),'episode_id':ep['id'],'admission_type':atype,'reason_code':reason_code,'reason_note':d.get('reason_note',''),'admitting_specialty':d.get('admitting_specialty') or role,'attending_clinician':d.get('attending_clinician') or actor(role)['name'],'admitted_at':d.get('admitted_at') or now(),'ward':d.get('ward','Unassigned'),'bed':d.get('bed','Unassigned'),'source_context':d.get('source_context','OPD / Day Care'),'status':'Active','created_by':actor(role)}
-   rows=list(e['data'].get('admissions',[]));rows.append(x);update_rec(c,e['id'],{'admissions':rows},'Active',role,'IPD_ADMISSION',reason_code);grant_patient_access(c,pid,'Inpatient Oncology Nurse','admission',x['id'],role);journey_add(c,pid,'Inpatient Care','Admitted', 'Active',role,'admission',x['id'],reason_code,True);return {'ok':True,'admission':x},200
+   rows=list(e['data'].get('admissions',[]));rows.append(x);update_rec(c,e['id'],{'admissions':rows},'Active',role,'IPD_ADMISSION',reason_code);grant_patient_access(c,pid,'Inpatient Oncology Nurse','admission',e['id'],role);grant_patient_access(c,pid,'Inpatient Oncology Clinician','admission',e['id'],role);handoff(c,pid,'Inpatient Oncology Nurse','Complete nursing admission and bed assignment','IPD nursing admission','admission',e['id'],role,'High',reason_code,{'admission':x});handoff(c,pid,'Inpatient Oncology Clinician','Complete inpatient admission history & physical','IPD admission assessment','admission',e['id'],role,'High',reason_code,{'admission':x});journey_add(c,pid,'Inpatient Care','Admitted', 'Active',role,'admission',x['id'],reason_code,True);return {'ok':True,'admission':x,'next_roles':['Inpatient Oncology Nurse','Inpatient Oncology Clinician']},200
   if a=='assign_inpatient_bed':
    if role not in ['Nurse Navigator','Medical Oncology','Surgical Oncology','Radiation Oncology','Day Care / Infusion Nurse','Inpatient Oncology Nurse','Surgical Nurse']:return {'error':'Clinical inpatient role required'},403
    e=must('admission');rows=list(e['data'].get('admissions',[]));x=next((x for x in rows if x.get('id')==d.get('admission_id') and x.get('status')=='Active'),None)
@@ -2193,7 +2397,7 @@ class H(BaseHTTPRequestHandler):
     tx=list(tox['data'].get('events',[]));tx.append({**x,'id':'TOX-'+uuid.uuid4().hex[:7].upper()});update_rec(c,tox['id'],{'events':tx},'Active',role,'TOXICITY_RECORD','IPD '+term)
    return {'ok':True,'toxicity':x},200
   if a=='inpatient_specialty_review':
-   if role not in ['Medical Oncology','Surgical Oncology','Radiation Oncology']:return {'error':'Oncology specialist required'},403
+   if role not in ['Medical Oncology','Surgical Oncology','Radiation Oncology','Inpatient Oncology Clinician']:return {'error':'Oncology specialist required'},403
    e=must('inpatient_care');adm=latest(c,pid,'admission');active=next((x for x in reversed(adm['data'].get('admissions',[])) if x.get('status')=='Active'),None) if adm else None
    if not active:return {'error':'Active admission required'},409
    if not str(d.get('assessment') or '').strip():return {'error':'Specialty assessment required'},409
@@ -2612,7 +2816,7 @@ class H(BaseHTTPRequestHandler):
    if co and co['data'].get('quorum_status')!='Met':return {'error':'Configured MDT quorum must be met before Chair review','quorum_status':co['data'].get('quorum_status','Not met')},409
    if d.get('final_consensus') not in MDT_CONSENSUS:return {'error':'Governed MDT consensus required','allowed':MDT_CONSENSUS},409
    patch={**d,'recommendation_submitted_by':actor(role),'recommendation_submitted_at':now(),'chair_decision':'Pending','chair_signed_by':None,'chair_signed_at':'','chair_reason':'','signed_by':None,'signed_at':''}
-   update_rec(c,e['id'],patch,'Pending Chair Approval',role,'MDT_RECOMMEND_SUBMIT');grant_patient_access(c,pid,'MDT Chair','mdt_chair_review',e['id'],role);return {'ok':True,'status':'Pending Chair Approval'},200
+   update_rec(c,e['id'],patch,'Pending Chair Approval',role,'MDT_RECOMMEND_SUBMIT');grant_patient_access(c,pid,'MDT Chair','mdt_chair_review',e['id'],role);handoff(c,pid,'MDT Chair','Review and sign submitted MDT recommendation','MDT case preparation','mdt',e['id'],role,'High',d.get('clinical_question',''),{'mdt_id':e['id']});return {'ok':True,'status':'Pending Chair Approval'},200
   if a=='mdt_chair_sign':
    if role!='MDT Chair':return {'error':'MDT Chair required'},403
    e=must('mdt');decision=d.get('decision');reason=str(d.get('reason') or '').strip();co=latest(c,pid,'mdt_collab')
@@ -2620,8 +2824,8 @@ class H(BaseHTTPRequestHandler):
    if not co or co['data'].get('quorum_status')!='Met':return {'error':'Derived MDT quorum must be Met before Chair sign-off'},409
    if decision not in ['Approve','Return for revision'] or not reason:return {'error':'Chair decision and reason required','allowed':['Approve','Return for revision']},409
    if decision=='Return for revision':
-    update_rec(c,e['id'],{'chair_decision':'Returned for revision','chair_reason':reason,'chair_signed_by':actor(role),'chair_signed_at':now(),'signed_by':None,'signed_at':''},'Returned for Revision',role,'MDT_CHAIR_RETURN',reason);return {'ok':True,'status':'Returned for Revision'},200
-   patch={'chair_decision':'Approved','chair_reason':reason,'chair_signed_by':actor(role),'chair_signed_at':now(),'signed_by':actor(role),'signed_at':now()};update_rec(c,e['id'],patch,'MDT Recommended',role,'MDT_CHAIR_APPROVE',reason);resp=str(e['data'].get('specialty_responsible') or '')
+    update_rec(c,e['id'],{'chair_decision':'Returned for revision','chair_reason':reason,'chair_signed_by':actor(role),'chair_signed_at':now(),'signed_by':None,'signed_at':''},'Returned for Revision',role,'MDT_CHAIR_RETURN',reason);complete_open_tasks(c,pid,'MDT Chair','MDT case preparation',source_type='mdt',source_id=e['id'],completed_by=role);handoff(c,pid,'MDT Coordinator','Correct returned MDT recommendation','MDT case preparation','mdt',e['id'],role,'High',reason,{'return_reason':reason});return {'ok':True,'status':'Returned for Revision'},200
+   patch={'chair_decision':'Approved','chair_reason':reason,'chair_signed_by':actor(role),'chair_signed_at':now(),'signed_by':actor(role),'signed_at':now()};update_rec(c,e['id'],patch,'MDT Recommended',role,'MDT_CHAIR_APPROVE',reason);complete_open_tasks(c,pid,'MDT Chair','MDT case preparation',source_type='mdt',source_id=e['id'],completed_by=role);resp=str(e['data'].get('specialty_responsible') or '')
    for rr in ['Medical Oncology','Surgical Oncology','Radiation Oncology']:
     if rr in resp or resp in ['Combined-Modality','Multimodality','All Oncology']:grant_patient_access(c,pid,rr,'mdt',e['id'],role)
    journey_add(c,pid,'MDT / Tumour Board','Chair-approved MDT Recommendation','MDT Recommended',role,'mdt',e['id'],e['data'].get('recommendation',''),True);return {'ok':True,'status':'MDT Recommended','signed_by':actor(role)},200
@@ -2656,10 +2860,15 @@ class H(BaseHTTPRequestHandler):
    if fin:
     req=['date','site','specimen','histology'];miss=[x for x in req if not str(patch.get(x,e['data'].get(x,''))).strip()]
     if miss:return {'error':'Pathology report incomplete','missing':miss},409
+    nex=patch.get('nodes_examined',e['data'].get('nodes_examined'));npos=patch.get('nodes_positive',e['data'].get('nodes_positive'))
+    if nex not in ['',None] and npos not in ['',None]:
+     try:
+      if float(npos)>float(nex):return {'error':'Incoherent node counts: nodes_positive cannot exceed nodes_examined','nodes_examined':nex,'nodes_positive':npos},409
+     except (TypeError,ValueError):pass
     patch.update({'signed_by':actor(role),'signed_at':now()})
    if e['status']=='Final':
     if not amendment_reason:return {'error':'A finalized pathology report is immutable. Create a linked amendment with a documented reason.','requires_amendment_reason':True,'supersedes':e['id']},409
-    nd={**e['data'],**patch,'supersedes':e['id'],'amendment_reason':amendment_reason,'amended_by':actor(role),'amended_at':now()};rid=new_record(c,pid,'pathology',nd,'Final' if fin else 'Draft',role);audit(c,pid,role,'PATHOLOGY_AMENDMENT_CREATED','pathology',rid,f'Supersedes {e["id"]}: {amendment_reason}');return {'ok':True,'id':rid,'status':'Final' if fin else 'Draft','supersedes':e['id']},200
+    nd={**e['data'],**patch,'supersedes':e['id'],'amendment_reason':amendment_reason,'amended_by':actor(role),'amended_at':now()};rid=new_record(c,pid,'pathology',nd,'Final' if fin else 'Draft',role);update_rec(c,e['id'],{'superseded_by_record_id':rid},'Superseded',role,'PATHOLOGY_SUPERSEDE',amendment_reason);audit(c,pid,role,'PATHOLOGY_AMENDMENT_CREATED','pathology',rid,f'Supersedes {e["id"]}: {amendment_reason}');return {'ok':True,'id':rid,'status':'Final' if fin else 'Draft','supersedes':e['id']},200
    update_rec(c,e['id'],patch,'Final' if fin else 'Draft',role,'PATHOLOGY_FINAL' if fin else 'PATHOLOGY_SAVE');return {'ok':True,'id':e['id'],'status':'Final' if fin else 'Draft'},200
 
   if a=='create_plan_from_mdt':
@@ -3226,7 +3435,11 @@ class H(BaseHTTPRequestHandler):
    pv=d.get('post_vitals') or {};units=pv.get('units') or {};
    if any(units.get(k) in [None,''] for k in ['bp','hr','rr','temp','spo2']):return {'error':'Post-treatment measured vitals require explicit units for BP, HR, RR, temperature and SpO2'},409
    completed_at=now();cum_after=cumulative_administered_by_code(c,pid)
-   update_rec(c,e['id'],{'post_vitals':pv,'tolerance':d['tolerance'],'discharge_instructions':d['discharge_instructions'],'next_cycle':d.get('next_cycle',''),'completed_at':completed_at,'completed_by':actor(role),'cumulative_dose_ledger_after':cum_after},'Completed',role,'INFUSION_COMPLETE');update_rec(c,order['id'],{'administration_completed_at':completed_at,'administration_record_id':e['id'],'cumulative_dose_ledger_after_administration':cum_after},'Completed',role,'ORDER_EXECUTION_COMPLETE');hist=latest(c,pid,'treatment_history');eps=list(hist['data'].get('episodes',[]));eps.append({'type':'Systemic Therapy Administration','order_id':order['id'],'regimen':order['data']['regimen'],'cycle':order['data']['cycle'],'day':order['data']['day'],'date':completed_at,'status':'Completed','actual_items':mar,'cumulative_dose_ledger_after':cum_after});update_rec(c,hist['id'],{'episodes':eps},'Active',role,'HISTORY_APPEND');journey_add(c,pid,'Inpatient Care' if care_setting=='Inpatient' else 'Day Care / Infusion','Cycle Completed','Completed',role,'infusion',e['id'],d.get('next_cycle',''),True);return {'ok':True,'order_status':'Completed','cumulative_dose_ledger_after':cum_after},200
+   update_rec(c,e['id'],{'post_vitals':pv,'tolerance':d['tolerance'],'discharge_instructions':d['discharge_instructions'],'next_cycle':d.get('next_cycle',''),'completed_at':completed_at,'completed_by':actor(role),'cumulative_dose_ledger_after':cum_after},'Completed',role,'INFUSION_COMPLETE');update_rec(c,order['id'],{'administration_completed_at':completed_at,'administration_record_id':e['id'],'cumulative_dose_ledger_after_administration':cum_after},'Completed',role,'ORDER_EXECUTION_COMPLETE');hist=latest(c,pid,'treatment_history');eps=list(hist['data'].get('episodes',[]));eps.append({'type':'Systemic Therapy Administration','order_id':order['id'],'regimen':order['data']['regimen'],'cycle':order['data']['cycle'],'day':order['data']['day'],'date':completed_at,'status':'Completed','actual_items':mar,'cumulative_dose_ledger_after':cum_after});update_rec(c,hist['id'],{'episodes':eps},'Active',role,'HISTORY_APPEND');journey_add(c,pid,'Inpatient Care' if care_setting=='Inpatient' else 'Day Care / Infusion','Cycle Completed','Completed',role,'infusion',e['id'],d.get('next_cycle',''),True)
+   # PC8.0 connected-workflow task handoff: close this administration's task and open
+   # Medical Oncology's next-cycle decision task (consumed by post_cycle_review).
+   complete_open_tasks(c,pid,role,'Treatment administration',source_type='treatment_order',source_id=order['id'],completed_by=role);handoff(c,pid,'Medical Oncology','Post-cycle decision after treatment administration','Next-cycle decision','infusion',e['id'],role,'High',d.get('tolerance',''),{'infusion_id':e['id'],'order_id':order['id'],'cumulative_dose_ledger_after':cum_after})
+   return {'ok':True,'order_status':'Completed','cumulative_dose_ledger_after':cum_after},200
   if a=='record_toxicity':
    if role not in ['Medical Oncology','Day Care / Infusion Nurse','Inpatient Oncology Nurse','Nurse Navigator']:return {'error':'Clinical role required'},403
    e=must('toxicity');d={**d}
@@ -3273,7 +3486,7 @@ class H(BaseHTTPRequestHandler):
    elif nadir and curr>=nadir*1.20 and curr-nadir>=5:cat='Progressive disease'
    else:cat='Stable disease'
    epid=d.get('episode_id') or ((current_episode(c,pid) or {}).get('id'));aid='RESP-'+uuid.uuid4().hex[:6].upper()
-   x={'id':aid,'episode_id':epid,'criteria_set':d.get('criteria_set','RECIST 1.1'),'criteria_version':d.get('criteria_version','1.1'),'date':d['date'],'source_imaging_id':d.get('source_imaging_id',''),'target_lesions':norm,'sum_mm':curr,'baseline_sum_mm':baseline,'nadir_sum_mm':nadir,'percent_change_from_baseline':pct,'non_target':d.get('non_target',''),'new_lesions':new_les,'proposed_response_category':cat,'response_category':'','confirmation_status':'Pending clinician confirmation','biomarkers':d.get('biomarkers',[]),'notes':d.get('notes',''),'measured_by':actor(role),'measured_at':now()};ass.append(x);update_rec(c,e['id'],{'assessments':ass},'Active',role,'RESPONSE_MEASUREMENT');return {'ok':True,'proposed_category':cat,'assessment':x},200
+   x={'id':aid,'episode_id':epid,'criteria_set':d.get('criteria_set','RECIST 1.1'),'criteria_version':d.get('criteria_version','1.1'),'date':d['date'],'source_imaging_id':d.get('source_imaging_id',''),'target_lesions':norm,'sum_mm':curr,'baseline_sum_mm':baseline,'nadir_sum_mm':nadir,'percent_change_from_baseline':pct,'non_target':d.get('non_target',''),'new_lesions':new_les,'proposed_response_category':cat,'response_category':'','confirmation_status':'Pending clinician confirmation','biomarkers':d.get('biomarkers',[]),'notes':d.get('notes',''),'measured_by':actor(role),'measured_at':now()};ass.append(x);update_rec(c,e['id'],{'assessments':ass},'Active',role,'RESPONSE_MEASUREMENT');handoff(c,pid,'Medical Oncology','Confirm proposed RECIST response category','Response confirmation','response',e['id'],role,'High','Radiologist proposed '+cat,{'assessment_id':aid,'proposed_category':cat});return {'ok':True,'proposed_category':cat,'assessment':x},200
   if a=='confirm_response':
    if role!='Medical Oncology':return {'error':'Medical Oncology required to confirm response'},403
    e=must('response');ass=list(e['data'].get('assessments',[]));aid=d.get('assessment_id');x=next((z for z in ass if z.get('id')==aid),None)
@@ -3281,7 +3494,7 @@ class H(BaseHTTPRequestHandler):
    if x.get('confirmation_status')=='Confirmed':return {'error':'Confirmed response is immutable; create a new assessment for changed evidence'},409
    cat=d.get('response_category');reason=str(d.get('reason') or '').strip()
    if cat not in RESPONSE_CATEGORIES or not reason:return {'error':'Governed response category and clinician reason required','allowed':RESPONSE_CATEGORIES},409
-   x.update({'response_category':cat,'confirmation_status':'Confirmed','confirmation_reason':reason,'confirmed_by':actor(role),'confirmed_at':now()});update_rec(c,e['id'],{'assessments':ass},'Active',role,'RESPONSE_CONFIRM',reason);return {'ok':True,'assessment':x},200
+   x.update({'response_category':cat,'confirmation_status':'Confirmed','confirmation_reason':reason,'confirmed_by':actor(role),'confirmed_at':now()});update_rec(c,e['id'],{'assessments':ass},'Active',role,'RESPONSE_CONFIRM',reason);complete_open_tasks(c,pid,role,'Response confirmation',source_type='response',source_id=e['id'],completed_by=role);return {'ok':True,'assessment':x},200
   if a=='rt_save_prescription':
    if role!='Radiation Oncology':return {'error':'Radiation Oncology required'},403
    e=must('radiation');p={**e['data'].get('prescription',{}),**d};sign=bool(d.get('sign'));p.pop('sign',None)
@@ -3361,7 +3574,7 @@ class H(BaseHTTPRequestHandler):
    if role!='Surgical Oncology':return {'error':'Surgical Oncology required'},403
    e=must('surgery');plan={**e['data'].get('plan',{}),**d};req=['procedure','indication','intent','site','laterality','extent','approach','nodal_procedure','reconstruction','planned_date','priority','preop_requirements','required_imaging_pathology','anesthesia','anesthesia_clearance','blood_requirement'];miss=[x for x in req if plan.get(x) in ['',None,[]]]
    if miss:return {'error':'Surgical plan incomplete','missing':miss},409
-   plan.update({'status':'Planned','signed_by':actor(role),'signed_at':now()});epid=d.get('episode_id') or e['data'].get('episode_id') or ((current_episode(c,pid) or ensure_episode(c,pid,role))['id']);update_rec(c,e['id'],{'episode_id':epid,'plan':plan},'Planned',role,'SURGERY_PLAN_SIGN');grant_patient_access(c,pid,'Surgical Nurse','surgery_plan',e['id'],role);return {'ok':True,'episode_id':epid},200
+   plan.update({'status':'Planned','signed_by':actor(role),'signed_at':now()});epid=d.get('episode_id') or e['data'].get('episode_id') or ((current_episode(c,pid) or ensure_episode(c,pid,role))['id']);update_rec(c,e['id'],{'episode_id':epid,'plan':plan},'Planned',role,'SURGERY_PLAN_SIGN');grant_patient_access(c,pid,'Surgical Nurse','surgery_plan',e['id'],role);handoff(c,pid,'Patient Liaison','Obtain signed surgical consent for '+plan.get('procedure',''),'Surgical consent','surgery',e['id'],role,'High','Signed surgical plan available for consent',{'procedure':plan.get('procedure')});handoff(c,pid,'Anaesthetist','Complete pre-operative anaesthesia assessment','Support service referral','surgery',e['id'],role,'High','Signed surgical plan available for anaesthesia clearance',{'procedure':plan.get('procedure')});handoff(c,pid,'Blood Bank / Transfusion','Confirm blood product availability for surgery','Support service referral','surgery',e['id'],role,'Routine','Signed surgical plan requires blood availability confirmation',{'blood_requirement':plan.get('blood_requirement')});return {'ok':True,'episode_id':epid},200
   if a=='surgery_preop':
    if role not in ['Surgical Oncology','Surgical Nurse']:return {'error':'Surgical team required'},403
    e=must('surgery');pre={**e['data'].get('preop',{}),**d};pre['ready']=all(pre.get(k)=='Complete' for k in ['anesthesia_clearance','labs','consent']);update_rec(c,e['id'],{'preop':pre},'Pre-op Ready' if pre['ready'] else 'Planned',role,'SURGERY_PREOP');return {'ok':True,'ready':pre['ready']},200
@@ -3371,7 +3584,7 @@ class H(BaseHTTPRequestHandler):
    if not e['data'].get('preop',{}).get('ready'):return {'error':'Pre-op readiness required'},409
    req=['actual_procedure','operation_date_time','preop_diagnosis','postop_diagnosis','laterality','findings','specimens','estimated_blood_loss_ml','operative_time_min','surgeons','postop_plan'];miss=[x for x in req if d.get(x) in ['',None,[]]]
    if miss:return {'error':'Operative record incomplete','missing':miss},409
-   out={**d,'signed_by':actor(role),'signed_at':now()};update_rec(c,e['id'],{'outcome':out},'Performed',role,'SURGERY_PERFORMED');grant_patient_access(c,pid,'Pathology','surgical_specimen',e['id'],role);journey_add(c,pid,'Surgery','Procedure Performed','Performed',role,'surgery',e['id'],d.get('actual_procedure',''),True);hist=latest(c,pid,'treatment_history');eps=list(hist['data'].get('episodes',[]));eps.append({'type':'Surgery','episode_id':e['data'].get('episode_id') or ((current_episode(c,pid) or {}).get('id')),'date':d['operation_date_time'],'status':'Performed','procedure':d['actual_procedure'],'laterality':d['laterality']});update_rec(c,hist['id'],{'episodes':eps},role=role,action='HISTORY_APPEND');return {'ok':True},200
+   out={**d,'signed_by':actor(role),'signed_at':now()};update_rec(c,e['id'],{'outcome':out},'Performed',role,'SURGERY_PERFORMED');grant_patient_access(c,pid,'Pathology','surgical_specimen',e['id'],role);grant_patient_access(c,pid,'Pathology Technologist','surgical_specimen',e['id'],role);handoff(c,pid,'Pathology Technologist','Accession and process surgical specimen(s)','Pathology accession','surgery',e['id'],role,'High','Signed operative note with specimen(s) submitted for accession',{'specimens':d.get('specimens',[])});handoff(c,pid,'Stoma / Wound Nurse','Complete post-operative wound assessment','Support service referral','surgery',e['id'],role,'Routine','Post-operative wound/stoma assessment required',{'stoma_created':d.get('stoma_created')});journey_add(c,pid,'Surgery','Procedure Performed','Performed',role,'surgery',e['id'],d.get('actual_procedure',''),True);hist=latest(c,pid,'treatment_history');eps=list(hist['data'].get('episodes',[]));eps.append({'type':'Surgery','episode_id':e['data'].get('episode_id') or ((current_episode(c,pid) or {}).get('id')),'date':d['operation_date_time'],'status':'Performed','procedure':d['actual_procedure'],'laterality':d['laterality']});update_rec(c,hist['id'],{'episodes':eps},role=role,action='HISTORY_APPEND');return {'ok':True},200
   if a=='surgery_pathology_link':
    if role!='Surgical Oncology':return {'error':'Surgical Oncology required to link final pathology and create pathological stage'},403
    e=must('surgery');link=d.get('pathology_record_id');path=get_rec(c,link) if link else None
@@ -3419,20 +3632,20 @@ class H(BaseHTTPRequestHandler):
    if not redacted and not cons:return {'error':'Active External Financial Assistance Disclosure Consent is required before an identifiable external letter can be created'},409
    case_code='CCA-SUPPORT-'+hashlib.sha256(pid.encode()).hexdigest()[:8].upper();ident=f"{pat['name']} ({pat['mrn']})" if not redacted else case_code;diag=dx['data'].get('cancer_type','oncology care') if not redacted else 'oncology care'
    if redacted and str(d.get('text') or '').strip():return {'error':'Custom external-letter text is not permitted in redacted mode because it could reintroduce patient identifiers; use the server-generated redacted template or obtain disclosure consent'},409
-   text=d.get('text') or f"To whom it may concern,\n\n{ident} is receiving {diag}. The current synthetic demo estimate is INR {est.get('total',0)}. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team";letter={'status':'Draft — Approval Required','recipient':d.get('recipient',''),'purpose':d.get('purpose','Treatment support'),'text':text,'redacted':redacted,'consent_id':cons.get('id') if cons else '','generated_by':actor(role),'generated_at':now(),'approved_by':None,'approved_at':'','released_at':''};update_rec(c,e['id'],{'fundraising_letter':letter},'Active',role,'FUNDRAISING_LETTER');return {'ok':True,'letter':letter},200
+   text=d.get('text') or f"To whom it may concern,\n\n{ident} is receiving {diag}. The current synthetic demo estimate is INR {est.get('total',0)}. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team";letter={'status':'Draft — Approval Required','recipient':d.get('recipient',''),'purpose':d.get('purpose','Treatment support'),'text':text,'redacted':redacted,'consent_id':cons.get('id') if cons else '','generated_by':actor(role),'generated_at':now(),'approved_by':None,'approved_at':'','released_at':''};update_rec(c,e['id'],{'fundraising_letter':letter},'Active',role,'FUNDRAISING_LETTER');handoff(c,pid,'Finance / Billing','Independent approval required for fundraising letter','External disclosure approval','conversion',e['id'],role,'High','Draft fundraising letter awaiting independent Finance approval',{'letter':letter});return {'ok':True,'letter':letter,'next_role':'Finance / Billing'},200
   if a=='fundraising_approve':
    if role!='Finance / Billing':return {'error':'Finance role required'},403
    e=must('conversion');letter=e['data'].get('fundraising_letter') or {};cons=active_disclosure_consent(c,pid)
    if not cons:return {'error':'Active disclosure consent required before external release approval'},409
    if not str(letter.get('status','')).startswith('Draft'):return {'error':'A draft fundraising letter is required'},409
    if (letter.get('generated_by') or {}).get('id')==actor(role)['id']:return {'error':'Independent second-person approval required; generator cannot approve their own external disclosure'},409
-   letter={**letter,'status':'Approved for Release','approved_by':actor(role),'approved_at':now(),'consent_id':cons['id']};update_rec(c,e['id'],{'fundraising_letter':letter},'Active',role,'FUNDRAISING_APPROVE');return {'ok':True,'letter':letter},200
+   letter={**letter,'status':'Approved for Release','approved_by':actor(role),'approved_at':now(),'consent_id':cons['id']};update_rec(c,e['id'],{'fundraising_letter':letter},'Active',role,'FUNDRAISING_APPROVE');complete_open_tasks(c,pid,'Finance / Billing','External disclosure approval',source_type='conversion',source_id=e['id'],completed_by=role);handoff(c,pid,'Finance / Billing','Release approved fundraising letter','External disclosure release','conversion',e['id'],role,'High','Fundraising letter approved for release',{'letter':letter});return {'ok':True,'letter':letter,'next_role':'Finance / Billing'},200
   if a=='fundraising_release':
    if role!='Finance / Billing':return {'error':'Finance role required'},403
    e=must('conversion');letter=e['data'].get('fundraising_letter') or {}
    if letter.get('status')!='Approved for Release':return {'error':'Independent approval is required before release'},409
    if not active_disclosure_consent(c,pid):return {'error':'Disclosure consent is no longer active'},409
-   letter={**letter,'status':'Released','released_by':actor(role),'released_at':now()};update_rec(c,e['id'],{'fundraising_letter':letter},'Active',role,'FUNDRAISING_RELEASE');return {'ok':True,'letter':letter},200
+   letter={**letter,'status':'Released','released_by':actor(role),'released_at':now()};update_rec(c,e['id'],{'fundraising_letter':letter},'Active',role,'FUNDRAISING_RELEASE');complete_open_tasks(c,pid,'Finance / Billing','External disclosure release',source_type='conversion',source_id=e['id'],completed_by=role);return {'ok':True,'letter':letter},200
   if a=='integration_status_update':
    if role!='Hospital Management / Admin':return {'error':'Admin required'},403
    iid=str(d.get('adapter_id') or '');status=str(d.get('status') or '');allowed=['Not configured','Configured — not connected','Connected','Degraded','Error','Disabled']
@@ -3480,7 +3693,240 @@ class H(BaseHTTPRequestHandler):
     create_task(c,pid,owner,'Referral: '+str(d.get('reason') or e['data'].get('reason') or 'Oncology referral'),'Referral lifecycle','Critical' if priority=='Emergency' else ('High' if priority=='Urgent' else 'Routine'),'referral',e['id'],'',((current_episode(c,pid) or {}).get('id','')),new,{'referral_id':e['id'],'status':new},role)
    journey_add(c,pid,dept or 'Front Desk','Referral '+new,new,role,'referral',e['id'],d.get('reason',e['data'].get('reason','')),True)
    return {'ok':True,'id':e['id'],'status':new},200
+  if a=='inpatient_med_order':
+   if role!='Inpatient Oncology Clinician':return {'error':'Inpatient Oncology Clinician required for inpatient medication orders'},403
+   e=must('inpatient_care');adm=latest(c,pid,'admission');active=next((x for x in reversed((adm or {}).get('data',{}).get('admissions',[])) if x.get('status')=='Active'),None)
+   if not active:return {'error':'Active admission required'},409
+   req=['medication','dose','unit','route','frequency','indication'];miss=[k for k in req if d.get(k) in ['',None]]
+   if miss:return {'error':'Inpatient medication order incomplete','missing':miss},409
+   try:dose=float(d['dose'])
+   except:return {'error':'Medication dose must be numeric'},409
+   if dose<=0:return {'error':'Medication dose must be greater than zero'},409
+   orders=list(e['data'].get('medication_orders',[]));x={'id':'IPDORD-'+uuid.uuid4().hex[:7].upper(),'order_no':'IPD-RX-'+uuid.uuid4().hex[:6].upper(),'admission_id':active['id'],'episode_id':active.get('episode_id',''),'medication':d['medication'],'dose':dose,'unit':d['unit'],'route':d['route'],'frequency':d['frequency'],'indication':d['indication'],'start_at':d.get('start_at') or now(),'stop_at':d.get('stop_at',''),'status':'Active','ordered_by':actor(role),'ordered_at':now()};orders.append(x);update_rec(c,e['id'],{'medication_orders':orders},'Active',role,'IPD_MED_ORDER',x['order_no']);handoff(c,pid,'Inpatient Oncology Nurse','Administer/execute inpatient medication order','IPD medication administration','inpatient_care',e['id'],role,'High','Signed inpatient medication order',{'medication_order':x});return {'ok':True,'order':x,'next_role':'Inpatient Oncology Nurse'},200
+  if a=='inpatient_mar':
+   if role!='Inpatient Oncology Nurse':return {'error':'Inpatient Oncology Nurse required for inpatient MAR'},403
+   e=must('inpatient_care');orders=e['data'].get('medication_orders',[]);oid=d.get('order_id');o=next((x for x in orders if x.get('id')==oid),None)
+   if not o or o.get('status')!='Active':return {'error':'Active inpatient medication order required'},409
+   clinical=parse_dt(d.get('administration_datetime'))
+   if not clinical:return {'error':'Valid clinical administration datetime required'},409
+   try:actual=float(d.get('actual_dose'))
+   except:return {'error':'Actual administered dose required'},409
+   if abs(actual-float(o['dose']))>1e-9 and not str(d.get('variance_reason') or '').strip():return {'error':'Dose variance requires documentation'},409
+   mar=list(e['data'].get('mar',[]));x={'id':'IPDMAR-'+uuid.uuid4().hex[:7].upper(),'order_id':oid,'admission_id':o['admission_id'],'medication':o['medication'],'ordered_dose':o['dose'],'unit':o['unit'],'route':o['route'],'actual_dose':actual,'administration_datetime':clinical.isoformat(),'system_entry_time':now(),'variance_reason':d.get('variance_reason',''),'response':d.get('response',''),'administered_by':actor(role)};mar.append(x)
+   if d.get('complete_order'):o['status']='Completed';o['completed_at']=now();o['completed_by']=actor(role)
+   update_rec(c,e['id'],{'mar':mar,'medication_orders':orders},'Active',role,'IPD_MAR',o['medication']);complete_open_tasks(c,pid,role,'IPD medication administration',source_type='inpatient_care',source_id=e['id'],completed_by=role);return {'ok':True,'mar':x,'order_status':o['status']},200
+  if a=='post_cycle_review':
+   if role!='Medical Oncology':return {'error':'Medical Oncology required'},403
+   inf=e if e and e.get('entity_type')=='infusion' else get_rec(c,d.get('infusion_id')) if d.get('infusion_id') else latest(c,pid,'infusion')
+   if not inf or inf.get('status')!='Completed':return {'error':'Completed systemic administration source required for post-cycle review'},409
+   order=get_rec(c,inf.get('data',{}).get('order_id'));decision=str(d.get('decision') or '').strip();allowed=['Proceed','Hold','Delay','Modify','Stop']
+   if decision not in allowed:return {'error':'Governed post-cycle decision required','allowed':allowed},409
+   reason=str(d.get('clinical_reason') or '').strip()
+   if not reason:return {'error':'Post-cycle clinical reason required'},409
+   tox=latest(c,pid,'toxicity');events=list((tox or {}).get('data',{}).get('events',[]));selected=d.get('toxicity_event_ids') or [x.get('id') for x in events if str(x.get('outcome','')).lower() not in ['resolved','recovered']]
+   mod=latest(c,pid,'modification')
+   if not mod:return {'error':'Modification/post-cycle record unavailable'},404
+   reviews=list(mod.get('data',{}).get('post_cycle_reviews',[]));x={'id':'PCR-'+uuid.uuid4().hex[:7].upper(),'infusion_id':inf['id'],'infusion_version':inf['version'],'order_id':(order or {}).get('id',''),'order_version':(order or {}).get('version'),'cycle':(order or {}).get('data',{}).get('cycle'),'day':(order or {}).get('data',{}).get('day'),'actual_administered_snapshot':inf.get('data',{}).get('actual_administered_snapshot') or inf.get('data',{}).get('mar',[]),'toxicity_source_id':(tox or {}).get('id',''),'toxicity_event_ids':selected,'decision':decision,'clinical_reason':reason,'next_cycle':d.get('next_cycle'),'reevaluation_date':d.get('reevaluation_date',''),'reviewed_by':actor(role),'reviewed_at':now()};reviews.append(x);update_rec(c,mod['id'],{'post_cycle_reviews':reviews},'Active',role,'POST_CYCLE_REVIEW',decision);complete_open_tasks(c,pid,role,'Next-cycle decision',source_type='infusion',source_id=inf['id'],completed_by=role)
+   if decision=='Modify':handoff(c,pid,'Medical Oncology','Create treatment modification from post-cycle review','Treatment modification','infusion',inf['id'],role,'High',reason,{'post_cycle_review':x})
+   elif decision=='Proceed':handoff(c,pid,'Medical Oncology','Perform next-cycle treatment readiness','Treatment readiness','infusion',inf['id'],role,'High',reason,{'post_cycle_review':x})
+   elif decision in ['Hold','Delay']:handoff(c,pid,'Medical Oncology','Re-evaluate next-cycle readiness','Readiness re-evaluation','infusion',inf['id'],role,'High',reason,{'post_cycle_review':x},d.get('reevaluation_date',''))
+   journey_add(c,pid,'Medical Oncology','Post-cycle Review',decision,role,'infusion',inf['id'],reason,True);return {'ok':True,'review':x,'next_action':'Treatment modification' if decision=='Modify' else ('Treatment readiness' if decision=='Proceed' else ('Readiness re-evaluation' if decision in ['Hold','Delay'] else 'None'))},200
+  if a=='save_response_baseline':
+   if role not in ['Radiologist','Medical Oncology']:return {'error':'Radiologist / Medical Oncology required'},403
+   e=must('response');study=get_rec(c,d.get('source_study_id')) if d.get('source_study_id') else None
+   if not study or study.get('entity_type')!='radiology' or study.get('status')!='Final':return {'error':'Final radiology source study required for RECIST baseline','blocking_role':'Radiologist'},409
+   lesions=d.get('target_lesions') or []
+   if not d.get('date') or not lesions:return {'error':'Baseline date and target lesions required'},409
+   clean=[]
+   for x in lesions:clean.append({**x,'baseline_selected':True})
+   res=recist_evaluate(clean,clean,[],False,d.get('non_target',''))
+   if not res.get('ok'):return {'error':res.get('error')},409
+   existing=e.get('data',{}).get('baseline') or {};reason=str(d.get('amendment_reason') or '').strip()
+   if existing and not reason:return {'error':'RECIST baseline is frozen once established; amendment_reason required to replace it'},409
+   hist=list(e.get('data',{}).get('baseline_history',[]))
+   if existing:hist.append(existing)
+   b={'date':d['date'],'framework':'RECIST 1.1','criteria_version':'1.1','source_study_id':study['id'],'source_study_version':study['version'],'target_lesions':clean,'sum_mm':res['sum_mm'],'non_target':d.get('non_target',''),'recorded_by':actor(role),'recorded_at':now(),'amendment_reason':reason};update_rec(c,e['id'],{'baseline':b,'baseline_history':hist},'Active',role,'RECIST_BASELINE',reason);return {'ok':True,'baseline':b},200
+  if a=='surgery_theatre_readiness':
+   if role!='Surgical Nurse':return {'error':'Surgical Nurse required'},403
+   e=must('surgery');pre=e['data'].get('preop',{})
+   if not pre.get('ready'):return {'error':'Completed pre-operative readiness required'},409
+   checks=d.get('checklist') or {};req=['identity','site_laterality','procedure','consent','anaesthesia','equipment','blood_if_required','counts_baseline'];miss=[x for x in req if checks.get(x) is not True]
+   if miss:return {'error':'Theatre readiness checklist incomplete','missing':miss},409
+   if not d.get('theatre') or not d.get('scheduled_start'):return {'error':'Theatre and scheduled start required'},409
+   tr={'status':'Signed','checklist':checks,'theatre':d['theatre'],'scheduled_start':d['scheduled_start'],'team_brief':d.get('team_brief',''),'signed_by':actor(role),'signed_at':now()};update_rec(c,e['id'],{'theatre_readiness':tr},e['status'],role,'SURGERY_THEATRE_READY');complete_open_tasks(c,pid,role,'Theatre readiness',source_type='surgery',source_id=e['id'],completed_by=role);handoff(c,pid,'Surgical Oncology','Proceed to surgery / operative record','Surgery execution','surgery',e['id'],role,'High','Theatre readiness signed',{'theatre_readiness':tr});journey_add(c,pid,'Operating Theatre','Theatre Ready','Theatre Ready',role,'surgery',e['id'],d['theatre'],True);return {'ok':True,'status':'Theatre Ready','next_role':'Surgical Oncology'},200
+  if a=='surgery_adjuvant_decision':
+   if role not in ['Surgical Oncology','Medical Oncology','Radiation Oncology']:return {'error':'Treating oncology role required'},403
+   e=must('surgery')
+   if not e['data'].get('histopathology_link'):return {'error':'Final post-operative Pathology review required'},409
+   decision=str(d.get('decision') or '');allowed=['Adjuvant Systemic Therapy','Adjuvant Radiation','Combined Adjuvant Therapy','MDT Re-discussion','Surveillance / No Adjuvant Treatment'];reason=str(d.get('rationale') or '').strip()
+   if decision not in allowed or not reason:return {'error':'Structured adjuvant decision and rationale required','allowed':allowed},409
+   owners={'Adjuvant Systemic Therapy':['Medical Oncology'],'Adjuvant Radiation':['Radiation Oncology'],'Combined Adjuvant Therapy':['Medical Oncology','Radiation Oncology'],'MDT Re-discussion':['MDT Coordinator'],'Surveillance / No Adjuvant Treatment':['Nurse Navigator']}[decision];ad={'decision':decision,'rationale':reason,'responsible_roles':owners,'decided_by':actor(role),'decided_at':now(),'source_pathology_id':e['data'].get('histopathology_link'),'postop_stage':e['data'].get('postop_stage')};update_rec(c,e['id'],{'adjuvant_decision':ad,'adjuvant_review_required':False},e['status'],role,'SURGERY_ADJUVANT_DECISION',decision)
+   for rr in owners:handoff(c,pid,rr,decision,'Adjuvant decision','surgery',e['id'],role,'High',reason,ad)
+   return {'ok':True,'decision':ad,'next_roles':owners},200
+  if a=='rt_record_otv':
+   if role!='Radiation Oncology':return {'error':'Radiation Oncology required'},403
+   e=e if e and e.get('entity_type')=='radiation' else latest(c,pid,'radiation');delivered=[x for x in (e or {}).get('data',{}).get('fractions',[]) if x.get('status')=='Delivered']
+   if not e or not delivered:return {'error':'At least one delivered fraction is required before OTV'},409
+   req=['assessment','toxicity_summary','plan'];miss=[x for x in req if not str(d.get(x) or '').strip()]
+   if miss:return {'error':'On-treatment review incomplete','missing':miss},409
+   rows=list(e['data'].get('otv',[]));x={'id':'OTV-'+uuid.uuid4().hex[:7].upper(),'after_fraction':d.get('after_fraction') or delivered[-1].get('fraction_number'),'assessment':d['assessment'],'toxicity_summary':d['toxicity_summary'],'plan':d['plan'],'weight_kg':d.get('weight_kg'),'performance_status':d.get('performance_status'),'signed_by':actor(role),'signed_at':now()};rows.append(x);update_rec(c,e['id'],{'otv':rows},e['status'],role,'RT_OTV_SIGN');complete_open_tasks(c,pid,role,'RT OTV',source_type='radiation',source_id=e['id'],completed_by=role);return {'ok':True,'otv':x},200
+  if a=='rt_record_interruption':
+   if role not in ['Radiation Oncology','Radiation Technologist']:return {'error':'Radiation Oncology / Radiation Technologist required'},403
+   e=e if e and e.get('entity_type')=='radiation' else latest(c,pid,'radiation');reason=str(d.get('reason') or '').strip()
+   if not e or not reason:return {'error':'Active RT course and interruption reason required'},409
+   rows=list(e['data'].get('interruptions',[]));x={'id':'RTINT-'+uuid.uuid4().hex[:7].upper(),'start_at':d.get('start_at') or now(),'end_at':d.get('end_at',''),'reason':reason,'category':d.get('category','Clinical/Operational'),'recorded_by':actor(role),'recorded_at':now(),'compensation_plan':d.get('compensation_plan','')};rows.append(x);update_rec(c,e['id'],{'interruptions':rows},e['status'],role,'RT_INTERRUPTION',reason);handoff(c,pid,'Radiation Oncology','Review RT interruption and decide continuation/modification','RT interruption review','radiation',e['id'],role,'High',reason,{'interruption':x});journey_add(c,pid,'Radiation Treatment','RT Interrupted',e['status'],role,'radiation',e['id'],reason,True);return {'ok':True,'interruption':x,'next_role':'Radiation Oncology'},200
+  if a=='request_treatment_history_confirmation':
+   if role not in ['Medical Oncology','Nurse Navigator']:return {'error':'Medical Oncology / Nurse Navigator required to request historical treatment confirmation'},403
+   target=str(d.get('target_role') or '');typ=str(d.get('type') or '');reason=str(d.get('reason') or '').strip();owners={'Surgery':'Surgical Oncology','Radiation Therapy':'Radiation Oncology','Systemic Therapy':'Medical Oncology'}
+   if typ not in owners:return {'error':'Historical treatment type must identify the owning specialty','allowed':list(owners)},409
+   if target!=owners[typ]:return {'error':'Historical treatment confirmation must be routed to the owning specialty','expected_role':owners[typ]},409
+   if not reason:return {'error':'Reason/provenance for historical treatment confirmation is required'},409
+   dx=latest_usable(c,pid,'diagnosis',['Verified']);src=dx or current_episode(c,pid)
+   if not src:return {'error':'Verified diagnosis / active Cancer Episode required before historical treatment reconciliation'},409
+   tid=handoff(c,pid,target,'Confirm historical '+typ,'Historical treatment confirmation',src['entity_type'],src['id'],role,'Routine',reason,{'treatment_type':typ,'requested_by':actor(role),'provenance_reason':reason,'episode_id':(current_episode(c,pid) or {}).get('id','')})
+   return {'ok':True,'task_id':tid,'next_role':target},200
+  if a=='record_treatment_history_event':
+   if role not in ['Medical Oncology','Surgical Oncology','Radiation Oncology']:return {'error':'Treating oncology clinician required'},403
+   hist=e if e and e.get('entity_type')=='treatment_history' else latest(c,pid,'treatment_history')
+   if not hist:
+    rid=new_record(c,pid,'treatment_history',{'episodes':[]},'Active',role);hist=get_rec(c,rid)
+   ep=current_episode(c,pid) or ensure_episode(c,pid,role)
+   typ=str(d.get('type') or '').strip();dt=str(d.get('date') or '').strip();status=str(d.get('status') or '').strip();desc=str(d.get('description') or '').strip()
+   allowed_types=['Systemic Therapy','Radiation Therapy','Surgery','Other Cancer-Directed Treatment']
+   if typ not in allowed_types:return {'error':'Governed completed-treatment type required','allowed':allowed_types},409
+   owner_by_type={'Systemic Therapy':'Medical Oncology','Radiation Therapy':'Radiation Oncology','Surgery':'Surgical Oncology'};expected_owner=owner_by_type.get(typ)
+   if expected_owner and role!=expected_owner:return {'error':expected_owner+' owns '+typ+' treatment-history confirmation'},403
+   if not dt or not desc:return {'error':'Treatment date and description required'},409
+   if status!='Completed':return {'error':'Treatment-completion review can only be initiated from a completed treatment-history event'},409
+   rows=list(hist['data'].get('episodes',[]));x={'id':'HIST-'+uuid.uuid4().hex[:8].upper(),'type':typ,'episode_id':ep['id'],'date':dt,'status':'Completed','description':desc,'source_record_id':d.get('source_record_id',''),'source_document_id':d.get('source_document_id',''),'entered_reason':d.get('entered_reason','Historical/externally completed treatment entered by treating clinician'),'recorded_by':actor(role),'recorded_at':now()};rows.append(x);update_rec(c,hist['id'],{'episodes':rows},'Active',role,'TREATMENT_HISTORY_EVENT','Completed treatment history');complete_open_tasks(c,pid,role,'Historical treatment confirmation',completed_by=role)
+   tid=''
+   if bool(d.get('trigger_completion_review')):
+    tc=latest(c,pid,'treatment_completion')
+    if not tc or tc['status'] in ['Signed','Superseded']:
+     rid=new_record(c,pid,'treatment_completion',{'episode_id':ep['id'],'source_treatment_history_id':hist['id'],'source_history_event_id':x['id']},'Draft',role);tc=get_rec(c,rid)
+    else:update_rec(c,tc['id'],{'episode_id':ep['id'],'source_treatment_history_id':hist['id'],'source_history_event_id':x['id']},'Draft',role,'TREATMENT_COMPLETION_INIT')
+    tid=handoff(c,pid,role,'Complete End-of-Treatment Review / Cancer Treatment Summary','Treatment completion review','treatment_history',hist['id'],role,'High','Completed cancer-directed treatment documented; formal end-of-treatment review required',{'history_event':x,'treatment_completion_id':tc['id'],'episode_id':ep['id']})
+    journey_add(c,pid,'Treatment Completion','Treatment Completion Review Due','Open',role,'treatment_history',hist['id'],desc,False)
+   return {'ok':True,'history_event':x,'treatment_history_id':hist['id'],'task_id':tid,'next_role':role if tid else ''},200
+  if a=='save_treatment_completion':
+   if role not in ['Medical Oncology','Surgical Oncology','Radiation Oncology']:return {'error':'Treating oncology clinician required'},403
+   cur=e if e and e.get('entity_type')=='treatment_completion' else latest(c,pid,'treatment_completion')
+   if not cur:rid=new_record(c,pid,'treatment_completion',{},'Draft',role);cur=get_rec(c,rid)
+   amend_reason=str(d.get('amendment_reason') or '').strip()
+   if cur['status']=='Signed':
+    if not amend_reason:return {'error':'Signed End-of-Treatment Review is immutable; amendment_reason is required to create a superseding version','supersedes':cur['id']},409
+    old=cur;rid=new_record(c,pid,'treatment_completion',{**old['data'],'supersedes':old['id'],'amendment_reason':amend_reason,'amendment_started_by':actor(role),'amendment_started_at':now()},'Draft',role);cur=get_rec(c,rid);update_rec(c,old['id'],{'superseded_by_record_id':rid,'superseded_reason':amend_reason},'Superseded',role,'TREATMENT_COMPLETION_SUPERSEDE',amend_reason);cancel_open_tasks(c,pid,task_type='Survivorship planning',source_type='treatment_completion',source_id=old['id'],cancelled_by=role,reason='Source Treatment Summary superseded: '+amend_reason)
+   sign=bool(d.get('sign'));req=['treatment_completed','completion_date','diagnosis_at_completion','treatment_received','current_disease_status','late_effect_risks','follow_up_recommendations'];miss=[k for k in req if d.get(k,cur['data'].get(k)) in ['',None,[]]]
+   if sign and miss:return {'error':'End-of-Treatment Review incomplete','missing':miss},409
+   ep=current_episode(c,pid) or ensure_episode(c,pid,role);hist=latest(c,pid,'treatment_history');completed=[x for x in (hist or {}).get('data',{}).get('episodes',[]) if x.get('episode_id')==ep['id'] and x.get('status')=='Completed' and x.get('type') in ['Systemic Therapy','Radiation Therapy','Surgery','Other Cancer-Directed Treatment']]
+   if sign and not completed:return {'error':'At least one completed cancer-directed treatment-history event is required before signing End-of-Treatment Review','blocking_role':role},409
+   vals={**cur['data'],**{k:v for k,v in d.items() if k not in ['sign','amendment_reason']}};vals['episode_id']=ep['id'];vals['source_treatment_history_id']=(hist or {}).get('id','');vals['source_completed_treatment_event_ids']=[x.get('id') for x in completed]
+   if sign:vals.update({'signed_by':actor(role),'signed_at':now(),'treatment_summary':{'diagnosis':vals['diagnosis_at_completion'],'treatment_received':vals['treatment_received'],'completion_date':vals['completion_date'],'disease_status':vals['current_disease_status'],'late_effect_risks':vals['late_effect_risks'],'follow_up_recommendations':vals['follow_up_recommendations']},'signed_snapshot':{'episode_id':ep['id'],'completed_treatment_event_ids':[x.get('id') for x in completed],'diagnosis_at_completion':vals['diagnosis_at_completion'],'treatment_received':vals['treatment_received'],'completion_date':vals['completion_date'],'current_disease_status':vals['current_disease_status'],'late_effect_risks':vals['late_effect_risks'],'follow_up_recommendations':vals['follow_up_recommendations']}})
+   update_rec(c,cur['id'],vals,'Signed' if sign else 'Draft',role,'TREATMENT_COMPLETION_SIGN' if sign else 'TREATMENT_COMPLETION_SAVE')
+   if sign:
+    complete_open_tasks(c,pid,role,'Treatment completion review',source_type='treatment_history',source_id=(hist or {}).get('id'),completed_by=role);handoff(c,pid,'Nurse Navigator','Create survivorship / surveillance plan','Survivorship planning','treatment_completion',cur['id'],role,'High','Signed Cancer Treatment Summary available',{'treatment_summary_id':cur['id'],'episode_id':ep['id'],'summary':vals['treatment_summary'],'source_completed_treatment_event_ids':vals['source_completed_treatment_event_ids']});journey_add(c,pid,'Treatment Completion','End-of-Treatment Review Signed','Survivorship Planning',role,'treatment_completion',cur['id'],'',True)
+   return {'ok':True,'id':cur['id'],'status':'Signed' if sign else 'Draft','supersedes':cur['data'].get('supersedes',''),'next_role':'Nurse Navigator' if sign else ''},200
+  if a=='save_survivorship_plan':
+   if role!='Nurse Navigator':return {'error':'Nurse Navigator required'},403
+   src=get_rec(c,d.get('treatment_completion_id')) if d.get('treatment_completion_id') else latest_usable(c,pid,'treatment_completion',['Signed'])
+   if not src or src.get('status')!='Signed':return {'error':'Signed End-of-Treatment Review / Cancer Treatment Summary required'},409
+   cur=e if e and e.get('entity_type')=='survivorship' else latest(c,pid,'survivorship')
+   if not cur:rid=new_record(c,pid,'survivorship',{},'Draft',role);cur=get_rec(c,rid)
+   amend_reason=str(d.get('amendment_reason') or '').strip()
+   if cur['status']=='Signed':
+    if not amend_reason:return {'error':'Signed Survivorship Plan is immutable; amendment_reason is required to create a superseding version','supersedes':cur['id']},409
+    old=cur;rid=new_record(c,pid,'survivorship',{**old['data'],'supersedes':old['id'],'amendment_reason':amend_reason,'amendment_started_by':actor(role),'amendment_started_at':now()},'Draft',role);cur=get_rec(c,rid);update_rec(c,old['id'],{'superseded_by_record_id':rid,'superseded_reason':amend_reason},'Superseded',role,'SURVIVORSHIP_SUPERSEDE',amend_reason);cancel_open_tasks(c,pid,task_type='Surveillance encounter',source_type='survivorship',source_id=old['id'],cancelled_by=role,reason='Source Survivorship Plan superseded: '+amend_reason)
+   sign=bool(d.get('sign'));req=['surveillance_schedule','late_effect_monitoring','health_promotion','red_flags','contact_plan'];vals={**cur['data'],**{k:v for k,v in d.items() if k not in ['sign','amendment_reason']}};miss=[k for k in req if vals.get(k) in ['',None,[]]]
+   if sign and miss:return {'error':'Survivorship plan incomplete','missing':miss},409
+   vals.update({'episode_id':src['data'].get('episode_id'),'source_treatment_completion_id':src['id'],'source_treatment_completion_version':src['version']})
+   if sign:vals.update({'signed_by':actor(role),'signed_at':now(),'signed_snapshot':{k:vals.get(k) for k in req+['episode_id','source_treatment_completion_id','source_treatment_completion_version','next_surveillance_at']}})
+   update_rec(c,cur['id'],vals,'Signed' if sign else 'Draft',role,'SURVIVORSHIP_SIGN' if sign else 'SURVIVORSHIP_SAVE');complete_open_tasks(c,pid,role,'Survivorship planning',source_type='treatment_completion',source_id=src['id'],completed_by=role)
+   if sign:handoff(c,pid,'Nurse Navigator','Perform scheduled surveillance encounter','Surveillance encounter','survivorship',cur['id'],role,'Routine','Signed surveillance plan active',{'survivorship_plan_id':cur['id'],'episode_id':vals['episode_id'],'source_treatment_completion_id':src['id']},d.get('next_surveillance_at',''));journey_add(c,pid,'Survivorship','Surveillance Plan Signed','Surveillance',role,'survivorship',cur['id'],'',True)
+   return {'ok':True,'id':cur['id'],'status':'Signed' if sign else 'Draft','supersedes':cur['data'].get('supersedes','')},200
+  if a=='record_surveillance':
+   if role not in ['Nurse Navigator','Medical Oncology','Radiation Oncology','Surgical Oncology']:return {'error':'Surveillance care-team role required'},403
+   surv=e if e and e.get('entity_type')=='surveillance' else latest(c,pid,'surveillance')
+   if not surv:rid=new_record(c,pid,'surveillance',{'encounters':[],'disease_status_events':[]},'Active',role);surv=get_rec(c,rid)
+   plan=latest_usable(c,pid,'survivorship',['Signed'])
+   if not plan:return {'error':'Signed Survivorship/Surveillance Plan required'},409
+   req=['date','assessment','disease_status'];miss=[k for k in req if not d.get(k)]
+   if miss:return {'error':'Surveillance encounter incomplete','missing':miss},409
+   ep=current_episode(c,pid)
+   if not ep or ep['id']!=plan['data'].get('episode_id'):return {'error':'Active Cancer Episode does not match Survivorship Plan provenance'},409
+   rows=list(surv['data'].get('encounters',[]));x={'id':'SURV-'+uuid.uuid4().hex[:7].upper(),'episode_id':ep['id'],'date':d['date'],'assessment':d['assessment'],'disease_status':d['disease_status'],'symptoms':d.get('symptoms',[]),'investigations':d.get('investigations',[]),'recorded_by':actor(role),'recorded_at':now()};rows.append(x);update_rec(c,surv['id'],{'encounters':rows},'Active',role,'SURVEILLANCE_ENCOUNTER',d['disease_status']);complete_open_tasks(c,pid,role,'Surveillance encounter',source_type='survivorship',source_id=plan['id'],completed_by=role)
+   suspected=str(d['disease_status']).lower() in ['suspected recurrence','suspected progression','possible recurrence','possible progression'] or bool(d.get('suspected_progression'))
+   if suspected:handoff(c,pid,'Medical Oncology','Confirm suspected recurrence/progression','Progression confirmation','surveillance',surv['id'],role,'High','Surveillance raised suspected recurrence/progression',{'surveillance_encounter':x,'episode_id':ep['id']})
+   return {'ok':True,'encounter':x,'next_role':'Medical Oncology' if suspected else ''},200
+  if a=='confirm_progression':
+   if role!='Medical Oncology':return {'error':'Medical Oncology required'},403
+   surv=e if e and e.get('entity_type')=='surveillance' else latest(c,pid,'surveillance');ep=current_episode(c,pid)
+   if not surv or not ep:return {'error':'Active surveillance record and Cancer Episode required'},409
+   status=d.get('disease_status');allowed=['Confirmed Recurrence','Confirmed Progression','No Recurrence / Stable'];reason=str(d.get('evidence_summary') or '').strip()
+   if status not in allowed or not reason:return {'error':'Structured disease-status confirmation and evidence summary required','allowed':allowed},409
+   events=list(surv['data'].get('disease_status_events',[]));x={'id':'DSE-'+uuid.uuid4().hex[:7].upper(),'episode_id':ep['id'],'disease_status':status,'evidence_summary':reason,'evidence_source_ids':d.get('evidence_source_ids',[]),'confirmed_by':actor(role),'confirmed_at':now()};events.append(x);update_rec(c,surv['id'],{'disease_status_events':events},'Active',role,'DISEASE_STATUS_CONFIRM',status);complete_open_tasks(c,pid,role,'Progression confirmation',source_type='surveillance',source_id=surv['id'],completed_by=role)
+   if status in ['Confirmed Recurrence','Confirmed Progression']:
+    hist=latest(c,pid,'treatment_history');lines=[z for z in (hist or {}).get('data',{}).get('episodes',[]) if z.get('type')=='Line of Therapy'];line_no=len(lines)+1;evt={'type':'Line of Therapy','episode_id':ep['id'],'line_number':line_no,'disease_status':status,'started_at':now(),'source_status_event_id':x['id'],'status':'Planning'}
+    if hist:rows=list(hist['data'].get('episodes',[]));rows.append(evt);update_rec(c,hist['id'],{'episodes':rows},'Active',role,'NEW_LINE_OF_THERAPY',status)
+    m=latest(c,pid,'mdt');
+    if not m or m['status'] in ['MDT Recommended','Superseded','Cancelled']:rid=new_record(c,pid,'mdt',{'case_no':'MDT-'+uuid.uuid4().hex[:6].upper(),'attendees':[]},'Draft',role);m=get_rec(c,rid)
+    update_rec(c,m['id'],{'clinical_question':'Review '+status+' and define next line of therapy','clinical_summary':reason,'intent':m['data'].get('intent') or 'Curative','recommendation':m['data'].get('recommendation') or 'Pending MDT discussion','rationale':m['data'].get('rationale') or reason,'final_consensus':m['data'].get('final_consensus') or 'Deferred pending information','specialty_responsible':m['data'].get('specialty_responsible') or 'Medical Oncology','episode_id':ep['id'],'source_status_event_id':x['id']},'Draft',role,'MDT_CASE_SUBMIT',status);handoff(c,pid,'MDT Coordinator','Prepare recurrence/progression MDT','MDT case preparation','mdt',m['id'],role,'High',status,{'disease_status_event':x,'line_number':line_no,'episode_id':ep['id']});journey_add(c,pid,'MDT / Tumour Board',status+' — New Line Planning','Draft',role,'mdt',m['id'],reason,True);return {'ok':True,'status_event':x,'episode_id_before':ep['id'],'episode_id_after':current_episode(c,pid)['id'],'line_number':line_no,'mdt_id':m['id'],'next_role':'MDT Coordinator'},200
+   return {'ok':True,'status_event':x,'episode_id':ep['id']},200
+  if a=='refer_support_service':
+   if role not in ['Medical Oncology','Surgical Oncology','Radiation Oncology','Nurse Navigator','Inpatient Oncology Clinician','Inpatient Oncology Nurse','Day Care / Infusion Nurse','Intake Nurse']:return {'error':'Care-team role required to create support referral'},403
+   target=d.get('target_role');allowed=['Nurse Navigator','Dietitian / Nutrition','Psycho-Oncology','Palliative Care','Clinical Trials / Research','Stoma / Wound Nurse','Anaesthetist','Blood Bank / Transfusion','Health Information Management']
+   if target not in allowed:return {'error':'Governed support-service target required','allowed':allowed},409
+   reason=str(d.get('reason') or '').strip()
+   if not reason:return {'error':'Referral reason required'},409
+   tid=handoff(c,pid,target,d.get('title') or ('Support referral: '+target),'Support service referral',d.get('source_type') or 'care_plan',d.get('source_id') or ((latest(c,pid,'care_plan') or {}).get('id','')),role,d.get('priority','Routine'),reason,{'referrer_role':role,'reason':reason,'context':d.get('context',{})},d.get('due_at',''));journey_add(c,pid,target,'Support Service Referral','Open',role,'task',tid,reason,False);return {'ok':True,'task_id':tid,'next_role':target},200
+  if a=='save_support_record':
+   owner_map={'navigation':'Nurse Navigator','anaesthesia':'Anaesthetist','blood_bank':'Blood Bank / Transfusion','stoma_wound':'Stoma / Wound Nurse','nutrition':'Dietitian / Nutrition','psychosocial':'Psycho-Oncology','palliative':'Palliative Care','clinical_trial':'Clinical Trials / Research','him':'Health Information Management','pathology_processing':'Pathology Technologist','rt_planning':'Radiation Dosimetrist / Planner'};typ=str(d.get('record_type') or '');owner=owner_map.get(typ)
+   if not owner:return {'error':'Unsupported supporting-service record type','allowed':sorted(owner_map)},409
+   if role!=owner:return {'error':owner+' required for '+typ},403
+   sign=bool(d.get('sign'));reason=str(d.get('amendment_reason') or '').strip();cur=e if e and e.get('entity_type')==typ else latest(c,pid,typ)
+   ev=req.get('expected_version')
+   if cur and ev not in [None,'']:
+    try:evi=int(ev)
+    except:return {'error':'expected_version must be an integer','current_version':cur['version']},409
+    if evi!=int(cur['version']):return {'error':'Record changed since it was loaded','expected_version':evi,'current_version':cur['version'],'record_id':cur['id']},409
+   if cur and cur['status']=='Signed':
+    if not reason:return {'error':'Signed '+typ+' record is immutable; amendment_reason required','supersedes':cur['id']},409
+    old_id=cur['id'];rid=new_record(c,pid,typ,{**cur['data'],'supersedes':old_id,'amendment_reason':reason},'Draft',role);update_rec(c,old_id,{'superseded_by_record_id':rid},'Superseded',role,'SUPPORT_SUPERSEDE',reason);cancel_open_tasks(c,pid,source_type=typ,source_id=old_id,cancelled_by=role,reason='Source support record superseded by '+rid);cur=get_rec(c,rid)
+   if not cur:rid=new_record(c,pid,typ,{},'Draft',role);cur=get_rec(c,rid)
+   reqmap={'navigation':['contact_type','barriers','plan','next_step'],'anaesthesia':['assessment_date','asa_class','airway_assessment','anesthesia_plan','fitness_decision'],'blood_bank':['assessment_date','blood_group','antibody_screen','crossmatch_status','availability_status'],'stoma_wound':['assessment_date','wound_status','drain_status','stoma_status','plan'],'nutrition':['assessment_date','weight_kg','intake_assessment','nutrition_diagnosis','intervention_plan','monitoring_plan'],'psychosocial':['assessment_date','distress_score','risk_level','intervention_plan','care_team_summary'],'palliative':['assessment_date','symptom_summary','goals_of_care_status','plan'],'clinical_trial':['trial_id','protocol_version','screening_status','consent_status'],'him':['operation_type','reason','status'],'pathology_processing':['accession_id','specimen_received_at','grossing_status','blocks_slides_status','ready_for_pathologist'],'rt_planning':['plan_id','planning_system','plan_status']}
+   vals={**cur['data'],**{k:v for k,v in d.items() if k not in ['record_type','sign','amendment_reason']}}
+   if sign:
+    miss=[x for x in reqmap.get(typ,[]) if vals.get(x) in ['',None,[]]]
+    if miss:return {'error':typ+' record incomplete','missing':miss},409
+    if typ=='psychosocial':
+     try:ds=float(vals.get('distress_score'))
+     except:return {'error':'Distress score must be numeric'},409
+     if ds<0 or ds>10:return {'error':'Distress score must be 0–10'},409
+    if typ=='nutrition':
+     try:float(vals.get('weight_kg'))
+     except:return {'error':'Nutrition weight must be numeric'},409
+     vals['weight_unit']='kg'
+    vals.update({'signed_by':actor(role),'signed_at':now(),'signed_snapshot':{k:vals.get(k) for k in reqmap.get(typ,[])}})
+   update_rec(c,cur['id'],vals,'Signed' if sign else 'Draft',role,'SUPPORT_SIGN' if sign else 'SUPPORT_SAVE',typ)
+   if sign:
+    refrow=c.execute("SELECT * FROM tasks WHERE patient_id=? AND owner_role=? AND task_type='Support service referral' AND status IN ('Open','Acknowledged') ORDER BY created_at DESC LIMIT 1",(pid,role)).fetchone();reft=task_row(refrow) if refrow else None;referrer=((reft or {}).get('data') or {}).get('referrer_role') or 'Medical Oncology';referrer=referrer if referrer in ROLES else 'Medical Oncology'
+    if reft:complete_open_tasks(c,pid,role,'Support service referral',source_type=reft.get('source_type'),source_id=reft.get('source_id'),completed_by=role)
+    if typ=='anaesthesia':handoff(c,pid,'Surgical Nurse','Update surgical pre-op readiness after anaesthesia assessment','Surgical pre-op','anaesthesia',cur['id'],role,'High',vals.get('fitness_decision',''),{'anaesthesia_record_id':cur['id'],'fitness_decision':vals.get('fitness_decision')})
+    elif typ=='blood_bank':handoff(c,pid,'Surgical Nurse','Update theatre readiness with Blood Bank status','Surgical pre-op','blood_bank',cur['id'],role,'High',vals.get('availability_status',''),{'blood_bank_record_id':cur['id'],'availability_status':vals.get('availability_status')})
+    elif typ=='pathology_processing':
+     path=get_rec(c,vals.get('pathology_record_id')) if vals.get('pathology_record_id') else latest(c,pid,'pathology')
+     if path:update_rec(c,path['id'],{'accession_id':vals.get('accession_id'),'specimen_received_at':vals.get('specimen_received_at'),'grossing_status':vals.get('grossing_status'),'blocks_slides_status':vals.get('blocks_slides_status'),'processing_record_id':cur['id']},'Processing Complete' if vals.get('ready_for_pathologist') else path['status'],role,'PATH_PROCESSING_SYNC')
+     if vals.get('ready_for_pathologist') and path:handoff(c,pid,'Pathology','Interpret and sign pathology report','Pathology reporting','pathology',path['id'],role,'High','Specimen processing complete',{'processing_record_id':cur['id'],'accession_id':vals.get('accession_id')})
+    elif typ=='nutrition':handoff(c,pid,referrer,'Review Dietitian recommendation','Support result review','nutrition',cur['id'],role,'Routine','Signed nutrition assessment available',{'nutrition_record_id':cur['id'],'care_team_summary':vals.get('intervention_plan')})
+    elif typ=='psychosocial':handoff(c,pid,referrer,'Review Psycho-Oncology care-team summary','Support result review','psychosocial',cur['id'],role,'High' if vals.get('risk_level') in ['High','Critical'] else 'Routine','Minimum-necessary Psycho-Oncology summary available',{'psychosocial_record_id':cur['id'],'care_team_summary':vals.get('care_team_summary'),'risk_level':vals.get('risk_level')})
+    elif typ=='palliative':handoff(c,pid,referrer,'Review Palliative Care recommendations','Support result review','palliative',cur['id'],role,'High','Signed palliative assessment available',{'palliative_record_id':cur['id'],'plan':vals.get('plan')})
+    elif typ=='clinical_trial':handoff(c,pid,referrer,'Review Clinical Trials screening status','Clinical trial review','clinical_trial',cur['id'],role,'High','Trials coordinator update',{'trial_id':vals.get('trial_id'),'screening_status':vals.get('screening_status'),'consent_status':vals.get('consent_status')})
+    elif typ=='stoma_wound':handoff(c,pid,referrer if referrer in ['Surgical Oncology','Inpatient Oncology Clinician','Medical Oncology'] else 'Surgical Oncology','Review wound/stoma assessment','Support result review','stoma_wound',cur['id'],role,'High' if vals.get('risk_flag') in ['High','Urgent'] else 'Routine','Signed wound/stoma record available',{'record_id':cur['id'],'plan':vals.get('plan')})
+    elif typ=='navigation':handoff(c,pid,referrer,'Review Nurse Navigation coordination result','Support result review','navigation',cur['id'],role,'Routine','Signed navigation/care-coordination record available',{'record_id':cur['id'],'next_step':vals.get('next_step'),'barriers':vals.get('barriers',[])})
+    elif typ=='him':handoff(c,pid,referrer,'Review HIM request outcome','Support result review','him',cur['id'],role,'Routine','Signed HIM correction/reconciliation outcome available',{'record_id':cur['id'],'operation_type':vals.get('operation_type'),'status':vals.get('status'),'reason':vals.get('reason')})
+    elif typ=='rt_planning':handoff(c,pid,referrer if referrer in ['Radiation Oncology','Radiation Physicist','Radiation Technologist'] else 'Radiation Oncology','Review RT planning status','Support result review','rt_planning',cur['id'],role,'Routine','Signed RT planning update available',{'record_id':cur['id'],'plan_status':vals.get('plan_status')})
+   return {'ok':True,'id':cur['id'],'status':'Signed' if sign else 'Draft'},200
   return {'error':'Unknown action'},404
 
 if __name__=='__main__':
- init_db();print(f'CCA Cancer Care V12.2 Final Defect Remediation running at http://127.0.0.1:{PORT}');ThreadingHTTPServer(('127.0.0.1',PORT),H).serve_forever()
+ if DEPLOYMENT_MODE=='production' and ALLOW_SHARED_ROLE_LOGIN:raise SystemExit('Refusing production startup with shared-role login enabled. Set CCA_ALLOW_SHARED_ROLE_LOGIN=0.')
+ init_db();print(f'CCA Cancer Care V12.2 Final Defect Remediation (PC8.0 connected-multidisciplinary) running at http://{HOST}:{PORT}');ThreadingHTTPServer((HOST,PORT),H).serve_forever()

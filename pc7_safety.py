@@ -7,7 +7,7 @@ is synthetic QA content and must not be interpreted as CCA prescribing policy.
 from datetime import date,datetime
 import math
 
-BUILD='12.2-PC7.1'
+BUILD='12.2-PC7.1-PC8.0'
 BSA_POLICY={'formula':'Mosteller','raw_precision':4,'display_precision':2,'ordering_precision':2,'formula_text':'sqrt(height_cm × weight_kg / 3600)'}
 ALLOWED_RENAL_METHODS=['Measured GFR','Validated nuclear medicine GFR','Cockcroft-Gault creatinine clearance','CCA-approved renal dosing value']
 CTCAE_VERSION='5.0'
@@ -50,6 +50,14 @@ def effective_protocol(item,cycle):
  if lm:
   if c==1 and lm.get('loading_dose') is not None:dose=lm['loading_dose'];phase='loading'
   elif c>1 and lm.get('maintenance_dose') is not None:dose=lm['maintenance_dose'];phase='maintenance'
+ elif item.get('loading_cycles') is not None or item.get('maintenance_protocol_dose') is not None:
+  # PC8.0 flexible loading-phase shape: an explicit list of loading-phase cycle numbers plus
+  # a separate maintenance dose, instead of a single cycle==1 cutover. Only engages when the
+  # regimen item uses this shape at all; existing loading_maintenance-shaped content above
+  # takes precedence and is untouched.
+  loading_cycles={int(x) for x in (item.get('loading_cycles') or [])}
+  if c in loading_cycles:dose=item.get('protocol_dose');phase='loading'
+  elif item.get('maintenance_protocol_dose') is not None:dose=item.get('maintenance_protocol_dose');phase='maintenance'
  return dose,phase
 
 def calculate_dose(item,weight_kg,bsa_m2,cycle=1,renal=None):
@@ -94,13 +102,22 @@ def safety_check(item,ordered,calc_result,variance_reason=''):
  return {'ok':not errors,'errors':errors,'warnings':warnings,'variance_pct':variance,'max_dose_mg':hardmax}
 
 def allergy_conflicts(allergies,item):
- # Direct coded ingredient/class matches only. No speculative cross-reactivity.
+ # Direct coded ingredient/class matches only, restricted to allergies not explicitly
+ # resolved/inactive (PC8.0 status filter). A labeled lower-confidence substring match is
+ # unioned in as an additional, distinctly-tagged hit category (PC8.0) -- it never replaces
+ # or suppresses an exact governed-code/name match, and both require clinician review.
  codes=set(str(x).strip() for x in (item.get('allergen_codes') or [item.get('code')]) if x)
  names=set(str(x).strip().lower() for x in (item.get('allergen_names') or [item.get('drug')]) if x)
+ drug_name=str(item.get('drug') or '').strip().lower()
  hits=[]
  for a in allergies or []:
-  ac=str(a.get('code') or '').strip();an=str(a.get('substance') or '').strip().lower()
-  if (ac and ac in codes) or (an and an in names):hits.append({'allergy_id':a.get('id'),'substance':a.get('substance'),'code':ac,'reaction':a.get('reaction'),'severity':a.get('severity')})
+  status=str(a.get('status') or '').strip().lower()
+  if status in ['resolved','recovered','inactive','entered in error','no known allergy']:continue
+  ac=str(a.get('code') or '').strip();an=str(a.get('substance') or a.get('generic_ingredient') or '').strip().lower()
+  if (ac and ac in codes) or (an and an in names):
+   hits.append({'allergy_id':a.get('id'),'substance':a.get('substance'),'code':ac,'reaction':a.get('reaction'),'severity':a.get('severity'),'match_type':'exact'})
+  elif an and drug_name and (an in drug_name or drug_name in an):
+   hits.append({'allergy_id':a.get('id'),'substance':a.get('substance'),'code':ac,'reaction':a.get('reaction'),'severity':a.get('severity'),'match_type':'partial — clinician review required'})
  return hits
 
 def validate_terminology(d):
@@ -132,6 +149,7 @@ def recist_evaluate(targets,baseline_targets,prior_assessments,new_lesions=False
  prior=[safe_float(x.get('sum_mm')) for x in prior_assessments or []];prior=[x for x in prior if x is not None]
  nadir=min([base]+prior) if base else (min(prior) if prior else curr)
  if new_lesions:cat='PD'
+ elif 'unequivocal progression' in str(non_target or '').lower():cat='PD'  # PC8.0: explicit non-target progression trigger
  else:
   all_cr=all((safe_float(x.get('size_mm')) or 0)==0 if str(x.get('lesion_type') or 'Non-nodal')!='Lymph node' else (safe_float(x.get('size_mm')) or 0)<10 for x in targets)
   if all_cr and str(non_target or '').lower() in ['', 'none','cr','complete response']:cat='CR'

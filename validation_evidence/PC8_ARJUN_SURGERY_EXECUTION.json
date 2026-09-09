@@ -1,0 +1,2814 @@
+{
+  "patient_id": "PAT-VAL-ARJUN",
+  "patient": "Arjun Mehta",
+  "build": "12.2-PC7.1-PC8.0",
+  "generated_at": "2026-09-09T03:41:46.007469+00:00",
+  "checks": 56,
+  "pass": 56,
+  "fail": 0,
+  "results": [
+    {
+      "check": "ARJ-001 baseline registration available",
+      "pass": true,
+      "detail": "REG-SYN-VAL-03"
+    },
+    {
+      "check": "ARJ-002 registration complete",
+      "pass": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "check": "ARJ-003 referral assigned to MO triage",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "REF-SYN-VAL-03",
+        "status": "Assigned"
+      }
+    },
+    {
+      "check": "ARJ-004 MO receives referral task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-B1EF84BDBF",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Referral lifecycle",
+        "title": "Referral: Synthetic surgical case for plan -> anaesthesia -> pre-op/blood readiness -> theatre -> operation -> specimen -> pathology -> pTNM -> adjuvant handoff.",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "referral",
+        "source_id": "REF-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Assigned",
+        "created_at": "2026-09-09T09:11:41+05:30",
+        "created_by": "UA-1953F3A56877",
+        "updated_at": "2026-09-09T09:11:41+05:30",
+        "updated_by": "UA-1953F3A56877",
+        "data": {
+          "referral_id": "REF-SYN-VAL-03",
+          "status": "Assigned"
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "phone": "917000000103",
+          "abha": "",
+          "id_number": "SYN-ARJUN-01",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:41+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "REF-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "referral",
+          "status": "Assigned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:41+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "data": {
+            "status": "Assigned",
+            "reason": "Synthetic surgical case for plan -> anaesthesia -> pre-op/blood readiness -> theatre -> operation -> specimen -> pathology -> pTNM -> adjuvant handoff.",
+            "assigned_department": "Medical Oncology",
+            "assigned_clinician": "Dr Asha Mehta",
+            "priority": "Routine",
+            "history": [
+              {
+                "status": "Created",
+                "at": "2026-09-09T09:11:29+05:30",
+                "by": {
+                  "name": "System",
+                  "role": "System"
+                },
+                "reason": "Synthetic validation baseline"
+              },
+              {
+                "at": "2026-09-09T09:11:41+05:30",
+                "from": "Created",
+                "to": "Assigned",
+                "by": {
+                  "id": "UA-1953F3A56877",
+                  "username": "front.desk.demo",
+                  "name": "Kavya Rao — Front Desk",
+                  "role": "Front Desk",
+                  "professional_id": "DEMO-FD-001"
+                },
+                "reason": ""
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "updated_by": {
+              "id": "UA-1953F3A56877",
+              "username": "front.desk.demo",
+              "name": "Kavya Rao — Front Desk",
+              "role": "Front Desk",
+              "professional_id": "DEMO-FD-001"
+            },
+            "updated_at": "2026-09-09T09:11:41+05:30"
+          }
+        },
+        "source_record_type": "referral",
+        "source_record_id": "REF-SYN-VAL-03",
+        "source_record_version": 2,
+        "source_record_status": "Assigned",
+        "source_record_updated_at": "2026-09-09T09:11:41+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "source_type": "referral",
+          "source_id": "REF-SYN-VAL-03"
+        }
+      }
+    },
+    {
+      "check": "ARJ-005 referral exact source/provenance",
+      "pass": true,
+      "detail": {
+        "id": "TASK-B1EF84BDBF",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Referral lifecycle",
+        "title": "Referral: Synthetic surgical case for plan -> anaesthesia -> pre-op/blood readiness -> theatre -> operation -> specimen -> pathology -> pTNM -> adjuvant handoff.",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "referral",
+        "source_id": "REF-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Assigned",
+        "created_at": "2026-09-09T09:11:41+05:30",
+        "created_by": "UA-1953F3A56877",
+        "updated_at": "2026-09-09T09:11:41+05:30",
+        "updated_by": "UA-1953F3A56877",
+        "data": {
+          "referral_id": "REF-SYN-VAL-03",
+          "status": "Assigned"
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "phone": "917000000103",
+          "abha": "",
+          "id_number": "SYN-ARJUN-01",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:41+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "REF-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "referral",
+          "status": "Assigned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:41+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "data": {
+            "status": "Assigned",
+            "reason": "Synthetic surgical case for plan -> anaesthesia -> pre-op/blood readiness -> theatre -> operation -> specimen -> pathology -> pTNM -> adjuvant handoff.",
+            "assigned_department": "Medical Oncology",
+            "assigned_clinician": "Dr Asha Mehta",
+            "priority": "Routine",
+            "history": [
+              {
+                "status": "Created",
+                "at": "2026-09-09T09:11:29+05:30",
+                "by": {
+                  "name": "System",
+                  "role": "System"
+                },
+                "reason": "Synthetic validation baseline"
+              },
+              {
+                "at": "2026-09-09T09:11:41+05:30",
+                "from": "Created",
+                "to": "Assigned",
+                "by": {
+                  "id": "UA-1953F3A56877",
+                  "username": "front.desk.demo",
+                  "name": "Kavya Rao — Front Desk",
+                  "role": "Front Desk",
+                  "professional_id": "DEMO-FD-001"
+                },
+                "reason": ""
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "updated_by": {
+              "id": "UA-1953F3A56877",
+              "username": "front.desk.demo",
+              "name": "Kavya Rao — Front Desk",
+              "role": "Front Desk",
+              "professional_id": "DEMO-FD-001"
+            },
+            "updated_at": "2026-09-09T09:11:41+05:30"
+          }
+        },
+        "source_record_type": "referral",
+        "source_record_id": "REF-SYN-VAL-03",
+        "source_record_version": 2,
+        "source_record_status": "Assigned",
+        "source_record_updated_at": "2026-09-09T09:11:41+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "source_type": "referral",
+          "source_id": "REF-SYN-VAL-03"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "ARJ-006 referral accepted by MO",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "REF-SYN-VAL-03",
+        "status": "Accepted"
+      }
+    },
+    {
+      "check": "ARJ-007 intake signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "bmi": 25.39,
+        "bsa_raw_m2": 1.9111,
+        "bsa_m2": 1.91,
+        "bsa_rounding_policy": {
+          "formula": "Mosteller",
+          "raw_precision": 4,
+          "display_precision": 2,
+          "ordering_precision": 2,
+          "formula_text": "sqrt(height_cm × weight_kg / 3600)"
+        },
+        "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
+        "canonical_units": {
+          "bp": "mmHg",
+          "hr": "/min",
+          "rr": "/min",
+          "temp_c": "°C",
+          "spo2": "%",
+          "weight_kg": "kg",
+          "height_cm": "cm"
+        },
+        "source_measurements": {
+          "sbp": {
+            "value": 128.0,
+            "unit": "mmHg"
+          },
+          "dbp": {
+            "value": 76.0,
+            "unit": "mmHg"
+          },
+          "hr": {
+            "value": 74.0,
+            "unit": "/min"
+          },
+          "rr": {
+            "value": 16.0,
+            "unit": "/min"
+          },
+          "temp": {
+            "value": 36.7,
+            "unit": "°C"
+          },
+          "spo2": {
+            "value": 99.0,
+            "unit": "%"
+          },
+          "weight": {
+            "value": 76.0,
+            "unit": "kg"
+          },
+          "height": {
+            "value": 173.0,
+            "unit": "cm"
+          }
+        }
+      }
+    },
+    {
+      "check": "ARJ-008 MO consultation signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "ARJ-009 clinical diagnosis/staging verified",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Verified"
+      }
+    },
+    {
+      "check": "ARJ-010 MDT submitted",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "mdt_id": "MDT-SYN-VAL-03",
+        "status": "Submitted"
+      }
+    },
+    {
+      "check": "ARJ-011.1 MDT attendance Medical Oncology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Not met"
+      }
+    },
+    {
+      "check": "ARJ-011.2 MDT attendance Radiation Oncology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Not met"
+      }
+    },
+    {
+      "check": "ARJ-011.3 MDT attendance Surgical Oncology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Met"
+      }
+    },
+    {
+      "check": "ARJ-011.4 MDT attendance Radiology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Met"
+      }
+    },
+    {
+      "check": "ARJ-011.5 MDT attendance Pathology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Met"
+      }
+    },
+    {
+      "check": "ARJ-012 Coordinator recommendation awaiting Chair",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Pending Chair Approval"
+      }
+    },
+    {
+      "check": "ARJ-013 Chair receives recommendation task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-9C99BED6F8",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "MDT case preparation",
+        "title": "Review and sign submitted MDT recommendation",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "MDT Chair",
+        "owner_user_id": "USR-MDTCHAIR-001",
+        "source_type": "mdt",
+        "source_id": "MDT-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Confirm resectability and curative surgical sequence for sigmoid colon adenocarcinoma.",
+        "created_at": "2026-09-09T09:11:43+05:30",
+        "created_by": "UA-223C7394AF8F",
+        "updated_at": "2026-09-09T09:11:43+05:30",
+        "updated_by": "UA-223C7394AF8F",
+        "data": {
+          "mdt_id": "MDT-SYN-VAL-03"
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "current_department": "MDT / Tumour Board",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "MDT-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "mdt",
+          "status": "Pending Chair Approval",
+          "version": 3,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:43+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-223C7394AF8F",
+          "data": {
+            "attendees": [],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-03",
+            "clinical_question": "Confirm resectability and curative surgical sequence for sigmoid colon adenocarcinoma.",
+            "clinical_summary": "Sigmoid colon adenocarcinoma, cT3 cN1 cM0 AJCC v8 Stage IIIB, ECOG 1.",
+            "submitted_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "submitted_at": "2026-09-09T09:11:42+05:30",
+            "meeting_mode": "Internal",
+            "meeting_at": "2026-09-09T10:00:00+05:30",
+            "submission_status": "Submitted",
+            "intent": "Curative",
+            "recommendation": "Proceed with curative laparoscopic sigmoid colectomy after anaesthesia and pre-operative clearance; review final histopathology for adjuvant systemic therapy.",
+            "rationale": "Synthetic MDT consensus based on resectable disease and no distant metastasis.",
+            "final_consensus": "Consensus",
+            "specialty_responsible": "Surgical Oncology",
+            "actions": [
+              {
+                "description": "Arrange surgery after multidisciplinary pre-op clearance",
+                "owner_role": "Surgical Oncology",
+                "due_date": "2026-09-16",
+                "priority": "High"
+              }
+            ],
+            "recommendation_submitted_by": {
+              "id": "UA-223C7394AF8F",
+              "username": "mdt.coordinator.demo",
+              "name": "Riya Kapoor — MDT Coordinator",
+              "role": "MDT Coordinator",
+              "professional_id": "DEMO-MDT-CO-001"
+            },
+            "recommendation_submitted_at": "2026-09-09T09:11:43+05:30",
+            "chair_decision": "Pending",
+            "chair_signed_by": null,
+            "chair_signed_at": "",
+            "chair_reason": "",
+            "signed_by": null,
+            "signed_at": ""
+          }
+        },
+        "source_record_type": "mdt",
+        "source_record_id": "MDT-SYN-VAL-03",
+        "source_record_version": 3,
+        "source_record_status": "Pending Chair Approval",
+        "source_record_updated_at": "2026-09-09T09:11:43+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-223C7394AF8F",
+          "source_type": "mdt",
+          "source_id": "MDT-SYN-VAL-03"
+        }
+      }
+    },
+    {
+      "check": "ARJ-014 Chair source is Coordinator record/provenance",
+      "pass": true,
+      "detail": {
+        "id": "TASK-9C99BED6F8",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "MDT case preparation",
+        "title": "Review and sign submitted MDT recommendation",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "MDT Chair",
+        "owner_user_id": "USR-MDTCHAIR-001",
+        "source_type": "mdt",
+        "source_id": "MDT-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Confirm resectability and curative surgical sequence for sigmoid colon adenocarcinoma.",
+        "created_at": "2026-09-09T09:11:43+05:30",
+        "created_by": "UA-223C7394AF8F",
+        "updated_at": "2026-09-09T09:11:43+05:30",
+        "updated_by": "UA-223C7394AF8F",
+        "data": {
+          "mdt_id": "MDT-SYN-VAL-03"
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "current_department": "MDT / Tumour Board",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "MDT-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "mdt",
+          "status": "Pending Chair Approval",
+          "version": 3,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:43+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-223C7394AF8F",
+          "data": {
+            "attendees": [],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-03",
+            "clinical_question": "Confirm resectability and curative surgical sequence for sigmoid colon adenocarcinoma.",
+            "clinical_summary": "Sigmoid colon adenocarcinoma, cT3 cN1 cM0 AJCC v8 Stage IIIB, ECOG 1.",
+            "submitted_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "submitted_at": "2026-09-09T09:11:42+05:30",
+            "meeting_mode": "Internal",
+            "meeting_at": "2026-09-09T10:00:00+05:30",
+            "submission_status": "Submitted",
+            "intent": "Curative",
+            "recommendation": "Proceed with curative laparoscopic sigmoid colectomy after anaesthesia and pre-operative clearance; review final histopathology for adjuvant systemic therapy.",
+            "rationale": "Synthetic MDT consensus based on resectable disease and no distant metastasis.",
+            "final_consensus": "Consensus",
+            "specialty_responsible": "Surgical Oncology",
+            "actions": [
+              {
+                "description": "Arrange surgery after multidisciplinary pre-op clearance",
+                "owner_role": "Surgical Oncology",
+                "due_date": "2026-09-16",
+                "priority": "High"
+              }
+            ],
+            "recommendation_submitted_by": {
+              "id": "UA-223C7394AF8F",
+              "username": "mdt.coordinator.demo",
+              "name": "Riya Kapoor — MDT Coordinator",
+              "role": "MDT Coordinator",
+              "professional_id": "DEMO-MDT-CO-001"
+            },
+            "recommendation_submitted_at": "2026-09-09T09:11:43+05:30",
+            "chair_decision": "Pending",
+            "chair_signed_by": null,
+            "chair_signed_at": "",
+            "chair_reason": "",
+            "signed_by": null,
+            "signed_at": ""
+          }
+        },
+        "source_record_type": "mdt",
+        "source_record_id": "MDT-SYN-VAL-03",
+        "source_record_version": 3,
+        "source_record_status": "Pending Chair Approval",
+        "source_record_updated_at": "2026-09-09T09:11:43+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-223C7394AF8F",
+          "source_type": "mdt",
+          "source_id": "MDT-SYN-VAL-03"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "ARJ-015 Chair signs authoritative MDT",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "MDT Recommended",
+        "signed_by": {
+          "id": "UA-52D1B8AE0EE7",
+          "username": "mdt.chair.demo",
+          "name": "Dr Vikram Menon — MDT Chair",
+          "role": "MDT Chair",
+          "professional_id": "DEMO-MDT-CHAIR-001"
+        }
+      }
+    },
+    {
+      "check": "ARJ-016 treatment plan created from signed MDT (SO now has access)",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "TREATMENT_PLAN-2FE6432117",
+        "status": "Draft",
+        "note": "MDT created a draft plan only; no treatment order was generated."
+      }
+    },
+    {
+      "check": "ARJ-017 surgical treatment plan signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Clinician Approved"
+      }
+    },
+    {
+      "check": "ARJ-018 MO creates preop lab order",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "LAB_ORDER-77F5A8851B",
+        "catalog_id": "LAB-CMP"
+      }
+    },
+    {
+      "check": "ARJ-019 lab payment/waiver clears",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "idempotent": false
+      }
+    },
+    {
+      "check": "ARJ-020 preop sample collected",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "lab_entity_id": "LAB-AEAE017F65",
+        "sample_id": "SMP-ARJUN-PREOP-01"
+      }
+    },
+    {
+      "check": "ARJ-021 final preop lab persisted",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "LAB-AEAE017F65",
+        "status": "Final",
+        "units": {
+          "hb": "g/dL",
+          "wbc": "10^9/L",
+          "anc": "10^9/L",
+          "platelets": "10^9/L",
+          "creatinine": "mg/dL",
+          "egfr": "mL/min/1.73m2",
+          "bilirubin": "mg/dL",
+          "ast": "U/L",
+          "alt": "U/L"
+        },
+        "critical_tasks": []
+      }
+    },
+    {
+      "check": "ARJ-022 surgical plan signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "episode_id": "EP-SYN-VAL-03"
+      }
+    },
+    {
+      "check": "ARJ-023 Liaison receives procedure-consent task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-1CCCFB2422",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Surgical consent",
+        "title": "Obtain signed surgical consent for Laparoscopic sigmoid colectomy",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Patient Liaison",
+        "owner_user_id": "USR-PATIENTL-001",
+        "source_type": "surgery",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed surgical plan available for consent",
+        "created_at": "2026-09-09T09:11:44+05:30",
+        "created_by": "UA-559C8A1A1341",
+        "updated_at": "2026-09-09T09:11:44+05:30",
+        "updated_by": "UA-559C8A1A1341",
+        "data": {
+          "procedure": "Laparoscopic sigmoid colectomy"
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "phone": "917000000103",
+          "abha": "",
+          "id_number": "SYN-ARJUN-01",
+          "current_department": "Surgical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:43+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": null,
+        "source_record_type": "surgery",
+        "source_record_id": "SURGERY-SYN-VAL-03",
+        "source_record_version": 2,
+        "source_record_status": "Planned",
+        "source_record_updated_at": "2026-09-09T09:11:44+05:30",
+        "source_visible_to_role": false,
+        "signed_by": "Dr Karan Shah",
+        "signed_at": "2026-09-09T09:11:44+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "source_type": "surgery",
+          "source_id": "SURGERY-SYN-VAL-03"
+        }
+      }
+    },
+    {
+      "check": "ARJ-024 Liaison opens signed Surgical Plan source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-1CCCFB2422",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Surgical consent",
+        "title": "Obtain signed surgical consent for Laparoscopic sigmoid colectomy",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Patient Liaison",
+        "owner_user_id": "USR-PATIENTL-001",
+        "source_type": "surgery",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed surgical plan available for consent",
+        "created_at": "2026-09-09T09:11:44+05:30",
+        "created_by": "UA-559C8A1A1341",
+        "updated_at": "2026-09-09T09:11:44+05:30",
+        "updated_by": "UA-559C8A1A1341",
+        "data": {
+          "procedure": "Laparoscopic sigmoid colectomy"
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "phone": "917000000103",
+          "abha": "",
+          "id_number": "SYN-ARJUN-01",
+          "current_department": "Surgical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:43+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": null,
+        "source_record_type": "surgery",
+        "source_record_id": "SURGERY-SYN-VAL-03",
+        "source_record_version": 2,
+        "source_record_status": "Planned",
+        "source_record_updated_at": "2026-09-09T09:11:44+05:30",
+        "source_visible_to_role": false,
+        "signed_by": "Dr Karan Shah",
+        "signed_at": "2026-09-09T09:11:44+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "source_type": "surgery",
+          "source_id": "SURGERY-SYN-VAL-03"
+        },
+        "consumable": false,
+        "blocking_reason": "Owning role does not have minimum-necessary read permission for the task source; workflow configuration must be corrected before action."
+      }
+    },
+    {
+      "check": "ARJ-025 surgical consent signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "items": [
+          {
+            "id": "CONS-0A0ACA93",
+            "type": "Surgical Consent",
+            "version": "PC8-SYN-1",
+            "scope": "Laparoscopic sigmoid colectomy with possible conversion/open procedure and indicated nodal resection",
+            "status": "Signed",
+            "signed_by": "Arjun Mehta — synthetic validation patient",
+            "signed_at": "2026-09-09T09:11:44+05:30",
+            "valid_from": "2026-09-09",
+            "valid_until": "",
+            "document_id": ""
+          }
+        ]
+      }
+    },
+    {
+      "check": "ARJ-026 Anaesthetist receives surgery source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-F55A8507A4",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Support service referral",
+        "title": "Complete pre-operative anaesthesia assessment",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Anaesthetist",
+        "owner_user_id": "USR-ANAESTHE-001",
+        "source_type": "surgery",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed surgical plan available for anaesthesia clearance",
+        "created_at": "2026-09-09T09:11:44+05:30",
+        "created_by": "UA-559C8A1A1341",
+        "updated_at": "2026-09-09T09:11:44+05:30",
+        "updated_by": "UA-559C8A1A1341",
+        "data": {
+          "procedure": "Laparoscopic sigmoid colectomy"
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "current_department": "Surgical Oncology",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURGERY-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "surgery",
+          "status": "Planned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:44+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "data": {
+            "plan": {
+              "status": "Planned",
+              "procedure": "Laparoscopic sigmoid colectomy",
+              "indication": "Resectable sigmoid colon adenocarcinoma",
+              "intent": "Curative",
+              "site": "Sigmoid colon",
+              "laterality": "Not applicable",
+              "extent": "Segmental sigmoid colectomy with regional lymphadenectomy",
+              "approach": "Laparoscopic; convert to open if clinically required",
+              "nodal_procedure": "Regional mesenteric lymphadenectomy",
+              "reconstruction": "Primary colorectal anastomosis",
+              "planned_date": "2026-09-11",
+              "priority": "Routine",
+              "preop_requirements": [
+                "Anaesthesia fitness",
+                "Final CBC/renal/liver profile",
+                "Signed surgical consent",
+                "Blood availability"
+              ],
+              "required_imaging_pathology": [
+                "Staging imaging reviewed",
+                "Diagnostic biopsy reviewed"
+              ],
+              "anesthesia": "General anaesthesia",
+              "anesthesia_clearance": "Pending Anaesthetist assessment",
+              "blood_requirement": "2 units PRBC crossmatched",
+              "signed_by": {
+                "id": "UA-559C8A1A1341",
+                "username": "surgery.demo",
+                "name": "Dr Karan Shah",
+                "role": "Surgical Oncology",
+                "professional_id": "DEMO-SO-001"
+              },
+              "signed_at": "2026-09-09T09:11:44+05:30"
+            },
+            "preop": {
+              "ready": false
+            },
+            "theatre_readiness": {},
+            "outcome": {},
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-03"
+          }
+        },
+        "source_record_type": "surgery",
+        "source_record_id": "SURGERY-SYN-VAL-03",
+        "source_record_version": 2,
+        "source_record_status": "Planned",
+        "source_record_updated_at": "2026-09-09T09:11:44+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Karan Shah",
+        "signed_at": "2026-09-09T09:11:44+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "source_type": "surgery",
+          "source_id": "SURGERY-SYN-VAL-03"
+        }
+      }
+    },
+    {
+      "check": "ARJ-027 Anaesthetist can open signed Surgical Plan source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-F55A8507A4",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Support service referral",
+        "title": "Complete pre-operative anaesthesia assessment",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Anaesthetist",
+        "owner_user_id": "USR-ANAESTHE-001",
+        "source_type": "surgery",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed surgical plan available for anaesthesia clearance",
+        "created_at": "2026-09-09T09:11:44+05:30",
+        "created_by": "UA-559C8A1A1341",
+        "updated_at": "2026-09-09T09:11:44+05:30",
+        "updated_by": "UA-559C8A1A1341",
+        "data": {
+          "procedure": "Laparoscopic sigmoid colectomy"
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "current_department": "Surgical Oncology",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURGERY-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "surgery",
+          "status": "Planned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:44+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "data": {
+            "plan": {
+              "status": "Planned",
+              "procedure": "Laparoscopic sigmoid colectomy",
+              "indication": "Resectable sigmoid colon adenocarcinoma",
+              "intent": "Curative",
+              "site": "Sigmoid colon",
+              "laterality": "Not applicable",
+              "extent": "Segmental sigmoid colectomy with regional lymphadenectomy",
+              "approach": "Laparoscopic; convert to open if clinically required",
+              "nodal_procedure": "Regional mesenteric lymphadenectomy",
+              "reconstruction": "Primary colorectal anastomosis",
+              "planned_date": "2026-09-11",
+              "priority": "Routine",
+              "preop_requirements": [
+                "Anaesthesia fitness",
+                "Final CBC/renal/liver profile",
+                "Signed surgical consent",
+                "Blood availability"
+              ],
+              "required_imaging_pathology": [
+                "Staging imaging reviewed",
+                "Diagnostic biopsy reviewed"
+              ],
+              "anesthesia": "General anaesthesia",
+              "anesthesia_clearance": "Pending Anaesthetist assessment",
+              "blood_requirement": "2 units PRBC crossmatched",
+              "signed_by": {
+                "id": "UA-559C8A1A1341",
+                "username": "surgery.demo",
+                "name": "Dr Karan Shah",
+                "role": "Surgical Oncology",
+                "professional_id": "DEMO-SO-001"
+              },
+              "signed_at": "2026-09-09T09:11:44+05:30"
+            },
+            "preop": {
+              "ready": false
+            },
+            "theatre_readiness": {},
+            "outcome": {},
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-03"
+          }
+        },
+        "source_record_type": "surgery",
+        "source_record_id": "SURGERY-SYN-VAL-03",
+        "source_record_version": 2,
+        "source_record_status": "Planned",
+        "source_record_updated_at": "2026-09-09T09:11:44+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Karan Shah",
+        "signed_at": "2026-09-09T09:11:44+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "source_type": "surgery",
+          "source_id": "SURGERY-SYN-VAL-03"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "ARJ-028 surgeon blocked from anaesthetist-owned record",
+      "pass": true,
+      "detail": {
+        "error": "Anaesthetist required for anaesthesia"
+      }
+    },
+    {
+      "check": "ARJ-029 anaesthesia signed by owner",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "ANAESTHESIA-SYN-VAL-03",
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "ARJ-030 Blood Bank receives readiness task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-E6BC864AFC",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Support service referral",
+        "title": "Confirm blood product availability for surgery",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Blood Bank / Transfusion",
+        "owner_user_id": "USR-BLOODBAN-001",
+        "source_type": "surgery",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed surgical plan requires blood availability confirmation",
+        "created_at": "2026-09-09T09:11:44+05:30",
+        "created_by": "UA-559C8A1A1341",
+        "updated_at": "2026-09-09T09:11:44+05:30",
+        "updated_by": "UA-559C8A1A1341",
+        "data": {
+          "blood_requirement": "2 units PRBC crossmatched"
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "current_department": "Surgical Oncology",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURGERY-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "surgery",
+          "status": "Planned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:44+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "data": {
+            "plan": {
+              "status": "Planned",
+              "procedure": "Laparoscopic sigmoid colectomy",
+              "indication": "Resectable sigmoid colon adenocarcinoma",
+              "intent": "Curative",
+              "site": "Sigmoid colon",
+              "laterality": "Not applicable",
+              "extent": "Segmental sigmoid colectomy with regional lymphadenectomy",
+              "approach": "Laparoscopic; convert to open if clinically required",
+              "nodal_procedure": "Regional mesenteric lymphadenectomy",
+              "reconstruction": "Primary colorectal anastomosis",
+              "planned_date": "2026-09-11",
+              "priority": "Routine",
+              "preop_requirements": [
+                "Anaesthesia fitness",
+                "Final CBC/renal/liver profile",
+                "Signed surgical consent",
+                "Blood availability"
+              ],
+              "required_imaging_pathology": [
+                "Staging imaging reviewed",
+                "Diagnostic biopsy reviewed"
+              ],
+              "anesthesia": "General anaesthesia",
+              "anesthesia_clearance": "Pending Anaesthetist assessment",
+              "blood_requirement": "2 units PRBC crossmatched",
+              "signed_by": {
+                "id": "UA-559C8A1A1341",
+                "username": "surgery.demo",
+                "name": "Dr Karan Shah",
+                "role": "Surgical Oncology",
+                "professional_id": "DEMO-SO-001"
+              },
+              "signed_at": "2026-09-09T09:11:44+05:30"
+            },
+            "preop": {
+              "ready": false
+            },
+            "theatre_readiness": {},
+            "outcome": {},
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-03"
+          }
+        },
+        "source_record_type": "surgery",
+        "source_record_id": "SURGERY-SYN-VAL-03",
+        "source_record_version": 2,
+        "source_record_status": "Planned",
+        "source_record_updated_at": "2026-09-09T09:11:44+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Karan Shah",
+        "signed_at": "2026-09-09T09:11:44+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "source_type": "surgery",
+          "source_id": "SURGERY-SYN-VAL-03"
+        }
+      }
+    },
+    {
+      "check": "ARJ-031 Blood Bank signs availability",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "BLOOD_BANK-SYN-VAL-03",
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "ARJ-032 preop nurse ready with source-owned clearances",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "ready": true
+      }
+    },
+    {
+      "check": "ARJ-033 theatre readiness signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Theatre Ready",
+        "next_role": "Surgical Oncology"
+      }
+    },
+    {
+      "check": "ARJ-034 surgeon receives operation task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-B3312E89FD",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Surgery execution",
+        "title": "Proceed to surgery / operative record",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Surgical Oncology",
+        "owner_user_id": "USR-SURGICAL-001",
+        "source_type": "surgery",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Theatre readiness signed",
+        "created_at": "2026-09-09T09:11:45+05:30",
+        "created_by": "UA-D63CA75D3D71",
+        "updated_at": "2026-09-09T09:11:45+05:30",
+        "updated_by": "UA-D63CA75D3D71",
+        "data": {
+          "theatre_readiness": {
+            "status": "Signed",
+            "checklist": {
+              "identity": true,
+              "site_laterality": true,
+              "procedure": true,
+              "consent": true,
+              "anaesthesia": true,
+              "equipment": true,
+              "blood_if_required": true,
+              "counts_baseline": true
+            },
+            "theatre": "OT-2",
+            "scheduled_start": "2026-09-11T08:00:00+05:30",
+            "team_brief": "WHO Time-Out completed; specimen labelling plan reviewed.",
+            "signed_by": {
+              "id": "UA-D63CA75D3D71",
+              "username": "surgical.nurse.demo",
+              "name": "Sonia Bhat — Surgical Nurse",
+              "role": "Surgical Nurse",
+              "professional_id": "DEMO-SN-001"
+            },
+            "signed_at": "2026-09-09T09:11:45+05:30"
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "phone": "917000000103",
+          "abha": "",
+          "id_number": "SYN-ARJUN-01",
+          "current_department": "Operating Theatre",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:45+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURGERY-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "surgery",
+          "status": "Pre-op Ready",
+          "version": 4,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:45+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-D63CA75D3D71",
+          "data": {
+            "plan": {
+              "status": "Planned",
+              "procedure": "Laparoscopic sigmoid colectomy",
+              "indication": "Resectable sigmoid colon adenocarcinoma",
+              "intent": "Curative",
+              "site": "Sigmoid colon",
+              "laterality": "Not applicable",
+              "extent": "Segmental sigmoid colectomy with regional lymphadenectomy",
+              "approach": "Laparoscopic; convert to open if clinically required",
+              "nodal_procedure": "Regional mesenteric lymphadenectomy",
+              "reconstruction": "Primary colorectal anastomosis",
+              "planned_date": "2026-09-11",
+              "priority": "Routine",
+              "preop_requirements": [
+                "Anaesthesia fitness",
+                "Final CBC/renal/liver profile",
+                "Signed surgical consent",
+                "Blood availability"
+              ],
+              "required_imaging_pathology": [
+                "Staging imaging reviewed",
+                "Diagnostic biopsy reviewed"
+              ],
+              "anesthesia": "General anaesthesia",
+              "anesthesia_clearance": "Pending Anaesthetist assessment",
+              "blood_requirement": "2 units PRBC crossmatched",
+              "signed_by": {
+                "id": "UA-559C8A1A1341",
+                "username": "surgery.demo",
+                "name": "Dr Karan Shah",
+                "role": "Surgical Oncology",
+                "professional_id": "DEMO-SO-001"
+              },
+              "signed_at": "2026-09-09T09:11:44+05:30"
+            },
+            "preop": {
+              "ready": true,
+              "anesthesia_clearance": "Complete",
+              "labs": "Complete",
+              "consent": "Complete",
+              "identity_confirmed": true,
+              "site_laterality_confirmed": true,
+              "procedure_confirmed": true,
+              "nurse_note": "All role-owned pre-operative prerequisites reviewed from authoritative sources."
+            },
+            "theatre_readiness": {
+              "status": "Signed",
+              "checklist": {
+                "identity": true,
+                "site_laterality": true,
+                "procedure": true,
+                "consent": true,
+                "anaesthesia": true,
+                "equipment": true,
+                "blood_if_required": true,
+                "counts_baseline": true
+              },
+              "theatre": "OT-2",
+              "scheduled_start": "2026-09-11T08:00:00+05:30",
+              "team_brief": "WHO Time-Out completed; specimen labelling plan reviewed.",
+              "signed_by": {
+                "id": "UA-D63CA75D3D71",
+                "username": "surgical.nurse.demo",
+                "name": "Sonia Bhat — Surgical Nurse",
+                "role": "Surgical Nurse",
+                "professional_id": "DEMO-SN-001"
+              },
+              "signed_at": "2026-09-09T09:11:45+05:30"
+            },
+            "outcome": {},
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-03"
+          }
+        },
+        "source_record_type": "surgery",
+        "source_record_id": "SURGERY-SYN-VAL-03",
+        "source_record_version": 4,
+        "source_record_status": "Pre-op Ready",
+        "source_record_updated_at": "2026-09-09T09:11:45+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Karan Shah",
+        "signed_at": "2026-09-09T09:11:44+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-D63CA75D3D71",
+          "source_type": "surgery",
+          "source_id": "SURGERY-SYN-VAL-03"
+        }
+      }
+    },
+    {
+      "check": "ARJ-035 actual surgery/operative note signed",
+      "pass": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "check": "ARJ-036 technologist receives exact operative specimen task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-7675ADAF48",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Pathology accession",
+        "title": "Accession and process surgical specimen(s)",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Pathology Technologist",
+        "owner_user_id": "USR-PATHOLOG-001",
+        "source_type": "surgery",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed operative note with specimen(s) submitted for accession",
+        "created_at": "2026-09-09T09:11:45+05:30",
+        "created_by": "UA-559C8A1A1341",
+        "updated_at": "2026-09-09T09:11:45+05:30",
+        "updated_by": "UA-559C8A1A1341",
+        "data": {
+          "specimens": [
+            {
+              "specimen_id": "SPC-ARJ-001",
+              "site": "Sigmoid colon",
+              "description": "Sigmoid colectomy specimen with mesocolic regional lymph nodes"
+            }
+          ]
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "current_department": "Surgery",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": null,
+        "source_record_type": "surgery",
+        "source_record_id": "SURGERY-SYN-VAL-03",
+        "source_record_version": 5,
+        "source_record_status": "Performed",
+        "source_record_updated_at": "2026-09-09T09:11:45+05:30",
+        "source_visible_to_role": false,
+        "signed_by": "Dr Karan Shah",
+        "signed_at": "2026-09-09T09:11:44+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "source_type": "surgery",
+          "source_id": "SURGERY-SYN-VAL-03"
+        }
+      }
+    },
+    {
+      "check": "ARJ-037 technologist sees surgery source/provenance",
+      "pass": true,
+      "detail": {
+        "id": "TASK-7675ADAF48",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Pathology accession",
+        "title": "Accession and process surgical specimen(s)",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Pathology Technologist",
+        "owner_user_id": "USR-PATHOLOG-001",
+        "source_type": "surgery",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed operative note with specimen(s) submitted for accession",
+        "created_at": "2026-09-09T09:11:45+05:30",
+        "created_by": "UA-559C8A1A1341",
+        "updated_at": "2026-09-09T09:11:45+05:30",
+        "updated_by": "UA-559C8A1A1341",
+        "data": {
+          "specimens": [
+            {
+              "specimen_id": "SPC-ARJ-001",
+              "site": "Sigmoid colon",
+              "description": "Sigmoid colectomy specimen with mesocolic regional lymph nodes"
+            }
+          ]
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "current_department": "Surgery",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": null,
+        "source_record_type": "surgery",
+        "source_record_id": "SURGERY-SYN-VAL-03",
+        "source_record_version": 5,
+        "source_record_status": "Performed",
+        "source_record_updated_at": "2026-09-09T09:11:45+05:30",
+        "source_visible_to_role": false,
+        "signed_by": "Dr Karan Shah",
+        "signed_at": "2026-09-09T09:11:44+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "source_type": "surgery",
+          "source_id": "SURGERY-SYN-VAL-03"
+        },
+        "consumable": false,
+        "blocking_reason": "Owning role does not have minimum-necessary read permission for the task source; workflow configuration must be corrected before action."
+      }
+    },
+    {
+      "check": "ARJ-038 technologist processing signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "PATHOLOGY_PROCESSING-SYN-VAL-03",
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "ARJ-039 Pathologist receives reporting task after processing",
+      "pass": true,
+      "detail": {
+        "id": "TASK-F2268412B6",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Pathology reporting",
+        "title": "Interpret and sign pathology report",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Pathology",
+        "owner_user_id": "USR-PATHOLOG-001",
+        "source_type": "pathology",
+        "source_id": "PATHOLOGY-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Specimen processing complete",
+        "created_at": "2026-09-09T09:11:45+05:30",
+        "created_by": "UA-DEC7FA144F9A",
+        "updated_at": "2026-09-09T09:11:45+05:30",
+        "updated_by": "UA-DEC7FA144F9A",
+        "data": {
+          "processing_record_id": "PATHOLOGY_PROCESSING-SYN-VAL-03",
+          "accession_id": "ACC-ARJ-2026-001"
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "phone": "917000000103",
+          "abha": "",
+          "id_number": "SYN-ARJUN-01",
+          "current_department": "Surgery",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:45+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "PATHOLOGY-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "pathology",
+          "status": "Processing Complete",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:45+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-DEC7FA144F9A",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-03",
+            "accession_id": "ACC-ARJ-2026-001",
+            "specimen_received_at": "2026-09-11T10:45:00+05:30",
+            "grossing_status": "Completed — specimen oriented, margins inked, tumor measured and nodes retrieved",
+            "blocks_slides_status": "18 lymph nodes submitted; representative tumor/margins blocked and slides prepared",
+            "processing_record_id": "PATHOLOGY_PROCESSING-SYN-VAL-03"
+          }
+        },
+        "source_record_type": "pathology",
+        "source_record_id": "PATHOLOGY-SYN-VAL-03",
+        "source_record_version": 2,
+        "source_record_status": "Processing Complete",
+        "source_record_updated_at": "2026-09-09T09:11:45+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-DEC7FA144F9A",
+          "source_type": "pathology",
+          "source_id": "PATHOLOGY-SYN-VAL-03"
+        }
+      }
+    },
+    {
+      "check": "ARJ-040 incoherent node counts blocked",
+      "pass": true,
+      "detail": {
+        "error": "Incoherent node counts: nodes_positive cannot exceed nodes_examined",
+        "nodes_examined": 18,
+        "nodes_positive": 20
+      }
+    },
+    {
+      "check": "ARJ-041 final histopathology signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "PATHOLOGY-SYN-VAL-03",
+        "status": "Final"
+      }
+    },
+    {
+      "check": "ARJ-042 final pathology overwrite blocked",
+      "pass": true,
+      "detail": {
+        "error": "A finalized pathology report is immutable. Create a linked amendment with a documented reason.",
+        "requires_amendment_reason": true,
+        "supersedes": "PATHOLOGY-SYN-VAL-03"
+      }
+    },
+    {
+      "check": "ARJ-043 pathology amendment creates superseding version",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "PATHOLOGY-D503C3E4FC",
+        "status": "Final",
+        "supersedes": "PATHOLOGY-SYN-VAL-03"
+      }
+    },
+    {
+      "check": "ARJ-044 old pathology retained Superseded and new Final",
+      "pass": true,
+      "detail": {
+        "old": [
+          "PATHOLOGY-SYN-VAL-03",
+          "Superseded"
+        ],
+        "new": [
+          "PATHOLOGY-D503C3E4FC",
+          "Final"
+        ]
+      }
+    },
+    {
+      "check": "ARJ-045 surgeon pathology review derives pStage",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "pathological_stage_record_id": "DIAGNOSIS-B84BF8B0C8",
+        "adjuvant_review": {
+          "status": "Ready for adjuvant review",
+          "derived": true,
+          "source_operating_record_id": "SURGERY-SYN-VAL-03",
+          "source_pathology_id": "PATHOLOGY-D503C3E4FC",
+          "source_pathological_stage_id": "DIAGNOSIS-B84BF8B0C8",
+          "derived_at": "2026-09-09T09:11:45+05:30",
+          "formula": "Signed operative record + final pathology + pathological stage available"
+        },
+        "task_ids": [
+          "TASK-D467D87139",
+          "TASK-20DC443FAC"
+        ],
+        "note": "New pathological staging record created; prior clinical stage preserved."
+      }
+    },
+    {
+      "check": "ARJ-046 cTNM preserved separately from pTNM",
+      "pass": true,
+      "detail": {
+        "cTNM": {
+          "stage_t": "cT3",
+          "stage_n": "cN1",
+          "stage_m": "cM0",
+          "stage_group": "Stage IIIB",
+          "staging_basis": "Clinical"
+        },
+        "pTNM": {
+          "stage_t": "pT3",
+          "stage_n": "pN1b",
+          "stage_m": "pM not assessed",
+          "stage_group": "Stage IIIB",
+          "staging_basis": "Pathological",
+          "previous_stage_record_id": "DIAGNOSIS-SYN-VAL-03"
+        }
+      }
+    },
+    {
+      "check": "ARJ-047 wound nurse receives post-op task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-703CE0F4A8",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Support service referral",
+        "title": "Complete post-operative wound assessment",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Stoma / Wound Nurse",
+        "owner_user_id": "USR-STOMAWOU-001",
+        "source_type": "surgery",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Post-operative wound/stoma assessment required",
+        "created_at": "2026-09-09T09:11:45+05:30",
+        "created_by": "UA-559C8A1A1341",
+        "updated_at": "2026-09-09T09:11:45+05:30",
+        "updated_by": "UA-559C8A1A1341",
+        "data": {
+          "stoma_created": false
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "current_department": "Surgery",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURGERY-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "surgery",
+          "status": "Histopathology Available",
+          "version": 7,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:45+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "data": {
+            "plan": {
+              "status": "Planned",
+              "procedure": "Laparoscopic sigmoid colectomy",
+              "indication": "Resectable sigmoid colon adenocarcinoma",
+              "intent": "Curative",
+              "site": "Sigmoid colon",
+              "laterality": "Not applicable",
+              "extent": "Segmental sigmoid colectomy with regional lymphadenectomy",
+              "approach": "Laparoscopic; convert to open if clinically required",
+              "nodal_procedure": "Regional mesenteric lymphadenectomy",
+              "reconstruction": "Primary colorectal anastomosis",
+              "planned_date": "2026-09-11",
+              "priority": "Routine",
+              "preop_requirements": [
+                "Anaesthesia fitness",
+                "Final CBC/renal/liver profile",
+                "Signed surgical consent",
+                "Blood availability"
+              ],
+              "required_imaging_pathology": [
+                "Staging imaging reviewed",
+                "Diagnostic biopsy reviewed"
+              ],
+              "anesthesia": "General anaesthesia",
+              "anesthesia_clearance": "Pending Anaesthetist assessment",
+              "blood_requirement": "2 units PRBC crossmatched",
+              "signed_by": {
+                "id": "UA-559C8A1A1341",
+                "username": "surgery.demo",
+                "name": "Dr Karan Shah",
+                "role": "Surgical Oncology",
+                "professional_id": "DEMO-SO-001"
+              },
+              "signed_at": "2026-09-09T09:11:44+05:30"
+            },
+            "preop": {
+              "ready": true,
+              "anesthesia_clearance": "Complete",
+              "labs": "Complete",
+              "consent": "Complete",
+              "identity_confirmed": true,
+              "site_laterality_confirmed": true,
+              "procedure_confirmed": true,
+              "nurse_note": "All role-owned pre-operative prerequisites reviewed from authoritative sources."
+            },
+            "theatre_readiness": {
+              "status": "Signed",
+              "checklist": {
+                "identity": true,
+                "site_laterality": true,
+                "procedure": true,
+                "consent": true,
+                "anaesthesia": true,
+                "equipment": true,
+                "blood_if_required": true,
+                "counts_baseline": true
+              },
+              "theatre": "OT-2",
+              "scheduled_start": "2026-09-11T08:00:00+05:30",
+              "team_brief": "WHO Time-Out completed; specimen labelling plan reviewed.",
+              "signed_by": {
+                "id": "UA-D63CA75D3D71",
+                "username": "surgical.nurse.demo",
+                "name": "Sonia Bhat — Surgical Nurse",
+                "role": "Surgical Nurse",
+                "professional_id": "DEMO-SN-001"
+              },
+              "signed_at": "2026-09-09T09:11:45+05:30"
+            },
+            "outcome": {
+              "actual_procedure": "Laparoscopic sigmoid colectomy with regional lymphadenectomy and primary colorectal anastomosis",
+              "operation_date_time": "2026-09-11T08:15:00+05:30",
+              "preop_diagnosis": "Sigmoid colon adenocarcinoma cT3 cN1 cM0",
+              "postop_diagnosis": "Sigmoid colon adenocarcinoma; resection completed",
+              "laterality": "Not applicable",
+              "findings": "Localized sigmoid tumor without gross peritoneal or hepatic metastasis in synthetic validation scenario.",
+              "specimens": [
+                {
+                  "specimen_id": "SPC-ARJ-001",
+                  "site": "Sigmoid colon",
+                  "description": "Sigmoid colectomy specimen with mesocolic regional lymph nodes"
+                }
+              ],
+              "estimated_blood_loss_ml": 120,
+              "operative_time_min": 155,
+              "surgeons": [
+                "Dr Karan Shah — Surgical Oncology",
+                "Dr Demo Assistant — Synthetic"
+              ],
+              "counts_status": "Correct",
+              "wound_closure": "Port sites and extraction incision closed in layers",
+              "disposition": "Stable to post-anaesthesia care / surgical ward",
+              "postop_plan": "ERAS pathway, VTE prophylaxis, analgesia, early mobilisation, await final histopathology",
+              "drains": [
+                {
+                  "type": "Pelvic drain",
+                  "status": "In situ"
+                }
+              ],
+              "stoma_created": false,
+              "signed_by": {
+                "id": "UA-559C8A1A1341",
+                "username": "surgery.demo",
+                "name": "Dr Karan Shah",
+                "role": "Surgical Oncology",
+                "professional_id": "DEMO-SO-001"
+              },
+              "signed_at": "2026-09-09T09:11:45+05:30"
+            },
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-03",
+            "histopathology_link": "PATHOLOGY-D503C3E4FC",
+            "postop_stage": "Stage IIIB",
+            "margin_status": "Negative (R0)",
+            "nodes_examined": 18,
+            "nodes_positive": 2,
+            "node_status": "2/18 positive",
+            "adjuvant_review_required": true,
+            "pathology_linked_at": "2026-09-09T09:11:45+05:30",
+            "pathology_linked_by": {
+              "id": "UA-559C8A1A1341",
+              "username": "surgery.demo",
+              "name": "Dr Karan Shah",
+              "role": "Surgical Oncology",
+              "professional_id": "DEMO-SO-001"
+            },
+            "adjuvant_review": {
+              "status": "Ready for adjuvant review",
+              "derived": true,
+              "source_operating_record_id": "SURGERY-SYN-VAL-03",
+              "source_pathology_id": "PATHOLOGY-D503C3E4FC",
+              "source_pathological_stage_id": "DIAGNOSIS-B84BF8B0C8",
+              "derived_at": "2026-09-09T09:11:45+05:30",
+              "formula": "Signed operative record + final pathology + pathological stage available"
+            }
+          }
+        },
+        "source_record_type": "surgery",
+        "source_record_id": "SURGERY-SYN-VAL-03",
+        "source_record_version": 7,
+        "source_record_status": "Histopathology Available",
+        "source_record_updated_at": "2026-09-09T09:11:45+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Karan Shah",
+        "signed_at": "2026-09-09T09:11:44+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "source_type": "surgery",
+          "source_id": "SURGERY-SYN-VAL-03"
+        }
+      }
+    },
+    {
+      "check": "ARJ-048 wound assessment signed by owning role",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "STOMA_WOUND-SYN-VAL-03",
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "ARJ-049 MO automatically receives adjuvant review task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-20DC443FAC",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Adjuvant review",
+        "title": "Post-operative adjuvant systemic-therapy review",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "surgery",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "due_at": "2026-09-12",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Final operative pathology and pathological stage are available",
+        "created_at": "2026-09-09T09:11:45+05:30",
+        "created_by": "UA-559C8A1A1341",
+        "updated_at": "2026-09-09T09:11:45+05:30",
+        "updated_by": "UA-559C8A1A1341",
+        "data": {
+          "adjuvant_review": {
+            "status": "Ready for adjuvant review",
+            "derived": true,
+            "source_operating_record_id": "SURGERY-SYN-VAL-03",
+            "source_pathology_id": "PATHOLOGY-D503C3E4FC",
+            "source_pathological_stage_id": "DIAGNOSIS-B84BF8B0C8",
+            "derived_at": "2026-09-09T09:11:45+05:30",
+            "formula": "Signed operative record + final pathology + pathological stage available"
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "phone": "917000000103",
+          "abha": "",
+          "id_number": "SYN-ARJUN-01",
+          "current_department": "Surgery",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:45+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURGERY-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "surgery",
+          "status": "Histopathology Available",
+          "version": 7,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:45+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "data": {
+            "plan": {
+              "status": "Planned",
+              "procedure": "Laparoscopic sigmoid colectomy",
+              "indication": "Resectable sigmoid colon adenocarcinoma",
+              "intent": "Curative",
+              "site": "Sigmoid colon",
+              "laterality": "Not applicable",
+              "extent": "Segmental sigmoid colectomy with regional lymphadenectomy",
+              "approach": "Laparoscopic; convert to open if clinically required",
+              "nodal_procedure": "Regional mesenteric lymphadenectomy",
+              "reconstruction": "Primary colorectal anastomosis",
+              "planned_date": "2026-09-11",
+              "priority": "Routine",
+              "preop_requirements": [
+                "Anaesthesia fitness",
+                "Final CBC/renal/liver profile",
+                "Signed surgical consent",
+                "Blood availability"
+              ],
+              "required_imaging_pathology": [
+                "Staging imaging reviewed",
+                "Diagnostic biopsy reviewed"
+              ],
+              "anesthesia": "General anaesthesia",
+              "anesthesia_clearance": "Pending Anaesthetist assessment",
+              "blood_requirement": "2 units PRBC crossmatched",
+              "signed_by": {
+                "id": "UA-559C8A1A1341",
+                "username": "surgery.demo",
+                "name": "Dr Karan Shah",
+                "role": "Surgical Oncology",
+                "professional_id": "DEMO-SO-001"
+              },
+              "signed_at": "2026-09-09T09:11:44+05:30"
+            },
+            "preop": {
+              "ready": true,
+              "anesthesia_clearance": "Complete",
+              "labs": "Complete",
+              "consent": "Complete",
+              "identity_confirmed": true,
+              "site_laterality_confirmed": true,
+              "procedure_confirmed": true,
+              "nurse_note": "All role-owned pre-operative prerequisites reviewed from authoritative sources."
+            },
+            "theatre_readiness": {
+              "status": "Signed",
+              "checklist": {
+                "identity": true,
+                "site_laterality": true,
+                "procedure": true,
+                "consent": true,
+                "anaesthesia": true,
+                "equipment": true,
+                "blood_if_required": true,
+                "counts_baseline": true
+              },
+              "theatre": "OT-2",
+              "scheduled_start": "2026-09-11T08:00:00+05:30",
+              "team_brief": "WHO Time-Out completed; specimen labelling plan reviewed.",
+              "signed_by": {
+                "id": "UA-D63CA75D3D71",
+                "username": "surgical.nurse.demo",
+                "name": "Sonia Bhat — Surgical Nurse",
+                "role": "Surgical Nurse",
+                "professional_id": "DEMO-SN-001"
+              },
+              "signed_at": "2026-09-09T09:11:45+05:30"
+            },
+            "outcome": {
+              "actual_procedure": "Laparoscopic sigmoid colectomy with regional lymphadenectomy and primary colorectal anastomosis",
+              "operation_date_time": "2026-09-11T08:15:00+05:30",
+              "preop_diagnosis": "Sigmoid colon adenocarcinoma cT3 cN1 cM0",
+              "postop_diagnosis": "Sigmoid colon adenocarcinoma; resection completed",
+              "laterality": "Not applicable",
+              "findings": "Localized sigmoid tumor without gross peritoneal or hepatic metastasis in synthetic validation scenario.",
+              "specimens": [
+                {
+                  "specimen_id": "SPC-ARJ-001",
+                  "site": "Sigmoid colon",
+                  "description": "Sigmoid colectomy specimen with mesocolic regional lymph nodes"
+                }
+              ],
+              "estimated_blood_loss_ml": 120,
+              "operative_time_min": 155,
+              "surgeons": [
+                "Dr Karan Shah — Surgical Oncology",
+                "Dr Demo Assistant — Synthetic"
+              ],
+              "counts_status": "Correct",
+              "wound_closure": "Port sites and extraction incision closed in layers",
+              "disposition": "Stable to post-anaesthesia care / surgical ward",
+              "postop_plan": "ERAS pathway, VTE prophylaxis, analgesia, early mobilisation, await final histopathology",
+              "drains": [
+                {
+                  "type": "Pelvic drain",
+                  "status": "In situ"
+                }
+              ],
+              "stoma_created": false,
+              "signed_by": {
+                "id": "UA-559C8A1A1341",
+                "username": "surgery.demo",
+                "name": "Dr Karan Shah",
+                "role": "Surgical Oncology",
+                "professional_id": "DEMO-SO-001"
+              },
+              "signed_at": "2026-09-09T09:11:45+05:30"
+            },
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-03",
+            "histopathology_link": "PATHOLOGY-D503C3E4FC",
+            "postop_stage": "Stage IIIB",
+            "margin_status": "Negative (R0)",
+            "nodes_examined": 18,
+            "nodes_positive": 2,
+            "node_status": "2/18 positive",
+            "adjuvant_review_required": true,
+            "pathology_linked_at": "2026-09-09T09:11:45+05:30",
+            "pathology_linked_by": {
+              "id": "UA-559C8A1A1341",
+              "username": "surgery.demo",
+              "name": "Dr Karan Shah",
+              "role": "Surgical Oncology",
+              "professional_id": "DEMO-SO-001"
+            },
+            "adjuvant_review": {
+              "status": "Ready for adjuvant review",
+              "derived": true,
+              "source_operating_record_id": "SURGERY-SYN-VAL-03",
+              "source_pathology_id": "PATHOLOGY-D503C3E4FC",
+              "source_pathological_stage_id": "DIAGNOSIS-B84BF8B0C8",
+              "derived_at": "2026-09-09T09:11:45+05:30",
+              "formula": "Signed operative record + final pathology + pathological stage available"
+            }
+          }
+        },
+        "source_record_type": "surgery",
+        "source_record_id": "SURGERY-SYN-VAL-03",
+        "source_record_version": 7,
+        "source_record_status": "Histopathology Available",
+        "source_record_updated_at": "2026-09-09T09:11:45+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Karan Shah",
+        "signed_at": "2026-09-09T09:11:44+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "source_type": "surgery",
+          "source_id": "SURGERY-SYN-VAL-03"
+        }
+      }
+    },
+    {
+      "check": "ARJ-050 MO sees exact Surgery/pathology-derived source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-20DC443FAC",
+        "patient_id": "PAT-VAL-ARJUN",
+        "episode_id": "EP-SYN-VAL-03",
+        "task_type": "Adjuvant review",
+        "title": "Post-operative adjuvant systemic-therapy review",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "surgery",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "due_at": "2026-09-12",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Final operative pathology and pathological stage are available",
+        "created_at": "2026-09-09T09:11:45+05:30",
+        "created_by": "UA-559C8A1A1341",
+        "updated_at": "2026-09-09T09:11:45+05:30",
+        "updated_by": "UA-559C8A1A1341",
+        "data": {
+          "adjuvant_review": {
+            "status": "Ready for adjuvant review",
+            "derived": true,
+            "source_operating_record_id": "SURGERY-SYN-VAL-03",
+            "source_pathology_id": "PATHOLOGY-D503C3E4FC",
+            "source_pathological_stage_id": "DIAGNOSIS-B84BF8B0C8",
+            "derived_at": "2026-09-09T09:11:45+05:30",
+            "formula": "Signed operative record + final pathology + pathological stage available"
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-ARJUN",
+          "mrn": "CCA-SYN-VAL-SURG-01",
+          "name": "Arjun Mehta",
+          "dob": "1965-11-20",
+          "sex": "Male",
+          "phone": "917000000103",
+          "abha": "",
+          "id_number": "SYN-ARJUN-01",
+          "current_department": "Surgery",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:45+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-03",
+            "kind": "Primary cancer",
+            "label": "Colorectal surgical-oncology validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURGERY-SYN-VAL-03",
+          "patient_id": "PAT-VAL-ARJUN",
+          "entity_type": "surgery",
+          "status": "Histopathology Available",
+          "version": 7,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:45+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "data": {
+            "plan": {
+              "status": "Planned",
+              "procedure": "Laparoscopic sigmoid colectomy",
+              "indication": "Resectable sigmoid colon adenocarcinoma",
+              "intent": "Curative",
+              "site": "Sigmoid colon",
+              "laterality": "Not applicable",
+              "extent": "Segmental sigmoid colectomy with regional lymphadenectomy",
+              "approach": "Laparoscopic; convert to open if clinically required",
+              "nodal_procedure": "Regional mesenteric lymphadenectomy",
+              "reconstruction": "Primary colorectal anastomosis",
+              "planned_date": "2026-09-11",
+              "priority": "Routine",
+              "preop_requirements": [
+                "Anaesthesia fitness",
+                "Final CBC/renal/liver profile",
+                "Signed surgical consent",
+                "Blood availability"
+              ],
+              "required_imaging_pathology": [
+                "Staging imaging reviewed",
+                "Diagnostic biopsy reviewed"
+              ],
+              "anesthesia": "General anaesthesia",
+              "anesthesia_clearance": "Pending Anaesthetist assessment",
+              "blood_requirement": "2 units PRBC crossmatched",
+              "signed_by": {
+                "id": "UA-559C8A1A1341",
+                "username": "surgery.demo",
+                "name": "Dr Karan Shah",
+                "role": "Surgical Oncology",
+                "professional_id": "DEMO-SO-001"
+              },
+              "signed_at": "2026-09-09T09:11:44+05:30"
+            },
+            "preop": {
+              "ready": true,
+              "anesthesia_clearance": "Complete",
+              "labs": "Complete",
+              "consent": "Complete",
+              "identity_confirmed": true,
+              "site_laterality_confirmed": true,
+              "procedure_confirmed": true,
+              "nurse_note": "All role-owned pre-operative prerequisites reviewed from authoritative sources."
+            },
+            "theatre_readiness": {
+              "status": "Signed",
+              "checklist": {
+                "identity": true,
+                "site_laterality": true,
+                "procedure": true,
+                "consent": true,
+                "anaesthesia": true,
+                "equipment": true,
+                "blood_if_required": true,
+                "counts_baseline": true
+              },
+              "theatre": "OT-2",
+              "scheduled_start": "2026-09-11T08:00:00+05:30",
+              "team_brief": "WHO Time-Out completed; specimen labelling plan reviewed.",
+              "signed_by": {
+                "id": "UA-D63CA75D3D71",
+                "username": "surgical.nurse.demo",
+                "name": "Sonia Bhat — Surgical Nurse",
+                "role": "Surgical Nurse",
+                "professional_id": "DEMO-SN-001"
+              },
+              "signed_at": "2026-09-09T09:11:45+05:30"
+            },
+            "outcome": {
+              "actual_procedure": "Laparoscopic sigmoid colectomy with regional lymphadenectomy and primary colorectal anastomosis",
+              "operation_date_time": "2026-09-11T08:15:00+05:30",
+              "preop_diagnosis": "Sigmoid colon adenocarcinoma cT3 cN1 cM0",
+              "postop_diagnosis": "Sigmoid colon adenocarcinoma; resection completed",
+              "laterality": "Not applicable",
+              "findings": "Localized sigmoid tumor without gross peritoneal or hepatic metastasis in synthetic validation scenario.",
+              "specimens": [
+                {
+                  "specimen_id": "SPC-ARJ-001",
+                  "site": "Sigmoid colon",
+                  "description": "Sigmoid colectomy specimen with mesocolic regional lymph nodes"
+                }
+              ],
+              "estimated_blood_loss_ml": 120,
+              "operative_time_min": 155,
+              "surgeons": [
+                "Dr Karan Shah — Surgical Oncology",
+                "Dr Demo Assistant — Synthetic"
+              ],
+              "counts_status": "Correct",
+              "wound_closure": "Port sites and extraction incision closed in layers",
+              "disposition": "Stable to post-anaesthesia care / surgical ward",
+              "postop_plan": "ERAS pathway, VTE prophylaxis, analgesia, early mobilisation, await final histopathology",
+              "drains": [
+                {
+                  "type": "Pelvic drain",
+                  "status": "In situ"
+                }
+              ],
+              "stoma_created": false,
+              "signed_by": {
+                "id": "UA-559C8A1A1341",
+                "username": "surgery.demo",
+                "name": "Dr Karan Shah",
+                "role": "Surgical Oncology",
+                "professional_id": "DEMO-SO-001"
+              },
+              "signed_at": "2026-09-09T09:11:45+05:30"
+            },
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-03",
+            "histopathology_link": "PATHOLOGY-D503C3E4FC",
+            "postop_stage": "Stage IIIB",
+            "margin_status": "Negative (R0)",
+            "nodes_examined": 18,
+            "nodes_positive": 2,
+            "node_status": "2/18 positive",
+            "adjuvant_review_required": true,
+            "pathology_linked_at": "2026-09-09T09:11:45+05:30",
+            "pathology_linked_by": {
+              "id": "UA-559C8A1A1341",
+              "username": "surgery.demo",
+              "name": "Dr Karan Shah",
+              "role": "Surgical Oncology",
+              "professional_id": "DEMO-SO-001"
+            },
+            "adjuvant_review": {
+              "status": "Ready for adjuvant review",
+              "derived": true,
+              "source_operating_record_id": "SURGERY-SYN-VAL-03",
+              "source_pathology_id": "PATHOLOGY-D503C3E4FC",
+              "source_pathological_stage_id": "DIAGNOSIS-B84BF8B0C8",
+              "derived_at": "2026-09-09T09:11:45+05:30",
+              "formula": "Signed operative record + final pathology + pathological stage available"
+            }
+          }
+        },
+        "source_record_type": "surgery",
+        "source_record_id": "SURGERY-SYN-VAL-03",
+        "source_record_version": 7,
+        "source_record_status": "Histopathology Available",
+        "source_record_updated_at": "2026-09-09T09:11:45+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Karan Shah",
+        "signed_at": "2026-09-09T09:11:44+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-559C8A1A1341",
+          "source_type": "surgery",
+          "source_id": "SURGERY-SYN-VAL-03"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "ARJ-051 adjuvant systemic handoff recorded",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "decision": {
+          "decision": "Adjuvant Systemic Therapy",
+          "rationale": "Stage IIIB colon adenocarcinoma after R0 resection with 2/18 nodes positive; proceed to medical oncology adjuvant planning in this synthetic validation pathway.",
+          "responsible_roles": [
+            "Medical Oncology"
+          ],
+          "decided_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "decided_at": "2026-09-09T09:11:45+05:30",
+          "source_pathology_id": "PATHOLOGY-D503C3E4FC",
+          "postop_stage": "Stage IIIB"
+        },
+        "next_roles": [
+          "Medical Oncology"
+        ]
+      }
+    },
+    {
+      "check": "ARJ-052 named actor audit events present",
+      "pass": true,
+      "detail": [
+        {
+          "id": 906,
+          "actor_role": "Medical Oncology",
+          "action": "SURGERY_ADJUVANT_DECISION",
+          "entity_type": "surgery",
+          "entity_id": "SURGERY-SYN-VAL-03",
+          "detail": "Adjuvant Systemic Therapy",
+          "at": "2026-09-09T09:11:45+05:30"
+        },
+        {
+          "id": 896,
+          "actor_role": "Surgical Oncology",
+          "action": "SURGERY_PATH_LINK",
+          "entity_type": "surgery",
+          "entity_id": "SURGERY-SYN-VAL-03",
+          "detail": "Histopathology Available",
+          "at": "2026-09-09T09:11:45+05:30"
+        },
+        {
+          "id": 883,
+          "actor_role": "Surgical Oncology",
+          "action": "SURGERY_PERFORMED",
+          "entity_type": "surgery",
+          "entity_id": "SURGERY-SYN-VAL-03",
+          "detail": "Performed",
+          "at": "2026-09-09T09:11:45+05:30"
+        },
+        {
+          "id": 865,
+          "actor_role": "Surgical Oncology",
+          "action": "SURGERY_PLAN_SIGN",
+          "entity_type": "surgery",
+          "entity_id": "SURGERY-SYN-VAL-03",
+          "detail": "Planned",
+          "at": "2026-09-09T09:11:44+05:30"
+        }
+      ]
+    }
+  ],
+  "key_records": {
+    "clinical_diagnosis": "DIAGNOSIS-SYN-VAL-03",
+    "mdt": "MDT-SYN-VAL-03",
+    "treatment_plan": "TREATMENT_PLAN-2FE6432117",
+    "preop_lab": "LAB-AEAE017F65",
+    "surgery": "SURGERY-SYN-VAL-03",
+    "pathology_original": "PATHOLOGY-SYN-VAL-03",
+    "pathology_final_amended": "PATHOLOGY-D503C3E4FC",
+    "pathological_stage_record": "DIAGNOSIS-B84BF8B0C8"
+  }
+}

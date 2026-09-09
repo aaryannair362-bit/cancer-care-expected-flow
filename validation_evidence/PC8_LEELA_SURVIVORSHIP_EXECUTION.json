@@ -1,0 +1,2917 @@
+{
+  "patient_id": "PAT-VAL-LEELA",
+  "patient": "Leela Nair",
+  "build": "12.2-PC7.1-PC8.0",
+  "generated_at": "2026-09-09T03:41:48.767873+00:00",
+  "checks": 51,
+  "pass": 51,
+  "fail": 0,
+  "episode_before": "EP-SYN-VAL-05",
+  "episode_after": "EP-SYN-VAL-05",
+  "new_line_number": 1,
+  "mdt_id": "MDT-SYN-VAL-05",
+  "results": [
+    {
+      "check": "LEE-001 baseline registration task/source",
+      "pass": true,
+      "detail": "REG-SYN-VAL-05"
+    },
+    {
+      "check": "LEE-002 registration completed",
+      "pass": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "check": "LEE-003 referral assigned",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "REF-SYN-VAL-05",
+        "status": "Assigned"
+      }
+    },
+    {
+      "check": "LEE-004 MO receives referral task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-84160BBA24",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Referral lifecycle",
+        "title": "Referral: Post-treatment survivorship transition review",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "referral",
+        "source_id": "REF-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Assigned",
+        "created_at": "2026-09-09T09:11:46+05:30",
+        "created_by": "UA-1953F3A56877",
+        "updated_at": "2026-09-09T09:11:46+05:30",
+        "updated_by": "UA-1953F3A56877",
+        "data": {
+          "referral_id": "REF-SYN-VAL-05",
+          "status": "Assigned"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:46+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "REF-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "referral",
+          "status": "Assigned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:46+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "data": {
+            "status": "Assigned",
+            "reason": "Post-treatment survivorship transition review",
+            "assigned_department": "Medical Oncology",
+            "assigned_clinician": "Dr Asha Mehta",
+            "priority": "Routine",
+            "history": [
+              {
+                "status": "Created",
+                "at": "2026-09-09T09:11:29+05:30",
+                "by": {
+                  "name": "System",
+                  "role": "System"
+                },
+                "reason": "Synthetic validation baseline"
+              },
+              {
+                "at": "2026-09-09T09:11:46+05:30",
+                "from": "Created",
+                "to": "Assigned",
+                "by": {
+                  "id": "UA-1953F3A56877",
+                  "username": "front.desk.demo",
+                  "name": "Kavya Rao — Front Desk",
+                  "role": "Front Desk",
+                  "professional_id": "DEMO-FD-001"
+                },
+                "reason": ""
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "updated_by": {
+              "id": "UA-1953F3A56877",
+              "username": "front.desk.demo",
+              "name": "Kavya Rao — Front Desk",
+              "role": "Front Desk",
+              "professional_id": "DEMO-FD-001"
+            },
+            "updated_at": "2026-09-09T09:11:46+05:30"
+          }
+        },
+        "source_record_type": "referral",
+        "source_record_id": "REF-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Assigned",
+        "source_record_updated_at": "2026-09-09T09:11:46+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "source_type": "referral",
+          "source_id": "REF-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "LEE-005 exact referral source/provenance",
+      "pass": true,
+      "detail": {
+        "id": "TASK-84160BBA24",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Referral lifecycle",
+        "title": "Referral: Post-treatment survivorship transition review",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "referral",
+        "source_id": "REF-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Assigned",
+        "created_at": "2026-09-09T09:11:46+05:30",
+        "created_by": "UA-1953F3A56877",
+        "updated_at": "2026-09-09T09:11:46+05:30",
+        "updated_by": "UA-1953F3A56877",
+        "data": {
+          "referral_id": "REF-SYN-VAL-05",
+          "status": "Assigned"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:46+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "REF-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "referral",
+          "status": "Assigned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:46+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "data": {
+            "status": "Assigned",
+            "reason": "Post-treatment survivorship transition review",
+            "assigned_department": "Medical Oncology",
+            "assigned_clinician": "Dr Asha Mehta",
+            "priority": "Routine",
+            "history": [
+              {
+                "status": "Created",
+                "at": "2026-09-09T09:11:29+05:30",
+                "by": {
+                  "name": "System",
+                  "role": "System"
+                },
+                "reason": "Synthetic validation baseline"
+              },
+              {
+                "at": "2026-09-09T09:11:46+05:30",
+                "from": "Created",
+                "to": "Assigned",
+                "by": {
+                  "id": "UA-1953F3A56877",
+                  "username": "front.desk.demo",
+                  "name": "Kavya Rao — Front Desk",
+                  "role": "Front Desk",
+                  "professional_id": "DEMO-FD-001"
+                },
+                "reason": ""
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "updated_by": {
+              "id": "UA-1953F3A56877",
+              "username": "front.desk.demo",
+              "name": "Kavya Rao — Front Desk",
+              "role": "Front Desk",
+              "professional_id": "DEMO-FD-001"
+            },
+            "updated_at": "2026-09-09T09:11:46+05:30"
+          }
+        },
+        "source_record_type": "referral",
+        "source_record_id": "REF-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Assigned",
+        "source_record_updated_at": "2026-09-09T09:11:46+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "source_type": "referral",
+          "source_id": "REF-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "LEE-006 wrong-role referral acceptance blocked",
+      "pass": true,
+      "detail": {
+        "error": "Patient access not assigned to this role"
+      }
+    },
+    {
+      "check": "LEE-007 referral accepted",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "REF-SYN-VAL-05",
+        "status": "Accepted"
+      }
+    },
+    {
+      "check": "LEE-008 intake signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "bmi": 24.22,
+        "bsa_raw_m2": 1.66,
+        "bsa_m2": 1.66,
+        "bsa_rounding_policy": {
+          "formula": "Mosteller",
+          "raw_precision": 4,
+          "display_precision": 2,
+          "ordering_precision": 2,
+          "formula_text": "sqrt(height_cm × weight_kg / 3600)"
+        },
+        "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
+        "canonical_units": {
+          "bp": "mmHg",
+          "hr": "/min",
+          "rr": "/min",
+          "temp_c": "°C",
+          "spo2": "%",
+          "weight_kg": "kg",
+          "height_cm": "cm"
+        },
+        "source_measurements": {
+          "sbp": {
+            "value": 122.0,
+            "unit": "mmHg"
+          },
+          "dbp": {
+            "value": 74.0,
+            "unit": "mmHg"
+          },
+          "hr": {
+            "value": 70.0,
+            "unit": "/min"
+          },
+          "rr": {
+            "value": 15.0,
+            "unit": "/min"
+          },
+          "temp": {
+            "value": 36.6,
+            "unit": "°C"
+          },
+          "spo2": {
+            "value": 99.0,
+            "unit": "%"
+          },
+          "weight": {
+            "value": 62.0,
+            "unit": "kg"
+          },
+          "height": {
+            "value": 160.0,
+            "unit": "cm"
+          }
+        }
+      }
+    },
+    {
+      "check": "LEE-009 consultation signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "LEE-010 diagnosis/staging verified",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Verified"
+      }
+    },
+    {
+      "check": "LEE-011 active Cancer Episode established",
+      "pass": true,
+      "detail": "EP-SYN-VAL-05"
+    },
+    {
+      "check": "LEE-012 Surgery confirmation responsibility created",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "task_id": "TASK-AC581B1D25",
+        "next_role": "Surgical Oncology"
+      }
+    },
+    {
+      "check": "LEE-013 Surgical Oncology receives history-confirmation task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-AC581B1D25",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Historical treatment confirmation",
+        "title": "Confirm historical Surgery",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Surgical Oncology",
+        "owner_user_id": "USR-SURGICAL-001",
+        "source_type": "diagnosis",
+        "source_id": "DIAGNOSIS-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Synthetic survivorship validation: confirm prior completed surgery within this Cancer Episode.",
+        "created_at": "2026-09-09T09:11:47+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:47+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "treatment_type": "Surgery",
+          "requested_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "provenance_reason": "Synthetic survivorship validation: confirm prior completed surgery within this Cancer Episode.",
+          "episode_id": "EP-SYN-VAL-05"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Nurse Intake",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "DIAGNOSIS-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "diagnosis",
+          "status": "Verified",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "icd10": "C50.9",
+            "icd10_version": "ICD-10",
+            "icdo_topography": "C50.9",
+            "icdo_morphology": "8500/3",
+            "icdo_version": "ICD-O-3",
+            "cancer_type": "Breast Cancer",
+            "primary_site": "Right breast",
+            "histology": "Invasive carcinoma of no special type / ductal carcinoma",
+            "grade": "2",
+            "staging_system": "AJCC",
+            "staging_version": "Breast v8",
+            "staging_date": "2026-09-09",
+            "staging_basis": "Clinical",
+            "stage_t": "cT2",
+            "stage_n": "cN0",
+            "stage_m": "cM0",
+            "stage_group": "Stage IIA",
+            "treatment_intent": "Curative",
+            "disease_status": "Post-treatment follow-up",
+            "non_tnm": false,
+            "classification_system": ""
+          }
+        },
+        "source_record_type": "diagnosis",
+        "source_record_id": "DIAGNOSIS-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Verified",
+        "source_record_updated_at": "2026-09-09T09:11:47+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "diagnosis",
+          "source_id": "DIAGNOSIS-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "LEE-014 Surgeon opens exact provenance",
+      "pass": true,
+      "detail": {
+        "id": "TASK-AC581B1D25",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Historical treatment confirmation",
+        "title": "Confirm historical Surgery",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Surgical Oncology",
+        "owner_user_id": "USR-SURGICAL-001",
+        "source_type": "diagnosis",
+        "source_id": "DIAGNOSIS-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Synthetic survivorship validation: confirm prior completed surgery within this Cancer Episode.",
+        "created_at": "2026-09-09T09:11:47+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:47+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "treatment_type": "Surgery",
+          "requested_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "provenance_reason": "Synthetic survivorship validation: confirm prior completed surgery within this Cancer Episode.",
+          "episode_id": "EP-SYN-VAL-05"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Nurse Intake",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "DIAGNOSIS-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "diagnosis",
+          "status": "Verified",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "icd10": "C50.9",
+            "icd10_version": "ICD-10",
+            "icdo_topography": "C50.9",
+            "icdo_morphology": "8500/3",
+            "icdo_version": "ICD-O-3",
+            "cancer_type": "Breast Cancer",
+            "primary_site": "Right breast",
+            "histology": "Invasive carcinoma of no special type / ductal carcinoma",
+            "grade": "2",
+            "staging_system": "AJCC",
+            "staging_version": "Breast v8",
+            "staging_date": "2026-09-09",
+            "staging_basis": "Clinical",
+            "stage_t": "cT2",
+            "stage_n": "cN0",
+            "stage_m": "cM0",
+            "stage_group": "Stage IIA",
+            "treatment_intent": "Curative",
+            "disease_status": "Post-treatment follow-up",
+            "non_tnm": false,
+            "classification_system": ""
+          }
+        },
+        "source_record_type": "diagnosis",
+        "source_record_id": "DIAGNOSIS-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Verified",
+        "source_record_updated_at": "2026-09-09T09:11:47+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "diagnosis",
+          "source_id": "DIAGNOSIS-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "LEE-015 Surgery treatment history entered by owning treating role",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "history_event": {
+          "id": "HIST-02B8D644",
+          "type": "Surgery",
+          "episode_id": "EP-SYN-VAL-05",
+          "date": "2026-03-12",
+          "status": "Completed",
+          "description": "Right breast-conserving surgery with sentinel-node procedure — synthetic historical treatment entered for survivorship validation",
+          "source_record_id": "",
+          "source_document_id": "",
+          "entered_reason": "Synthetic validation historical treatment confirmed by treating Surgical Oncologist",
+          "recorded_by": {
+            "id": "UA-559C8A1A1341",
+            "username": "surgery.demo",
+            "name": "Dr Karan Shah",
+            "role": "Surgical Oncology",
+            "professional_id": "DEMO-SO-001"
+          },
+          "recorded_at": "2026-09-09T09:11:47+05:30"
+        },
+        "treatment_history_id": "TREATMENT_HISTORY-SYN-VAL-05",
+        "task_id": "",
+        "next_role": ""
+      }
+    },
+    {
+      "check": "LEE-016 RT confirmation responsibility created",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "task_id": "TASK-5229EAD9C2",
+        "next_role": "Radiation Oncology"
+      }
+    },
+    {
+      "check": "LEE-017 Radiation Oncology receives history-confirmation task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-5229EAD9C2",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Historical treatment confirmation",
+        "title": "Confirm historical Radiation Therapy",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Radiation Oncology",
+        "owner_user_id": "USR-RADIATIO-001",
+        "source_type": "diagnosis",
+        "source_id": "DIAGNOSIS-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Synthetic survivorship validation: confirm prior completed RT within this Cancer Episode.",
+        "created_at": "2026-09-09T09:11:47+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:47+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "treatment_type": "Radiation Therapy",
+          "requested_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "provenance_reason": "Synthetic survivorship validation: confirm prior completed RT within this Cancer Episode.",
+          "episode_id": "EP-SYN-VAL-05"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Nurse Intake",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "DIAGNOSIS-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "diagnosis",
+          "status": "Verified",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "icd10": "C50.9",
+            "icd10_version": "ICD-10",
+            "icdo_topography": "C50.9",
+            "icdo_morphology": "8500/3",
+            "icdo_version": "ICD-O-3",
+            "cancer_type": "Breast Cancer",
+            "primary_site": "Right breast",
+            "histology": "Invasive carcinoma of no special type / ductal carcinoma",
+            "grade": "2",
+            "staging_system": "AJCC",
+            "staging_version": "Breast v8",
+            "staging_date": "2026-09-09",
+            "staging_basis": "Clinical",
+            "stage_t": "cT2",
+            "stage_n": "cN0",
+            "stage_m": "cM0",
+            "stage_group": "Stage IIA",
+            "treatment_intent": "Curative",
+            "disease_status": "Post-treatment follow-up",
+            "non_tnm": false,
+            "classification_system": ""
+          }
+        },
+        "source_record_type": "diagnosis",
+        "source_record_id": "DIAGNOSIS-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Verified",
+        "source_record_updated_at": "2026-09-09T09:11:47+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "diagnosis",
+          "source_id": "DIAGNOSIS-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "LEE-018 RT treatment history entered by treating RO",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "history_event": {
+          "id": "HIST-A81220C2",
+          "type": "Radiation Therapy",
+          "episode_id": "EP-SYN-VAL-05",
+          "date": "2026-05-20",
+          "status": "Completed",
+          "description": "Adjuvant right-breast radiation course completed — synthetic historical treatment",
+          "source_record_id": "",
+          "source_document_id": "",
+          "entered_reason": "Synthetic validation historical RT completion confirmed by Radiation Oncologist",
+          "recorded_by": {
+            "id": "UA-E01323E6A584",
+            "username": "ro.demo",
+            "name": "Dr Neha Rao",
+            "role": "Radiation Oncology",
+            "professional_id": "DEMO-RO-001"
+          },
+          "recorded_at": "2026-09-09T09:11:47+05:30"
+        },
+        "treatment_history_id": "TREATMENT_HISTORY-SYN-VAL-05",
+        "task_id": "",
+        "next_role": ""
+      }
+    },
+    {
+      "check": "LEE-019 completed treatment creates EOT responsibility",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "history_event": {
+          "id": "HIST-64ABA48B",
+          "type": "Systemic Therapy",
+          "episode_id": "EP-SYN-VAL-05",
+          "date": "2026-07-30",
+          "status": "Completed",
+          "description": "Adjuvant systemic/endocrine treatment phase completed for end-of-treatment review — synthetic validation",
+          "source_record_id": "",
+          "source_document_id": "",
+          "entered_reason": "Synthetic validation completion entered by Medical Oncologist",
+          "recorded_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "recorded_at": "2026-09-09T09:11:47+05:30"
+        },
+        "treatment_history_id": "TREATMENT_HISTORY-SYN-VAL-05",
+        "task_id": "TASK-1A1F4480F5",
+        "next_role": "Medical Oncology"
+      }
+    },
+    {
+      "check": "LEE-020 MO sees End-of-Treatment Review task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-1A1F4480F5",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Treatment completion review",
+        "title": "Complete End-of-Treatment Review / Cancer Treatment Summary",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "UA-CD18F7D9D16C",
+        "source_type": "treatment_history",
+        "source_id": "TREATMENT_HISTORY-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Completed cancer-directed treatment documented; formal end-of-treatment review required",
+        "created_at": "2026-09-09T09:11:47+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:47+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "history_event": {
+            "id": "HIST-64ABA48B",
+            "type": "Systemic Therapy",
+            "episode_id": "EP-SYN-VAL-05",
+            "date": "2026-07-30",
+            "status": "Completed",
+            "description": "Adjuvant systemic/endocrine treatment phase completed for end-of-treatment review — synthetic validation",
+            "source_record_id": "",
+            "source_document_id": "",
+            "entered_reason": "Synthetic validation completion entered by Medical Oncologist",
+            "recorded_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "recorded_at": "2026-09-09T09:11:47+05:30"
+          },
+          "treatment_completion_id": "TREATMENT_COMPLETION-SYN-VAL-05",
+          "episode_id": "EP-SYN-VAL-05"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Treatment Completion",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "TREATMENT_HISTORY-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "treatment_history",
+          "status": "Active",
+          "version": 4,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "episodes": [
+              {
+                "id": "HIST-02B8D644",
+                "type": "Surgery",
+                "episode_id": "EP-SYN-VAL-05",
+                "date": "2026-03-12",
+                "status": "Completed",
+                "description": "Right breast-conserving surgery with sentinel-node procedure — synthetic historical treatment entered for survivorship validation",
+                "source_record_id": "",
+                "source_document_id": "",
+                "entered_reason": "Synthetic validation historical treatment confirmed by treating Surgical Oncologist",
+                "recorded_by": {
+                  "id": "UA-559C8A1A1341",
+                  "username": "surgery.demo",
+                  "name": "Dr Karan Shah",
+                  "role": "Surgical Oncology",
+                  "professional_id": "DEMO-SO-001"
+                },
+                "recorded_at": "2026-09-09T09:11:47+05:30"
+              },
+              {
+                "id": "HIST-A81220C2",
+                "type": "Radiation Therapy",
+                "episode_id": "EP-SYN-VAL-05",
+                "date": "2026-05-20",
+                "status": "Completed",
+                "description": "Adjuvant right-breast radiation course completed — synthetic historical treatment",
+                "source_record_id": "",
+                "source_document_id": "",
+                "entered_reason": "Synthetic validation historical RT completion confirmed by Radiation Oncologist",
+                "recorded_by": {
+                  "id": "UA-E01323E6A584",
+                  "username": "ro.demo",
+                  "name": "Dr Neha Rao",
+                  "role": "Radiation Oncology",
+                  "professional_id": "DEMO-RO-001"
+                },
+                "recorded_at": "2026-09-09T09:11:47+05:30"
+              },
+              {
+                "id": "HIST-64ABA48B",
+                "type": "Systemic Therapy",
+                "episode_id": "EP-SYN-VAL-05",
+                "date": "2026-07-30",
+                "status": "Completed",
+                "description": "Adjuvant systemic/endocrine treatment phase completed for end-of-treatment review — synthetic validation",
+                "source_record_id": "",
+                "source_document_id": "",
+                "entered_reason": "Synthetic validation completion entered by Medical Oncologist",
+                "recorded_by": {
+                  "id": "UA-CD18F7D9D16C",
+                  "username": "mo.demo",
+                  "name": "Dr Asha Mehta",
+                  "role": "Medical Oncology",
+                  "professional_id": "DEMO-MO-001"
+                },
+                "recorded_at": "2026-09-09T09:11:47+05:30"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05"
+          }
+        },
+        "source_record_type": "treatment_history",
+        "source_record_id": "TREATMENT_HISTORY-SYN-VAL-05",
+        "source_record_version": 4,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:47+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "treatment_history",
+          "source_id": "TREATMENT_HISTORY-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "LEE-021 EOT task opens exact treatment-history source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-1A1F4480F5",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Treatment completion review",
+        "title": "Complete End-of-Treatment Review / Cancer Treatment Summary",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "UA-CD18F7D9D16C",
+        "source_type": "treatment_history",
+        "source_id": "TREATMENT_HISTORY-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Completed cancer-directed treatment documented; formal end-of-treatment review required",
+        "created_at": "2026-09-09T09:11:47+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:47+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "history_event": {
+            "id": "HIST-64ABA48B",
+            "type": "Systemic Therapy",
+            "episode_id": "EP-SYN-VAL-05",
+            "date": "2026-07-30",
+            "status": "Completed",
+            "description": "Adjuvant systemic/endocrine treatment phase completed for end-of-treatment review — synthetic validation",
+            "source_record_id": "",
+            "source_document_id": "",
+            "entered_reason": "Synthetic validation completion entered by Medical Oncologist",
+            "recorded_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "recorded_at": "2026-09-09T09:11:47+05:30"
+          },
+          "treatment_completion_id": "TREATMENT_COMPLETION-SYN-VAL-05",
+          "episode_id": "EP-SYN-VAL-05"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Treatment Completion",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "TREATMENT_HISTORY-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "treatment_history",
+          "status": "Active",
+          "version": 4,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "episodes": [
+              {
+                "id": "HIST-02B8D644",
+                "type": "Surgery",
+                "episode_id": "EP-SYN-VAL-05",
+                "date": "2026-03-12",
+                "status": "Completed",
+                "description": "Right breast-conserving surgery with sentinel-node procedure — synthetic historical treatment entered for survivorship validation",
+                "source_record_id": "",
+                "source_document_id": "",
+                "entered_reason": "Synthetic validation historical treatment confirmed by treating Surgical Oncologist",
+                "recorded_by": {
+                  "id": "UA-559C8A1A1341",
+                  "username": "surgery.demo",
+                  "name": "Dr Karan Shah",
+                  "role": "Surgical Oncology",
+                  "professional_id": "DEMO-SO-001"
+                },
+                "recorded_at": "2026-09-09T09:11:47+05:30"
+              },
+              {
+                "id": "HIST-A81220C2",
+                "type": "Radiation Therapy",
+                "episode_id": "EP-SYN-VAL-05",
+                "date": "2026-05-20",
+                "status": "Completed",
+                "description": "Adjuvant right-breast radiation course completed — synthetic historical treatment",
+                "source_record_id": "",
+                "source_document_id": "",
+                "entered_reason": "Synthetic validation historical RT completion confirmed by Radiation Oncologist",
+                "recorded_by": {
+                  "id": "UA-E01323E6A584",
+                  "username": "ro.demo",
+                  "name": "Dr Neha Rao",
+                  "role": "Radiation Oncology",
+                  "professional_id": "DEMO-RO-001"
+                },
+                "recorded_at": "2026-09-09T09:11:47+05:30"
+              },
+              {
+                "id": "HIST-64ABA48B",
+                "type": "Systemic Therapy",
+                "episode_id": "EP-SYN-VAL-05",
+                "date": "2026-07-30",
+                "status": "Completed",
+                "description": "Adjuvant systemic/endocrine treatment phase completed for end-of-treatment review — synthetic validation",
+                "source_record_id": "",
+                "source_document_id": "",
+                "entered_reason": "Synthetic validation completion entered by Medical Oncologist",
+                "recorded_by": {
+                  "id": "UA-CD18F7D9D16C",
+                  "username": "mo.demo",
+                  "name": "Dr Asha Mehta",
+                  "role": "Medical Oncology",
+                  "professional_id": "DEMO-MO-001"
+                },
+                "recorded_at": "2026-09-09T09:11:47+05:30"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05"
+          }
+        },
+        "source_record_type": "treatment_history",
+        "source_record_id": "TREATMENT_HISTORY-SYN-VAL-05",
+        "source_record_version": 4,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:47+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "treatment_history",
+          "source_id": "TREATMENT_HISTORY-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "LEE-022 Navigator cannot sign clinician treatment summary",
+      "pass": true,
+      "detail": {
+        "error": "Patient access not assigned to this role"
+      }
+    },
+    {
+      "check": "LEE-023 incomplete EOT summary blocked",
+      "pass": true,
+      "detail": {
+        "error": "End-of-Treatment Review incomplete",
+        "missing": [
+          "completion_date",
+          "diagnosis_at_completion",
+          "treatment_received",
+          "current_disease_status",
+          "late_effect_risks",
+          "follow_up_recommendations"
+        ]
+      }
+    },
+    {
+      "check": "LEE-024 treatment summary signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "TREATMENT_COMPLETION-SYN-VAL-05",
+        "status": "Signed",
+        "supersedes": "",
+        "next_role": "Nurse Navigator"
+      }
+    },
+    {
+      "check": "LEE-025 EOT review task closed",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "LEE-026 Navigator automatically receives Survivorship task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-458AAFC735",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Survivorship planning",
+        "title": "Create survivorship / surveillance plan",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Nurse Navigator",
+        "owner_user_id": "USR-NURSENAV-001",
+        "source_type": "treatment_completion",
+        "source_id": "TREATMENT_COMPLETION-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed Cancer Treatment Summary available",
+        "created_at": "2026-09-09T09:11:48+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:48+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "treatment_summary_id": "TREATMENT_COMPLETION-SYN-VAL-05",
+          "episode_id": "EP-SYN-VAL-05",
+          "summary": {
+            "diagnosis": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+            "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+            "completion_date": "2026-07-30",
+            "disease_status": "No evidence of active disease; survivorship transition",
+            "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+            "follow_up_recommendations": "Survivorship plan, clinical surveillance, breast imaging and symptom-triggered evaluation."
+          },
+          "source_completed_treatment_event_ids": [
+            "HIST-02B8D644",
+            "HIST-A81220C2",
+            "HIST-64ABA48B"
+          ]
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Treatment Completion",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "TREATMENT_COMPLETION-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "treatment_completion",
+          "status": "Signed",
+          "version": 3,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "source_treatment_history_id": "TREATMENT_HISTORY-SYN-VAL-05",
+            "source_history_event_id": "HIST-64ABA48B",
+            "treatment_completed": true,
+            "completion_date": "2026-07-30",
+            "diagnosis_at_completion": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+            "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+            "current_disease_status": "No evidence of active disease; survivorship transition",
+            "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+            "follow_up_recommendations": "Survivorship plan, clinical surveillance, breast imaging and symptom-triggered evaluation.",
+            "source_completed_treatment_event_ids": [
+              "HIST-02B8D644",
+              "HIST-A81220C2",
+              "HIST-64ABA48B"
+            ],
+            "signed_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "signed_at": "2026-09-09T09:11:48+05:30",
+            "treatment_summary": {
+              "diagnosis": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+              "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+              "completion_date": "2026-07-30",
+              "disease_status": "No evidence of active disease; survivorship transition",
+              "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+              "follow_up_recommendations": "Survivorship plan, clinical surveillance, breast imaging and symptom-triggered evaluation."
+            },
+            "signed_snapshot": {
+              "episode_id": "EP-SYN-VAL-05",
+              "completed_treatment_event_ids": [
+                "HIST-02B8D644",
+                "HIST-A81220C2",
+                "HIST-64ABA48B"
+              ],
+              "diagnosis_at_completion": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+              "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+              "completion_date": "2026-07-30",
+              "current_disease_status": "No evidence of active disease; survivorship transition",
+              "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+              "follow_up_recommendations": "Survivorship plan, clinical surveillance, breast imaging and symptom-triggered evaluation."
+            }
+          }
+        },
+        "source_record_type": "treatment_completion",
+        "source_record_id": "TREATMENT_COMPLETION-SYN-VAL-05",
+        "source_record_version": 3,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:48+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Asha Mehta",
+        "signed_at": "2026-09-09T09:11:48+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "treatment_completion",
+          "source_id": "TREATMENT_COMPLETION-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "LEE-027 Navigator opens exact signed Treatment Summary/provenance",
+      "pass": true,
+      "detail": {
+        "id": "TASK-458AAFC735",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Survivorship planning",
+        "title": "Create survivorship / surveillance plan",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Nurse Navigator",
+        "owner_user_id": "USR-NURSENAV-001",
+        "source_type": "treatment_completion",
+        "source_id": "TREATMENT_COMPLETION-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed Cancer Treatment Summary available",
+        "created_at": "2026-09-09T09:11:48+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:48+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "treatment_summary_id": "TREATMENT_COMPLETION-SYN-VAL-05",
+          "episode_id": "EP-SYN-VAL-05",
+          "summary": {
+            "diagnosis": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+            "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+            "completion_date": "2026-07-30",
+            "disease_status": "No evidence of active disease; survivorship transition",
+            "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+            "follow_up_recommendations": "Survivorship plan, clinical surveillance, breast imaging and symptom-triggered evaluation."
+          },
+          "source_completed_treatment_event_ids": [
+            "HIST-02B8D644",
+            "HIST-A81220C2",
+            "HIST-64ABA48B"
+          ]
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Treatment Completion",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "TREATMENT_COMPLETION-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "treatment_completion",
+          "status": "Signed",
+          "version": 3,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "source_treatment_history_id": "TREATMENT_HISTORY-SYN-VAL-05",
+            "source_history_event_id": "HIST-64ABA48B",
+            "treatment_completed": true,
+            "completion_date": "2026-07-30",
+            "diagnosis_at_completion": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+            "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+            "current_disease_status": "No evidence of active disease; survivorship transition",
+            "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+            "follow_up_recommendations": "Survivorship plan, clinical surveillance, breast imaging and symptom-triggered evaluation.",
+            "source_completed_treatment_event_ids": [
+              "HIST-02B8D644",
+              "HIST-A81220C2",
+              "HIST-64ABA48B"
+            ],
+            "signed_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "signed_at": "2026-09-09T09:11:48+05:30",
+            "treatment_summary": {
+              "diagnosis": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+              "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+              "completion_date": "2026-07-30",
+              "disease_status": "No evidence of active disease; survivorship transition",
+              "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+              "follow_up_recommendations": "Survivorship plan, clinical surveillance, breast imaging and symptom-triggered evaluation."
+            },
+            "signed_snapshot": {
+              "episode_id": "EP-SYN-VAL-05",
+              "completed_treatment_event_ids": [
+                "HIST-02B8D644",
+                "HIST-A81220C2",
+                "HIST-64ABA48B"
+              ],
+              "diagnosis_at_completion": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+              "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+              "completion_date": "2026-07-30",
+              "current_disease_status": "No evidence of active disease; survivorship transition",
+              "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+              "follow_up_recommendations": "Survivorship plan, clinical surveillance, breast imaging and symptom-triggered evaluation."
+            }
+          }
+        },
+        "source_record_type": "treatment_completion",
+        "source_record_id": "TREATMENT_COMPLETION-SYN-VAL-05",
+        "source_record_version": 3,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:48+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Asha Mehta",
+        "signed_at": "2026-09-09T09:11:48+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "treatment_completion",
+          "source_id": "TREATMENT_COMPLETION-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "LEE-028 signed Treatment Summary overwrite blocked",
+      "pass": true,
+      "detail": {
+        "error": "Signed End-of-Treatment Review is immutable; amendment_reason is required to create a superseding version",
+        "supersedes": "TREATMENT_COMPLETION-SYN-VAL-05"
+      }
+    },
+    {
+      "check": "LEE-029 Treatment Summary amendment creates superseding signed version",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "TREATMENT_COMPLETION-23C1217B79",
+        "status": "Signed",
+        "supersedes": "TREATMENT_COMPLETION-SYN-VAL-05",
+        "next_role": "Nurse Navigator"
+      }
+    },
+    {
+      "check": "LEE-030 previous signed summary retained as Superseded",
+      "pass": true,
+      "detail": {
+        "old": "Superseded",
+        "new": "Signed"
+      }
+    },
+    {
+      "check": "LEE-031 Navigator receives superseding Treatment Summary task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-0FB3BA201F",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Survivorship planning",
+        "title": "Create survivorship / surveillance plan",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Nurse Navigator",
+        "owner_user_id": "USR-NURSENAV-001",
+        "source_type": "treatment_completion",
+        "source_id": "TREATMENT_COMPLETION-23C1217B79",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed Cancer Treatment Summary available",
+        "created_at": "2026-09-09T09:11:48+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:48+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "treatment_summary_id": "TREATMENT_COMPLETION-23C1217B79",
+          "episode_id": "EP-SYN-VAL-05",
+          "summary": {
+            "diagnosis": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+            "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+            "completion_date": "2026-07-30",
+            "disease_status": "No evidence of active disease; survivorship transition",
+            "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+            "follow_up_recommendations": "Updated surveillance recommendation after multidisciplinary record reconciliation."
+          },
+          "source_completed_treatment_event_ids": [
+            "HIST-02B8D644",
+            "HIST-A81220C2",
+            "HIST-64ABA48B"
+          ]
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Treatment Completion",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "TREATMENT_COMPLETION-23C1217B79",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "treatment_completion",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:48+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30",
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "source_treatment_history_id": "TREATMENT_HISTORY-SYN-VAL-05",
+            "source_history_event_id": "HIST-64ABA48B",
+            "treatment_completed": true,
+            "completion_date": "2026-07-30",
+            "diagnosis_at_completion": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+            "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+            "current_disease_status": "No evidence of active disease; survivorship transition",
+            "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+            "follow_up_recommendations": "Updated surveillance recommendation after multidisciplinary record reconciliation.",
+            "source_completed_treatment_event_ids": [
+              "HIST-02B8D644",
+              "HIST-A81220C2",
+              "HIST-64ABA48B"
+            ],
+            "signed_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "signed_at": "2026-09-09T09:11:48+05:30",
+            "treatment_summary": {
+              "diagnosis": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+              "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+              "completion_date": "2026-07-30",
+              "disease_status": "No evidence of active disease; survivorship transition",
+              "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+              "follow_up_recommendations": "Updated surveillance recommendation after multidisciplinary record reconciliation."
+            },
+            "signed_snapshot": {
+              "episode_id": "EP-SYN-VAL-05",
+              "completed_treatment_event_ids": [
+                "HIST-02B8D644",
+                "HIST-A81220C2",
+                "HIST-64ABA48B"
+              ],
+              "diagnosis_at_completion": "Right breast invasive ductal carcinoma, AJCC Breast v8 Stage IIA",
+              "treatment_received": "Breast-conserving surgery, adjuvant radiation, and systemic/endocrine treatment — synthetic validation history",
+              "completion_date": "2026-07-30",
+              "current_disease_status": "No evidence of active disease; survivorship transition",
+              "late_effect_risks": "Lymphedema, bone health effects, endocrine symptoms, radiation late effects",
+              "follow_up_recommendations": "Updated surveillance recommendation after multidisciplinary record reconciliation."
+            },
+            "supersedes": "TREATMENT_COMPLETION-SYN-VAL-05",
+            "amendment_reason": "Clarify surveillance recommendation without changing treatment history",
+            "amendment_started_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "amendment_started_at": "2026-09-09T09:11:48+05:30"
+          }
+        },
+        "source_record_type": "treatment_completion",
+        "source_record_id": "TREATMENT_COMPLETION-23C1217B79",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:48+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Asha Mehta",
+        "signed_at": "2026-09-09T09:11:48+05:30",
+        "provenance": {
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "treatment_completion",
+          "source_id": "TREATMENT_COMPLETION-23C1217B79"
+        }
+      }
+    },
+    {
+      "check": "LEE-032 wrong-role survivorship plan blocked",
+      "pass": true,
+      "detail": {
+        "error": "Nurse Navigator required"
+      }
+    },
+    {
+      "check": "LEE-033 Survivorship Plan signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "SURVIVORSHIP-SYN-VAL-05",
+        "status": "Signed",
+        "supersedes": ""
+      }
+    },
+    {
+      "check": "LEE-034 Navigator gets surveillance task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-BAE654E263",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Surveillance encounter",
+        "title": "Perform scheduled surveillance encounter",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Nurse Navigator",
+        "owner_user_id": "UA-C35C20420FAD",
+        "source_type": "survivorship",
+        "source_id": "SURVIVORSHIP-SYN-VAL-05",
+        "due_at": "2026-12-09",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed surveillance plan active",
+        "created_at": "2026-09-09T09:11:48+05:30",
+        "created_by": "UA-C35C20420FAD",
+        "updated_at": "2026-09-09T09:11:48+05:30",
+        "updated_by": "UA-C35C20420FAD",
+        "data": {
+          "survivorship_plan_id": "SURVIVORSHIP-SYN-VAL-05",
+          "episode_id": "EP-SYN-VAL-05",
+          "source_treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Survivorship",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURVIVORSHIP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "survivorship",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-C35C20420FAD",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79",
+            "surveillance_schedule": "Clinical oncology review every 3–6 months initially; annual disease-appropriate breast imaging in this synthetic validation plan.",
+            "late_effect_monitoring": "Monitor lymphedema, bone health, cardiopulmonary/radiation late effects and endocrine treatment effects.",
+            "health_promotion": "Exercise, healthy weight, smoking avoidance, vaccination and bone-health measures.",
+            "red_flags": "New breast/chest wall mass, persistent bone pain, unexplained weight loss, dyspnea or neurologic symptoms.",
+            "contact_plan": "Nurse Navigator contact plus direct oncology escalation for red flags.",
+            "next_surveillance_at": "2026-12-09",
+            "source_treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79",
+            "source_treatment_completion_version": 2,
+            "signed_by": {
+              "id": "UA-C35C20420FAD",
+              "username": "navigator.demo",
+              "name": "Meera Joseph — Nurse Navigator",
+              "role": "Nurse Navigator",
+              "professional_id": "DEMO-NN-001"
+            },
+            "signed_at": "2026-09-09T09:11:48+05:30",
+            "signed_snapshot": {
+              "surveillance_schedule": "Clinical oncology review every 3–6 months initially; annual disease-appropriate breast imaging in this synthetic validation plan.",
+              "late_effect_monitoring": "Monitor lymphedema, bone health, cardiopulmonary/radiation late effects and endocrine treatment effects.",
+              "health_promotion": "Exercise, healthy weight, smoking avoidance, vaccination and bone-health measures.",
+              "red_flags": "New breast/chest wall mass, persistent bone pain, unexplained weight loss, dyspnea or neurologic symptoms.",
+              "contact_plan": "Nurse Navigator contact plus direct oncology escalation for red flags.",
+              "episode_id": "EP-SYN-VAL-05",
+              "source_treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79",
+              "source_treatment_completion_version": 2,
+              "next_surveillance_at": "2026-12-09"
+            }
+          }
+        },
+        "source_record_type": "survivorship",
+        "source_record_id": "SURVIVORSHIP-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:48+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Meera Joseph — Nurse Navigator",
+        "signed_at": "2026-09-09T09:11:48+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-C35C20420FAD",
+          "source_type": "survivorship",
+          "source_id": "SURVIVORSHIP-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "LEE-035 surveillance task exact signed plan source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-BAE654E263",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Surveillance encounter",
+        "title": "Perform scheduled surveillance encounter",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Nurse Navigator",
+        "owner_user_id": "UA-C35C20420FAD",
+        "source_type": "survivorship",
+        "source_id": "SURVIVORSHIP-SYN-VAL-05",
+        "due_at": "2026-12-09",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed surveillance plan active",
+        "created_at": "2026-09-09T09:11:48+05:30",
+        "created_by": "UA-C35C20420FAD",
+        "updated_at": "2026-09-09T09:11:48+05:30",
+        "updated_by": "UA-C35C20420FAD",
+        "data": {
+          "survivorship_plan_id": "SURVIVORSHIP-SYN-VAL-05",
+          "episode_id": "EP-SYN-VAL-05",
+          "source_treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Survivorship",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURVIVORSHIP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "survivorship",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-C35C20420FAD",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79",
+            "surveillance_schedule": "Clinical oncology review every 3–6 months initially; annual disease-appropriate breast imaging in this synthetic validation plan.",
+            "late_effect_monitoring": "Monitor lymphedema, bone health, cardiopulmonary/radiation late effects and endocrine treatment effects.",
+            "health_promotion": "Exercise, healthy weight, smoking avoidance, vaccination and bone-health measures.",
+            "red_flags": "New breast/chest wall mass, persistent bone pain, unexplained weight loss, dyspnea or neurologic symptoms.",
+            "contact_plan": "Nurse Navigator contact plus direct oncology escalation for red flags.",
+            "next_surveillance_at": "2026-12-09",
+            "source_treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79",
+            "source_treatment_completion_version": 2,
+            "signed_by": {
+              "id": "UA-C35C20420FAD",
+              "username": "navigator.demo",
+              "name": "Meera Joseph — Nurse Navigator",
+              "role": "Nurse Navigator",
+              "professional_id": "DEMO-NN-001"
+            },
+            "signed_at": "2026-09-09T09:11:48+05:30",
+            "signed_snapshot": {
+              "surveillance_schedule": "Clinical oncology review every 3–6 months initially; annual disease-appropriate breast imaging in this synthetic validation plan.",
+              "late_effect_monitoring": "Monitor lymphedema, bone health, cardiopulmonary/radiation late effects and endocrine treatment effects.",
+              "health_promotion": "Exercise, healthy weight, smoking avoidance, vaccination and bone-health measures.",
+              "red_flags": "New breast/chest wall mass, persistent bone pain, unexplained weight loss, dyspnea or neurologic symptoms.",
+              "contact_plan": "Nurse Navigator contact plus direct oncology escalation for red flags.",
+              "episode_id": "EP-SYN-VAL-05",
+              "source_treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79",
+              "source_treatment_completion_version": 2,
+              "next_surveillance_at": "2026-12-09"
+            }
+          }
+        },
+        "source_record_type": "survivorship",
+        "source_record_id": "SURVIVORSHIP-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:48+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Meera Joseph — Nurse Navigator",
+        "signed_at": "2026-09-09T09:11:48+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-C35C20420FAD",
+          "source_type": "survivorship",
+          "source_id": "SURVIVORSHIP-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "LEE-036 signed plan overwrite blocked",
+      "pass": true,
+      "detail": {
+        "error": "Signed Survivorship Plan is immutable; amendment_reason is required to create a superseding version",
+        "supersedes": "SURVIVORSHIP-SYN-VAL-05"
+      }
+    },
+    {
+      "check": "LEE-037 Survivorship amendment creates superseding signed plan",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "SURVIVORSHIP-C9B462335B",
+        "status": "Signed",
+        "supersedes": "SURVIVORSHIP-SYN-VAL-05"
+      }
+    },
+    {
+      "check": "LEE-038 previous plan preserved Superseded",
+      "pass": true,
+      "detail": {
+        "old": "Superseded",
+        "new": "Signed"
+      }
+    },
+    {
+      "check": "LEE-039 new plan creates surveillance responsibility",
+      "pass": true,
+      "detail": {
+        "id": "TASK-6ED7E26C53",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Surveillance encounter",
+        "title": "Perform scheduled surveillance encounter",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Nurse Navigator",
+        "owner_user_id": "UA-C35C20420FAD",
+        "source_type": "survivorship",
+        "source_id": "SURVIVORSHIP-C9B462335B",
+        "due_at": "2026-12-09",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed surveillance plan active",
+        "created_at": "2026-09-09T09:11:48+05:30",
+        "created_by": "UA-C35C20420FAD",
+        "updated_at": "2026-09-09T09:11:48+05:30",
+        "updated_by": "UA-C35C20420FAD",
+        "data": {
+          "survivorship_plan_id": "SURVIVORSHIP-C9B462335B",
+          "episode_id": "EP-SYN-VAL-05",
+          "source_treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Survivorship",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURVIVORSHIP-C9B462335B",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "survivorship",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:48+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30",
+          "created_by": "UA-C35C20420FAD",
+          "updated_by": "UA-C35C20420FAD",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79",
+            "surveillance_schedule": "Clinical oncology review every 3–6 months initially; annual disease-appropriate breast imaging in this synthetic validation plan.",
+            "late_effect_monitoring": "Monitor lymphedema, bone health, cardiopulmonary/radiation late effects and endocrine treatment effects.",
+            "health_promotion": "Exercise, healthy weight, smoking avoidance, vaccination and bone-health measures.",
+            "red_flags": "Updated: new breast/chest wall mass, persistent focal bone pain, unexplained weight loss, dyspnea, persistent headache/neurologic symptoms.",
+            "contact_plan": "Nurse Navigator contact plus direct oncology escalation for red flags.",
+            "next_surveillance_at": "2026-12-09",
+            "source_treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79",
+            "source_treatment_completion_version": 2,
+            "signed_by": {
+              "id": "UA-C35C20420FAD",
+              "username": "navigator.demo",
+              "name": "Meera Joseph — Nurse Navigator",
+              "role": "Nurse Navigator",
+              "professional_id": "DEMO-NN-001"
+            },
+            "signed_at": "2026-09-09T09:11:48+05:30",
+            "signed_snapshot": {
+              "surveillance_schedule": "Clinical oncology review every 3–6 months initially; annual disease-appropriate breast imaging in this synthetic validation plan.",
+              "late_effect_monitoring": "Monitor lymphedema, bone health, cardiopulmonary/radiation late effects and endocrine treatment effects.",
+              "health_promotion": "Exercise, healthy weight, smoking avoidance, vaccination and bone-health measures.",
+              "red_flags": "Updated: new breast/chest wall mass, persistent focal bone pain, unexplained weight loss, dyspnea, persistent headache/neurologic symptoms.",
+              "contact_plan": "Nurse Navigator contact plus direct oncology escalation for red flags.",
+              "episode_id": "EP-SYN-VAL-05",
+              "source_treatment_completion_id": "TREATMENT_COMPLETION-23C1217B79",
+              "source_treatment_completion_version": 2,
+              "next_surveillance_at": "2026-12-09"
+            },
+            "supersedes": "SURVIVORSHIP-SYN-VAL-05",
+            "amendment_reason": "Clarify red-flag wording after patient education review",
+            "amendment_started_by": {
+              "id": "UA-C35C20420FAD",
+              "username": "navigator.demo",
+              "name": "Meera Joseph — Nurse Navigator",
+              "role": "Nurse Navigator",
+              "professional_id": "DEMO-NN-001"
+            },
+            "amendment_started_at": "2026-09-09T09:11:48+05:30"
+          }
+        },
+        "source_record_type": "survivorship",
+        "source_record_id": "SURVIVORSHIP-C9B462335B",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:48+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Meera Joseph — Nurse Navigator",
+        "signed_at": "2026-09-09T09:11:48+05:30",
+        "provenance": {
+          "created_by": "UA-C35C20420FAD",
+          "updated_by": "UA-C35C20420FAD",
+          "source_type": "survivorship",
+          "source_id": "SURVIVORSHIP-C9B462335B"
+        }
+      }
+    },
+    {
+      "check": "LEE-040 suspected recurrence surveillance recorded",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "encounter": {
+          "id": "SURV-BF1689A",
+          "episode_id": "EP-SYN-VAL-05",
+          "date": "2026-12-09",
+          "assessment": "New persistent right chest-wall nodularity and focal rib discomfort; synthetic surveillance concern requiring oncologist confirmation.",
+          "disease_status": "Suspected Recurrence",
+          "symptoms": [
+            "New right chest-wall nodularity",
+            "Persistent focal rib discomfort"
+          ],
+          "investigations": [
+            "Synthetic surveillance imaging flagged suspicious chest-wall lesion"
+          ],
+          "recorded_by": {
+            "id": "UA-C35C20420FAD",
+            "username": "navigator.demo",
+            "name": "Meera Joseph — Nurse Navigator",
+            "role": "Nurse Navigator",
+            "professional_id": "DEMO-NN-001"
+          },
+          "recorded_at": "2026-09-09T09:11:48+05:30"
+        },
+        "next_role": "Medical Oncology"
+      }
+    },
+    {
+      "check": "LEE-041 MO receives progression confirmation task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-A390512C1A",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Progression confirmation",
+        "title": "Confirm suspected recurrence/progression",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "surveillance",
+        "source_id": "SURVEILLANCE-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Surveillance raised suspected recurrence/progression",
+        "created_at": "2026-09-09T09:11:48+05:30",
+        "created_by": "UA-C35C20420FAD",
+        "updated_at": "2026-09-09T09:11:48+05:30",
+        "updated_by": "UA-C35C20420FAD",
+        "data": {
+          "surveillance_encounter": {
+            "id": "SURV-BF1689A",
+            "episode_id": "EP-SYN-VAL-05",
+            "date": "2026-12-09",
+            "assessment": "New persistent right chest-wall nodularity and focal rib discomfort; synthetic surveillance concern requiring oncologist confirmation.",
+            "disease_status": "Suspected Recurrence",
+            "symptoms": [
+              "New right chest-wall nodularity",
+              "Persistent focal rib discomfort"
+            ],
+            "investigations": [
+              "Synthetic surveillance imaging flagged suspicious chest-wall lesion"
+            ],
+            "recorded_by": {
+              "id": "UA-C35C20420FAD",
+              "username": "navigator.demo",
+              "name": "Meera Joseph — Nurse Navigator",
+              "role": "Nurse Navigator",
+              "professional_id": "DEMO-NN-001"
+            },
+            "recorded_at": "2026-09-09T09:11:48+05:30"
+          },
+          "episode_id": "EP-SYN-VAL-05"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Survivorship",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURVEILLANCE-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "surveillance",
+          "status": "Active",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-C35C20420FAD",
+          "data": {
+            "encounters": [
+              {
+                "id": "SURV-BF1689A",
+                "episode_id": "EP-SYN-VAL-05",
+                "date": "2026-12-09",
+                "assessment": "New persistent right chest-wall nodularity and focal rib discomfort; synthetic surveillance concern requiring oncologist confirmation.",
+                "disease_status": "Suspected Recurrence",
+                "symptoms": [
+                  "New right chest-wall nodularity",
+                  "Persistent focal rib discomfort"
+                ],
+                "investigations": [
+                  "Synthetic surveillance imaging flagged suspicious chest-wall lesion"
+                ],
+                "recorded_by": {
+                  "id": "UA-C35C20420FAD",
+                  "username": "navigator.demo",
+                  "name": "Meera Joseph — Nurse Navigator",
+                  "role": "Nurse Navigator",
+                  "professional_id": "DEMO-NN-001"
+                },
+                "recorded_at": "2026-09-09T09:11:48+05:30"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05"
+          }
+        },
+        "source_record_type": "surveillance",
+        "source_record_id": "SURVEILLANCE-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:48+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-C35C20420FAD",
+          "source_type": "surveillance",
+          "source_id": "SURVEILLANCE-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "LEE-042 MO opens exact surveillance source/provenance",
+      "pass": true,
+      "detail": {
+        "id": "TASK-A390512C1A",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Progression confirmation",
+        "title": "Confirm suspected recurrence/progression",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "surveillance",
+        "source_id": "SURVEILLANCE-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Surveillance raised suspected recurrence/progression",
+        "created_at": "2026-09-09T09:11:48+05:30",
+        "created_by": "UA-C35C20420FAD",
+        "updated_at": "2026-09-09T09:11:48+05:30",
+        "updated_by": "UA-C35C20420FAD",
+        "data": {
+          "surveillance_encounter": {
+            "id": "SURV-BF1689A",
+            "episode_id": "EP-SYN-VAL-05",
+            "date": "2026-12-09",
+            "assessment": "New persistent right chest-wall nodularity and focal rib discomfort; synthetic surveillance concern requiring oncologist confirmation.",
+            "disease_status": "Suspected Recurrence",
+            "symptoms": [
+              "New right chest-wall nodularity",
+              "Persistent focal rib discomfort"
+            ],
+            "investigations": [
+              "Synthetic surveillance imaging flagged suspicious chest-wall lesion"
+            ],
+            "recorded_by": {
+              "id": "UA-C35C20420FAD",
+              "username": "navigator.demo",
+              "name": "Meera Joseph — Nurse Navigator",
+              "role": "Nurse Navigator",
+              "professional_id": "DEMO-NN-001"
+            },
+            "recorded_at": "2026-09-09T09:11:48+05:30"
+          },
+          "episode_id": "EP-SYN-VAL-05"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Survivorship",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "SURVEILLANCE-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "surveillance",
+          "status": "Active",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-C35C20420FAD",
+          "data": {
+            "encounters": [
+              {
+                "id": "SURV-BF1689A",
+                "episode_id": "EP-SYN-VAL-05",
+                "date": "2026-12-09",
+                "assessment": "New persistent right chest-wall nodularity and focal rib discomfort; synthetic surveillance concern requiring oncologist confirmation.",
+                "disease_status": "Suspected Recurrence",
+                "symptoms": [
+                  "New right chest-wall nodularity",
+                  "Persistent focal rib discomfort"
+                ],
+                "investigations": [
+                  "Synthetic surveillance imaging flagged suspicious chest-wall lesion"
+                ],
+                "recorded_by": {
+                  "id": "UA-C35C20420FAD",
+                  "username": "navigator.demo",
+                  "name": "Meera Joseph — Nurse Navigator",
+                  "role": "Nurse Navigator",
+                  "professional_id": "DEMO-NN-001"
+                },
+                "recorded_at": "2026-09-09T09:11:48+05:30"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05"
+          }
+        },
+        "source_record_type": "surveillance",
+        "source_record_id": "SURVEILLANCE-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:48+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-C35C20420FAD",
+          "source_type": "surveillance",
+          "source_id": "SURVEILLANCE-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "LEE-043 wrong role progression confirmation blocked",
+      "pass": true,
+      "detail": {
+        "error": "Medical Oncology required"
+      }
+    },
+    {
+      "check": "LEE-044 missing progression evidence blocked",
+      "pass": true,
+      "detail": {
+        "error": "Structured disease-status confirmation and evidence summary required",
+        "allowed": [
+          "Confirmed Recurrence",
+          "Confirmed Progression",
+          "No Recurrence / Stable"
+        ]
+      }
+    },
+    {
+      "check": "LEE-045 recurrence confirmed + new line + MDT task",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status_event": {
+          "id": "DSE-978BF22",
+          "episode_id": "EP-SYN-VAL-05",
+          "disease_status": "Confirmed Recurrence",
+          "evidence_summary": "Synthetic surveillance imaging plus clinical chest-wall finding supports confirmed recurrence for workflow validation.",
+          "evidence_source_ids": [
+            "SURVEILLANCE-SYN-VAL-05",
+            "SURV-BF1689A"
+          ],
+          "confirmed_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "confirmed_at": "2026-09-09T09:11:48+05:30"
+        },
+        "episode_id_before": "EP-SYN-VAL-05",
+        "episode_id_after": "EP-SYN-VAL-05",
+        "line_number": 1,
+        "mdt_id": "MDT-SYN-VAL-05",
+        "next_role": "MDT Coordinator"
+      }
+    },
+    {
+      "check": "LEE-046 Cancer Episode unchanged across recurrence",
+      "pass": true,
+      "detail": {
+        "before": "EP-SYN-VAL-05",
+        "after": "EP-SYN-VAL-05"
+      }
+    },
+    {
+      "check": "LEE-047 new Line of Therapy appended in same episode",
+      "pass": true,
+      "detail": [
+        {
+          "type": "Line of Therapy",
+          "episode_id": "EP-SYN-VAL-05",
+          "line_number": 1,
+          "disease_status": "Confirmed Recurrence",
+          "started_at": "2026-09-09T09:11:48+05:30",
+          "source_status_event_id": "DSE-978BF22",
+          "status": "Planning"
+        }
+      ]
+    },
+    {
+      "check": "LEE-048 MDT Coordinator receives recurrence planning task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-275CE98B9A",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "MDT case preparation",
+        "title": "Prepare recurrence/progression MDT",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "MDT Coordinator",
+        "owner_user_id": "USR-MDTCOORD-001",
+        "source_type": "mdt",
+        "source_id": "MDT-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Confirmed Recurrence",
+        "created_at": "2026-09-09T09:11:48+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:48+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "disease_status_event": {
+            "id": "DSE-978BF22",
+            "episode_id": "EP-SYN-VAL-05",
+            "disease_status": "Confirmed Recurrence",
+            "evidence_summary": "Synthetic surveillance imaging plus clinical chest-wall finding supports confirmed recurrence for workflow validation.",
+            "evidence_source_ids": [
+              "SURVEILLANCE-SYN-VAL-05",
+              "SURV-BF1689A"
+            ],
+            "confirmed_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "confirmed_at": "2026-09-09T09:11:48+05:30"
+          },
+          "line_number": 1,
+          "episode_id": "EP-SYN-VAL-05"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "MDT / Tumour Board",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "MDT-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "mdt",
+          "status": "Draft",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "attendees": [],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "clinical_question": "Review Confirmed Recurrence and define next line of therapy",
+            "clinical_summary": "Synthetic surveillance imaging plus clinical chest-wall finding supports confirmed recurrence for workflow validation.",
+            "intent": "Curative",
+            "recommendation": "Pending MDT discussion",
+            "rationale": "Synthetic surveillance imaging plus clinical chest-wall finding supports confirmed recurrence for workflow validation.",
+            "final_consensus": "Deferred pending information",
+            "specialty_responsible": "Medical Oncology",
+            "source_status_event_id": "DSE-978BF22"
+          }
+        },
+        "source_record_type": "mdt",
+        "source_record_id": "MDT-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Draft",
+        "source_record_updated_at": "2026-09-09T09:11:48+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "mdt",
+          "source_id": "MDT-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "LEE-049 MDT task exact submitted recurrence source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-275CE98B9A",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "MDT case preparation",
+        "title": "Prepare recurrence/progression MDT",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "MDT Coordinator",
+        "owner_user_id": "USR-MDTCOORD-001",
+        "source_type": "mdt",
+        "source_id": "MDT-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Confirmed Recurrence",
+        "created_at": "2026-09-09T09:11:48+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:48+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "disease_status_event": {
+            "id": "DSE-978BF22",
+            "episode_id": "EP-SYN-VAL-05",
+            "disease_status": "Confirmed Recurrence",
+            "evidence_summary": "Synthetic surveillance imaging plus clinical chest-wall finding supports confirmed recurrence for workflow validation.",
+            "evidence_source_ids": [
+              "SURVEILLANCE-SYN-VAL-05",
+              "SURV-BF1689A"
+            ],
+            "confirmed_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "confirmed_at": "2026-09-09T09:11:48+05:30"
+          },
+          "line_number": 1,
+          "episode_id": "EP-SYN-VAL-05"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "MDT / Tumour Board",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "MDT-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "mdt",
+          "status": "Draft",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:48+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "attendees": [],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "clinical_question": "Review Confirmed Recurrence and define next line of therapy",
+            "clinical_summary": "Synthetic surveillance imaging plus clinical chest-wall finding supports confirmed recurrence for workflow validation.",
+            "intent": "Curative",
+            "recommendation": "Pending MDT discussion",
+            "rationale": "Synthetic surveillance imaging plus clinical chest-wall finding supports confirmed recurrence for workflow validation.",
+            "final_consensus": "Deferred pending information",
+            "specialty_responsible": "Medical Oncology",
+            "source_status_event_id": "DSE-978BF22"
+          }
+        },
+        "source_record_type": "mdt",
+        "source_record_id": "MDT-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Draft",
+        "source_record_updated_at": "2026-09-09T09:11:48+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "mdt",
+          "source_id": "MDT-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "LEE-050 named-user audit covers longitudinal transitions",
+      "pass": true,
+      "detail": [
+        "DISEASE_STATUS_CONFIRM",
+        "MDT_CASE_SUBMIT",
+        "NEW_LINE_OF_THERAPY",
+        "SURVEILLANCE_ENCOUNTER",
+        "TREATMENT_COMPLETION_SIGN",
+        "TREATMENT_HISTORY_EVENT"
+      ]
+    },
+    {
+      "check": "LEE-051 vanilla-JS worklist/action mappings present",
+      "pass": true,
+      "detail": []
+    }
+  ]
+}

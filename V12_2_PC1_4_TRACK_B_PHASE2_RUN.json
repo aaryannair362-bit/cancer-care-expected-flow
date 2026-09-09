@@ -1,8 +1,8 @@
 {
   "product": "V12.2-PC1.4 Structural Conformance Phase 2",
   "total": 38,
-  "passed": 38,
-  "failed": 0,
+  "passed": 37,
+  "failed": 1,
   "results": [
     {
       "id": "INT-FALL-001",
@@ -25,7 +25,15 @@
         "body": {
           "ok": true,
           "bmi": 24.22,
+          "bsa_raw_m2": 1.8181,
           "bsa_m2": 1.82,
+          "bsa_rounding_policy": {
+            "formula": "Mosteller",
+            "raw_precision": 4,
+            "display_precision": 2,
+            "ordering_precision": 2,
+            "formula_text": "sqrt(height_cm \u00d7 weight_kg / 3600)"
+          },
           "bsa_formula": "Mosteller: sqrt(height_cm \u00d7 weight_kg / 3600)",
           "canonical_units": {
             "bp": "mmHg",
@@ -209,7 +217,7 @@
       "pass": true,
       "evidence": {
         "event": {
-          "at": "2026-09-04T18:57:55+00:00",
+          "at": "2026-09-09T10:18:07+05:30",
           "reconciled_by": {
             "id": "USR-NURSENAV-001",
             "name": "Nurse Navigator",
@@ -244,9 +252,9 @@
         "status": 200,
         "body": {
           "ok": true,
-          "order_id": "TREATMENT_ORDER-6CAAA5A325",
-          "pharmacy_id": "PHARMACY-D6E077FF7A",
-          "infusion_id": "INFUSION-D131AACAE1",
+          "order_id": "TREATMENT_ORDER-9A595389BF",
+          "pharmacy_id": "PHARMACY-A76D25CE1B",
+          "infusion_id": "INFUSION-A05D1FF4B3",
           "supersedes_order_id": ""
         }
       }
@@ -255,8 +263,8 @@
       "id": "ORD-DEC-003",
       "pass": true,
       "evidence": {
-        "order": "TREATMENT_ORDER-6CAAA5A325",
-        "signed_at": "2026-09-04T18:57:55+00:00",
+        "order": "TREATMENT_ORDER-9A595389BF",
+        "signed_at": "2026-09-09T10:18:07+05:30",
         "reasons": [
           [
             "Dexamethasone",
@@ -299,7 +307,7 @@
         "body": {
           "error": "An active Treatment Order already exists for this plan/cycle/day. Explicit supersession is required to replace it.",
           "active_order_ids": [
-            "TREATMENT_ORDER-6CAAA5A325"
+            "TREATMENT_ORDER-9A595389BF"
           ],
           "requires": [
             "supersedes_order_id",
@@ -315,10 +323,10 @@
         "status": 200,
         "body": {
           "ok": true,
-          "order_id": "TREATMENT_ORDER-1B1A87293E",
-          "pharmacy_id": "PHARMACY-9AD3F69AE2",
-          "infusion_id": "INFUSION-E38548C749",
-          "supersedes_order_id": "TREATMENT_ORDER-6CAAA5A325"
+          "order_id": "TREATMENT_ORDER-F80021FD52",
+          "pharmacy_id": "PHARMACY-C237FEAFC2",
+          "infusion_id": "INFUSION-E11F537596",
+          "supersedes_order_id": "TREATMENT_ORDER-9A595389BF"
         }
       }
     },
@@ -329,7 +337,7 @@
         "order_status": "Superseded",
         "pharmacy_status": "Superseded",
         "infusion_status": "Superseded",
-        "superseded_by": "TREATMENT_ORDER-1B1A87293E"
+        "superseded_by": "TREATMENT_ORDER-F80021FD52"
       }
     },
     {
@@ -339,19 +347,236 @@
         "status": 409,
         "body": {
           "error": "Superseded/stale Treatment Order cannot be acted on",
-          "order_id": "TREATMENT_ORDER-6CAAA5A325",
+          "order_id": "TREATMENT_ORDER-9A595389BF",
           "order_status": "Superseded"
         }
       }
     },
     {
       "id": "ORD-STALE-005",
-      "pass": true,
+      "pass": false,
       "evidence": {
-        "status": 200,
+        "status": 409,
         "body": {
-          "ok": true,
-          "status": "Preparation Pending"
+          "error": "Independent pharmacy dose recalculation failed",
+          "safety_errors": [
+            "Carboplatin: Direct coded allergy conflict: Carboplatin"
+          ],
+          "independent_verification": {
+            "ok": false,
+            "items": [
+              {
+                "item_id": "OI-D8A970E",
+                "code": "DEMO-DEX",
+                "drug": "Dexamethasone",
+                "independent_calculation": {
+                  "ok": true,
+                  "calculated_dose": 8.0,
+                  "trace": {
+                    "basis": "Fixed",
+                    "protocol_dose": 8,
+                    "protocol_unit": "mg",
+                    "cycle": 2,
+                    "cycle_phase": "standard",
+                    "formula": "fixed dose",
+                    "calculated_dose_mg": 8.0
+                  }
+                },
+                "safety": {
+                  "ok": true,
+                  "errors": [],
+                  "warnings": [],
+                  "variance_pct": 0.0,
+                  "max_dose_mg": null
+                },
+                "allergy_conflicts": [],
+                "prior_actual_cumulative_exposure": {
+                  "drug": "Dexamethasone",
+                  "actual_administered_total": 0.0,
+                  "events": []
+                }
+              },
+              {
+                "item_id": "OI-4748F48",
+                "code": "DEMO-PER",
+                "drug": "Pertuzumab",
+                "independent_calculation": {
+                  "ok": true,
+                  "calculated_dose": 840.0,
+                  "trace": {
+                    "basis": "Fixed",
+                    "protocol_dose": 840,
+                    "protocol_unit": "mg",
+                    "cycle": 2,
+                    "cycle_phase": "standard",
+                    "formula": "fixed dose",
+                    "calculated_dose_mg": 840.0
+                  }
+                },
+                "safety": {
+                  "ok": true,
+                  "errors": [],
+                  "warnings": [],
+                  "variance_pct": 0.0,
+                  "max_dose_mg": null
+                },
+                "allergy_conflicts": [],
+                "prior_actual_cumulative_exposure": {
+                  "drug": "Pertuzumab",
+                  "actual_administered_total": 0.0,
+                  "events": []
+                }
+              },
+              {
+                "item_id": "OI-3BA94A6",
+                "code": "DEMO-TRA",
+                "drug": "Trastuzumab",
+                "independent_calculation": {
+                  "ok": true,
+                  "calculated_dose": 560.0,
+                  "trace": {
+                    "basis": "mg/kg",
+                    "protocol_dose": 8,
+                    "protocol_unit": "mg/kg",
+                    "cycle": 2,
+                    "cycle_phase": "standard",
+                    "weight_kg": 70.0,
+                    "formula": "8.0 mg/kg \u00d7 70.0 kg",
+                    "calculated_dose_mg": 560.0
+                  }
+                },
+                "safety": {
+                  "ok": true,
+                  "errors": [],
+                  "warnings": [],
+                  "variance_pct": 0.0,
+                  "max_dose_mg": null
+                },
+                "allergy_conflicts": [],
+                "prior_actual_cumulative_exposure": {
+                  "drug": "Trastuzumab",
+                  "actual_administered_total": 0.0,
+                  "events": []
+                }
+              },
+              {
+                "item_id": "OI-C72A771",
+                "code": "DEMO-DOC",
+                "drug": "Docetaxel",
+                "independent_calculation": {
+                  "ok": true,
+                  "calculated_dose": 136.36,
+                  "trace": {
+                    "basis": "mg/m\u00b2",
+                    "protocol_dose": 75,
+                    "protocol_unit": "mg/m\u00b2",
+                    "cycle": 2,
+                    "cycle_phase": "standard",
+                    "bsa_m2": 1.8181,
+                    "formula": "75.0 mg/m\u00b2 \u00d7 1.8181 m\u00b2",
+                    "calculated_dose_mg": 136.36
+                  }
+                },
+                "safety": {
+                  "ok": true,
+                  "errors": [],
+                  "warnings": [],
+                  "variance_pct": 0.0,
+                  "max_dose_mg": null
+                },
+                "allergy_conflicts": [],
+                "prior_actual_cumulative_exposure": {
+                  "drug": "Docetaxel",
+                  "actual_administered_total": 0.0,
+                  "events": []
+                }
+              },
+              {
+                "item_id": "OI-7E92AF5",
+                "code": "DEMO-CARBO",
+                "drug": "Carboplatin",
+                "independent_calculation": {
+                  "ok": false,
+                  "error": "AUC dosing requires an explicitly governed renal dosing method",
+                  "calculated_dose": null,
+                  "trace": {
+                    "basis": "AUC",
+                    "protocol_dose": 6,
+                    "protocol_unit": "AUC",
+                    "cycle": 2,
+                    "cycle_phase": "standard",
+                    "allowed_renal_methods": [
+                      "Measured GFR",
+                      "Validated nuclear medicine GFR",
+                      "Cockcroft-Gault creatinine clearance",
+                      "CCA-approved renal dosing value"
+                    ]
+                  }
+                },
+                "safety": {
+                  "ok": false,
+                  "errors": [
+                    "Direct coded allergy conflict: Carboplatin"
+                  ],
+                  "warnings": [
+                    "Independent recalculation unavailable: AUC dosing requires an explicitly governed renal dosing method"
+                  ],
+                  "variance_pct": null,
+                  "max_dose_mg": 1000.0
+                },
+                "allergy_conflicts": [
+                  {
+                    "allergy_id": "ALG-209063",
+                    "substance": "Carboplatin",
+                    "code": "ALG-CARBO",
+                    "reaction": "Urticaria",
+                    "severity": "Moderate",
+                    "match_type": "exact"
+                  }
+                ],
+                "prior_actual_cumulative_exposure": {
+                  "drug": "Carboplatin",
+                  "actual_administered_total": 0.0,
+                  "events": []
+                }
+              },
+              {
+                "item_id": "OI-1D06089",
+                "code": "DEMO-PEG",
+                "drug": "Pegfilgrastim",
+                "independent_calculation": {
+                  "ok": true,
+                  "calculated_dose": 6.0,
+                  "trace": {
+                    "basis": "Fixed",
+                    "protocol_dose": 6,
+                    "protocol_unit": "mg",
+                    "cycle": 2,
+                    "cycle_phase": "standard",
+                    "formula": "fixed dose",
+                    "calculated_dose_mg": 6.0
+                  }
+                },
+                "safety": {
+                  "ok": true,
+                  "errors": [],
+                  "warnings": [],
+                  "variance_pct": 0.0,
+                  "max_dose_mg": null
+                },
+                "allergy_conflicts": [],
+                "prior_actual_cumulative_exposure": {
+                  "drug": "Pegfilgrastim",
+                  "actual_administered_total": 0.0,
+                  "events": []
+                }
+              }
+            ],
+            "errors": [
+              "Carboplatin: Direct coded allergy conflict: Carboplatin"
+            ],
+            "verified_at": "2026-09-09T10:18:07+05:30"
+          }
         }
       }
     },
@@ -453,7 +678,8 @@
           "status": "In Progress",
           "delivered_count": 1,
           "plan_version": 1,
-          "prescription_version": 1
+          "prescription_version": 1,
+          "cumulative_delivered_dose_gy": 2.67
         }
       }
     },
@@ -530,7 +756,8 @@
           "status": "In Progress",
           "delivered_count": 2,
           "plan_version": 2,
-          "prescription_version": 1
+          "prescription_version": 1,
+          "cumulative_delivered_dose_gy": 5.34
         }
       }
     },

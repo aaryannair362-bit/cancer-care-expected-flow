@@ -1,0 +1,5223 @@
+{
+  "patient_id": "PAT-VAL-ANANYA",
+  "patient": "Ananya Shah",
+  "build": "12.2-PC8.0",
+  "generated_at": "2026-09-09T03:41:34.530637+00:00",
+  "checks": 104,
+  "pass": 104,
+  "fail": 0,
+  "results": [
+    {
+      "check": "AN-001 baseline registration",
+      "pass": true,
+      "detail": "REG-SYN-VAL-01"
+    },
+    {
+      "check": "AN-002 registration complete",
+      "pass": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "check": "AN-003 referral assigned",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "REF-SYN-VAL-01",
+        "status": "Assigned"
+      }
+    },
+    {
+      "check": "AN-004 MO referral task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-1B068C83D2",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "Referral lifecycle",
+        "title": "Referral: Synthetic Stage IIB HER2-positive breast cancer case for Registration -> MDT -> systemic treatment -> response execution.",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "referral",
+        "source_id": "REF-SYN-VAL-01",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Assigned",
+        "created_at": "2026-09-09T09:11:29+05:30",
+        "created_by": "UA-1953F3A56877",
+        "updated_at": "2026-09-09T09:11:29+05:30",
+        "updated_by": "UA-1953F3A56877",
+        "data": {
+          "referral_id": "REF-SYN-VAL-01",
+          "status": "Assigned"
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "sex": "Female",
+          "phone": "917000000101",
+          "abha": "",
+          "id_number": "SYN-ANANYA-01",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "REF-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "referral",
+          "status": "Assigned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "data": {
+            "status": "Assigned",
+            "reason": "Synthetic Stage IIB HER2-positive breast cancer case for Registration -> MDT -> systemic treatment -> response execution.",
+            "assigned_department": "Medical Oncology",
+            "assigned_clinician": "Dr Asha Mehta",
+            "priority": "Routine",
+            "history": [
+              {
+                "status": "Created",
+                "at": "2026-09-09T09:11:29+05:30",
+                "by": {
+                  "name": "System",
+                  "role": "System"
+                },
+                "reason": "Synthetic validation baseline"
+              },
+              {
+                "at": "2026-09-09T09:11:29+05:30",
+                "from": "Created",
+                "to": "Assigned",
+                "by": {
+                  "id": "UA-1953F3A56877",
+                  "username": "front.desk.demo",
+                  "name": "Kavya Rao — Front Desk",
+                  "role": "Front Desk",
+                  "professional_id": "DEMO-FD-001"
+                },
+                "reason": ""
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "updated_by": {
+              "id": "UA-1953F3A56877",
+              "username": "front.desk.demo",
+              "name": "Kavya Rao — Front Desk",
+              "role": "Front Desk",
+              "professional_id": "DEMO-FD-001"
+            },
+            "updated_at": "2026-09-09T09:11:29+05:30"
+          }
+        },
+        "source_record_type": "referral",
+        "source_record_id": "REF-SYN-VAL-01",
+        "source_record_version": 2,
+        "source_record_status": "Assigned",
+        "source_record_updated_at": "2026-09-09T09:11:29+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "source_type": "referral",
+          "source_id": "REF-SYN-VAL-01"
+        }
+      }
+    },
+    {
+      "check": "AN-005 referral exact source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-1B068C83D2",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "Referral lifecycle",
+        "title": "Referral: Synthetic Stage IIB HER2-positive breast cancer case for Registration -> MDT -> systemic treatment -> response execution.",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "referral",
+        "source_id": "REF-SYN-VAL-01",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Assigned",
+        "created_at": "2026-09-09T09:11:29+05:30",
+        "created_by": "UA-1953F3A56877",
+        "updated_at": "2026-09-09T09:11:29+05:30",
+        "updated_by": "UA-1953F3A56877",
+        "data": {
+          "referral_id": "REF-SYN-VAL-01",
+          "status": "Assigned"
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "sex": "Female",
+          "phone": "917000000101",
+          "abha": "",
+          "id_number": "SYN-ANANYA-01",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "REF-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "referral",
+          "status": "Assigned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "data": {
+            "status": "Assigned",
+            "reason": "Synthetic Stage IIB HER2-positive breast cancer case for Registration -> MDT -> systemic treatment -> response execution.",
+            "assigned_department": "Medical Oncology",
+            "assigned_clinician": "Dr Asha Mehta",
+            "priority": "Routine",
+            "history": [
+              {
+                "status": "Created",
+                "at": "2026-09-09T09:11:29+05:30",
+                "by": {
+                  "name": "System",
+                  "role": "System"
+                },
+                "reason": "Synthetic validation baseline"
+              },
+              {
+                "at": "2026-09-09T09:11:29+05:30",
+                "from": "Created",
+                "to": "Assigned",
+                "by": {
+                  "id": "UA-1953F3A56877",
+                  "username": "front.desk.demo",
+                  "name": "Kavya Rao — Front Desk",
+                  "role": "Front Desk",
+                  "professional_id": "DEMO-FD-001"
+                },
+                "reason": ""
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "updated_by": {
+              "id": "UA-1953F3A56877",
+              "username": "front.desk.demo",
+              "name": "Kavya Rao — Front Desk",
+              "role": "Front Desk",
+              "professional_id": "DEMO-FD-001"
+            },
+            "updated_at": "2026-09-09T09:11:29+05:30"
+          }
+        },
+        "source_record_type": "referral",
+        "source_record_id": "REF-SYN-VAL-01",
+        "source_record_version": 2,
+        "source_record_status": "Assigned",
+        "source_record_updated_at": "2026-09-09T09:11:29+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "source_type": "referral",
+          "source_id": "REF-SYN-VAL-01"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "AN-006 referral accepted",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "REF-SYN-VAL-01",
+        "status": "Accepted"
+      }
+    },
+    {
+      "check": "AN-007 intake signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "bmi": 24.98,
+        "bsa_raw_m2": 1.7654,
+        "bsa_m2": 1.77,
+        "bsa_rounding_policy": {
+          "formula": "Mosteller",
+          "raw_precision": 4,
+          "display_precision": 2,
+          "ordering_precision": 2,
+          "formula_text": "sqrt(height_cm × weight_kg / 3600)"
+        },
+        "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
+        "canonical_units": {
+          "bp": "mmHg",
+          "hr": "/min",
+          "rr": "/min",
+          "temp_c": "°C",
+          "spo2": "%",
+          "weight_kg": "kg",
+          "height_cm": "cm"
+        },
+        "source_measurements": {
+          "sbp": {
+            "value": 118.0,
+            "unit": "mmHg"
+          },
+          "dbp": {
+            "value": 72.0,
+            "unit": "mmHg"
+          },
+          "hr": {
+            "value": 74.0,
+            "unit": "/min"
+          },
+          "rr": {
+            "value": 16.0,
+            "unit": "/min"
+          },
+          "temp": {
+            "value": 36.7,
+            "unit": "°C"
+          },
+          "spo2": {
+            "value": 99.0,
+            "unit": "%"
+          },
+          "weight": {
+            "value": 68.0,
+            "unit": "kg"
+          },
+          "height": {
+            "value": 165.0,
+            "unit": "cm"
+          }
+        }
+      }
+    },
+    {
+      "check": "AN-008 consultation signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "AN-009 diagnosis verified",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Verified"
+      }
+    },
+    {
+      "check": "AN-010 general diagnostic consent signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "items": [
+          {
+            "id": "CONS-9A648B0B",
+            "type": "General Consent",
+            "version": "PC8-SYN-1",
+            "scope": "Synthetic diagnostic evaluation and imaging",
+            "status": "Signed",
+            "signed_by": "Ananya Shah — synthetic validation patient",
+            "signed_at": "2026-09-09T09:11:30+05:30",
+            "valid_from": "2026-09-08",
+            "valid_until": "",
+            "document_id": ""
+          }
+        ]
+      }
+    },
+    {
+      "check": "AN-RAD-order-Baseline CT chest/abdomen/pelvis",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "RADIOLOGY_ORDER-E4E87725EC",
+        "catalog_id": "RAD-CT-CAP"
+      }
+    },
+    {
+      "check": "AN-RAD-pay-Baseline CT chest/abdomen/pelvis",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "idempotent": false
+      }
+    },
+    {
+      "check": "AN-RAD-schedule-Baseline CT chest/abdomen/pelvis",
+      "pass": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "check": "AN-RAD-perform-Baseline CT chest/abdomen/pelvis",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "radiology_entity_id": "RADIOLOGY-C30EAC1B99"
+      }
+    },
+    {
+      "check": "AN-RAD-final-Baseline CT chest/abdomen/pelvis",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "RADIOLOGY-C30EAC1B99",
+        "status": "Final"
+      }
+    },
+    {
+      "check": "AN-011 RECIST baseline frozen",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "baseline": {
+          "date": "2026-09-08",
+          "framework": "RECIST 1.1",
+          "criteria_version": "1.1",
+          "source_study_id": "RADIOLOGY-C30EAC1B99",
+          "source_study_version": 2,
+          "target_lesions": [
+            {
+              "id": "L1",
+              "organ": "Breast",
+              "site": "Left breast primary",
+              "lesion_type": "Non-nodal",
+              "size_mm": 40,
+              "baseline_selected": true
+            },
+            {
+              "id": "L2",
+              "organ": "Lymph nodes",
+              "site": "Left axillary node short axis",
+              "lesion_type": "Lymph node",
+              "size_mm": 18,
+              "baseline_selected": true
+            }
+          ],
+          "sum_mm": 58.0,
+          "non_target": "No unequivocal non-target progression",
+          "recorded_by": {
+            "id": "UA-86E452103C75",
+            "username": "radiologist.demo",
+            "name": "Dr Rohan Kulkarni",
+            "role": "Radiologist",
+            "professional_id": "DEMO-RAD-001"
+          },
+          "recorded_at": "2026-09-09T09:11:31+05:30",
+          "amendment_reason": ""
+        }
+      }
+    },
+    {
+      "check": "AN-012 MDT submitted",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "mdt_id": "MDT-SYN-VAL-01",
+        "status": "Submitted"
+      }
+    },
+    {
+      "check": "AN-013.1 MDT attendance Medical Oncology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Not met"
+      }
+    },
+    {
+      "check": "AN-013.2 MDT attendance Radiation Oncology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Not met"
+      }
+    },
+    {
+      "check": "AN-013.3 MDT attendance Surgical Oncology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Met"
+      }
+    },
+    {
+      "check": "AN-013.4 MDT attendance Radiology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Met"
+      }
+    },
+    {
+      "check": "AN-013.5 MDT attendance Pathology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Met"
+      }
+    },
+    {
+      "check": "AN-014 MDT coordinator recommendation",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Pending Chair Approval"
+      }
+    },
+    {
+      "check": "AN-015 Chair task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-A4D2C3A2C5",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "MDT case preparation",
+        "title": "Review and sign submitted MDT recommendation",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "MDT Chair",
+        "owner_user_id": "USR-MDTCHAIR-001",
+        "source_type": "mdt",
+        "source_id": "MDT-SYN-VAL-01",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Confirm neoadjuvant systemic treatment strategy for HER2-positive Stage IIB breast cancer.",
+        "created_at": "2026-09-09T09:11:31+05:30",
+        "created_by": "UA-223C7394AF8F",
+        "updated_at": "2026-09-09T09:11:31+05:30",
+        "updated_by": "UA-223C7394AF8F",
+        "data": {
+          "mdt_id": "MDT-SYN-VAL-01"
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "sex": "Female",
+          "current_department": "MDT / Tumour Board",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "MDT-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "mdt",
+          "status": "Pending Chair Approval",
+          "version": 3,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:31+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-223C7394AF8F",
+          "data": {
+            "attendees": [],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-01",
+            "clinical_question": "Confirm neoadjuvant systemic treatment strategy for HER2-positive Stage IIB breast cancer.",
+            "clinical_summary": "HER2-positive cT2 cN1 cM0 left breast cancer, ECOG 1.",
+            "submitted_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "submitted_at": "2026-09-09T09:11:31+05:30",
+            "meeting_mode": "Internal",
+            "meeting_at": "2026-09-08T10:00:00+05:30",
+            "submission_status": "Submitted",
+            "intent": "Neoadjuvant",
+            "recommendation": "Proceed with governed synthetic HER2-targeted neoadjuvant systemic regimen with cycle-specific readiness and multidisciplinary reassessment.",
+            "rationale": "Multidisciplinary consensus for product-validation pathway.",
+            "final_consensus": "Consensus",
+            "specialty_responsible": "Medical Oncology",
+            "recommendation_submitted_by": {
+              "id": "UA-223C7394AF8F",
+              "username": "mdt.coordinator.demo",
+              "name": "Riya Kapoor — MDT Coordinator",
+              "role": "MDT Coordinator",
+              "professional_id": "DEMO-MDT-CO-001"
+            },
+            "recommendation_submitted_at": "2026-09-09T09:11:31+05:30",
+            "chair_decision": "Pending",
+            "chair_signed_by": null,
+            "chair_signed_at": "",
+            "chair_reason": "",
+            "signed_by": null,
+            "signed_at": ""
+          }
+        },
+        "source_record_type": "mdt",
+        "source_record_id": "MDT-SYN-VAL-01",
+        "source_record_version": 3,
+        "source_record_status": "Pending Chair Approval",
+        "source_record_updated_at": "2026-09-09T09:11:31+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-223C7394AF8F",
+          "source_type": "mdt",
+          "source_id": "MDT-SYN-VAL-01"
+        }
+      }
+    },
+    {
+      "check": "AN-016 Chair signs MDT",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "MDT Recommended",
+        "signed_by": {
+          "id": "UA-52D1B8AE0EE7",
+          "username": "mdt.chair.demo",
+          "name": "Dr Vikram Menon — MDT Chair",
+          "role": "MDT Chair",
+          "professional_id": "DEMO-MDT-CHAIR-001"
+        }
+      }
+    },
+    {
+      "check": "AN-017 plan created",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "TREATMENT_PLAN-7467C8D687",
+        "status": "Draft",
+        "note": "MDT created a draft plan only; no treatment order was generated."
+      }
+    },
+    {
+      "check": "AN-018 plan signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Clinician Approved"
+      }
+    },
+    {
+      "check": "AN-018B systemic Treatment Consent signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "items": [
+          {
+            "id": "CONS-9A648B0B",
+            "type": "General Consent",
+            "version": "PC8-SYN-1",
+            "scope": "Synthetic diagnostic evaluation and imaging",
+            "status": "Signed",
+            "signed_by": "Ananya Shah — synthetic validation patient",
+            "signed_at": "2026-09-09T09:11:30+05:30",
+            "valid_from": "2026-09-08",
+            "valid_until": "",
+            "document_id": ""
+          },
+          {
+            "id": "CONS-FB3D1AD7",
+            "type": "Treatment Consent",
+            "version": "PC8-SYN-1",
+            "scope": "Synthetic neoadjuvant systemic treatment",
+            "status": "Signed",
+            "signed_by": "Ananya Shah — synthetic validation patient",
+            "signed_at": "2026-09-09T09:11:32+05:30",
+            "valid_from": "2026-09-08",
+            "valid_until": "",
+            "document_id": ""
+          }
+        ]
+      }
+    },
+    {
+      "check": "AN-018C allergy status set",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "allergy_status": "No known allergy",
+        "reconciliation_status": null
+      }
+    },
+    {
+      "check": "AN-018D medication reconciliation complete",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "allergy_status": "No known allergy",
+        "reconciliation_status": "Complete"
+      }
+    },
+    {
+      "check": "AN-LAB-order-AN-C1",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "LAB_ORDER-3DE5D7802E",
+        "catalog_id": "LAB-CMP"
+      }
+    },
+    {
+      "check": "AN-LAB-pay-AN-C1",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "idempotent": false
+      }
+    },
+    {
+      "check": "AN-LAB-collect-AN-C1",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "lab_entity_id": "LAB-A25D781538",
+        "sample_id": "SMP-AN-C1"
+      }
+    },
+    {
+      "check": "AN-LAB-final-AN-C1",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "LAB-A25D781538",
+        "status": "Final",
+        "units": {
+          "hb": "g/dL",
+          "wbc": "10^9/L",
+          "anc": "10^9/L",
+          "platelets": "10^9/L",
+          "creatinine": "mg/dL",
+          "egfr": "mL/min/1.73m2",
+          "bilirubin": "mg/dL",
+          "ast": "U/L",
+          "alt": "U/L",
+          "lvef": "%"
+        },
+        "critical_tasks": []
+      }
+    },
+    {
+      "check": "AN-019 C1 readiness signed without renal dose context",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Signed",
+        "evaluation": {
+          "protocol_id": "CCA-DEMO-TCHP",
+          "protocol_version": "1.0-demo",
+          "thresholds_source": "Institution Content Master / server-governed regimen version",
+          "lab_source_id": "LAB-A25D781538",
+          "lab_source_finalized_at": "2026-09-09T09:11:32+05:30",
+          "normalized": {
+            "anc_10e9_L": 3.2,
+            "platelets_10e9_L": 235.0,
+            "bilirubin_mg_dL": 0.6,
+            "source_units": {
+              "anc": "10^9/L",
+              "platelets": "10^9/L",
+              "bilirubin": "mg/dL"
+            }
+          },
+          "blockers": [],
+          "alerts": [],
+          "can_proceed": true,
+          "rule_results": [
+            {
+              "id": "RR-ANC",
+              "category": "Hematology",
+              "field": "ANC",
+              "current": 3.2,
+              "unit": "×10^9/L",
+              "operator": ">=",
+              "threshold": 1.5,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-PLT",
+              "category": "Hematology",
+              "field": "Platelets",
+              "current": 235.0,
+              "unit": "×10^9/L",
+              "operator": ">=",
+              "threshold": 100,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-EGFR",
+              "category": "Renal",
+              "field": "eGFR",
+              "current": 94.0,
+              "unit": "mL/min/1.73m²",
+              "operator": ">=",
+              "threshold": 50,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-BILI",
+              "category": "Hepatic",
+              "field": "Bilirubin",
+              "current": 0.6,
+              "unit": "mg/dL",
+              "operator": "<=",
+              "threshold": 1.5,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-LVEF",
+              "category": "Cardiac",
+              "field": "LVEF",
+              "current": 60.0,
+              "unit": "%",
+              "operator": ">=",
+              "threshold": 50,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-AGE",
+              "category": "Freshness",
+              "field": "Laboratory freshness",
+              "current": 0,
+              "unit": "days",
+              "operator": "<=",
+              "threshold": 7,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-TOX",
+              "category": "Toxicity",
+              "field": "Active toxicity review",
+              "current": "No treatment-limiting toxicity",
+              "unit": "CTCAE / clinical assessment",
+              "operator": "clinical review",
+              "threshold": "CCA regimen-specific toxicity rule",
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "TOXICITY-SYN-VAL-01",
+              "source_finalized_at": "",
+              "result_date": "",
+              "freshness_days": null,
+              "freshness_status": "Not applicable"
+            }
+          ],
+          "monitoring_requirements": [
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Hematology",
+              "requirement": "CBC with ANC and platelets",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-A25D781538",
+              "evaluated_at": "2026-09-09T09:11:32+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Renal",
+              "requirement": "Renal function assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-A25D781538",
+              "evaluated_at": "2026-09-09T09:11:32+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Hepatic",
+              "requirement": "Hepatic function assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-A25D781538",
+              "evaluated_at": "2026-09-09T09:11:32+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Toxicity",
+              "requirement": "Current toxicity/CTCAE assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "TOXICITY-SYN-VAL-01",
+              "evaluated_at": "2026-09-09T09:11:32+05:30"
+            },
+            {
+              "phase": "Periodic / drug-specific",
+              "category": "Other",
+              "requirement": "Drug-specific monitoring where applicable",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Required",
+              "source_record_id": "LAB-A25D781538",
+              "evaluated_at": "2026-09-09T09:11:32+05:30"
+            }
+          ],
+          "dose_modification_rules": [
+            {
+              "domain": "Hematologic",
+              "trigger": "CCA-approved regimen threshold / toxicity condition",
+              "action_options": [
+                "Proceed",
+                "Hold",
+                "Delay",
+                "Dose reduce",
+                "Omit"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Renal",
+              "trigger": "CCA-approved renal function rule",
+              "action_options": [
+                "Proceed",
+                "Dose reduce",
+                "Substitute",
+                "Hold"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Hepatic",
+              "trigger": "CCA-approved hepatic function rule",
+              "action_options": [
+                "Proceed",
+                "Dose reduce",
+                "Hold",
+                "Omit"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Toxicity",
+              "trigger": "CTCAE grade / drug-specific adverse effect",
+              "action_options": [
+                "Proceed",
+                "Hold",
+                "Delay",
+                "Dose reduce",
+                "Omit",
+                "Discontinue"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            }
+          ],
+          "evaluation_as_of_date": "2026-09-08",
+          "lab_age_days_at_evaluation": 0,
+          "evaluated_at": "2026-09-09T09:11:32+05:30"
+        }
+      }
+    },
+    {
+      "check": "AN-020 unresolved AUC fails closed",
+      "pass": true,
+      "detail": {
+        "error": "Signed Treatment Order requires an explicit clinician reason for accepting/setting route, diluent, volume, rate and duration parameters"
+      }
+    },
+    {
+      "check": "AN-021 C1 readiness with renal context",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Signed",
+        "evaluation": {
+          "protocol_id": "CCA-DEMO-TCHP",
+          "protocol_version": "1.0-demo",
+          "thresholds_source": "Institution Content Master / server-governed regimen version",
+          "lab_source_id": "LAB-A25D781538",
+          "lab_source_finalized_at": "2026-09-09T09:11:32+05:30",
+          "normalized": {
+            "anc_10e9_L": 3.2,
+            "platelets_10e9_L": 235.0,
+            "bilirubin_mg_dL": 0.6,
+            "source_units": {
+              "anc": "10^9/L",
+              "platelets": "10^9/L",
+              "bilirubin": "mg/dL"
+            }
+          },
+          "blockers": [],
+          "alerts": [],
+          "can_proceed": true,
+          "rule_results": [
+            {
+              "id": "RR-ANC",
+              "category": "Hematology",
+              "field": "ANC",
+              "current": 3.2,
+              "unit": "×10^9/L",
+              "operator": ">=",
+              "threshold": 1.5,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-PLT",
+              "category": "Hematology",
+              "field": "Platelets",
+              "current": 235.0,
+              "unit": "×10^9/L",
+              "operator": ">=",
+              "threshold": 100,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-EGFR",
+              "category": "Renal",
+              "field": "eGFR",
+              "current": 94.0,
+              "unit": "mL/min/1.73m²",
+              "operator": ">=",
+              "threshold": 50,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-BILI",
+              "category": "Hepatic",
+              "field": "Bilirubin",
+              "current": 0.6,
+              "unit": "mg/dL",
+              "operator": "<=",
+              "threshold": 1.5,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-LVEF",
+              "category": "Cardiac",
+              "field": "LVEF",
+              "current": 60.0,
+              "unit": "%",
+              "operator": ">=",
+              "threshold": 50,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-AGE",
+              "category": "Freshness",
+              "field": "Laboratory freshness",
+              "current": 0,
+              "unit": "days",
+              "operator": "<=",
+              "threshold": 7,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-A25D781538",
+              "source_finalized_at": "2026-09-09T09:11:32+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-TOX",
+              "category": "Toxicity",
+              "field": "Active toxicity review",
+              "current": "No treatment-limiting toxicity",
+              "unit": "CTCAE / clinical assessment",
+              "operator": "clinical review",
+              "threshold": "CCA regimen-specific toxicity rule",
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "TOXICITY-SYN-VAL-01",
+              "source_finalized_at": "",
+              "result_date": "",
+              "freshness_days": null,
+              "freshness_status": "Not applicable"
+            }
+          ],
+          "monitoring_requirements": [
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Hematology",
+              "requirement": "CBC with ANC and platelets",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-A25D781538",
+              "evaluated_at": "2026-09-09T09:11:32+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Renal",
+              "requirement": "Renal function assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-A25D781538",
+              "evaluated_at": "2026-09-09T09:11:32+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Hepatic",
+              "requirement": "Hepatic function assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-A25D781538",
+              "evaluated_at": "2026-09-09T09:11:32+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Toxicity",
+              "requirement": "Current toxicity/CTCAE assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "TOXICITY-SYN-VAL-01",
+              "evaluated_at": "2026-09-09T09:11:32+05:30"
+            },
+            {
+              "phase": "Periodic / drug-specific",
+              "category": "Other",
+              "requirement": "Drug-specific monitoring where applicable",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Required",
+              "source_record_id": "LAB-A25D781538",
+              "evaluated_at": "2026-09-09T09:11:32+05:30"
+            }
+          ],
+          "dose_modification_rules": [
+            {
+              "domain": "Hematologic",
+              "trigger": "CCA-approved regimen threshold / toxicity condition",
+              "action_options": [
+                "Proceed",
+                "Hold",
+                "Delay",
+                "Dose reduce",
+                "Omit"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Renal",
+              "trigger": "CCA-approved renal function rule",
+              "action_options": [
+                "Proceed",
+                "Dose reduce",
+                "Substitute",
+                "Hold"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Hepatic",
+              "trigger": "CCA-approved hepatic function rule",
+              "action_options": [
+                "Proceed",
+                "Dose reduce",
+                "Hold",
+                "Omit"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Toxicity",
+              "trigger": "CTCAE grade / drug-specific adverse effect",
+              "action_options": [
+                "Proceed",
+                "Hold",
+                "Delay",
+                "Dose reduce",
+                "Omit",
+                "Discontinue"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            }
+          ],
+          "evaluation_as_of_date": "2026-09-08",
+          "lab_age_days_at_evaluation": 0,
+          "evaluated_at": "2026-09-09T09:11:32+05:30"
+        }
+      }
+    },
+    {
+      "check": "AN-022 6000mg Carboplatin blocked",
+      "pass": true,
+      "detail": {
+        "error": "Signed Treatment Order requires an explicit clinician reason for accepting/setting route, diluent, volume, rate and duration parameters"
+      }
+    },
+    {
+      "check": "AN-023 C1 safe order created",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "order_id": "TREATMENT_ORDER-C2320B6357",
+        "pharmacy_id": "PHARMACY-5B6B7BE919",
+        "infusion_id": "INFUSION-0641A6A91B",
+        "supersedes_order_id": ""
+      }
+    },
+    {
+      "check": "AN-024 Calvert AUC calculated 714mg",
+      "pass": true,
+      "detail": {
+        "sequence": 5,
+        "group": "Antineoplastic",
+        "drug": "Carboplatin",
+        "code": "DEMO-CARBO",
+        "dose_basis": "AUC",
+        "protocol_dose": 6,
+        "protocol_unit": "AUC",
+        "route": "IV",
+        "diluent": "D5W",
+        "volume_ml": 250.0,
+        "duration_min": 60.0,
+        "renal_dosing": {
+          "method": "CCA-approved renal dosing value",
+          "value_ml_min": 94,
+          "source_id": "LAB-A25D781538",
+          "measured_at": "2026-09-08T08:00:00+05:30"
+        },
+        "max_variance_pct": 20,
+        "max_dose_mg": 1000,
+        "max_dose_source": "Synthetic QA hard ceiling to exercise blocker — NOT CCA production policy",
+        "treatment_block": "Anti-cancer treatment",
+        "item_id": "OI-C0C445E",
+        "calculated_dose": 714.0,
+        "calculated_unit": "mg",
+        "ordered_dose": 714.0,
+        "ordered_unit": "mg",
+        "final_approved_dose": 714.0,
+        "dose_decision_reason": "Clinician accepts calculated dose after independent review",
+        "dose_decided_by": {
+          "id": "UA-CD18F7D9D16C",
+          "username": "mo.demo",
+          "name": "Dr Asha Mehta",
+          "role": "Medical Oncology",
+          "professional_id": "DEMO-MO-001"
+        },
+        "dose_decided_at": "2026-09-09T09:11:32+05:30",
+        "variance_pct": 0.0,
+        "variance_reason": "",
+        "rounding": "No rounding",
+        "rate_ml_hr": 250.0,
+        "administration_parameter_decision_reason": "Clinician accepts protocol route/diluent/volume/rate/duration as configured",
+        "administration_parameters_decided_by": {
+          "id": "UA-CD18F7D9D16C",
+          "username": "mo.demo",
+          "name": "Dr Asha Mehta",
+          "role": "Medical Oncology",
+          "professional_id": "DEMO-MO-001"
+        },
+        "administration_parameters_decided_at": "2026-09-09T09:11:32+05:30",
+        "administration_at": "2026-09-09T09:11:32+05:30",
+        "schedule_decision_reason": "Clinician accepts protocol-derived administration schedule",
+        "schedule_decided_by": {
+          "id": "UA-CD18F7D9D16C",
+          "username": "mo.demo",
+          "name": "Dr Asha Mehta",
+          "role": "Medical Oncology",
+          "professional_id": "DEMO-MO-001"
+        },
+        "schedule_decided_at": "2026-09-09T09:11:32+05:30",
+        "cumulative_dose_before": 0.0,
+        "cumulative_dose_limit": null,
+        "cumulative_dose_after_if_fully_administered": 714.0
+      }
+    },
+    {
+      "check": "AN-025 duplicate C1 order blocked",
+      "pass": true,
+      "detail": {
+        "error": "Signed Treatment Order requires an explicit clinician reason for accepting/setting route, diluent, volume, rate and duration parameters"
+      }
+    },
+    {
+      "check": "AN-026 wrong role order blocked",
+      "pass": true,
+      "detail": {
+        "error": "Medical Oncology required"
+      }
+    },
+    {
+      "check": "AN-027 pharmacy independent recalculation",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Preparation Pending"
+      }
+    },
+    {
+      "check": "AN-C1-formulary",
+      "pass": true,
+      "detail": {
+        "count": 11
+      }
+    },
+    {
+      "check": "AN-C1-pharmacy-prepare",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Dispensing Pending",
+        "prepared_at": "2026-09-09T09:11:32+05:30"
+      }
+    },
+    {
+      "check": "AN-C1-pharmacy-release",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Dispensed"
+      }
+    },
+    {
+      "check": "AN-C1-start-infusion",
+      "pass": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "check": "AN-C1-peg-present",
+      "pass": true,
+      "detail": {
+        "drug": "Pegfilgrastim",
+        "min_h": 24
+      }
+    },
+    {
+      "check": "AN-C1-MAR-1-Dexamethasone",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 1
+      }
+    },
+    {
+      "check": "AN-C1-MAR-2-Pertuzumab",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 2
+      }
+    },
+    {
+      "check": "AN-C1-MAR-3-Trastuzumab",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 3
+      }
+    },
+    {
+      "check": "AN-C1-MAR-4-Docetaxel",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 4
+      }
+    },
+    {
+      "check": "AN-C1-MAR-5-Carboplatin",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 5
+      }
+    },
+    {
+      "check": "AN-C1-MAR-6-Pegfilgrastim",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 6
+      }
+    },
+    {
+      "check": "AN-C1-main-complete",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "order_status": "Completed",
+        "cumulative_dose_ledger_after": {
+          "DEMO-DEX": 8.0,
+          "DEMO-PER": 840.0,
+          "DEMO-TRA": 544.0,
+          "DEMO-DOC": 132.41,
+          "DEMO-CARBO": 714.0,
+          "DEMO-PEG": 6.0
+        }
+      }
+    },
+    {
+      "check": "AN-C1-infusion-completed",
+      "pass": true,
+      "detail": {
+        "status": "Completed",
+        "mar": 6,
+        "items": 6
+      }
+    },
+    {
+      "check": "AN-C1-MO-next-cycle-task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-503E96206C",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "Next-cycle decision",
+        "title": "Post-cycle decision after treatment administration",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "infusion",
+        "source_id": "INFUSION-0641A6A91B",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Treatment completed without serious reaction",
+        "created_at": "2026-09-09T09:11:33+05:30",
+        "created_by": "UA-A7F6E852051F",
+        "updated_at": "2026-09-09T09:11:33+05:30",
+        "updated_by": "UA-A7F6E852051F",
+        "data": {
+          "infusion_id": "INFUSION-0641A6A91B",
+          "order_id": "TREATMENT_ORDER-C2320B6357",
+          "cumulative_dose_ledger_after": {
+            "DEMO-DEX": 8.0,
+            "DEMO-PER": 840.0,
+            "DEMO-TRA": 544.0,
+            "DEMO-DOC": 132.41,
+            "DEMO-CARBO": 714.0,
+            "DEMO-PEG": 6.0
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "sex": "Female",
+          "phone": "917000000101",
+          "abha": "",
+          "id_number": "SYN-ANANYA-01",
+          "current_department": "Day Care / Infusion",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:33+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "INFUSION-0641A6A91B",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "infusion",
+          "status": "Completed",
+          "version": 10,
+          "created_at": "2026-09-09T09:11:32+05:30",
+          "updated_at": "2026-09-09T09:11:33+05:30",
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_by": "UA-A7F6E852051F",
+          "data": {
+            "order_id": "TREATMENT_ORDER-C2320B6357",
+            "care_setting": "Day Care",
+            "checklist": {
+              "identity": true,
+              "order": true,
+              "consent": true,
+              "allergy": true,
+              "vitals": true,
+              "labs": true,
+              "access": true,
+              "pharmacy": true
+            },
+            "mar": [
+              {
+                "item_id": "OI-C72C5AC",
+                "actual_dose": 8.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T09:00:00+05:30",
+                "ended_at": "2026-09-08T09:10:00+05:30",
+                "drug": "Dexamethasone",
+                "code": "DEMO-DEX",
+                "sequence": 1,
+                "ordered_dose": 8.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "PO",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-0C402E7",
+                "actual_dose": 840.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T09:45:00+05:30",
+                "ended_at": "2026-09-08T10:45:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:33+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Pertuzumab",
+                "code": "DEMO-PER",
+                "sequence": 2,
+                "ordered_dose": 840.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-4AE4712",
+                "actual_dose": 544.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T10:30:00+05:30",
+                "ended_at": "2026-09-08T12:00:00+05:30",
+                "actual_rate": 166.67,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:33+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Trastuzumab",
+                "code": "DEMO-TRA",
+                "sequence": 3,
+                "ordered_dose": 544.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-F1AA17D",
+                "actual_dose": 132.41,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T11:15:00+05:30",
+                "ended_at": "2026-09-08T12:15:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:33+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Docetaxel",
+                "code": "DEMO-DOC",
+                "sequence": 4,
+                "ordered_dose": 132.41,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-C0C445E",
+                "actual_dose": 714.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T12:00:00+05:30",
+                "ended_at": "2026-09-08T13:00:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:33+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Carboplatin",
+                "code": "DEMO-CARBO",
+                "sequence": 5,
+                "ordered_dose": 714.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-D52431D",
+                "actual_dose": 6.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T12:45:00+05:30",
+                "ended_at": "2026-09-08T12:55:00+05:30",
+                "drug": "Pegfilgrastim",
+                "code": "DEMO-PEG",
+                "sequence": 6,
+                "ordered_dose": 6.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "SQ",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              }
+            ],
+            "identity_confirmation": {
+              "name": "Ananya Shah",
+              "mrn": "CCA-SYN-VAL-CHEMO-01",
+              "dob": "1987-04-18"
+            },
+            "pre_vitals": {
+              "bp": "118/72",
+              "hr": 76,
+              "rr": 16,
+              "temp": 36.7,
+              "spo2": 99,
+              "units": {
+                "bp": "mmHg",
+                "hr": "/min",
+                "rr": "/min",
+                "temp": "°C",
+                "spo2": "%"
+              }
+            },
+            "access": {
+              "type": "Port",
+              "site": "Chest central access"
+            },
+            "bedside_verification": {
+              "confirmed": true
+            },
+            "started_at": "2026-09-09T09:11:33+05:30",
+            "started_by": {
+              "id": "UA-A7F6E852051F",
+              "username": "daycare.demo",
+              "name": "Anita Paul — Infusion Nurse",
+              "role": "Day Care / Infusion Nurse",
+              "professional_id": "DEMO-DC-001"
+            },
+            "post_vitals": {
+              "bp": "116/70",
+              "hr": 78,
+              "rr": 16,
+              "temp": 36.8,
+              "spo2": 99,
+              "units": {
+                "bp": "mmHg",
+                "hr": "/min",
+                "rr": "/min",
+                "temp": "°C",
+                "spo2": "%"
+              }
+            },
+            "tolerance": "Treatment completed without serious reaction",
+            "discharge_instructions": "Return for next cycle per readiness; call for fever or urgent symptoms.",
+            "next_cycle": "Cycle 2 review",
+            "completed_at": "2026-09-09T09:11:33+05:30",
+            "completed_by": {
+              "id": "UA-A7F6E852051F",
+              "username": "daycare.demo",
+              "name": "Anita Paul — Infusion Nurse",
+              "role": "Day Care / Infusion Nurse",
+              "professional_id": "DEMO-DC-001"
+            },
+            "cumulative_dose_ledger_after": {
+              "DEMO-DEX": 8.0,
+              "DEMO-PER": 840.0,
+              "DEMO-TRA": 544.0,
+              "DEMO-DOC": 132.41,
+              "DEMO-CARBO": 714.0,
+              "DEMO-PEG": 6.0
+            }
+          }
+        },
+        "source_record_type": "infusion",
+        "source_record_id": "INFUSION-0641A6A91B",
+        "source_record_version": 10,
+        "source_record_status": "Completed",
+        "source_record_updated_at": "2026-09-09T09:11:33+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Anita Paul — Infusion Nurse",
+        "signed_at": "2026-09-09T09:11:33+05:30",
+        "provenance": {
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_by": "UA-A7F6E852051F",
+          "source_type": "infusion",
+          "source_id": "INFUSION-0641A6A91B"
+        }
+      }
+    },
+    {
+      "check": "AN-C1-MO-opens-MAR-provenance",
+      "pass": true,
+      "detail": {
+        "id": "TASK-503E96206C",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "Next-cycle decision",
+        "title": "Post-cycle decision after treatment administration",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "infusion",
+        "source_id": "INFUSION-0641A6A91B",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Treatment completed without serious reaction",
+        "created_at": "2026-09-09T09:11:33+05:30",
+        "created_by": "UA-A7F6E852051F",
+        "updated_at": "2026-09-09T09:11:33+05:30",
+        "updated_by": "UA-A7F6E852051F",
+        "data": {
+          "infusion_id": "INFUSION-0641A6A91B",
+          "order_id": "TREATMENT_ORDER-C2320B6357",
+          "cumulative_dose_ledger_after": {
+            "DEMO-DEX": 8.0,
+            "DEMO-PER": 840.0,
+            "DEMO-TRA": 544.0,
+            "DEMO-DOC": 132.41,
+            "DEMO-CARBO": 714.0,
+            "DEMO-PEG": 6.0
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "sex": "Female",
+          "phone": "917000000101",
+          "abha": "",
+          "id_number": "SYN-ANANYA-01",
+          "current_department": "Day Care / Infusion",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:33+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "INFUSION-0641A6A91B",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "infusion",
+          "status": "Completed",
+          "version": 10,
+          "created_at": "2026-09-09T09:11:32+05:30",
+          "updated_at": "2026-09-09T09:11:33+05:30",
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_by": "UA-A7F6E852051F",
+          "data": {
+            "order_id": "TREATMENT_ORDER-C2320B6357",
+            "care_setting": "Day Care",
+            "checklist": {
+              "identity": true,
+              "order": true,
+              "consent": true,
+              "allergy": true,
+              "vitals": true,
+              "labs": true,
+              "access": true,
+              "pharmacy": true
+            },
+            "mar": [
+              {
+                "item_id": "OI-C72C5AC",
+                "actual_dose": 8.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T09:00:00+05:30",
+                "ended_at": "2026-09-08T09:10:00+05:30",
+                "drug": "Dexamethasone",
+                "code": "DEMO-DEX",
+                "sequence": 1,
+                "ordered_dose": 8.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "PO",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-0C402E7",
+                "actual_dose": 840.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T09:45:00+05:30",
+                "ended_at": "2026-09-08T10:45:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:33+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Pertuzumab",
+                "code": "DEMO-PER",
+                "sequence": 2,
+                "ordered_dose": 840.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-4AE4712",
+                "actual_dose": 544.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T10:30:00+05:30",
+                "ended_at": "2026-09-08T12:00:00+05:30",
+                "actual_rate": 166.67,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:33+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Trastuzumab",
+                "code": "DEMO-TRA",
+                "sequence": 3,
+                "ordered_dose": 544.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-F1AA17D",
+                "actual_dose": 132.41,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T11:15:00+05:30",
+                "ended_at": "2026-09-08T12:15:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:33+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Docetaxel",
+                "code": "DEMO-DOC",
+                "sequence": 4,
+                "ordered_dose": 132.41,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-C0C445E",
+                "actual_dose": 714.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T12:00:00+05:30",
+                "ended_at": "2026-09-08T13:00:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:33+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Carboplatin",
+                "code": "DEMO-CARBO",
+                "sequence": 5,
+                "ordered_dose": 714.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-D52431D",
+                "actual_dose": 6.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-08T12:45:00+05:30",
+                "ended_at": "2026-09-08T12:55:00+05:30",
+                "drug": "Pegfilgrastim",
+                "code": "DEMO-PEG",
+                "sequence": 6,
+                "ordered_dose": 6.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "SQ",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              }
+            ],
+            "identity_confirmation": {
+              "name": "Ananya Shah",
+              "mrn": "CCA-SYN-VAL-CHEMO-01",
+              "dob": "1987-04-18"
+            },
+            "pre_vitals": {
+              "bp": "118/72",
+              "hr": 76,
+              "rr": 16,
+              "temp": 36.7,
+              "spo2": 99,
+              "units": {
+                "bp": "mmHg",
+                "hr": "/min",
+                "rr": "/min",
+                "temp": "°C",
+                "spo2": "%"
+              }
+            },
+            "access": {
+              "type": "Port",
+              "site": "Chest central access"
+            },
+            "bedside_verification": {
+              "confirmed": true
+            },
+            "started_at": "2026-09-09T09:11:33+05:30",
+            "started_by": {
+              "id": "UA-A7F6E852051F",
+              "username": "daycare.demo",
+              "name": "Anita Paul — Infusion Nurse",
+              "role": "Day Care / Infusion Nurse",
+              "professional_id": "DEMO-DC-001"
+            },
+            "post_vitals": {
+              "bp": "116/70",
+              "hr": 78,
+              "rr": 16,
+              "temp": 36.8,
+              "spo2": 99,
+              "units": {
+                "bp": "mmHg",
+                "hr": "/min",
+                "rr": "/min",
+                "temp": "°C",
+                "spo2": "%"
+              }
+            },
+            "tolerance": "Treatment completed without serious reaction",
+            "discharge_instructions": "Return for next cycle per readiness; call for fever or urgent symptoms.",
+            "next_cycle": "Cycle 2 review",
+            "completed_at": "2026-09-09T09:11:33+05:30",
+            "completed_by": {
+              "id": "UA-A7F6E852051F",
+              "username": "daycare.demo",
+              "name": "Anita Paul — Infusion Nurse",
+              "role": "Day Care / Infusion Nurse",
+              "professional_id": "DEMO-DC-001"
+            },
+            "cumulative_dose_ledger_after": {
+              "DEMO-DEX": 8.0,
+              "DEMO-PER": 840.0,
+              "DEMO-TRA": 544.0,
+              "DEMO-DOC": 132.41,
+              "DEMO-CARBO": 714.0,
+              "DEMO-PEG": 6.0
+            }
+          }
+        },
+        "source_record_type": "infusion",
+        "source_record_id": "INFUSION-0641A6A91B",
+        "source_record_version": 10,
+        "source_record_status": "Completed",
+        "source_record_updated_at": "2026-09-09T09:11:33+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Anita Paul — Infusion Nurse",
+        "signed_at": "2026-09-09T09:11:33+05:30",
+        "provenance": {
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_by": "UA-A7F6E852051F",
+          "source_type": "infusion",
+          "source_id": "INFUSION-0641A6A91B"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "AN-C1-actual-dose-recorded",
+      "pass": true,
+      "detail": {
+        "item_id": "OI-C0C445E",
+        "actual_dose": 714.0,
+        "actual_dose_unit": "mg",
+        "completion_status": "Administered",
+        "administration_datetime": "2026-09-08T12:00:00+05:30",
+        "ended_at": "2026-09-08T13:00:00+05:30",
+        "actual_rate": 250.0,
+        "actual_rate_unit": "mL/h",
+        "chairside_verification": {
+          "verified_by": "Second RN — Synthetic",
+          "checks": {
+            "drug": true,
+            "dose": true,
+            "volume_diluent": true,
+            "route": true,
+            "rate": true,
+            "expiry": true,
+            "physical_integrity": true,
+            "sequence": true,
+            "pump_settings": true
+          },
+          "verified_role": "Day Care / Infusion Nurse",
+          "verified_at": "2026-09-09T09:11:33+05:30",
+          "attestation": "Independent chairside check completed against the current signed order and prepared product."
+        },
+        "drug": "Carboplatin",
+        "code": "DEMO-CARBO",
+        "sequence": 5,
+        "ordered_dose": 714.0,
+        "ordered_unit": "mg",
+        "unit": "mg",
+        "route": "IV",
+        "variance_type": "None",
+        "variance_reason_code": "",
+        "administered_by": {
+          "id": "UA-A7F6E852051F",
+          "username": "daycare.demo",
+          "name": "Anita Paul — Infusion Nurse",
+          "role": "Day Care / Infusion Nurse",
+          "professional_id": "DEMO-DC-001"
+        },
+        "recorded_at": "2026-09-09T09:11:33+05:30"
+      }
+    },
+    {
+      "check": "AN-028 CTCAE G2 toxicity recorded",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "TOX-BC46267",
+        "cycle": 1,
+        "sae": false
+      }
+    },
+    {
+      "check": "AN-029 post-cycle Modify decision",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "review": {
+          "id": "PCR-0E7B1AE",
+          "infusion_id": "INFUSION-0641A6A91B",
+          "infusion_version": 10,
+          "order_id": "TREATMENT_ORDER-C2320B6357",
+          "order_version": 3,
+          "cycle": 1,
+          "day": 1,
+          "actual_administered_snapshot": [
+            {
+              "item_id": "OI-C72C5AC",
+              "actual_dose": 8.0,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-08T09:00:00+05:30",
+              "ended_at": "2026-09-08T09:10:00+05:30",
+              "drug": "Dexamethasone",
+              "code": "DEMO-DEX",
+              "sequence": 1,
+              "ordered_dose": 8.0,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "PO",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:33+05:30"
+            },
+            {
+              "item_id": "OI-0C402E7",
+              "actual_dose": 840.0,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-08T09:45:00+05:30",
+              "ended_at": "2026-09-08T10:45:00+05:30",
+              "actual_rate": 250.0,
+              "actual_rate_unit": "mL/h",
+              "chairside_verification": {
+                "verified_by": "Second RN — Synthetic",
+                "checks": {
+                  "drug": true,
+                  "dose": true,
+                  "volume_diluent": true,
+                  "route": true,
+                  "rate": true,
+                  "expiry": true,
+                  "physical_integrity": true,
+                  "sequence": true,
+                  "pump_settings": true
+                },
+                "verified_role": "Day Care / Infusion Nurse",
+                "verified_at": "2026-09-09T09:11:33+05:30",
+                "attestation": "Independent chairside check completed against the current signed order and prepared product."
+              },
+              "drug": "Pertuzumab",
+              "code": "DEMO-PER",
+              "sequence": 2,
+              "ordered_dose": 840.0,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "IV",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:33+05:30"
+            },
+            {
+              "item_id": "OI-4AE4712",
+              "actual_dose": 544.0,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-08T10:30:00+05:30",
+              "ended_at": "2026-09-08T12:00:00+05:30",
+              "actual_rate": 166.67,
+              "actual_rate_unit": "mL/h",
+              "chairside_verification": {
+                "verified_by": "Second RN — Synthetic",
+                "checks": {
+                  "drug": true,
+                  "dose": true,
+                  "volume_diluent": true,
+                  "route": true,
+                  "rate": true,
+                  "expiry": true,
+                  "physical_integrity": true,
+                  "sequence": true,
+                  "pump_settings": true
+                },
+                "verified_role": "Day Care / Infusion Nurse",
+                "verified_at": "2026-09-09T09:11:33+05:30",
+                "attestation": "Independent chairside check completed against the current signed order and prepared product."
+              },
+              "drug": "Trastuzumab",
+              "code": "DEMO-TRA",
+              "sequence": 3,
+              "ordered_dose": 544.0,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "IV",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:33+05:30"
+            },
+            {
+              "item_id": "OI-F1AA17D",
+              "actual_dose": 132.41,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-08T11:15:00+05:30",
+              "ended_at": "2026-09-08T12:15:00+05:30",
+              "actual_rate": 250.0,
+              "actual_rate_unit": "mL/h",
+              "chairside_verification": {
+                "verified_by": "Second RN — Synthetic",
+                "checks": {
+                  "drug": true,
+                  "dose": true,
+                  "volume_diluent": true,
+                  "route": true,
+                  "rate": true,
+                  "expiry": true,
+                  "physical_integrity": true,
+                  "sequence": true,
+                  "pump_settings": true
+                },
+                "verified_role": "Day Care / Infusion Nurse",
+                "verified_at": "2026-09-09T09:11:33+05:30",
+                "attestation": "Independent chairside check completed against the current signed order and prepared product."
+              },
+              "drug": "Docetaxel",
+              "code": "DEMO-DOC",
+              "sequence": 4,
+              "ordered_dose": 132.41,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "IV",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:33+05:30"
+            },
+            {
+              "item_id": "OI-C0C445E",
+              "actual_dose": 714.0,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-08T12:00:00+05:30",
+              "ended_at": "2026-09-08T13:00:00+05:30",
+              "actual_rate": 250.0,
+              "actual_rate_unit": "mL/h",
+              "chairside_verification": {
+                "verified_by": "Second RN — Synthetic",
+                "checks": {
+                  "drug": true,
+                  "dose": true,
+                  "volume_diluent": true,
+                  "route": true,
+                  "rate": true,
+                  "expiry": true,
+                  "physical_integrity": true,
+                  "sequence": true,
+                  "pump_settings": true
+                },
+                "verified_role": "Day Care / Infusion Nurse",
+                "verified_at": "2026-09-09T09:11:33+05:30",
+                "attestation": "Independent chairside check completed against the current signed order and prepared product."
+              },
+              "drug": "Carboplatin",
+              "code": "DEMO-CARBO",
+              "sequence": 5,
+              "ordered_dose": 714.0,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "IV",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:33+05:30"
+            },
+            {
+              "item_id": "OI-D52431D",
+              "actual_dose": 6.0,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-08T12:45:00+05:30",
+              "ended_at": "2026-09-08T12:55:00+05:30",
+              "drug": "Pegfilgrastim",
+              "code": "DEMO-PEG",
+              "sequence": 6,
+              "ordered_dose": 6.0,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "SQ",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:33+05:30"
+            }
+          ],
+          "toxicity_source_id": "TOXICITY-SYN-VAL-01",
+          "toxicity_event_ids": [
+            "TOX-BC46267"
+          ],
+          "decision": "Modify",
+          "clinical_reason": "Grade 2 peripheral sensory neuropathy; reduce Docetaxel 10% for next cycle.",
+          "next_cycle": 2,
+          "reevaluation_date": "",
+          "reviewed_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "reviewed_at": "2026-09-09T09:11:33+05:30"
+        },
+        "next_action": "Treatment modification"
+      }
+    },
+    {
+      "check": "AN-030 modification linked to C1 order",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "MOD-FBCE28C"
+      }
+    },
+    {
+      "check": "AN-LAB-order-AN-C2",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "LAB_ORDER-02D22BBDB7",
+        "catalog_id": "LAB-CMP"
+      }
+    },
+    {
+      "check": "AN-LAB-pay-AN-C2",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "idempotent": false
+      }
+    },
+    {
+      "check": "AN-LAB-collect-AN-C2",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "lab_entity_id": "LAB-B7F0A34093",
+        "sample_id": "SMP-AN-C2"
+      }
+    },
+    {
+      "check": "AN-LAB-final-AN-C2",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "LAB-B7F0A34093",
+        "status": "Final",
+        "units": {
+          "hb": "g/dL",
+          "wbc": "10^9/L",
+          "anc": "10^9/L",
+          "platelets": "10^9/L",
+          "creatinine": "mg/dL",
+          "egfr": "mL/min/1.73m2",
+          "bilirubin": "mg/dL",
+          "ast": "U/L",
+          "alt": "U/L",
+          "lvef": "%"
+        },
+        "critical_tasks": []
+      }
+    },
+    {
+      "check": "AN-031 C2 modified readiness signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Signed",
+        "evaluation": {
+          "protocol_id": "CCA-DEMO-TCHP",
+          "protocol_version": "1.0-demo",
+          "thresholds_source": "Institution Content Master / server-governed regimen version",
+          "lab_source_id": "LAB-B7F0A34093",
+          "lab_source_finalized_at": "2026-09-09T09:11:33+05:30",
+          "normalized": {
+            "anc_10e9_L": 2.8,
+            "platelets_10e9_L": 235.0,
+            "bilirubin_mg_dL": 0.6,
+            "source_units": {
+              "anc": "10^9/L",
+              "platelets": "10^9/L",
+              "bilirubin": "mg/dL"
+            }
+          },
+          "blockers": [],
+          "alerts": [],
+          "can_proceed": true,
+          "rule_results": [
+            {
+              "id": "RR-ANC",
+              "category": "Hematology",
+              "field": "ANC",
+              "current": 2.8,
+              "unit": "×10^9/L",
+              "operator": ">=",
+              "threshold": 1.5,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-B7F0A34093",
+              "source_finalized_at": "2026-09-09T09:11:33+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-PLT",
+              "category": "Hematology",
+              "field": "Platelets",
+              "current": 235.0,
+              "unit": "×10^9/L",
+              "operator": ">=",
+              "threshold": 100,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-B7F0A34093",
+              "source_finalized_at": "2026-09-09T09:11:33+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-EGFR",
+              "category": "Renal",
+              "field": "eGFR",
+              "current": 94.0,
+              "unit": "mL/min/1.73m²",
+              "operator": ">=",
+              "threshold": 50,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-B7F0A34093",
+              "source_finalized_at": "2026-09-09T09:11:33+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-BILI",
+              "category": "Hepatic",
+              "field": "Bilirubin",
+              "current": 0.6,
+              "unit": "mg/dL",
+              "operator": "<=",
+              "threshold": 1.5,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-B7F0A34093",
+              "source_finalized_at": "2026-09-09T09:11:33+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-LVEF",
+              "category": "Cardiac",
+              "field": "LVEF",
+              "current": 60.0,
+              "unit": "%",
+              "operator": ">=",
+              "threshold": 50,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-B7F0A34093",
+              "source_finalized_at": "2026-09-09T09:11:33+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-AGE",
+              "category": "Freshness",
+              "field": "Laboratory freshness",
+              "current": 0,
+              "unit": "days",
+              "operator": "<=",
+              "threshold": 7,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-B7F0A34093",
+              "source_finalized_at": "2026-09-09T09:11:33+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-TOX",
+              "category": "Toxicity",
+              "field": "Active toxicity review",
+              "current": "Peripheral sensory neuropathy G2 (Ongoing)",
+              "unit": "CTCAE / clinical assessment",
+              "operator": "clinical review",
+              "threshold": "CCA regimen-specific toxicity rule",
+              "status": "REVIEW",
+              "outcome": "REVIEW",
+              "source_record_id": "TOXICITY-SYN-VAL-01",
+              "source_finalized_at": "",
+              "result_date": "",
+              "freshness_days": null,
+              "freshness_status": "Not applicable"
+            }
+          ],
+          "monitoring_requirements": [
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Hematology",
+              "requirement": "CBC with ANC and platelets",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-B7F0A34093",
+              "evaluated_at": "2026-09-09T09:11:33+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Renal",
+              "requirement": "Renal function assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-B7F0A34093",
+              "evaluated_at": "2026-09-09T09:11:33+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Hepatic",
+              "requirement": "Hepatic function assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-B7F0A34093",
+              "evaluated_at": "2026-09-09T09:11:33+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Toxicity",
+              "requirement": "Current toxicity/CTCAE assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Abnormal",
+              "source_record_id": "TOXICITY-SYN-VAL-01",
+              "evaluated_at": "2026-09-09T09:11:33+05:30"
+            },
+            {
+              "phase": "Periodic / drug-specific",
+              "category": "Other",
+              "requirement": "Drug-specific monitoring where applicable",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Required",
+              "source_record_id": "LAB-B7F0A34093",
+              "evaluated_at": "2026-09-09T09:11:33+05:30"
+            }
+          ],
+          "dose_modification_rules": [
+            {
+              "domain": "Hematologic",
+              "trigger": "CCA-approved regimen threshold / toxicity condition",
+              "action_options": [
+                "Proceed",
+                "Hold",
+                "Delay",
+                "Dose reduce",
+                "Omit"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Renal",
+              "trigger": "CCA-approved renal function rule",
+              "action_options": [
+                "Proceed",
+                "Dose reduce",
+                "Substitute",
+                "Hold"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Hepatic",
+              "trigger": "CCA-approved hepatic function rule",
+              "action_options": [
+                "Proceed",
+                "Dose reduce",
+                "Hold",
+                "Omit"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Toxicity",
+              "trigger": "CTCAE grade / drug-specific adverse effect",
+              "action_options": [
+                "Proceed",
+                "Hold",
+                "Delay",
+                "Dose reduce",
+                "Omit",
+                "Discontinue"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            }
+          ],
+          "evaluation_as_of_date": "2026-09-08",
+          "lab_age_days_at_evaluation": 0,
+          "evaluated_at": "2026-09-09T09:11:33+05:30"
+        }
+      }
+    },
+    {
+      "check": "AN-032 C2 modified order created",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "order_id": "TREATMENT_ORDER-931B1D9CD9",
+        "pharmacy_id": "PHARMACY-0E4B5DEC6C",
+        "infusion_id": "INFUSION-3EAC03788C",
+        "supersedes_order_id": ""
+      }
+    },
+    {
+      "check": "AN-033 C2 Docetaxel reduction",
+      "pass": true,
+      "detail": {
+        "docetaxel": {
+          "sequence": 4,
+          "group": "Antineoplastic",
+          "drug": "Docetaxel",
+          "code": "DEMO-DOC",
+          "dose_basis": "mg/m²",
+          "protocol_dose": 75,
+          "protocol_unit": "mg/m²",
+          "route": "IV",
+          "diluent": "NS",
+          "volume_ml": 250.0,
+          "duration_min": 60.0,
+          "max_variance_pct": 20,
+          "treatment_block": "Anti-cancer treatment",
+          "item_id": "OI-1393DF3",
+          "calculated_dose": 132.41,
+          "calculated_unit": "mg",
+          "ordered_dose": 119.17,
+          "ordered_unit": "mg",
+          "final_approved_dose": 119.17,
+          "renal_dosing": null,
+          "dose_decision_reason": "Clinician accepts calculated/modified dose after independent review",
+          "dose_decided_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "dose_decided_at": "2026-09-09T09:11:33+05:30",
+          "variance_pct": -10.0,
+          "variance_reason": "Approved 10% reduction for CTCAE Grade 2 neuropathy",
+          "rounding": "No rounding",
+          "rate_ml_hr": 250.0,
+          "administration_parameter_decision_reason": "Clinician accepts protocol route/diluent/volume/rate/duration as configured",
+          "administration_parameters_decided_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "administration_parameters_decided_at": "2026-09-09T09:11:33+05:30",
+          "administration_at": "2026-09-09T09:11:33+05:30",
+          "schedule_decision_reason": "Clinician accepts protocol-derived administration schedule",
+          "schedule_decided_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "schedule_decided_at": "2026-09-09T09:11:33+05:30",
+          "cumulative_dose_before": 132.41,
+          "cumulative_dose_limit": null,
+          "cumulative_dose_after_if_fully_administered": 251.58
+        }
+      }
+    },
+    {
+      "check": "AN-034 C2 pharmacy independent recalculation",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Preparation Pending"
+      }
+    },
+    {
+      "check": "AN-C2-formulary",
+      "pass": true,
+      "detail": {
+        "count": 11
+      }
+    },
+    {
+      "check": "AN-C2-pharmacy-prepare",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Dispensing Pending",
+        "prepared_at": "2026-09-09T09:11:33+05:30"
+      }
+    },
+    {
+      "check": "AN-C2-pharmacy-release",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Dispensed"
+      }
+    },
+    {
+      "check": "AN-C2-start-infusion",
+      "pass": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "check": "AN-C2-peg-present",
+      "pass": true,
+      "detail": {
+        "drug": "Pegfilgrastim",
+        "min_h": 24
+      }
+    },
+    {
+      "check": "AN-C2-MAR-1-Dexamethasone",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 1
+      }
+    },
+    {
+      "check": "AN-C2-MAR-2-Pertuzumab",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 2
+      }
+    },
+    {
+      "check": "AN-C2-MAR-3-Trastuzumab",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 3
+      }
+    },
+    {
+      "check": "AN-C2-MAR-4-Docetaxel",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 4
+      }
+    },
+    {
+      "check": "AN-C2-MAR-5-Carboplatin",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 5
+      }
+    },
+    {
+      "check": "AN-C2-MAR-6-Pegfilgrastim",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "count": 6
+      }
+    },
+    {
+      "check": "AN-C2-main-complete",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "order_status": "Completed",
+        "cumulative_dose_ledger_after": {
+          "DEMO-DEX": 16.0,
+          "DEMO-PER": 1680.0,
+          "DEMO-TRA": 1088.0,
+          "DEMO-DOC": 251.58,
+          "DEMO-CARBO": 1428.0,
+          "DEMO-PEG": 12.0
+        }
+      }
+    },
+    {
+      "check": "AN-C2-infusion-completed",
+      "pass": true,
+      "detail": {
+        "status": "Completed",
+        "mar": 6,
+        "items": 6
+      }
+    },
+    {
+      "check": "AN-C2-MO-next-cycle-task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-AA0C6C46CF",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "Next-cycle decision",
+        "title": "Post-cycle decision after treatment administration",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "infusion",
+        "source_id": "INFUSION-3EAC03788C",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Treatment completed without serious reaction",
+        "created_at": "2026-09-09T09:11:34+05:30",
+        "created_by": "UA-A7F6E852051F",
+        "updated_at": "2026-09-09T09:11:34+05:30",
+        "updated_by": "UA-A7F6E852051F",
+        "data": {
+          "infusion_id": "INFUSION-3EAC03788C",
+          "order_id": "TREATMENT_ORDER-931B1D9CD9",
+          "cumulative_dose_ledger_after": {
+            "DEMO-DEX": 16.0,
+            "DEMO-PER": 1680.0,
+            "DEMO-TRA": 1088.0,
+            "DEMO-DOC": 251.58,
+            "DEMO-CARBO": 1428.0,
+            "DEMO-PEG": 12.0
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "sex": "Female",
+          "phone": "917000000101",
+          "abha": "",
+          "id_number": "SYN-ANANYA-01",
+          "current_department": "Day Care / Infusion",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:34+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "INFUSION-3EAC03788C",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "infusion",
+          "status": "Completed",
+          "version": 10,
+          "created_at": "2026-09-09T09:11:33+05:30",
+          "updated_at": "2026-09-09T09:11:34+05:30",
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_by": "UA-A7F6E852051F",
+          "data": {
+            "order_id": "TREATMENT_ORDER-931B1D9CD9",
+            "care_setting": "Day Care",
+            "checklist": {
+              "identity": true,
+              "order": true,
+              "consent": true,
+              "allergy": true,
+              "vitals": true,
+              "labs": true,
+              "access": true,
+              "pharmacy": true
+            },
+            "mar": [
+              {
+                "item_id": "OI-508FC13",
+                "actual_dose": 8.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T09:00:00+05:30",
+                "ended_at": "2026-09-10T09:10:00+05:30",
+                "drug": "Dexamethasone",
+                "code": "DEMO-DEX",
+                "sequence": 1,
+                "ordered_dose": 8.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "PO",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-CB09DD7",
+                "actual_dose": 840.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T09:45:00+05:30",
+                "ended_at": "2026-09-10T10:45:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:33+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Pertuzumab",
+                "code": "DEMO-PER",
+                "sequence": 2,
+                "ordered_dose": 840.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-4A176F7",
+                "actual_dose": 544.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T10:30:00+05:30",
+                "ended_at": "2026-09-10T12:00:00+05:30",
+                "actual_rate": 166.67,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:34+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Trastuzumab",
+                "code": "DEMO-TRA",
+                "sequence": 3,
+                "ordered_dose": 544.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:34+05:30"
+              },
+              {
+                "item_id": "OI-1393DF3",
+                "actual_dose": 119.17,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T11:15:00+05:30",
+                "ended_at": "2026-09-10T12:15:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:34+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Docetaxel",
+                "code": "DEMO-DOC",
+                "sequence": 4,
+                "ordered_dose": 119.17,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:34+05:30"
+              },
+              {
+                "item_id": "OI-E1827D5",
+                "actual_dose": 714.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T12:00:00+05:30",
+                "ended_at": "2026-09-10T13:00:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:34+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Carboplatin",
+                "code": "DEMO-CARBO",
+                "sequence": 5,
+                "ordered_dose": 714.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:34+05:30"
+              },
+              {
+                "item_id": "OI-1C63A7C",
+                "actual_dose": 6.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T12:45:00+05:30",
+                "ended_at": "2026-09-10T12:55:00+05:30",
+                "drug": "Pegfilgrastim",
+                "code": "DEMO-PEG",
+                "sequence": 6,
+                "ordered_dose": 6.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "SQ",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:34+05:30"
+              }
+            ],
+            "identity_confirmation": {
+              "name": "Ananya Shah",
+              "mrn": "CCA-SYN-VAL-CHEMO-01",
+              "dob": "1987-04-18"
+            },
+            "pre_vitals": {
+              "bp": "118/72",
+              "hr": 76,
+              "rr": 16,
+              "temp": 36.7,
+              "spo2": 99,
+              "units": {
+                "bp": "mmHg",
+                "hr": "/min",
+                "rr": "/min",
+                "temp": "°C",
+                "spo2": "%"
+              }
+            },
+            "access": {
+              "type": "Port",
+              "site": "Chest central access"
+            },
+            "bedside_verification": {
+              "confirmed": true
+            },
+            "started_at": "2026-09-09T09:11:33+05:30",
+            "started_by": {
+              "id": "UA-A7F6E852051F",
+              "username": "daycare.demo",
+              "name": "Anita Paul — Infusion Nurse",
+              "role": "Day Care / Infusion Nurse",
+              "professional_id": "DEMO-DC-001"
+            },
+            "post_vitals": {
+              "bp": "116/70",
+              "hr": 78,
+              "rr": 16,
+              "temp": 36.8,
+              "spo2": 99,
+              "units": {
+                "bp": "mmHg",
+                "hr": "/min",
+                "rr": "/min",
+                "temp": "°C",
+                "spo2": "%"
+              }
+            },
+            "tolerance": "Treatment completed without serious reaction",
+            "discharge_instructions": "Return for next cycle per readiness; call for fever or urgent symptoms.",
+            "next_cycle": "Cycle 3 review",
+            "completed_at": "2026-09-09T09:11:34+05:30",
+            "completed_by": {
+              "id": "UA-A7F6E852051F",
+              "username": "daycare.demo",
+              "name": "Anita Paul — Infusion Nurse",
+              "role": "Day Care / Infusion Nurse",
+              "professional_id": "DEMO-DC-001"
+            },
+            "cumulative_dose_ledger_after": {
+              "DEMO-DEX": 16.0,
+              "DEMO-PER": 1680.0,
+              "DEMO-TRA": 1088.0,
+              "DEMO-DOC": 251.58,
+              "DEMO-CARBO": 1428.0,
+              "DEMO-PEG": 12.0
+            }
+          }
+        },
+        "source_record_type": "infusion",
+        "source_record_id": "INFUSION-3EAC03788C",
+        "source_record_version": 10,
+        "source_record_status": "Completed",
+        "source_record_updated_at": "2026-09-09T09:11:34+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Anita Paul — Infusion Nurse",
+        "signed_at": "2026-09-09T09:11:34+05:30",
+        "provenance": {
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_by": "UA-A7F6E852051F",
+          "source_type": "infusion",
+          "source_id": "INFUSION-3EAC03788C"
+        }
+      }
+    },
+    {
+      "check": "AN-C2-MO-opens-MAR-provenance",
+      "pass": true,
+      "detail": {
+        "id": "TASK-AA0C6C46CF",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "Next-cycle decision",
+        "title": "Post-cycle decision after treatment administration",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "infusion",
+        "source_id": "INFUSION-3EAC03788C",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Treatment completed without serious reaction",
+        "created_at": "2026-09-09T09:11:34+05:30",
+        "created_by": "UA-A7F6E852051F",
+        "updated_at": "2026-09-09T09:11:34+05:30",
+        "updated_by": "UA-A7F6E852051F",
+        "data": {
+          "infusion_id": "INFUSION-3EAC03788C",
+          "order_id": "TREATMENT_ORDER-931B1D9CD9",
+          "cumulative_dose_ledger_after": {
+            "DEMO-DEX": 16.0,
+            "DEMO-PER": 1680.0,
+            "DEMO-TRA": 1088.0,
+            "DEMO-DOC": 251.58,
+            "DEMO-CARBO": 1428.0,
+            "DEMO-PEG": 12.0
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "sex": "Female",
+          "phone": "917000000101",
+          "abha": "",
+          "id_number": "SYN-ANANYA-01",
+          "current_department": "Day Care / Infusion",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:34+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "INFUSION-3EAC03788C",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "infusion",
+          "status": "Completed",
+          "version": 10,
+          "created_at": "2026-09-09T09:11:33+05:30",
+          "updated_at": "2026-09-09T09:11:34+05:30",
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_by": "UA-A7F6E852051F",
+          "data": {
+            "order_id": "TREATMENT_ORDER-931B1D9CD9",
+            "care_setting": "Day Care",
+            "checklist": {
+              "identity": true,
+              "order": true,
+              "consent": true,
+              "allergy": true,
+              "vitals": true,
+              "labs": true,
+              "access": true,
+              "pharmacy": true
+            },
+            "mar": [
+              {
+                "item_id": "OI-508FC13",
+                "actual_dose": 8.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T09:00:00+05:30",
+                "ended_at": "2026-09-10T09:10:00+05:30",
+                "drug": "Dexamethasone",
+                "code": "DEMO-DEX",
+                "sequence": 1,
+                "ordered_dose": 8.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "PO",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-CB09DD7",
+                "actual_dose": 840.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T09:45:00+05:30",
+                "ended_at": "2026-09-10T10:45:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:33+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Pertuzumab",
+                "code": "DEMO-PER",
+                "sequence": 2,
+                "ordered_dose": 840.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:33+05:30"
+              },
+              {
+                "item_id": "OI-4A176F7",
+                "actual_dose": 544.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T10:30:00+05:30",
+                "ended_at": "2026-09-10T12:00:00+05:30",
+                "actual_rate": 166.67,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:34+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Trastuzumab",
+                "code": "DEMO-TRA",
+                "sequence": 3,
+                "ordered_dose": 544.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:34+05:30"
+              },
+              {
+                "item_id": "OI-1393DF3",
+                "actual_dose": 119.17,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T11:15:00+05:30",
+                "ended_at": "2026-09-10T12:15:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:34+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Docetaxel",
+                "code": "DEMO-DOC",
+                "sequence": 4,
+                "ordered_dose": 119.17,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:34+05:30"
+              },
+              {
+                "item_id": "OI-E1827D5",
+                "actual_dose": 714.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T12:00:00+05:30",
+                "ended_at": "2026-09-10T13:00:00+05:30",
+                "actual_rate": 250.0,
+                "actual_rate_unit": "mL/h",
+                "chairside_verification": {
+                  "verified_by": "Second RN — Synthetic",
+                  "checks": {
+                    "drug": true,
+                    "dose": true,
+                    "volume_diluent": true,
+                    "route": true,
+                    "rate": true,
+                    "expiry": true,
+                    "physical_integrity": true,
+                    "sequence": true,
+                    "pump_settings": true
+                  },
+                  "verified_role": "Day Care / Infusion Nurse",
+                  "verified_at": "2026-09-09T09:11:34+05:30",
+                  "attestation": "Independent chairside check completed against the current signed order and prepared product."
+                },
+                "drug": "Carboplatin",
+                "code": "DEMO-CARBO",
+                "sequence": 5,
+                "ordered_dose": 714.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "IV",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:34+05:30"
+              },
+              {
+                "item_id": "OI-1C63A7C",
+                "actual_dose": 6.0,
+                "actual_dose_unit": "mg",
+                "completion_status": "Administered",
+                "administration_datetime": "2026-09-10T12:45:00+05:30",
+                "ended_at": "2026-09-10T12:55:00+05:30",
+                "drug": "Pegfilgrastim",
+                "code": "DEMO-PEG",
+                "sequence": 6,
+                "ordered_dose": 6.0,
+                "ordered_unit": "mg",
+                "unit": "mg",
+                "route": "SQ",
+                "variance_type": "None",
+                "variance_reason_code": "",
+                "administered_by": {
+                  "id": "UA-A7F6E852051F",
+                  "username": "daycare.demo",
+                  "name": "Anita Paul — Infusion Nurse",
+                  "role": "Day Care / Infusion Nurse",
+                  "professional_id": "DEMO-DC-001"
+                },
+                "recorded_at": "2026-09-09T09:11:34+05:30"
+              }
+            ],
+            "identity_confirmation": {
+              "name": "Ananya Shah",
+              "mrn": "CCA-SYN-VAL-CHEMO-01",
+              "dob": "1987-04-18"
+            },
+            "pre_vitals": {
+              "bp": "118/72",
+              "hr": 76,
+              "rr": 16,
+              "temp": 36.7,
+              "spo2": 99,
+              "units": {
+                "bp": "mmHg",
+                "hr": "/min",
+                "rr": "/min",
+                "temp": "°C",
+                "spo2": "%"
+              }
+            },
+            "access": {
+              "type": "Port",
+              "site": "Chest central access"
+            },
+            "bedside_verification": {
+              "confirmed": true
+            },
+            "started_at": "2026-09-09T09:11:33+05:30",
+            "started_by": {
+              "id": "UA-A7F6E852051F",
+              "username": "daycare.demo",
+              "name": "Anita Paul — Infusion Nurse",
+              "role": "Day Care / Infusion Nurse",
+              "professional_id": "DEMO-DC-001"
+            },
+            "post_vitals": {
+              "bp": "116/70",
+              "hr": 78,
+              "rr": 16,
+              "temp": 36.8,
+              "spo2": 99,
+              "units": {
+                "bp": "mmHg",
+                "hr": "/min",
+                "rr": "/min",
+                "temp": "°C",
+                "spo2": "%"
+              }
+            },
+            "tolerance": "Treatment completed without serious reaction",
+            "discharge_instructions": "Return for next cycle per readiness; call for fever or urgent symptoms.",
+            "next_cycle": "Cycle 3 review",
+            "completed_at": "2026-09-09T09:11:34+05:30",
+            "completed_by": {
+              "id": "UA-A7F6E852051F",
+              "username": "daycare.demo",
+              "name": "Anita Paul — Infusion Nurse",
+              "role": "Day Care / Infusion Nurse",
+              "professional_id": "DEMO-DC-001"
+            },
+            "cumulative_dose_ledger_after": {
+              "DEMO-DEX": 16.0,
+              "DEMO-PER": 1680.0,
+              "DEMO-TRA": 1088.0,
+              "DEMO-DOC": 251.58,
+              "DEMO-CARBO": 1428.0,
+              "DEMO-PEG": 12.0
+            }
+          }
+        },
+        "source_record_type": "infusion",
+        "source_record_id": "INFUSION-3EAC03788C",
+        "source_record_version": 10,
+        "source_record_status": "Completed",
+        "source_record_updated_at": "2026-09-09T09:11:34+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Anita Paul — Infusion Nurse",
+        "signed_at": "2026-09-09T09:11:34+05:30",
+        "provenance": {
+          "created_by": "UA-CD18F7D9D16C",
+          "updated_by": "UA-A7F6E852051F",
+          "source_type": "infusion",
+          "source_id": "INFUSION-3EAC03788C"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "AN-C2-actual-dose-recorded",
+      "pass": true,
+      "detail": {
+        "item_id": "OI-E1827D5",
+        "actual_dose": 714.0,
+        "actual_dose_unit": "mg",
+        "completion_status": "Administered",
+        "administration_datetime": "2026-09-10T12:00:00+05:30",
+        "ended_at": "2026-09-10T13:00:00+05:30",
+        "actual_rate": 250.0,
+        "actual_rate_unit": "mL/h",
+        "chairside_verification": {
+          "verified_by": "Second RN — Synthetic",
+          "checks": {
+            "drug": true,
+            "dose": true,
+            "volume_diluent": true,
+            "route": true,
+            "rate": true,
+            "expiry": true,
+            "physical_integrity": true,
+            "sequence": true,
+            "pump_settings": true
+          },
+          "verified_role": "Day Care / Infusion Nurse",
+          "verified_at": "2026-09-09T09:11:34+05:30",
+          "attestation": "Independent chairside check completed against the current signed order and prepared product."
+        },
+        "drug": "Carboplatin",
+        "code": "DEMO-CARBO",
+        "sequence": 5,
+        "ordered_dose": 714.0,
+        "ordered_unit": "mg",
+        "unit": "mg",
+        "route": "IV",
+        "variance_type": "None",
+        "variance_reason_code": "",
+        "administered_by": {
+          "id": "UA-A7F6E852051F",
+          "username": "daycare.demo",
+          "name": "Anita Paul — Infusion Nurse",
+          "role": "Day Care / Infusion Nurse",
+          "professional_id": "DEMO-DC-001"
+        },
+        "recorded_at": "2026-09-09T09:11:34+05:30"
+      }
+    },
+    {
+      "check": "AN-035 C2 post-cycle Proceed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "review": {
+          "id": "PCR-53F1EC4",
+          "infusion_id": "INFUSION-3EAC03788C",
+          "infusion_version": 10,
+          "order_id": "TREATMENT_ORDER-931B1D9CD9",
+          "order_version": 3,
+          "cycle": 2,
+          "day": 1,
+          "actual_administered_snapshot": [
+            {
+              "item_id": "OI-508FC13",
+              "actual_dose": 8.0,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-10T09:00:00+05:30",
+              "ended_at": "2026-09-10T09:10:00+05:30",
+              "drug": "Dexamethasone",
+              "code": "DEMO-DEX",
+              "sequence": 1,
+              "ordered_dose": 8.0,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "PO",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:33+05:30"
+            },
+            {
+              "item_id": "OI-CB09DD7",
+              "actual_dose": 840.0,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-10T09:45:00+05:30",
+              "ended_at": "2026-09-10T10:45:00+05:30",
+              "actual_rate": 250.0,
+              "actual_rate_unit": "mL/h",
+              "chairside_verification": {
+                "verified_by": "Second RN — Synthetic",
+                "checks": {
+                  "drug": true,
+                  "dose": true,
+                  "volume_diluent": true,
+                  "route": true,
+                  "rate": true,
+                  "expiry": true,
+                  "physical_integrity": true,
+                  "sequence": true,
+                  "pump_settings": true
+                },
+                "verified_role": "Day Care / Infusion Nurse",
+                "verified_at": "2026-09-09T09:11:33+05:30",
+                "attestation": "Independent chairside check completed against the current signed order and prepared product."
+              },
+              "drug": "Pertuzumab",
+              "code": "DEMO-PER",
+              "sequence": 2,
+              "ordered_dose": 840.0,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "IV",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:33+05:30"
+            },
+            {
+              "item_id": "OI-4A176F7",
+              "actual_dose": 544.0,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-10T10:30:00+05:30",
+              "ended_at": "2026-09-10T12:00:00+05:30",
+              "actual_rate": 166.67,
+              "actual_rate_unit": "mL/h",
+              "chairside_verification": {
+                "verified_by": "Second RN — Synthetic",
+                "checks": {
+                  "drug": true,
+                  "dose": true,
+                  "volume_diluent": true,
+                  "route": true,
+                  "rate": true,
+                  "expiry": true,
+                  "physical_integrity": true,
+                  "sequence": true,
+                  "pump_settings": true
+                },
+                "verified_role": "Day Care / Infusion Nurse",
+                "verified_at": "2026-09-09T09:11:34+05:30",
+                "attestation": "Independent chairside check completed against the current signed order and prepared product."
+              },
+              "drug": "Trastuzumab",
+              "code": "DEMO-TRA",
+              "sequence": 3,
+              "ordered_dose": 544.0,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "IV",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:34+05:30"
+            },
+            {
+              "item_id": "OI-1393DF3",
+              "actual_dose": 119.17,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-10T11:15:00+05:30",
+              "ended_at": "2026-09-10T12:15:00+05:30",
+              "actual_rate": 250.0,
+              "actual_rate_unit": "mL/h",
+              "chairside_verification": {
+                "verified_by": "Second RN — Synthetic",
+                "checks": {
+                  "drug": true,
+                  "dose": true,
+                  "volume_diluent": true,
+                  "route": true,
+                  "rate": true,
+                  "expiry": true,
+                  "physical_integrity": true,
+                  "sequence": true,
+                  "pump_settings": true
+                },
+                "verified_role": "Day Care / Infusion Nurse",
+                "verified_at": "2026-09-09T09:11:34+05:30",
+                "attestation": "Independent chairside check completed against the current signed order and prepared product."
+              },
+              "drug": "Docetaxel",
+              "code": "DEMO-DOC",
+              "sequence": 4,
+              "ordered_dose": 119.17,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "IV",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:34+05:30"
+            },
+            {
+              "item_id": "OI-E1827D5",
+              "actual_dose": 714.0,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-10T12:00:00+05:30",
+              "ended_at": "2026-09-10T13:00:00+05:30",
+              "actual_rate": 250.0,
+              "actual_rate_unit": "mL/h",
+              "chairside_verification": {
+                "verified_by": "Second RN — Synthetic",
+                "checks": {
+                  "drug": true,
+                  "dose": true,
+                  "volume_diluent": true,
+                  "route": true,
+                  "rate": true,
+                  "expiry": true,
+                  "physical_integrity": true,
+                  "sequence": true,
+                  "pump_settings": true
+                },
+                "verified_role": "Day Care / Infusion Nurse",
+                "verified_at": "2026-09-09T09:11:34+05:30",
+                "attestation": "Independent chairside check completed against the current signed order and prepared product."
+              },
+              "drug": "Carboplatin",
+              "code": "DEMO-CARBO",
+              "sequence": 5,
+              "ordered_dose": 714.0,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "IV",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:34+05:30"
+            },
+            {
+              "item_id": "OI-1C63A7C",
+              "actual_dose": 6.0,
+              "actual_dose_unit": "mg",
+              "completion_status": "Administered",
+              "administration_datetime": "2026-09-10T12:45:00+05:30",
+              "ended_at": "2026-09-10T12:55:00+05:30",
+              "drug": "Pegfilgrastim",
+              "code": "DEMO-PEG",
+              "sequence": 6,
+              "ordered_dose": 6.0,
+              "ordered_unit": "mg",
+              "unit": "mg",
+              "route": "SQ",
+              "variance_type": "None",
+              "variance_reason_code": "",
+              "administered_by": {
+                "id": "UA-A7F6E852051F",
+                "username": "daycare.demo",
+                "name": "Anita Paul — Infusion Nurse",
+                "role": "Day Care / Infusion Nurse",
+                "professional_id": "DEMO-DC-001"
+              },
+              "recorded_at": "2026-09-09T09:11:34+05:30"
+            }
+          ],
+          "toxicity_source_id": "TOXICITY-SYN-VAL-01",
+          "toxicity_event_ids": [
+            "TOX-BC46267"
+          ],
+          "decision": "Proceed",
+          "clinical_reason": "Cycle 2 completed; neuropathy stable after dose reduction; assess counts for Cycle 3.",
+          "next_cycle": 3,
+          "reevaluation_date": "",
+          "reviewed_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "reviewed_at": "2026-09-09T09:11:34+05:30"
+        },
+        "next_action": "Treatment readiness"
+      }
+    },
+    {
+      "check": "AN-LAB-order-AN-C3-LOWANC",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "LAB_ORDER-8890A1E9DF",
+        "catalog_id": "LAB-CMP"
+      }
+    },
+    {
+      "check": "AN-LAB-pay-AN-C3-LOWANC",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "idempotent": false
+      }
+    },
+    {
+      "check": "AN-LAB-collect-AN-C3-LOWANC",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "lab_entity_id": "LAB-ED4C6ECD24",
+        "sample_id": "SMP-AN-C3-LOWANC"
+      }
+    },
+    {
+      "check": "AN-LAB-final-AN-C3-LOWANC",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "LAB-ED4C6ECD24",
+        "status": "Final",
+        "units": {
+          "hb": "g/dL",
+          "wbc": "10^9/L",
+          "anc": "10^9/L",
+          "platelets": "10^9/L",
+          "creatinine": "mg/dL",
+          "egfr": "mL/min/1.73m2",
+          "bilirubin": "mg/dL",
+          "ast": "U/L",
+          "alt": "U/L",
+          "lvef": "%"
+        },
+        "critical_tasks": []
+      }
+    },
+    {
+      "check": "AN-036 C3 low ANC Delay signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Signed",
+        "evaluation": {
+          "protocol_id": "CCA-DEMO-TCHP",
+          "protocol_version": "1.0-demo",
+          "thresholds_source": "Institution Content Master / server-governed regimen version",
+          "lab_source_id": "LAB-ED4C6ECD24",
+          "lab_source_finalized_at": "2026-09-09T09:11:34+05:30",
+          "normalized": {
+            "anc_10e9_L": 0.9,
+            "platelets_10e9_L": 235.0,
+            "bilirubin_mg_dL": 0.6,
+            "source_units": {
+              "anc": "10^9/L",
+              "platelets": "10^9/L",
+              "bilirubin": "mg/dL"
+            }
+          },
+          "blockers": [
+            "ANC does not meet protocol criteria (0.9 vs min 1.5 ×10^9/L)"
+          ],
+          "alerts": [],
+          "can_proceed": false,
+          "rule_results": [
+            {
+              "id": "RR-ANC",
+              "category": "Hematology",
+              "field": "ANC",
+              "current": 0.9,
+              "unit": "×10^9/L",
+              "operator": ">=",
+              "threshold": 1.5,
+              "status": "HOLD",
+              "outcome": "HOLD",
+              "source_record_id": "LAB-ED4C6ECD24",
+              "source_finalized_at": "2026-09-09T09:11:34+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-PLT",
+              "category": "Hematology",
+              "field": "Platelets",
+              "current": 235.0,
+              "unit": "×10^9/L",
+              "operator": ">=",
+              "threshold": 100,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-ED4C6ECD24",
+              "source_finalized_at": "2026-09-09T09:11:34+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-EGFR",
+              "category": "Renal",
+              "field": "eGFR",
+              "current": 94.0,
+              "unit": "mL/min/1.73m²",
+              "operator": ">=",
+              "threshold": 50,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-ED4C6ECD24",
+              "source_finalized_at": "2026-09-09T09:11:34+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-BILI",
+              "category": "Hepatic",
+              "field": "Bilirubin",
+              "current": 0.6,
+              "unit": "mg/dL",
+              "operator": "<=",
+              "threshold": 1.5,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-ED4C6ECD24",
+              "source_finalized_at": "2026-09-09T09:11:34+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-LVEF",
+              "category": "Cardiac",
+              "field": "LVEF",
+              "current": 60.0,
+              "unit": "%",
+              "operator": ">=",
+              "threshold": 50,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-ED4C6ECD24",
+              "source_finalized_at": "2026-09-09T09:11:34+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-AGE",
+              "category": "Freshness",
+              "field": "Laboratory freshness",
+              "current": 0,
+              "unit": "days",
+              "operator": "<=",
+              "threshold": 7,
+              "status": "PASS",
+              "outcome": "PASS",
+              "source_record_id": "LAB-ED4C6ECD24",
+              "source_finalized_at": "2026-09-09T09:11:34+05:30",
+              "result_date": "2026-09-08",
+              "freshness_days": 0,
+              "freshness_status": "Current"
+            },
+            {
+              "id": "RR-TOX",
+              "category": "Toxicity",
+              "field": "Active toxicity review",
+              "current": "Peripheral sensory neuropathy G2 (Ongoing)",
+              "unit": "CTCAE / clinical assessment",
+              "operator": "clinical review",
+              "threshold": "CCA regimen-specific toxicity rule",
+              "status": "REVIEW",
+              "outcome": "REVIEW",
+              "source_record_id": "TOXICITY-SYN-VAL-01",
+              "source_finalized_at": "",
+              "result_date": "",
+              "freshness_days": null,
+              "freshness_status": "Not applicable"
+            }
+          ],
+          "monitoring_requirements": [
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Hematology",
+              "requirement": "CBC with ANC and platelets",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-ED4C6ECD24",
+              "evaluated_at": "2026-09-09T09:11:34+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Renal",
+              "requirement": "Renal function assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-ED4C6ECD24",
+              "evaluated_at": "2026-09-09T09:11:34+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Hepatic",
+              "requirement": "Hepatic function assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Completed",
+              "source_record_id": "LAB-ED4C6ECD24",
+              "evaluated_at": "2026-09-09T09:11:34+05:30"
+            },
+            {
+              "phase": "Before treatment / cycle",
+              "category": "Toxicity",
+              "requirement": "Current toxicity/CTCAE assessment",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Abnormal",
+              "source_record_id": "TOXICITY-SYN-VAL-01",
+              "evaluated_at": "2026-09-09T09:11:34+05:30"
+            },
+            {
+              "phase": "Periodic / drug-specific",
+              "category": "Other",
+              "requirement": "Drug-specific monitoring where applicable",
+              "clinical_value_status": "CCA-approved protocol required",
+              "status": "Required",
+              "source_record_id": "LAB-ED4C6ECD24",
+              "evaluated_at": "2026-09-09T09:11:34+05:30"
+            }
+          ],
+          "dose_modification_rules": [
+            {
+              "domain": "Hematologic",
+              "trigger": "CCA-approved regimen threshold / toxicity condition",
+              "action_options": [
+                "Proceed",
+                "Hold",
+                "Delay",
+                "Dose reduce",
+                "Omit"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Renal",
+              "trigger": "CCA-approved renal function rule",
+              "action_options": [
+                "Proceed",
+                "Dose reduce",
+                "Substitute",
+                "Hold"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Hepatic",
+              "trigger": "CCA-approved hepatic function rule",
+              "action_options": [
+                "Proceed",
+                "Dose reduce",
+                "Hold",
+                "Omit"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            },
+            {
+              "domain": "Toxicity",
+              "trigger": "CTCAE grade / drug-specific adverse effect",
+              "action_options": [
+                "Proceed",
+                "Hold",
+                "Delay",
+                "Dose reduce",
+                "Omit",
+                "Discontinue"
+              ],
+              "new_dose_rule": "Protocol-specific",
+              "clinical_value_status": "CCA configuration required"
+            }
+          ],
+          "evaluation_as_of_date": "2026-09-08",
+          "lab_age_days_at_evaluation": 0,
+          "evaluated_at": "2026-09-09T09:11:34+05:30"
+        }
+      }
+    },
+    {
+      "check": "AN-037 C3 order blocked by delayed readiness",
+      "pass": true,
+      "detail": {
+        "error": "Signed treatment readiness without blockers is required",
+        "blockers": [
+          "ANC does not meet protocol criteria (0.9 vs min 1.5 ×10^9/L)"
+        ]
+      }
+    },
+    {
+      "check": "AN-RAD-order-Follow-up CT response assessment",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "RADIOLOGY_ORDER-519BB78496",
+        "catalog_id": "RAD-CT-CAP"
+      }
+    },
+    {
+      "check": "AN-RAD-pay-Follow-up CT response assessment",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "idempotent": false
+      }
+    },
+    {
+      "check": "AN-RAD-schedule-Follow-up CT response assessment",
+      "pass": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "check": "AN-RAD-perform-Follow-up CT response assessment",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "radiology_entity_id": "RADIOLOGY-01219AD436"
+      }
+    },
+    {
+      "check": "AN-RAD-final-Follow-up CT response assessment",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "RADIOLOGY-01219AD436",
+        "status": "Final"
+      }
+    },
+    {
+      "check": "AN-038 Radiologist proposes RECIST",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "proposed_category": "Partial response",
+        "assessment": {
+          "id": "RESP-79439F",
+          "episode_id": "EP-SYN-VAL-01",
+          "criteria_set": "RECIST 1.1",
+          "criteria_version": "1.1",
+          "date": "2026-09-08",
+          "source_imaging_id": "",
+          "target_lesions": [
+            {
+              "id": "L1",
+              "organ": "Breast",
+              "site": "Left breast primary",
+              "lesion_type": "Non-nodal",
+              "size_mm": 26.0,
+              "source_value": 26.0,
+              "source_unit": "mm"
+            },
+            {
+              "id": "L2",
+              "organ": "Lymph nodes",
+              "site": "Left axillary node short axis",
+              "lesion_type": "Lymph node",
+              "size_mm": 12.0,
+              "source_value": 12.0,
+              "source_unit": "mm"
+            }
+          ],
+          "sum_mm": 38.0,
+          "baseline_sum_mm": 58.0,
+          "nadir_sum_mm": 58.0,
+          "percent_change_from_baseline": -34.483,
+          "non_target": "Non-target disease: non-CR/non-PD",
+          "new_lesions": false,
+          "proposed_response_category": "Partial response",
+          "response_category": "",
+          "confirmation_status": "Pending clinician confirmation",
+          "biomarkers": [],
+          "notes": "Synthetic follow-up response assessment",
+          "measured_by": {
+            "id": "UA-86E452103C75",
+            "username": "radiologist.demo",
+            "name": "Dr Rohan Kulkarni",
+            "role": "Radiologist",
+            "professional_id": "DEMO-RAD-001"
+          },
+          "measured_at": "2026-09-09T09:11:34+05:30"
+        }
+      }
+    },
+    {
+      "check": "AN-039 MO response confirmation task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-861E1673A8",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "Response confirmation",
+        "title": "Confirm proposed RECIST response category",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "response",
+        "source_id": "RESPONSE-SYN-VAL-01",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Radiologist proposed Partial response",
+        "created_at": "2026-09-09T09:11:34+05:30",
+        "created_by": "UA-86E452103C75",
+        "updated_at": "2026-09-09T09:11:34+05:30",
+        "updated_by": "UA-86E452103C75",
+        "data": {
+          "assessment_id": "RESP-79439F",
+          "proposed_category": "Partial response"
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "sex": "Female",
+          "phone": "917000000101",
+          "abha": "",
+          "id_number": "SYN-ANANYA-01",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:34+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "RESPONSE-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "response",
+          "status": "Active",
+          "version": 3,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:34+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-86E452103C75",
+          "data": {
+            "framework": "RECIST 1.1",
+            "assessments": [
+              {
+                "id": "RESP-79439F",
+                "episode_id": "EP-SYN-VAL-01",
+                "criteria_set": "RECIST 1.1",
+                "criteria_version": "1.1",
+                "date": "2026-09-08",
+                "source_imaging_id": "",
+                "target_lesions": [
+                  {
+                    "id": "L1",
+                    "organ": "Breast",
+                    "site": "Left breast primary",
+                    "lesion_type": "Non-nodal",
+                    "size_mm": 26.0,
+                    "source_value": 26.0,
+                    "source_unit": "mm"
+                  },
+                  {
+                    "id": "L2",
+                    "organ": "Lymph nodes",
+                    "site": "Left axillary node short axis",
+                    "lesion_type": "Lymph node",
+                    "size_mm": 12.0,
+                    "source_value": 12.0,
+                    "source_unit": "mm"
+                  }
+                ],
+                "sum_mm": 38.0,
+                "baseline_sum_mm": 58.0,
+                "nadir_sum_mm": 58.0,
+                "percent_change_from_baseline": -34.483,
+                "non_target": "Non-target disease: non-CR/non-PD",
+                "new_lesions": false,
+                "proposed_response_category": "Partial response",
+                "response_category": "",
+                "confirmation_status": "Pending clinician confirmation",
+                "biomarkers": [],
+                "notes": "Synthetic follow-up response assessment",
+                "measured_by": {
+                  "id": "UA-86E452103C75",
+                  "username": "radiologist.demo",
+                  "name": "Dr Rohan Kulkarni",
+                  "role": "Radiologist",
+                  "professional_id": "DEMO-RAD-001"
+                },
+                "measured_at": "2026-09-09T09:11:34+05:30"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-01",
+            "baseline": {
+              "date": "2026-09-08",
+              "framework": "RECIST 1.1",
+              "criteria_version": "1.1",
+              "source_study_id": "RADIOLOGY-C30EAC1B99",
+              "source_study_version": 2,
+              "target_lesions": [
+                {
+                  "id": "L1",
+                  "organ": "Breast",
+                  "site": "Left breast primary",
+                  "lesion_type": "Non-nodal",
+                  "size_mm": 40,
+                  "baseline_selected": true
+                },
+                {
+                  "id": "L2",
+                  "organ": "Lymph nodes",
+                  "site": "Left axillary node short axis",
+                  "lesion_type": "Lymph node",
+                  "size_mm": 18,
+                  "baseline_selected": true
+                }
+              ],
+              "sum_mm": 58.0,
+              "non_target": "No unequivocal non-target progression",
+              "recorded_by": {
+                "id": "UA-86E452103C75",
+                "username": "radiologist.demo",
+                "name": "Dr Rohan Kulkarni",
+                "role": "Radiologist",
+                "professional_id": "DEMO-RAD-001"
+              },
+              "recorded_at": "2026-09-09T09:11:31+05:30",
+              "amendment_reason": ""
+            },
+            "baseline_history": []
+          }
+        },
+        "source_record_type": "response",
+        "source_record_id": "RESPONSE-SYN-VAL-01",
+        "source_record_version": 3,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:34+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-86E452103C75",
+          "source_type": "response",
+          "source_id": "RESPONSE-SYN-VAL-01"
+        }
+      }
+    },
+    {
+      "check": "AN-040 MO opens exact response source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-861E1673A8",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "Response confirmation",
+        "title": "Confirm proposed RECIST response category",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "response",
+        "source_id": "RESPONSE-SYN-VAL-01",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Radiologist proposed Partial response",
+        "created_at": "2026-09-09T09:11:34+05:30",
+        "created_by": "UA-86E452103C75",
+        "updated_at": "2026-09-09T09:11:34+05:30",
+        "updated_by": "UA-86E452103C75",
+        "data": {
+          "assessment_id": "RESP-79439F",
+          "proposed_category": "Partial response"
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "sex": "Female",
+          "phone": "917000000101",
+          "abha": "",
+          "id_number": "SYN-ANANYA-01",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:34+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "RESPONSE-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "response",
+          "status": "Active",
+          "version": 3,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:34+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-86E452103C75",
+          "data": {
+            "framework": "RECIST 1.1",
+            "assessments": [
+              {
+                "id": "RESP-79439F",
+                "episode_id": "EP-SYN-VAL-01",
+                "criteria_set": "RECIST 1.1",
+                "criteria_version": "1.1",
+                "date": "2026-09-08",
+                "source_imaging_id": "",
+                "target_lesions": [
+                  {
+                    "id": "L1",
+                    "organ": "Breast",
+                    "site": "Left breast primary",
+                    "lesion_type": "Non-nodal",
+                    "size_mm": 26.0,
+                    "source_value": 26.0,
+                    "source_unit": "mm"
+                  },
+                  {
+                    "id": "L2",
+                    "organ": "Lymph nodes",
+                    "site": "Left axillary node short axis",
+                    "lesion_type": "Lymph node",
+                    "size_mm": 12.0,
+                    "source_value": 12.0,
+                    "source_unit": "mm"
+                  }
+                ],
+                "sum_mm": 38.0,
+                "baseline_sum_mm": 58.0,
+                "nadir_sum_mm": 58.0,
+                "percent_change_from_baseline": -34.483,
+                "non_target": "Non-target disease: non-CR/non-PD",
+                "new_lesions": false,
+                "proposed_response_category": "Partial response",
+                "response_category": "",
+                "confirmation_status": "Pending clinician confirmation",
+                "biomarkers": [],
+                "notes": "Synthetic follow-up response assessment",
+                "measured_by": {
+                  "id": "UA-86E452103C75",
+                  "username": "radiologist.demo",
+                  "name": "Dr Rohan Kulkarni",
+                  "role": "Radiologist",
+                  "professional_id": "DEMO-RAD-001"
+                },
+                "measured_at": "2026-09-09T09:11:34+05:30"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-01",
+            "baseline": {
+              "date": "2026-09-08",
+              "framework": "RECIST 1.1",
+              "criteria_version": "1.1",
+              "source_study_id": "RADIOLOGY-C30EAC1B99",
+              "source_study_version": 2,
+              "target_lesions": [
+                {
+                  "id": "L1",
+                  "organ": "Breast",
+                  "site": "Left breast primary",
+                  "lesion_type": "Non-nodal",
+                  "size_mm": 40,
+                  "baseline_selected": true
+                },
+                {
+                  "id": "L2",
+                  "organ": "Lymph nodes",
+                  "site": "Left axillary node short axis",
+                  "lesion_type": "Lymph node",
+                  "size_mm": 18,
+                  "baseline_selected": true
+                }
+              ],
+              "sum_mm": 58.0,
+              "non_target": "No unequivocal non-target progression",
+              "recorded_by": {
+                "id": "UA-86E452103C75",
+                "username": "radiologist.demo",
+                "name": "Dr Rohan Kulkarni",
+                "role": "Radiologist",
+                "professional_id": "DEMO-RAD-001"
+              },
+              "recorded_at": "2026-09-09T09:11:31+05:30",
+              "amendment_reason": ""
+            },
+            "baseline_history": []
+          }
+        },
+        "source_record_type": "response",
+        "source_record_id": "RESPONSE-SYN-VAL-01",
+        "source_record_version": 3,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:34+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-86E452103C75",
+          "source_type": "response",
+          "source_id": "RESPONSE-SYN-VAL-01"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "AN-041 MO confirms response",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "assessment": {
+          "id": "RESP-79439F",
+          "episode_id": "EP-SYN-VAL-01",
+          "criteria_set": "RECIST 1.1",
+          "criteria_version": "1.1",
+          "date": "2026-09-08",
+          "source_imaging_id": "",
+          "target_lesions": [
+            {
+              "id": "L1",
+              "organ": "Breast",
+              "site": "Left breast primary",
+              "lesion_type": "Non-nodal",
+              "size_mm": 26.0,
+              "source_value": 26.0,
+              "source_unit": "mm"
+            },
+            {
+              "id": "L2",
+              "organ": "Lymph nodes",
+              "site": "Left axillary node short axis",
+              "lesion_type": "Lymph node",
+              "size_mm": 12.0,
+              "source_value": 12.0,
+              "source_unit": "mm"
+            }
+          ],
+          "sum_mm": 38.0,
+          "baseline_sum_mm": 58.0,
+          "nadir_sum_mm": 58.0,
+          "percent_change_from_baseline": -34.483,
+          "non_target": "Non-target disease: non-CR/non-PD",
+          "new_lesions": false,
+          "proposed_response_category": "Partial response",
+          "response_category": "Partial response",
+          "confirmation_status": "Confirmed",
+          "biomarkers": [],
+          "notes": "Synthetic follow-up response assessment",
+          "measured_by": {
+            "id": "UA-86E452103C75",
+            "username": "radiologist.demo",
+            "name": "Dr Rohan Kulkarni",
+            "role": "Radiologist",
+            "professional_id": "DEMO-RAD-001"
+          },
+          "measured_at": "2026-09-09T09:11:34+05:30",
+          "confirmation_reason": "Continue multidisciplinary systemic strategy after count recovery; delayed Cycle 3 requires repeat CBC.",
+          "confirmed_by": {
+            "id": "UA-CD18F7D9D16C",
+            "username": "mo.demo",
+            "name": "Dr Asha Mehta",
+            "role": "Medical Oncology",
+            "professional_id": "DEMO-MO-001"
+          },
+          "confirmed_at": "2026-09-09T09:11:34+05:30"
+        }
+      }
+    },
+    {
+      "check": "AN-042 named audit chain contains systemic milestones",
+      "pass": true,
+      "detail": [
+        "CARE_PLAN_EXCEPTION",
+        "CONSENT_ACTION",
+        "CONSENT_SYNC",
+        "CONSULTATION_SIGN",
+        "CREATE",
+        "DIAGNOSIS_VERIFY",
+        "HISTORY_APPEND",
+        "INFUSION_COMPLETE",
+        "INFUSION_READY",
+        "INFUSION_START",
+        "INTAKE_SAVE",
+        "JOURNEY_STAGE",
+        "LAB_FINAL",
+        "MAR_ITEM",
+        "MDT_ATTENDANCE",
+        "MDT_CASE_SUBMIT",
+        "MDT_CHAIR_APPROVE",
+        "MDT_RECOMMEND_SUBMIT",
+        "MED_RECON",
+        "MODIFICATION_CREATE",
+        "ORDER_EXECUTION_COMPLETE",
+        "ORDER_PHARMACY_STATE",
+        "PAYMENT",
+        "PHARMACY_DECISION",
+        "PHARMACY_PREPARE",
+        "PHARMACY_RELEASE",
+        "PLAN_SIGN",
+        "POST_CYCLE_REVIEW",
+        "RAD_FINAL",
+        "RAD_PERFORM",
+        "RAD_SCHEDULE",
+        "READINESS_SIGN",
+        "RECIST_BASELINE",
+        "REFERRAL_UPDATE",
+        "REGISTRATION_SAVE",
+        "RESPONSE_CONFIRM",
+        "RESPONSE_MEASUREMENT",
+        "SAMPLE_COLLECT",
+        "TASK_AUTO_COMPLETE",
+        "TASK_CREATE",
+        "TASK_SOURCE_OPEN",
+        "TOXICITY_RECORD",
+        "TREATMENT_SCHEDULE_EXCEPTION"
+      ]
+    },
+    {
+      "check": "AN-043 next-cycle tasks persisted",
+      "pass": true,
+      "detail": [
+        {
+          "id": "TASK-503E96206C",
+          "status": "Completed",
+          "source_type": "infusion",
+          "source_id": "INFUSION-0641A6A91B"
+        },
+        {
+          "id": "TASK-AA0C6C46CF",
+          "status": "Completed",
+          "source_type": "infusion",
+          "source_id": "INFUSION-3EAC03788C"
+        }
+      ]
+    }
+  ],
+  "key_records": {
+    "mdt": "MDT-SYN-VAL-01",
+    "treatment_plan": "TREATMENT_PLAN-7467C8D687",
+    "baseline_radiology": "RADIOLOGY-C30EAC1B99",
+    "cycle1_order": "TREATMENT_ORDER-C2320B6357",
+    "cycle1_infusion": "INFUSION-0641A6A91B",
+    "cycle2_order": "TREATMENT_ORDER-931B1D9CD9",
+    "cycle2_infusion": "INFUSION-3EAC03788C",
+    "cycle3_lab": "LAB-ED4C6ECD24",
+    "followup_radiology": "RADIOLOGY-01219AD436",
+    "response_assessment": "RESP-79439F"
+  }
+}

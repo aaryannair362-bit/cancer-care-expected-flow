@@ -1,0 +1,2080 @@
+{
+  "patient_id": "PAT-VAL-NEHA",
+  "patient": "Neha Kulkarni",
+  "build": "12.2-PC7.1-PC8.0",
+  "generated_at": "2026-09-09T03:41:41.268321+00:00",
+  "checks": 62,
+  "pass": 62,
+  "fail": 0,
+  "results": [
+    {
+      "check": "RT-001 baseline registration draft",
+      "pass": true,
+      "detail": {
+        "id": "REG-SYN-VAL-02",
+        "status": "Draft"
+      }
+    },
+    {
+      "check": "RT-002 registration complete",
+      "pass": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "check": "RT-003 referral assigned to MO triage",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "REF-SYN-VAL-02",
+        "status": "Assigned"
+      }
+    },
+    {
+      "check": "RT-004 MO referral task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-E4E314D6EF",
+        "patient_id": "PAT-VAL-NEHA",
+        "episode_id": "EP-SYN-VAL-02",
+        "task_type": "Referral lifecycle",
+        "title": "Referral: Synthetic radiotherapy case for prescription -> simulation -> contouring -> planning -> physics QA -> release -> fraction delivery -> OTV/completion.",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "referral",
+        "source_id": "REF-SYN-VAL-02",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Assigned",
+        "created_at": "2026-09-09T09:11:38+05:30",
+        "created_by": "UA-1953F3A56877",
+        "updated_at": "2026-09-09T09:11:38+05:30",
+        "updated_by": "UA-1953F3A56877",
+        "data": {
+          "referral_id": "REF-SYN-VAL-02",
+          "status": "Assigned"
+        },
+        "patient": {
+          "id": "PAT-VAL-NEHA",
+          "mrn": "CCA-SYN-VAL-RT-01",
+          "name": "Neha Kulkarni",
+          "dob": "1979-11-03",
+          "sex": "Female",
+          "phone": "917000000102",
+          "abha": "",
+          "id_number": "SYN-NEHA-02",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:38+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-02",
+            "kind": "Primary cancer",
+            "label": "Breast/chest-wall radiotherapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "REF-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "referral",
+          "status": "Assigned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:38+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "data": {
+            "status": "Assigned",
+            "reason": "Synthetic radiotherapy case for prescription -> simulation -> contouring -> planning -> physics QA -> release -> fraction delivery -> OTV/completion.",
+            "assigned_department": "Medical Oncology",
+            "assigned_clinician": "Dr Asha Mehta",
+            "priority": "Routine",
+            "history": [
+              {
+                "status": "Created",
+                "at": "2026-09-09T09:11:29+05:30",
+                "by": {
+                  "name": "System",
+                  "role": "System"
+                },
+                "reason": "Synthetic validation baseline"
+              },
+              {
+                "at": "2026-09-09T09:11:38+05:30",
+                "from": "Created",
+                "to": "Assigned",
+                "by": {
+                  "id": "UA-1953F3A56877",
+                  "username": "front.desk.demo",
+                  "name": "Kavya Rao — Front Desk",
+                  "role": "Front Desk",
+                  "professional_id": "DEMO-FD-001"
+                },
+                "reason": ""
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "updated_by": {
+              "id": "UA-1953F3A56877",
+              "username": "front.desk.demo",
+              "name": "Kavya Rao — Front Desk",
+              "role": "Front Desk",
+              "professional_id": "DEMO-FD-001"
+            },
+            "updated_at": "2026-09-09T09:11:38+05:30"
+          }
+        },
+        "source_record_type": "referral",
+        "source_record_id": "REF-SYN-VAL-02",
+        "source_record_version": 2,
+        "source_record_status": "Assigned",
+        "source_record_updated_at": "2026-09-09T09:11:38+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "source_type": "referral",
+          "source_id": "REF-SYN-VAL-02"
+        }
+      }
+    },
+    {
+      "check": "RT-005 MO opens exact referral source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-E4E314D6EF",
+        "patient_id": "PAT-VAL-NEHA",
+        "episode_id": "EP-SYN-VAL-02",
+        "task_type": "Referral lifecycle",
+        "title": "Referral: Synthetic radiotherapy case for prescription -> simulation -> contouring -> planning -> physics QA -> release -> fraction delivery -> OTV/completion.",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "referral",
+        "source_id": "REF-SYN-VAL-02",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Assigned",
+        "created_at": "2026-09-09T09:11:38+05:30",
+        "created_by": "UA-1953F3A56877",
+        "updated_at": "2026-09-09T09:11:38+05:30",
+        "updated_by": "UA-1953F3A56877",
+        "data": {
+          "referral_id": "REF-SYN-VAL-02",
+          "status": "Assigned"
+        },
+        "patient": {
+          "id": "PAT-VAL-NEHA",
+          "mrn": "CCA-SYN-VAL-RT-01",
+          "name": "Neha Kulkarni",
+          "dob": "1979-11-03",
+          "sex": "Female",
+          "phone": "917000000102",
+          "abha": "",
+          "id_number": "SYN-NEHA-02",
+          "current_department": "Medical Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:38+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-02",
+            "kind": "Primary cancer",
+            "label": "Breast/chest-wall radiotherapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "REF-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "referral",
+          "status": "Assigned",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:38+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "data": {
+            "status": "Assigned",
+            "reason": "Synthetic radiotherapy case for prescription -> simulation -> contouring -> planning -> physics QA -> release -> fraction delivery -> OTV/completion.",
+            "assigned_department": "Medical Oncology",
+            "assigned_clinician": "Dr Asha Mehta",
+            "priority": "Routine",
+            "history": [
+              {
+                "status": "Created",
+                "at": "2026-09-09T09:11:29+05:30",
+                "by": {
+                  "name": "System",
+                  "role": "System"
+                },
+                "reason": "Synthetic validation baseline"
+              },
+              {
+                "at": "2026-09-09T09:11:38+05:30",
+                "from": "Created",
+                "to": "Assigned",
+                "by": {
+                  "id": "UA-1953F3A56877",
+                  "username": "front.desk.demo",
+                  "name": "Kavya Rao — Front Desk",
+                  "role": "Front Desk",
+                  "professional_id": "DEMO-FD-001"
+                },
+                "reason": ""
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "updated_by": {
+              "id": "UA-1953F3A56877",
+              "username": "front.desk.demo",
+              "name": "Kavya Rao — Front Desk",
+              "role": "Front Desk",
+              "professional_id": "DEMO-FD-001"
+            },
+            "updated_at": "2026-09-09T09:11:38+05:30"
+          }
+        },
+        "source_record_type": "referral",
+        "source_record_id": "REF-SYN-VAL-02",
+        "source_record_version": 2,
+        "source_record_status": "Assigned",
+        "source_record_updated_at": "2026-09-09T09:11:38+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "source_type": "referral",
+          "source_id": "REF-SYN-VAL-02"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "RT-006 referral accepted",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "REF-SYN-VAL-02",
+        "status": "Accepted"
+      }
+    },
+    {
+      "check": "RT-007 intake signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "bmi": 23.83,
+        "bsa_raw_m2": 1.6465,
+        "bsa_m2": 1.65,
+        "bsa_rounding_policy": {
+          "formula": "Mosteller",
+          "raw_precision": 4,
+          "display_precision": 2,
+          "ordering_precision": 2,
+          "formula_text": "sqrt(height_cm × weight_kg / 3600)"
+        },
+        "bsa_formula": "Mosteller: sqrt(height_cm × weight_kg / 3600)",
+        "canonical_units": {
+          "bp": "mmHg",
+          "hr": "/min",
+          "rr": "/min",
+          "temp_c": "°C",
+          "spo2": "%",
+          "weight_kg": "kg",
+          "height_cm": "cm"
+        },
+        "source_measurements": {
+          "sbp": {
+            "value": 122.0,
+            "unit": "mmHg"
+          },
+          "dbp": {
+            "value": 74.0,
+            "unit": "mmHg"
+          },
+          "hr": {
+            "value": 76.0,
+            "unit": "/min"
+          },
+          "rr": {
+            "value": 16.0,
+            "unit": "/min"
+          },
+          "temp": {
+            "value": 36.6,
+            "unit": "°C"
+          },
+          "spo2": {
+            "value": 99.0,
+            "unit": "%"
+          },
+          "weight": {
+            "value": 61.0,
+            "unit": "kg"
+          },
+          "height": {
+            "value": 160.0,
+            "unit": "cm"
+          }
+        }
+      }
+    },
+    {
+      "check": "RT-008 MO consultation signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "RT-009 diagnosis verified",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Verified"
+      }
+    },
+    {
+      "check": "RT-010 MDT submitted",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "mdt_id": "MDT-SYN-VAL-02",
+        "status": "Submitted"
+      }
+    },
+    {
+      "check": "RT-011.1 attendance Medical Oncology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Not met"
+      }
+    },
+    {
+      "check": "RT-011.2 attendance Radiation Oncology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Not met"
+      }
+    },
+    {
+      "check": "RT-011.3 attendance Surgical Oncology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Met"
+      }
+    },
+    {
+      "check": "RT-011.4 attendance Radiology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Met"
+      }
+    },
+    {
+      "check": "RT-011.5 attendance Pathology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "quorum_status": "Met"
+      }
+    },
+    {
+      "check": "RT-012 Coordinator recommendation",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Pending Chair Approval"
+      }
+    },
+    {
+      "check": "RT-013 Chair task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-8D428D3A2C",
+        "patient_id": "PAT-VAL-NEHA",
+        "episode_id": "EP-SYN-VAL-02",
+        "task_type": "MDT case preparation",
+        "title": "Review and sign submitted MDT recommendation",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "MDT Chair",
+        "owner_user_id": "USR-MDTCHAIR-001",
+        "source_type": "mdt",
+        "source_id": "MDT-SYN-VAL-02",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Confirm definitive Radiation Oncology strategy for FIGO IIB cervical cancer.",
+        "created_at": "2026-09-09T09:11:39+05:30",
+        "created_by": "UA-223C7394AF8F",
+        "updated_at": "2026-09-09T09:11:39+05:30",
+        "updated_by": "UA-223C7394AF8F",
+        "data": {
+          "mdt_id": "MDT-SYN-VAL-02"
+        },
+        "patient": {
+          "id": "PAT-VAL-NEHA",
+          "mrn": "CCA-SYN-VAL-RT-01",
+          "name": "Neha Kulkarni",
+          "dob": "1979-11-03",
+          "sex": "Female",
+          "current_department": "MDT / Tumour Board",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-02",
+            "kind": "Primary cancer",
+            "label": "Breast/chest-wall radiotherapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "MDT-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "mdt",
+          "status": "Pending Chair Approval",
+          "version": 3,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:39+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-223C7394AF8F",
+          "data": {
+            "attendees": [],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-02",
+            "clinical_question": "Confirm definitive Radiation Oncology strategy for FIGO IIB cervical cancer.",
+            "clinical_summary": "FIGO IIB cervical squamous carcinoma, non-metastatic, ECOG 1.",
+            "submitted_by": {
+              "id": "UA-CD18F7D9D16C",
+              "username": "mo.demo",
+              "name": "Dr Asha Mehta",
+              "role": "Medical Oncology",
+              "professional_id": "DEMO-MO-001"
+            },
+            "submitted_at": "2026-09-09T09:11:39+05:30",
+            "meeting_mode": "Internal",
+            "meeting_at": "2026-09-09T10:00:00+05:30",
+            "submission_status": "Submitted",
+            "intent": "Definitive",
+            "recommendation": "Proceed with governed synthetic pelvic external-beam radiotherapy workflow with staged simulation, contouring, planning, Physics QA and RO release.",
+            "rationale": "Multidisciplinary consensus for synthetic RT validation pathway.",
+            "final_consensus": "Consensus",
+            "specialty_responsible": "Radiation Oncology",
+            "actions": [
+              {
+                "description": "Create and authorize radiation Treatment Plan",
+                "owner_role": "Radiation Oncology",
+                "due_date": "2026-09-10",
+                "priority": "High"
+              }
+            ],
+            "recommendation_submitted_by": {
+              "id": "UA-223C7394AF8F",
+              "username": "mdt.coordinator.demo",
+              "name": "Riya Kapoor — MDT Coordinator",
+              "role": "MDT Coordinator",
+              "professional_id": "DEMO-MDT-CO-001"
+            },
+            "recommendation_submitted_at": "2026-09-09T09:11:39+05:30",
+            "chair_decision": "Pending",
+            "chair_signed_by": null,
+            "chair_signed_at": "",
+            "chair_reason": "",
+            "signed_by": null,
+            "signed_at": ""
+          }
+        },
+        "source_record_type": "mdt",
+        "source_record_id": "MDT-SYN-VAL-02",
+        "source_record_version": 3,
+        "source_record_status": "Pending Chair Approval",
+        "source_record_updated_at": "2026-09-09T09:11:39+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-223C7394AF8F",
+          "source_type": "mdt",
+          "source_id": "MDT-SYN-VAL-02"
+        }
+      }
+    },
+    {
+      "check": "RT-014 Chair signs",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "MDT Recommended",
+        "signed_by": {
+          "id": "UA-52D1B8AE0EE7",
+          "username": "mdt.chair.demo",
+          "name": "Dr Vikram Menon — MDT Chair",
+          "role": "MDT Chair",
+          "professional_id": "DEMO-MDT-CHAIR-001"
+        }
+      }
+    },
+    {
+      "check": "RT-015 RO treatment plan created",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "TREATMENT_PLAN-42861A2ABA",
+        "status": "Draft",
+        "note": "MDT created a draft plan only; no treatment order was generated."
+      }
+    },
+    {
+      "check": "RT-016 RO treatment plan signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Clinician Approved"
+      }
+    },
+    {
+      "check": "RT-017 radiation record available",
+      "pass": true,
+      "detail": {
+        "id": "RADIATION-SYN-VAL-02",
+        "status": "Draft"
+      }
+    },
+    {
+      "check": "RT-018 wrong-role prescription blocked",
+      "pass": true,
+      "detail": {
+        "error": "Radiation Oncology required"
+      }
+    },
+    {
+      "check": "RT-019 RTT has no access before prescription signed",
+      "pass": true,
+      "detail": {
+        "error": "Patient access not assigned to this role"
+      }
+    },
+    {
+      "check": "RT-020 RT prescription signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "RT Oncologist Approved"
+      }
+    },
+    {
+      "check": "RT-021 QA before plan complete blocked",
+      "pass": true,
+      "detail": {
+        "error": "Simulation, contouring and plan preparation must be complete before Physics QA",
+        "planning": {
+          "simulation_status": "Pending",
+          "contouring_status": "Pending",
+          "planning_status": "Pending"
+        }
+      }
+    },
+    {
+      "check": "RT-022 simulation recorded",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Simulation Complete",
+        "plan_version": 1,
+        "prescription_version": 1
+      }
+    },
+    {
+      "check": "RT-023 contouring recorded",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Contouring Approved",
+        "plan_version": 1,
+        "prescription_version": 1
+      }
+    },
+    {
+      "check": "RT-024 plan ready for Physics QA",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Plan Ready for Physics QA",
+        "plan_version": 1,
+        "prescription_version": 1
+      }
+    },
+    {
+      "check": "RT-025 RO cannot self-approve Physics QA",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "physics_qa": "Pending"
+      }
+    },
+    {
+      "check": "RT-026 Physics QA approved",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Plan Ready for Physics QA",
+        "plan_version": 1,
+        "prescription_version": 1
+      }
+    },
+    {
+      "check": "RT-027 physics_qa recorded at current plan version",
+      "pass": true,
+      "detail": {
+        "simulation_status": "Completed",
+        "contouring_status": "Completed",
+        "planning_status": "Planning Complete",
+        "physics_qa": "Approved",
+        "physician_final_approval": "Pending",
+        "dicom_refs": {},
+        "plan_version": 1,
+        "prescription_version": 1,
+        "physics_qa_note": "Independent plan/geometry/dose QA passed for synthetic validation.",
+        "physics_qa_by": {
+          "id": "UA-DA16813F8928",
+          "username": "physics.demo",
+          "name": "Arvind Iyer — Medical Physicist",
+          "role": "Radiation Physicist",
+          "professional_id": "DEMO-PHY-001"
+        },
+        "physics_qa_at": "2026-09-09T09:11:40+05:30",
+        "physics_qa_plan_version": 1,
+        "physics_qa_prescription_version": 1
+      }
+    },
+    {
+      "check": "RT-028 delivery before RO final approval blocked",
+      "pass": true,
+      "detail": {
+        "error": "Current approved prescription plus Physics QA and RO final approval for the current RT plan/prescription version are required",
+        "plan_version": 1,
+        "prescription_version": 1
+      }
+    },
+    {
+      "check": "RT-029 RO final approval + release",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Ready for Treatment",
+        "plan_version": 1,
+        "prescription_version": 1
+      }
+    },
+    {
+      "check": "RT-030 25Gy vs 2Gy blocked",
+      "pass": true,
+      "detail": {
+        "error": "RT fraction dose safety check failed",
+        "details": [
+          "Delivered fraction dose 25.0 Gy differs from prescribed 2.0 Gy beyond configured tolerance ±0.01 Gy; amend/re-approve the prescription before delivery"
+        ],
+        "prescribed_fraction_dose_gy": 2.0,
+        "projected_cumulative_dose_gy": 25.0,
+        "prescribed_total_dose_gy": 50.0
+      }
+    },
+    {
+      "check": "RT-031.1 fraction 1 delivered",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "In Progress",
+        "delivered_count": 1,
+        "plan_version": 1,
+        "prescription_version": 1,
+        "cumulative_delivered_dose_gy": 2.0
+      }
+    },
+    {
+      "check": "RT-032 duplicate fraction blocked",
+      "pass": true,
+      "detail": {
+        "error": "Duplicate fraction delivery"
+      }
+    },
+    {
+      "check": "RT-031.2 fraction 2 delivered",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "In Progress",
+        "delivered_count": 2,
+        "plan_version": 1,
+        "prescription_version": 1,
+        "cumulative_delivered_dose_gy": 4.0
+      }
+    },
+    {
+      "check": "RT-031.3 fraction 3 delivered",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "In Progress",
+        "delivered_count": 3,
+        "plan_version": 1,
+        "prescription_version": 1,
+        "cumulative_delivered_dose_gy": 6.0
+      }
+    },
+    {
+      "check": "RT-031.4 fraction 4 delivered",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "In Progress",
+        "delivered_count": 4,
+        "plan_version": 1,
+        "prescription_version": 1,
+        "cumulative_delivered_dose_gy": 8.0
+      }
+    },
+    {
+      "check": "RT-031.5 fraction 5 delivered",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "In Progress",
+        "delivered_count": 5,
+        "plan_version": 1,
+        "prescription_version": 1,
+        "cumulative_delivered_dose_gy": 10.0
+      }
+    },
+    {
+      "check": "RT-033 cumulative overdose blocked",
+      "pass": true,
+      "detail": {
+        "error": "RT fraction dose safety check failed",
+        "details": [
+          "Delivered fraction dose 42.0 Gy differs from prescribed 2.0 Gy beyond configured tolerance ±0.01 Gy; amend/re-approve the prescription before delivery",
+          "Projected cumulative delivered dose 52.0 Gy exceeds prescribed total 50.0 Gy"
+        ],
+        "prescribed_fraction_dose_gy": 2.0,
+        "projected_cumulative_dose_gy": 52.0,
+        "prescribed_total_dose_gy": 50.0
+      }
+    },
+    {
+      "check": "RT-034 OTV signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "otv": {
+          "id": "OTV-22F0A52",
+          "after_fraction": 5,
+          "assessment": "Clinically stable after first five fractions.",
+          "toxicity_summary": "Mild Grade 1 fatigue; no treatment-limiting toxicity.",
+          "plan": "Continue RT and monitor symptoms.",
+          "weight_kg": 61,
+          "performance_status": "ECOG 1",
+          "signed_by": {
+            "id": "UA-E01323E6A584",
+            "username": "ro.demo",
+            "name": "Dr Neha Rao",
+            "role": "Radiation Oncology",
+            "professional_id": "DEMO-RO-001"
+          },
+          "signed_at": "2026-09-09T09:11:40+05:30"
+        }
+      }
+    },
+    {
+      "check": "RT-035 interruption recorded",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "interruption": {
+          "id": "RTINT-98B2ACA",
+          "start_at": "2026-09-15T09:00:00+05:30",
+          "end_at": "",
+          "reason": "Synthetic setup/anatomy change requiring RO review and adaptive replanning",
+          "category": "Clinical",
+          "recorded_by": {
+            "id": "UA-98260CC8EE8A",
+            "username": "rtt.demo",
+            "name": "Meera Joshi — RTT",
+            "role": "Radiation Technologist",
+            "professional_id": "DEMO-RTT-001"
+          },
+          "recorded_at": "2026-09-09T09:11:40+05:30",
+          "compensation_plan": "RO review and adaptive replanning before further delivery"
+        },
+        "next_role": "Radiation Oncology"
+      }
+    },
+    {
+      "check": "RT-036 RO interruption task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-E32263E4C2",
+        "patient_id": "PAT-VAL-NEHA",
+        "episode_id": "EP-SYN-VAL-02",
+        "task_type": "RT interruption review",
+        "title": "Review RT interruption and decide continuation/modification",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Radiation Oncology",
+        "owner_user_id": "USR-RADIATIO-001",
+        "source_type": "radiation",
+        "source_id": "RADIATION-SYN-VAL-02",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Synthetic setup/anatomy change requiring RO review and adaptive replanning",
+        "created_at": "2026-09-09T09:11:40+05:30",
+        "created_by": "UA-98260CC8EE8A",
+        "updated_at": "2026-09-09T09:11:40+05:30",
+        "updated_by": "UA-98260CC8EE8A",
+        "data": {
+          "interruption": {
+            "id": "RTINT-98B2ACA",
+            "start_at": "2026-09-15T09:00:00+05:30",
+            "end_at": "",
+            "reason": "Synthetic setup/anatomy change requiring RO review and adaptive replanning",
+            "category": "Clinical",
+            "recorded_by": {
+              "id": "UA-98260CC8EE8A",
+              "username": "rtt.demo",
+              "name": "Meera Joshi — RTT",
+              "role": "Radiation Technologist",
+              "professional_id": "DEMO-RTT-001"
+            },
+            "recorded_at": "2026-09-09T09:11:40+05:30",
+            "compensation_plan": "RO review and adaptive replanning before further delivery"
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-NEHA",
+          "mrn": "CCA-SYN-VAL-RT-01",
+          "name": "Neha Kulkarni",
+          "dob": "1979-11-03",
+          "sex": "Female",
+          "phone": "917000000102",
+          "abha": "",
+          "id_number": "SYN-NEHA-02",
+          "current_department": "Radiation Treatment",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:40+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-02",
+            "kind": "Primary cancer",
+            "label": "Breast/chest-wall radiotherapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "RADIATION-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "radiation",
+          "status": "In Progress",
+          "version": 15,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:40+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-98260CC8EE8A",
+          "data": {
+            "prescription": {
+              "status": "RT Oncologist Approved",
+              "site": "Pelvis / cervix",
+              "laterality": "Midline",
+              "intent": "Definitive",
+              "modality": "External Beam",
+              "technique": "VMAT",
+              "energy": "6 MV",
+              "treatment_phase": "Pelvic phase",
+              "total_dose_gy": 50.0,
+              "dose_per_fraction_gy": 2.0,
+              "fractions": 25,
+              "frequency": "Daily, 5 fractions/week",
+              "planned_start": "2026-09-10",
+              "target_volumes": [
+                {
+                  "name": "GTV cervix",
+                  "volume_type": "GTV",
+                  "prescription_dose_gy": 50.0
+                },
+                {
+                  "name": "CTV pelvis",
+                  "volume_type": "CTV",
+                  "prescription_dose_gy": 50.0
+                },
+                {
+                  "name": "PTV pelvis",
+                  "volume_type": "PTV",
+                  "margin_mm": 5,
+                  "prescription_dose_gy": 50.0
+                }
+              ],
+              "organs_at_risk": [
+                "Bladder",
+                "Rectum",
+                "Bowel",
+                "Femoral heads"
+              ],
+              "oar_constraints": [
+                {
+                  "organ": "Bladder",
+                  "metric": "V45Gy",
+                  "operator": "<",
+                  "value": 35,
+                  "unit": "%"
+                },
+                {
+                  "organ": "Rectum",
+                  "metric": "V45Gy",
+                  "operator": "<",
+                  "value": 60,
+                  "unit": "%"
+                }
+              ],
+              "simulation_requirement": "CT simulation",
+              "image_guidance": "Daily CBCT",
+              "bolus": "None",
+              "special_instructions": "Synthetic validation prescription only",
+              "prescription_version": 1,
+              "signed_by": {
+                "id": "UA-E01323E6A584",
+                "username": "ro.demo",
+                "name": "Dr Neha Rao",
+                "role": "Radiation Oncology",
+                "professional_id": "DEMO-RO-001"
+              },
+              "signed_at": "2026-09-09T09:11:40+05:30"
+            },
+            "planning": {
+              "simulation_status": "Completed",
+              "contouring_status": "Completed",
+              "planning_status": "Planning Complete",
+              "physics_qa": "Approved",
+              "physician_final_approval": "Approved",
+              "dicom_refs": {},
+              "plan_version": 1,
+              "prescription_version": 1,
+              "physics_qa_note": "Independent plan/geometry/dose QA passed for synthetic validation.",
+              "physics_qa_by": {
+                "id": "UA-DA16813F8928",
+                "username": "physics.demo",
+                "name": "Arvind Iyer — Medical Physicist",
+                "role": "Radiation Physicist",
+                "professional_id": "DEMO-PHY-001"
+              },
+              "physics_qa_at": "2026-09-09T09:11:40+05:30",
+              "physics_qa_plan_version": 1,
+              "physics_qa_prescription_version": 1,
+              "physician_approval_by": {
+                "id": "UA-E01323E6A584",
+                "username": "ro.demo",
+                "name": "Dr Neha Rao",
+                "role": "Radiation Oncology",
+                "professional_id": "DEMO-RO-001"
+              },
+              "physician_approval_at": "2026-09-09T09:11:40+05:30",
+              "physician_approval_plan_version": 1,
+              "physician_approval_prescription_version": 1
+            },
+            "fractions": [
+              {
+                "fraction_number": 1,
+                "status": "Delivered",
+                "date_time": "2026-09-10T09:00:00+05:30",
+                "planned_date_time": "",
+                "rescheduled_to": "",
+                "delivered_dose_gy": 2.0,
+                "dose_safety_snapshot": {
+                  "ok": true,
+                  "errors": [],
+                  "prescribed_fraction_dose_gy": 2.0,
+                  "delivered_dose_gy": 2.0,
+                  "delivery_tolerance_gy": 0.01,
+                  "prior_cumulative_dose_gy": 0,
+                  "projected_cumulative_dose_gy": 2.0,
+                  "prescribed_total_dose_gy": 50.0
+                },
+                "prescription_version": 1,
+                "plan_version": 1,
+                "delivered_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "verified_by": "Meera Joshi — RTT",
+                "image_guidance_performed": true,
+                "setup_variation": "Within synthetic tolerance",
+                "toxicity": "",
+                "reason": ""
+              },
+              {
+                "fraction_number": 2,
+                "status": "Delivered",
+                "date_time": "2026-09-11T09:00:00+05:30",
+                "planned_date_time": "",
+                "rescheduled_to": "",
+                "delivered_dose_gy": 2.0,
+                "dose_safety_snapshot": {
+                  "ok": true,
+                  "errors": [],
+                  "prescribed_fraction_dose_gy": 2.0,
+                  "delivered_dose_gy": 2.0,
+                  "delivery_tolerance_gy": 0.01,
+                  "prior_cumulative_dose_gy": 2.0,
+                  "projected_cumulative_dose_gy": 4.0,
+                  "prescribed_total_dose_gy": 50.0
+                },
+                "prescription_version": 1,
+                "plan_version": 1,
+                "delivered_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "verified_by": "Meera Joshi — RTT",
+                "image_guidance_performed": true,
+                "setup_variation": "Within synthetic tolerance",
+                "toxicity": "",
+                "reason": ""
+              },
+              {
+                "fraction_number": 3,
+                "status": "Delivered",
+                "date_time": "2026-09-12T09:00:00+05:30",
+                "planned_date_time": "",
+                "rescheduled_to": "",
+                "delivered_dose_gy": 2.0,
+                "dose_safety_snapshot": {
+                  "ok": true,
+                  "errors": [],
+                  "prescribed_fraction_dose_gy": 2.0,
+                  "delivered_dose_gy": 2.0,
+                  "delivery_tolerance_gy": 0.01,
+                  "prior_cumulative_dose_gy": 4.0,
+                  "projected_cumulative_dose_gy": 6.0,
+                  "prescribed_total_dose_gy": 50.0
+                },
+                "prescription_version": 1,
+                "plan_version": 1,
+                "delivered_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "verified_by": "Meera Joshi — RTT",
+                "image_guidance_performed": true,
+                "setup_variation": "Within synthetic tolerance",
+                "toxicity": "",
+                "reason": ""
+              },
+              {
+                "fraction_number": 4,
+                "status": "Delivered",
+                "date_time": "2026-09-13T09:00:00+05:30",
+                "planned_date_time": "",
+                "rescheduled_to": "",
+                "delivered_dose_gy": 2.0,
+                "dose_safety_snapshot": {
+                  "ok": true,
+                  "errors": [],
+                  "prescribed_fraction_dose_gy": 2.0,
+                  "delivered_dose_gy": 2.0,
+                  "delivery_tolerance_gy": 0.01,
+                  "prior_cumulative_dose_gy": 6.0,
+                  "projected_cumulative_dose_gy": 8.0,
+                  "prescribed_total_dose_gy": 50.0
+                },
+                "prescription_version": 1,
+                "plan_version": 1,
+                "delivered_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "verified_by": "Meera Joshi — RTT",
+                "image_guidance_performed": true,
+                "setup_variation": "Within synthetic tolerance",
+                "toxicity": "",
+                "reason": ""
+              },
+              {
+                "fraction_number": 5,
+                "status": "Delivered",
+                "date_time": "2026-09-14T09:00:00+05:30",
+                "planned_date_time": "",
+                "rescheduled_to": "",
+                "delivered_dose_gy": 2.0,
+                "dose_safety_snapshot": {
+                  "ok": true,
+                  "errors": [],
+                  "prescribed_fraction_dose_gy": 2.0,
+                  "delivered_dose_gy": 2.0,
+                  "delivery_tolerance_gy": 0.01,
+                  "prior_cumulative_dose_gy": 8.0,
+                  "projected_cumulative_dose_gy": 10.0,
+                  "prescribed_total_dose_gy": 50.0
+                },
+                "prescription_version": 1,
+                "plan_version": 1,
+                "delivered_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "verified_by": "Meera Joshi — RTT",
+                "image_guidance_performed": true,
+                "setup_variation": "Within synthetic tolerance",
+                "toxicity": "Mild fatigue",
+                "reason": ""
+              }
+            ],
+            "interruptions": [
+              {
+                "id": "RTINT-98B2ACA",
+                "start_at": "2026-09-15T09:00:00+05:30",
+                "end_at": "",
+                "reason": "Synthetic setup/anatomy change requiring RO review and adaptive replanning",
+                "category": "Clinical",
+                "recorded_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "recorded_at": "2026-09-09T09:11:40+05:30",
+                "compensation_plan": "RO review and adaptive replanning before further delivery"
+              }
+            ],
+            "otv": [
+              {
+                "id": "OTV-22F0A52",
+                "after_fraction": 5,
+                "assessment": "Clinically stable after first five fractions.",
+                "toxicity_summary": "Mild Grade 1 fatigue; no treatment-limiting toxicity.",
+                "plan": "Continue RT and monitor symptoms.",
+                "weight_kg": 61,
+                "performance_status": "ECOG 1",
+                "signed_by": {
+                  "id": "UA-E01323E6A584",
+                  "username": "ro.demo",
+                  "name": "Dr Neha Rao",
+                  "role": "Radiation Oncology",
+                  "professional_id": "DEMO-RO-001"
+                },
+                "signed_at": "2026-09-09T09:11:40+05:30"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-02",
+            "prescription_history": [],
+            "planning_history": []
+          }
+        },
+        "source_record_type": "radiation",
+        "source_record_id": "RADIATION-SYN-VAL-02",
+        "source_record_version": 15,
+        "source_record_status": "In Progress",
+        "source_record_updated_at": "2026-09-09T09:11:40+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Neha Rao",
+        "signed_at": "2026-09-09T09:11:40+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-98260CC8EE8A",
+          "source_type": "radiation",
+          "source_id": "RADIATION-SYN-VAL-02"
+        }
+      }
+    },
+    {
+      "check": "RT-037 RO opens exact interrupted-course source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-E32263E4C2",
+        "patient_id": "PAT-VAL-NEHA",
+        "episode_id": "EP-SYN-VAL-02",
+        "task_type": "RT interruption review",
+        "title": "Review RT interruption and decide continuation/modification",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Radiation Oncology",
+        "owner_user_id": "USR-RADIATIO-001",
+        "source_type": "radiation",
+        "source_id": "RADIATION-SYN-VAL-02",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Synthetic setup/anatomy change requiring RO review and adaptive replanning",
+        "created_at": "2026-09-09T09:11:40+05:30",
+        "created_by": "UA-98260CC8EE8A",
+        "updated_at": "2026-09-09T09:11:40+05:30",
+        "updated_by": "UA-98260CC8EE8A",
+        "data": {
+          "interruption": {
+            "id": "RTINT-98B2ACA",
+            "start_at": "2026-09-15T09:00:00+05:30",
+            "end_at": "",
+            "reason": "Synthetic setup/anatomy change requiring RO review and adaptive replanning",
+            "category": "Clinical",
+            "recorded_by": {
+              "id": "UA-98260CC8EE8A",
+              "username": "rtt.demo",
+              "name": "Meera Joshi — RTT",
+              "role": "Radiation Technologist",
+              "professional_id": "DEMO-RTT-001"
+            },
+            "recorded_at": "2026-09-09T09:11:40+05:30",
+            "compensation_plan": "RO review and adaptive replanning before further delivery"
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-NEHA",
+          "mrn": "CCA-SYN-VAL-RT-01",
+          "name": "Neha Kulkarni",
+          "dob": "1979-11-03",
+          "sex": "Female",
+          "phone": "917000000102",
+          "abha": "",
+          "id_number": "SYN-NEHA-02",
+          "current_department": "Radiation Treatment",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:40+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-02",
+            "kind": "Primary cancer",
+            "label": "Breast/chest-wall radiotherapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "RADIATION-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "radiation",
+          "status": "In Progress",
+          "version": 15,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:40+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-98260CC8EE8A",
+          "data": {
+            "prescription": {
+              "status": "RT Oncologist Approved",
+              "site": "Pelvis / cervix",
+              "laterality": "Midline",
+              "intent": "Definitive",
+              "modality": "External Beam",
+              "technique": "VMAT",
+              "energy": "6 MV",
+              "treatment_phase": "Pelvic phase",
+              "total_dose_gy": 50.0,
+              "dose_per_fraction_gy": 2.0,
+              "fractions": 25,
+              "frequency": "Daily, 5 fractions/week",
+              "planned_start": "2026-09-10",
+              "target_volumes": [
+                {
+                  "name": "GTV cervix",
+                  "volume_type": "GTV",
+                  "prescription_dose_gy": 50.0
+                },
+                {
+                  "name": "CTV pelvis",
+                  "volume_type": "CTV",
+                  "prescription_dose_gy": 50.0
+                },
+                {
+                  "name": "PTV pelvis",
+                  "volume_type": "PTV",
+                  "margin_mm": 5,
+                  "prescription_dose_gy": 50.0
+                }
+              ],
+              "organs_at_risk": [
+                "Bladder",
+                "Rectum",
+                "Bowel",
+                "Femoral heads"
+              ],
+              "oar_constraints": [
+                {
+                  "organ": "Bladder",
+                  "metric": "V45Gy",
+                  "operator": "<",
+                  "value": 35,
+                  "unit": "%"
+                },
+                {
+                  "organ": "Rectum",
+                  "metric": "V45Gy",
+                  "operator": "<",
+                  "value": 60,
+                  "unit": "%"
+                }
+              ],
+              "simulation_requirement": "CT simulation",
+              "image_guidance": "Daily CBCT",
+              "bolus": "None",
+              "special_instructions": "Synthetic validation prescription only",
+              "prescription_version": 1,
+              "signed_by": {
+                "id": "UA-E01323E6A584",
+                "username": "ro.demo",
+                "name": "Dr Neha Rao",
+                "role": "Radiation Oncology",
+                "professional_id": "DEMO-RO-001"
+              },
+              "signed_at": "2026-09-09T09:11:40+05:30"
+            },
+            "planning": {
+              "simulation_status": "Completed",
+              "contouring_status": "Completed",
+              "planning_status": "Planning Complete",
+              "physics_qa": "Approved",
+              "physician_final_approval": "Approved",
+              "dicom_refs": {},
+              "plan_version": 1,
+              "prescription_version": 1,
+              "physics_qa_note": "Independent plan/geometry/dose QA passed for synthetic validation.",
+              "physics_qa_by": {
+                "id": "UA-DA16813F8928",
+                "username": "physics.demo",
+                "name": "Arvind Iyer — Medical Physicist",
+                "role": "Radiation Physicist",
+                "professional_id": "DEMO-PHY-001"
+              },
+              "physics_qa_at": "2026-09-09T09:11:40+05:30",
+              "physics_qa_plan_version": 1,
+              "physics_qa_prescription_version": 1,
+              "physician_approval_by": {
+                "id": "UA-E01323E6A584",
+                "username": "ro.demo",
+                "name": "Dr Neha Rao",
+                "role": "Radiation Oncology",
+                "professional_id": "DEMO-RO-001"
+              },
+              "physician_approval_at": "2026-09-09T09:11:40+05:30",
+              "physician_approval_plan_version": 1,
+              "physician_approval_prescription_version": 1
+            },
+            "fractions": [
+              {
+                "fraction_number": 1,
+                "status": "Delivered",
+                "date_time": "2026-09-10T09:00:00+05:30",
+                "planned_date_time": "",
+                "rescheduled_to": "",
+                "delivered_dose_gy": 2.0,
+                "dose_safety_snapshot": {
+                  "ok": true,
+                  "errors": [],
+                  "prescribed_fraction_dose_gy": 2.0,
+                  "delivered_dose_gy": 2.0,
+                  "delivery_tolerance_gy": 0.01,
+                  "prior_cumulative_dose_gy": 0,
+                  "projected_cumulative_dose_gy": 2.0,
+                  "prescribed_total_dose_gy": 50.0
+                },
+                "prescription_version": 1,
+                "plan_version": 1,
+                "delivered_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "verified_by": "Meera Joshi — RTT",
+                "image_guidance_performed": true,
+                "setup_variation": "Within synthetic tolerance",
+                "toxicity": "",
+                "reason": ""
+              },
+              {
+                "fraction_number": 2,
+                "status": "Delivered",
+                "date_time": "2026-09-11T09:00:00+05:30",
+                "planned_date_time": "",
+                "rescheduled_to": "",
+                "delivered_dose_gy": 2.0,
+                "dose_safety_snapshot": {
+                  "ok": true,
+                  "errors": [],
+                  "prescribed_fraction_dose_gy": 2.0,
+                  "delivered_dose_gy": 2.0,
+                  "delivery_tolerance_gy": 0.01,
+                  "prior_cumulative_dose_gy": 2.0,
+                  "projected_cumulative_dose_gy": 4.0,
+                  "prescribed_total_dose_gy": 50.0
+                },
+                "prescription_version": 1,
+                "plan_version": 1,
+                "delivered_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "verified_by": "Meera Joshi — RTT",
+                "image_guidance_performed": true,
+                "setup_variation": "Within synthetic tolerance",
+                "toxicity": "",
+                "reason": ""
+              },
+              {
+                "fraction_number": 3,
+                "status": "Delivered",
+                "date_time": "2026-09-12T09:00:00+05:30",
+                "planned_date_time": "",
+                "rescheduled_to": "",
+                "delivered_dose_gy": 2.0,
+                "dose_safety_snapshot": {
+                  "ok": true,
+                  "errors": [],
+                  "prescribed_fraction_dose_gy": 2.0,
+                  "delivered_dose_gy": 2.0,
+                  "delivery_tolerance_gy": 0.01,
+                  "prior_cumulative_dose_gy": 4.0,
+                  "projected_cumulative_dose_gy": 6.0,
+                  "prescribed_total_dose_gy": 50.0
+                },
+                "prescription_version": 1,
+                "plan_version": 1,
+                "delivered_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "verified_by": "Meera Joshi — RTT",
+                "image_guidance_performed": true,
+                "setup_variation": "Within synthetic tolerance",
+                "toxicity": "",
+                "reason": ""
+              },
+              {
+                "fraction_number": 4,
+                "status": "Delivered",
+                "date_time": "2026-09-13T09:00:00+05:30",
+                "planned_date_time": "",
+                "rescheduled_to": "",
+                "delivered_dose_gy": 2.0,
+                "dose_safety_snapshot": {
+                  "ok": true,
+                  "errors": [],
+                  "prescribed_fraction_dose_gy": 2.0,
+                  "delivered_dose_gy": 2.0,
+                  "delivery_tolerance_gy": 0.01,
+                  "prior_cumulative_dose_gy": 6.0,
+                  "projected_cumulative_dose_gy": 8.0,
+                  "prescribed_total_dose_gy": 50.0
+                },
+                "prescription_version": 1,
+                "plan_version": 1,
+                "delivered_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "verified_by": "Meera Joshi — RTT",
+                "image_guidance_performed": true,
+                "setup_variation": "Within synthetic tolerance",
+                "toxicity": "",
+                "reason": ""
+              },
+              {
+                "fraction_number": 5,
+                "status": "Delivered",
+                "date_time": "2026-09-14T09:00:00+05:30",
+                "planned_date_time": "",
+                "rescheduled_to": "",
+                "delivered_dose_gy": 2.0,
+                "dose_safety_snapshot": {
+                  "ok": true,
+                  "errors": [],
+                  "prescribed_fraction_dose_gy": 2.0,
+                  "delivered_dose_gy": 2.0,
+                  "delivery_tolerance_gy": 0.01,
+                  "prior_cumulative_dose_gy": 8.0,
+                  "projected_cumulative_dose_gy": 10.0,
+                  "prescribed_total_dose_gy": 50.0
+                },
+                "prescription_version": 1,
+                "plan_version": 1,
+                "delivered_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "verified_by": "Meera Joshi — RTT",
+                "image_guidance_performed": true,
+                "setup_variation": "Within synthetic tolerance",
+                "toxicity": "Mild fatigue",
+                "reason": ""
+              }
+            ],
+            "interruptions": [
+              {
+                "id": "RTINT-98B2ACA",
+                "start_at": "2026-09-15T09:00:00+05:30",
+                "end_at": "",
+                "reason": "Synthetic setup/anatomy change requiring RO review and adaptive replanning",
+                "category": "Clinical",
+                "recorded_by": {
+                  "id": "UA-98260CC8EE8A",
+                  "username": "rtt.demo",
+                  "name": "Meera Joshi — RTT",
+                  "role": "Radiation Technologist",
+                  "professional_id": "DEMO-RTT-001"
+                },
+                "recorded_at": "2026-09-09T09:11:40+05:30",
+                "compensation_plan": "RO review and adaptive replanning before further delivery"
+              }
+            ],
+            "otv": [
+              {
+                "id": "OTV-22F0A52",
+                "after_fraction": 5,
+                "assessment": "Clinically stable after first five fractions.",
+                "toxicity_summary": "Mild Grade 1 fatigue; no treatment-limiting toxicity.",
+                "plan": "Continue RT and monitor symptoms.",
+                "weight_kg": 61,
+                "performance_status": "ECOG 1",
+                "signed_by": {
+                  "id": "UA-E01323E6A584",
+                  "username": "ro.demo",
+                  "name": "Dr Neha Rao",
+                  "role": "Radiation Oncology",
+                  "professional_id": "DEMO-RO-001"
+                },
+                "signed_at": "2026-09-09T09:11:40+05:30"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-02",
+            "prescription_history": [],
+            "planning_history": []
+          }
+        },
+        "source_record_type": "radiation",
+        "source_record_id": "RADIATION-SYN-VAL-02",
+        "source_record_version": 15,
+        "source_record_status": "In Progress",
+        "source_record_updated_at": "2026-09-09T09:11:40+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Neha Rao",
+        "signed_at": "2026-09-09T09:11:40+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-98260CC8EE8A",
+          "source_type": "radiation",
+          "source_id": "RADIATION-SYN-VAL-02"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "RT-038 amended prescription signed (in place)",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "RT Oncologist Approved"
+      }
+    },
+    {
+      "check": "RT-039 amendment bumped version and reset approvals",
+      "pass": true,
+      "detail": {
+        "plan_version": 2,
+        "prescription_version": 2,
+        "simulation_status": "Completed",
+        "contouring_status": "Pending",
+        "planning_status": "Pending",
+        "physics_qa": "Pending",
+        "physics_qa_plan_version": null,
+        "physician_final_approval": "Pending",
+        "physician_approval_plan_version": null,
+        "dicom_refs": {}
+      }
+    },
+    {
+      "check": "RT-040 stale approvals block delivery after amendment",
+      "pass": true,
+      "detail": {
+        "error": "Current approved prescription plus Physics QA and RO final approval for the current RT plan/prescription version are required",
+        "plan_version": 2,
+        "prescription_version": 2
+      }
+    },
+    {
+      "check": "RT-041 adaptive contouring",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Contouring Approved",
+        "plan_version": 2,
+        "prescription_version": 2
+      }
+    },
+    {
+      "check": "RT-042 adaptive plan ready",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Plan Ready for Physics QA",
+        "plan_version": 2,
+        "prescription_version": 2
+      }
+    },
+    {
+      "check": "RT-043 adaptive Physics QA",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Plan Ready for Physics QA",
+        "plan_version": 2,
+        "prescription_version": 2
+      }
+    },
+    {
+      "check": "RT-044 adaptive RO approval + release",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Ready for Treatment",
+        "plan_version": 2,
+        "prescription_version": 2
+      }
+    },
+    {
+      "check": "RT-045.6 adaptive fraction 6 delivered",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "In Progress",
+        "delivered_count": 6,
+        "plan_version": 2,
+        "prescription_version": 2,
+        "cumulative_delivered_dose_gy": 12.0
+      }
+    },
+    {
+      "check": "RT-045.7 adaptive fraction 7 delivered",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "In Progress",
+        "delivered_count": 7,
+        "plan_version": 2,
+        "prescription_version": 2,
+        "cumulative_delivered_dose_gy": 14.0
+      }
+    },
+    {
+      "check": "RT-045.8 adaptive fraction 8 delivered",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "In Progress",
+        "delivered_count": 8,
+        "plan_version": 2,
+        "prescription_version": 2,
+        "cumulative_delivered_dose_gy": 16.0
+      }
+    },
+    {
+      "check": "RT-045.9 adaptive fraction 9 delivered",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "In Progress",
+        "delivered_count": 9,
+        "plan_version": 2,
+        "prescription_version": 2,
+        "cumulative_delivered_dose_gy": 18.0
+      }
+    },
+    {
+      "check": "RT-045.10 adaptive fraction 10 delivered",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Completed",
+        "delivered_count": 10,
+        "plan_version": 2,
+        "prescription_version": 2,
+        "cumulative_delivered_dose_gy": 20.0
+      }
+    },
+    {
+      "check": "RT-046 course auto-completed at prescribed fraction count",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "Completed",
+        "delivered_count": 10,
+        "plan_version": 2,
+        "prescription_version": 2,
+        "cumulative_delivered_dose_gy": 20.0
+      }
+    },
+    {
+      "check": "RT-047 final OTV",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "otv": {
+          "id": "OTV-632C9A8",
+          "after_fraction": 10,
+          "assessment": "Adaptive shortened course completed clinically stable.",
+          "toxicity_summary": "Mild fatigue only.",
+          "plan": "Complete course and arrange follow-up.",
+          "weight_kg": 60.8,
+          "performance_status": "ECOG 1",
+          "signed_by": {
+            "id": "UA-E01323E6A584",
+            "username": "ro.demo",
+            "name": "Dr Neha Rao",
+            "role": "Radiation Oncology",
+            "professional_id": "DEMO-RO-001"
+          },
+          "signed_at": "2026-09-09T09:11:41+05:30"
+        }
+      }
+    },
+    {
+      "check": "RT-048 RT course recorded into treatment history",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "history_event": {
+          "id": "HIST-E65E4ACA",
+          "type": "Radiation Therapy",
+          "episode_id": "EP-SYN-VAL-02",
+          "date": "2026-09-24",
+          "status": "Completed",
+          "description": "Definitive pelvic radiotherapy course (adaptive, 20 Gy in 10 fractions after replanning) completed as prescribed.",
+          "source_record_id": "RADIATION-SYN-VAL-02",
+          "source_document_id": "",
+          "entered_reason": "Historical/externally completed treatment entered by treating clinician",
+          "recorded_by": {
+            "id": "UA-E01323E6A584",
+            "username": "ro.demo",
+            "name": "Dr Neha Rao",
+            "role": "Radiation Oncology",
+            "professional_id": "DEMO-RO-001"
+          },
+          "recorded_at": "2026-09-09T09:11:41+05:30"
+        },
+        "treatment_history_id": "TREATMENT_HISTORY-SYN-VAL-02",
+        "task_id": "TASK-B1D5337878",
+        "next_role": "Radiation Oncology"
+      }
+    },
+    {
+      "check": "RT-049 EOT completion-review task created",
+      "pass": true,
+      "detail": {
+        "id": "TASK-B1D5337878",
+        "patient_id": "PAT-VAL-NEHA",
+        "episode_id": "EP-SYN-VAL-02",
+        "task_type": "Treatment completion review",
+        "title": "Complete End-of-Treatment Review / Cancer Treatment Summary",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Radiation Oncology",
+        "owner_user_id": "UA-E01323E6A584",
+        "source_type": "treatment_history",
+        "source_id": "TREATMENT_HISTORY-SYN-VAL-02",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Completed cancer-directed treatment documented; formal end-of-treatment review required",
+        "created_at": "2026-09-09T09:11:41+05:30",
+        "created_by": "UA-E01323E6A584",
+        "updated_at": "2026-09-09T09:11:41+05:30",
+        "updated_by": "UA-E01323E6A584",
+        "data": {
+          "history_event": {
+            "id": "HIST-E65E4ACA",
+            "type": "Radiation Therapy",
+            "episode_id": "EP-SYN-VAL-02",
+            "date": "2026-09-24",
+            "status": "Completed",
+            "description": "Definitive pelvic radiotherapy course (adaptive, 20 Gy in 10 fractions after replanning) completed as prescribed.",
+            "source_record_id": "RADIATION-SYN-VAL-02",
+            "source_document_id": "",
+            "entered_reason": "Historical/externally completed treatment entered by treating clinician",
+            "recorded_by": {
+              "id": "UA-E01323E6A584",
+              "username": "ro.demo",
+              "name": "Dr Neha Rao",
+              "role": "Radiation Oncology",
+              "professional_id": "DEMO-RO-001"
+            },
+            "recorded_at": "2026-09-09T09:11:41+05:30"
+          },
+          "treatment_completion_id": "TREATMENT_COMPLETION-SYN-VAL-02",
+          "episode_id": "EP-SYN-VAL-02"
+        },
+        "patient": {
+          "id": "PAT-VAL-NEHA",
+          "mrn": "CCA-SYN-VAL-RT-01",
+          "name": "Neha Kulkarni",
+          "dob": "1979-11-03",
+          "sex": "Female",
+          "phone": "917000000102",
+          "abha": "",
+          "id_number": "SYN-NEHA-02",
+          "current_department": "Treatment Completion",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:41+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-02",
+            "kind": "Primary cancer",
+            "label": "Breast/chest-wall radiotherapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "TREATMENT_HISTORY-SYN-VAL-02",
+          "patient_id": "PAT-VAL-NEHA",
+          "entity_type": "treatment_history",
+          "status": "Active",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:41+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-E01323E6A584",
+          "data": {
+            "episodes": [
+              {
+                "id": "HIST-E65E4ACA",
+                "type": "Radiation Therapy",
+                "episode_id": "EP-SYN-VAL-02",
+                "date": "2026-09-24",
+                "status": "Completed",
+                "description": "Definitive pelvic radiotherapy course (adaptive, 20 Gy in 10 fractions after replanning) completed as prescribed.",
+                "source_record_id": "RADIATION-SYN-VAL-02",
+                "source_document_id": "",
+                "entered_reason": "Historical/externally completed treatment entered by treating clinician",
+                "recorded_by": {
+                  "id": "UA-E01323E6A584",
+                  "username": "ro.demo",
+                  "name": "Dr Neha Rao",
+                  "role": "Radiation Oncology",
+                  "professional_id": "DEMO-RO-001"
+                },
+                "recorded_at": "2026-09-09T09:11:41+05:30"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-02"
+          }
+        },
+        "source_record_type": "treatment_history",
+        "source_record_id": "TREATMENT_HISTORY-SYN-VAL-02",
+        "source_record_version": 2,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:41+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-E01323E6A584",
+          "source_type": "treatment_history",
+          "source_id": "TREATMENT_HISTORY-SYN-VAL-02"
+        }
+      }
+    },
+    {
+      "check": "RT-050 named audit chain",
+      "pass": true,
+      "detail": [
+        "RT_FRACTION",
+        "RT_INTERRUPTION",
+        "RT_OTV_SIGN",
+        "RT_PLANNING",
+        "RT_PRESCRIPTION",
+        "TREATMENT_HISTORY_EVENT"
+      ]
+    }
+  ],
+  "key_records": {
+    "mdt": "MDT-SYN-VAL-02",
+    "treatment_plan": "TREATMENT_PLAN-42861A2ABA",
+    "radiation": "RADIATION-SYN-VAL-02"
+  }
+}

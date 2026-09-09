@@ -1,0 +1,1798 @@
+{
+  "PAT-VAL-ANANYA|mo.demo": {
+    "entities": {
+      "admission": [
+        {
+          "id": "ADMISSION-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "appointments": [
+        {
+          "id": "APPOINTMENTS-SYN-VAL-01",
+          "status": "Active",
+          "version": 2
+        }
+      ],
+      "cancer_episode": [
+        {
+          "id": "EP-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "care_plan": [
+        {
+          "id": "CARE_PLAN-SYN-VAL-01",
+          "status": "Active",
+          "version": 2
+        }
+      ],
+      "clinical_trial": [
+        {
+          "id": "CLINICAL_TRIAL-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "consent": [
+        {
+          "id": "CONSENT-SYN-VAL-01",
+          "status": "Active",
+          "version": 4
+        }
+      ],
+      "consultation": [
+        {
+          "id": "CONSULTATION-SYN-VAL-01",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "continuous_therapy": [
+        {
+          "id": "CONTINUOUS_THERAPY-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "diagnosis": [
+        {
+          "id": "DIAGNOSIS-SYN-VAL-01",
+          "status": "Verified",
+          "version": 2
+        }
+      ],
+      "discharge": [
+        {
+          "id": "DISCHARGE-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "formulary": [
+        {
+          "id": "FORMULARY-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "him": [
+        {
+          "id": "HIM-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "infusion": [
+        {
+          "id": "INFUSION-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        },
+        {
+          "id": "INFUSION-0641A6A91B",
+          "status": "Completed",
+          "version": 10
+        },
+        {
+          "id": "INFUSION-3EAC03788C",
+          "status": "Completed",
+          "version": 10
+        }
+      ],
+      "inpatient_care": [
+        {
+          "id": "INPATIENT_CARE-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "intake": [
+        {
+          "id": "INTAKE-SYN-VAL-01",
+          "status": "Completed",
+          "version": 2
+        }
+      ],
+      "journey": [
+        {
+          "id": "JOURNEY-SYN-VAL-01",
+          "status": "Active",
+          "version": 20
+        }
+      ],
+      "lab": [
+        {
+          "id": "LAB-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        },
+        {
+          "id": "LAB-A25D781538",
+          "status": "Final",
+          "version": 2
+        },
+        {
+          "id": "LAB-B7F0A34093",
+          "status": "Final",
+          "version": 2
+        },
+        {
+          "id": "LAB-ED4C6ECD24",
+          "status": "Final",
+          "version": 2
+        }
+      ],
+      "lab_order": [
+        {
+          "id": "LAB_ORDER-3DE5D7802E",
+          "status": "Sample Collected",
+          "version": 3
+        },
+        {
+          "id": "LAB_ORDER-02D22BBDB7",
+          "status": "Sample Collected",
+          "version": 3
+        },
+        {
+          "id": "LAB_ORDER-8890A1E9DF",
+          "status": "Sample Collected",
+          "version": 3
+        }
+      ],
+      "mdt": [
+        {
+          "id": "MDT-SYN-VAL-01",
+          "status": "MDT Recommended",
+          "version": 4
+        }
+      ],
+      "mdt_collab": [
+        {
+          "id": "MDT_COLLAB-SYN-VAL-01",
+          "status": "Active",
+          "version": 6
+        }
+      ],
+      "mdt_followup": [
+        {
+          "id": "MDT_FOLLOWUP-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "med_recon": [
+        {
+          "id": "MED_RECON-SYN-VAL-01",
+          "status": "Active",
+          "version": 3
+        }
+      ],
+      "modification": [
+        {
+          "id": "MODIFICATION-SYN-VAL-01",
+          "status": "Active",
+          "version": 4
+        }
+      ],
+      "navigation": [
+        {
+          "id": "NAVIGATION-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "NUTRITION-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "palliative": [
+        {
+          "id": "PALLIATIVE-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "pathology": [
+        {
+          "id": "PATHOLOGY-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "pharmacy": [
+        {
+          "id": "PHARMACY-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        },
+        {
+          "id": "PHARMACY-5B6B7BE919",
+          "status": "Dispensed",
+          "version": 4
+        },
+        {
+          "id": "PHARMACY-0E4B5DEC6C",
+          "status": "Dispensed",
+          "version": 4
+        }
+      ],
+      "protocol_library": [
+        {
+          "id": "PROTOCOL_LIBRARY-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "psychosocial": [
+        {
+          "id": "PSYCHOSOCIAL-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "queue": [
+        {
+          "id": "QUEUE-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "radiation": [
+        {
+          "id": "RADIATION-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "radiology": [
+        {
+          "id": "RADIOLOGY-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        },
+        {
+          "id": "RADIOLOGY-C30EAC1B99",
+          "status": "Final",
+          "version": 2
+        },
+        {
+          "id": "RADIOLOGY-01219AD436",
+          "status": "Final",
+          "version": 2
+        }
+      ],
+      "radiology_order": [
+        {
+          "id": "RADIOLOGY_ORDER-E4E87725EC",
+          "status": "Performed",
+          "version": 4
+        },
+        {
+          "id": "RADIOLOGY_ORDER-519BB78496",
+          "status": "Performed",
+          "version": 4
+        }
+      ],
+      "readiness": [
+        {
+          "id": "READINESS-SYN-VAL-01",
+          "status": "Signed",
+          "version": 5
+        }
+      ],
+      "referral": [
+        {
+          "id": "REF-SYN-VAL-01",
+          "status": "Accepted",
+          "version": 3
+        }
+      ],
+      "registration": [
+        {
+          "id": "REG-SYN-VAL-01",
+          "status": "Completed",
+          "version": 5
+        }
+      ],
+      "response": [
+        {
+          "id": "RESPONSE-SYN-VAL-01",
+          "status": "Active",
+          "version": 4
+        }
+      ],
+      "surgery": [
+        {
+          "id": "SURGERY-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "surveillance": [
+        {
+          "id": "SURVEILLANCE-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "survivorship": [
+        {
+          "id": "SURVIVORSHIP-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "toxicity": [
+        {
+          "id": "TOXICITY-SYN-VAL-01",
+          "status": "Active",
+          "version": 2
+        }
+      ],
+      "treatment_completion": [
+        {
+          "id": "TREATMENT_COMPLETION-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "treatment_history": [
+        {
+          "id": "TREATMENT_HISTORY-SYN-VAL-01",
+          "status": "Active",
+          "version": 3
+        }
+      ],
+      "treatment_order": [
+        {
+          "id": "TREATMENT_ORDER-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        },
+        {
+          "id": "TREATMENT_ORDER-C2320B6357",
+          "status": "Completed",
+          "version": 3
+        },
+        {
+          "id": "TREATMENT_ORDER-931B1D9CD9",
+          "status": "Completed",
+          "version": 3
+        }
+      ],
+      "treatment_plan": [
+        {
+          "id": "TREATMENT_PLAN-SYN-VAL-01",
+          "status": "Draft",
+          "version": 1
+        },
+        {
+          "id": "TREATMENT_PLAN-7467C8D687",
+          "status": "Clinician Approved",
+          "version": 2
+        }
+      ],
+      "tumor_marker": [
+        {
+          "id": "TUMOR_MARKER-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "visit_summary": [
+        {
+          "id": "VISIT_SUMMARY-SYN-VAL-01",
+          "status": "Active",
+          "version": 1
+        }
+      ]
+    },
+    "patient": {
+      "id": "PAT-VAL-ANANYA",
+      "mrn": "CCA-SYN-VAL-CHEMO-01",
+      "status": "Active"
+    },
+    "tasks": [
+      {
+        "episode_id": "EP-SYN-VAL-01",
+        "id": "TASK-1B068C83D2",
+        "source_id": "REF-SYN-VAL-01",
+        "source_type": "referral",
+        "status": "Open",
+        "task_type": "Referral lifecycle"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-01",
+        "id": "TASK-4BD35B7586",
+        "source_id": "INFUSION-3EAC03788C",
+        "source_type": "infusion",
+        "status": "Open",
+        "task_type": "Treatment readiness"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-01",
+        "id": "TASK-503E96206C",
+        "source_id": "INFUSION-0641A6A91B",
+        "source_type": "infusion",
+        "status": "Completed",
+        "task_type": "Next-cycle decision"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-01",
+        "id": "TASK-694F67C69D",
+        "source_id": "REF-SYN-VAL-01",
+        "source_type": "referral",
+        "status": "Open",
+        "task_type": "Referral lifecycle"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-01",
+        "id": "TASK-861E1673A8",
+        "source_id": "RESPONSE-SYN-VAL-01",
+        "source_type": "response",
+        "status": "Completed",
+        "task_type": "Response confirmation"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-01",
+        "id": "TASK-A235F7A07C",
+        "source_id": "INFUSION-0641A6A91B",
+        "source_type": "infusion",
+        "status": "Open",
+        "task_type": "Treatment modification"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-01",
+        "id": "TASK-AA0C6C46CF",
+        "source_id": "INFUSION-3EAC03788C",
+        "source_type": "infusion",
+        "status": "Completed",
+        "task_type": "Next-cycle decision"
+      }
+    ]
+  },
+  "PAT-VAL-ARJUN|surgery.demo": {
+    "entities": {
+      "admission": [
+        {
+          "id": "ADMISSION-SYN-VAL-03",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "anaesthesia": [
+        {
+          "id": "ANAESTHESIA-SYN-VAL-03",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "blood_bank": [
+        {
+          "id": "BLOOD_BANK-SYN-VAL-03",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "cancer_episode": [
+        {
+          "id": "EP-SYN-VAL-03",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "care_plan": [
+        {
+          "id": "CARE_PLAN-SYN-VAL-03",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "diagnosis": [
+        {
+          "id": "DIAGNOSIS-SYN-VAL-03",
+          "status": "Verified",
+          "version": 2
+        },
+        {
+          "id": "DIAGNOSIS-B84BF8B0C8",
+          "status": "Verified",
+          "version": 1
+        }
+      ],
+      "discharge": [
+        {
+          "id": "DISCHARGE-SYN-VAL-03",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "him": [
+        {
+          "id": "HIM-SYN-VAL-03",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "inpatient_care": [
+        {
+          "id": "INPATIENT_CARE-SYN-VAL-03",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "intake": [
+        {
+          "id": "INTAKE-SYN-VAL-03",
+          "status": "Completed",
+          "version": 2
+        }
+      ],
+      "journey": [
+        {
+          "id": "JOURNEY-SYN-VAL-03",
+          "status": "Active",
+          "version": 10
+        }
+      ],
+      "lab": [
+        {
+          "id": "LAB-SYN-VAL-03",
+          "status": "Draft",
+          "version": 1
+        },
+        {
+          "id": "LAB-AEAE017F65",
+          "status": "Final",
+          "version": 2
+        }
+      ],
+      "mdt": [
+        {
+          "id": "MDT-SYN-VAL-03",
+          "status": "MDT Recommended",
+          "version": 4
+        }
+      ],
+      "med_recon": [
+        {
+          "id": "MED_RECON-SYN-VAL-03",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "navigation": [
+        {
+          "id": "NAVIGATION-SYN-VAL-03",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "NUTRITION-SYN-VAL-03",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "palliative": [
+        {
+          "id": "PALLIATIVE-SYN-VAL-03",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "pathology": [
+        {
+          "id": "PATHOLOGY-SYN-VAL-03",
+          "status": "Superseded",
+          "version": 4
+        },
+        {
+          "id": "PATHOLOGY-D503C3E4FC",
+          "status": "Final",
+          "version": 1
+        }
+      ],
+      "pathology_processing": [
+        {
+          "id": "PATHOLOGY_PROCESSING-SYN-VAL-03",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "queue": [
+        {
+          "id": "QUEUE-SYN-VAL-03",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "radiology": [
+        {
+          "id": "RADIOLOGY-SYN-VAL-03",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "registration": [
+        {
+          "id": "REG-SYN-VAL-03",
+          "status": "Completed",
+          "version": 3
+        }
+      ],
+      "response": [
+        {
+          "id": "RESPONSE-SYN-VAL-03",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "stoma_wound": [
+        {
+          "id": "STOMA_WOUND-SYN-VAL-03",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "surgery": [
+        {
+          "id": "SURGERY-SYN-VAL-03",
+          "status": "Histopathology Available",
+          "version": 8
+        }
+      ],
+      "surveillance": [
+        {
+          "id": "SURVEILLANCE-SYN-VAL-03",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "toxicity": [
+        {
+          "id": "TOXICITY-SYN-VAL-03",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "treatment_completion": [
+        {
+          "id": "TREATMENT_COMPLETION-SYN-VAL-03",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "treatment_history": [
+        {
+          "id": "TREATMENT_HISTORY-SYN-VAL-03",
+          "status": "Active",
+          "version": 3
+        }
+      ],
+      "treatment_order": [
+        {
+          "id": "TREATMENT_ORDER-SYN-VAL-03",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "treatment_plan": [
+        {
+          "id": "TREATMENT_PLAN-SYN-VAL-03",
+          "status": "Draft",
+          "version": 1
+        },
+        {
+          "id": "TREATMENT_PLAN-2FE6432117",
+          "status": "Clinician Approved",
+          "version": 2
+        }
+      ]
+    },
+    "patient": {
+      "id": "PAT-VAL-ARJUN",
+      "mrn": "CCA-SYN-VAL-SURG-01",
+      "status": "Active"
+    },
+    "tasks": [
+      {
+        "episode_id": "EP-SYN-VAL-03",
+        "id": "TASK-B3312E89FD",
+        "source_id": "SURGERY-SYN-VAL-03",
+        "source_type": "surgery",
+        "status": "Open",
+        "task_type": "Surgery execution"
+      }
+    ]
+  },
+  "PAT-VAL-LEELA|mo.demo": {
+    "entities": {
+      "admission": [
+        {
+          "id": "ADMISSION-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "appointments": [
+        {
+          "id": "APPOINTMENTS-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "cancer_episode": [
+        {
+          "id": "EP-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "care_plan": [
+        {
+          "id": "CARE_PLAN-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "clinical_trial": [
+        {
+          "id": "CLINICAL_TRIAL-SYN-VAL-05",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "consent": [
+        {
+          "id": "CONSENT-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "consultation": [
+        {
+          "id": "CONSULTATION-SYN-VAL-05",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "continuous_therapy": [
+        {
+          "id": "CONTINUOUS_THERAPY-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "diagnosis": [
+        {
+          "id": "DIAGNOSIS-SYN-VAL-05",
+          "status": "Verified",
+          "version": 2
+        }
+      ],
+      "discharge": [
+        {
+          "id": "DISCHARGE-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "formulary": [
+        {
+          "id": "FORMULARY-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "him": [
+        {
+          "id": "HIM-SYN-VAL-05",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "infusion": [
+        {
+          "id": "INFUSION-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "inpatient_care": [
+        {
+          "id": "INPATIENT_CARE-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "intake": [
+        {
+          "id": "INTAKE-SYN-VAL-05",
+          "status": "Completed",
+          "version": 2
+        }
+      ],
+      "journey": [
+        {
+          "id": "JOURNEY-SYN-VAL-05",
+          "status": "Active",
+          "version": 16
+        }
+      ],
+      "lab": [
+        {
+          "id": "LAB-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "mdt": [
+        {
+          "id": "MDT-SYN-VAL-05",
+          "status": "Draft",
+          "version": 2
+        }
+      ],
+      "mdt_collab": [
+        {
+          "id": "MDT_COLLAB-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "mdt_followup": [
+        {
+          "id": "MDT_FOLLOWUP-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "med_recon": [
+        {
+          "id": "MED_RECON-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "modification": [
+        {
+          "id": "MODIFICATION-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "navigation": [
+        {
+          "id": "NAVIGATION-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "NUTRITION-SYN-VAL-05",
+          "status": "Superseded",
+          "version": 3
+        },
+        {
+          "id": "NUTRITION-A77A61D9F6",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "palliative": [
+        {
+          "id": "PALLIATIVE-SYN-VAL-05",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "pathology": [
+        {
+          "id": "PATHOLOGY-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "pharmacy": [
+        {
+          "id": "PHARMACY-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "protocol_library": [
+        {
+          "id": "PROTOCOL_LIBRARY-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "psychosocial": [
+        {
+          "id": "PSYCHOSOCIAL-SYN-VAL-05",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "queue": [
+        {
+          "id": "QUEUE-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "radiation": [
+        {
+          "id": "RADIATION-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "radiology": [
+        {
+          "id": "RADIOLOGY-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "readiness": [
+        {
+          "id": "READINESS-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "referral": [
+        {
+          "id": "REF-SYN-VAL-05",
+          "status": "Accepted",
+          "version": 3
+        }
+      ],
+      "registration": [
+        {
+          "id": "REG-SYN-VAL-05",
+          "status": "Completed",
+          "version": 2
+        }
+      ],
+      "response": [
+        {
+          "id": "RESPONSE-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "surgery": [
+        {
+          "id": "SURGERY-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "surveillance": [
+        {
+          "id": "SURVEILLANCE-SYN-VAL-05",
+          "status": "Active",
+          "version": 3
+        }
+      ],
+      "survivorship": [
+        {
+          "id": "SURVIVORSHIP-SYN-VAL-05",
+          "status": "Superseded",
+          "version": 3
+        },
+        {
+          "id": "SURVIVORSHIP-C9B462335B",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "toxicity": [
+        {
+          "id": "TOXICITY-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "treatment_completion": [
+        {
+          "id": "TREATMENT_COMPLETION-SYN-VAL-05",
+          "status": "Superseded",
+          "version": 4
+        },
+        {
+          "id": "TREATMENT_COMPLETION-23C1217B79",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "treatment_history": [
+        {
+          "id": "TREATMENT_HISTORY-SYN-VAL-05",
+          "status": "Active",
+          "version": 5
+        }
+      ],
+      "treatment_order": [
+        {
+          "id": "TREATMENT_ORDER-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "treatment_plan": [
+        {
+          "id": "TREATMENT_PLAN-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "tumor_marker": [
+        {
+          "id": "TUMOR_MARKER-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "visit_summary": [
+        {
+          "id": "VISIT_SUMMARY-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ]
+    },
+    "patient": {
+      "id": "PAT-VAL-LEELA",
+      "mrn": "CCA-SYN-VAL-SURV-01",
+      "status": "Active"
+    },
+    "tasks": [
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-07EED57531",
+        "source_id": "HIM-SYN-VAL-05",
+        "source_type": "him",
+        "status": "Open",
+        "task_type": "Support result review"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-1A1F4480F5",
+        "source_id": "TREATMENT_HISTORY-SYN-VAL-05",
+        "source_type": "treatment_history",
+        "status": "Completed",
+        "task_type": "Treatment completion review"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-1C80FB5DF6",
+        "source_id": "REF-SYN-VAL-05",
+        "source_type": "referral",
+        "status": "Open",
+        "task_type": "Referral lifecycle"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-379A2B3D09",
+        "source_id": "PALLIATIVE-SYN-VAL-05",
+        "source_type": "palliative",
+        "status": "Open",
+        "task_type": "Support result review"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-4F84EE1F7F",
+        "source_id": "CLINICAL_TRIAL-SYN-VAL-05",
+        "source_type": "clinical_trial",
+        "status": "Open",
+        "task_type": "Clinical trial review"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-84160BBA24",
+        "source_id": "REF-SYN-VAL-05",
+        "source_type": "referral",
+        "status": "Open",
+        "task_type": "Referral lifecycle"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-9ED126D3A3",
+        "source_id": "NUTRITION-A77A61D9F6",
+        "source_type": "nutrition",
+        "status": "Open",
+        "task_type": "Support result review"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-A390512C1A",
+        "source_id": "SURVEILLANCE-SYN-VAL-05",
+        "source_type": "surveillance",
+        "status": "Completed",
+        "task_type": "Progression confirmation"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-B4F2BE2C45",
+        "source_id": "PSYCHOSOCIAL-SYN-VAL-05",
+        "source_type": "psychosocial",
+        "status": "Open",
+        "task_type": "Support result review"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-CD51653A92",
+        "source_id": "NUTRITION-SYN-VAL-05",
+        "source_type": "nutrition",
+        "status": "Cancelled",
+        "task_type": "Support result review"
+      }
+    ]
+  },
+  "PAT-VAL-LEELA|navigator.demo": {
+    "entities": {
+      "admission": [
+        {
+          "id": "ADMISSION-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "appointments": [
+        {
+          "id": "APPOINTMENTS-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "cancer_episode": [
+        {
+          "id": "EP-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "care_plan": [
+        {
+          "id": "CARE_PLAN-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "diagnosis": [
+        {
+          "id": "DIAGNOSIS-SYN-VAL-05",
+          "status": "Verified",
+          "version": 2
+        }
+      ],
+      "discharge": [
+        {
+          "id": "DISCHARGE-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "dynamic_forms": [
+        {
+          "id": "DYNAMIC_FORMS-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "him": [
+        {
+          "id": "HIM-SYN-VAL-05",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "inpatient_care": [
+        {
+          "id": "INPATIENT_CARE-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "intake": [
+        {
+          "id": "INTAKE-SYN-VAL-05",
+          "status": "Completed",
+          "version": 2
+        }
+      ],
+      "journey": [
+        {
+          "id": "JOURNEY-SYN-VAL-05",
+          "status": "Active",
+          "version": 16
+        }
+      ],
+      "med_recon": [
+        {
+          "id": "MED_RECON-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "navigation": [
+        {
+          "id": "NAVIGATION-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "NUTRITION-SYN-VAL-05",
+          "status": "Superseded",
+          "version": 3
+        },
+        {
+          "id": "NUTRITION-A77A61D9F6",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "palliative": [
+        {
+          "id": "PALLIATIVE-SYN-VAL-05",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "queue": [
+        {
+          "id": "QUEUE-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "radiation": [
+        {
+          "id": "RADIATION-SYN-VAL-05",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "referral": [
+        {
+          "id": "REF-SYN-VAL-05",
+          "status": "Accepted",
+          "version": 3
+        }
+      ],
+      "registration": [
+        {
+          "id": "REG-SYN-VAL-05",
+          "status": "Completed",
+          "version": 2
+        }
+      ],
+      "surveillance": [
+        {
+          "id": "SURVEILLANCE-SYN-VAL-05",
+          "status": "Active",
+          "version": 3
+        }
+      ],
+      "survivorship": [
+        {
+          "id": "SURVIVORSHIP-SYN-VAL-05",
+          "status": "Superseded",
+          "version": 3
+        },
+        {
+          "id": "SURVIVORSHIP-C9B462335B",
+          "status": "Signed",
+          "version": 2
+        }
+      ],
+      "toxicity": [
+        {
+          "id": "TOXICITY-SYN-VAL-05",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "treatment_completion": [
+        {
+          "id": "TREATMENT_COMPLETION-SYN-VAL-05",
+          "status": "Superseded",
+          "version": 4
+        },
+        {
+          "id": "TREATMENT_COMPLETION-23C1217B79",
+          "status": "Signed",
+          "version": 2
+        }
+      ]
+    },
+    "patient": {
+      "id": "PAT-VAL-LEELA",
+      "mrn": "CCA-SYN-VAL-SURV-01",
+      "status": "Active"
+    },
+    "tasks": [
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-0FB3BA201F",
+        "source_id": "TREATMENT_COMPLETION-23C1217B79",
+        "source_type": "treatment_completion",
+        "status": "Completed",
+        "task_type": "Survivorship planning"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-458AAFC735",
+        "source_id": "TREATMENT_COMPLETION-SYN-VAL-05",
+        "source_type": "treatment_completion",
+        "status": "Cancelled",
+        "task_type": "Survivorship planning"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-6ED7E26C53",
+        "source_id": "SURVIVORSHIP-C9B462335B",
+        "source_type": "survivorship",
+        "status": "Completed",
+        "task_type": "Surveillance encounter"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-05",
+        "id": "TASK-BAE654E263",
+        "source_id": "SURVIVORSHIP-SYN-VAL-05",
+        "source_type": "survivorship",
+        "status": "Cancelled",
+        "task_type": "Surveillance encounter"
+      }
+    ]
+  },
+  "PAT-VAL-NEHA|ro.demo": {
+    "entities": {
+      "admission": [
+        {
+          "id": "ADMISSION-SYN-VAL-02",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "cancer_episode": [
+        {
+          "id": "EP-SYN-VAL-02",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "care_plan": [
+        {
+          "id": "CARE_PLAN-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "continuous_therapy": [
+        {
+          "id": "CONTINUOUS_THERAPY-SYN-VAL-02",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "diagnosis": [
+        {
+          "id": "DIAGNOSIS-SYN-VAL-02",
+          "status": "Verified",
+          "version": 2
+        }
+      ],
+      "discharge": [
+        {
+          "id": "DISCHARGE-SYN-VAL-02",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "him": [
+        {
+          "id": "HIM-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "inpatient_care": [
+        {
+          "id": "INPATIENT_CARE-SYN-VAL-02",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "intake": [
+        {
+          "id": "INTAKE-SYN-VAL-02",
+          "status": "Completed",
+          "version": 2
+        }
+      ],
+      "journey": [
+        {
+          "id": "JOURNEY-SYN-VAL-02",
+          "status": "Active",
+          "version": 22
+        }
+      ],
+      "lab": [
+        {
+          "id": "LAB-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "mdt": [
+        {
+          "id": "MDT-SYN-VAL-02",
+          "status": "MDT Recommended",
+          "version": 4
+        }
+      ],
+      "med_recon": [
+        {
+          "id": "MED_RECON-SYN-VAL-02",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "navigation": [
+        {
+          "id": "NAVIGATION-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "NUTRITION-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "palliative": [
+        {
+          "id": "PALLIATIVE-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "pathology": [
+        {
+          "id": "PATHOLOGY-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "queue": [
+        {
+          "id": "QUEUE-SYN-VAL-02",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "radiation": [
+        {
+          "id": "RADIATION-SYN-VAL-02",
+          "status": "Completed",
+          "version": 26
+        }
+      ],
+      "radiology": [
+        {
+          "id": "RADIOLOGY-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "registration": [
+        {
+          "id": "REG-SYN-VAL-02",
+          "status": "Completed",
+          "version": 2
+        }
+      ],
+      "response": [
+        {
+          "id": "RESPONSE-SYN-VAL-02",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "rt_planning": [
+        {
+          "id": "RT_PLANNING-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "surgery": [
+        {
+          "id": "SURGERY-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "surveillance": [
+        {
+          "id": "SURVEILLANCE-SYN-VAL-02",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "toxicity": [
+        {
+          "id": "TOXICITY-SYN-VAL-02",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "treatment_completion": [
+        {
+          "id": "TREATMENT_COMPLETION-SYN-VAL-02",
+          "status": "Draft",
+          "version": 2
+        }
+      ],
+      "treatment_history": [
+        {
+          "id": "TREATMENT_HISTORY-SYN-VAL-02",
+          "status": "Active",
+          "version": 2
+        }
+      ],
+      "treatment_order": [
+        {
+          "id": "TREATMENT_ORDER-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "treatment_plan": [
+        {
+          "id": "TREATMENT_PLAN-SYN-VAL-02",
+          "status": "Draft",
+          "version": 1
+        },
+        {
+          "id": "TREATMENT_PLAN-42861A2ABA",
+          "status": "Clinician Approved",
+          "version": 2
+        }
+      ]
+    },
+    "patient": {
+      "id": "PAT-VAL-NEHA",
+      "mrn": "CCA-SYN-VAL-RT-01",
+      "status": "Active"
+    },
+    "tasks": [
+      {
+        "episode_id": "EP-SYN-VAL-02",
+        "id": "TASK-B1D5337878",
+        "source_id": "TREATMENT_HISTORY-SYN-VAL-02",
+        "source_type": "treatment_history",
+        "status": "Open",
+        "task_type": "Treatment completion review"
+      },
+      {
+        "episode_id": "EP-SYN-VAL-02",
+        "id": "TASK-E32263E4C2",
+        "source_id": "RADIATION-SYN-VAL-02",
+        "source_type": "radiation",
+        "status": "Open",
+        "task_type": "RT interruption review"
+      }
+    ]
+  },
+  "PAT-VAL-RAVI|ipd.clinician.demo": {
+    "entities": {
+      "admission": [
+        {
+          "id": "ADMISSION-SYN-VAL-04",
+          "status": "Active",
+          "version": 4
+        }
+      ],
+      "cancer_episode": [
+        {
+          "id": "EP-SYN-VAL-04",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "diagnosis": [
+        {
+          "id": "DIAGNOSIS-SYN-VAL-04",
+          "status": "Verified",
+          "version": 2
+        }
+      ],
+      "discharge": [
+        {
+          "id": "DISCHARGE-SYN-VAL-04",
+          "status": "Active",
+          "version": 2
+        }
+      ],
+      "him": [
+        {
+          "id": "HIM-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "infusion": [
+        {
+          "id": "INFUSION-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "inpatient_care": [
+        {
+          "id": "INPATIENT_CARE-SYN-VAL-04",
+          "status": "Active",
+          "version": 5
+        }
+      ],
+      "intake": [
+        {
+          "id": "INTAKE-SYN-VAL-04",
+          "status": "Completed",
+          "version": 2
+        }
+      ],
+      "journey": [
+        {
+          "id": "JOURNEY-SYN-VAL-04",
+          "status": "Active",
+          "version": 8
+        }
+      ],
+      "lab": [
+        {
+          "id": "LAB-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "med_recon": [
+        {
+          "id": "MED_RECON-SYN-VAL-04",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "navigation": [
+        {
+          "id": "NAVIGATION-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "NUTRITION-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "palliative": [
+        {
+          "id": "PALLIATIVE-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "pathology": [
+        {
+          "id": "PATHOLOGY-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "pharmacy": [
+        {
+          "id": "PHARMACY-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "radiology": [
+        {
+          "id": "RADIOLOGY-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "readiness": [
+        {
+          "id": "READINESS-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "registration": [
+        {
+          "id": "REG-SYN-VAL-04",
+          "status": "Completed",
+          "version": 2
+        }
+      ],
+      "toxicity": [
+        {
+          "id": "TOXICITY-SYN-VAL-04",
+          "status": "Active",
+          "version": 1
+        }
+      ],
+      "treatment_order": [
+        {
+          "id": "TREATMENT_ORDER-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ],
+      "treatment_plan": [
+        {
+          "id": "TREATMENT_PLAN-SYN-VAL-04",
+          "status": "Draft",
+          "version": 1
+        }
+      ]
+    },
+    "patient": {
+      "id": "PAT-VAL-RAVI",
+      "mrn": "CCA-SYN-VAL-IPD-01",
+      "status": "Active"
+    },
+    "tasks": [
+      {
+        "episode_id": "EP-SYN-VAL-04",
+        "id": "TASK-6B30702B94",
+        "source_id": "ADMISSION-SYN-VAL-04",
+        "source_type": "admission",
+        "status": "Open",
+        "task_type": "IPD admission assessment"
+      }
+    ]
+  }
+}

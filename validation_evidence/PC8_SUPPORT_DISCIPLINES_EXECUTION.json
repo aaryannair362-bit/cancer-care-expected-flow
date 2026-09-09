@@ -1,0 +1,2136 @@
+{
+  "patient_id": "PAT-VAL-LEELA",
+  "patient": "Leela Nair",
+  "build": "12.2-PC7.1-PC8.0",
+  "generated_at": "2026-09-09T03:41:51.148880+00:00",
+  "checks": 38,
+  "pass": 38,
+  "fail": 0,
+  "results": [
+    {
+      "check": "SUP-000 verified diagnosis source exists",
+      "pass": true,
+      "detail": {
+        "id": "DIAGNOSIS-SYN-VAL-05",
+        "status": "Verified",
+        "version": 2
+      }
+    },
+    {
+      "check": "REF Dietitian / Nutrition",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "task_id": "TASK-AA90420657",
+        "next_role": "Dietitian / Nutrition"
+      }
+    },
+    {
+      "check": "SUP-NUT-001 Dietitian opens exact verified diagnosis",
+      "pass": true,
+      "detail": {
+        "id": "TASK-AA90420657",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support service referral",
+        "title": "Support referral: Dietitian / Nutrition",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Dietitian / Nutrition",
+        "owner_user_id": "USR-DIETITIA-001",
+        "source_type": "diagnosis",
+        "source_id": "DIAGNOSIS-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Post-treatment nutrition optimization during survivorship",
+        "created_at": "2026-09-09T09:11:49+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:49+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "referrer_role": "Medical Oncology",
+          "reason": "Post-treatment nutrition optimization during survivorship",
+          "context": {}
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "current_department": "Dietitian / Nutrition",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "DIAGNOSIS-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "diagnosis",
+          "status": "Verified",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "icd10": "C50.9",
+            "icd10_version": "ICD-10",
+            "icdo_topography": "C50.9",
+            "icdo_morphology": "8500/3",
+            "icdo_version": "ICD-O-3",
+            "cancer_type": "Breast Cancer",
+            "primary_site": "Right breast",
+            "histology": "Invasive carcinoma of no special type / ductal carcinoma",
+            "grade": "2",
+            "staging_system": "AJCC",
+            "staging_version": "Breast v8",
+            "staging_date": "2026-09-09",
+            "staging_basis": "Clinical",
+            "stage_t": "cT2",
+            "stage_n": "cN0",
+            "stage_m": "cM0",
+            "stage_group": "Stage IIA",
+            "treatment_intent": "Curative",
+            "disease_status": "Post-treatment follow-up",
+            "non_tnm": false,
+            "classification_system": ""
+          }
+        },
+        "source_record_type": "diagnosis",
+        "source_record_id": "DIAGNOSIS-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Verified",
+        "source_record_updated_at": "2026-09-09T09:11:47+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "diagnosis",
+          "source_id": "DIAGNOSIS-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "SUP-NUT-002 wrong role blocked",
+      "pass": true,
+      "detail": {
+        "error": "Patient access not assigned to this role"
+      }
+    },
+    {
+      "check": "SUP-NUT-003 mandatory fields block",
+      "pass": true,
+      "detail": {
+        "error": "nutrition record incomplete",
+        "missing": [
+          "intake_assessment",
+          "nutrition_diagnosis",
+          "intervention_plan",
+          "monitoring_plan"
+        ]
+      }
+    },
+    {
+      "check": "SUP-NUT-004 signed nutrition persisted",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "NUTRITION-SYN-VAL-05",
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "SUP-NUT-005 referral task closes",
+      "pass": true,
+      "detail": {
+        "id": "TASK-AA90420657",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support service referral",
+        "title": "Support referral: Dietitian / Nutrition",
+        "status": "Completed",
+        "priority": "Routine",
+        "owner_role": "Dietitian / Nutrition",
+        "owner_user_id": "USR-DIETITIA-001",
+        "source_type": "diagnosis",
+        "source_id": "DIAGNOSIS-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "2026-09-09T09:11:49+05:30",
+        "completed_by": "UA-A4C0E98ABF85",
+        "escalation_level": 0,
+        "reason": "Post-treatment nutrition optimization during survivorship",
+        "created_at": "2026-09-09T09:11:49+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:49+05:30",
+        "updated_by": "UA-A4C0E98ABF85",
+        "data": {
+          "referrer_role": "Medical Oncology",
+          "reason": "Post-treatment nutrition optimization during survivorship",
+          "context": {}
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "current_department": "Dietitian / Nutrition",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "DIAGNOSIS-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "diagnosis",
+          "status": "Verified",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "icd10": "C50.9",
+            "icd10_version": "ICD-10",
+            "icdo_topography": "C50.9",
+            "icdo_morphology": "8500/3",
+            "icdo_version": "ICD-O-3",
+            "cancer_type": "Breast Cancer",
+            "primary_site": "Right breast",
+            "histology": "Invasive carcinoma of no special type / ductal carcinoma",
+            "grade": "2",
+            "staging_system": "AJCC",
+            "staging_version": "Breast v8",
+            "staging_date": "2026-09-09",
+            "staging_basis": "Clinical",
+            "stage_t": "cT2",
+            "stage_n": "cN0",
+            "stage_m": "cM0",
+            "stage_group": "Stage IIA",
+            "treatment_intent": "Curative",
+            "disease_status": "Post-treatment follow-up",
+            "non_tnm": false,
+            "classification_system": ""
+          }
+        },
+        "source_record_type": "diagnosis",
+        "source_record_id": "DIAGNOSIS-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Verified",
+        "source_record_updated_at": "2026-09-09T09:11:47+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "diagnosis",
+          "source_id": "DIAGNOSIS-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "SUP-NUT-006 MO receives nutrition result",
+      "pass": true,
+      "detail": {
+        "id": "TASK-CD51653A92",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support result review",
+        "title": "Review Dietitian recommendation",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "nutrition",
+        "source_id": "NUTRITION-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed nutrition assessment available",
+        "created_at": "2026-09-09T09:11:49+05:30",
+        "created_by": "UA-A4C0E98ABF85",
+        "updated_at": "2026-09-09T09:11:49+05:30",
+        "updated_by": "UA-A4C0E98ABF85",
+        "data": {
+          "nutrition_record_id": "NUTRITION-SYN-VAL-05",
+          "care_team_summary": "Balanced protein-rich diet; calcium/vitamin-D food counselling; maintain healthy weight."
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Dietitian / Nutrition",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:49+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "NUTRITION-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "nutrition",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:49+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-A4C0E98ABF85",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "assessment_date": "2026-09-09",
+            "weight_kg": 62,
+            "intake_assessment": "Adequate oral intake; mild concern about calcium/protein intake during survivorship.",
+            "nutrition_diagnosis": "Nutrition knowledge gap related to survivorship dietary goals.",
+            "intervention_plan": "Balanced protein-rich diet; calcium/vitamin-D food counselling; maintain healthy weight.",
+            "monitoring_plan": "Reassess weight, intake and treatment-related nutrition symptoms at follow-up.",
+            "weight_unit": "kg",
+            "signed_by": {
+              "id": "UA-A4C0E98ABF85",
+              "username": "dietitian.demo",
+              "name": "Sara Thomas — Dietitian",
+              "role": "Dietitian / Nutrition",
+              "professional_id": "DEMO-DIET-001"
+            },
+            "signed_at": "2026-09-09T09:11:49+05:30",
+            "signed_snapshot": {
+              "assessment_date": "2026-09-09",
+              "weight_kg": 62,
+              "intake_assessment": "Adequate oral intake; mild concern about calcium/protein intake during survivorship.",
+              "nutrition_diagnosis": "Nutrition knowledge gap related to survivorship dietary goals.",
+              "intervention_plan": "Balanced protein-rich diet; calcium/vitamin-D food counselling; maintain healthy weight.",
+              "monitoring_plan": "Reassess weight, intake and treatment-related nutrition symptoms at follow-up."
+            }
+          }
+        },
+        "source_record_type": "nutrition",
+        "source_record_id": "NUTRITION-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:49+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Sara Thomas — Dietitian",
+        "signed_at": "2026-09-09T09:11:49+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-A4C0E98ABF85",
+          "source_type": "nutrition",
+          "source_id": "NUTRITION-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "SUP-NUT-007 MO opens exact signed nutrition provenance",
+      "pass": true,
+      "detail": {
+        "id": "TASK-CD51653A92",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support result review",
+        "title": "Review Dietitian recommendation",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "nutrition",
+        "source_id": "NUTRITION-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed nutrition assessment available",
+        "created_at": "2026-09-09T09:11:49+05:30",
+        "created_by": "UA-A4C0E98ABF85",
+        "updated_at": "2026-09-09T09:11:49+05:30",
+        "updated_by": "UA-A4C0E98ABF85",
+        "data": {
+          "nutrition_record_id": "NUTRITION-SYN-VAL-05",
+          "care_team_summary": "Balanced protein-rich diet; calcium/vitamin-D food counselling; maintain healthy weight."
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Dietitian / Nutrition",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:49+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "NUTRITION-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "nutrition",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:49+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-A4C0E98ABF85",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "assessment_date": "2026-09-09",
+            "weight_kg": 62,
+            "intake_assessment": "Adequate oral intake; mild concern about calcium/protein intake during survivorship.",
+            "nutrition_diagnosis": "Nutrition knowledge gap related to survivorship dietary goals.",
+            "intervention_plan": "Balanced protein-rich diet; calcium/vitamin-D food counselling; maintain healthy weight.",
+            "monitoring_plan": "Reassess weight, intake and treatment-related nutrition symptoms at follow-up.",
+            "weight_unit": "kg",
+            "signed_by": {
+              "id": "UA-A4C0E98ABF85",
+              "username": "dietitian.demo",
+              "name": "Sara Thomas — Dietitian",
+              "role": "Dietitian / Nutrition",
+              "professional_id": "DEMO-DIET-001"
+            },
+            "signed_at": "2026-09-09T09:11:49+05:30",
+            "signed_snapshot": {
+              "assessment_date": "2026-09-09",
+              "weight_kg": 62,
+              "intake_assessment": "Adequate oral intake; mild concern about calcium/protein intake during survivorship.",
+              "nutrition_diagnosis": "Nutrition knowledge gap related to survivorship dietary goals.",
+              "intervention_plan": "Balanced protein-rich diet; calcium/vitamin-D food counselling; maintain healthy weight.",
+              "monitoring_plan": "Reassess weight, intake and treatment-related nutrition symptoms at follow-up."
+            }
+          }
+        },
+        "source_record_type": "nutrition",
+        "source_record_id": "NUTRITION-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:49+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Sara Thomas — Dietitian",
+        "signed_at": "2026-09-09T09:11:49+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-A4C0E98ABF85",
+          "source_type": "nutrition",
+          "source_id": "NUTRITION-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "SUP-NUT-008 immutable signed overwrite blocked",
+      "pass": true,
+      "detail": {
+        "error": "Signed nutrition record is immutable; amendment_reason required",
+        "supersedes": "NUTRITION-SYN-VAL-05"
+      }
+    },
+    {
+      "check": "SUP-NUT-009 stale optimistic update blocked",
+      "pass": true,
+      "detail": {
+        "error": "Record changed since it was loaded",
+        "expected_version": 1,
+        "current_version": 2,
+        "record_id": "NUTRITION-SYN-VAL-05"
+      }
+    },
+    {
+      "check": "SUP-NUT-010 amendment creates signed successor",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "NUTRITION-A77A61D9F6",
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "SUP-NUT-011 old nutrition retained Superseded",
+      "pass": true,
+      "detail": {
+        "old": "Superseded",
+        "new": "Signed"
+      }
+    },
+    {
+      "check": "SUP-NUT-012 stale MO result task cancelled",
+      "pass": true,
+      "detail": {
+        "id": "TASK-CD51653A92",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support result review",
+        "title": "Review Dietitian recommendation",
+        "status": "Cancelled",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "nutrition",
+        "source_id": "NUTRITION-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Source support record superseded by NUTRITION-A77A61D9F6",
+        "created_at": "2026-09-09T09:11:49+05:30",
+        "created_by": "UA-A4C0E98ABF85",
+        "updated_at": "2026-09-09T09:11:49+05:30",
+        "updated_by": "UA-A4C0E98ABF85",
+        "data": {
+          "nutrition_record_id": "NUTRITION-SYN-VAL-05",
+          "care_team_summary": "Balanced protein-rich diet; calcium/vitamin-D food counselling; maintain healthy weight."
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Dietitian / Nutrition",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:49+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "NUTRITION-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "nutrition",
+          "status": "Superseded",
+          "version": 3,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:49+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-A4C0E98ABF85",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "assessment_date": "2026-09-09",
+            "weight_kg": 62,
+            "intake_assessment": "Adequate oral intake; mild concern about calcium/protein intake during survivorship.",
+            "nutrition_diagnosis": "Nutrition knowledge gap related to survivorship dietary goals.",
+            "intervention_plan": "Balanced protein-rich diet; calcium/vitamin-D food counselling; maintain healthy weight.",
+            "monitoring_plan": "Reassess weight, intake and treatment-related nutrition symptoms at follow-up.",
+            "weight_unit": "kg",
+            "signed_by": {
+              "id": "UA-A4C0E98ABF85",
+              "username": "dietitian.demo",
+              "name": "Sara Thomas — Dietitian",
+              "role": "Dietitian / Nutrition",
+              "professional_id": "DEMO-DIET-001"
+            },
+            "signed_at": "2026-09-09T09:11:49+05:30",
+            "signed_snapshot": {
+              "assessment_date": "2026-09-09",
+              "weight_kg": 62,
+              "intake_assessment": "Adequate oral intake; mild concern about calcium/protein intake during survivorship.",
+              "nutrition_diagnosis": "Nutrition knowledge gap related to survivorship dietary goals.",
+              "intervention_plan": "Balanced protein-rich diet; calcium/vitamin-D food counselling; maintain healthy weight.",
+              "monitoring_plan": "Reassess weight, intake and treatment-related nutrition symptoms at follow-up."
+            },
+            "superseded_by_record_id": "NUTRITION-A77A61D9F6"
+          }
+        },
+        "source_record_type": "nutrition",
+        "source_record_id": "NUTRITION-SYN-VAL-05",
+        "source_record_version": 3,
+        "source_record_status": "Superseded",
+        "source_record_updated_at": "2026-09-09T09:11:49+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Sara Thomas — Dietitian",
+        "signed_at": "2026-09-09T09:11:49+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-A4C0E98ABF85",
+          "source_type": "nutrition",
+          "source_id": "NUTRITION-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "SUP-NUT-013 new MO task points to successor",
+      "pass": true,
+      "detail": {
+        "id": "TASK-9ED126D3A3",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support result review",
+        "title": "Review Dietitian recommendation",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "nutrition",
+        "source_id": "NUTRITION-A77A61D9F6",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed nutrition assessment available",
+        "created_at": "2026-09-09T09:11:49+05:30",
+        "created_by": "UA-A4C0E98ABF85",
+        "updated_at": "2026-09-09T09:11:49+05:30",
+        "updated_by": "UA-A4C0E98ABF85",
+        "data": {
+          "nutrition_record_id": "NUTRITION-A77A61D9F6",
+          "care_team_summary": "Balanced protein-rich diet with calcium/vitamin-D food counselling and symptom-specific advice."
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Dietitian / Nutrition",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:49+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "NUTRITION-A77A61D9F6",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "nutrition",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:49+05:30",
+          "updated_at": "2026-09-09T09:11:49+05:30",
+          "created_by": "UA-A4C0E98ABF85",
+          "updated_by": "UA-A4C0E98ABF85",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "assessment_date": "2026-09-09",
+            "weight_kg": 62,
+            "intake_assessment": "Adequate oral intake; mild concern about calcium/protein intake during survivorship.",
+            "nutrition_diagnosis": "Nutrition knowledge gap related to survivorship dietary goals.",
+            "intervention_plan": "Balanced protein-rich diet with calcium/vitamin-D food counselling and symptom-specific advice.",
+            "monitoring_plan": "Reassess weight, intake and treatment-related nutrition symptoms at follow-up.",
+            "weight_unit": "kg",
+            "signed_by": {
+              "id": "UA-A4C0E98ABF85",
+              "username": "dietitian.demo",
+              "name": "Sara Thomas — Dietitian",
+              "role": "Dietitian / Nutrition",
+              "professional_id": "DEMO-DIET-001"
+            },
+            "signed_at": "2026-09-09T09:11:49+05:30",
+            "signed_snapshot": {
+              "assessment_date": "2026-09-09",
+              "weight_kg": 62,
+              "intake_assessment": "Adequate oral intake; mild concern about calcium/protein intake during survivorship.",
+              "nutrition_diagnosis": "Nutrition knowledge gap related to survivorship dietary goals.",
+              "intervention_plan": "Balanced protein-rich diet with calcium/vitamin-D food counselling and symptom-specific advice.",
+              "monitoring_plan": "Reassess weight, intake and treatment-related nutrition symptoms at follow-up."
+            },
+            "supersedes": "NUTRITION-SYN-VAL-05",
+            "amendment_reason": "Clarify calcium/protein counselling after reconciliation"
+          }
+        },
+        "source_record_type": "nutrition",
+        "source_record_id": "NUTRITION-A77A61D9F6",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:49+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Sara Thomas — Dietitian",
+        "signed_at": "2026-09-09T09:11:49+05:30",
+        "provenance": {
+          "created_by": "UA-A4C0E98ABF85",
+          "updated_by": "UA-A4C0E98ABF85",
+          "source_type": "nutrition",
+          "source_id": "NUTRITION-A77A61D9F6"
+        }
+      }
+    },
+    {
+      "check": "REF Psycho-Oncology",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "task_id": "TASK-3422B1C6CC",
+        "next_role": "Psycho-Oncology"
+      }
+    },
+    {
+      "check": "SUP-PSY-001 Psycho opens exact diagnosis source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-3422B1C6CC",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support service referral",
+        "title": "Support referral: Psycho-Oncology",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Psycho-Oncology",
+        "owner_user_id": "USR-PSYCHOON-001",
+        "source_type": "diagnosis",
+        "source_id": "DIAGNOSIS-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Survivorship distress and fear-of-recurrence assessment",
+        "created_at": "2026-09-09T09:11:50+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:50+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "referrer_role": "Medical Oncology",
+          "reason": "Survivorship distress and fear-of-recurrence assessment",
+          "context": {}
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "current_department": "Psycho-Oncology",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "DIAGNOSIS-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "diagnosis",
+          "status": "Verified",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "icd10": "C50.9",
+            "icd10_version": "ICD-10",
+            "icdo_topography": "C50.9",
+            "icdo_morphology": "8500/3",
+            "icdo_version": "ICD-O-3",
+            "cancer_type": "Breast Cancer",
+            "primary_site": "Right breast",
+            "histology": "Invasive carcinoma of no special type / ductal carcinoma",
+            "grade": "2",
+            "staging_system": "AJCC",
+            "staging_version": "Breast v8",
+            "staging_date": "2026-09-09",
+            "staging_basis": "Clinical",
+            "stage_t": "cT2",
+            "stage_n": "cN0",
+            "stage_m": "cM0",
+            "stage_group": "Stage IIA",
+            "treatment_intent": "Curative",
+            "disease_status": "Post-treatment follow-up",
+            "non_tnm": false,
+            "classification_system": ""
+          }
+        },
+        "source_record_type": "diagnosis",
+        "source_record_id": "DIAGNOSIS-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Verified",
+        "source_record_updated_at": "2026-09-09T09:11:47+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "diagnosis",
+          "source_id": "DIAGNOSIS-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "SUP-PSY-002 signed restricted psychosocial record",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "PSYCHOSOCIAL-SYN-VAL-05",
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "SUP-PSY-003 MO receives minimum-necessary result task",
+      "pass": true,
+      "detail": {
+        "id": "TASK-B4F2BE2C45",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support result review",
+        "title": "Review Psycho-Oncology care-team summary",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "psychosocial",
+        "source_id": "PSYCHOSOCIAL-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Minimum-necessary Psycho-Oncology summary available",
+        "created_at": "2026-09-09T09:11:50+05:30",
+        "created_by": "UA-B06EEACA3F3E",
+        "updated_at": "2026-09-09T09:11:50+05:30",
+        "updated_by": "UA-B06EEACA3F3E",
+        "data": {
+          "psychosocial_record_id": "PSYCHOSOCIAL-SYN-VAL-05",
+          "care_team_summary": "Moderate distress related to fear of recurrence; no immediate safety risk. Continue psycho-oncology follow-up and reinforce escalation pathways.",
+          "risk_level": "Moderate"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Psycho-Oncology",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:50+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "PSYCHOSOCIAL-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "psychosocial",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:50+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-B06EEACA3F3E",
+          "data": {
+            "assessment_date": "2026-09-09",
+            "distress_score": 6,
+            "risk_level": "Moderate",
+            "care_team_summary": "Moderate distress related to fear of recurrence; no immediate safety risk. Continue psycho-oncology follow-up and reinforce escalation pathways.",
+            "signed_by": {
+              "id": "UA-B06EEACA3F3E",
+              "username": "psycho.demo",
+              "name": "Dr Ritu Shah — Psycho-Oncology",
+              "role": "Psycho-Oncology",
+              "professional_id": "DEMO-PSY-001"
+            },
+            "signed_at": "2026-09-09T09:11:50+05:30"
+          }
+        },
+        "source_record_type": "psychosocial",
+        "source_record_id": "PSYCHOSOCIAL-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:50+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Ritu Shah — Psycho-Oncology",
+        "signed_at": "2026-09-09T09:11:50+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-B06EEACA3F3E",
+          "source_type": "psychosocial",
+          "source_id": "PSYCHOSOCIAL-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "SUP-PSY-004 full counselling hidden from MO",
+      "pass": true,
+      "detail": {
+        "assessment_date": "2026-09-09",
+        "distress_score": 6,
+        "risk_level": "Moderate",
+        "care_team_summary": "Moderate distress related to fear of recurrence; no immediate safety risk. Continue psycho-oncology follow-up and reinforce escalation pathways.",
+        "signed_by": {
+          "id": "UA-B06EEACA3F3E",
+          "username": "psycho.demo",
+          "name": "Dr Ritu Shah — Psycho-Oncology",
+          "role": "Psycho-Oncology",
+          "professional_id": "DEMO-PSY-001"
+        },
+        "signed_at": "2026-09-09T09:11:50+05:30"
+      }
+    },
+    {
+      "check": "SUP-PSY-005 bootstrap projection also restricted",
+      "pass": true,
+      "detail": {
+        "assessment_date": "2026-09-09",
+        "distress_score": 6,
+        "risk_level": "Moderate",
+        "care_team_summary": "Moderate distress related to fear of recurrence; no immediate safety risk. Continue psycho-oncology follow-up and reinforce escalation pathways.",
+        "signed_by": {
+          "id": "UA-B06EEACA3F3E",
+          "username": "psycho.demo",
+          "name": "Dr Ritu Shah — Psycho-Oncology",
+          "role": "Psycho-Oncology",
+          "professional_id": "DEMO-PSY-001"
+        },
+        "signed_at": "2026-09-09T09:11:50+05:30"
+      }
+    },
+    {
+      "check": "REF Palliative Care",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "task_id": "TASK-C0096F34E7",
+        "next_role": "Palliative Care"
+      }
+    },
+    {
+      "check": "SUP-PAL-001 Palliative opens exact source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-C0096F34E7",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support service referral",
+        "title": "Support referral: Palliative Care",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Palliative Care",
+        "owner_user_id": "USR-PALLIATI-001",
+        "source_type": "diagnosis",
+        "source_id": "DIAGNOSIS-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Symptom/supportive-care assessment for persistent survivorship pain concern",
+        "created_at": "2026-09-09T09:11:50+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:50+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "referrer_role": "Medical Oncology",
+          "reason": "Symptom/supportive-care assessment for persistent survivorship pain concern",
+          "context": {}
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "current_department": "Palliative Care",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "DIAGNOSIS-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "diagnosis",
+          "status": "Verified",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "icd10": "C50.9",
+            "icd10_version": "ICD-10",
+            "icdo_topography": "C50.9",
+            "icdo_morphology": "8500/3",
+            "icdo_version": "ICD-O-3",
+            "cancer_type": "Breast Cancer",
+            "primary_site": "Right breast",
+            "histology": "Invasive carcinoma of no special type / ductal carcinoma",
+            "grade": "2",
+            "staging_system": "AJCC",
+            "staging_version": "Breast v8",
+            "staging_date": "2026-09-09",
+            "staging_basis": "Clinical",
+            "stage_t": "cT2",
+            "stage_n": "cN0",
+            "stage_m": "cM0",
+            "stage_group": "Stage IIA",
+            "treatment_intent": "Curative",
+            "disease_status": "Post-treatment follow-up",
+            "non_tnm": false,
+            "classification_system": ""
+          }
+        },
+        "source_record_type": "diagnosis",
+        "source_record_id": "DIAGNOSIS-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Verified",
+        "source_record_updated_at": "2026-09-09T09:11:47+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "diagnosis",
+          "source_id": "DIAGNOSIS-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "SUP-PAL-002 palliative signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "PALLIATIVE-SYN-VAL-05",
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "SUP-PAL-003 MO receives palliative result",
+      "pass": true,
+      "detail": {
+        "id": "TASK-379A2B3D09",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support result review",
+        "title": "Review Palliative Care recommendations",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "palliative",
+        "source_id": "PALLIATIVE-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed palliative assessment available",
+        "created_at": "2026-09-09T09:11:50+05:30",
+        "created_by": "UA-33CA3F9FE295",
+        "updated_at": "2026-09-09T09:11:50+05:30",
+        "updated_by": "UA-33CA3F9FE295",
+        "data": {
+          "palliative_record_id": "PALLIATIVE-SYN-VAL-05",
+          "plan": "Non-opioid symptom measures, reassess pain trajectory, urgent oncology review for red flags."
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Palliative Care",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:50+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "PALLIATIVE-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "palliative",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:50+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-33CA3F9FE295",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "assessment_date": "2026-09-09",
+            "symptom_summary": "Intermittent focal discomfort, currently controlled; no crisis symptoms.",
+            "goals_of_care_status": "Curative/survivorship goals reviewed; symptom control and function prioritized.",
+            "plan": "Non-opioid symptom measures, reassess pain trajectory, urgent oncology review for red flags.",
+            "signed_by": {
+              "id": "UA-33CA3F9FE295",
+              "username": "palliative.demo",
+              "name": "Dr Aman Bose — Palliative Care",
+              "role": "Palliative Care",
+              "professional_id": "DEMO-PAL-001"
+            },
+            "signed_at": "2026-09-09T09:11:50+05:30",
+            "signed_snapshot": {
+              "assessment_date": "2026-09-09",
+              "symptom_summary": "Intermittent focal discomfort, currently controlled; no crisis symptoms.",
+              "goals_of_care_status": "Curative/survivorship goals reviewed; symptom control and function prioritized.",
+              "plan": "Non-opioid symptom measures, reassess pain trajectory, urgent oncology review for red flags."
+            }
+          }
+        },
+        "source_record_type": "palliative",
+        "source_record_id": "PALLIATIVE-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:50+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Aman Bose — Palliative Care",
+        "signed_at": "2026-09-09T09:11:50+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-33CA3F9FE295",
+          "source_type": "palliative",
+          "source_id": "PALLIATIVE-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "SUP-PAL-004 MO exact palliative source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-379A2B3D09",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support result review",
+        "title": "Review Palliative Care recommendations",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "palliative",
+        "source_id": "PALLIATIVE-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed palliative assessment available",
+        "created_at": "2026-09-09T09:11:50+05:30",
+        "created_by": "UA-33CA3F9FE295",
+        "updated_at": "2026-09-09T09:11:50+05:30",
+        "updated_by": "UA-33CA3F9FE295",
+        "data": {
+          "palliative_record_id": "PALLIATIVE-SYN-VAL-05",
+          "plan": "Non-opioid symptom measures, reassess pain trajectory, urgent oncology review for red flags."
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Palliative Care",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:50+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "PALLIATIVE-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "palliative",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:50+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-33CA3F9FE295",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "assessment_date": "2026-09-09",
+            "symptom_summary": "Intermittent focal discomfort, currently controlled; no crisis symptoms.",
+            "goals_of_care_status": "Curative/survivorship goals reviewed; symptom control and function prioritized.",
+            "plan": "Non-opioid symptom measures, reassess pain trajectory, urgent oncology review for red flags.",
+            "signed_by": {
+              "id": "UA-33CA3F9FE295",
+              "username": "palliative.demo",
+              "name": "Dr Aman Bose — Palliative Care",
+              "role": "Palliative Care",
+              "professional_id": "DEMO-PAL-001"
+            },
+            "signed_at": "2026-09-09T09:11:50+05:30",
+            "signed_snapshot": {
+              "assessment_date": "2026-09-09",
+              "symptom_summary": "Intermittent focal discomfort, currently controlled; no crisis symptoms.",
+              "goals_of_care_status": "Curative/survivorship goals reviewed; symptom control and function prioritized.",
+              "plan": "Non-opioid symptom measures, reassess pain trajectory, urgent oncology review for red flags."
+            }
+          }
+        },
+        "source_record_type": "palliative",
+        "source_record_id": "PALLIATIVE-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:50+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Dr Aman Bose — Palliative Care",
+        "signed_at": "2026-09-09T09:11:50+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-33CA3F9FE295",
+          "source_type": "palliative",
+          "source_id": "PALLIATIVE-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "REF Clinical Trials / Research",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "task_id": "TASK-50C11D18C4",
+        "next_role": "Clinical Trials / Research"
+      }
+    },
+    {
+      "check": "SUP-TRIAL-001 Trials opens exact source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-50C11D18C4",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support service referral",
+        "title": "Support referral: Clinical Trials / Research",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Clinical Trials / Research",
+        "owner_user_id": "USR-CLINICAL-001",
+        "source_type": "diagnosis",
+        "source_id": "DIAGNOSIS-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Screen for applicable recurrence/survivorship research options",
+        "created_at": "2026-09-09T09:11:50+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:50+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "referrer_role": "Medical Oncology",
+          "reason": "Screen for applicable recurrence/survivorship research options",
+          "context": {}
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "current_department": "Clinical Trials / Research",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "DIAGNOSIS-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "diagnosis",
+          "status": "Verified",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:47+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "icd10": "C50.9",
+            "icd10_version": "ICD-10",
+            "icdo_topography": "C50.9",
+            "icdo_morphology": "8500/3",
+            "icdo_version": "ICD-O-3",
+            "cancer_type": "Breast Cancer",
+            "primary_site": "Right breast",
+            "histology": "Invasive carcinoma of no special type / ductal carcinoma",
+            "grade": "2",
+            "staging_system": "AJCC",
+            "staging_version": "Breast v8",
+            "staging_date": "2026-09-09",
+            "staging_basis": "Clinical",
+            "stage_t": "cT2",
+            "stage_n": "cN0",
+            "stage_m": "cM0",
+            "stage_group": "Stage IIA",
+            "treatment_intent": "Curative",
+            "disease_status": "Post-treatment follow-up",
+            "non_tnm": false,
+            "classification_system": ""
+          }
+        },
+        "source_record_type": "diagnosis",
+        "source_record_id": "DIAGNOSIS-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Verified",
+        "source_record_updated_at": "2026-09-09T09:11:47+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-CD18F7D9D16C",
+          "source_type": "diagnosis",
+          "source_id": "DIAGNOSIS-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "SUP-TRIAL-002 screening signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "CLINICAL_TRIAL-SYN-VAL-05",
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "SUP-TRIAL-003 MO receives trial status",
+      "pass": true,
+      "detail": {
+        "id": "TASK-4F84EE1F7F",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Clinical trial review",
+        "title": "Review Clinical Trials screening status",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "clinical_trial",
+        "source_id": "CLINICAL_TRIAL-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Trials coordinator update",
+        "created_at": "2026-09-09T09:11:50+05:30",
+        "created_by": "UA-9C90FA7CCE50",
+        "updated_at": "2026-09-09T09:11:50+05:30",
+        "updated_by": "UA-9C90FA7CCE50",
+        "data": {
+          "trial_id": "SYN-TRIAL-BR-001",
+          "screening_status": "Not currently eligible — surveillance phase",
+          "consent_status": "Not Applicable"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Clinical Trials / Research",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:50+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "CLINICAL_TRIAL-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "clinical_trial",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:50+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-9C90FA7CCE50",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "trial_id": "SYN-TRIAL-BR-001",
+            "protocol_version": "Synthetic v1.0",
+            "screening_status": "Not currently eligible — surveillance phase",
+            "consent_status": "Not Applicable",
+            "signed_by": {
+              "id": "UA-9C90FA7CCE50",
+              "username": "trials.demo",
+              "name": "Ira Sen — Trials Coordinator",
+              "role": "Clinical Trials / Research",
+              "professional_id": "DEMO-CTR-001"
+            },
+            "signed_at": "2026-09-09T09:11:50+05:30",
+            "signed_snapshot": {
+              "trial_id": "SYN-TRIAL-BR-001",
+              "protocol_version": "Synthetic v1.0",
+              "screening_status": "Not currently eligible — surveillance phase",
+              "consent_status": "Not Applicable"
+            }
+          }
+        },
+        "source_record_type": "clinical_trial",
+        "source_record_id": "CLINICAL_TRIAL-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:50+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Ira Sen — Trials Coordinator",
+        "signed_at": "2026-09-09T09:11:50+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-9C90FA7CCE50",
+          "source_type": "clinical_trial",
+          "source_id": "CLINICAL_TRIAL-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "SUP-TRIAL-004 MO exact trial source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-4F84EE1F7F",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Clinical trial review",
+        "title": "Review Clinical Trials screening status",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "clinical_trial",
+        "source_id": "CLINICAL_TRIAL-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Trials coordinator update",
+        "created_at": "2026-09-09T09:11:50+05:30",
+        "created_by": "UA-9C90FA7CCE50",
+        "updated_at": "2026-09-09T09:11:50+05:30",
+        "updated_by": "UA-9C90FA7CCE50",
+        "data": {
+          "trial_id": "SYN-TRIAL-BR-001",
+          "screening_status": "Not currently eligible — surveillance phase",
+          "consent_status": "Not Applicable"
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Clinical Trials / Research",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:50+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "CLINICAL_TRIAL-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "clinical_trial",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:50+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-9C90FA7CCE50",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "trial_id": "SYN-TRIAL-BR-001",
+            "protocol_version": "Synthetic v1.0",
+            "screening_status": "Not currently eligible — surveillance phase",
+            "consent_status": "Not Applicable",
+            "signed_by": {
+              "id": "UA-9C90FA7CCE50",
+              "username": "trials.demo",
+              "name": "Ira Sen — Trials Coordinator",
+              "role": "Clinical Trials / Research",
+              "professional_id": "DEMO-CTR-001"
+            },
+            "signed_at": "2026-09-09T09:11:50+05:30",
+            "signed_snapshot": {
+              "trial_id": "SYN-TRIAL-BR-001",
+              "protocol_version": "Synthetic v1.0",
+              "screening_status": "Not currently eligible — surveillance phase",
+              "consent_status": "Not Applicable"
+            }
+          }
+        },
+        "source_record_type": "clinical_trial",
+        "source_record_id": "CLINICAL_TRIAL-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:50+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Ira Sen — Trials Coordinator",
+        "signed_at": "2026-09-09T09:11:50+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-9C90FA7CCE50",
+          "source_type": "clinical_trial",
+          "source_id": "CLINICAL_TRIAL-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "REF Health Information Management",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "task_id": "TASK-1DDD617C8A",
+        "next_role": "Health Information Management"
+      }
+    },
+    {
+      "check": "SUP-HIM-001 HIM opens exact registration source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-1DDD617C8A",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support service referral",
+        "title": "Support referral: Health Information Management",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Health Information Management",
+        "owner_user_id": "USR-HEALTHIN-001",
+        "source_type": "registration",
+        "source_id": "REG-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Reconcile demographic/source-document metadata for survivorship transition",
+        "created_at": "2026-09-09T09:11:50+05:30",
+        "created_by": "UA-CD18F7D9D16C",
+        "updated_at": "2026-09-09T09:11:50+05:30",
+        "updated_by": "UA-CD18F7D9D16C",
+        "data": {
+          "referrer_role": "Medical Oncology",
+          "reason": "Reconcile demographic/source-document metadata for survivorship transition",
+          "context": {}
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "current_department": "Health Information Management",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "REG-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "registration",
+          "status": "Completed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:46+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "data": {
+            "arrival_type": "Synthetic validation",
+            "assigned_specialty": "Medical Oncology",
+            "clinician_assignment": "",
+            "route_rule": "CCA connected-workflow validation",
+            "referral_reason": "Synthetic survivorship case for end-of-treatment summary -> surveillance -> suspected progression -> MO confirmation -> new line -> MDT within same Cancer Episode.",
+            "address": "Synthetic validation address",
+            "general_consent": "Pending",
+            "photo_status": "Not required",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "complete": true
+          }
+        },
+        "source_record_type": "registration",
+        "source_record_id": "REG-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Completed",
+        "source_record_updated_at": "2026-09-09T09:11:46+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-1953F3A56877",
+          "source_type": "registration",
+          "source_id": "REG-SYN-VAL-05"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "SUP-HIM-002 HIM outcome signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "id": "HIM-SYN-VAL-05",
+        "status": "Signed"
+      }
+    },
+    {
+      "check": "SUP-HIM-003 MO receives HIM outcome",
+      "pass": true,
+      "detail": {
+        "id": "TASK-07EED57531",
+        "patient_id": "PAT-VAL-LEELA",
+        "episode_id": "EP-SYN-VAL-05",
+        "task_type": "Support result review",
+        "title": "Review HIM request outcome",
+        "status": "Open",
+        "priority": "Routine",
+        "owner_role": "Medical Oncology",
+        "owner_user_id": "USR-MEDICALO-001",
+        "source_type": "him",
+        "source_id": "HIM-SYN-VAL-05",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Signed HIM correction/reconciliation outcome available",
+        "created_at": "2026-09-09T09:11:51+05:30",
+        "created_by": "UA-5E709D1A5C47",
+        "updated_at": "2026-09-09T09:11:51+05:30",
+        "updated_by": "UA-5E709D1A5C47",
+        "data": {
+          "record_id": "HIM-SYN-VAL-05",
+          "operation_type": "Record reconciliation",
+          "status": "Completed — metadata reconciled; no clinical content altered",
+          "reason": "Reconcile survivorship transition metadata with signed source documents."
+        },
+        "patient": {
+          "id": "PAT-VAL-LEELA",
+          "mrn": "CCA-SYN-VAL-SURV-01",
+          "name": "Leela Nair",
+          "dob": "1970-04-17",
+          "sex": "Female",
+          "phone": "917000000105",
+          "abha": "",
+          "id_number": "SYN-LEELA-01",
+          "current_department": "Health Information Management",
+          "status": "Active",
+          "photo_document_id": "",
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:50+05:30"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-05",
+            "kind": "Primary cancer",
+            "label": "Treatment completion and recurrence validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "HIM-SYN-VAL-05",
+          "patient_id": "PAT-VAL-LEELA",
+          "entity_type": "him",
+          "status": "Signed",
+          "version": 2,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:51+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-5E709D1A5C47",
+          "data": {
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-05",
+            "operation_type": "Record reconciliation",
+            "reason": "Reconcile survivorship transition metadata with signed source documents.",
+            "status": "Completed — metadata reconciled; no clinical content altered",
+            "signed_by": {
+              "id": "UA-5E709D1A5C47",
+              "username": "him.demo",
+              "name": "Arun Iyer — HIM",
+              "role": "Health Information Management",
+              "professional_id": "DEMO-HIM-001"
+            },
+            "signed_at": "2026-09-09T09:11:51+05:30",
+            "signed_snapshot": {
+              "operation_type": "Record reconciliation",
+              "reason": "Reconcile survivorship transition metadata with signed source documents.",
+              "status": "Completed — metadata reconciled; no clinical content altered"
+            }
+          }
+        },
+        "source_record_type": "him",
+        "source_record_id": "HIM-SYN-VAL-05",
+        "source_record_version": 2,
+        "source_record_status": "Signed",
+        "source_record_updated_at": "2026-09-09T09:11:51+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "Arun Iyer — HIM",
+        "signed_at": "2026-09-09T09:11:51+05:30",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-5E709D1A5C47",
+          "source_type": "him",
+          "source_id": "HIM-SYN-VAL-05"
+        }
+      }
+    },
+    {
+      "check": "SUP-HIM-004 MO gets HIM outcome with the fields it needs",
+      "pass": true,
+      "detail": {
+        "synthetic_validation": true,
+        "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+        "episode_id": "EP-SYN-VAL-05",
+        "operation_type": "Record reconciliation",
+        "reason": "Reconcile survivorship transition metadata with signed source documents.",
+        "status": "Completed — metadata reconciled; no clinical content altered",
+        "signed_by": {
+          "id": "UA-5E709D1A5C47",
+          "username": "him.demo",
+          "name": "Arun Iyer — HIM",
+          "role": "Health Information Management",
+          "professional_id": "DEMO-HIM-001"
+        },
+        "signed_at": "2026-09-09T09:11:51+05:30",
+        "signed_snapshot": {
+          "operation_type": "Record reconciliation",
+          "reason": "Reconcile survivorship transition metadata with signed source documents.",
+          "status": "Completed — metadata reconciled; no clinical content altered"
+        }
+      }
+    },
+    {
+      "check": "SUP-UI-001 vanilla-JS support task/action mapping present",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "check": "SUP-AUD-001 support audit events visible",
+      "pass": true,
+      "detail": [
+        "SUPPORT_SIGN",
+        "SUPPORT_SUPERSEDE",
+        "TASK_AUTO_CANCEL"
+      ]
+    }
+  ]
+}

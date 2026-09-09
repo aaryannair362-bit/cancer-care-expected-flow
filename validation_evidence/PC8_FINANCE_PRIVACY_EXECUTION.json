@@ -1,0 +1,1655 @@
+{
+  "patient": "Ananya Shah",
+  "patient_id": "PAT-VAL-ANANYA",
+  "build": "12.2-PC8.0",
+  "generated_at": "2026-09-09T03:41:36.117292+00:00",
+  "checks": 20,
+  "pass": 20,
+  "fail": 0,
+  "results": [
+    {
+      "check": "FIN-001 conversion source available",
+      "pass": true,
+      "detail": {
+        "id": "CONVERSION-SYN-VAL-01"
+      }
+    },
+    {
+      "check": "FIN-002 dose-vial estimate calculated",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "total": 337000.0,
+        "lines": [
+          {
+            "drug": "Dexamethasone",
+            "drug_code": "DEMO-DEX",
+            "ordered_dose_mg": 8.0,
+            "vial_plan": [
+              {
+                "strength_mg": 4.0,
+                "count": 2,
+                "unit_price_inr": 50.0
+              }
+            ],
+            "estimated_amount_inr": 100.0
+          },
+          {
+            "drug": "Pertuzumab",
+            "drug_code": "DEMO-PER",
+            "ordered_dose_mg": 840.0,
+            "vial_plan": [
+              {
+                "strength_mg": 420.0,
+                "count": 2,
+                "unit_price_inr": 85000.0
+              }
+            ],
+            "estimated_amount_inr": 170000.0
+          },
+          {
+            "drug": "Trastuzumab",
+            "drug_code": "DEMO-TRA",
+            "ordered_dose_mg": 544.0,
+            "vial_plan": [
+              {
+                "strength_mg": 150.0,
+                "count": 3,
+                "unit_price_inr": 35000.0
+              },
+              {
+                "strength_mg": 150.0,
+                "count": 1,
+                "unit_price_inr": 35000.0
+              }
+            ],
+            "estimated_amount_inr": 140000.0
+          },
+          {
+            "drug": "Docetaxel",
+            "drug_code": "DEMO-DOC",
+            "ordered_dose_mg": 119.17,
+            "vial_plan": [
+              {
+                "strength_mg": 80.0,
+                "count": 1,
+                "unit_price_inr": 6000.0
+              },
+              {
+                "strength_mg": 20.0,
+                "count": 1,
+                "unit_price_inr": 1800.0
+              },
+              {
+                "strength_mg": 20.0,
+                "count": 1,
+                "unit_price_inr": 1800.0
+              }
+            ],
+            "estimated_amount_inr": 9600.0
+          },
+          {
+            "drug": "Carboplatin",
+            "drug_code": "DEMO-CARBO",
+            "ordered_dose_mg": 714.0,
+            "vial_plan": [
+              {
+                "strength_mg": 450.0,
+                "count": 1,
+                "unit_price_inr": 4500.0
+              },
+              {
+                "strength_mg": 150.0,
+                "count": 1,
+                "unit_price_inr": 1900.0
+              },
+              {
+                "strength_mg": 150.0,
+                "count": 1,
+                "unit_price_inr": 1900.0
+              }
+            ],
+            "estimated_amount_inr": 8300.0
+          },
+          {
+            "drug": "Pegfilgrastim",
+            "drug_code": "DEMO-PEG",
+            "ordered_dose_mg": 6.0,
+            "vial_plan": [
+              {
+                "strength_mg": 6.0,
+                "count": 1,
+                "unit_price_inr": 9000.0
+              }
+            ],
+            "estimated_amount_inr": 9000.0
+          }
+        ],
+        "basis": "Synthetic dose/vial-driven tariff master — not CCA commercial tariff"
+      }
+    },
+    {
+      "check": "FIN-004 finance scheme master exposed",
+      "pass": true,
+      "detail": {
+        "schemes": [
+          {
+            "id": "SCH-CGHS",
+            "name": "CGHS",
+            "version": "demo-1.0",
+            "status": "Active",
+            "verification_mode": "External entitlement/package verification required",
+            "source_ref": "Synthetic workflow structure only",
+            "updated_at": "2026-09-09T09:11:23+05:30",
+            "required_fields": [
+              "beneficiary_or_card_id",
+              "supporting_evidence"
+            ],
+            "package_model": {
+              "package_source": "CCA/payer configuration required",
+              "definitive_eligibility": false
+            }
+          },
+          {
+            "id": "SCH-ESI",
+            "name": "ESI / ESIC",
+            "version": "demo-1.0",
+            "status": "Active",
+            "verification_mode": "External entitlement verification required",
+            "source_ref": "Synthetic workflow structure only",
+            "updated_at": "2026-09-09T09:11:23+05:30",
+            "required_fields": [
+              "beneficiary_or_card_id",
+              "supporting_evidence"
+            ],
+            "package_model": {
+              "package_source": "CCA/payer configuration required",
+              "definitive_eligibility": false
+            }
+          },
+          {
+            "id": "SCH-PMJAY",
+            "name": "PM-JAY / Ayushman Bharat",
+            "version": "demo-1.0",
+            "status": "Active",
+            "verification_mode": "External beneficiary/package verification required",
+            "source_ref": "Synthetic workflow structure only — verify against current official payer systems",
+            "updated_at": "2026-09-09T09:11:23+05:30",
+            "required_fields": [
+              "beneficiary_or_card_id",
+              "supporting_evidence"
+            ],
+            "package_model": {
+              "package_source": "CCA/payer configuration required",
+              "definitive_eligibility": false
+            }
+          },
+          {
+            "id": "SCH-PRIVATE",
+            "name": "Private Insurance / TPA",
+            "version": "demo-1.0",
+            "status": "Active",
+            "verification_mode": "Policy / pre-authorisation verification required",
+            "source_ref": "Institution-configurable insurance workflow",
+            "updated_at": "2026-09-09T09:11:23+05:30",
+            "required_fields": [
+              "payer_name",
+              "policy_number",
+              "supporting_evidence"
+            ],
+            "package_model": {
+              "package_source": "Payer contract configuration required",
+              "definitive_eligibility": false
+            }
+          },
+          {
+            "id": "SCH-STATE",
+            "name": "State Government Scheme",
+            "version": "demo-1.0",
+            "status": "Active",
+            "verification_mode": "State portal / payer verification required",
+            "source_ref": "Institution-configurable state scheme workflow",
+            "updated_at": "2026-09-09T09:11:23+05:30",
+            "required_fields": [
+              "scheme_name",
+              "beneficiary_or_card_id",
+              "supporting_evidence"
+            ],
+            "package_model": {
+              "package_source": "CCA/state configuration required",
+              "definitive_eligibility": false
+            }
+          }
+        ],
+        "disclaimer": "Indicative workflow only. Definitive eligibility and package approval require current payer/official verification."
+      }
+    },
+    {
+      "check": "FIN-005 PMJAY assessment non-definitive",
+      "pass": true,
+      "detail": {
+        "id": "SCHEME-86FF6438",
+        "scheme_id": "SCH-PMJAY",
+        "scheme_name": "PM-JAY / Ayushman Bharat",
+        "assessed_at": "2026-09-09T09:11:35+05:30",
+        "assessed_by": {
+          "id": "UA-59F3AB76A637",
+          "username": "finance.demo",
+          "name": "CCA Finance Reviewer",
+          "role": "Finance / Billing",
+          "professional_id": "DEMO-FIN-001"
+        },
+        "evidence": {
+          "beneficiary_or_card_id": "SYN-PMJAY-001",
+          "supporting_evidence": "Synthetic eligibility document reference"
+        },
+        "result": "Potentially eligible — external verification required",
+        "missing": [],
+        "verification_mode": "External beneficiary/package verification required",
+        "package_model": {
+          "package_source": "CCA/payer configuration required",
+          "definitive_eligibility": false
+        },
+        "definitive_eligibility": false,
+        "source_ref": "Synthetic workflow structure only — verify against current official payer systems"
+      }
+    },
+    {
+      "check": "FIN-006 identifiable letter blocked without consent",
+      "pass": true,
+      "detail": {
+        "error": "Active External Financial Assistance Disclosure Consent is required before an identifiable external letter can be created"
+      }
+    },
+    {
+      "check": "FIN-007 redacted custom-PII injection blocked",
+      "pass": true,
+      "detail": {
+        "error": "Custom external-letter text is not permitted in redacted mode because it could reintroduce patient identifiers; use the server-generated redacted template or obtain disclosure consent"
+      }
+    },
+    {
+      "check": "FIN-008 redacted server draft created",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "letter": {
+          "status": "Draft — Approval Required",
+          "recipient": "Synthetic NGO",
+          "purpose": "Treatment support",
+          "text": "To whom it may concern,\n\nCCA-SUPPORT-A0C81136 is receiving oncology care. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+          "redacted": true,
+          "consent_id": "",
+          "generated_by": {
+            "id": "UA-59F3AB76A637",
+            "username": "finance.demo",
+            "name": "CCA Finance Reviewer",
+            "role": "Finance / Billing",
+            "professional_id": "DEMO-FIN-001"
+          },
+          "generated_at": "2026-09-09T09:11:35+05:30",
+          "approved_by": null,
+          "approved_at": "",
+          "released_at": ""
+        },
+        "next_role": "Finance / Billing"
+      }
+    },
+    {
+      "check": "FIN-009 Finance approval task auto-created",
+      "pass": true,
+      "detail": {
+        "id": "TASK-E126896132",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "External disclosure approval",
+        "title": "Independent approval required for fundraising letter",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Finance / Billing",
+        "owner_user_id": "UA-59F3AB76A637",
+        "source_type": "conversion",
+        "source_id": "CONVERSION-SYN-VAL-01",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Draft fundraising letter awaiting independent Finance approval",
+        "created_at": "2026-09-09T09:11:35+05:30",
+        "created_by": "UA-59F3AB76A637",
+        "updated_at": "2026-09-09T09:11:35+05:30",
+        "updated_by": "UA-59F3AB76A637",
+        "data": {
+          "letter": {
+            "status": "Draft — Approval Required",
+            "recipient": "Synthetic NGO",
+            "purpose": "Treatment support",
+            "text": "To whom it may concern,\n\nCCA-SUPPORT-A0C81136 is receiving oncology care. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+            "redacted": true,
+            "consent_id": "",
+            "generated_by": {
+              "id": "UA-59F3AB76A637",
+              "username": "finance.demo",
+              "name": "CCA Finance Reviewer",
+              "role": "Finance / Billing",
+              "professional_id": "DEMO-FIN-001"
+            },
+            "generated_at": "2026-09-09T09:11:35+05:30",
+            "approved_by": null,
+            "approved_at": "",
+            "released_at": ""
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "phone": "917000000101",
+          "current_department": "Medical Oncology",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "CONVERSION-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "conversion",
+          "status": "Active",
+          "version": 4,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:35+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-59F3AB76A637",
+          "data": {
+            "counselling_status": "Not Started",
+            "scheme_assessments": [
+              {
+                "id": "SCHEME-86FF6438",
+                "scheme_id": "SCH-PMJAY",
+                "scheme_name": "PM-JAY / Ayushman Bharat",
+                "assessed_at": "2026-09-09T09:11:35+05:30",
+                "assessed_by": {
+                  "id": "UA-59F3AB76A637",
+                  "username": "finance.demo",
+                  "name": "CCA Finance Reviewer",
+                  "role": "Finance / Billing",
+                  "professional_id": "DEMO-FIN-001"
+                },
+                "evidence": {
+                  "beneficiary_or_card_id": "SYN-PMJAY-001",
+                  "supporting_evidence": "Synthetic eligibility document reference"
+                },
+                "result": "Potentially eligible — external verification required",
+                "missing": [],
+                "verification_mode": "External beneficiary/package verification required",
+                "package_model": {
+                  "package_source": "CCA/payer configuration required",
+                  "definitive_eligibility": false
+                },
+                "definitive_eligibility": false,
+                "source_ref": "Synthetic workflow structure only — verify against current official payer systems"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-01",
+            "mo_drug_estimate": {
+              "currency": "INR",
+              "lines": [
+                {
+                  "drug": "Dexamethasone",
+                  "drug_code": "DEMO-DEX",
+                  "ordered_dose_mg": 8.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 4.0,
+                      "count": 2,
+                      "unit_price_inr": 50.0
+                    }
+                  ],
+                  "estimated_amount_inr": 100.0
+                },
+                {
+                  "drug": "Pertuzumab",
+                  "drug_code": "DEMO-PER",
+                  "ordered_dose_mg": 840.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 420.0,
+                      "count": 2,
+                      "unit_price_inr": 85000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 170000.0
+                },
+                {
+                  "drug": "Trastuzumab",
+                  "drug_code": "DEMO-TRA",
+                  "ordered_dose_mg": 544.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 150.0,
+                      "count": 3,
+                      "unit_price_inr": 35000.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 35000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 140000.0
+                },
+                {
+                  "drug": "Docetaxel",
+                  "drug_code": "DEMO-DOC",
+                  "ordered_dose_mg": 119.17,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 80.0,
+                      "count": 1,
+                      "unit_price_inr": 6000.0
+                    },
+                    {
+                      "strength_mg": 20.0,
+                      "count": 1,
+                      "unit_price_inr": 1800.0
+                    },
+                    {
+                      "strength_mg": 20.0,
+                      "count": 1,
+                      "unit_price_inr": 1800.0
+                    }
+                  ],
+                  "estimated_amount_inr": 9600.0
+                },
+                {
+                  "drug": "Carboplatin",
+                  "drug_code": "DEMO-CARBO",
+                  "ordered_dose_mg": 714.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 450.0,
+                      "count": 1,
+                      "unit_price_inr": 4500.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 1900.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 1900.0
+                    }
+                  ],
+                  "estimated_amount_inr": 8300.0
+                },
+                {
+                  "drug": "Pegfilgrastim",
+                  "drug_code": "DEMO-PEG",
+                  "ordered_dose_mg": 6.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 6.0,
+                      "count": 1,
+                      "unit_price_inr": 9000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 9000.0
+                }
+              ],
+              "total": 337000.0,
+              "basis": "Synthetic dose/vial-driven tariff master — not CCA commercial tariff",
+              "source_order_id": "TREATMENT_ORDER-931B1D9CD9",
+              "generated_at": "2026-09-09T09:11:35+05:30",
+              "clinical_dose_read_only": true
+            },
+            "estimate_status": "Calculated",
+            "estimate_no": "EST-A3FB14",
+            "valid_until": "2026-09-24",
+            "payer_category": "PM-JAY / Ayushman Bharat",
+            "fundraising_letter": {
+              "status": "Draft — Approval Required",
+              "recipient": "Synthetic NGO",
+              "purpose": "Treatment support",
+              "text": "To whom it may concern,\n\nCCA-SUPPORT-A0C81136 is receiving oncology care. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+              "redacted": true,
+              "consent_id": "",
+              "generated_by": {
+                "id": "UA-59F3AB76A637",
+                "username": "finance.demo",
+                "name": "CCA Finance Reviewer",
+                "role": "Finance / Billing",
+                "professional_id": "DEMO-FIN-001"
+              },
+              "generated_at": "2026-09-09T09:11:35+05:30",
+              "approved_by": null,
+              "approved_at": "",
+              "released_at": ""
+            }
+          }
+        },
+        "source_record_type": "conversion",
+        "source_record_id": "CONVERSION-SYN-VAL-01",
+        "source_record_version": 4,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:35+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-59F3AB76A637",
+          "source_type": "conversion",
+          "source_id": "CONVERSION-SYN-VAL-01"
+        }
+      }
+    },
+    {
+      "check": "FIN-010 Finance opens exact conversion source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-E126896132",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "External disclosure approval",
+        "title": "Independent approval required for fundraising letter",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Finance / Billing",
+        "owner_user_id": "UA-59F3AB76A637",
+        "source_type": "conversion",
+        "source_id": "CONVERSION-SYN-VAL-01",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Draft fundraising letter awaiting independent Finance approval",
+        "created_at": "2026-09-09T09:11:35+05:30",
+        "created_by": "UA-59F3AB76A637",
+        "updated_at": "2026-09-09T09:11:35+05:30",
+        "updated_by": "UA-59F3AB76A637",
+        "data": {
+          "letter": {
+            "status": "Draft — Approval Required",
+            "recipient": "Synthetic NGO",
+            "purpose": "Treatment support",
+            "text": "To whom it may concern,\n\nCCA-SUPPORT-A0C81136 is receiving oncology care. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+            "redacted": true,
+            "consent_id": "",
+            "generated_by": {
+              "id": "UA-59F3AB76A637",
+              "username": "finance.demo",
+              "name": "CCA Finance Reviewer",
+              "role": "Finance / Billing",
+              "professional_id": "DEMO-FIN-001"
+            },
+            "generated_at": "2026-09-09T09:11:35+05:30",
+            "approved_by": null,
+            "approved_at": "",
+            "released_at": ""
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "phone": "917000000101",
+          "current_department": "Medical Oncology",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "CONVERSION-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "conversion",
+          "status": "Active",
+          "version": 4,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:35+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-59F3AB76A637",
+          "data": {
+            "counselling_status": "Not Started",
+            "scheme_assessments": [
+              {
+                "id": "SCHEME-86FF6438",
+                "scheme_id": "SCH-PMJAY",
+                "scheme_name": "PM-JAY / Ayushman Bharat",
+                "assessed_at": "2026-09-09T09:11:35+05:30",
+                "assessed_by": {
+                  "id": "UA-59F3AB76A637",
+                  "username": "finance.demo",
+                  "name": "CCA Finance Reviewer",
+                  "role": "Finance / Billing",
+                  "professional_id": "DEMO-FIN-001"
+                },
+                "evidence": {
+                  "beneficiary_or_card_id": "SYN-PMJAY-001",
+                  "supporting_evidence": "Synthetic eligibility document reference"
+                },
+                "result": "Potentially eligible — external verification required",
+                "missing": [],
+                "verification_mode": "External beneficiary/package verification required",
+                "package_model": {
+                  "package_source": "CCA/payer configuration required",
+                  "definitive_eligibility": false
+                },
+                "definitive_eligibility": false,
+                "source_ref": "Synthetic workflow structure only — verify against current official payer systems"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-01",
+            "mo_drug_estimate": {
+              "currency": "INR",
+              "lines": [
+                {
+                  "drug": "Dexamethasone",
+                  "drug_code": "DEMO-DEX",
+                  "ordered_dose_mg": 8.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 4.0,
+                      "count": 2,
+                      "unit_price_inr": 50.0
+                    }
+                  ],
+                  "estimated_amount_inr": 100.0
+                },
+                {
+                  "drug": "Pertuzumab",
+                  "drug_code": "DEMO-PER",
+                  "ordered_dose_mg": 840.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 420.0,
+                      "count": 2,
+                      "unit_price_inr": 85000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 170000.0
+                },
+                {
+                  "drug": "Trastuzumab",
+                  "drug_code": "DEMO-TRA",
+                  "ordered_dose_mg": 544.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 150.0,
+                      "count": 3,
+                      "unit_price_inr": 35000.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 35000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 140000.0
+                },
+                {
+                  "drug": "Docetaxel",
+                  "drug_code": "DEMO-DOC",
+                  "ordered_dose_mg": 119.17,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 80.0,
+                      "count": 1,
+                      "unit_price_inr": 6000.0
+                    },
+                    {
+                      "strength_mg": 20.0,
+                      "count": 1,
+                      "unit_price_inr": 1800.0
+                    },
+                    {
+                      "strength_mg": 20.0,
+                      "count": 1,
+                      "unit_price_inr": 1800.0
+                    }
+                  ],
+                  "estimated_amount_inr": 9600.0
+                },
+                {
+                  "drug": "Carboplatin",
+                  "drug_code": "DEMO-CARBO",
+                  "ordered_dose_mg": 714.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 450.0,
+                      "count": 1,
+                      "unit_price_inr": 4500.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 1900.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 1900.0
+                    }
+                  ],
+                  "estimated_amount_inr": 8300.0
+                },
+                {
+                  "drug": "Pegfilgrastim",
+                  "drug_code": "DEMO-PEG",
+                  "ordered_dose_mg": 6.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 6.0,
+                      "count": 1,
+                      "unit_price_inr": 9000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 9000.0
+                }
+              ],
+              "total": 337000.0,
+              "basis": "Synthetic dose/vial-driven tariff master — not CCA commercial tariff",
+              "source_order_id": "TREATMENT_ORDER-931B1D9CD9",
+              "generated_at": "2026-09-09T09:11:35+05:30",
+              "clinical_dose_read_only": true
+            },
+            "estimate_status": "Calculated",
+            "estimate_no": "EST-A3FB14",
+            "valid_until": "2026-09-24",
+            "payer_category": "PM-JAY / Ayushman Bharat",
+            "fundraising_letter": {
+              "status": "Draft — Approval Required",
+              "recipient": "Synthetic NGO",
+              "purpose": "Treatment support",
+              "text": "To whom it may concern,\n\nCCA-SUPPORT-A0C81136 is receiving oncology care. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+              "redacted": true,
+              "consent_id": "",
+              "generated_by": {
+                "id": "UA-59F3AB76A637",
+                "username": "finance.demo",
+                "name": "CCA Finance Reviewer",
+                "role": "Finance / Billing",
+                "professional_id": "DEMO-FIN-001"
+              },
+              "generated_at": "2026-09-09T09:11:35+05:30",
+              "approved_by": null,
+              "approved_at": "",
+              "released_at": ""
+            }
+          }
+        },
+        "source_record_type": "conversion",
+        "source_record_id": "CONVERSION-SYN-VAL-01",
+        "source_record_version": 4,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:35+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "UA-59F3AB76A637",
+          "source_type": "conversion",
+          "source_id": "CONVERSION-SYN-VAL-01"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "FIN-017 disclosure consent signed",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "items": [
+          {
+            "id": "CONS-9A648B0B",
+            "type": "General Consent",
+            "version": "PC8-SYN-1",
+            "scope": "Synthetic diagnostic evaluation and imaging",
+            "status": "Signed",
+            "signed_by": "Ananya Shah — synthetic validation patient",
+            "signed_at": "2026-09-09T09:11:30+05:30",
+            "valid_from": "2026-09-08",
+            "valid_until": "",
+            "document_id": ""
+          },
+          {
+            "id": "CONS-FB3D1AD7",
+            "type": "Treatment Consent",
+            "version": "PC8-SYN-1",
+            "scope": "Synthetic neoadjuvant systemic treatment",
+            "status": "Signed",
+            "signed_by": "Ananya Shah — synthetic validation patient",
+            "signed_at": "2026-09-09T09:11:32+05:30",
+            "valid_from": "2026-09-08",
+            "valid_until": "",
+            "document_id": ""
+          },
+          {
+            "id": "CONS-251B3DB4",
+            "type": "External Financial Assistance Disclosure Consent",
+            "version": "CCA-PC8-FIN-1",
+            "scope": "Disclosure to synthetic financial-assistance recipient for validation only",
+            "status": "Signed",
+            "signed_by": "Synthetic patient — Ananya Shah",
+            "signed_at": "2026-09-09T09:11:35+05:30",
+            "valid_from": "2026-09-09",
+            "valid_until": "2026-10-09",
+            "document_id": ""
+          }
+        ]
+      }
+    },
+    {
+      "check": "FIN-011 wrong role approval blocked",
+      "pass": true,
+      "detail": {
+        "error": "Finance role required"
+      }
+    },
+    {
+      "check": "FIN-012 author self-approval blocked",
+      "pass": true,
+      "detail": {
+        "error": "Independent second-person approval required; generator cannot approve their own external disclosure"
+      }
+    },
+    {
+      "check": "FIN-013 independent Finance approval succeeds",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "letter": {
+          "status": "Approved for Release",
+          "recipient": "Synthetic NGO",
+          "purpose": "Treatment support",
+          "text": "To whom it may concern,\n\nCCA-SUPPORT-A0C81136 is receiving oncology care. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+          "redacted": true,
+          "consent_id": "CONS-251B3DB4",
+          "generated_by": {
+            "id": "UA-59F3AB76A637",
+            "username": "finance.demo",
+            "name": "CCA Finance Reviewer",
+            "role": "Finance / Billing",
+            "professional_id": "DEMO-FIN-001"
+          },
+          "generated_at": "2026-09-09T09:11:35+05:30",
+          "approved_by": {
+            "id": "USR-FINANCEB-001",
+            "name": "Finance / Billing",
+            "role": "Finance / Billing"
+          },
+          "approved_at": "2026-09-09T09:11:35+05:30",
+          "released_at": ""
+        },
+        "next_role": "Finance / Billing"
+      }
+    },
+    {
+      "check": "FIN-014 Finance release task auto-created",
+      "pass": true,
+      "detail": {
+        "id": "TASK-2646C87D66",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "External disclosure release",
+        "title": "Release approved fundraising letter",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Finance / Billing",
+        "owner_user_id": "USR-FINANCEB-001",
+        "source_type": "conversion",
+        "source_id": "CONVERSION-SYN-VAL-01",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Fundraising letter approved for release",
+        "created_at": "2026-09-09T09:11:35+05:30",
+        "created_by": "USR-FINANCEB-001",
+        "updated_at": "2026-09-09T09:11:35+05:30",
+        "updated_by": "USR-FINANCEB-001",
+        "data": {
+          "letter": {
+            "status": "Approved for Release",
+            "recipient": "Synthetic NGO",
+            "purpose": "Treatment support",
+            "text": "To whom it may concern,\n\nCCA-SUPPORT-A0C81136 is receiving oncology care. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+            "redacted": true,
+            "consent_id": "CONS-251B3DB4",
+            "generated_by": {
+              "id": "UA-59F3AB76A637",
+              "username": "finance.demo",
+              "name": "CCA Finance Reviewer",
+              "role": "Finance / Billing",
+              "professional_id": "DEMO-FIN-001"
+            },
+            "generated_at": "2026-09-09T09:11:35+05:30",
+            "approved_by": {
+              "id": "USR-FINANCEB-001",
+              "name": "Finance / Billing",
+              "role": "Finance / Billing"
+            },
+            "approved_at": "2026-09-09T09:11:35+05:30",
+            "released_at": ""
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "phone": "917000000101",
+          "current_department": "Medical Oncology",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "CONVERSION-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "conversion",
+          "status": "Active",
+          "version": 5,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:35+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-FINANCEB-001",
+          "data": {
+            "counselling_status": "Not Started",
+            "scheme_assessments": [
+              {
+                "id": "SCHEME-86FF6438",
+                "scheme_id": "SCH-PMJAY",
+                "scheme_name": "PM-JAY / Ayushman Bharat",
+                "assessed_at": "2026-09-09T09:11:35+05:30",
+                "assessed_by": {
+                  "id": "UA-59F3AB76A637",
+                  "username": "finance.demo",
+                  "name": "CCA Finance Reviewer",
+                  "role": "Finance / Billing",
+                  "professional_id": "DEMO-FIN-001"
+                },
+                "evidence": {
+                  "beneficiary_or_card_id": "SYN-PMJAY-001",
+                  "supporting_evidence": "Synthetic eligibility document reference"
+                },
+                "result": "Potentially eligible — external verification required",
+                "missing": [],
+                "verification_mode": "External beneficiary/package verification required",
+                "package_model": {
+                  "package_source": "CCA/payer configuration required",
+                  "definitive_eligibility": false
+                },
+                "definitive_eligibility": false,
+                "source_ref": "Synthetic workflow structure only — verify against current official payer systems"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-01",
+            "mo_drug_estimate": {
+              "currency": "INR",
+              "lines": [
+                {
+                  "drug": "Dexamethasone",
+                  "drug_code": "DEMO-DEX",
+                  "ordered_dose_mg": 8.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 4.0,
+                      "count": 2,
+                      "unit_price_inr": 50.0
+                    }
+                  ],
+                  "estimated_amount_inr": 100.0
+                },
+                {
+                  "drug": "Pertuzumab",
+                  "drug_code": "DEMO-PER",
+                  "ordered_dose_mg": 840.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 420.0,
+                      "count": 2,
+                      "unit_price_inr": 85000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 170000.0
+                },
+                {
+                  "drug": "Trastuzumab",
+                  "drug_code": "DEMO-TRA",
+                  "ordered_dose_mg": 544.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 150.0,
+                      "count": 3,
+                      "unit_price_inr": 35000.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 35000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 140000.0
+                },
+                {
+                  "drug": "Docetaxel",
+                  "drug_code": "DEMO-DOC",
+                  "ordered_dose_mg": 119.17,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 80.0,
+                      "count": 1,
+                      "unit_price_inr": 6000.0
+                    },
+                    {
+                      "strength_mg": 20.0,
+                      "count": 1,
+                      "unit_price_inr": 1800.0
+                    },
+                    {
+                      "strength_mg": 20.0,
+                      "count": 1,
+                      "unit_price_inr": 1800.0
+                    }
+                  ],
+                  "estimated_amount_inr": 9600.0
+                },
+                {
+                  "drug": "Carboplatin",
+                  "drug_code": "DEMO-CARBO",
+                  "ordered_dose_mg": 714.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 450.0,
+                      "count": 1,
+                      "unit_price_inr": 4500.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 1900.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 1900.0
+                    }
+                  ],
+                  "estimated_amount_inr": 8300.0
+                },
+                {
+                  "drug": "Pegfilgrastim",
+                  "drug_code": "DEMO-PEG",
+                  "ordered_dose_mg": 6.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 6.0,
+                      "count": 1,
+                      "unit_price_inr": 9000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 9000.0
+                }
+              ],
+              "total": 337000.0,
+              "basis": "Synthetic dose/vial-driven tariff master — not CCA commercial tariff",
+              "source_order_id": "TREATMENT_ORDER-931B1D9CD9",
+              "generated_at": "2026-09-09T09:11:35+05:30",
+              "clinical_dose_read_only": true
+            },
+            "estimate_status": "Calculated",
+            "estimate_no": "EST-A3FB14",
+            "valid_until": "2026-09-24",
+            "payer_category": "PM-JAY / Ayushman Bharat",
+            "fundraising_letter": {
+              "status": "Approved for Release",
+              "recipient": "Synthetic NGO",
+              "purpose": "Treatment support",
+              "text": "To whom it may concern,\n\nCCA-SUPPORT-A0C81136 is receiving oncology care. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+              "redacted": true,
+              "consent_id": "CONS-251B3DB4",
+              "generated_by": {
+                "id": "UA-59F3AB76A637",
+                "username": "finance.demo",
+                "name": "CCA Finance Reviewer",
+                "role": "Finance / Billing",
+                "professional_id": "DEMO-FIN-001"
+              },
+              "generated_at": "2026-09-09T09:11:35+05:30",
+              "approved_by": {
+                "id": "USR-FINANCEB-001",
+                "name": "Finance / Billing",
+                "role": "Finance / Billing"
+              },
+              "approved_at": "2026-09-09T09:11:35+05:30",
+              "released_at": ""
+            }
+          }
+        },
+        "source_record_type": "conversion",
+        "source_record_id": "CONVERSION-SYN-VAL-01",
+        "source_record_version": 5,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:35+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-FINANCEB-001",
+          "source_type": "conversion",
+          "source_id": "CONVERSION-SYN-VAL-01"
+        }
+      }
+    },
+    {
+      "check": "FIN-015 Finance opens exact approved conversion source",
+      "pass": true,
+      "detail": {
+        "id": "TASK-2646C87D66",
+        "patient_id": "PAT-VAL-ANANYA",
+        "episode_id": "EP-SYN-VAL-01",
+        "task_type": "External disclosure release",
+        "title": "Release approved fundraising letter",
+        "status": "Open",
+        "priority": "High",
+        "owner_role": "Finance / Billing",
+        "owner_user_id": "USR-FINANCEB-001",
+        "source_type": "conversion",
+        "source_id": "CONVERSION-SYN-VAL-01",
+        "due_at": "",
+        "acknowledged_at": "",
+        "acknowledged_by": "",
+        "completed_at": "",
+        "completed_by": "",
+        "escalation_level": 0,
+        "reason": "Fundraising letter approved for release",
+        "created_at": "2026-09-09T09:11:35+05:30",
+        "created_by": "USR-FINANCEB-001",
+        "updated_at": "2026-09-09T09:11:35+05:30",
+        "updated_by": "USR-FINANCEB-001",
+        "data": {
+          "letter": {
+            "status": "Approved for Release",
+            "recipient": "Synthetic NGO",
+            "purpose": "Treatment support",
+            "text": "To whom it may concern,\n\nCCA-SUPPORT-A0C81136 is receiving oncology care. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+            "redacted": true,
+            "consent_id": "CONS-251B3DB4",
+            "generated_by": {
+              "id": "UA-59F3AB76A637",
+              "username": "finance.demo",
+              "name": "CCA Finance Reviewer",
+              "role": "Finance / Billing",
+              "professional_id": "DEMO-FIN-001"
+            },
+            "generated_at": "2026-09-09T09:11:35+05:30",
+            "approved_by": {
+              "id": "USR-FINANCEB-001",
+              "name": "Finance / Billing",
+              "role": "Finance / Billing"
+            },
+            "approved_at": "2026-09-09T09:11:35+05:30",
+            "released_at": ""
+          }
+        },
+        "patient": {
+          "id": "PAT-VAL-ANANYA",
+          "mrn": "CCA-SYN-VAL-CHEMO-01",
+          "name": "Ananya Shah",
+          "dob": "1987-04-18",
+          "phone": "917000000101",
+          "current_department": "Medical Oncology",
+          "status": "Active"
+        },
+        "episode": {
+          "id": "EP-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "cancer_episode",
+          "status": "Active",
+          "version": 1,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:29+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-UNKNOWN",
+          "data": {
+            "episode_no": "SYN-EP-VAL-01",
+            "kind": "Primary cancer",
+            "label": "HER2-positive breast cancer systemic-therapy validation",
+            "started_at": "2026-09-09T09:11:29+05:30",
+            "ended_at": "",
+            "closure_reason": "",
+            "primary_diagnosis_id": "",
+            "status": "Active",
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE"
+          }
+        },
+        "source_record": {
+          "id": "CONVERSION-SYN-VAL-01",
+          "patient_id": "PAT-VAL-ANANYA",
+          "entity_type": "conversion",
+          "status": "Active",
+          "version": 5,
+          "created_at": "2026-09-09T09:11:29+05:30",
+          "updated_at": "2026-09-09T09:11:35+05:30",
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-FINANCEB-001",
+          "data": {
+            "counselling_status": "Not Started",
+            "scheme_assessments": [
+              {
+                "id": "SCHEME-86FF6438",
+                "scheme_id": "SCH-PMJAY",
+                "scheme_name": "PM-JAY / Ayushman Bharat",
+                "assessed_at": "2026-09-09T09:11:35+05:30",
+                "assessed_by": {
+                  "id": "UA-59F3AB76A637",
+                  "username": "finance.demo",
+                  "name": "CCA Finance Reviewer",
+                  "role": "Finance / Billing",
+                  "professional_id": "DEMO-FIN-001"
+                },
+                "evidence": {
+                  "beneficiary_or_card_id": "SYN-PMJAY-001",
+                  "supporting_evidence": "Synthetic eligibility document reference"
+                },
+                "result": "Potentially eligible — external verification required",
+                "missing": [],
+                "verification_mode": "External beneficiary/package verification required",
+                "package_model": {
+                  "package_source": "CCA/payer configuration required",
+                  "definitive_eligibility": false
+                },
+                "definitive_eligibility": false,
+                "source_ref": "Synthetic workflow structure only — verify against current official payer systems"
+              }
+            ],
+            "synthetic_validation": true,
+            "disclaimer": "SYNTHETIC VALIDATION DATA — NOT FOR CLINICAL USE",
+            "episode_id": "EP-SYN-VAL-01",
+            "mo_drug_estimate": {
+              "currency": "INR",
+              "lines": [
+                {
+                  "drug": "Dexamethasone",
+                  "drug_code": "DEMO-DEX",
+                  "ordered_dose_mg": 8.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 4.0,
+                      "count": 2,
+                      "unit_price_inr": 50.0
+                    }
+                  ],
+                  "estimated_amount_inr": 100.0
+                },
+                {
+                  "drug": "Pertuzumab",
+                  "drug_code": "DEMO-PER",
+                  "ordered_dose_mg": 840.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 420.0,
+                      "count": 2,
+                      "unit_price_inr": 85000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 170000.0
+                },
+                {
+                  "drug": "Trastuzumab",
+                  "drug_code": "DEMO-TRA",
+                  "ordered_dose_mg": 544.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 150.0,
+                      "count": 3,
+                      "unit_price_inr": 35000.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 35000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 140000.0
+                },
+                {
+                  "drug": "Docetaxel",
+                  "drug_code": "DEMO-DOC",
+                  "ordered_dose_mg": 119.17,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 80.0,
+                      "count": 1,
+                      "unit_price_inr": 6000.0
+                    },
+                    {
+                      "strength_mg": 20.0,
+                      "count": 1,
+                      "unit_price_inr": 1800.0
+                    },
+                    {
+                      "strength_mg": 20.0,
+                      "count": 1,
+                      "unit_price_inr": 1800.0
+                    }
+                  ],
+                  "estimated_amount_inr": 9600.0
+                },
+                {
+                  "drug": "Carboplatin",
+                  "drug_code": "DEMO-CARBO",
+                  "ordered_dose_mg": 714.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 450.0,
+                      "count": 1,
+                      "unit_price_inr": 4500.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 1900.0
+                    },
+                    {
+                      "strength_mg": 150.0,
+                      "count": 1,
+                      "unit_price_inr": 1900.0
+                    }
+                  ],
+                  "estimated_amount_inr": 8300.0
+                },
+                {
+                  "drug": "Pegfilgrastim",
+                  "drug_code": "DEMO-PEG",
+                  "ordered_dose_mg": 6.0,
+                  "vial_plan": [
+                    {
+                      "strength_mg": 6.0,
+                      "count": 1,
+                      "unit_price_inr": 9000.0
+                    }
+                  ],
+                  "estimated_amount_inr": 9000.0
+                }
+              ],
+              "total": 337000.0,
+              "basis": "Synthetic dose/vial-driven tariff master — not CCA commercial tariff",
+              "source_order_id": "TREATMENT_ORDER-931B1D9CD9",
+              "generated_at": "2026-09-09T09:11:35+05:30",
+              "clinical_dose_read_only": true
+            },
+            "estimate_status": "Calculated",
+            "estimate_no": "EST-A3FB14",
+            "valid_until": "2026-09-24",
+            "payer_category": "PM-JAY / Ayushman Bharat",
+            "fundraising_letter": {
+              "status": "Approved for Release",
+              "recipient": "Synthetic NGO",
+              "purpose": "Treatment support",
+              "text": "To whom it may concern,\n\nCCA-SUPPORT-A0C81136 is receiving oncology care. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+              "redacted": true,
+              "consent_id": "CONS-251B3DB4",
+              "generated_by": {
+                "id": "UA-59F3AB76A637",
+                "username": "finance.demo",
+                "name": "CCA Finance Reviewer",
+                "role": "Finance / Billing",
+                "professional_id": "DEMO-FIN-001"
+              },
+              "generated_at": "2026-09-09T09:11:35+05:30",
+              "approved_by": {
+                "id": "USR-FINANCEB-001",
+                "name": "Finance / Billing",
+                "role": "Finance / Billing"
+              },
+              "approved_at": "2026-09-09T09:11:35+05:30",
+              "released_at": ""
+            }
+          }
+        },
+        "source_record_type": "conversion",
+        "source_record_id": "CONVERSION-SYN-VAL-01",
+        "source_record_version": 5,
+        "source_record_status": "Active",
+        "source_record_updated_at": "2026-09-09T09:11:35+05:30",
+        "source_visible_to_role": true,
+        "signed_by": "",
+        "signed_at": "",
+        "provenance": {
+          "created_by": "USR-UNKNOWN",
+          "updated_by": "USR-FINANCEB-001",
+          "source_type": "conversion",
+          "source_id": "CONVERSION-SYN-VAL-01"
+        },
+        "consumable": true,
+        "blocking_reason": ""
+      }
+    },
+    {
+      "check": "FIN-016 redacted approved letter released",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "letter": {
+          "status": "Released",
+          "recipient": "Synthetic NGO",
+          "purpose": "Treatment support",
+          "text": "To whom it may concern,\n\nCCA-SUPPORT-A0C81136 is receiving oncology care. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+          "redacted": true,
+          "consent_id": "CONS-251B3DB4",
+          "generated_by": {
+            "id": "UA-59F3AB76A637",
+            "username": "finance.demo",
+            "name": "CCA Finance Reviewer",
+            "role": "Finance / Billing",
+            "professional_id": "DEMO-FIN-001"
+          },
+          "generated_at": "2026-09-09T09:11:35+05:30",
+          "approved_by": {
+            "id": "USR-FINANCEB-001",
+            "name": "Finance / Billing",
+            "role": "Finance / Billing"
+          },
+          "approved_at": "2026-09-09T09:11:35+05:30",
+          "released_at": "2026-09-09T09:11:35+05:30",
+          "released_by": {
+            "id": "UA-59F3AB76A637",
+            "username": "finance.demo",
+            "name": "CCA Finance Reviewer",
+            "role": "Finance / Billing",
+            "professional_id": "DEMO-FIN-001"
+          }
+        }
+      }
+    },
+    {
+      "check": "FIN-018 identifiable draft allowed with consent",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "letter": {
+          "status": "Draft — Approval Required",
+          "recipient": "Synthetic NGO 2",
+          "purpose": "Treatment support",
+          "text": "To whom it may concern,\n\nAnanya Shah (CCA-SYN-VAL-CHEMO-01) is receiving Breast Cancer. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+          "redacted": false,
+          "consent_id": "CONS-251B3DB4",
+          "generated_by": {
+            "id": "UA-59F3AB76A637",
+            "username": "finance.demo",
+            "name": "CCA Finance Reviewer",
+            "role": "Finance / Billing",
+            "professional_id": "DEMO-FIN-001"
+          },
+          "generated_at": "2026-09-09T09:11:35+05:30",
+          "approved_by": null,
+          "approved_at": "",
+          "released_at": ""
+        },
+        "next_role": "Finance / Billing"
+      }
+    },
+    {
+      "check": "FIN-019 identifiable draft independently approved",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "letter": {
+          "status": "Approved for Release",
+          "recipient": "Synthetic NGO 2",
+          "purpose": "Treatment support",
+          "text": "To whom it may concern,\n\nAnanya Shah (CCA-SYN-VAL-CHEMO-01) is receiving Breast Cancer. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+          "redacted": false,
+          "consent_id": "CONS-251B3DB4",
+          "generated_by": {
+            "id": "UA-59F3AB76A637",
+            "username": "finance.demo",
+            "name": "CCA Finance Reviewer",
+            "role": "Finance / Billing",
+            "professional_id": "DEMO-FIN-001"
+          },
+          "generated_at": "2026-09-09T09:11:35+05:30",
+          "approved_by": {
+            "id": "USR-FINANCEB-001",
+            "name": "Finance / Billing",
+            "role": "Finance / Billing"
+          },
+          "approved_at": "2026-09-09T09:11:35+05:30",
+          "released_at": ""
+        },
+        "next_role": "Finance / Billing"
+      }
+    },
+    {
+      "check": "FIN-020 identifiable approved disclosure released",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "letter": {
+          "status": "Released",
+          "recipient": "Synthetic NGO 2",
+          "purpose": "Treatment support",
+          "text": "To whom it may concern,\n\nAnanya Shah (CCA-SYN-VAL-CHEMO-01) is receiving Breast Cancer. The current synthetic demo estimate is INR 337000.0. This letter is a draft for financial-assistance workflow demonstration and is not a clinical or financial commitment.\n\nCCA Demo Finance Team",
+          "redacted": false,
+          "consent_id": "CONS-251B3DB4",
+          "generated_by": {
+            "id": "UA-59F3AB76A637",
+            "username": "finance.demo",
+            "name": "CCA Finance Reviewer",
+            "role": "Finance / Billing",
+            "professional_id": "DEMO-FIN-001"
+          },
+          "generated_at": "2026-09-09T09:11:35+05:30",
+          "approved_by": {
+            "id": "USR-FINANCEB-001",
+            "name": "Finance / Billing",
+            "role": "Finance / Billing"
+          },
+          "approved_at": "2026-09-09T09:11:35+05:30",
+          "released_at": "2026-09-09T09:11:35+05:30",
+          "released_by": {
+            "id": "UA-59F3AB76A637",
+            "username": "finance.demo",
+            "name": "CCA Finance Reviewer",
+            "role": "Finance / Billing",
+            "professional_id": "DEMO-FIN-001"
+          }
+        }
+      }
+    },
+    {
+      "check": "FIN-023 audit chain remains valid",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "events": 732,
+        "errors": [],
+        "note": "Prototype hash chain. Production requires protected/WORM audit storage."
+      }
+    }
+  ]
+}
